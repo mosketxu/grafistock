@@ -2,18 +2,13 @@
         @livewire('menu',['entidad'=>$entidad],key($entidad->id))
 
     <div class="p-1 mx-2">
-        @if($contactoId)
-            <h1 class="text-2xl font-semibold text-gray-900"> Nuevo contacto para el Proveedor  {{ $contacto->entidad }}</h1>
-            <input type="hidden" wire:model="contactoId"/>
+        @if($entidad->id)
+            <h1 class="text-2xl font-semibold text-gray-900">Proveedor: {{ $entidad->entidad }}</h1>
         @else
-            @if($entidad->id)
-                <h1 class="text-2xl font-semibold text-gray-900">Proveedor: {{ $entidad->entidad }}</h1>
-            @else
-            <h1 class="text-2xl font-semibold text-gray-900">Nuevo Proveedor</h1>
-            @endif
+        <h1 class="text-2xl font-semibold text-gray-900">Nuevo Proveedor</h1>
         @endif
     </div>
-    <div class="py-1 px-2 space-y-4" >
+    <div class="px-2 py-1 space-y-4" >
         @if ($errors->any())
         <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
             <x-jet-label class="text-red-600">Verifica los errores</x-jet-label>
@@ -45,7 +40,6 @@
             <div class="px-2 mx-2 my-1 rounded-md bg-blue-50">
                 <h3 class="font-semibold ">Datos generales</h3>
                 <x-jet-input  wire:model.defer="entidad.id" type="hidden"/>
-                <x-jet-input  wire:model.defer="contacto" type="hidden"/>
                 <hr>
             </div>
             <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
@@ -162,6 +156,15 @@
                     <x-jet-input  wire:model.defer="entidad.diavencimiento" type="number" id="diavencimiento" name="diavencimiento" :value="old('diavencimiento')" class="w-full"/>
                     <x-jet-input-error for="diavencimiento" class="mt-2" />
                 </div>
+                <div class="w-full form-item">
+                    <x-jet-label for="usuaroi" >{{ __('Usuario web') }}</x-jet-label>
+                    <x-jet-input  wire:model.defer="entidad.usuario" type="text" id="usuaroi" name="usuaroi" :value="old('usuaroi')" class="w-full"/>
+                    <x-jet-input-error for="usuaroi" class="mt-2" />
+                </div>
+                <div class="w-full form-item">
+                    <x-jet-label for="password" >{{ __('Password') }}</x-jet-label>
+                    <x-jet-input  wire:model.defer="entidad.password" type="text" id="password" name="password" :value="old('password')" class="w-full"/>
+                    <x-jet-input-error for="password" class="mt-2" />
                 </div>
             </div>
 
@@ -171,17 +174,6 @@
                     <textarea wire:model.defer="entidad.observaciones" class="w-full text-xs border-gray-300 rounded-md" rows="3">{{ old('observaciones') }} </textarea>
                     <x-jet-input-error for="observaciones" class="mt-2" />
                 </div>
-                @if($contactoId)
-                    <div class="flex-col items-center w-6/12 ">
-                        <x-jet-label class="p-0 m-0 ">{{ __('Observaciones del contacto') }}</x-jet-label>
-                        <div class="mx-auto">
-                            <x-jet-input  wire:model.defer="departamento" type="text" id="departamento" name="departamento" :value="old('departamento')" class="w-full " placeholder="{{ __('Departamento') }}"/>
-                        </div>
-                        <div class="mx-auto">
-                            <x-jet-input  wire:model.defer="comentario" type="text" id="comentario" name="comentario" :value="old('comentario')" class="w-full" placeholder="{{ __('Comentarios') }}"/>
-                        </div>
-                    </div>
-                @endif
             </div>
 
             <div class="flex mt-2 mb-2 ml-2 space-x-4">

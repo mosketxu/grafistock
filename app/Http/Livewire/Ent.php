@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad,MetodoPago,Pais,Provincia,Suma, ContactoEntidad};
+use App\Models\{Entidad,MetodoPago,Pais,Provincia};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 
@@ -10,20 +10,10 @@ use Illuminate\Validation\Rule;
 class Ent extends Component
 {
     public $entidad;
-    public $contacto;
-    public $contactoId;
-    public $departamento;
-    public $comentario;
 
     protected function rules()
     {
         return [
-            'contactoId'=>'nullable',
-            'departamento'=>'nullable',
-            'comentario'=>'nullable',
-            'contactoId'=>'nullable',
-            'contacto.id'=>'nullable',
-            'contacto.entidad'=>'nullable',
             'entidad.id'=>'nullable',
             'entidad.entidad'=>'required',
             'entidad.nif'=>'max:12',
@@ -52,10 +42,9 @@ class Ent extends Component
         ];
     }
 
-    public function mount(Entidad $entidad, Entidad $contacto)
+    public function mount(Entidad $entidad)
     {
         $this->entidad=$entidad;
-        $this->contacto=$contacto;
     }
 
 
@@ -63,8 +52,6 @@ class Ent extends Component
     {
         if (!$this->entidad->estado) $this->entidad->estado=true;
         $entidad=$this->entidad;
-        $contacto=$this->contacto;
-        $this->contactoId=$contacto->id;
 
         $metodopagos=MetodoPago::all();
         $provincias=Provincia::all();
@@ -74,7 +61,6 @@ class Ent extends Component
 
     public function save()
     {
-        // dd($this->entidad);
         $this->validate();
         if($this->entidad->id){
             $i=$this->entidad->id;
@@ -135,15 +121,6 @@ class Ent extends Component
             session()->flash('message', $mensaje);
         }
 
-        if($this->contactoId){
-            ContactoEntidad::create([
-                'contacto_id'=>$this->entidad->id,
-                'entidad_id'=>$this->contactoId,
-                'departamento'=>$this->departamento,
-                'comentarios'=>$this->comentario,
-            ]);
-            $this->dispatchBrowserEvent('notify', 'Contacto añadido con éxito');
-        }
         session()->flash('message', $mensaje);
         $this->emitSelf('notify-saved');
     }

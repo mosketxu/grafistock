@@ -19,7 +19,6 @@ class CreateEntidadesTable extends Migration
             $table->string('direccion', 100)->nullable();
             $table->string('cp', 10)->nullable();
             $table->string('localidad', 100)->nullable();
-            $table->string('cp', 15)->nullable();
             $table->string('provincia_id', 2)->nullable();
             $table->string('pais_id', 2)->nullable()->default('ES');
             $table->string('nif', 12)->nullable()->unique('nif_UNIQUE');

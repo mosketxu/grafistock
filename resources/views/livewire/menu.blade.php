@@ -16,22 +16,29 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link> --}}
                     <x-jet-nav-link href="{{ route('entidad.index') }}" :active="request()->routeIs('entidad.index')">
-                        {{ __('Entidades') }}
+                        {{ __('Proveedores') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')">
+                        {{ __('Productos') }}
                     </x-jet-nav-link>
                 </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                @if($entmenu->id)
+                {{-- @if($entmenu->id)
                     <div class="hidden p-2 space-x-8 bg-gray-100 rounded-lg sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('entidad.contacto',$entmenu) }}" :active="request()->routeIs('entidad.contacto')">
-                            {{ __('Contactos') }}
-                        </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('entidad.edit',$entmenu) }}" :active="request()->routeIs('entidad.edit')">
                             {{ __('Editar') }}
                         </x-jet-nav-link>
                     </div>
                 @endif
+                @if($productomenu->id)
+                    <div class="hidden p-2 space-x-8 bg-gray-100 rounded-lg sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('producto.edit',$productomenu) }}" :active="request()->routeIs('producto.edit')">
+                            {{ __('Editar') }}
+                        </x-jet-nav-link>
+                    </div>
+                @endif --}}
                 <!-- Settings Dropdown -->
                 <div class="relative ml-3">
                     <x-jet-dropdown align="right" width="48">
@@ -90,8 +97,11 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('entidad.index') }}" :active="request()->routeIs('entidad.index')">
-                {{ __('Entidades') }}
+                {{ __('Proveedores') }}
             </x-jet-responsive-nav-link>
+            <x-jet-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')">
+                {{ __('Productos') }}
+            </x-jet-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

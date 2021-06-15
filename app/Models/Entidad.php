@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Entidad extends Model
 {
     use HasFactory;
-
-    use HasFactory;
     protected $table = 'entidades';
     protected $fillable=['entidad','direccion','cp','localidad','provincia_id','pais_id',
                         'nif','tfno','emailgral','emailadm','web','idioma',

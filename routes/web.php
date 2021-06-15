@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\EntidadController;
+use App\Http\Controllers\{EntidadController, ProductoController, PedidoController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +22,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 
     // rutas entidades
-    Route::get('/entidad/contacto/{entidad}', [EntidadController::class, 'contactos'])->name('entidad.contacto');
-    Route::get('/entidad/nuevocontacto/{entidad}', [EntidadController::class, 'createcontacto'])->name('entidad.createcontacto');
     Route::resource('entidad', EntidadController::class);
+    Route::resource('producto', ProductoController::class);
+    Route::resource('pedido', PedidoController::class);
 });;
