@@ -15,6 +15,13 @@ class CreateDetallePedidosTable extends Migration
     {
         Schema::create('detalle_pedidos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pedido_id')->constrained('pedidos');
+            $table->foreignId('producto_id')->constrained('productos');
+            $table->integer('orden')->default('0')->nullable();
+            $table->integer('cantidad')->default('0');
+            $table->double('coste', 15, 2)->default(0.00);
+            $table->double('iva', 15, 2)->default(0.00);
+
             $table->timestamps();
         });
     }

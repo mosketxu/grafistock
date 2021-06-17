@@ -28,18 +28,17 @@
                 <x-table>
                     <x-slot name="head">
                         {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
-                        <x-table.heading >{{ __('Referencia') }}</x-table.heading>
-                        <x-table.heading >{{ __('Material') }} </x-table.heading>
-                        <x-table.heading >{{ __('Grosor') }}</x-table.heading>
-                        <x-table.heading >{{ __('Ud/Grosor') }}</x-table.heading>
-                        <x-table.heading >{{ __('Seccion') }}</x-table.heading>
-                        <x-table.heading >{{ __('Ancho x Ancho') }}</x-table.heading>
-                        <x-table.heading >{{ __('Ud/Tamaño') }}</x-table.heading>
-                        <x-table.heading >{{ __('Ubicación') }}</x-table.heading>
-                        <x-table.heading >{{ __('Coste') }}</x-table.heading>
-                        <x-table.heading >{{ __('Ud/Coste') }}</x-table.heading>
-                        <x-table.heading >{{ __('Unidad') }}</x-table.heading>
-                        <x-table.heading >{{ __('PDF Ficha') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Referencia') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Material') }} </x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Grosor') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Ud/Grosor') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Seccion') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Ancho x Ancho') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Ubicación') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Coste') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('Unidad') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('PDF Ficha') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left">{{ __('solicitante') }}</x-table.heading>
                         <x-table.heading colspan="2"/>
                     </x-slot>
                     <x-slot name="body">
@@ -49,34 +48,34 @@
                                     <input type="text" value="{{ $producto->referencia }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell>
-                                    <span class="text-sm text-gray-500 ">{{ $producto->material->nombre }}</span>
+                                    <input type="text" value="{{ $producto->material->nombre }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell>
-                                    <span class="text-sm text-gray-500 ">{{ $producto->grosor }}</span>
+                                    <input type="text" value="{{ $producto->grosor }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell>
-                                    <span class="text-sm text-gray-500 ">{{ $producto->ud_grosor }}</span>
+                                    <input type="text" value="{{ $producto->ud_grosor }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$producto->seccion}}</span>
+                                    <input type="text" value="{{ $producto->seccion }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$producto->ancho}} x {{$producto->ancho}} {{ $producto->ud_tamanyo }} </span>
+                                    <input type="text" value="{{$producto->ancho}} x {{$producto->ancho}} {{ $producto->ud_tamanyo }} " class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$producto->ubicacion}}</span>
+                                    <input type="text" value="{{ $producto->ubicacion }} ¿tiene sentido aqui?" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$producto->coste}}</span>
+                                    <input type="text" value="{{ $producto->coste }} {{ $producto->ud_coste }} " class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$producto->ud_coste}}</span>
+                                    <input type="text" value="{{ $producto->ud_compra }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$producto->ud_compra}}</span>
+                                    <input type="text" value="{{ $producto->pdf }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$producto->pdf}}</span>
+                                    <input type="text" value="¿tiene sentido aqui?" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell class="px-4">
                                     <div class="flex items-center justify-center space-x-3">
@@ -91,7 +90,7 @@
                                     <div class="flex items-center justify-center">
                                         <x-icon.inbox class="w-8 h-8 text-gray-300"/>
                                         <span class="py-5 text-xl font-medium text-gray-500">
-                                            No se han encontrado prodcutos...
+                                            No se han encontrado productos...
                                         </span>
                                     </div>
                                 </x-table.cell>

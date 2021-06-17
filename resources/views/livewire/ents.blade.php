@@ -28,13 +28,13 @@
                 <x-table>
                     <x-slot name="head">
                         {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
-                        <x-table.heading >{{ __('Proveedor') }}</x-table.heading>
-                        <x-table.heading >{{ __('Nif') }} </x-table.heading>
-                        <x-table.heading >{{ __('Dirección') }}</x-table.heading>
-                        <x-table.heading >{{ __('CP') }}</x-table.heading>
-                        <x-table.heading >{{ __('Población') }}</x-table.heading>
-                        <x-table.heading >{{ __('Tfno.') }}</x-table.heading>
-                        <x-table.heading >{{ __('Email.') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Proveedor') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Nif') }} </x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Dirección') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('CP') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Localidad') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Tfno.') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Email.') }}</x-table.heading>
                         <x-table.heading colspan="2"/>
                     </x-slot>
                     <x-slot name="body">
@@ -47,22 +47,19 @@
                                     <input type="text" value="{{ $entidad->nif }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell>
+                                    <input type="text" value="{{ $entidad->direccion }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </x-table.cell>
+                                <x-table.cell>
+                                    <input type="text" value="{{ $entidad->cp }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </x-table.cell>
+                                <x-table.cell>
+                                    <input type="text" value="{{ $entidad->localidad }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </x-table.cell>
+                                <x-table.cell>
                                     <input type="text" value="{{ $entidad->tfno }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell>
                                     <input type="text" value="{{ $entidad->emailgral }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
-                                </x-table.cell>
-                                <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$entidad->direccion}}</span>
-                                </x-table.cell>
-                                <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$entidad->cp}}</span>
-                                </x-table.cell>
-                                <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$entidad->poblacion}}</span>
-                                </x-table.cell>
-                                <x-table.cell class="text-center">
-                                    <span class="text-sm text-gray-500 ">{{$entidad->metodopago->metodopagocorto ?? '-'}}</span>
                                 </x-table.cell>
                                 <x-table.cell class="px-4">
                                     <div class="flex items-center justify-center space-x-3">
@@ -77,7 +74,7 @@
                                     <div class="flex items-center justify-center">
                                         <x-icon.inbox class="w-8 h-8 text-gray-300"/>
                                         <span class="py-5 text-xl font-medium text-gray-500">
-                                            No se han encontrado entidades...
+                                            No se han encontrado proveedores...
                                         </span>
                                     </div>
                                 </x-table.cell>
