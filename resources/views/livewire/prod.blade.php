@@ -36,7 +36,7 @@
     {{-- <x-jet-validation-errors/> --}}
     <div class="h-screen">
         <div class="flex items-center justify-center pb-3 ">
-            <div class="grid w-11/12 bg-gray-100 rounded-lg shadow-xl md:w-9/12 lg:w-1/2">
+            <div class="grid w-11/12 bg-gray-100 rounded-lg shadow-xl md:w-9/12 lg:w-11/12">
                 <div class="px-2 mx-2 my-2 rounded-md bg-blue-50">
                     <h3 class="font-semibold ">Datos del producto</h3>
                     <x-jet-input  wire:model.defer="producto.id" type="hidden"/>
@@ -76,12 +76,12 @@
                     <div class="grid grid-cols-1 gap-5 mt-5 md:grid-cols-6 md:gap-2 mx-7">
                         <div class="col-span-3">
                             <x-jet-label for="seccion">{{ __('Seccion') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.seccion" selectname="seccion" class="w-full">
+                            {{-- <x-select wire:model.defer="producto.seccion" selectname="seccion" class="w-full">
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($secciones as $seccion)
                                 <option value="{{ $seccion->nombre }}">{{ $seccion->nombre }}</option>
                                 @endforeach
-                            </x-select>
+                            </x-select> --}}
                         </div>
                         <div class="grid grid-cols-1">
                             <x-jet-label for="alto">{{ __('Alto') }}</x-jet-label>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Material;
+use App\Models\ProductoMaterial;
 use Illuminate\Http\Request;
 
-class MaterialController extends Controller
+class ProductoMaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class MaterialController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Material  $material
+     * @param  \App\Models\ProductoMaterial  $material
      * @return \Illuminate\Http\Response
      */
-    public function show(Material $material)
+    public function show(ProductoMaterial $material)
     {
         //
     }
@@ -55,7 +55,7 @@ class MaterialController extends Controller
      * @param  \App\Models\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function edit(Material $material)
+    public function edit(ProductoMaterial $material)
     {
         //
     }
@@ -64,10 +64,10 @@ class MaterialController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Material  $material
+     * @param  \App\Models\ProductoMaterial  $material
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Material $material)
+    public function update(Request $request, ProductoMaterial $material)
     {
         //
     }
@@ -75,10 +75,10 @@ class MaterialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Material  $material
+     * @param  \App\Models\ProductoMaterial  $material
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Material $material)
+    public function destroy(ProductoMaterial $material)
     {
         //
     }

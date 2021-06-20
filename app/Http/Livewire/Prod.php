@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Material,Producto,Seccion,Unidad};
+use App\Models\{ProductoMaterial,Producto,Seccion,Unidad};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 
@@ -38,10 +38,9 @@ class Prod extends Component
 
     public function render()
     {
-        $materiales=Material::orderBy('nombre','asc')->get();
-        $secciones=Seccion::orderBy('nombre','asc')->get();
+        $materiales=ProductoMaterial::orderBy('nombre','asc')->get();
         $unidades=Unidad::orderBy('nombre','asc')->get();
-        return view('livewire.prod',compact('materiales','unidades','secciones'));
+        return view('livewire.prod',compact('materiales','unidades'));
     }
 
     public function save()
