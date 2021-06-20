@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSolicitantesTable extends Migration
+class CreateProductoMaterialesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateSolicitantesTable extends Migration
      */
     public function up()
     {
-        Schema::create('solicitantes', function (Blueprint $table) {
-            $table->id();
+        Schema::create('producto_materiales', function (Blueprint $table) {
+            $table->string('id', 15)->primary();
             $table->string('nombre')->unique();
             $table->timestamps();
         });
@@ -27,6 +27,7 @@ class CreateSolicitantesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitantes');
+        Schema::dropIfExists('producto_materiales');
     }
 }
+

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Materiales;
+use App\Models\ProductoUnidadcoste;
 use Illuminate\Http\Request;
 
-class MaterialesController extends Controller
+class ProductoUnidadcosteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class MaterialesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Materiales  $materiales
+     * @param  \App\Models\ProductoUnidadcoste  $productoUnidadcoste
      * @return \Illuminate\Http\Response
      */
-    public function show(Materiales $materiales)
+    public function show(ProductoUnidadcoste $productoUnidadcoste)
     {
         //
     }
@@ -52,10 +52,10 @@ class MaterialesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Materiales  $materiales
+     * @param  \App\Models\ProductoUnidadcoste  $productoUnidadcoste
      * @return \Illuminate\Http\Response
      */
-    public function edit(Materiales $materiales)
+    public function edit(ProductoUnidadcoste $productoUnidadcoste)
     {
         //
     }
@@ -64,10 +64,10 @@ class MaterialesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Materiales  $materiales
+     * @param  \App\Models\ProductoUnidadcoste  $productoUnidadcoste
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Materiales $materiales)
+    public function update(Request $request, ProductoUnidadcoste $productoUnidadcoste)
     {
         //
     }
@@ -75,10 +75,10 @@ class MaterialesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Materiales  $materiales
+     * @param  \App\Models\ProductoUnidadcoste  $productoUnidadcoste
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Materiales $materiales)
+    public function destroy(ProductoUnidadcoste $productoUnidadcoste)
     {
         //
     }

@@ -15,10 +15,10 @@ class SolicitanteSeeder extends Seeder
     {
         \DB::table('solicitantes')->delete();
 
-        \DB::table('solicitantes')->insert(array (
-            1 =>array ('id' => 1,'nombre' => 'Alex',),
-            2 =>array ('id' => 2,'nombre' => 'Juan',),
-            3 =>array ('id' => 3,'nombre' => 'Jose',),
-        ));
+        \DB::table('solicitantes')->insert([
+            ['id' => 1,'nombre' => 'Alex'],
+            ['id' => 2,'nombre' => 'Juan'],
+            ['id' => 3,'nombre' => 'Jose'],
+        ]);
     }
 }

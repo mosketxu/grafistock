@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeccionesTable extends Migration
+class CreateProductoCajasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateSeccionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('secciones', function (Blueprint $table) {
-            $table->id();
+        Schema::create('producto_cajas', function (Blueprint $table) {
+            $table->string('id', 15)->primary();
             $table->string('nombre')->unique();
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateSeccionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('secciones');
+        Schema::dropIfExists('producto_cajas');
     }
 }

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Seccion;
+use App\Models\ProductoTipo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SeccionFactory extends Factory
+class ProductoTipoFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Seccion::class;
+    protected $model = ProductoTipo::class;
 
     /**
      * Define the model's default state.

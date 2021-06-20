@@ -15,10 +15,10 @@ class UbicacionesSeeder extends Seeder
     {
         \DB::table('ubicaciones')->delete();
 
-        \DB::table('ubicaciones')->insert(array (
-            1 =>array ('id' => 1,'nombre' => 'almacen 1',),
-            2 =>array ('id' => 2,'nombre' => 'almacen 2',),
-            3 =>array ('id' => 3,'nombre' => 'almacen 3',),
-        ));
+        \DB::table('ubicaciones')->insert([
+            ['id' => 'alm1','nombre' => 'almacen 1'],
+            ['id' => 'alm2','nombre' => 'almacen 2'],
+            ['id' => 'alm3','nombre' => 'almacen 3'],
+        ]);
     }
 }

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class ProductoSeeder extends Seeder
+class Prod2TableSeeder extends Seeder
 {
 
     /**
@@ -14,12 +14,12 @@ class ProductoSeeder extends Seeder
      */
     public function run()
     {
+        
 
-
-        \DB::table('productos')->delete();
-
-        \DB::table('productos')->insert(array (
-            0 =>
+        \DB::table('prod2')->delete();
+        
+        \DB::table('prod2')->insert(array (
+            0 => 
             array (
                 'id' => 1,
                 'referencia' => 'PDMP250-330480SLK',
@@ -44,7 +44,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 250G 330X480 MM SILK',
                 'refprov_optimus' => '',
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 2,
                 'referencia' => 'PEXP320-7201020ORO',
@@ -69,7 +69,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EXPLENDORLUX MIRROR 320G 720X1020 MM ORO',
                 'refprov_optimus' => '40010430',
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 3,
                 'referencia' => 'PDMP350-320464BR',
@@ -94,7 +94,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 350G 320X464 MM BRILLO',
                 'refprov_optimus' => '',
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 4,
                 'referencia' => 'PDMP350-320464SLK',
@@ -119,7 +119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 350G 320X464 MM SILK',
                 'refprov_optimus' => '',
             ),
-            4 =>
+            4 => 
             array (
                 'id' => 5,
                 'referencia' => 'PRAF075-320450WMTADH',
@@ -144,7 +144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'RAFLATAC POLYLASER 75G L7320X450 MM BLANCO MATE ADHESIVO',
                 'refprov_optimus' => '40010025',
             ),
-            5 =>
+            5 => 
             array (
                 'id' => 6,
                 'referencia' => 'PDMP300-330480BR',
@@ -169,7 +169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 300G 330X480 MM BRILLO',
                 'refprov_optimus' => '',
             ),
-            6 =>
+            6 => 
             array (
                 'id' => 7,
                 'referencia' => 'PDMP200-330480SLK',
@@ -194,7 +194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 200G 330X480 MM SILK',
                 'refprov_optimus' => '',
             ),
-            7 =>
+            7 => 
             array (
                 'id' => 8,
                 'referencia' => 'PDMP300-330480SLK',
@@ -219,7 +219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 300G 330X480 MM SILK',
                 'refprov_optimus' => '',
             ),
-            8 =>
+            8 => 
             array (
                 'id' => 9,
                 'referencia' => 'PREY000-500700',
@@ -244,7 +244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'AUTO MASTERTAC CUTBACK 500X700 MM ',
                 'refprov_optimus' => '',
             ),
-            9 =>
+            9 => 
             array (
                 'id' => 10,
                 'referencia' => 'PDMP130-330480BR',
@@ -269,7 +269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 130G 330X480 MM BRILLO',
                 'refprov_optimus' => '',
             ),
-            10 =>
+            10 => 
             array (
                 'id' => 11,
                 'referencia' => 'PDMP115-330480SLK',
@@ -294,7 +294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 115G 330X480 MM SILK',
                 'refprov_optimus' => '',
             ),
-            11 =>
+            11 => 
             array (
                 'id' => 12,
                 'referencia' => 'PREY080-210297',
@@ -319,7 +319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL FOTOCOPIA REY COPY 80G 210X297 MM ',
                 'refprov_optimus' => '',
             ),
-            12 =>
+            12 => 
             array (
                 'id' => 13,
                 'referencia' => 'PPKR200-7001000CRU',
@@ -344,7 +344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL KRAFT LINER 200G 700X1000 MM CRUDO',
                 'refprov_optimus' => '',
             ),
-            13 =>
+            13 => 
             array (
                 'id' => 14,
                 'referencia' => 'CROL12-050ADH',
@@ -369,7 +369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO CINTA 12 MM X 50 M ADHESIVA',
                 'refprov_optimus' => '',
             ),
-            14 =>
+            14 => 
             array (
                 'id' => 15,
                 'referencia' => 'CROL15-050ADH',
@@ -394,7 +394,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO CINTA 15 MM X 50 M ADHESIVA',
                 'refprov_optimus' => '',
             ),
-            15 =>
+            15 => 
             array (
                 'id' => 16,
                 'referencia' => 'PDMP170-330480SLK',
@@ -419,7 +419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 170G 330X480 MM SILK',
                 'refprov_optimus' => '',
             ),
-            16 =>
+            16 => 
             array (
                 'id' => 17,
                 'referencia' => 'PDMP170-330480BR',
@@ -444,7 +444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 170G 330X480 MM BRILLO',
                 'refprov_optimus' => '',
             ),
-            17 =>
+            17 => 
             array (
                 'id' => 18,
                 'referencia' => 'PDMP130-330480SLK',
@@ -469,7 +469,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 130G 330X480 MM SILK',
                 'refprov_optimus' => '',
             ),
-            18 =>
+            18 => 
             array (
                 'id' => 19,
                 'referencia' => 'CROL20-050ADH',
@@ -494,7 +494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO CINTA 20 MM X 50 M ADHESIVA',
                 'refprov_optimus' => '',
             ),
-            19 =>
+            19 => 
             array (
                 'id' => 20,
                 'referencia' => 'CROL25-050ADH',
@@ -519,7 +519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO CINTA 25 MM X 50 M ADHESIVA',
                 'refprov_optimus' => '',
             ),
-            20 =>
+            20 => 
             array (
                 'id' => 21,
                 'referencia' => 'CCAJ_A3310-110CS',
@@ -544,7 +544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA CARTON ONDULADO A3 435 MM 310 MM X 110 MM CANALSIMPLE',
                 'refprov_optimus' => '',
             ),
-            21 =>
+            21 => 
             array (
                 'id' => 22,
                 'referencia' => 'PDMP150-330480SLK',
@@ -569,7 +569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIGITAL MAGNO PLUS 150G 330X480 MM SILK',
                 'refprov_optimus' => '',
             ),
-            22 =>
+            22 => 
             array (
                 'id' => 23,
                 'referencia' => 'CROL-000PPP',
@@ -594,7 +594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO ACR 132 TTE  MM X  M PRECINTO POLIPROPILENO TRANSP',
                 'refprov_optimus' => '40011401',
             ),
-            23 =>
+            23 => 
             array (
                 'id' => 24,
                 'referencia' => 'CROL4-050ADH',
@@ -619,7 +619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO CINTA 4 MM X 50 M ADHESIVA',
                 'refprov_optimus' => '',
             ),
-            24 =>
+            24 => 
             array (
                 'id' => 25,
                 'referencia' => 'CROL25-025CR',
@@ -644,7 +644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO CINTA 460 25 MM X 25 M CREPE',
                 'refprov_optimus' => '40011401',
             ),
-            25 =>
+            25 => 
             array (
                 'id' => 26,
                 'referencia' => 'CROL6-050ADH',
@@ -669,7 +669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO CINTA 6 MM X 50 M ADHESIVA',
                 'refprov_optimus' => '',
             ),
-            26 =>
+            26 => 
             array (
                 'id' => 27,
                 'referencia' => 'CROL25-025DC',
@@ -694,7 +694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLLO CINTA REF.1030 25 MM X 25 M DOBLE CARA',
                 'refprov_optimus' => '40011401',
             ),
-            27 =>
+            27 => 
             array (
                 'id' => 28,
                 'referencia' => 'CGOM60-015B',
@@ -719,7 +719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'GOMAS ELASTICAS 60 MM X 15 MM BOLSA 1KG',
                 'refprov_optimus' => '',
             ),
-            28 =>
+            28 => 
             array (
                 'id' => 29,
                 'referencia' => 'CGOM80-015B',
@@ -744,7 +744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'GOMAS ELASTICAS 80 MM X 15 MM BOLSA 1KG',
                 'refprov_optimus' => '',
             ),
-            29 =>
+            29 => 
             array (
                 'id' => 30,
                 'referencia' => 'BADH1040-050N',
@@ -769,7 +769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ADHESIVO 1040 MM X 50 M NORMAL',
                 'refprov_optimus' => '',
             ),
-            30 =>
+            30 => 
             array (
                 'id' => 31,
                 'referencia' => 'CCAJ_TA220-060',
@@ -794,7 +794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA DE TAPA ABATIBLE 310 MM 220 MM X 60 MM ',
                 'refprov_optimus' => '',
             ),
-            31 =>
+            31 => 
             array (
                 'id' => 32,
                 'referencia' => 'CCAJ_TA120-075',
@@ -819,7 +819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA DE TAPA ABATIBLE 150 MM 120 MM X 75 MM ',
                 'refprov_optimus' => '',
             ),
-            32 =>
+            32 => 
             array (
                 'id' => 33,
                 'referencia' => 'CCAJ_TA150-100',
@@ -844,7 +844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA DE TAPA ABATIBLE 200 MM 150 MM X 100 MM ',
                 'refprov_optimus' => '',
             ),
-            33 =>
+            33 => 
             array (
                 'id' => 34,
                 'referencia' => 'CBOL200-130SAC',
@@ -869,7 +869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'BOLSAS DE AIRE 200 MM X 130 MM SACO',
                 'refprov_optimus' => '40011401',
             ),
-            34 =>
+            34 => 
             array (
                 'id' => 35,
                 'referencia' => 'CHJA10-000A',
@@ -894,7 +894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'HOJAS DE CALIBRACIÓN 10 UN AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            35 =>
+            35 => 
             array (
                 'id' => 36,
                 'referencia' => 'CTAU2-000PA',
@@ -919,7 +919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA TAURO 2 L PRIMER AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            36 =>
+            36 => 
             array (
                 'id' => 37,
                 'referencia' => 'CTAU45-000WA',
@@ -944,7 +944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA TAURO 4,5 L WHITE AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            37 =>
+            37 => 
             array (
                 'id' => 38,
                 'referencia' => 'CTAU5-000BA',
@@ -969,7 +969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA TAURO 5 L BLACK AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            38 =>
+            38 => 
             array (
                 'id' => 39,
                 'referencia' => 'CTAU5-000CA',
@@ -994,7 +994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA TAURO 5 L CYAN AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            39 =>
+            39 => 
             array (
                 'id' => 40,
                 'referencia' => 'CTAU5-000LCA',
@@ -1019,7 +1019,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA TAURO 5 L LIGHT CYAN AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            40 =>
+            40 => 
             array (
                 'id' => 41,
                 'referencia' => 'CTAU5-000LMA',
@@ -1044,7 +1044,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA TAURO 5 L LIGHT MAGENTA AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            41 =>
+            41 => 
             array (
                 'id' => 42,
                 'referencia' => 'CTAU5-000MA',
@@ -1069,7 +1069,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA TAURO 5 L MAGENTA AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            42 =>
+            42 => 
             array (
                 'id' => 43,
                 'referencia' => 'CTAU5-000YA',
@@ -1094,7 +1094,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA TAURO 5 L YELLOW AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            43 =>
+            43 => 
             array (
                 'id' => 44,
                 'referencia' => 'CTOA150-000A',
@@ -1119,7 +1119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TOALLITAS LIMPIEZA 150 UN AGFA',
                 'refprov_optimus' => '40010031',
             ),
-            44 =>
+            44 => 
             array (
                 'id' => 45,
                 'referencia' => 'BMBL1370-050AVY3026',
@@ -1144,7 +1144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MÁSCARA BLANCA 1370 MM X 50 M AVERY MPI3026',
                 'refprov_optimus' => '40010025',
             ),
-            45 =>
+            45 => 
             array (
                 'id' => 46,
                 'referencia' => 'BVMP1370-050WBR',
@@ -1169,7 +1169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO PERM 1370 MM X 50 M BLANCO BRILLO',
                 'refprov_optimus' => '40010025',
             ),
-            46 =>
+            46 => 
             array (
                 'id' => 47,
                 'referencia' => 'BVMP1370-050WBRH',
@@ -1194,7 +1194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO PERM 1370 MM X 50 M BLANCO BRILLO HOP',
                 'refprov_optimus' => '40010025',
             ),
-            47 =>
+            47 => 
             array (
                 'id' => 48,
                 'referencia' => 'BVMP1370-050WMT',
@@ -1219,7 +1219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO PERM 1370 MM X 50 M BLANCO MATE',
                 'refprov_optimus' => '40010025',
             ),
-            48 =>
+            48 => 
             array (
                 'id' => 49,
                 'referencia' => 'BVMP1370-050WMTH',
@@ -1244,7 +1244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO PERM 1370 MM X 50 M BLANCO MATE HOP',
                 'refprov_optimus' => '40010025',
             ),
-            49 =>
+            49 => 
             array (
                 'id' => 50,
                 'referencia' => 'BVMP1600-050WBR',
@@ -1269,7 +1269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO PERM 1600 MM X 50 M BLANCO BRILLO',
                 'refprov_optimus' => '40010025',
             ),
-            50 =>
+            50 => 
             array (
                 'id' => 51,
                 'referencia' => 'BVMP1600-050WBRH',
@@ -1294,7 +1294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO PERM 1600 MM X 50 M BLANCO BRILLO HOP',
                 'refprov_optimus' => '40010025',
             ),
-            51 =>
+            51 => 
             array (
                 'id' => 52,
                 'referencia' => 'BVMP1600-050WMT',
@@ -1319,7 +1319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO PERM 1600 MM X 50 M BLANCO MATE',
                 'refprov_optimus' => '40010025',
             ),
-            52 =>
+            52 => 
             array (
                 'id' => 53,
                 'referencia' => 'BVMP1600-050WMTH',
@@ -1344,7 +1344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO PERM 1600 MM X 50 M BLANCO MATE HOP',
                 'refprov_optimus' => '40010025',
             ),
-            53 =>
+            53 => 
             array (
                 'id' => 54,
                 'referencia' => 'BVMR1370-050WBR',
@@ -1369,7 +1369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO REMOV 1370 MM X 50 M BLANCO BRILLO',
                 'refprov_optimus' => '40010025',
             ),
-            54 =>
+            54 => 
             array (
                 'id' => 55,
                 'referencia' => 'BVMR1370-050WBRH',
@@ -1394,7 +1394,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO REMOV 1370 MM X 50 M BLANCO BRILLO HOP',
                 'refprov_optimus' => '40010025',
             ),
-            55 =>
+            55 => 
             array (
                 'id' => 56,
                 'referencia' => 'BVMR1370-050WMT',
@@ -1419,7 +1419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO REMOV 1370 MM X 50 M BLANCO MATE',
                 'refprov_optimus' => '40010025',
             ),
-            56 =>
+            56 => 
             array (
                 'id' => 57,
                 'referencia' => 'BVMR1370-050WMTH',
@@ -1444,7 +1444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO REMOV 1370 MM X 50 M BLANCO MATE HOP',
                 'refprov_optimus' => '40010025',
             ),
-            57 =>
+            57 => 
             array (
                 'id' => 58,
                 'referencia' => 'BVMR1600-050WBR',
@@ -1469,7 +1469,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO REMOV 1600 MM X 50 M BLANCO BRILLO',
                 'refprov_optimus' => '40010025',
             ),
-            58 =>
+            58 => 
             array (
                 'id' => 59,
                 'referencia' => 'BVMR1600-050WBRH',
@@ -1494,7 +1494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO REMOV 1600 MM X 50 M BLANCO BRILLO HOP',
                 'refprov_optimus' => '40010025',
             ),
-            59 =>
+            59 => 
             array (
                 'id' => 60,
                 'referencia' => 'BVMR1600-050WMT',
@@ -1519,7 +1519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO REMOV 1600 MM X 50 M BLANCO MATE',
                 'refprov_optimus' => '40010025',
             ),
-            60 =>
+            60 => 
             array (
                 'id' => 61,
                 'referencia' => 'BVMR1600-050WMTH',
@@ -1544,7 +1544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO MONO REMOV 1600 MM X 50 M BLANCO MATE HOP',
                 'refprov_optimus' => '40010025',
             ),
-            61 =>
+            61 => 
             array (
                 'id' => 62,
                 'referencia' => 'RKAP050-14003050W',
@@ -1569,7 +1569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'KAPA LINE 5 MM 1400X3050 MM BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            62 =>
+            62 => 
             array (
                 'id' => 63,
                 'referencia' => 'RKAP050-15303050W',
@@ -1594,7 +1594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'KAPA LINE 5 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            63 =>
+            63 => 
             array (
                 'id' => 64,
                 'referencia' => 'RKAP050-20503050W',
@@ -1619,7 +1619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'KAPA LINE 5 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            64 =>
+            64 => 
             array (
                 'id' => 65,
                 'referencia' => 'RKAP100-14003050W',
@@ -1644,7 +1644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'KAPA LINE 10 MM 1400X3050 MM BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            65 =>
+            65 => 
             array (
                 'id' => 66,
                 'referencia' => 'RKAP100-15303050W',
@@ -1669,7 +1669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'KAPA LINE 10 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            66 =>
+            66 => 
             array (
                 'id' => 67,
                 'referencia' => 'RKAP100-20503050W',
@@ -1694,7 +1694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'KAPA LINE 10 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            67 =>
+            67 => 
             array (
                 'id' => 68,
                 'referencia' => 'PNOV200-520700E2CMT',
@@ -1719,7 +1719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'NOVATECH 200G 520X700 MM ESTUCADO 2 CARAS MATE',
                 'refprov_optimus' => '40010025',
             ),
-            68 =>
+            68 => 
             array (
                 'id' => 69,
                 'referencia' => 'PNOV220-520700E2CMT',
@@ -1744,7 +1744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'NOVATECH 220G 520X700 MM ESTUCADO 2 CARAS MATE',
                 'refprov_optimus' => '40010025',
             ),
-            69 =>
+            69 => 
             array (
                 'id' => 70,
                 'referencia' => 'PEDI110-450640OW',
@@ -1769,7 +1769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EDIXION 110G 450X640 MM OFFSET BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            70 =>
+            70 => 
             array (
                 'id' => 71,
                 'referencia' => 'PEDI120-450640OW',
@@ -1794,7 +1794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EDIXION 120G 450X640 MM OFFSET BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            71 =>
+            71 => 
             array (
                 'id' => 72,
                 'referencia' => 'PEDI170-500650OW',
@@ -1819,7 +1819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EDIXION 170G 500X650 MM OFFSET BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            72 =>
+            72 => 
             array (
                 'id' => 73,
                 'referencia' => 'PEDI250-500650OW',
@@ -1844,7 +1844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EDIXION 250G 500X650 MM OFFSET BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            73 =>
+            73 => 
             array (
                 'id' => 74,
                 'referencia' => 'PEDI300-500650OW',
@@ -1869,7 +1869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EDIXION 300G 500X650 MM OFFSET BLANCO',
                 'refprov_optimus' => '40010025',
             ),
-            74 =>
+            74 => 
             array (
                 'id' => 75,
                 'referencia' => 'BVCO1230-050AVG501EF',
@@ -1894,7 +1894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M AVERY 501EF GLOSS WHITE',
                 'refprov_optimus' => '',
             ),
-            75 =>
+            75 => 
             array (
                 'id' => 76,
                 'referencia' => 'BVCO1230-050AVM501EF',
@@ -1919,7 +1919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M AVERY MATT WHITE 501EF',
                 'refprov_optimus' => '',
             ),
-            76 =>
+            76 => 
             array (
                 'id' => 77,
                 'referencia' => 'BVCO1230-050AVY502EF',
@@ -1944,7 +1944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M AVERY MATT BLACK 502EF',
                 'refprov_optimus' => '',
             ),
-            77 =>
+            77 => 
             array (
                 'id' => 78,
                 'referencia' => 'BVCO1230-050AVY503EF',
@@ -1969,7 +1969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M AVERY 503EF MATT GERANIUM RED ',
                 'refprov_optimus' => '',
             ),
-            78 =>
+            78 => 
             array (
                 'id' => 79,
                 'referencia' => 'BVCO1230-050AVY504EF',
@@ -1994,7 +1994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M AVERY PIMROSE YELLOW 504EF',
                 'refprov_optimus' => '',
             ),
-            79 =>
+            79 => 
             array (
                 'id' => 80,
                 'referencia' => 'BVCO1230-050AVY507EF',
@@ -2019,7 +2019,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M AVERY MATT BROWN 507EF',
                 'refprov_optimus' => '',
             ),
-            80 =>
+            80 => 
             array (
                 'id' => 81,
                 'referencia' => 'BVCO1230-050AVY519EF',
@@ -2044,7 +2044,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M AVERY MATT RED 519EF',
                 'refprov_optimus' => '',
             ),
-            81 =>
+            81 => 
             array (
                 'id' => 82,
                 'referencia' => 'BVCO1230-050AVY524EF',
@@ -2069,7 +2069,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M AVERY MATT MAGENTA 524EF',
                 'refprov_optimus' => '',
             ),
-            82 =>
+            82 => 
             array (
                 'id' => 83,
                 'referencia' => 'CESP25-000C',
@@ -2094,7 +2094,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ESPONJITAS 25 UN CANON',
                 'refprov_optimus' => '',
             ),
-            83 =>
+            83 => 
             array (
                 'id' => 84,
                 'referencia' => 'CCOL2-000CC',
@@ -2119,7 +2119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA COLORADO 2 L CYAN CANON',
                 'refprov_optimus' => '',
             ),
-            84 =>
+            84 => 
             array (
                 'id' => 85,
                 'referencia' => 'CCOL2-000MC',
@@ -2144,7 +2144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA COLORADO 2 L MAGENTA CANON',
                 'refprov_optimus' => '',
             ),
-            85 =>
+            85 => 
             array (
                 'id' => 86,
                 'referencia' => 'CRHO1-000WC',
@@ -2169,7 +2169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA ARIZONA 1 L WHITE CANON',
                 'refprov_optimus' => '',
             ),
-            86 =>
+            86 => 
             array (
                 'id' => 87,
                 'referencia' => 'CRHO2-000BC',
@@ -2194,7 +2194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA ARIZONA 2 L BLACK CANON',
                 'refprov_optimus' => '',
             ),
-            87 =>
+            87 => 
             array (
                 'id' => 88,
                 'referencia' => 'CRHO2-000MC',
@@ -2219,7 +2219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA ARIZONA 2 L MAGENTA CANON',
                 'refprov_optimus' => '',
             ),
-            88 =>
+            88 => 
             array (
                 'id' => 89,
                 'referencia' => 'CRHO2-000YC',
@@ -2244,7 +2244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA ARIZONA 2 L YELLOW CANON',
                 'refprov_optimus' => '',
             ),
-            89 =>
+            89 => 
             array (
                 'id' => 90,
                 'referencia' => 'CCOL2-000YC',
@@ -2269,7 +2269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA COLORADO 2 L YELLOW CANON',
                 'refprov_optimus' => '',
             ),
-            90 =>
+            90 => 
             array (
                 'id' => 91,
                 'referencia' => 'CCOL2-000BC',
@@ -2294,7 +2294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA COLORADO 2 L BLACK CANON',
                 'refprov_optimus' => '',
             ),
-            91 =>
+            91 => 
             array (
                 'id' => 92,
                 'referencia' => 'CRHO2-000CC',
@@ -2319,7 +2319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA ARIZONA 2 L CYAN CANON',
                 'refprov_optimus' => '',
             ),
-            92 =>
+            92 => 
             array (
                 'id' => 93,
                 'referencia' => 'BPAP1060-085CAN',
@@ -2344,7 +2344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL 1060 MM X 85 M CANON',
                 'refprov_optimus' => '',
             ),
-            93 =>
+            93 => 
             array (
                 'id' => 94,
                 'referencia' => 'BPAP1370-085CAN',
@@ -2369,7 +2369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL 1370 MM X 85 M CANON',
                 'refprov_optimus' => '',
             ),
-            94 =>
+            94 => 
             array (
                 'id' => 95,
                 'referencia' => 'RFOL3800-1020720WE',
@@ -2394,7 +2394,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'FOLDING 380 MICRAS 1020X720 MM BLANCO ESTUCADO',
                 'refprov_optimus' => '',
             ),
-            95 =>
+            95 => 
             array (
                 'id' => 96,
                 'referencia' => 'RFOL3800-14001000WE',
@@ -2419,7 +2419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'FOLDING 380 MICRAS 1400X1000 MM BLANCO ESTUCADO',
                 'refprov_optimus' => '',
             ),
-            96 =>
+            96 => 
             array (
                 'id' => 97,
                 'referencia' => 'RFOL4000-1020720WE2C',
@@ -2444,7 +2444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'FOLDING 400 MICRAS 1020X720 MM BLANCO ESTUCADO 2 CARAS',
                 'refprov_optimus' => '',
             ),
-            97 =>
+            97 => 
             array (
                 'id' => 98,
                 'referencia' => 'RREB100-16003200WFW',
@@ -2469,7 +2469,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'REBOARD 10 MM 1600X3200 MM BLANCO KRAFT BLANCO',
                 'refprov_optimus' => '',
             ),
-            98 =>
+            98 => 
             array (
                 'id' => 99,
                 'referencia' => 'RREB160-16002400WFW',
@@ -2494,7 +2494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'REBOARD 16 MM 1600X2400 MM BLANCO KRAFT BLANCO',
                 'refprov_optimus' => '',
             ),
-            99 =>
+            99 => 
             array (
                 'id' => 100,
                 'referencia' => 'BLBO1600-0502C',
@@ -2519,7 +2519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LONA BLOCKOUT 1600 MM X 50 M 2CARAS',
                 'refprov_optimus' => '40010312',
             ),
-            100 =>
+            100 => 
             array (
                 'id' => 101,
                 'referencia' => 'BLBO2500-0502C',
@@ -2544,7 +2544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LONA BLOCKOUT 2500 MM X 50 M 2CARAS',
                 'refprov_optimus' => '40010312',
             ),
-            101 =>
+            101 => 
             array (
                 'id' => 102,
                 'referencia' => 'BLBO3200-0502C',
@@ -2569,7 +2569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LONA BLOCKOUT 3200 MM X 50 M 2CARAS',
                 'refprov_optimus' => '40010312',
             ),
-            102 =>
+            102 => 
             array (
                 'id' => 103,
                 'referencia' => 'BVIN1370-050VPO',
@@ -2594,7 +2594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO 1370 MM X 50 M PARA OPACAR',
                 'refprov_optimus' => '40010312',
             ),
-            103 =>
+            103 => 
             array (
                 'id' => 104,
                 'referencia' => 'BVIN1630-050VPO',
@@ -2619,7 +2619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO 1630 MM X 50 M PARA OPACAR',
                 'refprov_optimus' => '40010312',
             ),
-            104 =>
+            104 => 
             array (
                 'id' => 105,
                 'referencia' => 'BLAM2000-050MMT',
@@ -2644,7 +2644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 2000 MM X 50 M MONOMERICO MATE',
                 'refprov_optimus' => '40010312',
             ),
-            105 =>
+            105 => 
             array (
                 'id' => 106,
                 'referencia' => 'BDUR1270-040DUG',
@@ -2669,7 +2669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DURATRANS 1270 MM X 40 M DUGOPA',
                 'refprov_optimus' => '40010054',
             ),
-            106 =>
+            106 => 
             array (
                 'id' => 107,
                 'referencia' => 'CFIA20-000DUG',
@@ -2694,7 +2694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'FIJADOR A 20 L DUGOPA',
                 'refprov_optimus' => '40010054',
             ),
-            107 =>
+            107 => 
             array (
                 'id' => 108,
                 'referencia' => 'CFIB20-000DUG',
@@ -2719,7 +2719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'FIJADOR B 20 L DUGOPA',
                 'refprov_optimus' => '40010054',
             ),
-            108 =>
+            108 => 
             array (
                 'id' => 109,
                 'referencia' => 'CREV100-000DUG',
@@ -2744,7 +2744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'REVELADOR 100 L DUGOPA',
                 'refprov_optimus' => '40010054',
             ),
-            109 =>
+            109 => 
             array (
                 'id' => 110,
                 'referencia' => 'CFAC1-000D',
@@ -2769,7 +2769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'FACE PLATE CLEANING 1 UN DURST',
                 'refprov_optimus' => '40010310',
             ),
-            110 =>
+            110 => 
             array (
                 'id' => 111,
                 'referencia' => 'CTOA1-000D',
@@ -2794,7 +2794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TOALLITAS LIMPIEZA 1 UN DURST',
                 'refprov_optimus' => '40010310',
             ),
-            111 =>
+            111 => 
             array (
                 'id' => 112,
                 'referencia' => 'CRHO5-000BD',
@@ -2819,7 +2819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA RHO 320 5 L BLACK DURST',
                 'refprov_optimus' => '40010310',
             ),
-            112 =>
+            112 => 
             array (
                 'id' => 113,
                 'referencia' => 'CRHO5-000CD',
@@ -2844,7 +2844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA RHO 320 5 L CYAN DURST',
                 'refprov_optimus' => '40010310',
             ),
-            113 =>
+            113 => 
             array (
                 'id' => 114,
                 'referencia' => 'CRHO5-000MD',
@@ -2869,7 +2869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA RHO 320 5 L MAGENTA DURST',
                 'refprov_optimus' => '40010310',
             ),
-            114 =>
+            114 => 
             array (
                 'id' => 115,
                 'referencia' => 'CRHO5-000YD',
@@ -2894,7 +2894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA RHO 320 5 L YELLOW DURST',
                 'refprov_optimus' => '40010310',
             ),
-            115 =>
+            115 => 
             array (
                 'id' => 116,
                 'referencia' => 'BIMN1000-020',
@@ -2919,7 +2919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'IMAN 1000 MM X 20 M ',
                 'refprov_optimus' => '40010421',
             ),
-            116 =>
+            116 => 
             array (
                 'id' => 117,
                 'referencia' => 'BIMN1200-020',
@@ -2944,7 +2944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'IMAN 1200 MM X 20 M ',
                 'refprov_optimus' => '40010421',
             ),
-            117 =>
+            117 => 
             array (
                 'id' => 118,
                 'referencia' => 'BGLP1370-050WTRAS',
@@ -2969,7 +2969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'GLASSPACK 1370 MM X 50 M BLANCO TRASLUCIDO',
                 'refprov_optimus' => '40010421',
             ),
-            118 =>
+            118 => 
             array (
                 'id' => 119,
                 'referencia' => 'BVWL1370-050WPT',
@@ -2994,7 +2994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO 3M 1370 MM X 50 M WALL PRINT  IJ480',
                 'refprov_optimus' => '40010421',
             ),
-            119 =>
+            119 => 
             array (
                 'id' => 120,
                 'referencia' => 'RPPM5000-1050750',
@@ -3019,7 +3019,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIPROPILENO COMPACTO 500 MICRAS 1050X750 MM ',
                 'refprov_optimus' => '40010421',
             ),
-            120 =>
+            120 => 
             array (
                 'id' => 121,
                 'referencia' => 'RPPM8000-1050750',
@@ -3044,7 +3044,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIPROPILENO COMPACTO 800 MICRAS 1050X750 MM ',
                 'refprov_optimus' => '40010421',
             ),
-            121 =>
+            121 => 
             array (
                 'id' => 122,
                 'referencia' => 'RGLP000-1000700TMTBR',
@@ -3069,7 +3069,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'GLASSPACK 1000X700 MM TRANSPARENTE MATE BRILLO',
                 'refprov_optimus' => '40010421',
             ),
-            122 =>
+            122 => 
             array (
                 'id' => 123,
                 'referencia' => 'RGLP000-1000700TMTMT',
@@ -3094,7 +3094,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'GLASSPACK 1000X700 MM TRANSPARENTE MATE MATE',
                 'refprov_optimus' => '40010421',
             ),
-            123 =>
+            123 => 
             array (
                 'id' => 124,
                 'referencia' => 'BADH1050-050UC',
@@ -3119,7 +3119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ADHESIVO 1050 MM X 50 M ULTRA CRISTALINO',
                 'refprov_optimus' => '40010421',
             ),
-            124 =>
+            124 => 
             array (
                 'id' => 125,
                 'referencia' => 'BLMH3200-052MS55',
@@ -3144,7 +3144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LONA MESH 3200 MM X 52 M MS55',
                 'refprov_optimus' => '40010437',
             ),
-            125 =>
+            125 => 
             array (
                 'id' => 126,
                 'referencia' => 'BPFE1270-030',
@@ -3169,7 +3169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PP FERRICO 1270 MM X 30 M ',
                 'refprov_optimus' => '40010437',
             ),
-            126 =>
+            126 => 
             array (
                 'id' => 127,
                 'referencia' => 'BTCH2100-050',
@@ -3194,7 +3194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL CARPET HEAVY 2100 MM X 50 M ',
                 'refprov_optimus' => '',
             ),
-            127 =>
+            127 => 
             array (
                 'id' => 128,
                 'referencia' => 'BEDT1370-050TR',
@@ -3219,7 +3219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EASY DOT 1370 MM X 50 M TRANSPARENTE',
                 'refprov_optimus' => '40010437',
             ),
-            128 =>
+            128 => 
             array (
                 'id' => 129,
                 'referencia' => 'BEDT1370-050W',
@@ -3244,7 +3244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EASY DOT 1370 MM X 50 M BLANCO',
                 'refprov_optimus' => '40010437',
             ),
-            129 =>
+            129 => 
             array (
                 'id' => 130,
                 'referencia' => 'BEDT1600-050TR',
@@ -3269,7 +3269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EASY DOT 1600 MM X 50 M TRANSPARENTE',
                 'refprov_optimus' => '40010437',
             ),
-            130 =>
+            130 => 
             array (
                 'id' => 131,
                 'referencia' => 'BEDT1600-050W',
@@ -3294,7 +3294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EASY DOT 1600 MM X 50 M BLANCO',
                 'refprov_optimus' => '40010437',
             ),
-            131 =>
+            131 => 
             array (
                 'id' => 132,
                 'referencia' => 'RDIS038-15303050W',
@@ -3319,7 +3319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DISPA 3,8 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40010437',
             ),
-            132 =>
+            132 => 
             array (
                 'id' => 133,
                 'referencia' => 'RABI135-16302400F',
@@ -3344,7 +3344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ABIPLEX 13,5 MM 1630X2400 MM KRAFT',
                 'refprov_optimus' => '40010437',
             ),
-            133 =>
+            133 => 
             array (
                 'id' => 134,
                 'referencia' => 'RABI135-16302400WFW',
@@ -3369,7 +3369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ABIPLEX 13,5 MM 1630X2400 MM BLANCO KRAFT BLANCO',
                 'refprov_optimus' => '40010437',
             ),
-            134 =>
+            134 => 
             array (
                 'id' => 135,
                 'referencia' => 'PLAM_BTD450-1000MT',
@@ -3394,7 +3394,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'BOPP TERMO DIGITAL 450 MM X 1000 M MATE',
                 'refprov_optimus' => '',
             ),
-            135 =>
+            135 => 
             array (
                 'id' => 136,
                 'referencia' => 'BPAP1060-050FBR',
@@ -3419,7 +3419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL 1060 MM X 50 M FUJI BRILLO',
                 'refprov_optimus' => '40010404',
             ),
-            136 =>
+            136 => 
             array (
                 'id' => 137,
                 'referencia' => 'BPAP1270-050FBR',
@@ -3444,7 +3444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL 1270 MM X 50 M FUJI BRILLO',
                 'refprov_optimus' => '40010404',
             ),
-            137 =>
+            137 => 
             array (
                 'id' => 138,
                 'referencia' => 'BPAP1060-050FMT',
@@ -3469,7 +3469,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL 1060 MM X 50 M FUJI MATE',
                 'refprov_optimus' => '40010404',
             ),
-            138 =>
+            138 => 
             array (
                 'id' => 139,
                 'referencia' => 'BPAP1270-050FMT',
@@ -3494,7 +3494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL 1270 MM X 50 M FUJI MATE',
                 'refprov_optimus' => '40010404',
             ),
-            139 =>
+            139 => 
             array (
                 'id' => 140,
                 'referencia' => 'BADH1500-066DC',
@@ -3519,7 +3519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ADHESIVO 1500 MM X 66 M 3MFM1750 DOBLE CARA',
                 'refprov_optimus' => '',
             ),
-            140 =>
+            140 => 
             array (
                 'id' => 141,
                 'referencia' => 'RNID120-16003000WWW',
@@ -3544,7 +3544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'NIDO DE ABEJA 12 MM 1600X3000 MM BLANCO BLANCO BLANCO',
                 'refprov_optimus' => '',
             ),
-            141 =>
+            141 => 
             array (
                 'id' => 142,
                 'referencia' => 'RNID160-16003000WWW',
@@ -3569,7 +3569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'NIDO DE ABEJA 16 MM 1600X3000 MM BLANCO BLANCO BLANCO',
                 'refprov_optimus' => '',
             ),
-            142 =>
+            142 => 
             array (
                 'id' => 143,
                 'referencia' => 'CTAP-100PW',
@@ -3594,7 +3594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TAPA 100 POLITENO BLANCO',
                 'refprov_optimus' => '40010804',
             ),
-            143 =>
+            143 => 
             array (
                 'id' => 144,
                 'referencia' => 'RPRI100-20303050K',
@@ -3619,7 +3619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PRINTFOAM 10 MM 2030X3050 MM NEGRO',
                 'refprov_optimus' => '',
             ),
-            144 =>
+            144 => 
             array (
                 'id' => 145,
                 'referencia' => 'RPPA030-20503050W',
@@ -3644,7 +3644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIPROPILENO ALVEOLAR 3 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '',
             ),
-            145 =>
+            145 => 
             array (
                 'id' => 146,
                 'referencia' => 'RPPA030-20503050WKW',
@@ -3669,7 +3669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIPROPILENO ALVEOLAR 3 MM 2050X3050 MM BLANCO NEGRO BLANCO',
                 'refprov_optimus' => '',
             ),
-            146 =>
+            146 => 
             array (
                 'id' => 147,
                 'referencia' => 'RPPA050-20503050W',
@@ -3694,7 +3694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIPROPILENO ALVEOLAR 5 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '',
             ),
-            147 =>
+            147 => 
             array (
                 'id' => 148,
                 'referencia' => 'RPPA050-20503050WKW',
@@ -3719,7 +3719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIPROPILENO ALVEOLAR 5 MM 2050X3050 MM BLANCO NEGRO BLANCO',
                 'refprov_optimus' => '',
             ),
-            148 =>
+            148 => 
             array (
                 'id' => 149,
                 'referencia' => 'RMAD050-12202500C',
@@ -3744,7 +3744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MADERA CALABO 5 MM 1220X2500 MM CHOPO',
                 'refprov_optimus' => '40011226',
             ),
-            149 =>
+            149 => 
             array (
                 'id' => 150,
                 'referencia' => 'RMAD100-12202500C',
@@ -3769,7 +3769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MADERA CALABO 10 MM 1220X2500 MM CHOPO',
                 'refprov_optimus' => '40011226',
             ),
-            150 =>
+            150 => 
             array (
                 'id' => 151,
                 'referencia' => 'RMAD200-12202500C',
@@ -3794,7 +3794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MADERA CALABO 20 MM 1220X2500 MM CHOPO',
                 'refprov_optimus' => '40011226',
             ),
-            151 =>
+            151 => 
             array (
                 'id' => 152,
                 'referencia' => 'RCAR_2C030-16002400WE2C',
@@ -3819,7 +3819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CARTON DOBLE CANAL 3 MM 1600X2400 MM BLANCO ESTUCADO 2 CARAS',
                 'refprov_optimus' => '40011210',
             ),
-            152 =>
+            152 => 
             array (
                 'id' => 153,
                 'referencia' => 'BTRA1220-100NV40001',
@@ -3844,7 +3844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TRANSFER 1220 MM X 100 M NOVA PRISMA ALTA GAMA 40001 ',
                 'refprov_optimus' => '40011222',
             ),
-            153 =>
+            153 => 
             array (
                 'id' => 154,
                 'referencia' => 'BTRA1220-100NV40003',
@@ -3869,7 +3869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TRANSFER 1220 MM X 100 M NOVA PRISMA ALTA ADH 40003',
                 'refprov_optimus' => '40011222',
             ),
-            154 =>
+            154 => 
             array (
                 'id' => 155,
                 'referencia' => 'BMAS1260-050NV6030',
@@ -3894,7 +3894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MÁSCARA VERDE 1260 MM X 50 M NOVA PRISMA 6030',
                 'refprov_optimus' => '40011222',
             ),
-            155 =>
+            155 => 
             array (
                 'id' => 156,
                 'referencia' => 'BVIN1220-050NV50001',
@@ -3919,7 +3919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO 1220 MM X 50 M GLASS RITRAMA',
                 'refprov_optimus' => '40011222',
             ),
-            156 =>
+            156 => 
             array (
                 'id' => 157,
                 'referencia' => 'BVIN1520-050NV50400',
@@ -3944,7 +3944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO 1520 MM X 50 M GLASS RITRAMA',
                 'refprov_optimus' => '40011222',
             ),
-            157 =>
+            157 => 
             array (
                 'id' => 158,
                 'referencia' => 'BVCO630-045NV89701E',
@@ -3969,7 +3969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 630 MM X 45 M BRITE OVEREALL SILVER DURABLE',
                 'refprov_optimus' => '40011222',
             ),
-            158 =>
+            158 => 
             array (
                 'id' => 159,
                 'referencia' => 'BLAM1370-050VMT',
@@ -3994,7 +3994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1370 MM X 50 M VELLEDA CB75 MATE',
                 'refprov_optimus' => '40011222',
             ),
-            159 =>
+            159 => 
             array (
                 'id' => 160,
                 'referencia' => 'BVBO1350-050ERAW',
@@ -4019,7 +4019,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO BOARD 1350 MM X 50 M TOTAL ERAZE 23012C BLANCO',
                 'refprov_optimus' => '',
             ),
-            160 =>
+            160 => 
             array (
                 'id' => 161,
                 'referencia' => 'BVVE1370-050DAWBL995',
@@ -4044,7 +4044,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO VELLEDA 1370 MM X 50 M DRY APPLY WBL995',
                 'refprov_optimus' => '',
             ),
-            161 =>
+            161 => 
             array (
                 'id' => 162,
                 'referencia' => 'BLAM1040-050ANT',
@@ -4069,7 +4069,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1040 MM X 50 M ANTIDESLIZANTE',
                 'refprov_optimus' => '40011222',
             ),
-            162 =>
+            162 => 
             array (
                 'id' => 163,
                 'referencia' => 'BLAM1400-050ANT',
@@ -4094,7 +4094,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1400 MM X 50 M ANTIDESLIZANTE',
                 'refprov_optimus' => '40011222',
             ),
-            163 =>
+            163 => 
             array (
                 'id' => 164,
                 'referencia' => 'BLAM1550-050ANT',
@@ -4119,7 +4119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1550 MM X 50 M ANTIDESLIZANTE',
                 'refprov_optimus' => '40011222',
             ),
-            164 =>
+            164 => 
             array (
                 'id' => 165,
                 'referencia' => 'BLAM1370-025VBR',
@@ -4144,7 +4144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1370 MM X 25 M VELLEDA CB90 BRILLO',
                 'refprov_optimus' => '40011222',
             ),
-            165 =>
+            165 => 
             array (
                 'id' => 166,
                 'referencia' => 'BLAM1370-050VBR',
@@ -4169,7 +4169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1370 MM X 50 M VELLEDA CB90 BRILLO',
                 'refprov_optimus' => '40011222',
             ),
-            166 =>
+            166 => 
             array (
                 'id' => 167,
                 'referencia' => 'BLAM1400-050PBR',
@@ -4194,7 +4194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1400 MM X 50 M POLIMERICO BRILLO',
                 'refprov_optimus' => '40011222',
             ),
-            167 =>
+            167 => 
             array (
                 'id' => 168,
                 'referencia' => 'BLAM1600-050PBR',
@@ -4219,7 +4219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1600 MM X 50 M POLIMERICO BRILLO',
                 'refprov_optimus' => '40011222',
             ),
-            168 =>
+            168 => 
             array (
                 'id' => 169,
                 'referencia' => 'BLAM1370-025VMT',
@@ -4244,7 +4244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1370 MM X 25 M VELLEDA CB75 MATE',
                 'refprov_optimus' => '40011222',
             ),
-            169 =>
+            169 => 
             array (
                 'id' => 170,
                 'referencia' => 'BLAM1400-050PSU',
@@ -4269,7 +4269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1400 MM X 50 M POLIMERICO SATIN UVA',
                 'refprov_optimus' => '40011222',
             ),
-            170 =>
+            170 => 
             array (
                 'id' => 171,
                 'referencia' => 'BLAM1600-050PSU',
@@ -4294,7 +4294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1600 MM X 50 M POLIMERICO SATIN UVA',
                 'refprov_optimus' => '40011222',
             ),
-            171 =>
+            171 => 
             array (
                 'id' => 172,
                 'referencia' => 'CMAN1-000BO',
@@ -4319,7 +4319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MAINTENANCE BOX 1 UN BORDELESS  OFIJET',
                 'refprov_optimus' => '',
             ),
-            172 =>
+            172 => 
             array (
                 'id' => 173,
                 'referencia' => 'CMAN1-000O',
@@ -4344,7 +4344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MAINTENANCE BOX 1 UN OFIJET',
                 'refprov_optimus' => '',
             ),
-            173 =>
+            173 => 
             array (
                 'id' => 174,
                 'referencia' => 'CMAT1-000VO',
@@ -4369,7 +4369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN VIOLET OFIJET',
                 'refprov_optimus' => '',
             ),
-            174 =>
+            174 => 
             array (
                 'id' => 175,
                 'referencia' => 'CMAT1-000CO',
@@ -4394,7 +4394,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN  CYAN OFIJET',
                 'refprov_optimus' => '',
             ),
-            175 =>
+            175 => 
             array (
                 'id' => 176,
                 'referencia' => 'CMAT1-000GO',
@@ -4419,7 +4419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN GREEN OFIJET',
                 'refprov_optimus' => '',
             ),
-            176 =>
+            176 => 
             array (
                 'id' => 177,
                 'referencia' => 'CMAT1-000LCO',
@@ -4444,7 +4444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN LIGHT CYAN OFIJET',
                 'refprov_optimus' => '',
             ),
-            177 =>
+            177 => 
             array (
                 'id' => 178,
                 'referencia' => 'CMAT1-000LKO',
@@ -4469,7 +4469,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN LIGHT BACK OFIJET',
                 'refprov_optimus' => '',
             ),
-            178 =>
+            178 => 
             array (
                 'id' => 179,
                 'referencia' => 'CMAT1-000LMO',
@@ -4494,7 +4494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT. 1 UN LIGHT MAGENTA OFIJET',
                 'refprov_optimus' => '',
             ),
-            179 =>
+            179 => 
             array (
                 'id' => 180,
                 'referencia' => 'CMAT1-000MKO',
@@ -4519,7 +4519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN MATTE BACK OFIJET',
                 'refprov_optimus' => '',
             ),
-            180 =>
+            180 => 
             array (
                 'id' => 181,
                 'referencia' => 'CMAT1-000OO',
@@ -4544,7 +4544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN ORANGE OFIJET',
                 'refprov_optimus' => '',
             ),
-            181 =>
+            181 => 
             array (
                 'id' => 182,
                 'referencia' => 'CMAT1-000PKO',
@@ -4569,7 +4569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN PHOTO BACK OFIJET',
                 'refprov_optimus' => '',
             ),
-            182 =>
+            182 => 
             array (
                 'id' => 183,
                 'referencia' => 'CMAT1-000VMO',
@@ -4594,7 +4594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN VIVID MAGENTA OFIJET',
                 'refprov_optimus' => '',
             ),
-            183 =>
+            183 => 
             array (
                 'id' => 184,
                 'referencia' => 'CMAT1-000YO',
@@ -4619,7 +4619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TINTA MATCHPRINT 1 UN YELLOW OFIJET',
                 'refprov_optimus' => '',
             ),
-            184 =>
+            184 => 
             array (
                 'id' => 185,
                 'referencia' => 'BPAP432-030STD',
@@ -4644,7 +4644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL PROOFING 432 MM X 30 M STANDARD',
                 'refprov_optimus' => '',
             ),
-            185 =>
+            185 => 
             array (
                 'id' => 186,
                 'referencia' => 'BPAP1370-085PGH',
@@ -4669,7 +4669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL 1370 MM X 85 M PAPER GRAPHICS',
                 'refprov_optimus' => '',
             ),
-            186 =>
+            186 => 
             array (
                 'id' => 187,
                 'referencia' => 'BLAM1040-050MBR',
@@ -4694,7 +4694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1040 MM X 50 M MONOMERICO BRILLO',
                 'refprov_optimus' => '',
             ),
-            187 =>
+            187 => 
             array (
                 'id' => 188,
                 'referencia' => 'BLAM1040-050MMT',
@@ -4719,7 +4719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1040 MM X 50 M MONOMERICO MATE',
                 'refprov_optimus' => '',
             ),
-            188 =>
+            188 => 
             array (
                 'id' => 189,
                 'referencia' => 'BLAM1370-050MMT',
@@ -4744,7 +4744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1370 MM X 50 M MONOMERICO MATE',
                 'refprov_optimus' => '',
             ),
-            189 =>
+            189 => 
             array (
                 'id' => 190,
                 'referencia' => 'BLAM1600-050MMT',
@@ -4769,7 +4769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1600 MM X 50 M MONOMERICO MATE',
                 'refprov_optimus' => '',
             ),
-            190 =>
+            190 => 
             array (
                 'id' => 191,
                 'referencia' => 'BADH1300-050N',
@@ -4794,7 +4794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ADHESIVO 1300 MM X 50 M NORMAL',
                 'refprov_optimus' => '',
             ),
-            191 =>
+            191 => 
             array (
                 'id' => 192,
                 'referencia' => 'BADH1530-050N',
@@ -4819,7 +4819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ADHESIVO 1530 MM X 50 M NORMAL',
                 'refprov_optimus' => '',
             ),
-            192 =>
+            192 => 
             array (
                 'id' => 193,
                 'referencia' => 'BLAM1370-050MBR',
@@ -4844,7 +4844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1370 MM X 50 M MONOMERICO BRILLO',
                 'refprov_optimus' => '',
             ),
-            193 =>
+            193 => 
             array (
                 'id' => 194,
                 'referencia' => 'BLAM1600-050MBR',
@@ -4869,7 +4869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1600 MM X 50 M MONOMERICO BRILLO',
                 'refprov_optimus' => '',
             ),
-            194 =>
+            194 => 
             array (
                 'id' => 195,
                 'referencia' => 'BWHI1370-100',
@@ -4894,7 +4894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL WHITEBACK 1370 MM X 100 M ',
                 'refprov_optimus' => '40011325',
             ),
-            195 =>
+            195 => 
             array (
                 'id' => 196,
                 'referencia' => 'BDFL2000-030',
@@ -4919,7 +4919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DECOFLOOR 2000 MM X 30 M ',
                 'refprov_optimus' => '40011325',
             ),
-            196 =>
+            196 => 
             array (
                 'id' => 197,
                 'referencia' => 'BDFL3200-030',
@@ -4944,7 +4944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DECOFLOOR 3200 MM X 30 M ',
                 'refprov_optimus' => '40011325',
             ),
-            197 =>
+            197 => 
             array (
                 'id' => 198,
                 'referencia' => 'BMOQ2000-030',
@@ -4969,7 +4969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MOQUETA DIGITAL FLOOR 2000 MM X 30 M ',
                 'refprov_optimus' => '40011325',
             ),
-            198 =>
+            198 => 
             array (
                 'id' => 199,
                 'referencia' => 'BMOQ3200-030',
@@ -4994,7 +4994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'MOQUETA DIGITAL FLOOR 3200 MM X 30 M ',
                 'refprov_optimus' => '40011325',
             ),
-            199 =>
+            199 => 
             array (
                 'id' => 200,
                 'referencia' => 'BTFB1060-050UNI',
@@ -5019,7 +5019,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL FUNKY BLOCKOUT 1060 MM X 50 M UNIVERSAL',
                 'refprov_optimus' => '40011325',
             ),
-            200 =>
+            200 => 
             array (
                 'id' => 201,
                 'referencia' => 'BTFB1370-050UNI',
@@ -5044,7 +5044,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL FUNKY BLOCKOUT 1370 MM X 50 M UNIVERSAL',
                 'refprov_optimus' => '40011325',
             ),
-            201 =>
+            201 => 
             array (
                 'id' => 202,
                 'referencia' => 'BTFB1600-050UNI',
@@ -5069,7 +5069,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL FUNKY BLOCKOUT 1600 MM X 50 M UNIVERSAL',
                 'refprov_optimus' => '40011325',
             ),
-            202 =>
+            202 => 
             array (
                 'id' => 203,
                 'referencia' => 'BTFB2030-050UNI',
@@ -5094,7 +5094,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL FUNKY BLOCKOUT 2030 MM X 50 M UNIVERSAL',
                 'refprov_optimus' => '40011325',
             ),
-            203 =>
+            203 => 
             array (
                 'id' => 204,
                 'referencia' => 'BTFB2500-050UNI',
@@ -5119,7 +5119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL FUNKY BLOCKOUT 2500 MM X 50 M UNIVERSAL',
                 'refprov_optimus' => '40011325',
             ),
-            204 =>
+            204 => 
             array (
                 'id' => 205,
                 'referencia' => 'BTFB3200-050UNI',
@@ -5144,7 +5144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL FUNKY BLOCKOUT 3200 MM X 50 M UNIVERSAL',
                 'refprov_optimus' => '40011325',
             ),
-            205 =>
+            205 => 
             array (
                 'id' => 206,
                 'referencia' => 'BTTS1600-050SFR',
@@ -5169,7 +5169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL TANGO 1600 MM X 50 M SOLATUV FR',
                 'refprov_optimus' => '40011325',
             ),
-            206 =>
+            206 => 
             array (
                 'id' => 207,
                 'referencia' => 'BTTS1600-100SFR',
@@ -5194,7 +5194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL TANGO 1600 MM X 100 M SOLATUV FR',
                 'refprov_optimus' => '40011325',
             ),
-            207 =>
+            207 => 
             array (
                 'id' => 208,
                 'referencia' => 'BTTS2030-050SFR',
@@ -5219,7 +5219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL TANGO 2030 MM X 50 M SOLATUV FR',
                 'refprov_optimus' => '40011325',
             ),
-            208 =>
+            208 => 
             array (
                 'id' => 209,
                 'referencia' => 'BTTS2030-100SFR',
@@ -5244,7 +5244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL TANGO 2030 MM X 100 M SOLATUV FR',
                 'refprov_optimus' => '40011325',
             ),
-            209 =>
+            209 => 
             array (
                 'id' => 210,
                 'referencia' => 'BTTS2500-100SFR',
@@ -5269,7 +5269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL TANGO 2500 MM X 100 M SOLATUV FR',
                 'refprov_optimus' => '40011325',
             ),
-            210 =>
+            210 => 
             array (
                 'id' => 211,
                 'referencia' => 'BTTS3200-050SFR',
@@ -5294,7 +5294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL TANGO 3200 MM X 50 M SOLATUV FR',
                 'refprov_optimus' => '40011325',
             ),
-            211 =>
+            211 => 
             array (
                 'id' => 212,
                 'referencia' => 'BTTS3200-100SFR',
@@ -5319,7 +5319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL TANGO 3200 MM X 100 M SOLATUV FR',
                 'refprov_optimus' => '40011325',
             ),
-            212 =>
+            212 => 
             array (
                 'id' => 213,
                 'referencia' => 'BEDT1370-050BLACK',
@@ -5344,7 +5344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EASY DOT 1370 MM X 50 M NEGRO',
                 'refprov_optimus' => '40011325',
             ),
-            213 =>
+            213 => 
             array (
                 'id' => 214,
                 'referencia' => 'BEDT1370-050ORO',
@@ -5369,7 +5369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EASY DOT 1370 MM X 50 M ORO',
                 'refprov_optimus' => '40011325',
             ),
-            214 =>
+            214 => 
             array (
                 'id' => 215,
                 'referencia' => 'BEDT1370-050PLATA',
@@ -5394,7 +5394,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EASY DOT 1370 MM X 50 M PLATA',
                 'refprov_optimus' => '40011325',
             ),
-            215 =>
+            215 => 
             array (
                 'id' => 216,
                 'referencia' => 'BEDT1370-050RED',
@@ -5419,7 +5419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'EASY DOT 1370 MM X 50 M ROJO',
                 'refprov_optimus' => '40011325',
             ),
-            216 =>
+            216 => 
             array (
                 'id' => 217,
                 'referencia' => 'BVPT1600-050MTG',
@@ -5444,7 +5444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO POLITAPE 1600 MM X 50 M MATE',
                 'refprov_optimus' => '40011325',
             ),
-            217 =>
+            217 => 
             array (
                 'id' => 218,
                 'referencia' => 'BWPF1060-050TR',
@@ -5469,7 +5469,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'WINDOWS PERFORADO 1060 MM X 50 M TRANSPARENTE',
                 'refprov_optimus' => '40011325',
             ),
-            218 =>
+            218 => 
             array (
                 'id' => 219,
                 'referencia' => 'BWPF1060-050UW',
@@ -5494,7 +5494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'WINDOWS PERFORADO 1060 MM X 50 M UNIVERSAL BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            219 =>
+            219 => 
             array (
                 'id' => 220,
                 'referencia' => 'BWPF1370-050TR',
@@ -5519,7 +5519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'WINDOWS PERFORADO 1370 MM X 50 M TRANSPARENTE',
                 'refprov_optimus' => '40011325',
             ),
-            220 =>
+            220 => 
             array (
                 'id' => 221,
                 'referencia' => 'BWPF1370-050UW',
@@ -5544,7 +5544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'WINDOWS PERFORADO 1370 MM X 50 M UNIVERSAL BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            221 =>
+            221 => 
             array (
                 'id' => 222,
                 'referencia' => 'BWPF1520-050TR',
@@ -5569,7 +5569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'WINDOWS PERFORADO 1520 MM X 50 M TRANSPARENTE',
                 'refprov_optimus' => '40011325',
             ),
-            222 =>
+            222 => 
             array (
                 'id' => 223,
                 'referencia' => 'BWPF1520-050UW',
@@ -5594,7 +5594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'WINDOWS PERFORADO 1520 MM X 50 M UNIVERSAL BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            223 =>
+            223 => 
             array (
                 'id' => 224,
                 'referencia' => 'RCAR016-12202440Z',
@@ -5619,7 +5619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CARTON COMPACTO 1,6 MM 1220X2440 MM KATZ',
                 'refprov_optimus' => '40011325',
             ),
-            224 =>
+            224 => 
             array (
                 'id' => 225,
                 'referencia' => 'RCAR020-12202440Z',
@@ -5644,7 +5644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CARTON COMPACTO 2 MM 1220X2440 MM KATZ',
                 'refprov_optimus' => '40011325',
             ),
-            225 =>
+            225 => 
             array (
                 'id' => 226,
                 'referencia' => 'RCAR030-12202440Z',
@@ -5669,7 +5669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CARTON COMPACTO 3 MM 1220X2440 MM KATZ',
                 'refprov_optimus' => '40011325',
             ),
-            226 =>
+            226 => 
             array (
                 'id' => 227,
                 'referencia' => 'RNID120-14003050WFW',
@@ -5694,7 +5694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'NIDO DE ABEJA 12 MM 1400X3050 MM BLANCO KRAFT BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            227 =>
+            227 => 
             array (
                 'id' => 228,
                 'referencia' => 'RNID200-14003050F',
@@ -5719,7 +5719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'NIDO DE ABEJA 20 MM 1400X3050 MM KRAFT',
                 'refprov_optimus' => '40011325',
             ),
-            228 =>
+            228 => 
             array (
                 'id' => 229,
                 'referencia' => 'RNID200-14003050WFW',
@@ -5744,7 +5744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'NIDO DE ABEJA 20 MM 1400X3050 MM BLANCO KRAFT BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            229 =>
+            229 => 
             array (
                 'id' => 230,
                 'referencia' => 'RPEG050-15303050K',
@@ -5769,7 +5769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 5 MM 1530X3050 MM NEGRO',
                 'refprov_optimus' => '40011325',
             ),
-            230 =>
+            230 => 
             array (
                 'id' => 231,
                 'referencia' => 'RPEG050-15303050W',
@@ -5794,7 +5794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 5 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            231 =>
+            231 => 
             array (
                 'id' => 232,
                 'referencia' => 'RPEG050-20303050K',
@@ -5819,7 +5819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 5 MM 2030X3050 MM NEGRO',
                 'refprov_optimus' => '40011325',
             ),
-            232 =>
+            232 => 
             array (
                 'id' => 233,
                 'referencia' => 'RPEG050-20303050W',
@@ -5844,7 +5844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 5 MM 2030X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            233 =>
+            233 => 
             array (
                 'id' => 234,
                 'referencia' => 'RPEG100-15303050K',
@@ -5869,7 +5869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 10 MM 1530X3050 MM NEGRO',
                 'refprov_optimus' => '40011325',
             ),
-            234 =>
+            234 => 
             array (
                 'id' => 235,
                 'referencia' => 'RPEG100-15303050W',
@@ -5894,7 +5894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 10 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            235 =>
+            235 => 
             array (
                 'id' => 236,
                 'referencia' => 'RPEG100-20303050K',
@@ -5919,7 +5919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 10 MM 2030X3050 MM NEGRO',
                 'refprov_optimus' => '40011325',
             ),
-            236 =>
+            236 => 
             array (
                 'id' => 237,
                 'referencia' => 'RPEG100-20303050W',
@@ -5944,7 +5944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 10 MM 2030X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            237 =>
+            237 => 
             array (
                 'id' => 238,
                 'referencia' => 'RPEG190-15303050W',
@@ -5969,7 +5969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 19 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            238 =>
+            238 => 
             array (
                 'id' => 239,
                 'referencia' => 'RPEG190-20303050K',
@@ -5994,7 +5994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 19 MM 2030X3050 MM NEGRO',
                 'refprov_optimus' => '40011325',
             ),
-            239 =>
+            239 => 
             array (
                 'id' => 240,
                 'referencia' => 'RPEG190-20303050W',
@@ -6019,7 +6019,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 19 MM 2030X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            240 =>
+            240 => 
             array (
                 'id' => 241,
                 'referencia' => 'RPEG300-15303050W',
@@ -6044,7 +6044,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 30 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            241 =>
+            241 => 
             array (
                 'id' => 242,
                 'referencia' => 'RPEG300-20303050W',
@@ -6069,7 +6069,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 30 MM 2030X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            242 =>
+            242 => 
             array (
                 'id' => 243,
                 'referencia' => 'RPEG400-15303050W',
@@ -6094,7 +6094,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 40 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            243 =>
+            243 => 
             array (
                 'id' => 244,
                 'referencia' => 'RPEG400-20303050W',
@@ -6119,7 +6119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PEGASUS 40 MM 2030X3050 MM BLANCO',
                 'refprov_optimus' => '40011325',
             ),
-            244 =>
+            244 => 
             array (
                 'id' => 245,
                 'referencia' => 'CROL1000-002GEN',
@@ -6144,7 +6144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 1000 MM X 2 M GENESIS',
                 'refprov_optimus' => '40011325',
             ),
-            245 =>
+            245 => 
             array (
                 'id' => 246,
                 'referencia' => 'CROL1200-002GEN',
@@ -6169,7 +6169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 1200 MM X 2 M GENESIS',
                 'refprov_optimus' => '40011325',
             ),
-            246 =>
+            246 => 
             array (
                 'id' => 247,
                 'referencia' => 'CROL1500-002GEN',
@@ -6194,7 +6194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 1500 MM X 2 M GENESIS',
                 'refprov_optimus' => '40011325',
             ),
-            247 =>
+            247 => 
             array (
                 'id' => 248,
                 'referencia' => 'CROL2000-002GEN',
@@ -6219,7 +6219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 2000 MM X 2 M GENESIS',
                 'refprov_optimus' => '40011325',
             ),
-            248 =>
+            248 => 
             array (
                 'id' => 249,
                 'referencia' => 'CROL600-002GEN',
@@ -6244,7 +6244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 600 MM X 2 M GENESIS',
                 'refprov_optimus' => '40011325',
             ),
-            249 =>
+            249 => 
             array (
                 'id' => 250,
                 'referencia' => 'CROL800-002GEN',
@@ -6269,7 +6269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 800 MM X 2 M GENESIS',
                 'refprov_optimus' => '40011325',
             ),
-            250 =>
+            250 => 
             array (
                 'id' => 251,
                 'referencia' => 'CROL850-002GEN',
@@ -6294,7 +6294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 850 MM X 2 M GENESIS',
                 'refprov_optimus' => '40011325',
             ),
-            251 =>
+            251 => 
             array (
                 'id' => 252,
                 'referencia' => 'BVCO1230-050MT979860',
@@ -6319,7 +6319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M MAC TAC 979860 LIGHT DIFUSER',
                 'refprov_optimus' => '40011424',
             ),
-            252 =>
+            252 => 
             array (
                 'id' => 253,
                 'referencia' => 'BVCO1230-050MT982800',
@@ -6344,7 +6344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M MAC TAC 982800 MATT WHITE',
                 'refprov_optimus' => '40011424',
             ),
-            253 =>
+            253 => 
             array (
                 'id' => 254,
                 'referencia' => 'BVCO1230-050MT988800',
@@ -6369,7 +6369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M MAC TAC 988800 MATT BLACK',
                 'refprov_optimus' => '40011424',
             ),
-            254 =>
+            254 => 
             array (
                 'id' => 255,
                 'referencia' => 'BVIN_SRF1370-050COM',
@@ -6394,7 +6394,7 @@ class ProductoSeeder extends Seeder
             'descrip_optimus' => 'STREET RAP + FLOORGRIP ANT (COMBO) 1370 MM X 50 M ',
                 'refprov_optimus' => '40011424',
             ),
-            255 =>
+            255 => 
             array (
                 'id' => 256,
                 'referencia' => 'RFOA050-15303050W',
@@ -6419,7 +6419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'FOAM 5 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40011424',
             ),
-            256 =>
+            256 => 
             array (
                 'id' => 257,
                 'referencia' => 'RFOA100-15303050W',
@@ -6444,7 +6444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'FOAM 10 MM 1530X3050 MM BLANCO',
                 'refprov_optimus' => '40011424',
             ),
-            257 =>
+            257 => 
             array (
                 'id' => 258,
                 'referencia' => 'BVIN_LSU1050-050COM',
@@ -6469,7 +6469,7 @@ class ProductoSeeder extends Seeder
             'descrip_optimus' => 'VINILO + LAMINADO SUELO MACTAC ( COMBO ) 1050 MM X 50 M ',
                 'refprov_optimus' => '40011424',
             ),
-            258 =>
+            258 => 
             array (
                 'id' => 259,
                 'referencia' => 'BVCO1230-050O6510038',
@@ -6494,7 +6494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M ORACAL RED ORANGE FLUORESCENTE',
                 'refprov_optimus' => '',
             ),
-            259 =>
+            259 => 
             array (
                 'id' => 260,
                 'referencia' => 'BVCO1230-050O6510046',
@@ -6519,7 +6519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'VINILO CORTE 1230 MM X 50 M ORACAL ROSA FLUORESCENTE',
                 'refprov_optimus' => '',
             ),
-            260 =>
+            260 => 
             array (
                 'id' => 261,
                 'referencia' => 'BLAM1370-050VAN',
@@ -6544,7 +6544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LAMINADO 1370 MM X 50 M VILEDA ANTIGRAFFITI',
                 'refprov_optimus' => '',
             ),
-            261 =>
+            261 => 
             array (
                 'id' => 262,
                 'referencia' => 'BPET1370-030BACK',
@@ -6569,7 +6569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PET 1370 MM X 30 M BACKLITE',
                 'refprov_optimus' => '',
             ),
-            262 =>
+            262 => 
             array (
                 'id' => 263,
                 'referencia' => 'BPET1520-030BACK',
@@ -6594,7 +6594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PET 1520 MM X 30 M BACKLITE',
                 'refprov_optimus' => '',
             ),
-            263 =>
+            263 => 
             array (
                 'id' => 264,
                 'referencia' => 'BPHP1370-050',
@@ -6619,7 +6619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PAPEL HEAVY POSTER 1370 MM X 50 M ',
                 'refprov_optimus' => '',
             ),
-            264 =>
+            264 => 
             array (
                 'id' => 265,
                 'referencia' => 'BRUP1060-030TW',
@@ -6644,7 +6644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 1060 MM X 30 M TRASERA BLANCA',
                 'refprov_optimus' => '',
             ),
-            265 =>
+            265 => 
             array (
                 'id' => 266,
                 'referencia' => 'BRUP1270-030TW',
@@ -6669,7 +6669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 1270 MM X 30 M TRASERA BLANCA',
                 'refprov_optimus' => '',
             ),
-            266 =>
+            266 => 
             array (
                 'id' => 267,
                 'referencia' => 'BRUP1520-030TW',
@@ -6694,7 +6694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'ROLL UP 1520 MM X 30 M TRASERA BLANCA',
                 'refprov_optimus' => '',
             ),
-            267 =>
+            267 => 
             array (
                 'id' => 268,
                 'referencia' => 'BCBM1520-030',
@@ -6719,7 +6719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CANVAS BANNER MATISSE 1520 MM X 30 M ',
                 'refprov_optimus' => '',
             ),
-            268 =>
+            268 => 
             array (
                 'id' => 269,
                 'referencia' => 'BTSB3200-100',
@@ -6744,7 +6744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'TEXTIL SAMBA 3200 MM X 100 M ',
                 'refprov_optimus' => '',
             ),
-            269 =>
+            269 => 
             array (
                 'id' => 270,
                 'referencia' => 'CBUR_BOB160-150',
@@ -6769,7 +6769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'BOBINA PLÁSTICO BURBUJA 160 MM X 150 M ',
                 'refprov_optimus' => '40011521',
             ),
-            270 =>
+            270 => 
             array (
                 'id' => 271,
                 'referencia' => 'RDIB020-15002500W',
@@ -6794,7 +6794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 2 MM 1500X2500 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            271 =>
+            271 => 
             array (
                 'id' => 272,
                 'referencia' => 'RDIB020-15003050CP',
@@ -6819,7 +6819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 2 MM 1500X3050 MM CEPILLADO',
                 'refprov_optimus' => '40011504',
             ),
-            272 =>
+            272 => 
             array (
                 'id' => 273,
                 'referencia' => 'RDIB020-20503050W',
@@ -6844,7 +6844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 2 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            273 =>
+            273 => 
             array (
                 'id' => 274,
                 'referencia' => 'RDIB030-12503050PTEX',
@@ -6869,7 +6869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 1250X3050 MM PLATA EXTERIOR',
                 'refprov_optimus' => '40011504',
             ),
-            274 =>
+            274 => 
             array (
                 'id' => 275,
                 'referencia' => 'RDIB030-12503050PTIN',
@@ -6894,7 +6894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 1250X3050 MM PLATA INTERIOR',
                 'refprov_optimus' => '40011504',
             ),
-            275 =>
+            275 => 
             array (
                 'id' => 276,
                 'referencia' => 'RDIB030-15003050COL',
@@ -6919,7 +6919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 1500X3050 MM COLOR',
                 'refprov_optimus' => '40011504',
             ),
-            276 =>
+            276 => 
             array (
                 'id' => 277,
                 'referencia' => 'RDIB030-15003050CP',
@@ -6944,7 +6944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 1500X3050 MM CEPILLADO',
                 'refprov_optimus' => '40011504',
             ),
-            277 =>
+            277 => 
             array (
                 'id' => 278,
                 'referencia' => 'RDIB030-15003050W',
@@ -6969,7 +6969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 1500X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            278 =>
+            278 => 
             array (
                 'id' => 279,
                 'referencia' => 'RDIB030-15004050W',
@@ -6994,7 +6994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 1500X4050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            279 =>
+            279 => 
             array (
                 'id' => 280,
                 'referencia' => 'RDIB030-20503050COL',
@@ -7019,7 +7019,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 2050X3050 MM COLOR',
                 'refprov_optimus' => '40011504',
             ),
-            280 =>
+            280 => 
             array (
                 'id' => 281,
                 'referencia' => 'RDIB030-20503050W',
@@ -7044,7 +7044,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            281 =>
+            281 => 
             array (
                 'id' => 282,
                 'referencia' => 'RDIB030-20504050W',
@@ -7069,7 +7069,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 3 MM 2050X4050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            282 =>
+            282 => 
             array (
                 'id' => 283,
                 'referencia' => 'RDIB040-15003050W',
@@ -7094,7 +7094,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 4 MM 1500X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            283 =>
+            283 => 
             array (
                 'id' => 284,
                 'referencia' => 'RDIB040-20504050W',
@@ -7119,7 +7119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DIBON 4 MM 2050X4050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            284 =>
+            284 => 
             array (
                 'id' => 285,
                 'referencia' => 'RDIL020-15003050W',
@@ -7144,7 +7144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DILITE 2 MM 1500X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            285 =>
+            285 => 
             array (
                 'id' => 286,
                 'referencia' => 'RDIL020-20503050W',
@@ -7169,7 +7169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DILITE 2 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            286 =>
+            286 => 
             array (
                 'id' => 287,
                 'referencia' => 'RDIL030-15003050COL',
@@ -7194,7 +7194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DILITE 3 MM 1500X3050 MM COLOR',
                 'refprov_optimus' => '40011504',
             ),
-            287 =>
+            287 => 
             array (
                 'id' => 288,
                 'referencia' => 'RDIL030-15003050W',
@@ -7219,7 +7219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DILITE 3 MM 1500X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            288 =>
+            288 => 
             array (
                 'id' => 289,
                 'referencia' => 'RDIL030-20503050W',
@@ -7244,7 +7244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DILITE 3 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            289 =>
+            289 => 
             array (
                 'id' => 290,
                 'referencia' => 'RDIL040-15003050W',
@@ -7269,7 +7269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DILITE 4 MM 1500X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            290 =>
+            290 => 
             array (
                 'id' => 291,
                 'referencia' => 'RDIL060-15003050W',
@@ -7294,7 +7294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'DILITE 6 MM 1500X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            291 =>
+            291 => 
             array (
                 'id' => 292,
                 'referencia' => 'RMET015-20503050EIN',
@@ -7319,7 +7319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'METACRILATO 1,5 MM 2050X3050 MM EXTRUSION INCOLORO',
                 'refprov_optimus' => '40011504',
             ),
-            292 =>
+            292 => 
             array (
                 'id' => 293,
                 'referencia' => 'RMET020-20503050EWO',
@@ -7344,7 +7344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'METACRILATO 2 MM 2050X3050 MM EXTRUSION BLANCO OPACO',
                 'refprov_optimus' => '40011504',
             ),
-            293 =>
+            293 => 
             array (
                 'id' => 294,
                 'referencia' => 'RMET030-20503050EIN',
@@ -7369,7 +7369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'METACRILATO 3 MM 2050X3050 MM EXTRUSION INCOLORO',
                 'refprov_optimus' => '40011504',
             ),
-            294 =>
+            294 => 
             array (
                 'id' => 295,
                 'referencia' => 'RMET030-20503050EWO',
@@ -7394,7 +7394,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'METACRILATO 3 MM 2050X3050 MM EXTRUSION BLANCO OPACO',
                 'refprov_optimus' => '40011504',
             ),
-            295 =>
+            295 => 
             array (
                 'id' => 296,
                 'referencia' => 'RMET030-20503050EWOP',
@@ -7419,7 +7419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'METACRILATO 3 MM 2050X3050 MM EXTRUSION BLANCO OPAL',
                 'refprov_optimus' => '40011504',
             ),
-            296 =>
+            296 => 
             array (
                 'id' => 297,
                 'referencia' => 'RMET050-20503050EIN',
@@ -7444,7 +7444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'METACRILATO 5 MM 2050X3050 MM EXTRUSION INCOLORO',
                 'refprov_optimus' => '40011504',
             ),
-            297 =>
+            297 => 
             array (
                 'id' => 298,
                 'referencia' => 'RPAL030-20303050W',
@@ -7469,7 +7469,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PALBOARD 3 MM 2030X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            298 =>
+            298 => 
             array (
                 'id' => 299,
                 'referencia' => 'RPAL050-20303050W',
@@ -7494,7 +7494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PALBOARD 5 MM 2030X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            299 =>
+            299 => 
             array (
                 'id' => 300,
                 'referencia' => 'RPCC100-21006000W',
@@ -7519,7 +7519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLICARBONATO CELULAR 10 MM 2100X6000 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            300 =>
+            300 => 
             array (
                 'id' => 301,
                 'referencia' => 'RPPC025-20503050W',
@@ -7544,7 +7544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIPROPILENO CELULAR 2,5 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            301 =>
+            301 => 
             array (
                 'id' => 302,
                 'referencia' => 'RPPC035-20503050W',
@@ -7569,7 +7569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIPROPILENO CELULAR 3,5 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            302 =>
+            302 => 
             array (
                 'id' => 303,
                 'referencia' => 'RPET010-20503050IN',
@@ -7594,7 +7594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PET 1 MM 2050X3050 MM INCOLORO',
                 'refprov_optimus' => '40011504',
             ),
-            303 =>
+            303 => 
             array (
                 'id' => 304,
                 'referencia' => 'RPET015-20503050IN',
@@ -7619,7 +7619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PET 1,5 MM 2050X3050 MM INCOLORO',
                 'refprov_optimus' => '40011504',
             ),
-            304 =>
+            304 => 
             array (
                 'id' => 305,
                 'referencia' => 'RPET020-20503050WOP',
@@ -7644,7 +7644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PET 2 MM 2050X3050 MM BLANCO OPAL',
                 'refprov_optimus' => '40011504',
             ),
-            305 =>
+            305 => 
             array (
                 'id' => 306,
                 'referencia' => 'RPET030-12503050IN',
@@ -7669,7 +7669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PET 3 MM 1250X3050 MM INCOLORO',
                 'refprov_optimus' => '40011504',
             ),
-            306 =>
+            306 => 
             array (
                 'id' => 307,
                 'referencia' => 'RPET030-20503050IN',
@@ -7694,7 +7694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PET 3 MM 2050X3050 MM INCOLORO',
                 'refprov_optimus' => '40011504',
             ),
-            307 =>
+            307 => 
             array (
                 'id' => 308,
                 'referencia' => 'RPOL010-10502050W',
@@ -7719,7 +7719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'POLIESTIRENO 1 MM 1050X2050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            308 =>
+            308 => 
             array (
                 'id' => 309,
                 'referencia' => 'RPVC010-20303050W',
@@ -7744,7 +7744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 1 MM 2030X3050 MM BLANCO',
                 'refprov_optimus' => '40011504',
             ),
-            309 =>
+            309 => 
             array (
                 'id' => 310,
                 'referencia' => 'BLFT1600-050',
@@ -7769,7 +7769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LONA FRONTLIT 1600 MM X 50 M ',
                 'refprov_optimus' => '40011334',
             ),
-            310 =>
+            310 => 
             array (
                 'id' => 311,
                 'referencia' => 'BLFT3200-050',
@@ -7794,7 +7794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'LONA FRONTLIT 3200 MM X 50 M ',
                 'refprov_optimus' => '40011334',
             ),
-            311 =>
+            311 => 
             array (
                 'id' => 312,
                 'referencia' => 'RPVC010-12203050W',
@@ -7819,7 +7819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 1 MM 1220X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            312 =>
+            312 => 
             array (
                 'id' => 313,
                 'referencia' => 'RPVC020-12203050W',
@@ -7844,7 +7844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 2 MM 1220X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            313 =>
+            313 => 
             array (
                 'id' => 314,
                 'referencia' => 'RPVC020-15603050W',
@@ -7869,7 +7869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 2 MM 1560X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            314 =>
+            314 => 
             array (
                 'id' => 315,
                 'referencia' => 'RPVC020-20503050W',
@@ -7894,7 +7894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 2 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            315 =>
+            315 => 
             array (
                 'id' => 316,
                 'referencia' => 'RPVC030-12203050W',
@@ -7919,7 +7919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 3 MM 1220X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            316 =>
+            316 => 
             array (
                 'id' => 317,
                 'referencia' => 'RPVC030-15603050COL',
@@ -7944,7 +7944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 3 MM 1560X3050 MM COLOR',
                 'refprov_optimus' => '40011334',
             ),
-            317 =>
+            317 => 
             array (
                 'id' => 318,
                 'referencia' => 'RPVC030-15603050W',
@@ -7969,7 +7969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 3 MM 1560X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            318 =>
+            318 => 
             array (
                 'id' => 319,
                 'referencia' => 'RPVC030-20503050COL',
@@ -7994,7 +7994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 3 MM 2050X3050 MM COLOR',
                 'refprov_optimus' => '40011334',
             ),
-            319 =>
+            319 => 
             array (
                 'id' => 320,
                 'referencia' => 'RPVC030-20503050W',
@@ -8019,7 +8019,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 3 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            320 =>
+            320 => 
             array (
                 'id' => 321,
                 'referencia' => 'RPVC040-15603050W',
@@ -8044,7 +8044,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 4 MM 1560X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            321 =>
+            321 => 
             array (
                 'id' => 322,
                 'referencia' => 'RPVC040-20503050W',
@@ -8069,7 +8069,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 4 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            322 =>
+            322 => 
             array (
                 'id' => 323,
                 'referencia' => 'RPVC050-12203050W',
@@ -8094,7 +8094,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 5 MM 1220X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            323 =>
+            323 => 
             array (
                 'id' => 324,
                 'referencia' => 'RPVC050-15603050COL',
@@ -8119,7 +8119,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 5 MM 1560X3050 MM COLOR',
                 'refprov_optimus' => '40011334',
             ),
-            324 =>
+            324 => 
             array (
                 'id' => 325,
                 'referencia' => 'RPVC050-15603050W',
@@ -8144,7 +8144,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 5 MM 1560X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            325 =>
+            325 => 
             array (
                 'id' => 326,
                 'referencia' => 'RPVC050-20503050C',
@@ -8169,7 +8169,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 5 MM 2050X3050 MM COLOR',
                 'refprov_optimus' => '40011334',
             ),
-            326 =>
+            326 => 
             array (
                 'id' => 327,
                 'referencia' => 'RPVC050-20503050W',
@@ -8194,7 +8194,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 5 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            327 =>
+            327 => 
             array (
                 'id' => 328,
                 'referencia' => 'RPVC060-12203050W',
@@ -8219,7 +8219,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 6 MM 1220X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            328 =>
+            328 => 
             array (
                 'id' => 329,
                 'referencia' => 'RPVC060-15603050W',
@@ -8244,7 +8244,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 6 MM 1560X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            329 =>
+            329 => 
             array (
                 'id' => 330,
                 'referencia' => 'RPVC060-20503050W',
@@ -8269,7 +8269,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 6 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            330 =>
+            330 => 
             array (
                 'id' => 331,
                 'referencia' => 'RPVC080-15603050W',
@@ -8294,7 +8294,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 8 MM 1560X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            331 =>
+            331 => 
             array (
                 'id' => 332,
                 'referencia' => 'RPVC100-15603050W',
@@ -8319,7 +8319,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 10 MM 1560X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            332 =>
+            332 => 
             array (
                 'id' => 333,
                 'referencia' => 'RPVC100-20503050C',
@@ -8344,7 +8344,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 10 MM 2050X3050 MM COLOR',
                 'refprov_optimus' => '40011334',
             ),
-            333 =>
+            333 => 
             array (
                 'id' => 334,
                 'referencia' => 'RPVC100-20503050W',
@@ -8369,7 +8369,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 10 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            334 =>
+            334 => 
             array (
                 'id' => 335,
                 'referencia' => 'RPVC130-12203050W',
@@ -8394,7 +8394,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 13 MM 1220X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            335 =>
+            335 => 
             array (
                 'id' => 336,
                 'referencia' => 'RPVC150-15603050W',
@@ -8419,7 +8419,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 15 MM 1560X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            336 =>
+            336 => 
             array (
                 'id' => 337,
                 'referencia' => 'RPVC190-12203050W',
@@ -8444,7 +8444,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 19 MM 1220X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            337 =>
+            337 => 
             array (
                 'id' => 338,
                 'referencia' => 'RPVC190-15603050C',
@@ -8469,7 +8469,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 19 MM 1560X3050 MM COLOR',
                 'refprov_optimus' => '40011334',
             ),
-            338 =>
+            338 => 
             array (
                 'id' => 339,
                 'referencia' => 'RPVC190-20503050W',
@@ -8494,7 +8494,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 19 MM 2050X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            339 =>
+            339 => 
             array (
                 'id' => 340,
                 'referencia' => 'RPVC300-12503050W',
@@ -8519,7 +8519,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PVC 30 MM 1250X3050 MM BLANCO',
                 'refprov_optimus' => '40011334',
             ),
-            340 =>
+            340 => 
             array (
                 'id' => 341,
                 'referencia' => 'PSYN300-464640',
@@ -8544,7 +8544,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SYNAPS OM 300G 464X640 MM ',
                 'refprov_optimus' => '',
             ),
-            341 =>
+            341 => 
             array (
                 'id' => 342,
                 'referencia' => 'PSYN450-464640',
@@ -8569,7 +8569,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SYNAPS OM 450G 464X640 MM ',
                 'refprov_optimus' => '',
             ),
-            342 =>
+            342 => 
             array (
                 'id' => 343,
                 'referencia' => 'CBUR1200-150',
@@ -8594,7 +8594,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PROTECTOR DE BURBUJAS DE AIRE 1200 MM X 150 MM ',
                 'refprov_optimus' => '',
             ),
-            343 =>
+            343 => 
             array (
                 'id' => 344,
                 'referencia' => 'CBUR1600-150',
@@ -8619,7 +8619,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'PROTECTOR DE BURBUJAS DE AIRE 1600 MM X 150 MM ',
                 'refprov_optimus' => '',
             ),
-            344 =>
+            344 => 
             array (
                 'id' => 345,
                 'referencia' => 'CBOL_KRA229-324KNV',
@@ -8644,7 +8644,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'BOLSAS KRAFTIR 229 MM X 324 MM KRAFT NATURAL VERJURADO 90',
                 'refprov_optimus' => '',
             ),
-            345 =>
+            345 => 
             array (
                 'id' => 346,
                 'referencia' => 'CBOL_KRA-KVH',
@@ -8669,7 +8669,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'BOLSAS KRAFTIR VERJURADO HOLANDES',
                 'refprov_optimus' => '',
             ),
-            346 =>
+            346 => 
             array (
                 'id' => 347,
                 'referencia' => 'CBOL_KRA-KVR',
@@ -8694,7 +8694,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'BOLSAS KRAFTIR VERJURADO RADIOGRAFIA',
                 'refprov_optimus' => '',
             ),
-            347 =>
+            347 => 
             array (
                 'id' => 348,
                 'referencia' => 'CCAJ_A4220-300CS',
@@ -8719,7 +8719,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA CARTON ONDULADO A4 305 MM 220 MM X 300 MM CANALSIMPLE',
                 'refprov_optimus' => '',
             ),
-            348 =>
+            348 => 
             array (
                 'id' => 349,
                 'referencia' => 'CCAJ_A4300-300CS',
@@ -8744,7 +8744,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA CARTON ONDULADO 300 MM 300 MM X 300 MM CANALSIMPLE',
                 'refprov_optimus' => '',
             ),
-            349 =>
+            349 => 
             array (
                 'id' => 350,
                 'referencia' => 'CCAJ_A3310-180CS',
@@ -8769,7 +8769,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA CARTON ONDULADO A3 435 MM 310 MM X 180 MM CANALSIMPLE',
                 'refprov_optimus' => '',
             ),
-            350 =>
+            350 => 
             array (
                 'id' => 351,
                 'referencia' => 'CCAJ_A3340-290KFT',
@@ -8794,7 +8794,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA CARTON ONDULADO A3 490 MM 340 MM X 290 MM KRAFT',
                 'refprov_optimus' => '',
             ),
-            351 =>
+            351 => 
             array (
                 'id' => 352,
                 'referencia' => 'CCAJ380-300C',
@@ -8819,7 +8819,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'CAJA CARTON ONDULADO 580 MM 380 MM X 300 MM CUERO',
                 'refprov_optimus' => '',
             ),
-            352 =>
+            352 => 
             array (
                 'id' => 353,
                 'referencia' => 'CSOB170-225KFT',
@@ -8844,7 +8844,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SOBRES BURBUJA DE AIRE 170 MM X 225 MM KRAFT',
                 'refprov_optimus' => '',
             ),
-            353 =>
+            353 => 
             array (
                 'id' => 354,
                 'referencia' => 'CSOB175-200KFT',
@@ -8869,7 +8869,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SOBRES BURBUJA DE AIRE 175 MM X 200 MM KRAFT',
                 'refprov_optimus' => '',
             ),
-            354 =>
+            354 => 
             array (
                 'id' => 355,
                 'referencia' => 'CSOB200-275KFT',
@@ -8894,7 +8894,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SOBRES BURBUJA DE AIRE 200 MM X 275 MM KRAFT',
                 'refprov_optimus' => '',
             ),
-            355 =>
+            355 => 
             array (
                 'id' => 356,
                 'referencia' => 'CSOB240-350KFT',
@@ -8919,7 +8919,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SOBRES BURBUJA DE AIRE 240 MM X 350 MM KRAFT',
                 'refprov_optimus' => '',
             ),
-            356 =>
+            356 => 
             array (
                 'id' => 357,
                 'referencia' => 'CSOB250-350KFT',
@@ -8944,7 +8944,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SOBRES BURBUJA DE AIRE 250 MM X 350 MM KRAFT',
                 'refprov_optimus' => '',
             ),
-            357 =>
+            357 => 
             array (
                 'id' => 358,
                 'referencia' => 'CSOB290-370KFT',
@@ -8969,7 +8969,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SOBRES BURBUJA DE AIRE 290 MM X 370 MM KRAFT',
                 'refprov_optimus' => '',
             ),
-            358 =>
+            358 => 
             array (
                 'id' => 359,
                 'referencia' => 'CSOB320-455KFT',
@@ -8994,7 +8994,7 @@ class ProductoSeeder extends Seeder
                 'descrip_optimus' => 'SOBRES BURBUJA DE AIRE 320 MM X 455 MM KRAFT',
                 'refprov_optimus' => '',
             ),
-            359 =>
+            359 => 
             array (
                 'id' => 360,
                 'referencia' => 'CSOB370-480KFT',
@@ -9020,7 +9020,7 @@ class ProductoSeeder extends Seeder
                 'refprov_optimus' => '',
             ),
         ));
-
-
+        
+        
     }
 }

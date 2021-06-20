@@ -15,13 +15,14 @@ class CreateEntidadesTable extends Migration
     {
         Schema::create('entidades', function (Blueprint $table) {
             $table->id();
-            $table->string('entidad')->unique('entidad_UNIQUE');
+            $table->string('entidad')->unique();
+            $table->string('cuentactble')->unique()->nullable();
             $table->string('direccion', 100)->nullable();
             $table->string('cp', 10)->nullable();
             $table->string('localidad', 100)->nullable();
             $table->string('provincia_id', 2)->nullable();
             $table->string('pais_id', 2)->nullable()->default('ES');
-            $table->string('nif', 12)->nullable()->unique('nif_UNIQUE');
+            $table->string('nif', 12)->nullable()->unique();
             $table->string('tfno', 50)->nullable();
             $table->string('emailgral', 100)->nullable();
             $table->string('emailadm', 100)->nullable();
@@ -40,6 +41,7 @@ class CreateEntidadesTable extends Migration
             $table->string('cuentacontable', 10)->nullable();
             $table->string('observaciones')->nullable();
             $table->boolean('estado')->nullable()->default(0);
+            $table->string('codeoptimus')->nullable();
             $table->timestamps();
         });
     }

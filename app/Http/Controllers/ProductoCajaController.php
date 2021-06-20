@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Seccion;
+use App\Models\ProductoCaja;
 use Illuminate\Http\Request;
 
-class SeccionController extends Controller
+class ProductoCajaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SeccionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Seccion  $seccion
+     * @param  \App\Models\ProductoCaja  $productoCaja
      * @return \Illuminate\Http\Response
      */
-    public function show(Seccion $seccion)
+    public function show(ProductoCaja $productoCaja)
     {
         //
     }
@@ -52,10 +52,10 @@ class SeccionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Seccion  $seccion
+     * @param  \App\Models\ProductoCaja  $productoCaja
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seccion $seccion)
+    public function edit(ProductoCaja $productoCaja)
     {
         //
     }
@@ -64,10 +64,10 @@ class SeccionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Seccion  $seccion
+     * @param  \App\Models\ProductoCaja  $productoCaja
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seccion $seccion)
+    public function update(Request $request, ProductoCaja $productoCaja)
     {
         //
     }
@@ -75,10 +75,10 @@ class SeccionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Seccion  $seccion
+     * @param  \App\Models\ProductoCaja  $productoCaja
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seccion $seccion)
+    public function destroy(ProductoCaja $productoCaja)
     {
         //
     }

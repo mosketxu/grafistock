@@ -14,14 +14,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(10)->create();
-        $this->call(MetodoPagosTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
         $this->call(PaisesTableSeeder::class);
         $this->call(ProvinciasTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(UnidadSeeder::class);
-        $this->call(MaterialesSeeder::class);
+        $this->call(MetodoPagosTableSeeder::class);
         $this->call(UbicacionesSeeder::class);
-        $this->call(SeccionSeeder::class);
+        $this->call(UnidadSeeder::class);
         $this->call(SolicitanteSeeder::class);
+        $this->call(EntidadesTableSeeder::class);
+        $this->call(ProductoTipoSeeder::class);
+        $this->call(ProductoMaterialesSeeder::class);
+        $this->call(ProductoAcabadoSeeder::class);
+        $this->call(ProductoUnidadcosteSeeder::class);
+        $this->call(ProductoGrupoproduccionSeeder::class);
+        $this->call(ProductoClaseSeeder::class);
+        $this->call(ProductoCalidadSeeder::class);
+        $this->call(ProductoCajaSeeder::class);
+        $this->call(ProductoSeeder::class);
     }
 }
