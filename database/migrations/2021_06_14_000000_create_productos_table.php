@@ -33,6 +33,7 @@ class CreateProductosTable extends Migration
             $table->foreignId('entidad_id')->constrained('entidades');
             $table->string('caja_id',15)->index()->nullable();
             $table->double('costecaja', 15, 2)->default(0.00)->nullable();
+            $table->string('ubicacion_id',15)->index();
             $table->string('pdf')->nullable();
             $table->string('observaciones')->nullable();
             $table->string('ref_optimus')->nullable();

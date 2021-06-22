@@ -9,6 +9,11 @@ class Solicitante extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['sigla','nombre'];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
 
 }

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ProductoUnidadcoste extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['sigla','nombre'];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
 }

@@ -16,11 +16,11 @@ class ProductoTipoSeeder extends Seeder
         \DB::table('producto_tipos')->delete();
 
         \DB::table('producto_tipos')->insert([
-            ['id'=>'B','nombre' => 'Bobina'],
-            ['id'=>'C','nombre' => 'Consumible'],
-            ['id'=>'G','nombre' => 'Gran.Formato'],
-            ['id'=>'P','nombre' => 'Peq.Formato'],
-            ['id'=>'R','nombre' => 'Rígido'],
+            ['sigla'=>'B','nombre' => 'Bobina'],
+            ['sigla'=>'C','nombre' => 'Consumible'],
+            ['sigla'=>'G','nombre' => 'Gran.Formato'],
+            ['sigla'=>'P','nombre' => 'Peq.Formato'],
+            ['sigla'=>'R','nombre' => 'Rígido'],
         ]);
     }
 }

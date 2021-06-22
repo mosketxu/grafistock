@@ -16,9 +16,9 @@ class UbicacionesSeeder extends Seeder
         \DB::table('ubicaciones')->delete();
 
         \DB::table('ubicaciones')->insert([
-            ['id' => 'alm1','nombre' => 'almacen 1'],
-            ['id' => 'alm2','nombre' => 'almacen 2'],
-            ['id' => 'alm3','nombre' => 'almacen 3'],
+            ['sigla' => 'alm1','nombre' => 'almacen 1'],
+            ['sigla' => 'alm2','nombre' => 'almacen 2'],
+            ['sigla' => 'alm3','nombre' => 'almacen 3'],
         ]);
     }
 }

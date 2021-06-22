@@ -14,7 +14,7 @@ class CreateProductoClasesTable extends Migration
     public function up()
     {
         Schema::create('producto_clases', function (Blueprint $table) {
-            $table->string('id', 15)->primary();
+            $table->string('sigla', 15)->primary();
             $table->string('nombre')->unique();
             $table->timestamps();
         });

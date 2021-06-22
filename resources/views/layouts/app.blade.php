@@ -18,7 +18,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="flex flex-col min-h-screen font-sans antialiased">
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
@@ -34,10 +34,14 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-grow">
                 {{ $slot }}
             </main>
 
+            <footer>
+                <div class="p-2">powered by  <a href="mailto:alex.arregui@hotmail.es" class="text-blue-800 underline">alex.arregui@hotmail.es</a></div>
+
+            </footer>
             <x-notification />
         </div>
 

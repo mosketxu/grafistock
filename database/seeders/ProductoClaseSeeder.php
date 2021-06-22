@@ -16,16 +16,16 @@ class ProductoClaseSeeder extends Seeder
         \DB::table('producto_clases')->delete();
 
         \DB::table('producto_clases')->insert([
-            ['id'=>'GFBOBACA','nombre'=>'GF BOB ACA'],
-            ['id'=>'GFBOBFOT','nombre'=>'GF BOB FOT'],
-            ['id'=>'GFBOBSOP','nombre'=>'GF BOB SOP'],
-            ['id'=>'GFBOBVIN','nombre'=>'GF BOB VIN'],
-            ['id'=>'GFRIGIDOS','nombre'=>'GF RIGIDOS'],
-            ['id'=>'PFBOBLAM','nombre'=>'PF BOB LAM'],
-            ['id'=>'PFHOJSOP','nombre'=>'PF HOJ SOP'],
-            ['id'=>'TINTAL','nombre'=>'TINTA L'],
-            ['id'=>'VAR_R','nombre'=>'VARIOS R'],
-            ['id'=>'VAR_UD','nombre'=>'VARIOS UD'],
+            ['sigla'=>'GFBOBACA','nombre'=>'GF BOB ACA'],
+            ['sigla'=>'GFBOBFOT','nombre'=>'GF BOB FOT'],
+            ['sigla'=>'GFBOBSOP','nombre'=>'GF BOB SOP'],
+            ['sigla'=>'GFBOBVIN','nombre'=>'GF BOB VIN'],
+            ['sigla'=>'GFRIGIDOS','nombre'=>'GF RIGIDOS'],
+            ['sigla'=>'PFBOBLAM','nombre'=>'PF BOB LAM'],
+            ['sigla'=>'PFHOJSOP','nombre'=>'PF HOJ SOP'],
+            ['sigla'=>'TINTAL','nombre'=>'TINTA L'],
+            ['sigla'=>'VAR_R','nombre'=>'VARIOS R'],
+            ['sigla'=>'VAR_UD','nombre'=>'VARIOS UD'],
         ]);
     }
 }

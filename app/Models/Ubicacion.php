@@ -11,7 +11,12 @@ class Ubicacion extends Model
 
     protected $table = 'ubicaciones';
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['sigla','nombre'];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
 
 
 }

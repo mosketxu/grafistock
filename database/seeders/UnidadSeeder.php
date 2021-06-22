@@ -16,15 +16,15 @@ class UnidadSeeder extends Seeder
         \DB::table('unidades')->delete();
 
         \DB::table('unidades')->insert([
-            ['id'=>'car','nombre'=>'cartuchos'],
-            ['id'=>'hoj','nombre'=>'hojas'],
-            ['id'=>'m','nombre'=>'metrod'],
-            ['id'=>'mm','nombre'=>'milimetros'],
-            ['id'=>'m2','nombre'=>'metros cuadrados'],
-            ['id'=>'pla','nombre'=>'planchas'],
-            ['id'=>'res','nombre'=>'resmas'],
-            ['id'=>'rol','nombre'=>'rollos'],
-            ['id'=>'uds','nombre'=>'unidades'],
+            ['sigla'=>'car','nombre'=>'cartuchos'],
+            ['sigla'=>'hoj','nombre'=>'hojas'],
+            ['sigla'=>'m','nombre'=>'metrod'],
+            ['sigla'=>'mm','nombre'=>'milimetros'],
+            ['sigla'=>'m2','nombre'=>'metros cuadrados'],
+            ['sigla'=>'pla','nombre'=>'planchas'],
+            ['sigla'=>'res','nombre'=>'resmas'],
+            ['sigla'=>'rol','nombre'=>'rollos'],
+            ['sigla'=>'uds','nombre'=>'unidades'],
         ]);
     }
 }

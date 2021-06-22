@@ -11,8 +11,7 @@ class ProductoMaterial extends Model
 
     protected $table = 'producto_materiales';
 
-    protected $fillable = ['nombre'];
-
+    protected $fillable = ['sigla','nombre'];
 
     public function productos()
     {

@@ -13,6 +13,11 @@ class Unidad extends Model
 
     protected $table = 'unidades';
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['sigla','nombre'];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
 
 }
