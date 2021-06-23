@@ -7,6 +7,7 @@ use App\Models\Producto;
 use App\Models\ProductoAcabado;
 use App\Models\ProductoGrupoproduccion;
 use App\Models\ProductoMaterial;
+use Illuminate\Support\Facades\Storage;
 use Livewire\WithPagination;
 
 
@@ -49,8 +50,15 @@ class Prods extends Component
                 $query->where('grupoproduccion_id',$this->filtrogrupoprod);
                 })
             ->orderBy('referencia','asc')
-            ->paginate(10);
+            ->paginate(15);
         return view('livewire.prods',compact('productos','materiales','acabados','gruposprod','proveedores'));
+    }
+
+    public function presentaPDF(Producto $producto){
+        $existe=Storage::disk('fichasproducto')->exists($producto->fichaproducto);
+        if ($existe)
+            return Storage::disk('fichasproducto')->download($producto->fichaproducto,'ficha.pdf');
+
     }
 
     public function delete($productoId)

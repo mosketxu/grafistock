@@ -10,8 +10,8 @@ class Producto extends Model
 
     use HasFactory;
     protected $table = 'productos';
-    protected $fillable=['referencia','tipo_id','material_id','grosor_mm','ancho_mm','desarrollo_mm','acabado_id','grupoproduccion_id','clase_id','calidad_id','udsolicitud_id','costeprov',
-        'udcoste_id','costegrafitex','udproducto_id','entidad_id','caja_id','costecaja','pdf','observaciones','ref_optimus','descrip_optimus','refprov_optimus'];
+    protected $fillable=['referencia','descripcion','tipo_id','material_id','grosor_mm','ancho_mm','desarrollo_mm','acabado_id','grupoproduccion_id','clase_id','calidad_id','udsolicitud_id','costeprov',
+        'udcoste_id','costegrafitex','udproducto_id','entidad_id','caja_id','costecaja','fichaproducto','observaciones','ref_optimus','refprov_optimus'];
 
 
     public function entidad(){return $this->belongsTo(Entidad::class);}

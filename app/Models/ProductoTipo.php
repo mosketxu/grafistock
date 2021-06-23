@@ -9,7 +9,6 @@ class ProductoTipo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre'];
 
     protected $fillable = ['sigla','nombre'];
 

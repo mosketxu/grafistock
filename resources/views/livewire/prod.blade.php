@@ -8,6 +8,9 @@
             <h1 class="text-2xl font-semibold text-gray-900">Nuevo Producto</h1>
         @endif
     </div>
+
+    {{-- zona errores y mensajes --}}
+
     <div class="px-2 py-1 space-y-4" >
         @if ($errors->any())
             <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
@@ -34,143 +37,205 @@
         @endif
     </div>
     {{-- <x-jet-validation-errors/> --}}
+
     <div class="h-screen">
-        <div class="flex items-center justify-center pb-3 ">
-            <div class="grid w-11/12 bg-gray-100 rounded-lg shadow-xl md:w-9/12 lg:w-11/12">
-                <div class="px-2 mx-2 my-2 rounded-md bg-blue-50">
-                    <h3 class="font-semibold ">Datos del producto</h3>
-                    <x-jet-input  wire:model.defer="producto.id" type="hidden"/>
-                    <hr>
-                </div>
-                <form wire:submit.prevent="save" class="text-sm">
-                    <div class="grid grid-cols-1 gap-5 mt-5 md:grid-cols-6 md:gap-2 mx-7">
-                        <div class="col-span-2">
+        <div class="flex-col space-y-4 text-gray-500">
+            {{-- formulario datos --}}
+            <form wire:submit.prevent="save" class="text-sm">
+                <div class="p-2 m-2 border border-blue-300 rounded shadow-md ">
+                    <div class="p-1 rounded-md bg-blue-50">
+                        <h3 class="pl-1 font-semibold">Producto</h3>
+                        <input  wire:model.defer="producto.id" type="hidden"/>
+                    </div>
+                    <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                        <div class="w-2/12 form-item">
                             <x-jet-label for="referencia">{{ __('Referencia') }}</x-jet-label>
-                            <x-jet-input wire:model.defer="producto.referencia" type="text" class="w-full text-sm" id="referencia" name="referencia" :value="old('referencia') "/>
-                            <x-jet-input-error for="referencia" class="mt-2" />
+                            <input wire:model.defer="producto.referencia" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
-                        <div class="col-span-2">
-                            <x-jet-label for="material_id">{{ __('Material') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.material_id" selectname="material_id" class="w-full">
+                        <div class="w-10/12 form-item">
+                            <x-jet-label for="descripcion">{{ __('Descripción') }}</x-jet-label>
+                            <input wire:model="producto.descripcion" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" autofocus/>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 m-2 border border-blue-300 rounded shadow-md ">
+                    <div class="p-1 rounded-md bg-blue-50">
+                        <h3 class="pl-1 font-semibold">Especificaciones</h3>
+                    </div>
+                    <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                        <div class="w-full form-item">
+                            <x-jet-label for="tipo_id">{{ __('Tipo') }} </x-jet-label>
+                            <x-select wire:model="producto.tipo_id" selectname="tipo_id" class="w-full" required>
+                                <option value="">-- Selecciona --</option>
+                                @foreach ($tipos as $tipo)
+                                <option value="{{ $tipo->sigla }}">{{ $tipo->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="material_id">{{ __('Material') }} {{ $producto->material_id }}</x-jet-label>
+                            <x-select wire:model="producto.material_id" selectname="material_id" class="w-full" required>
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($materiales as $material)
-                                <option value="{{ $material->id }}">{{ $material->nombre }}</option>
+                                <option value="{{ $material->sigla }}">{{ $material->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
-                        <div class="grid grid-cols-1">
-                            <x-jet-label for="grosor">{{ __('Grosor') }}</x-jet-label>
-                            <x-jet-input  wire:model.defer="producto.grosor" type="number" step="all" id="grosor" name="grosor" :value="old('grosor')" class="w-full"/>
-                            <x-jet-input-error for="grosor" class="mt-2" />
-                        </div>
-                        <div class="grid grid-cols-1">
-                            <x-jet-label for="ud_grosor">{{ __('Ud/Grosor') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.ud_grosor" selectname="ud_grosor" class="w-full">
-                                <option value="">-- Selecciona unidad --</option>
-                                @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 gap-5 mt-5 md:grid-cols-6 md:gap-2 mx-7">
-                        <div class="col-span-3">
-                            <x-jet-label for="seccion">{{ __('Seccion') }}</x-jet-label>
-                            {{-- <x-select wire:model.defer="producto.seccion" selectname="seccion" class="w-full">
-                                <option value="">-- Selecciona --</option>
-                                @foreach ($secciones as $seccion)
-                                <option value="{{ $seccion->nombre }}">{{ $seccion->nombre }}</option>
-                                @endforeach
-                            </x-select> --}}
-                        </div>
-                        <div class="grid grid-cols-1">
-                            <x-jet-label for="alto">{{ __('Alto') }}</x-jet-label>
-                            <x-jet-input  wire:model.defer="producto.alto" type="number" step="any" id="alto" name="alto" :value="old('alto')" class="w-full"/>
-                            <x-jet-input-error for="alto" class="mt-2" />
-                        </div>
-                        <div class="grid grid-cols-1">
-                            <x-jet-label for="ancho">{{ __('ancho') }}</x-jet-label>
-                            <x-jet-input  wire:model.defer="producto.ancho" type="number" step="any" id="ancho" name="ancho" :value="old('ancho')" class="w-full"/>
-                            <x-jet-input-error for="ancho" class="mt-2" />
-                        </div>
-                        <div class="grid grid-cols-1">
-                            <x-jet-label for="ud_tamanyo">{{ __('Ud/Tamaño') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.ud_tamanyo" selectname="ud_tamanyo" class="w-full">
-                                <option value="">-- Selecciona unidad --</option>
-                                @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 gap-5 mt-5 md:grid-cols-4 md:gap-2 mx-7">
-                        <div class="grid grid-cols-1">
-                            <x-jet-label for="coste">{{ __('Coste') }}</x-jet-label>
-                            <x-jet-input  wire:model.defer="producto.coste" type="number" step="any" id="coste" name="coste" :value="old('coste')" class="w-full"/>
-                            <x-jet-input-error for="coste" class="mt-2" />
-                        </div>
-                        <div class="grid grid-cols-1">
-                            <x-jet-label for="ud_coste">{{ __('Ud/coste') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.ud_coste" selectname="ud_coste" class="w-full">
-                                <option value="">-- Selecciona unidad --</option>
-                                @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-                        <div class="col-span-2">
-                            <x-jet-label for="ud_compra">{{ __('Unidad') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.ud_compra" selectname="ud_compra" class="w-full">
-                                <option value="">-- Selecciona unidad --</option>
-                                @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 mt-5 mx-7">
-                        <label class="mb-1 text-xs font-semibold text-gray-500 md:text-sm text-light">Ficha producto</label>
-                        <div class='flex items-center justify-center w-full'>
-                            <label class='flex flex-col w-full h-20 border-4 border-dashed hover:bg-gray-100 hover:border-purple-300 group'>
-                                <div class='flex flex-col items-center justify-center pt-3'>
-                                    <x-icon.pdf class="w-7 h-7"></x-icon.pdf>
-                                    <p class='pt-1 text-sm tracking-wider text-gray-400 lowercase group-hover:text-purple-600'>Selecciona un pdf</p>
-                                </div>
-                                <input wire:model.defer="producto.pdf" type='file' class="hidden" />
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 mt-5 mx-7">
                         <div class="w-full form-item">
-                            <x-jet-label for="observaciones">{{ __('Observaciones') }}</x-jet-label>
-                            <textarea wire:model.defer="producto.observaciones" class="w-full text-xs border-gray-300 rounded-md" rows="3">{{ old('observaciones') }} </textarea>
-                            <x-jet-input-error for="observaciones" class="mt-2" />
+                            <x-jet-label for="acabado_id">{{ __('Acabado') }} </x-jet-label>
+                            <x-select wire:model="producto.acabado_id" selectname="acabado_id" class="w-full" required>
+                                <option value="">-- Selecciona --</option>
+                                @foreach ($acabados as $acabado)
+                                <option value="{{ $acabado->sigla }}">{{ $acabado->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="grupoproduccion_id">{{ __('Grupo.Prod') }} </x-jet-label>
+                            <x-select wire:model="producto.grupoproduccion_id" selectname="grupoproduccion_id" class="w-full" required>
+                                <option value="">-- Selecciona --</option>
+                                @foreach ($gruposprod as $grupo)
+                                <option value="{{ $grupo->sigla }}">{{ $grupo->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="clase_id">{{ __('Clase') }} </x-jet-label>
+                            <x-select wire:model="producto.clase_id" selectname="clase_id" class="w-full" >
+                                <option value="">-- Selecciona --</option>
+                                @foreach ($clases as $clase)
+                                <option value="{{ $clase->sigla }}">{{ $clase->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="calidad_id">{{ __('Calidad') }} </x-jet-label>
+                            <x-select wire:model="producto.calidad_id" selectname="calidad_id" class="w-full" >
+                                <option value="">-- Selecciona --</option>
+                                @foreach ($calidades as $calidad)
+                                <option value="{{ $calidad->sigla }}">{{ $calidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
                         </div>
                     </div>
+                </div>
+                <div class="p-2 m-2 border border-blue-300 rounded shadow-md ">
+                    <div class="p-1 rounded-md bg-blue-50">
+                        <h3 class="pl-1 font-semibold">Tamaño</h3>
+                    </div>
+                    <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                        <div class="w-full form-item">
+                            <x-jet-label for="ancho_mm">{{ __('Ancho(mm)') }}</x-jet-label>
+                            <input  wire:model="producto.ancho_mm" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="desarrollo_mm">{{ __('desarrollo(mm)') }}</x-jet-label>
+                            <input  wire:model="producto.desarrollo_mm" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="grosor">{{ __('Grosor (mm)') }}</x-jet-label>
+                            <input  wire:model.defer="producto.grosor_mm" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 m-2 border border-blue-300 rounded shadow-md ">
+                    <div class="p-1 rounded-md bg-blue-50">
+                        <h3 class="pl-1 font-semibold ">Proveedor</h3>
+                    </div>
+                    <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                        <div class="w-full form-item">
+                            <x-jet-label for="entidad_id">{{ __('Proveedor') }}</x-jet-label>
+                            <x-select wire:model="producto.entidad_id" selectname="entidad_id" class="w-full" required>
+                                <option value="">-- Selecciona proveedor --</option>
+                                @foreach ($proveedores as $proveedor)
+                                <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
 
-                    <div class="grid grid-cols-1 my-5 mx-7">
-                        <div class="space-x-3">
-                            <x-jet-button class="bg-blue-600">
-                                {{ __('Guardar') }}
-                            </x-jet-button>
-                            <span
-                                x-data="{ open: false }"
-                                x-init="
-                                    @this.on('notify-saved', () => {
-                                        if (open === false) setTimeout(() => { open = false }, 2500);
-                                        open = true;
-                                    })
-                                "
+                        <div class="w-full form-item">
+                            <x-jet-label for="costeprov">{{ __('Coste Prov') }}</x-jet-label>
+                            <input  wire:model.defer="producto.costeprov" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="udcoste_id">{{ __('Ud/coste Prov') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.udcoste_id" selectname="udcoste_id" class="w-full">
+                                <option value="">-- Selecciona unidad --</option>
+                                @foreach ($unidades as $unidad)
+                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="costegrafitex">{{ __('Coste Grafitex') }}</x-jet-label>
+                            <input  wire:model.defer="producto.costegrafitex" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+
+                        <div class="w-full form-item">
+                            <x-jet-label for="udproducto_id">{{ __('Ud Producto') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.udproducto_id" selectname="udproducto_id" class="w-full">
+                                <option value="">-- Selecciona unidad --</option>
+                                @foreach ($unidades as $unidad)
+                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+
+                        <div class="w-full form-item">
+                            <x-jet-label for="udsolicitud_id">{{ __('Ud Solicitud') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.udsolicitud_id" selectname="udsolicitud_id" class="w-full">
+                                <option value="">-- Selecciona unidad --</option>
+                                @foreach ($unidades as $unidad)
+                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                    <label class="mb-1 text-xs font-semibold text-gray-500 md:text-sm text-light">Ficha producto</label>
+                    <div class='flex items-center justify-center w-full'>
+                        @error('ficheropdf') <p class="text-red-500">{{ $message }}</p> @enderror
+                         <input type="file" wire:model="ficheropdf">
+                    </div>
+                    <div class='flex items-center justify-center w-full'>
+                        <label class='flex flex-col w-full h-20 border-4 border-dashed hover:bg-gray-100 hover:border-purple-300 group'>
+                            <div class='flex flex-col items-center justify-center pt-3'>
+                                <x-icon.pdf class="w-7 h-7"></x-icon.pdf>
+                                <p class='pt-1 text-sm tracking-wider text-gray-400 lowercase group-hover:text-purple-600'>Selecciona un pdf</p>
+                            </div>
+                            <input wire:model.defer="ficheropdf" type='file' class="hidden" />
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                    <div class="w-full form-item">
+                        <x-jet-label for="observaciones">{{ __('Observaciones') }}</x-jet-label>
+                        <textarea wire:model.defer="producto.observaciones" class="w-full text-xs border-gray-300 rounded-md" rows="3">{{ old('observaciones') }} </textarea>
+                        <input-error for="observaciones" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 />
+                    </div>
+                </div>
+
+                <div class="flex mt-2 mb-2 ml-2 space-x-4">
+                    <div class="space-x-3">
+                        <x-jet-button class="bg-blue-600">{{ __('Guardar') }}</x-jet-button>
+                        <span
+                            x-data="{ open: false }"
+                            x-init="
+                                @this.on('notify-saved', () => {
+                                    if (open === false) setTimeout(() => { open = false }, 2500);
+                                    open = true;
+                                })
+                            "
                             x-show.transition.out.duration.1000ms="open"
                             style="display: none;"
                             class="p-2 m-2 text-gray-500 rounded-lg bg-green-50"
-                            >Saved!</span>
-                            <x-jet-secondary-button  onclick="location.href = '{{route('producto.index')}}'">{{ __('Volver') }}</x-jet-secondary-button>
-                        </div>
+                            >Saved!
+                        </span>
+                        <x-jet-secondary-button  onclick="location.href = '{{route('producto.index')}}'">{{ __('Volver') }}</x-jet-secondary-button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

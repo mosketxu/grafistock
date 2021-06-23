@@ -2,31 +2,43 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{ProductoMaterial,Producto,Seccion,Unidad};
+use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoCalidad, ProductoClase, ProductoTipo, ProductoUnidadcoste, Seccion, Ubicacion, Unidad};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
+use Livewire\WithFileUploads;
 
 class Prod extends Component
 {
+
+    use WithFileUploads;
+
     public $producto;
+    public $ficheropdf;
 
     protected function rules()
     {
         return [
             'producto.id'=>'nullable',
             'producto.referencia'=>'required',
-            'producto.material_id'=>'nullable',
-            'producto.grosor'=>'nullable',
-            'producto.ud_grosor'=>'nullable',
-            'producto.seccion'=>'nullable',
-            'producto.ancho'=>'nullable',
-            'producto.alto'=>'nullable',
-            'producto.ud_tamanyo'=>'nullable',
-            'producto.ubicacion'=>'nullable',
-            'producto.coste'=>'nullable',
-            'producto.ud_coste'=>'nullable',
-            'producto.ud_compra'=>'nullable',
-            'producto.pdf'=>'nullable',
+            'producto.descripcion'=>'nullable',
+            'producto.tipo_id'=>'required',
+            'producto.material_id'=>'required',
+            'producto.grosor_mm'=>'nullable',
+            'producto.ancho_mm'=>'nullable',
+            'producto.desarrollo_mm'=>'nullable',
+            'producto.acabado_id'=>'nullable',
+            'producto.grupoproduccion_id'=>'nullable',
+            'producto.clase_id'=>'nullable',
+            'producto.calidad_id'=>'nullable',
+            'producto.udsolicitud_id'=>'nullable',
+            'producto.costeprov'=>'nullable',
+            'producto.udcoste_id'=>'nullable',
+            'producto.costegrafitex'=>'nullable',
+            'producto.udproducto_id'=>'nullable',
+            'producto.entidad_id'=>'required',
+            'producto.caja_id'=>'nullable',
+            'producto.costecaja'=>'nullable',
+            'producto.fichaproducto'=>'nullable',
             'producto.observaciones'=>'nullable',
         ];
     }
@@ -38,49 +50,90 @@ class Prod extends Component
 
     public function render()
     {
-        $materiales=ProductoMaterial::orderBy('nombre','asc')->get();
+        $materiales=ProductoMaterial::orderBy('nombre')->get();
+        $tipos=ProductoTipo::orderBy('nombre')->get();
+        $acabados=ProductoAcabado::orderBy('nombre')->get();
+        $clases=ProductoClase::orderBy('nombre')->get();
+        $calidades=ProductoCalidad::orderBy('nombre')->get();
+        $gruposprod=ProductoGrupoproduccion::orderBy('nombre')->get();
+        $proveedores=Entidad::orderBy('entidad')->get();
         $unidades=Unidad::orderBy('nombre','asc')->get();
-        return view('livewire.prod',compact('materiales','unidades'));
+        $unidadescoste=ProductoUnidadcoste::orderBy('nombre')->get();
+        $cajas=ProductoCaja::orderBy('nombre')->get();
+        $ubicaciones=Ubicacion::orderBy('nombre')->get();
+        return view('livewire.prod',compact('materiales','tipos','acabados','clases','calidades','gruposprod','proveedores','unidades','unidadescoste','unidades','cajas','ubicaciones'));
     }
+
+    public function updatedProducto(){
+        $p='';
+        if($this->producto->entidad_id){
+            $p=Entidad::find($this->producto->entidad_id);
+            $p=$p->entidad5;
+        }
+        $this->producto->referencia=$this->producto->tipo_id.'-'.$this->producto->material_id.'-'.str_pad($this->producto->ancho_mm, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->desarrollo_mm, 4, '0', STR_PAD_LEFT).'-'.$this->producto->acabado_id.'-'.$p;
+    }
+
+    public function updatedficheropdf()
+    {
+        $this->validate(['ficheropdf'=>'file|max:5000']);
+    }
+
 
     public function save()
     {
+        // dd($this->ficheropdf);
         $this->validate();
         if($this->producto->id){
             $i=$this->producto->id;
             $this->validate([
                 'producto.referencia'=>[
                     'required',
-                    Rule::unique('productos','referencia')->ignore($this->producto->id)],
-                ]
+                    Rule::unique('productos','referencia')->ignore($this->producto->id)
+                    ],
+
+                ],
             );
             $mensaje=$this->producto->referencia . " actualizado satisfactoriamente";
         }else{
             $this->validate([
                 'producto.referencia'=>'required|unique:productos,referencia',
+
                 ]
             );
             $i=$this->producto->id;
             $message=$this->producto->referencia . " creado satisfactoriamente";
         }
 
+        $filename=$this->ficheropdf->store('/','fichasproducto');
+
         $prod=Producto::updateOrCreate([
             'id'=>$i
             ],
             [
             'referencia'=>$this->producto->referencia,
+            'descripcion'=>$this->producto->descripcion,
+            'tipo_id'=>$this->producto->tipo_id,
             'material_id'=>$this->producto->material_id,
-            'grosor'=>$this->producto->grosor,
-            'ud_grosor'=>$this->producto->ud_grosor,
-            'seccion'=>$this->producto->seccion,
-            'ancho'=>$this->producto->ancho,
-            'alto'=>$this->producto->alto,
-            'ud_tamanyo'=>$this->producto->ud_tamanyo,
-            'ubicacion'=>$this->producto->ubicacion,
-            'coste'=>$this->producto->coste,
-            'ud_coste'=>$this->producto->ud_coste,
-            'ud_compra'=>$this->producto->ud_compra,
-            'pdf'=>$this->producto->pdf,
+            'grosor_mm'=>$this->producto->grosor_mm,
+            'ancho_mm'=>$this->producto->ancho_mm,
+            'desarrollo_mm'=>$this->producto->desarrollo_mm,
+            'acabado_id'=>$this->producto->acabado_id,
+            'grupoproduccion_id'=>$this->producto->grupoproduccion_id,
+            'clase_id'=>$this->producto->clase_id,
+            'calidad_id'=>$this->producto->calidad_id,
+            'udsolicitud_id'=>$this->producto->udsolicitud_id,
+            'costeprov'=>$this->producto->costeprov,
+            'udcoste_id'=>$this->producto->udcoste_id,
+            'costegrafitex'=>$this->producto->costegrafitex,
+            'udproducto_id'=>$this->producto->udproducto_id,
+            'entidad_id'=>$this->producto->entidad_id,
+            'caja_id'=>$this->producto->caja_id,
+            'costecaja'=>$this->producto->costecaja,
+            'fichaproducto'=>$filename,
+            'observaciones'=>$this->producto->observaciones,
+
+
+
             ]
         );
         if(!$this->producto->id){
@@ -90,7 +143,7 @@ class Prod extends Component
         }
 
         session()->flash('message', $mensaje);
-        return redirect()->route('pedido.create');
+        // return redirect()->route('pedido.create');
         // $this->emitSelf('notify-saved');
     }
 

@@ -118,7 +118,13 @@
                                 <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->udcoste_id }}</td >
                                 <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->caja->nombre ?? '-' }}</td >
                                 <td class="pr-2 text-xs leading-5 text-right text-gray-600 whitespace-no-wrap">{{ $producto->costecaja }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->pdf }}</td >
+                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">
+                                    {{-- @if($producto->fichaproducto) --}}
+                                        <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
+                                    {{-- @else
+                                        <x-icon.pdfc class="w-5 h-5 pt-2 ml-2 text-blue-100" title="PDF"/>
+                                    @endif --}}
+                                </td>
                                 <td  class="px-4">
                                     <div class="flex items-center justify-center space-x-3">
                                         <x-icon.edit-a href="{{ route('producto.edit',$producto) }}"  title="Editar"/>

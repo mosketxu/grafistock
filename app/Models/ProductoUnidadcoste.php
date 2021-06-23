@@ -9,6 +9,8 @@ class ProductoUnidadcoste extends Model
 {
     use HasFactory;
 
+    protected $table = 'producto_unidadescoste';
+
     protected $fillable = ['sigla','nombre'];
 
     public function productos()
