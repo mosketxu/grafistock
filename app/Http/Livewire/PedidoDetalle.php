@@ -12,7 +12,9 @@ class PedidoDetalle extends Component
     public $base;
     public $totaliva;
     public $total;
-    protected $listeners = [ 'detallerefresh' => '$refresh'];
+    public $showcrear=false;
+
+    protected $listeners = [ 'funshow'=>'funshowdetalle', 'detallerefresh' => '$refresh'];
 
     public function mount()
     {
@@ -26,6 +28,8 @@ class PedidoDetalle extends Component
     public function render()
     {
         $pedido=$this->pedido;
+        dd($this->pedido->id);
+        $this->showcrear=$this->pedido->id ? true : false;
         $this->base=$pedido->pedidodetalles->sum('base');
         $this->totaliva=$pedido->pedidodetalles->sum('totaliva');
         $this->total=$pedido->pedidodetalles->sum('total');
@@ -38,6 +42,11 @@ class PedidoDetalle extends Component
         return view('livewire.pedido-detalle', compact('pedido','detalles'));
     }
 
+    public function funshowdetalle()
+    {
+        $this->showcrear=true;
+        $this->emit('detallerefresh');
+    }
 
     public function saveDetalle($pedidodetalle)
     {

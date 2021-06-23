@@ -7,17 +7,18 @@
         @else
             <h1 class="text-2xl font-semibold text-gray-900">Nuevo Pedido</h1>
         @endif
+
         <div class="flex justify-between">
             <div class="flex w-2/4 space-x-2">
-                {{-- @if($showgenerar && !$pedido->pedido) --}}
-                    {{-- <x-button.button  wire:click="creaPedido({{ $pedido }})" color="green">{{ __('Generar Pedido') }}</x-button.button> --}}
-                {{-- @endif
-                @if($showgenerar && $pedido->pedido) --}}
-                    {{-- <x-button.button  wire:click="creaPedido({{ $pedido }})" color="green">{{ __('Actualiza Pedido') }}</x-button.button> --}}
-                {{-- @endif
-                @if(!$showgenerar) --}}
-                    {{-- <x-icon.pdf-a wire:click="presentaPDF({{ $pedido }})" class="pt-2 ml-2" title="PDF"/> --}}
-                {{-- @endif --}}
+                @if($showgenerar && !$pedido->pedido)
+                    <x-button.button  wire:click="creaPedido({{ $pedido }})" color="green">{{ __('Generar Pedido') }}</x-button.button>
+                @endif
+                @if($showgenerar && $pedido->pedido)
+                    <x-button.button  wire:click="creaPedido({{ $pedido }})" color="green">{{ __('Actualiza Pedido') }}</x-button.button>
+                @endif
+                @if(!$showgenerar && $pedido->pedido)
+                    <x-icon.pdf-a wire:click="presentaPDF({{ $pedido }})" class="pt-2 ml-2" title="PDF"/>
+                @endif
             </div>
             <x-button.button  onclick="location.href = '{{ route('pedido.create') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Pedido') }}</x-button.button>
         </div>

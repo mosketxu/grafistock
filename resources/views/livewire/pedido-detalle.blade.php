@@ -90,9 +90,10 @@
                 </tfoot>
             </table>
         </div>
+        show {{ $showcrear }}
 
-        {{-- @if($showcrear) --}}
+        @if($showcrear)
             @livewire('pedido-detalle-create',['pedido'=>$pedido],key($pedido->id))
-        {{-- @endif --}}
+        @endif
     </div>
 </div>

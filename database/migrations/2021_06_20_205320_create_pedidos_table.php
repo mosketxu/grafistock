@@ -15,7 +15,7 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->string('pedido')->index();
+            $table->string('pedido')->index()->nullable();
             $table->foreignId('entidad_id')->constrained('entidades');
             $table->date('fechapedido');
             $table->date('fecharecepcionprevista')->nullable();

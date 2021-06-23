@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Entidad;
 use App\Models\Pedido as ModelsPedido;
+use Illuminate\Support\Facades\Response;
 use Livewire\Component;
 
 
@@ -11,9 +12,9 @@ class Pedido extends Component
 {
 
     public $pedido;
-    public $mostrarGenerar=0;
     public $message;
     public $showgenerar;
+    public $pedidohecho=false;
 
     protected $listeners = [
         'pedidoupdate' => '$refresh',
@@ -36,13 +37,34 @@ class Pedido extends Component
     public function mount(ModelsPedido $pedido)
     {
         $this->pedido=$pedido;
+        $this->showgenerar = $pedido->pedido ? true : false;
+        $this->pedidohecho= $pedido->pedido ?  true : false;
 
     }
 
     public function render()
     {
+        if ($this->pedido->id) {
+            $this->showgenerar=true;
+            if ($this->pedido->pedido) {
+                $this->showgenerar=false;
+            }
+        }
+
         $entidades=Entidad::orderBy('entidad')->get();
         return view('livewire.pedido',compact('entidades'));
+    }
+
+    public function updatedPedidohecho(){
+        if($this->pedidohecho){
+            $this->message="Debes pulsar Generar para aplicar los cambios al pedido";
+            $this->pedidohecho=false;
+        }else{
+            $f=ModelsPedido::find($this->pedido->id);
+            $p->pedidohecho=false;
+            $p->save();
+            $this->redirect( route('pedido.edit',$p) );
+        }
     }
 
     public function save()
@@ -57,8 +79,6 @@ class Pedido extends Component
             $i=$this->pedido->id;
             $mensaje="Pedido creado satisfactoriamente";
         }
-
-        if (!$this->pedido->pedido) $this->pedido->pedido=$this->pedido->id .' logica a aplicar' ;
 
         $ped=ModelsPedido::updateOrCreate([
             'id'=>$i
@@ -75,35 +95,49 @@ class Pedido extends Component
                 'observaciones'=>$this->pedido->observaciones,
             ]
         );
+
+        $this->redirect( route('pedido.edit',$ped) );
         $this->emitSelf('notify-saved');
+
     }
 
     public function creaPedido(ModelsPedido $pedido)
     {
         $this->validate([
-            'pedido.entidad_id'=>'required|numeric',
-            'pedido.entidad_id'=>'required|numeric',
+            'pedido.entidad_id'=>'required',
+            'pedido.fechapedido'=>'required|date',
         ]);
 
+        $anyo= substr($pedido->fechapedido->format('Y'), -4);
+        $anyo2= substr($pedido->fechapedido->format('Y'), -2);
+
+
         if (!$pedido->pedido){
-            $ped=$pedido->id .' logica a aplicar' ;
+            $ped=ModelsPedido::whereYear('fechapedido', $anyo)->max('pedido') ;
+            $ped= $ped ? $ped + 1 : ($anyo2 * 100000 +1) ;
         }else{
-            $fac=$pedido->pedido;
+            $ped=$pedido->pedido;
         }
 
         $pedido->ruta='pedidos/'.$pedido->fechapedido->format('Y').'/'.$pedido->fechapedido->format('m');
-        $pedido->fichero=trim($pedido->pedido.'pdf');
+        $pedido->fichero=trim($ped.'.pdf');
 
-        $pedido->pedido=$fac;
+        $pedido->pedido=$ped;
         $pedido->save();
-        // genero la pedido y la guardo en su carpeta de storage
-        // $pedido->imprimirpedido();
+
+        // genero el pedido y la guardo en su carpeta de storage
+        $pedido->imprimirpedido();
+
         // $this->nf=$pedido->serie.'-'.substr($fac,-5);
         $this->dispatchBrowserEvent('notify', 'Pedido creado!');
         $this->redirect( route('pedido.edit',$pedido) );
         // $this->emit('pedidoupdate');
     }
 
+    public function presentaPDF(Pedido $pedido){
+
+        return Response::download('storage/'.$this->pedido->rutafichero);
+    }
 
     public function delete($pedidoId)
     {
