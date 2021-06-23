@@ -57,7 +57,7 @@ class Prods extends Component
     public function presentaPDF(Producto $producto){
         $existe=Storage::disk('fichasproducto')->exists($producto->fichaproducto);
         if ($existe)
-            return Storage::disk('fichasproducto')->download($producto->fichaproducto,'ficha.pdf');
+            return Storage::disk('fichasproducto')->download($producto->fichaproducto);
 
     }
 

@@ -104,7 +104,11 @@ class Prod extends Component
             $message=$this->producto->referencia . " creado satisfactoriamente";
         }
 
-        $filename=$this->ficheropdf->store('/','fichasproducto');
+        // $filename=$this->ficheropdf->store('/','fichasproducto');
+        // $filename=$this->ficheropdf->storeAs('/','pp.pdf','fichasproducto');
+        $nombre=$this->producto->referencia.'.'.$this->ficheropdf->extension();
+
+        $filename=$this->ficheropdf->storeAs('/',$nombre,'fichasproducto');
 
         $prod=Producto::updateOrCreate([
             'id'=>$i

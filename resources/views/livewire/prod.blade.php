@@ -129,12 +129,17 @@
                             <input  wire:model="producto.ancho_mm" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="desarrollo_mm">{{ __('desarrollo(mm)') }}</x-jet-label>
+                            <x-jet-label for="desarrollo_mm">{{ __('Desarrollo(mm)') }}</x-jet-label>
                             <input  wire:model="producto.desarrollo_mm" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="grosor">{{ __('Grosor (mm)') }}</x-jet-label>
                             <input  wire:model.defer="producto.grosor_mm" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="ficheropdf">{{ __('Ficha producto') }} <span class="text-xs">{{ $producto->fichaproducto }}</span></x-jet-label>
+                            <input type="file" wire:model="ficheropdf">
+                            @error('ficheropdf') <p class="text-red-500">{{ $message }}</p> @enderror
                         </div>
                     </div>
                 </div>
@@ -180,7 +185,6 @@
                                 @endforeach
                             </x-select>
                         </div>
-
                         <div class="w-full form-item">
                             <x-jet-label for="udsolicitud_id">{{ __('Ud Solicitud') }}</x-jet-label>
                             <x-select wire:model.defer="producto.udsolicitud_id" selectname="udsolicitud_id" class="w-full">
@@ -190,22 +194,7 @@
                                 @endforeach
                             </x-select>
                         </div>
-                    </div>
-                </div>
-                <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
-                    <label class="mb-1 text-xs font-semibold text-gray-500 md:text-sm text-light">Ficha producto</label>
-                    <div class='flex items-center justify-center w-full'>
-                        @error('ficheropdf') <p class="text-red-500">{{ $message }}</p> @enderror
-                         <input type="file" wire:model="ficheropdf">
-                    </div>
-                    <div class='flex items-center justify-center w-full'>
-                        <label class='flex flex-col w-full h-20 border-4 border-dashed hover:bg-gray-100 hover:border-purple-300 group'>
-                            <div class='flex flex-col items-center justify-center pt-3'>
-                                <x-icon.pdf class="w-7 h-7"></x-icon.pdf>
-                                <p class='pt-1 text-sm tracking-wider text-gray-400 lowercase group-hover:text-purple-600'>Selecciona un pdf</p>
-                            </div>
-                            <input wire:model.defer="ficheropdf" type='file' class="hidden" />
-                        </label>
+
                     </div>
                 </div>
                 <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
