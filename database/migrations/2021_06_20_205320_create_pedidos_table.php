@@ -23,6 +23,7 @@ class CreatePedidosTable extends Migration
             $table->string('ruta')->nullable();
             $table->string('fichero')->nullable();
             $table->string('observaciones')->nullable();
+            $table->boolean('finalizado')->default(false);
             $table->timestamps();
         });
     }

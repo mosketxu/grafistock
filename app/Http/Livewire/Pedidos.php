@@ -16,6 +16,7 @@ class Pedidos extends Component
     public $search='';
     public $filtroanyo='';
     public $filtromes='';
+    public $filtroproveedor='';
     public $entidad;
     public $message;
 
@@ -31,7 +32,7 @@ class Pedidos extends Component
     public function mount(Entidad $entidad)
     {
         $this->filtroanyo=date('Y');
-        $this->filtromes=intval(date('m'));
+        // $this->filtromes=intval(date('m'));
         $this->entidad=$entidad;
     }
 
@@ -39,6 +40,7 @@ class Pedidos extends Component
     {
         if($this->selectAll) $this->selectPageRows();
         $pedidos = $this->rows;
+        $proveedores = Entidad::orderBy('entidad')->get();
 
         $totales= Pedido::query()
         ->join('entidades','pedidos.entidad_id','=','entidades.id')
@@ -49,7 +51,7 @@ class Pedidos extends Component
         ->search('pedidos.pedido',$this->search)
         ->orSearch('entidades.entidad',$this->search)
         ->first();
-        return view('livewire.pedidos',compact('pedidos','totales'));
+        return view('livewire.pedidos',compact('pedidos','proveedores','totales'));
     }
 
     public function getRowsQueryProperty(){
@@ -58,6 +60,9 @@ class Pedidos extends Component
             ->select('pedidos.*', 'entidades.entidad', 'entidades.nif','entidades.emailadm')
             ->when($this->entidad->id!='', function ($query){
                 $query->where('entidad_id',$this->entidad->id);
+                })
+            ->when($this->filtroproveedor!='', function ($query){
+                $query->where('entidad_id',$this->filtroproveedor);
                 })
             ->searchYear('fechapedido',$this->filtroanyo)
             ->searchMes('fechapedido',$this->filtromes)

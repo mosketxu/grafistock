@@ -15,7 +15,6 @@
             <h3 class="ml-2 font-semibold ">Detalle Pedido</h3>
         </div>
         {{-- tabla detalles --}}
-
         <div class="flex-col">
             <table table class="min-w-full divide-y divide-gray-200">
                 <thead>
@@ -90,7 +89,6 @@
                 </tfoot>
             </table>
         </div>
-        show {{ $showcrear }}
 
         @if($showcrear)
             @livewire('pedido-detalle-create',['pedido'=>$pedido],key($pedido->id))

@@ -22,7 +22,7 @@ class Pedido extends Model
         'fecharecepcion' => 'date:Y-m-d',
     ];
 
-    protected $fillable=['pedido','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','iva','ruta','fichero','observaciones'];
+    protected $fillable=['pedido','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','iva','ruta','fichero','observaciones','finalizado'];
 
     public function pedidodetalles()
     {
@@ -46,6 +46,7 @@ class Pedido extends Model
         ->find($this->id);
 
         $base=$pedido->pedidodetalles->sum('base');
+
 
         $pdf = \PDF::loadView('pedido.pedidopdf', compact(['pedido','base']));
 

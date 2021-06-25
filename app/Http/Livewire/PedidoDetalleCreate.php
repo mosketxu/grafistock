@@ -10,6 +10,7 @@ class PedidoDetalleCreate extends Component
 {
     public $pedido;
     public $detalle;
+    public $message;
 
     protected $rules = [
         'pedido.id' => 'required',
@@ -20,6 +21,8 @@ class PedidoDetalleCreate extends Component
         'detalle.coste'=>'numeric|required',
         'detalle.iva'=>'numeric|required',
     ];
+
+    protected $listeners = [ 'funshowc'=>'funshowdetallec', 'detallerefreshc' => '$refresh'];
 
     public function mount(DetallePedido $detalle)
     {

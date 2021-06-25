@@ -28,7 +28,6 @@ class PedidoDetalle extends Component
     public function render()
     {
         $pedido=$this->pedido;
-        dd($this->pedido->id);
         $this->showcrear=$this->pedido->id ? true : false;
         $this->base=$pedido->pedidodetalles->sum('base');
         $this->totaliva=$pedido->pedidodetalles->sum('totaliva');
@@ -44,7 +43,8 @@ class PedidoDetalle extends Component
 
     public function funshowdetalle()
     {
-        $this->showcrear=true;
+        $this->showcrear=1;
+        // dd($this->showcrear);
         $this->emit('detallerefresh');
     }
 

@@ -22,7 +22,7 @@
             <div class="flex justify-between space-x-1">
                 <div class="inline-flex space-x-2">
                     <div class="text-xs">
-                        <label class="px-1 text-gray-600">&nbsp;</label>
+                        <label class="px-1 text-gray-600">Pedido</label>
                         <input type="text" wire:model="search" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Búsqueda" autofocus/>
                     </div>
                     <div class="text-xs">
@@ -32,6 +32,16 @@
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">Mes</label>
                         <input type="text" wire:model="filtromes" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Mes (número)"/>
+                    </div>
+
+                    <div class="text-xs">
+                        <label class="px-1 text-gray-600">Proveedor</label>
+                        <select wire:model="filtroproveedor" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" >
+                            <option value="">-- selecciona --</option>
+                            @foreach ($proveedores as $proveedor )
+                            <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="inline-flex mt-3 space-x-2">
@@ -102,7 +112,7 @@
                             </td>
                             <td class="text-right">
                                 @if($pedido->pedido)
-                                    <input type="text" value="{{ $pedido->serie }}/{{ $pedido->pedido }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    <input type="text" value="{{ $pedido->pedido }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 @endif
                             </td>
                             <td>

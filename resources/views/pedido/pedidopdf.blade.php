@@ -95,12 +95,12 @@
                                     <td width="69%"  style="padding-left: 30px">Base imponible:</td>
                                     {{-- <td width="29%" style="text-align: right; " width="50%">{{number_format($base,2,',','.')}} <span style="font-family: Arial">€</span></td> --}}
                                 </tr>
-                                @if($suplidos)
+                                {{-- @if($suplidos) --}}
                                 <tr>
                                     <td width="69%" style="padding-left: 30px">Suplidos:</td>
                                     {{-- <td width="29%" style="text-align: right" width="50%">{{number_format($suplidos,2,',','.')}} <span style="font-family: Arial">€</span></td> --}}
                                 </tr>
-                                @endif
+                                {{-- @endif --}}
                                 <tr>
                                     <td width="69%" style="padding-left: 30px">IVA 21%:</td>
                                     {{-- <td width="29%" style="text-align: right" width="50%">{{number_format($totaliva,2,',','.')}} <span style="font-family: Arial">€</span></td> --}}

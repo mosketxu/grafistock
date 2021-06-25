@@ -14,7 +14,8 @@ class Pedido extends Component
     public $pedido;
     public $message;
     public $showgenerar;
-    public $pedidohecho=false;
+    public $showcrear='';
+    public $realizado;
 
     protected $listeners = [
         'pedidoupdate' => '$refresh',
@@ -31,23 +32,24 @@ class Pedido extends Component
             'pedido.ruta'=>'nullable',
             'pedido.fichero'=>'nullable',
             'pedido.observaciones'=>'nullable',
+            'pedido.finalizado'=>'boolean',
         ];
     }
 
     public function mount(ModelsPedido $pedido)
     {
         $this->pedido=$pedido;
-        $this->showgenerar = $pedido->pedido ? true : false;
-        $this->pedidohecho= $pedido->pedido ?  true : false;
+        $this->showgenerar = $pedido->finalizado ? false : true;
+        $this->realizado=$pedido->finalizado ? true : false;
+        $this->showcrear = $pedido->id && !$pedido->finalizado ? true : false;
 
     }
 
     public function render()
     {
-        if ($this->pedido->id) {
-            $this->showgenerar=true;
-            if ($this->pedido->pedido) {
-                $this->showgenerar=false;
+        if($this->pedido->id){
+            if(!$this->pedido->pedido){
+                $this->mostrarGenerar=1;
             }
         }
 
@@ -55,50 +57,61 @@ class Pedido extends Component
         return view('livewire.pedido',compact('entidades'));
     }
 
-    public function updatedPedidohecho(){
-        if($this->pedidohecho){
+    public function updatedRealizado(){
+        if($this->realizado){
             $this->message="Debes pulsar Generar para aplicar los cambios al pedido";
-            $this->pedidohecho=false;
+            $this->realizado=false;
         }else{
-            $f=ModelsPedido::find($this->pedido->id);
-            $p->pedidohecho=false;
+
+            $p=ModelsPedido::find($this->pedido->id);
+            $p->finalizado=false;
             $p->save();
             $this->redirect( route('pedido.edit',$p) );
         }
     }
 
+
     public function save()
     {
         $this->validate();
-
         $this->message='';
-        if ($this->pedido->id) {
-            $i=$this->pedido->id;
-            $mensaje="Pedido actualizado satisfactoriamente";
+
+        if ($this->pedido->finalizado==true  ) {
+            $this->message="No se pueden modificar los datos del pedido una vez realizado.";
         } else {
-            $i=$this->pedido->id;
-            $mensaje="Pedido creado satisfactoriamente";
+            if ($this->pedido->id) {
+                $i=$this->pedido->id;
+                $mensaje="Pedido actualizado satisfactoriamente";
+            } else {
+                $i=$this->pedido->id;
+                $mensaje="Pedido creado satisfactoriamente";
+            }
+
+            $this->emit('funshow');
+
+            $ped=ModelsPedido::updateOrCreate(
+                [
+                'id'=>$i
+                ],
+                [
+                    'pedido'=>$this->pedido->pedido,
+                    'entidad_id'=>$this->pedido->entidad_id,
+                    'fechapedido'=>$this->pedido->fechapedido,
+                    'fecharecepcionprevista'=>$this->pedido->fecharecepcionprevista,
+                    'fecharecepcion'=>$this->pedido->fecharecepcion,
+                    'metodopago_id'=>$this->pedido->metodopago_id,
+                    'ruta'=>$this->pedido->ruta,
+                    'fichero'=>$this->pedido->fichero,
+                    'observaciones'=>$this->pedido->observaciones,
+                    'finalizado'=>$this->realizado,
+                ]
+            );
+
+            $this->redirect(route('pedido.edit', $ped));
+            $this->emitSelf('notify-saved');
+
+
         }
-
-        $ped=ModelsPedido::updateOrCreate([
-            'id'=>$i
-            ],
-            [
-                'pedido'=>$this->pedido->pedido,
-                'entidad_id'=>$this->pedido->entidad_id,
-                'fechapedido'=>$this->pedido->fechapedido,
-                'fecharecepcionprevista'=>$this->pedido->fecharecepcionprevista,
-                'fecharecepcion'=>$this->pedido->fecharecepcion,
-                'metodopago_id'=>$this->pedido->metodopago_id,
-                'ruta'=>$this->pedido->ruta,
-                'fichero'=>$this->pedido->fichero,
-                'observaciones'=>$this->pedido->observaciones,
-            ]
-        );
-
-        $this->redirect( route('pedido.edit',$ped) );
-        $this->emitSelf('notify-saved');
-
     }
 
     public function creaPedido(ModelsPedido $pedido)
@@ -121,12 +134,13 @@ class Pedido extends Component
 
         $pedido->ruta='pedidos/'.$pedido->fechapedido->format('Y').'/'.$pedido->fechapedido->format('m');
         $pedido->fichero=trim($ped.'.pdf');
+        $pedido->finalizado=true;
 
         $pedido->pedido=$ped;
         $pedido->save();
-
         // genero el pedido y la guardo en su carpeta de storage
         $pedido->imprimirpedido();
+
 
         // $this->nf=$pedido->serie.'-'.substr($fac,-5);
         $this->dispatchBrowserEvent('notify', 'Pedido creado!');
