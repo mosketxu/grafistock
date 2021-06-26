@@ -38,5 +38,10 @@ class Producto extends Model
 
     public function caja(){return $this->belongsTo(ProductoCaja::class,'caja_id','sigla');}
 
+    public function movimientos(){return $this->belongsTo(StockMovimiento::class);}
+
+    public function pedidodetalle(){return $this->belongsTo(DetallePedido::class,'pedido_id');}
+
+    public function pedidodetalles(){return $this->hasMany(DetallePedido::class,'pedido_id');}
 
 }

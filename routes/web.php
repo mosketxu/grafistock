@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{EntidadController, ProductoController, PedidoController};
+use App\Http\Controllers\{EntidadController, ProductoController, PedidoController,StockController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +25,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('entidad', EntidadController::class);
     Route::resource('producto', ProductoController::class);
     Route::resource('pedido', PedidoController::class);
+    Route::resource('stock', StockController::class);
 });;

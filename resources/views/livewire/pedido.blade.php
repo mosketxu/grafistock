@@ -63,61 +63,58 @@
                             <x-jet-input  wire:model.defer="pedido.id" type="hidden"  id="id" name="id" :value="old('id')"/>
                         </div>
                         {{-- <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-1 md:flex-justify-between"> --}}
-                        <div class="flex justify-between mx-3">
-                            <div class="flex flex-col space-x-3 md:flex-row">
-                                <div class="form-item">
-                                    <x-jet-label for="entidad_id">{{ __('Proveedor') }}</x-jet-label>
-                                    <x-select wire:model.defer="pedido.entidad_id" selectname="entidad_id" class="w-full" autofocus>
-                                        <option value="">-- choose --</option>
-                                        @foreach ($entidades as $entidad)
-                                            <option value="{{ $entidad->id }}">{{ $entidad->entidad }}</option>
-                                        @endforeach
-                                    </x-select>
-                                </div>
-                                <div class="form-item">
-                                    <x-jet-label for="pedido">{{ __('pedido') }}</x-jet-label>
-                                    <input  wire:model.defer="pedido.pedido" type="text" class="w-full text-xs bg-gray-100 border-gray-100 rounded-md shadow-sm " disabled/>
-                                </div>
-                                <div class="form-item">
-                                    <x-jet-label for="fechapedido">{{ __('F.Pedido') }}</x-jet-label>
-                                    <input  wire:model.defer="pedido.fechapedido" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
-                                </div>
-                                <div class="form-item">
-                                    <x-jet-label for="fecharecepcionprevista">{{ __('F.Recepcion Prev.') }}</x-jet-label>
-                                    <input  wire:model.defer="pedido.fecharecepcionprevista" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
-                                </div>
-                                <div class="form-item">
-                                    <x-jet-label for="fecharecepcion">{{ __('F.Recepcion') }}</x-jet-label>
-                                    <input  wire:model.defer="pedido.fecharecepcion" type="date"  class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
-                                </div>
-                                <div class="form-item">
-                                    <x-jet-label for="realizado"  class="text-center" title="Realizado">Realizado</x-jet-label>
-                                    <input type="checkbox" class="float-right mx-auto mt-2 mr-5 text-center" wire:model="realizado" checked  title="realizado"/>
-                                </div>
-                                @if($showgenerar)
-                                <div class="space-x-3">
-                                    <x-jet-button class="mt-3 bg-blue-600">{{ __('Guardar') }}</x-jet-button>
-                                        <span
-                                            x-data="{ open: false }"
-                                            x-init="
-                                                @this.on('notify-saved', () => {
-                                                    if (open === false) setTimeout(() => { open = false }, 2500);
-                                                    open = true;
-                                                })
-                                            "
-                                            x-show.transition.out.duration.1000ms="open"
-                                            style="display: none;"
-                                            class="p-2 m-2 text-gray-500 rounded-lg bg-green-50"
-                                            >Saved!</span>
-                                </div>
-                                @endif
+                        <div class="flex flex-col justify-between mx-3 md:flex-row">
+                            <div class="form-item">
+                                <x-jet-label for="entidad_id">{{ __('Proveedor') }}</x-jet-label>
+                                <x-select wire:model.defer="pedido.entidad_id" selectname="entidad_id" class="w-full" autofocus>
+                                    <option value="">-- choose --</option>
+                                    @foreach ($entidades as $entidad)
+                                        <option value="{{ $entidad->id }}">{{ $entidad->entidad }}</option>
+                                    @endforeach
+                                </x-select>
                             </div>
-                        </div>
-                        <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-1">
-                            <div class="w-full form-item">
+                            <div class="form-item">
+                                <x-jet-label for="pedido">{{ __('pedido') }}</x-jet-label>
+                                <input  wire:model.defer="pedido.pedido" type="text" class="w-full text-xs bg-gray-100 border-gray-100 rounded-md shadow-sm " disabled/>
+                            </div>
+                            <div class="form-item">
+                                <x-jet-label for="fechapedido">{{ __('F.Pedido') }}</x-jet-label>
+                                <input  wire:model.defer="pedido.fechapedido" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            </div>
+                            <div class="form-item">
+                                <x-jet-label for="fecharecepcionprevista">{{ __('F.Recepcion Prev.') }}</x-jet-label>
+                                <input  wire:model.defer="pedido.fecharecepcionprevista" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            </div>
+                            <div class="form-item">
+                                <x-jet-label for="fecharecepcion">{{ __('F.Recepcion') }}</x-jet-label>
+                                <input  wire:model.defer="pedido.fecharecepcion" type="date"  class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            </div>
+                            <div class="form-item">
+                                <x-jet-label for="realizado"  class="text-center" title="Realizado">Realizado</x-jet-label>
+                                <input type="checkbox" class="float-right mx-auto mt-2 mr-5 text-center" wire:model="realizado" checked  title="realizado"/>
+                            </div>
+                            <div class="form-item">
                                 <x-jet-label for="observaciones">{{ __('Observaciones') }}</x-jet-label>
-                                <input  wire:model.defer="pedido.observaciones" type="text"  class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                                {{-- <input  wire:model.defer="pedido.observaciones" type="text"  class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/> --}}
+                                <textarea  wire:model.defer="pedido.observaciones" rows="1" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></textarea>
                             </div>
+                            @if($showgenerar)
+                            <div class="form-item">
+                                <x-jet-button class="mt-5 bg-blue-600">{{ __('Guardar') }}</x-jet-button>
+                                    <span
+                                        x-data="{ open: false }"
+                                        x-init="
+                                            @this.on('notify-saved', () => {
+                                                if (open === false) setTimeout(() => { open = false }, 2500);
+                                                open = true;
+                                            })
+                                        "
+                                        x-show.transition.out.duration.1000ms="open"
+                                        style="display: none;"
+                                        class="p-2 m-2 text-gray-500 rounded-lg bg-green-50"
+                                        >Saved!</span>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

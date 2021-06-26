@@ -35,6 +35,7 @@
                 <x-table.headgreen class="pl-2">{{ __('Producto') }} </x-table.headgreen>
                 <x-table.headgreen class="pl-2 text-right">{{ __('Uds.') }}</x-table.headgreen>
                 <x-table.headgreen class="pl-2 text-right">{{ __('Coste') }}</x-table.headgreen>
+                <x-table.headgreen class="pl-2 text-right">{{ __('Ud.Compra') }}</x-table.headgreen>
                 <x-table.headgreen class="pr-10 text-right">{{ __('Base (€)') }}</x-table.headgreen>
                 <x-table.headgreen class="pr-10 text-right">{{ __('Total (€)') }}</x-table.headgreen>
                 <x-table.headgreen colspan="2" class="w-1/12"/>
@@ -61,7 +62,14 @@
                     <td>
                         <input  wire:model="detalle.coste" type="number" step="any" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
-
+                    <td>
+                        <x-select wire:model="udcompra"  selectname="udcompra" class="w-full">
+                            <option value="">-- ud compra--</option>
+                            @foreach ($unidades as $ud)
+                            <option value="{{ $ud->sigla }}">{{ $ud->nombre }}</option>
+                            @endforeach>
+                        </x-select>
+                    </td>
                     <x-table.cell>
                         <div class="flex-1 py-1 pr-10 text-sm font-bold text-right text-gray-900 rounded-lg bg-gray-50">
                             @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))

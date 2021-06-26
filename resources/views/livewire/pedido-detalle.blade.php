@@ -19,38 +19,28 @@
             <table table class="min-w-full divide-y divide-gray-200">
                 <thead>
                     <tr>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-yellow-50 ">{{ __('Orden') }}</th>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-yellow-50">{{ __('Producto') }} </th>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-yellow-50">{{ __('Uds.') }}</th>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-yellow-50">{{ __('Coste') }}</th>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-yellow-50">{{ __('% IVA') }}</th>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-yellow-50">{{ __('Base (€)') }}</th>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-yellow-50">{{ __('IVA (€)') }}</th>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-yellow-50">{{ __('Total (€)') }}</th>
-                        <th colspan="2" class="py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-500 bg-yellow-50"> </th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50 ">{{ __('Orden') }}</th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Producto') }} </th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Descripción') }} </th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Uds.') }}</th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Coste') }}</th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Ud.Compra') }}</th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Total (€)') }}</th>
+                        <th colspan="2" class="py-3 text-xs font-medium leading-4 tracking-tighter text-center text-gray-500 bg-yellow-50"> </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @forelse ($detalles as $detalle)
                         <x-table.row wire:loading.class.delay="opacity-50">
                             <x-table.cell class="text-left">{{ $detalle->orden }}</x-table.cell>
-                            <x-table.cell class="text-left">{{ $detalle->producto->referencia }}</x-table.cell>
+                            <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->referencia }}</x-table.cell>
+                            <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->descripcion }}</x-table.cell>
                             <x-table.cell class="text-right">{{ $detalle->cantidad }}</x-table.cell>
                             <x-table.cell class="text-right">{{ $detalle->coste }}</x-table.cell>
-                            <x-table.cell class="text-right">{{ $detalle->iva }}</x-table.cell>
+                            <x-table.cell class="text-right">{{ $detalle->unidadcompra->nombre ?? '-' }}</x-table.cell>
                             <x-table.cell class="text-right">
                                 @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
                                     {{ number_format(round($detalle->cantidad*$detalle->coste, 2),2,',','.') }}
-                                @endif
-                            </x-table.cell>
-                            <x-table.cell class="text-right">
-                                @if(is_numeric($detalle->iva) && is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
-                                    {{ number_format(round($detalle->iva*$detalle->cantidad*$detalle->coste, 2),2,',','.') }}
-                                @endif
-                            </x-table.cell>
-                            <x-table.cell class="text-right">
-                                @if(is_numeric($detalle->iva) && is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
-                                    {{ number_format(round((1+$detalle->iva)*$detalle->cantidad*$detalle->coste, 2),2,',','.') }}
                                 @endif
                             </x-table.cell>
                             <x-table.cell class="text-right">
@@ -76,14 +66,10 @@
                         <td class="pl-2"></td>
                         <td class="pl-2"></td>
                         <td class="pl-2 "></td>
-                        <td class="pl-2">Total</td>
                         <td class="pr-2"></td>
-                        <x-table.cell class="text-right">{{ number_format($base,2,',','.') }}</x-table.cell>
-                        <x-table.cell class="text-right">{{ number_format($totaliva,2,',','.') }}</x-table.cell>
-                        <x-table.cell class="text-right">{{ number_format($total,2,',','.') }}</x-table.cell>
-                        {{-- <td class="pl-2 text-right">{{ number_format($base,2,',','.') }}</td>
-                        <td class="pl-2 text-right">{{ number_format($totaliva,2,',','.') }}</td>
-                        <td class="pl-2 text-right">{{ number_format($total,2,',','.') }}</td> --}}
+                        <td class="pr-2"></td>
+                        <td class="pl-2 text-right">Total</td>
+                        <td class="text-right">{{ number_format($total,2,',','.') }}</td>
                         <td colspan="2" class="w-1/12"></td>
                     </tr>
                 </tfoot>

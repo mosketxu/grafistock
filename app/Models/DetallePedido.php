@@ -9,7 +9,7 @@ class DetallePedido extends Model
 {
     use HasFactory;
 
-    protected $fillable=['pedido_id','producto_id','orden','cantidad','coste','iva'];
+    protected $fillable=['pedido_id','producto_id','orden','cantidad','coste','udcompra','iva'];
 
     public function pedido()
     {
@@ -19,6 +19,10 @@ class DetallePedido extends Model
     public function producto()
     {
         return $this->belongsTo(Producto::class);
+    }
+    public function unidadcompra()
+    {
+        return $this->belongsTo(ProductoUnidadcoste::class,'udcompra','sigla');
     }
 
     public function getBaseAttribute(){

@@ -36,7 +36,7 @@ class PedidoDetalle extends Component
         $detalles = DetallePedido::where('pedido_id', $this->pedido->id)
             ->orderBy('orden')
             ->get();
-
+        // dd($detalles->unidadcompra->nombre);
 
         return view('livewire.pedido-detalle', compact('pedido','detalles'));
     }

@@ -29,4 +29,13 @@ class Entidad extends Model
     {
         return $this->belongsTo(MetodoPago::class);
     }
+
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class);
+    }
+    public function movimientos()
+    {
+        return $this->belongsTo(StockMovimiento::class);
+    }
 }

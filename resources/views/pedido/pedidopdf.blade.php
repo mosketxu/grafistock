@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{{ $pedido->pedido }}</title>
-        <link rel="stylesheet" href="{{ asset('css/pdf.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 
     </head>
     <body classpedidosm">
@@ -16,7 +16,7 @@
                     <tbody>
                         <tr>
                             <td width="24%"></td>
-                            <td width="30%"><img src="{{asset('img/LOGOSUMA_2.jpg')}}"  width="200"></td>
+                            <td width="30%"><img src="{{asset('img/grafitexLogo.png')}}"  width="200"></td>
                             <td width="36%"></td>
                         </tr>
                     </tbody>
@@ -30,7 +30,7 @@
                     <tbody>
                         <tr>
                             <td width="10%"></td>
-                            <td width="30%"><img src="{{asset('img/PieSUMA.jpg')}}" width="500"/></td>
+                            <td width="30%">Grafitex</td>
                             <td width="36%"></td>
                         </tr>
                     </tbody>
@@ -67,58 +67,68 @@
                 </tbody>
             </table>
 
-            {{-- detalle de la factura --}}
+            {{-- detalle del pedido --}}
 
-                <aside style="float:left; margin-left: -20 px; padding-left: 0px;">
-                    <img src="{{asset('img/Reg mercantilSUMAVER2.jpg')}}" width="55"/>
-                </aside>
-                <section style="float:right; text-align: left; margin-left: 100px">
-                    <div style="margin-top:50px; ">
-                    {{-- Fecha y Factura --}}
-                        <div>FECHA: {{ $pedido->fechapedido->format('d-m-Y') }}</div>
-                        <div>FACTURA: {{ $pedido->pedido }}</div>
-                    </div>
-                    <div style="margin-top:50px; ">
-                        @if(count($pedido->pedidodetalles)>0)
-                            {{-- Detalles  --}}
-                            <table width="90%">
-                                @foreach($pedido->pedidodetalles as $detalle)
-                                <tr>
-                                    {{-- <td width="69%">{{ $detalle->tipo=='1' ? 'Suplidos:' :'' }} {{$detalle->concepto}}</td>
-                                    <td width="29%" style="text-align: right" width="50%">{{number_format($detalle->base,2,',','.')}} <span style="font-family: Arial">€</span> </td> --}}
-                                </tr>
-                                @endforeach
-                            </table>
-                            {{-- totales --}}
-                            <table style="margin-top: 20px;" width="90%">
-                                <tr>
-                                    <td width="69%"  style="padding-left: 30px">Base imponible:</td>
-                                    {{-- <td width="29%" style="text-align: right; " width="50%">{{number_format($base,2,',','.')}} <span style="font-family: Arial">€</span></td> --}}
-                                </tr>
-                                {{-- @if($suplidos) --}}
-                                <tr>
-                                    <td width="69%" style="padding-left: 30px">Suplidos:</td>
-                                    {{-- <td width="29%" style="text-align: right" width="50%">{{number_format($suplidos,2,',','.')}} <span style="font-family: Arial">€</span></td> --}}
-                                </tr>
-                                {{-- @endif --}}
-                                <tr>
-                                    <td width="69%" style="padding-left: 30px">IVA 21%:</td>
-                                    {{-- <td width="29%" style="text-align: right" width="50%">{{number_format($totaliva,2,',','.')}} <span style="font-family: Arial">€</span></td> --}}
-                                </tr>
-                                <tr>
-                                    <td width="69%" style="padding-left: 30px">Total:</td>
-                                    {{-- <td width="29%" style="text-align: right" width="50%">{{number_format($total,2,',','.')}} <span style="font-family: Arial">€</span></td> --}}
-                                </tr>
-                            </table>
+            <div style="margin-top:50px; ">
+            {{-- Fecha y Pedido --}}
+                <div>FECHA: {{ $pedido->fechapedido->format('d-m-Y') }}</div>
+                <div>FACTURA: {{ $pedido->pedido }}</div>
+            </div>
 
-
-                            <div style="margin-top:40px">
-                                {{-- <div class="">Condiciones de pago: {{ $pedido->metodopago->metodopago }}</div>
-                                <div class="">Vencimiento: {{ $pedido->fechavencimiento? $pedido->fechavencimiento->format('d-m-Y') : 'A la vista'}}</div> --}}
-                            </div>
-                        @endif
-                    </div>
-                </section>
+            <div class="flex-col">
+                <table table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50 ">{{ __('Orden') }}</th>
+                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Producto') }} </th>
+                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Descripción') }} </th>
+                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Uds.') }}</th>
+                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Coste') }}</th>
+                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Ud.Compra') }}</th>
+                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Base (€)') }}</th>
+                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Total (€)') }}</th>
+                            <th colspan="2" class="py-3 text-xs font-medium leading-4 tracking-tighter text-center text-gray-500 bg-yellow-50"> </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @forelse ($pedido->pedidodetalles as $detalle)
+                            <x-table.row wire:loading.class.delay="opacity-50">
+                                <x-table.cell class="text-left">{{ $detalle->orden }}</x-table.cell>
+                                <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->referencia }}</x-table.cell>
+                                <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->descripcion }}</x-table.cell>
+                                <x-table.cell class="text-right">{{ $detalle->cantidad }}</x-table.cell>
+                                <x-table.cell class="text-right">{{ $detalle->coste }}</x-table.cell>
+                                <x-table.cell class="text-right">{{ $detalle->unidadcompra->nombre ?? '-' }}</x-table.cell>
+                                <x-table.cell class="text-right">
+                                    @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
+                                        {{ number_format(round($detalle->cantidad*$detalle->coste, 2),2,',','.') }}
+                                    @endif
+                                </x-table.cell>
+                            </x-table.row>
+                        @empty
+                            <x-table.row>
+                                <x-table.cell colspan="10">
+                                        <x-icon.inbox class="w-8 h-8 text-gray-300"/>
+                                        <span class="py-5 text-xl font-medium text-gray-500">
+                                            No se han encontrado detalles...
+                                        </span>
+                                    </div>
+                                </x-table.cell>
+                            </x-table.row>
+                        @endforelse
+                    </tbody>
+                    <tfoot class="font-bold divide-y divide-gray-200">
+                        <tr>
+                            <td class="pl-2"></td>
+                            <td class="pl-2"></td>
+                            <td class="pl-2 "></td>
+                            <td class="pl-2">Total</td>
+                            <td class="pr-2"></td>
+                            <x-table.cell class="text-right">{{ number_format($base,2,',','.') }}</x-table.cell>
+                            {{-- <x-table.cell class="text-right">{{ number_format($total,2,',','.') }}</x-table.cell> --}}
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
         </main>
 
