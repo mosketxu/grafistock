@@ -9,7 +9,7 @@ use App\Http\Livewire\DataTable\WithBulkActions;
 
 use Livewire\Component;
 
-class Stocks extends Component
+class StockStatus extends Component
 {
 
     use WithPagination, WithBulkActions;
@@ -26,31 +26,34 @@ class Stocks extends Component
     public function render()
     {
 
+
         if($this->selectAll) $this->selectPageRows();
+
         $stocks = $this->rows;
+
         $proveedores=Entidad::query()
         ->whereHas('pedidos')
         ->orderBy('entidad')
         ->get();
 
         $productos=Producto::query()
-        ->whereIn('id',DetallePedido::select('producto_id'))
+        ->whereHas('pedidodetalles')
         ->when($this->filtroproveedor!='', function ($query){
             $query->where('entidad_id',$this->filtroproveedor);
             })
         ->get();
 
-        return view('livewire.stocks',compact('stocks','proveedores','productos'));
+        return view('livewire.stock-status',compact('stocks','proveedores','productos'));
     }
 
     public function getRowsQueryProperty(){
         return Stock::query()
-            ->with('producto','pedido')
+            ->with('producto')
             ->when($this->filtroproducto!='', function ($query){
                 $query->where('producto_id',$this->filtroproducto);
                 })
             ->when($this->filtroproveedor!='', function ($query){
-                $query->whereHas('pedido',function($q){
+                $query->whereHas('producto.entidad',function($q){
                     $q->where('entidad_id',$this->filtroproveedor);
                     });
                 })
@@ -61,7 +64,7 @@ class Stocks extends Component
     }
 
     public function getRowsProperty(){
-        return $this->rowsQuery->paginate();
+        return $this->rowsQuery->groupBy('producto_id')->selectRaw('producto_id,sum(cantidad) as total')->paginate();
     }
 
     public function exportSelected(){

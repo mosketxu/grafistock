@@ -34,6 +34,12 @@ class Entidad extends Model
     {
         return $this->hasMany(Pedido::class);
     }
+
+    public function productos()
+    {
+        return $this->hasMany(Productos::class);
+    }
+
     public function movimientos()
     {
         return $this->belongsTo(StockMovimiento::class);

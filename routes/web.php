@@ -25,5 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('entidad', EntidadController::class);
     Route::resource('producto', ProductoController::class);
     Route::resource('pedido', PedidoController::class);
+    // Route::get('stock/{productoId}/movimientos', [stockController::class,'movimientos'])->name('stock.movimientos');
     Route::resource('stock', StockController::class);
 });;

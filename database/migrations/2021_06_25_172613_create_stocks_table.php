@@ -20,9 +20,8 @@ class CreateStocksTable extends Migration
             $table->string('tipomovimiento',1);
             $table->integer('cantidad');
             $table->foreignId('producto_id')->constrained('productos');
-            $table->foreignId('pedido_id')->constrained('pedidos');
-            $table->boolean('reentrada')->nullable();
-            $table->string('observaciones');
+            $table->boolean('reentrada')->default(false)->nullable();
+            $table->string('observaciones')->nullable();
             $table->timestamps();
         });
     }

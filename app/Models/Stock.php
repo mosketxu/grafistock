@@ -9,7 +9,7 @@ class Stock extends Model
 {
     use HasFactory;
 
-    protected $fillable=['fechamovimiento','tipomovimiento','cantidad','producto_id','pedido_id','reentrada','observaciones','user_id'];
+    protected $fillable=['fechamovimiento','tipomovimiento','cantidad','producto_id','reentrada','observaciones','user_id'];
 
     protected $casts = [
         'fechamovimiento' => 'date:Y-m-d',
@@ -17,12 +17,9 @@ class Stock extends Model
 
     public function producto()
     {
-        return $this->belongsTo(Producto::class);
+        return $this->belongsTo(Producto::class,'producto_id');
     }
-    public function pedido()
-    {
-        return $this->belongsTo(Pedido::class);
-    }
+
 
     public function user()
     {
@@ -35,6 +32,13 @@ class Stock extends Model
             'S'=>'red',
             'E'=>'green',
         ][$this->tipomovimiento] ?? 'gray';
+    }
+
+    public function getDateMovAttribute()
+    {
+        if ($this->fechamovimiento) {
+            return $this->fechamovimiento->format('d/m/Y');
+        }
     }
 
 }

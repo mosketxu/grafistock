@@ -1,5 +1,4 @@
 <div class="">
-    {{-- @livewire('menu',['stock'=>$stock],key($stock->id)) --}}
     @livewire('menu')
 
     <div class="h-full p-1 mx-2">
@@ -41,7 +40,7 @@
                 </div>
                 <div class="flex flex-row-reverse w-2/12">
                     <div class="pt-3">
-                        <x-button.button  onclick="location.href = '{{ route('stock.create') }}'" color="blue"><x-icon.plus/>{{ __('Nueva E/S') }}</x-button.button>
+                        {{-- <x-button.button  onclick="location.href = '{{ route('stock.create') }}'" color="blue"><x-icon.plus/>{{ __('Nueva E/S') }}</x-button.button> --}}
                     </div>
                 </div>
 
@@ -50,28 +49,22 @@
             <div class="flex-col space-y-4">
                 <x-table>
                     <x-slot name="head">
-                        <x-table.heading class="pl-1 text-left">{{ __('Fecha Mov.') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('E/S') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Cantidad') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Producto') }} </x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Pedido') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Reentrada') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Rpble.Entrada') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Obs') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Descripcion') }} </x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Proveedor') }} </x-table.heading>
+                        <x-table.heading class="pl-1 text-right">{{ __('Cantidad') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-right">{{ __('Detalle') }}</x-table.heading>
                         <x-table.heading colspan="2"/>
                     </x-slot>
 
                     <x-slot name="body">
                         @forelse ($stocks as $stock)
                             <x-table.row wire:loading.class.delay="opacity-50">
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->fechamovimiento}}</td>
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->tipomovimiento}}</td>
-                                <td class="px-1 text-xs leading-5 text-{{ $stock->entrada }}-600 whitespace-no-wrap">{{ $stock->cantidad}}</td>
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->producto->referencia}}></td>
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->pedido->pedido}}</td>
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->reentrada}}</td>
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->user->name}}</td>
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->observaciones}}</td>
+                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->producto->referencia}}</td>
+                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->producto->descripcion}}</td>
+                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->producto->entidad->entidad}}</td>
+                                <td class="px-1 text-xs leading-5 text-{{ $stock->total<0 ? 'red' : 'green' }}-600 whitespace-no-wrap text-right pr-3">{{ $stock->total}}</td>
+                                <td class="px-1 text-xs text-right"><x-icon.eye-a href="{{route('stock.show',$stock->producto->id) }}" class="pt-2 ml-2" title="detalle"/></td>
                             </x-table.row>
                         @empty
                             <x-table.row>

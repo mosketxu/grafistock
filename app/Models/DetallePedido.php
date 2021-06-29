@@ -20,6 +20,7 @@ class DetallePedido extends Model
     {
         return $this->belongsTo(Producto::class);
     }
+
     public function unidadcompra()
     {
         return $this->belongsTo(ProductoUnidadcoste::class,'udcompra','sigla');
