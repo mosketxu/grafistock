@@ -20,8 +20,10 @@ class CreateProductosTable extends Migration
             $table->string('tipo_id',15)->index();
             $table->string('material_id',15)->index();
             $table->double('grosor_mm', 15, 2)->default(0.00)->nullable();
-            $table->integer('ancho_mm')->default(0)->nullable();
-            $table->integer('desarrollo_mm')->default(0)->nullable();
+            $table->integer('ancho')->default(0)->nullable();
+            $table->string('udancho_id',3)->nullable();
+            $table->integer('alto')->default(0)->nullable();
+            $table->string('udalto_id',3)->nullable();
             $table->string('acabado_id',15)->index()->nullable();
             $table->string('grupoproduccion_id',15)->index();
             $table->string('clase_id',15)->index()->nullable();

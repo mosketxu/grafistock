@@ -49,7 +49,6 @@
                 </div>
             @endif
             {{-- <x-jet-validation-errors/> --}}
-
         </div>
 
         {{-- formulario --}}

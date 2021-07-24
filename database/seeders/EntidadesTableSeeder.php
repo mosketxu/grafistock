@@ -14,12 +14,12 @@ class EntidadesTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('entidades')->delete();
-
+        
         \DB::table('entidades')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 1,
                 'entidad' => 'JOSE RUBIO VALENTINE, S.A.',
@@ -30,7 +30,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '297247',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -53,7 +53,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 2,
                 'entidad' => 'XANITA IBERIA, S.L.',
@@ -64,7 +64,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2723268',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -87,7 +87,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 3,
                 'entidad' => '4MES4 TECN.PER L´ACAB.DE L´IMP',
@@ -98,7 +98,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2724602',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -119,9 +119,9 @@ class EntidadesTableSeeder extends Seeder
                 'estado' => 0,
                 'codeoptimus' => '4MES4',
                 'created_at' => NULL,
-                'updated_at' => NULL,
+                'updated_at' => '2021-07-23 16:59:42',
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 4,
                 'entidad' => 'ABACUS, SCCL',
@@ -132,7 +132,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2119871',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -155,7 +155,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            4 =>
+            4 => 
             array (
                 'id' => 5,
                 'entidad' => 'ALCANTARA COLOMA, ABRAHAM',
@@ -166,7 +166,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2425548',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -189,7 +189,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            5 =>
+            5 => 
             array (
                 'id' => 6,
                 'entidad' => 'ABZAC IBERICA, S.A.',
@@ -200,7 +200,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2434795',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -223,7 +223,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            6 =>
+            6 => 
             array (
                 'id' => 7,
                 'entidad' => 'ACCESORIOS CUHER,S.A.',
@@ -234,7 +234,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1564000',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -257,7 +257,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            7 =>
+            7 => 
             array (
                 'id' => 8,
                 'entidad' => 'ACTUALITY QUATRE, S.L.',
@@ -268,7 +268,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '515614',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -291,7 +291,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            8 =>
+            8 => 
             array (
                 'id' => 9,
                 'entidad' => 'AGFA GRAPHICS N.V.',
@@ -302,7 +302,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1219403',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -325,7 +325,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            9 =>
+            9 => 
             array (
                 'id' => 10,
                 'entidad' => 'AIGUES DE BARCELONA, S.A.',
@@ -336,7 +336,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1216841',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -359,7 +359,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            10 =>
+            10 => 
             array (
                 'id' => 11,
                 'entidad' => 'AIT SPPYME, S.L.',
@@ -370,7 +370,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2425995',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -393,7 +393,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            11 =>
+            11 => 
             array (
                 'id' => 12,
                 'entidad' => 'AJUNTAMENT DE BARCELONA',
@@ -404,7 +404,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1812785',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -427,7 +427,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            12 =>
+            12 => 
             array (
                 'id' => 13,
                 'entidad' => 'ALABALL SUMINISTROS IND.,S.L.',
@@ -438,7 +438,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1785941',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -461,7 +461,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            13 =>
+            13 => 
             array (
                 'id' => 14,
                 'entidad' => 'ALBERT SILVESTRE SEGURETAT,S.L',
@@ -472,7 +472,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '158018',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -495,7 +495,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            14 =>
+            14 => 
             array (
                 'id' => 15,
                 'entidad' => 'ALOS MANERO PRODUCTION, SL',
@@ -506,7 +506,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2098934',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -529,7 +529,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            15 =>
+            15 => 
             array (
                 'id' => 16,
                 'entidad' => 'ALQ. VENTA COMPACTADORES, S.L.',
@@ -540,7 +540,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '20615',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -563,7 +563,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            16 =>
+            16 => 
             array (
                 'id' => 17,
                 'entidad' => 'AMBIT DECORACION COMERCIAL, SL',
@@ -574,7 +574,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '472942',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -597,7 +597,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            17 =>
+            17 => 
             array (
                 'id' => 18,
                 'entidad' => 'AN-CAR, S.L.',
@@ -608,7 +608,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2302862',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -631,7 +631,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            18 =>
+            18 => 
             array (
                 'id' => 19,
                 'entidad' => 'ANE STORE, S.L.',
@@ -642,7 +642,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '95485',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -665,7 +665,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            19 =>
+            19 => 
             array (
                 'id' => 20,
                 'entidad' => 'ANTALIS IBERIA, S.A.',
@@ -676,7 +676,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '235507',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -699,7 +699,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            20 =>
+            20 => 
             array (
                 'id' => 21,
                 'entidad' => 'AP PHOTO INDUSTRIES,SL',
@@ -710,7 +710,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '891078',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -733,7 +733,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            21 =>
+            21 => 
             array (
                 'id' => 22,
                 'entidad' => 'A.P.A. ESPAÑA, S.L.',
@@ -744,7 +744,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '415537',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -765,9 +765,9 @@ class EntidadesTableSeeder extends Seeder
                 'estado' => 0,
                 'codeoptimus' => 'APA',
                 'created_at' => NULL,
-                'updated_at' => NULL,
+                'updated_at' => '2021-07-23 16:59:58',
             ),
-            22 =>
+            22 => 
             array (
                 'id' => 23,
                 'entidad' => 'APLICCA IDENTITY SOLUTIONS, SL',
@@ -778,7 +778,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2737786',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -801,7 +801,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            23 =>
+            23 => 
             array (
                 'id' => 24,
                 'entidad' => 'APPLUS ITEUVE TECHNOLOGY, S.L.',
@@ -812,7 +812,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2442318',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -835,7 +835,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            24 =>
+            24 => 
             array (
                 'id' => 25,
                 'entidad' => 'AQUALOGY SOLUTIONS, SA',
@@ -846,7 +846,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '664900',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -869,7 +869,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            25 =>
+            25 => 
             array (
                 'id' => 26,
                 'entidad' => 'ARMTEX, S.L.',
@@ -880,7 +880,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2664210',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -903,7 +903,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            26 =>
+            26 => 
             array (
                 'id' => 27,
                 'entidad' => 'ARQUIDIB, S.L.',
@@ -914,7 +914,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1326354',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -937,7 +937,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            27 =>
+            27 => 
             array (
                 'id' => 28,
                 'entidad' => 'ARTROK, S.L.',
@@ -948,7 +948,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1972474',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -971,7 +971,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            28 =>
+            28 => 
             array (
                 'id' => 29,
                 'entidad' => 'ARYSTON, SCP',
@@ -982,7 +982,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2549974',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1005,7 +1005,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            29 =>
+            29 => 
             array (
                 'id' => 30,
                 'entidad' => 'ASM SUPPLY CHAIN SOLUTIONS, S.',
@@ -1016,7 +1016,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '165782',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1039,7 +1039,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            30 =>
+            30 => 
             array (
                 'id' => 31,
                 'entidad' => 'ASOC.NOTARIOS RDA.UNIVERS,CB',
@@ -1050,7 +1050,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3178987',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1073,7 +1073,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            31 =>
+            31 => 
             array (
                 'id' => 32,
                 'entidad' => 'ASTEVA, S.L.',
@@ -1084,7 +1084,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2064256',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1107,7 +1107,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            32 =>
+            32 => 
             array (
                 'id' => 33,
                 'entidad' => 'AUTO BUIGAS, S.L.',
@@ -1118,7 +1118,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '784319',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1141,7 +1141,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            33 =>
+            33 => 
             array (
                 'id' => 34,
                 'entidad' => 'AVANTI AVANTI ESTUDIO, S.L.',
@@ -1152,7 +1152,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1062163',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1175,7 +1175,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            34 =>
+            34 => 
             array (
                 'id' => 35,
                 'entidad' => 'BANCO POPULAR LEASING',
@@ -1186,7 +1186,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2957855',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1209,7 +1209,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            35 =>
+            35 => 
             array (
                 'id' => 36,
                 'entidad' => 'BANCO SABADELL, S.A.',
@@ -1220,7 +1220,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1602789',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1243,7 +1243,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            36 =>
+            36 => 
             array (
                 'id' => 37,
                 'entidad' => 'BARCINO PACK',
@@ -1254,7 +1254,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2473714',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1277,7 +1277,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            37 =>
+            37 => 
             array (
                 'id' => 38,
                 'entidad' => 'BAYOT-COLLADO, S.L.',
@@ -1288,7 +1288,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '893535',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1311,7 +1311,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            38 =>
+            38 => 
             array (
                 'id' => 39,
                 'entidad' => 'B.BILBAO VIZCAYA ARGENTARIA,SA',
@@ -1322,7 +1322,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '379865',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1345,7 +1345,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            39 =>
+            39 => 
             array (
                 'id' => 40,
                 'entidad' => 'BEA HISPANIA, S.A.',
@@ -1356,7 +1356,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2552054',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1379,7 +1379,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            40 =>
+            40 => 
             array (
                 'id' => 41,
                 'entidad' => 'BELDOSERJOS, S.L.',
@@ -1390,7 +1390,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1620675',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1413,7 +1413,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            41 =>
+            41 => 
             array (
                 'id' => 42,
                 'entidad' => 'BNP PARIBAS GROUP, S.A.',
@@ -1424,7 +1424,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '447215',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1447,7 +1447,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            42 =>
+            42 => 
             array (
                 'id' => 43,
                 'entidad' => 'BOLETIN OFICIAL DEL ESTADO',
@@ -1458,7 +1458,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '707382',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1481,7 +1481,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            43 =>
+            43 => 
             array (
                 'id' => 44,
                 'entidad' => 'BUFETE ZAMORA, SCP',
@@ -1492,7 +1492,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2195266',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1515,7 +1515,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            44 =>
+            44 => 
             array (
                 'id' => 45,
                 'entidad' => 'BUFETE ANTRAS ABOGADOS AS.,SL',
@@ -1526,7 +1526,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2187519',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1549,7 +1549,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            45 =>
+            45 => 
             array (
                 'id' => 46,
                 'entidad' => 'COMERCIAL ANTONIO GARRIGA, S.A',
@@ -1560,7 +1560,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1018463',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1583,7 +1583,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            46 =>
+            46 => 
             array (
                 'id' => 47,
                 'entidad' => 'COMUNICACION SPANDEX ESPAÑA,SA',
@@ -1594,7 +1594,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1863091',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1617,7 +1617,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            47 =>
+            47 => 
             array (
                 'id' => 48,
                 'entidad' => 'COMERCIAL MAIN, S.A.',
@@ -1628,7 +1628,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2926734',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1651,7 +1651,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            48 =>
+            48 => 
             array (
                 'id' => 49,
                 'entidad' => 'CABLES MORENO, SCP',
@@ -1662,7 +1662,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2377731',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1685,7 +1685,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            49 =>
+            49 => 
             array (
                 'id' => 50,
                 'entidad' => 'CAIXABANK, S.A.',
@@ -1696,7 +1696,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3108453',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1719,7 +1719,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            50 =>
+            50 => 
             array (
                 'id' => 51,
                 'entidad' => 'CALVO SERVEI TECNIC, SCP',
@@ -1730,7 +1730,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1742405',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1753,7 +1753,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            51 =>
+            51 => 
             array (
                 'id' => 52,
                 'entidad' => 'CAMBRA DE LA PROP. URB.DE BCN',
@@ -1764,7 +1764,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2720001',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1787,7 +1787,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            52 =>
+            52 => 
             array (
                 'id' => 53,
                 'entidad' => 'JAIME CAMPMANY',
@@ -1798,7 +1798,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1706121',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1821,7 +1821,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            53 =>
+            53 => 
             array (
                 'id' => 54,
                 'entidad' => 'CARTON NIDO DE ABEJA,S.L',
@@ -1832,7 +1832,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '370605',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1855,7 +1855,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            54 =>
+            54 => 
             array (
                 'id' => 55,
                 'entidad' => 'CARTONATGES TERRASSA, S.L.',
@@ -1866,7 +1866,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '67995',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1889,7 +1889,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            55 =>
+            55 => 
             array (
                 'id' => 56,
                 'entidad' => 'CASTELLS VILASECA, S.L.',
@@ -1900,7 +1900,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2561495',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1923,7 +1923,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            56 =>
+            56 => 
             array (
                 'id' => 57,
                 'entidad' => 'CAT.INT DE PLV Y EQUIP., S.L.',
@@ -1934,7 +1934,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2603488',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1957,7 +1957,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            57 =>
+            57 => 
             array (
                 'id' => 58,
                 'entidad' => 'CAVI C.B.',
@@ -1968,7 +1968,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1999623',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -1991,7 +1991,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            58 =>
+            58 => 
             array (
                 'id' => 59,
                 'entidad' => 'CD CORTE UNIVERSAL, S.L.',
@@ -2002,7 +2002,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2187650',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2025,7 +2025,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            59 =>
+            59 => 
             array (
                 'id' => 60,
                 'entidad' => 'CERPROKEM, S.L.',
@@ -2036,7 +2036,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1606047',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2059,7 +2059,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            60 =>
+            60 => 
             array (
                 'id' => 61,
                 'entidad' => 'CHIKY DIGITAL, S.L.',
@@ -2070,7 +2070,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1467287',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2093,7 +2093,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            61 =>
+            61 => 
             array (
                 'id' => 62,
                 'entidad' => 'COMERCIAL JACINTO PARERA,SA',
@@ -2104,7 +2104,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2518292',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2127,7 +2127,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            62 =>
+            62 => 
             array (
                 'id' => 63,
                 'entidad' => 'CLAPERA ESTELA, ROGER',
@@ -2138,7 +2138,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1522936',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2161,7 +2161,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            63 =>
+            63 => 
             array (
                 'id' => 64,
                 'entidad' => 'CLARKET MODET, CO',
@@ -2172,7 +2172,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '59801',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2195,7 +2195,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            64 =>
+            64 => 
             array (
                 'id' => 65,
                 'entidad' => 'COLORS INTEGRAL, S.L.',
@@ -2206,7 +2206,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2396864',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2229,7 +2229,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            65 =>
+            65 => 
             array (
                 'id' => 66,
                 'entidad' => 'COMERCIAL BOLSERA, S.L.',
@@ -2240,7 +2240,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1804920',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2263,7 +2263,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            66 =>
+            66 => 
             array (
                 'id' => 67,
                 'entidad' => 'COMGRAFIC, S.A.',
@@ -2274,7 +2274,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1834005',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2297,7 +2297,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            67 =>
+            67 => 
             array (
                 'id' => 68,
                 'entidad' => 'COMPLAS BARCELONA, S.A.',
@@ -2308,7 +2308,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '421933',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2331,7 +2331,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            68 =>
+            68 => 
             array (
                 'id' => 69,
                 'entidad' => 'COMPLETGRAF, SCP',
@@ -2342,7 +2342,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3274316',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2365,7 +2365,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            69 =>
+            69 => 
             array (
                 'id' => 70,
                 'entidad' => 'COMPRESORES QUI-TO, S.A.',
@@ -2376,7 +2376,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1772450',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2399,7 +2399,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            70 =>
+            70 => 
             array (
                 'id' => 71,
                 'entidad' => 'CONDAL COPIERS, S.L.',
@@ -2410,7 +2410,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2372636',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2433,7 +2433,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            71 =>
+            71 => 
             array (
                 'id' => 72,
                 'entidad' => 'CONDAL FORMULARIOS, S.L.',
@@ -2444,7 +2444,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3212497',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2467,7 +2467,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            72 =>
+            72 => 
             array (
                 'id' => 73,
                 'entidad' => 'CONFEX,S.A.',
@@ -2478,7 +2478,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2277910',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2501,7 +2501,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            73 =>
+            73 => 
             array (
                 'id' => 74,
                 'entidad' => 'CONTRA&ENCUNYS, S.L.',
@@ -2512,7 +2512,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1752058',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2535,7 +2535,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            74 =>
+            74 => 
             array (
                 'id' => 75,
                 'entidad' => 'COSTE ARAGONES, JOSE MARIA',
@@ -2546,7 +2546,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1926562',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2569,7 +2569,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            75 =>
+            75 => 
             array (
                 'id' => 76,
                 'entidad' => 'TOUS ALSINA, JAUME',
@@ -2580,7 +2580,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1043304',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2603,7 +2603,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            76 =>
+            76 => 
             array (
                 'id' => 77,
                 'entidad' => 'CRUZ JIMENEZ, MIGUEL',
@@ -2614,7 +2614,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2770166',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2637,7 +2637,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            77 =>
+            77 => 
             array (
                 'id' => 78,
                 'entidad' => 'CSI, S.L.',
@@ -2648,7 +2648,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '720921',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2671,7 +2671,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            78 =>
+            78 => 
             array (
                 'id' => 79,
                 'entidad' => 'CULLA  ALABEDRA, ALEX',
@@ -2682,7 +2682,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1960770',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2705,7 +2705,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            79 =>
+            79 => 
             array (
                 'id' => 80,
                 'entidad' => 'DAVIDGRAF MANIPULATS, S.L.',
@@ -2716,7 +2716,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '974424',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2739,7 +2739,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            80 =>
+            80 => 
             array (
                 'id' => 81,
                 'entidad' => 'DE LA CAL CABELLO, SUSANA',
@@ -2750,7 +2750,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2323143',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2773,7 +2773,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            81 =>
+            81 => 
             array (
                 'id' => 82,
                 'entidad' => 'DE LAGE LANDEN INTERNATIONAL B',
@@ -2784,7 +2784,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2025777',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2807,7 +2807,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            82 =>
+            82 => 
             array (
                 'id' => 83,
                 'entidad' => 'DEL RIO CARTONATGES, S.L.U.',
@@ -2818,7 +2818,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3159456',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2841,7 +2841,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            83 =>
+            83 => 
             array (
                 'id' => 84,
                 'entidad' => 'DGM SISTEMAS DE CIERRE, S.L.',
@@ -2852,7 +2852,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3053283',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2875,7 +2875,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            84 =>
+            84 => 
             array (
                 'id' => 85,
                 'entidad' => 'DHL EXPRESS BCN SPAIN, S.L.',
@@ -2886,7 +2886,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2454713',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2909,7 +2909,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            85 =>
+            85 => 
             array (
                 'id' => 86,
                 'entidad' => 'DIAZ-PLAZA, CANDELAS  CIA, S.A',
@@ -2920,7 +2920,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3113718',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2943,7 +2943,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            86 =>
+            86 => 
             array (
                 'id' => 87,
                 'entidad' => 'DIGIPRINT CENTER, S.L.',
@@ -2954,7 +2954,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1537784',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -2977,7 +2977,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            87 =>
+            87 => 
             array (
                 'id' => 88,
                 'entidad' => 'DIMAS COSTA, PERE',
@@ -2988,7 +2988,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1681100',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3011,7 +3011,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            88 =>
+            88 => 
             array (
                 'id' => 89,
                 'entidad' => 'DIOTRONIC, S.A.',
@@ -3022,7 +3022,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '458814',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3045,7 +3045,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            89 =>
+            89 => 
             array (
                 'id' => 90,
                 'entidad' => 'DIR MENSAJERIA Y TRANSPOR., SL',
@@ -3056,7 +3056,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '584102',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3079,7 +3079,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            90 =>
+            90 => 
             array (
                 'id' => 91,
                 'entidad' => 'DISET CONTROL DE PLAGAS, SCP',
@@ -3090,7 +3090,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1544070',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3113,7 +3113,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            91 =>
+            91 => 
             array (
                 'id' => 92,
                 'entidad' => 'DOMINGUEZ SANCHEZ, PEDRO',
@@ -3124,7 +3124,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2634709',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3147,7 +3147,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            92 =>
+            92 => 
             array (
                 'id' => 93,
                 'entidad' => 'DORGRAF, S.L.',
@@ -3158,7 +3158,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1874672',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3181,7 +3181,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            93 =>
+            93 => 
             array (
                 'id' => 94,
                 'entidad' => 'DPI´S SUMINIST. DIGITALES, S.A',
@@ -3192,7 +3192,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1469233',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3215,7 +3215,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            94 =>
+            94 => 
             array (
                 'id' => 95,
                 'entidad' => 'DUARTE BARRERO, AURORA',
@@ -3226,7 +3226,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1722148',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3249,7 +3249,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            95 =>
+            95 => 
             array (
                 'id' => 96,
                 'entidad' => 'DUEDAS PEREZ, JAVIER',
@@ -3260,7 +3260,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '869707',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3283,7 +3283,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            96 =>
+            96 => 
             array (
                 'id' => 97,
                 'entidad' => 'DUGOPA, S.A.',
@@ -3294,7 +3294,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2515425',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3317,7 +3317,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            97 =>
+            97 => 
             array (
                 'id' => 98,
                 'entidad' => 'DUMON, S.L.',
@@ -3328,7 +3328,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3301340',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3351,7 +3351,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            98 =>
+            98 => 
             array (
                 'id' => 99,
                 'entidad' => 'DURST IMAGE TECHNO. IBERICA,SA',
@@ -3362,7 +3362,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2293756',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3385,7 +3385,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            99 =>
+            99 => 
             array (
                 'id' => 100,
                 'entidad' => 'EJES EXPANSIBLES EJEMATIC, S.L',
@@ -3396,7 +3396,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1564761',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3419,7 +3419,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            100 =>
+            100 => 
             array (
                 'id' => 101,
                 'entidad' => 'EL CLUB ASESOR INTERSOFT, S.L.',
@@ -3430,7 +3430,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '942539',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3453,7 +3453,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            101 =>
+            101 => 
             array (
                 'id' => 102,
                 'entidad' => 'EL GUANTE INDUSTRIAL, C.B.',
@@ -3464,7 +3464,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '18409',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3487,7 +3487,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            102 =>
+            102 => 
             array (
                 'id' => 103,
                 'entidad' => 'ELCON IBERICA, S.A.',
@@ -3498,7 +3498,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '597764',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3521,7 +3521,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            103 =>
+            103 => 
             array (
                 'id' => 104,
                 'entidad' => 'ELECTRO ACUSTICA CONDAL, S.A.',
@@ -3532,7 +3532,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2933592',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3555,7 +3555,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            104 =>
+            104 => 
             array (
                 'id' => 105,
                 'entidad' => 'ELECTRONICS FOR IMAGING B.V.',
@@ -3566,7 +3566,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2874668',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3589,7 +3589,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            105 =>
+            105 => 
             array (
                 'id' => 106,
                 'entidad' => 'ELLEN DIEDRICH',
@@ -3600,7 +3600,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2239230',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3623,7 +3623,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            106 =>
+            106 => 
             array (
                 'id' => 107,
                 'entidad' => 'EMASER MAD, S.L.',
@@ -3634,7 +3634,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2572147',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3657,7 +3657,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            107 =>
+            107 => 
             array (
                 'id' => 108,
                 'entidad' => 'EMASER MARKET,S.L.',
@@ -3668,7 +3668,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2809714',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3691,7 +3691,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            108 =>
+            108 => 
             array (
                 'id' => 109,
                 'entidad' => 'EMBALAJES Y GRAPAS, S.A.',
@@ -3702,7 +3702,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2998795',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3725,7 +3725,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            109 =>
+            109 => 
             array (
                 'id' => 110,
                 'entidad' => 'EMBALATGES REUS, S.L.',
@@ -3736,7 +3736,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3231498',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3759,7 +3759,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            110 =>
+            110 => 
             array (
                 'id' => 111,
                 'entidad' => 'EMILIANO MARTIN, S.A.',
@@ -3770,7 +3770,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '494442',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3793,7 +3793,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            111 =>
+            111 => 
             array (
                 'id' => 112,
                 'entidad' => 'ENCUADERNADORA RAPID, SCCL',
@@ -3804,7 +3804,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2777714',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3827,7 +3827,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            112 =>
+            112 => 
             array (
                 'id' => 113,
                 'entidad' => 'ENCRI, SCP',
@@ -3838,7 +3838,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2405245',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3861,7 +3861,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            113 =>
+            113 => 
             array (
                 'id' => 114,
                 'entidad' => 'ENCUADERNACIONS RUEDA 99, S.L.',
@@ -3872,7 +3872,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '359752',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3895,7 +3895,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            114 =>
+            114 => 
             array (
                 'id' => 115,
                 'entidad' => 'ENDUTEX IBERICA,S.A',
@@ -3906,7 +3906,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1249689',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3929,7 +3929,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            115 =>
+            115 => 
             array (
                 'id' => 116,
                 'entidad' => 'ENOVA MEDITERRANEA, S.L.',
@@ -3940,7 +3940,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1835855',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3963,7 +3963,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            116 =>
+            116 => 
             array (
                 'id' => 117,
                 'entidad' => 'ESKO-GRAPHICS NV',
@@ -3974,7 +3974,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2096877',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -3997,7 +3997,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            117 =>
+            117 => 
             array (
                 'id' => 118,
                 'entidad' => 'ESPALLARGAS I TROTÉ, XAVIER',
@@ -4008,7 +4008,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1643488',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4031,7 +4031,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            118 =>
+            118 => 
             array (
                 'id' => 119,
                 'entidad' => 'ESPRINT 2006, S.L.',
@@ -4042,7 +4042,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1926808',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4065,7 +4065,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            119 =>
+            119 => 
             array (
                 'id' => 120,
                 'entidad' => 'ESSENTRA COMPONENTS S.L.U.',
@@ -4076,7 +4076,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1370243',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4099,7 +4099,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            120 =>
+            120 => 
             array (
                 'id' => 121,
                 'entidad' => 'EVESTI ARNA, S.L.',
@@ -4110,7 +4110,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1070791',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4133,7 +4133,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            121 =>
+            121 => 
             array (
                 'id' => 122,
                 'entidad' => 'EXPAND INTERNATIONAL AB',
@@ -4144,7 +4144,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1243225',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4167,7 +4167,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            122 =>
+            122 => 
             array (
                 'id' => 123,
                 'entidad' => 'FERRETERIA JANE, S.A.',
@@ -4178,7 +4178,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3003753',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4201,7 +4201,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            123 =>
+            123 => 
             array (
                 'id' => 124,
                 'entidad' => 'FABRICANTE DE ETIQUETAS, S.L.',
@@ -4212,7 +4212,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1289093',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4235,7 +4235,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            124 =>
+            124 => 
             array (
                 'id' => 125,
                 'entidad' => 'FARGAS FLORIACH, JUAN',
@@ -4246,7 +4246,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '767537',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4269,7 +4269,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            125 =>
+            125 => 
             array (
                 'id' => 126,
                 'entidad' => 'FARRES DE ROCAFIGUERA NOT.,SCP',
@@ -4280,7 +4280,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3303740',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4303,7 +4303,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            126 =>
+            126 => 
             array (
                 'id' => 127,
                 'entidad' => 'FARRES USTRELL, JOAN CARLES',
@@ -4314,7 +4314,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '882758',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4337,7 +4337,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            127 =>
+            127 => 
             array (
                 'id' => 128,
                 'entidad' => 'FARRRES VILAFORT, MANUEL',
@@ -4348,7 +4348,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1169234',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4371,7 +4371,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            128 =>
+            128 => 
             array (
                 'id' => 129,
                 'entidad' => 'FAST PACK, S.L.',
@@ -4382,7 +4382,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3197899',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4405,7 +4405,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            129 =>
+            129 => 
             array (
                 'id' => 130,
                 'entidad' => 'FEDRIGONI ESPAÑA, S.L.',
@@ -4416,7 +4416,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2481791',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4439,7 +4439,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            130 =>
+            130 => 
             array (
                 'id' => 131,
                 'entidad' => 'FERNANDEZ BARRIOS, ANTONIO',
@@ -4450,7 +4450,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2815258',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4473,7 +4473,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            131 =>
+            131 => 
             array (
                 'id' => 132,
                 'entidad' => 'FERRETERIA PUIG, S.L.',
@@ -4484,7 +4484,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3297587',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4507,7 +4507,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            132 =>
+            132 => 
             array (
                 'id' => 133,
                 'entidad' => 'FLAPPING FORMAT,S.L.',
@@ -4518,7 +4518,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1375492',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4541,7 +4541,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            133 =>
+            133 => 
             array (
                 'id' => 134,
                 'entidad' => 'FM DISSENY, SCP',
@@ -4552,7 +4552,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '318033',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4575,7 +4575,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            134 =>
+            134 => 
             array (
                 'id' => 135,
                 'entidad' => 'FM PUBLICATIONS, S.L.',
@@ -4586,7 +4586,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '797022',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4609,7 +4609,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            135 =>
+            135 => 
             array (
                 'id' => 136,
                 'entidad' => 'FONERIA UNIO, S.L.',
@@ -4620,7 +4620,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3031013',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4643,7 +4643,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            136 =>
+            136 => 
             array (
                 'id' => 137,
                 'entidad' => 'FORMATO 3 SERV. MARK.DIRECT,SA',
@@ -4654,7 +4654,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2763998',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4677,7 +4677,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            137 =>
+            137 => 
             array (
                 'id' => 138,
                 'entidad' => 'FORMATO DIGITAL ACTI. PUB., SL',
@@ -4688,7 +4688,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1393619',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4711,7 +4711,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            138 =>
+            138 => 
             array (
                 'id' => 139,
                 'entidad' => 'FORMATOS SERVEIS GRAFICS, S.L.',
@@ -4722,7 +4722,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2009435',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4745,7 +4745,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            139 =>
+            139 => 
             array (
                 'id' => 140,
                 'entidad' => 'FORNOS MESTRES, ALBERT',
@@ -4756,7 +4756,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2532984',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4779,7 +4779,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            140 =>
+            140 => 
             array (
                 'id' => 141,
                 'entidad' => 'FORTUMAC, S.L.',
@@ -4790,7 +4790,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3303284',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4813,7 +4813,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            141 =>
+            141 => 
             array (
                 'id' => 142,
                 'entidad' => 'FRANCESC CODINA, S.L.',
@@ -4824,7 +4824,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2250802',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4847,7 +4847,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            142 =>
+            142 => 
             array (
                 'id' => 143,
                 'entidad' => 'FUJIFILM ESPANA, S.A.',
@@ -4858,7 +4858,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1344156',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4881,7 +4881,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            143 =>
+            143 => 
             array (
                 'id' => 144,
                 'entidad' => 'FUNDACIO INDUSTRIES GRAFIQUES',
@@ -4892,7 +4892,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3301709',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4915,7 +4915,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            144 =>
+            144 => 
             array (
                 'id' => 145,
                 'entidad' => 'GRAFICA IMPULS, S.L.',
@@ -4926,7 +4926,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2476077',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4949,7 +4949,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            145 =>
+            145 => 
             array (
                 'id' => 146,
                 'entidad' => 'GARRIGA LUJAN, AIDA',
@@ -4960,7 +4960,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2475260',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -4983,7 +4983,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            146 =>
+            146 => 
             array (
                 'id' => 147,
                 'entidad' => 'GEVEKO',
@@ -4994,7 +4994,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1614737',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5017,7 +5017,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            147 =>
+            147 => 
             array (
                 'id' => 148,
                 'entidad' => 'GLOBAL FILMS BARCELONA, S.L.',
@@ -5028,7 +5028,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '647902',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5051,7 +5051,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            148 =>
+            148 => 
             array (
                 'id' => 149,
                 'entidad' => 'GLOBAL PRODUCTIONS INTEGRAL,SL',
@@ -5062,7 +5062,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1728632',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5085,7 +5085,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            149 =>
+            149 => 
             array (
                 'id' => 150,
                 'entidad' => 'GLOBOS Y MAPAS, S.L.',
@@ -5096,7 +5096,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '32790',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5119,7 +5119,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            150 =>
+            150 => 
             array (
                 'id' => 151,
                 'entidad' => 'GOMEZ VENTURA, EMILIANO',
@@ -5130,7 +5130,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1644718',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5153,7 +5153,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            151 =>
+            151 => 
             array (
                 'id' => 152,
                 'entidad' => 'GONELL GALINDO, MANEL',
@@ -5164,7 +5164,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1458557',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5187,7 +5187,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            152 =>
+            152 => 
             array (
                 'id' => 153,
                 'entidad' => 'GRAFI-IMAGE',
@@ -5198,7 +5198,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2358630',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5221,7 +5221,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            153 =>
+            153 => 
             array (
                 'id' => 154,
                 'entidad' => 'GRAFICAS 94, HMNOS. MOLINA,SL',
@@ -5232,7 +5232,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '750812',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5255,7 +5255,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            154 =>
+            154 => 
             array (
                 'id' => 155,
                 'entidad' => 'GRAFILART SUM. Y SERV. GRAF,SL',
@@ -5266,7 +5266,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '11502',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5289,7 +5289,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            155 =>
+            155 => 
             array (
                 'id' => 156,
                 'entidad' => 'Grafitex',
@@ -5300,7 +5300,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1138408',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5323,7 +5323,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            156 =>
+            156 => 
             array (
                 'id' => 157,
                 'entidad' => 'GRAFITYP ESPAÑA, S.A.',
@@ -5334,7 +5334,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2324200',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5357,7 +5357,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            157 =>
+            157 => 
             array (
                 'id' => 158,
                 'entidad' => 'GRAVATS GRAVIMON, S.L.',
@@ -5368,7 +5368,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1539110',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5391,7 +5391,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            158 =>
+            158 => 
             array (
                 'id' => 159,
                 'entidad' => 'GREGORIO ARELLANO, EUSEBIO',
@@ -5402,7 +5402,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '722950',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5425,7 +5425,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            159 =>
+            159 => 
             array (
                 'id' => 160,
                 'entidad' => 'GREMI D´INDUSTR. GRAF. DE BCN',
@@ -5436,7 +5436,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2330752',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5459,7 +5459,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            160 =>
+            160 => 
             array (
                 'id' => 161,
                 'entidad' => 'GRUPO ENCUADERNADOR LAR, S.L.',
@@ -5470,7 +5470,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2818247',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5493,7 +5493,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            161 =>
+            161 => 
             array (
                 'id' => 162,
                 'entidad' => 'GRUPART ALTEX, S.L.',
@@ -5504,7 +5504,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '432313',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5527,7 +5527,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            162 =>
+            162 => 
             array (
                 'id' => 163,
                 'entidad' => 'GR. RAFAEL THE IMAGE COMP.,SL',
@@ -5538,7 +5538,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '373489',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5561,7 +5561,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            163 =>
+            163 => 
             array (
                 'id' => 164,
                 'entidad' => 'GUIA DE PRENSA, S.L.',
@@ -5572,7 +5572,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '570504',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5595,7 +5595,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            164 =>
+            164 => 
             array (
                 'id' => 165,
                 'entidad' => 'MAQ. ARTES GRAF. HARTMANN,SLU',
@@ -5606,7 +5606,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1732056',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5629,7 +5629,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            165 =>
+            165 => 
             array (
                 'id' => 166,
                 'entidad' => 'HENCHE TECNOL.GRAF.INDUST.,S.A',
@@ -5640,7 +5640,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '282102',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5663,7 +5663,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            166 =>
+            166 => 
             array (
                 'id' => 167,
                 'entidad' => 'HERRAMIENTAS SALVADOR, S.L.',
@@ -5674,7 +5674,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2881008',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5697,7 +5697,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            167 =>
+            167 => 
             array (
                 'id' => 168,
                 'entidad' => 'HEXIS GRAPHICS ESPAÑA, S.L.',
@@ -5708,7 +5708,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '225402',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5731,7 +5731,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            168 =>
+            168 => 
             array (
                 'id' => 169,
                 'entidad' => 'HICIMEX SERVICIOS, S.L.',
@@ -5742,7 +5742,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2483987',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5765,7 +5765,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            169 =>
+            169 => 
             array (
                 'id' => 170,
                 'entidad' => 'HIPER ALUMINIO, S.A.',
@@ -5776,7 +5776,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1743729',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5799,7 +5799,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            170 =>
+            170 => 
             array (
                 'id' => 171,
                 'entidad' => 'HL DISPLAY, S.A.',
@@ -5810,7 +5810,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1266683',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5833,7 +5833,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            171 =>
+            171 => 
             array (
                 'id' => 172,
                 'entidad' => 'HOLZ INTER, S.L.',
@@ -5844,7 +5844,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1102229',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5867,7 +5867,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            172 =>
+            172 => 
             array (
                 'id' => 173,
                 'entidad' => 'HEWLETT-PACKARD INDIGO BV',
@@ -5878,7 +5878,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1711097',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5901,7 +5901,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            173 =>
+            173 => 
             array (
                 'id' => 174,
                 'entidad' => 'IBERDROLA GENERACION, S.A.U.',
@@ -5912,7 +5912,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1915465',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5935,7 +5935,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            174 =>
+            174 => 
             array (
                 'id' => 175,
                 'entidad' => 'IBERICAR KELDENICH, S.L.',
@@ -5946,7 +5946,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1110701',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -5969,7 +5969,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            175 =>
+            175 => 
             array (
                 'id' => 176,
                 'entidad' => 'ID GRUP, S.A.',
@@ -5980,7 +5980,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3140441',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6003,7 +6003,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            176 =>
+            176 => 
             array (
                 'id' => 177,
                 'entidad' => 'IKEA IBÉRICA, S.A.',
@@ -6014,7 +6014,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2370106',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6037,7 +6037,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            177 =>
+            177 => 
             array (
                 'id' => 178,
                 'entidad' => 'IMPRESIONES ON LINE, S.L.',
@@ -6048,7 +6048,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2429208',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6071,7 +6071,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            178 =>
+            178 => 
             array (
                 'id' => 179,
                 'entidad' => 'INDUSTRIAS DEU, S.A.',
@@ -6082,7 +6082,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1702387',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6105,7 +6105,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            179 =>
+            179 => 
             array (
                 'id' => 180,
                 'entidad' => 'INDICE, S.L.',
@@ -6116,7 +6116,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1224314',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6139,7 +6139,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            180 =>
+            180 => 
             array (
                 'id' => 181,
                 'entidad' => 'INDIGRA, S.L.',
@@ -6150,7 +6150,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1014406',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6173,7 +6173,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            181 =>
+            181 => 
             array (
                 'id' => 182,
                 'entidad' => 'FORNOS GALLARDO, RAMON',
@@ -6184,7 +6184,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1399090',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6207,7 +6207,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            182 =>
+            182 => 
             array (
                 'id' => 183,
                 'entidad' => 'INFORMA D&B, S.A.',
@@ -6218,7 +6218,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '618898',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6241,7 +6241,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            183 =>
+            183 => 
             array (
                 'id' => 184,
                 'entidad' => 'INGERGA, S.L.',
@@ -6252,7 +6252,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2230553',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6275,7 +6275,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            184 =>
+            184 => 
             array (
                 'id' => 185,
                 'entidad' => 'INGLET, S.L.',
@@ -6286,7 +6286,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2629403',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6309,7 +6309,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            185 =>
+            185 => 
             array (
                 'id' => 186,
                 'entidad' => 'INSTALUZ LLOBREGAT, S.L.',
@@ -6320,7 +6320,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3122026',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6343,7 +6343,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            186 =>
+            186 => 
             array (
                 'id' => 187,
                 'entidad' => 'ITX MERKEN BV FRIBOURG BRANCH',
@@ -6354,7 +6354,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1055254',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6377,7 +6377,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            187 =>
+            187 => 
             array (
                 'id' => 188,
                 'entidad' => 'JUGUETES TEIXIDO, S.C.P.',
@@ -6388,7 +6388,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2576860',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6411,7 +6411,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            188 =>
+            188 => 
             array (
                 'id' => 189,
                 'entidad' => 'JUAN A. VELASCO, S.L.',
@@ -6422,7 +6422,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3051870',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6445,7 +6445,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            189 =>
+            189 => 
             array (
                 'id' => 190,
                 'entidad' => 'JORGE HERNANDEZ, S.L.',
@@ -6456,7 +6456,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '862104',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6479,7 +6479,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            190 =>
+            190 => 
             array (
                 'id' => 191,
                 'entidad' => 'JOSE ROSAS TABERNER, S.A.',
@@ -6490,7 +6490,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1821576',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6513,7 +6513,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            191 =>
+            191 => 
             array (
                 'id' => 192,
                 'entidad' => 'CABRERO RABASSA, JUAN JOSE',
@@ -6524,7 +6524,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3188236',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6547,7 +6547,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            192 =>
+            192 => 
             array (
                 'id' => 193,
                 'entidad' => 'JUVE Y CAMPS, S.A.',
@@ -6558,7 +6558,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '476453',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6581,7 +6581,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            193 =>
+            193 => 
             array (
                 'id' => 194,
                 'entidad' => 'KT-TWIN SISTEMAS INFORMAT., SA',
@@ -6592,7 +6592,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2817555',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6615,7 +6615,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            194 =>
+            194 => 
             array (
                 'id' => 195,
                 'entidad' => 'KIMAN 95, S.L.',
@@ -6626,7 +6626,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2658416',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6649,7 +6649,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            195 =>
+            195 => 
             array (
                 'id' => 196,
                 'entidad' => 'LA CARPETA I EL PAPER, S.A.',
@@ -6660,7 +6660,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1506084',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6683,7 +6683,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            196 =>
+            196 => 
             array (
                 'id' => 197,
                 'entidad' => 'LA GENERAL ESTAMPADORA, S.L.',
@@ -6694,7 +6694,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2888504',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6717,7 +6717,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            197 =>
+            197 => 
             array (
                 'id' => 198,
                 'entidad' => 'LA NOOGRAFICA, S.L.U.',
@@ -6728,7 +6728,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3257603',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6751,7 +6751,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            198 =>
+            198 => 
             array (
                 'id' => 199,
                 'entidad' => 'LA VANGUARDIA EDICIONES, S.L.',
@@ -6762,7 +6762,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '955837',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6785,7 +6785,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            199 =>
+            199 => 
             array (
                 'id' => 200,
                 'entidad' => 'LAVALL FORNOS, XAVIER',
@@ -6796,7 +6796,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1673040',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6819,7 +6819,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            200 =>
+            200 => 
             array (
                 'id' => 201,
                 'entidad' => 'LLORCA ARRAYAS, JORDI',
@@ -6830,7 +6830,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2164358',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6853,7 +6853,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            201 =>
+            201 => 
             array (
                 'id' => 202,
                 'entidad' => 'LOGIKARD TARJETAS PLAST., SLU',
@@ -6864,7 +6864,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2469339',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6887,7 +6887,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            202 =>
+            202 => 
             array (
                 'id' => 203,
                 'entidad' => 'LOPEZ PETIT, FRANCINA',
@@ -6898,7 +6898,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2520284',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6921,7 +6921,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            203 =>
+            203 => 
             array (
                 'id' => 204,
                 'entidad' => 'LOUBET DIAZ, GUSTAVO MARCELO',
@@ -6932,7 +6932,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1860074',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6955,7 +6955,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            204 =>
+            204 => 
             array (
                 'id' => 205,
                 'entidad' => 'RED DIGITAL FOTOGRÁFICA, S.L.',
@@ -6966,7 +6966,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1739516',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -6989,7 +6989,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            205 =>
+            205 => 
             array (
                 'id' => 206,
                 'entidad' => 'LUZ NEGRA, S.L.',
@@ -7000,7 +7000,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3117357',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7023,7 +7023,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            206 =>
+            206 => 
             array (
                 'id' => 207,
                 'entidad' => 'MACTAC EUROPE, S.A.',
@@ -7034,7 +7034,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '368238',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7057,7 +7057,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            207 =>
+            207 => 
             array (
                 'id' => 208,
                 'entidad' => 'MADERAS ESTADELLA, S.A.',
@@ -7068,7 +7068,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2489121',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7091,7 +7091,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            208 =>
+            208 => 
             array (
                 'id' => 209,
                 'entidad' => 'MAESPA MANIPULADOS, S.L.',
@@ -7102,7 +7102,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1340889',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7125,7 +7125,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            209 =>
+            209 => 
             array (
                 'id' => 210,
                 'entidad' => 'GONZALEZ FRANGANILLO, MANEL',
@@ -7136,7 +7136,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2570418',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7159,7 +7159,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            210 =>
+            210 => 
             array (
                 'id' => 211,
                 'entidad' => 'MANPOWER TEAM EMP.TR.TEMP,S.A.',
@@ -7170,7 +7170,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2162757',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7193,7 +7193,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            211 =>
+            211 => 
             array (
                 'id' => 212,
                 'entidad' => 'MANUFACTURAS CARSOL, S.A.',
@@ -7204,7 +7204,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3102532',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7227,7 +7227,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            212 =>
+            212 => 
             array (
                 'id' => 213,
                 'entidad' => 'MANUFACT. METALICOS ROCA,SL',
@@ -7238,7 +7238,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2357721',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7261,7 +7261,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            213 =>
+            213 => 
             array (
                 'id' => 214,
                 'entidad' => 'MANUFACTURAS PALS, S.A.',
@@ -7272,7 +7272,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2481009',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7295,7 +7295,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            214 =>
+            214 => 
             array (
                 'id' => 215,
                 'entidad' => 'MAQUIMPRES, S.A.',
@@ -7306,7 +7306,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1998551',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7329,7 +7329,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            215 =>
+            215 => 
             array (
                 'id' => 216,
                 'entidad' => 'MARESME SERVICE/J.SORIANO DELF',
@@ -7340,7 +7340,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2549726',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7363,7 +7363,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            216 =>
+            216 => 
             array (
                 'id' => 217,
                 'entidad' => 'MARTI VILLANUEVA C.',
@@ -7374,7 +7374,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '86312',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7397,7 +7397,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            217 =>
+            217 => 
             array (
                 'id' => 218,
                 'entidad' => 'MARTINEZ ROJANO, JOSE LUIS',
@@ -7408,7 +7408,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2782380',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7431,7 +7431,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            218 =>
+            218 => 
             array (
                 'id' => 219,
                 'entidad' => 'MAS DE L´ABUNDANCIA VITICUL,SL',
@@ -7442,7 +7442,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '319632',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7465,7 +7465,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            219 =>
+            219 => 
             array (
                 'id' => 220,
                 'entidad' => 'MATIC, S.A.',
@@ -7476,7 +7476,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3251022',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7499,7 +7499,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            220 =>
+            220 => 
             array (
                 'id' => 221,
                 'entidad' => 'MAUSA MAD. DEL ALTO URGELL,S.A',
@@ -7510,7 +7510,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1962879',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7533,7 +7533,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            221 =>
+            221 => 
             array (
                 'id' => 222,
                 'entidad' => 'MAYOR SERVICIOS DE CORTE, SLU',
@@ -7544,7 +7544,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '61329',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7567,7 +7567,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            222 =>
+            222 => 
             array (
                 'id' => 223,
                 'entidad' => 'MECALUX, S.A.',
@@ -7578,7 +7578,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1084673',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7601,7 +7601,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            223 =>
+            223 => 
             array (
                 'id' => 224,
                 'entidad' => 'MERCERIA STA.ANA MAYOR, S.A.',
@@ -7612,7 +7612,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1906046',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7635,7 +7635,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            224 =>
+            224 => 
             array (
                 'id' => 225,
                 'entidad' => 'MERGARD, S.L.',
@@ -7646,7 +7646,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2942880',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7669,7 +7669,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            225 =>
+            225 => 
             array (
                 'id' => 226,
                 'entidad' => 'MOMPART GIMENEZ, SUSANA',
@@ -7680,7 +7680,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2329596',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7703,7 +7703,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            226 =>
+            226 => 
             array (
                 'id' => 227,
                 'entidad' => 'MONTAJES JAMI, S.L.',
@@ -7714,7 +7714,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2819340',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7737,7 +7737,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            227 =>
+            227 => 
             array (
                 'id' => 228,
                 'entidad' => 'MORA Y GOMA, S.A.',
@@ -7748,7 +7748,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '441245',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7771,7 +7771,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            228 =>
+            228 => 
             array (
                 'id' => 229,
                 'entidad' => 'MORERA VILLALONGA, FERRAN',
@@ -7782,7 +7782,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '414872',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7805,7 +7805,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            229 =>
+            229 => 
             array (
                 'id' => 230,
                 'entidad' => 'MOTORSOL, S.A.',
@@ -7816,7 +7816,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '750626',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7839,7 +7839,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            230 =>
+            230 => 
             array (
                 'id' => 231,
                 'entidad' => 'NAVARRO ROMA, JOSE MIGUEL',
@@ -7850,7 +7850,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2508513',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7873,7 +7873,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            231 =>
+            231 => 
             array (
                 'id' => 232,
                 'entidad' => 'NAVARRO PLATERO, FRANCISCO',
@@ -7884,7 +7884,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '290687',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7907,7 +7907,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            232 =>
+            232 => 
             array (
                 'id' => 233,
                 'entidad' => 'NEON ALARCON, S.L.',
@@ -7918,7 +7918,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '594565',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7941,7 +7941,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            233 =>
+            233 => 
             array (
                 'id' => 234,
                 'entidad' => 'NET DISPLAY, S.L.',
@@ -7952,7 +7952,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2100763',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -7975,7 +7975,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            234 =>
+            234 => 
             array (
                 'id' => 235,
                 'entidad' => 'NEW SOLUTION, S.L.',
@@ -7986,7 +7986,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2053455',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8009,7 +8009,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            235 =>
+            235 => 
             array (
                 'id' => 236,
                 'entidad' => 'NEW GATE, S.L.',
@@ -8020,7 +8020,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '631654',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8043,7 +8043,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            236 =>
+            236 => 
             array (
                 'id' => 237,
                 'entidad' => 'NEWCOURT FINANCIAL ESPAÑA, S.A',
@@ -8054,7 +8054,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '331238',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8077,7 +8077,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            237 =>
+            237 => 
             array (
                 'id' => 238,
                 'entidad' => 'NIPAUTO BARCELONA, S.L.',
@@ -8088,7 +8088,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3094561',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8111,7 +8111,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            238 =>
+            238 => 
             array (
                 'id' => 239,
                 'entidad' => 'NOFER, S.L.',
@@ -8122,7 +8122,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1145759',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8145,7 +8145,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            239 =>
+            239 => 
             array (
                 'id' => 240,
                 'entidad' => 'NOTARIA BCN, SCP',
@@ -8156,7 +8156,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3111780',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8179,7 +8179,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            240 =>
+            240 => 
             array (
                 'id' => 241,
                 'entidad' => 'NOTARIA CABADES VALLS GLEZ,SCP',
@@ -8190,7 +8190,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2121622',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8213,7 +8213,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            241 =>
+            241 => 
             array (
                 'id' => 242,
                 'entidad' => 'NOTARIA PERALES FARRES NOT,SCP',
@@ -8224,7 +8224,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1272769',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8247,7 +8247,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            242 =>
+            242 => 
             array (
                 'id' => 243,
                 'entidad' => 'SANTIAGO LOPEZ-LEIS GONZALEZ',
@@ -8258,7 +8258,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3332312',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8281,7 +8281,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            243 =>
+            243 => 
             array (
                 'id' => 244,
                 'entidad' => 'NOVA PRISMA DIGITAL, S.L.',
@@ -8292,7 +8292,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2843255',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8315,7 +8315,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            244 =>
+            244 => 
             array (
                 'id' => 245,
                 'entidad' => 'OLIVER ZOTTI',
@@ -8326,7 +8326,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '886006',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8349,7 +8349,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            245 =>
+            245 => 
             array (
                 'id' => 246,
                 'entidad' => 'OLIVERA MUDOZ, DIONISIO',
@@ -8360,7 +8360,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2566932',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8383,7 +8383,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            246 =>
+            246 => 
             array (
                 'id' => 247,
                 'entidad' => 'OPQ SYSTEMS MAQ. GRAFICA,SL',
@@ -8394,7 +8394,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '176641',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8417,7 +8417,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            247 =>
+            247 => 
             array (
                 'id' => 248,
                 'entidad' => 'ORDENA REPARACIONES Y SERV, SL',
@@ -8428,7 +8428,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3182408',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8451,7 +8451,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            248 =>
+            248 => 
             array (
                 'id' => 249,
                 'entidad' => 'JOSEP ORRIOLS RIERA, S.A.',
@@ -8462,7 +8462,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2048785',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8485,7 +8485,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            249 =>
+            249 => 
             array (
                 'id' => 250,
                 'entidad' => 'PROFESIONAL L´ART, S.L.',
@@ -8496,7 +8496,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '696701',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8519,7 +8519,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            250 =>
+            250 => 
             array (
                 'id' => 251,
                 'entidad' => 'PAPERLINX, S.L.',
@@ -8530,7 +8530,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '670485',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8553,7 +8553,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            251 =>
+            251 => 
             array (
                 'id' => 252,
                 'entidad' => 'PBX CENTRE DE CALCUL, SLP',
@@ -8564,7 +8564,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1262320',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8587,7 +8587,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            252 =>
+            252 => 
             array (
                 'id' => 253,
                 'entidad' => 'PELLISA RAFOLS, S.L.',
@@ -8598,7 +8598,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '966813',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8621,7 +8621,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            253 =>
+            253 => 
             array (
                 'id' => 254,
                 'entidad' => 'PERALES SANZ, JOSE LUIS',
@@ -8632,7 +8632,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1047104',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8655,7 +8655,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            254 =>
+            254 => 
             array (
                 'id' => 255,
                 'entidad' => 'PEREZ TORTOSA, XAVIER',
@@ -8666,7 +8666,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2335084',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8689,7 +8689,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            255 =>
+            255 => 
             array (
                 'id' => 256,
                 'entidad' => 'PERSONAL COMPUTER GREEN, S.L.',
@@ -8700,7 +8700,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1867440',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8723,7 +8723,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            256 =>
+            256 => 
             array (
                 'id' => 257,
                 'entidad' => 'PISTA CERO, S.L.',
@@ -8734,7 +8734,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2331947',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8757,7 +8757,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            257 =>
+            257 => 
             array (
                 'id' => 258,
                 'entidad' => 'PLAN B BARCELONA PRESS, S.L.',
@@ -8768,7 +8768,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2724082',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8791,7 +8791,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            258 =>
+            258 => 
             array (
                 'id' => 259,
                 'entidad' => 'POLICRAM GRAPHIC ARTS, S.L.',
@@ -8802,7 +8802,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3291237',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8825,7 +8825,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            259 =>
+            259 => 
             array (
                 'id' => 260,
                 'entidad' => 'POLO POVEDA, IGNACIO',
@@ -8836,7 +8836,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1617272',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8859,7 +8859,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            260 =>
+            260 => 
             array (
                 'id' => 261,
                 'entidad' => 'POLYNORMA, S.A.',
@@ -8870,7 +8870,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1545985',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8893,7 +8893,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            261 =>
+            261 => 
             array (
                 'id' => 262,
                 'entidad' => 'POSTER AND PANEL, S.L.',
@@ -8904,7 +8904,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2878107',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8927,7 +8927,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            262 =>
+            262 => 
             array (
                 'id' => 263,
                 'entidad' => 'POUS BARA, IGNASI',
@@ -8938,7 +8938,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3085916',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8961,7 +8961,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            263 =>
+            263 => 
             array (
                 'id' => 264,
                 'entidad' => 'PRESSING IMPRESSIO DIGITAL,S.A',
@@ -8972,7 +8972,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '128592',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -8995,7 +8995,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            264 =>
+            264 => 
             array (
                 'id' => 265,
                 'entidad' => 'PRODUCTOS CYS, SRL',
@@ -9006,7 +9006,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1385210',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9029,7 +9029,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            265 =>
+            265 => 
             array (
                 'id' => 266,
                 'entidad' => 'PUBLISERVEI, S.L.',
@@ -9040,7 +9040,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3206941',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9063,7 +9063,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            266 =>
+            266 => 
             array (
                 'id' => 267,
                 'entidad' => 'PUJADAS BAQUE, ANNA',
@@ -9074,7 +9074,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1879078',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9097,7 +9097,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            267 =>
+            267 => 
             array (
                 'id' => 268,
                 'entidad' => 'QUERALT SUAU, JORDI',
@@ -9108,7 +9108,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3107901',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9131,7 +9131,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            268 =>
+            268 => 
             array (
                 'id' => 269,
                 'entidad' => 'RABASSO LLORCA, ALBERT',
@@ -9142,7 +9142,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3235604',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9165,7 +9165,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            269 =>
+            269 => 
             array (
                 'id' => 270,
                 'entidad' => 'RAJAPACK, S.A.',
@@ -9176,7 +9176,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '187653',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9199,7 +9199,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            270 =>
+            270 => 
             array (
                 'id' => 271,
                 'entidad' => 'RAMON CANALS CANALS, S.A.',
@@ -9210,7 +9210,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1231449',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9233,7 +9233,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            271 =>
+            271 => 
             array (
                 'id' => 272,
                 'entidad' => 'RED COORDINADORA MULTIS.CMS,SL',
@@ -9244,7 +9244,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2260954',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9267,7 +9267,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            272 =>
+            272 => 
             array (
                 'id' => 273,
                 'entidad' => 'REDCOON ELECTRONIC TRADE,SLU',
@@ -9278,7 +9278,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '943759',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9301,7 +9301,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            273 =>
+            273 => 
             array (
                 'id' => 274,
                 'entidad' => 'REGINCOS GINER, JORDI',
@@ -9312,7 +9312,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1269263',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9335,7 +9335,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            274 =>
+            274 => 
             array (
                 'id' => 275,
                 'entidad' => 'REGISTRO MERCANTIL DE BARCELON',
@@ -9346,7 +9346,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '181706',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9369,7 +9369,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            275 =>
+            275 => 
             array (
                 'id' => 276,
                 'entidad' => 'REIAL AUTOM. CLUB DE CATALUNYA',
@@ -9380,7 +9380,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '434074',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9403,7 +9403,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            276 =>
+            276 => 
             array (
                 'id' => 277,
                 'entidad' => 'RELIEVES J. BASA,S.L.',
@@ -9414,7 +9414,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1625254',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9437,7 +9437,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            277 =>
+            277 => 
             array (
                 'id' => 278,
                 'entidad' => 'REMS EMBALATGES, S.L.',
@@ -9448,7 +9448,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '157380',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9471,7 +9471,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            278 =>
+            278 => 
             array (
                 'id' => 279,
                 'entidad' => 'REVALIENTES E HIJOS, S.L.',
@@ -9482,7 +9482,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2577803',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9505,7 +9505,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            279 =>
+            279 => 
             array (
                 'id' => 280,
                 'entidad' => 'RGR METALES, S.L.',
@@ -9516,7 +9516,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2416878',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9539,7 +9539,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            280 =>
+            280 => 
             array (
                 'id' => 281,
                 'entidad' => 'RIBERA DIGITAL, S.L.',
@@ -9550,7 +9550,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1017646',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9573,7 +9573,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            281 =>
+            281 => 
             array (
                 'id' => 282,
                 'entidad' => 'RICOH ESPAÑA, S.L.U.',
@@ -9584,7 +9584,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1170931',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9607,7 +9607,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            282 =>
+            282 => 
             array (
                 'id' => 283,
                 'entidad' => 'RODRIGUEZ RIVERA, SAUL',
@@ -9618,7 +9618,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2801715',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9641,7 +9641,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            283 =>
+            283 => 
             array (
                 'id' => 284,
                 'entidad' => 'ROLDAN GRAFICAS, S.L.',
@@ -9652,7 +9652,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '495786',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9675,7 +9675,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            284 =>
+            284 => 
             array (
                 'id' => 285,
                 'entidad' => 'ROMEO GARCIA, ELENA',
@@ -9686,7 +9686,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '740451',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9709,7 +9709,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            285 =>
+            285 => 
             array (
                 'id' => 286,
                 'entidad' => 'ROMEO GARCIA, MARIO',
@@ -9720,7 +9720,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2214896',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9743,7 +9743,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            286 =>
+            286 => 
             array (
                 'id' => 287,
                 'entidad' => 'RUEDAS ATLAS, S.L.',
@@ -9754,7 +9754,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2186461',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9777,7 +9777,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            287 =>
+            287 => 
             array (
                 'id' => 288,
                 'entidad' => 'S.A. RACC',
@@ -9788,7 +9788,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '954286',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9811,7 +9811,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            288 =>
+            288 => 
             array (
                 'id' => 289,
                 'entidad' => 'S.P. JOVER, S.L.',
@@ -9822,7 +9822,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1545378',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9845,7 +9845,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            289 =>
+            289 => 
             array (
                 'id' => 290,
                 'entidad' => 'SOC. DE PREV. MAZ SEG.LAB., SL',
@@ -9856,7 +9856,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1530701',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9879,7 +9879,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            290 =>
+            290 => 
             array (
                 'id' => 291,
                 'entidad' => 'SABACOINSA, S.L.',
@@ -9890,7 +9890,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3017369',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9913,7 +9913,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            291 =>
+            291 => 
             array (
                 'id' => 292,
                 'entidad' => 'REPRODUCCIONES SABATÉ, S.L.',
@@ -9924,7 +9924,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '494744',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9947,7 +9947,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            292 =>
+            292 => 
             array (
                 'id' => 293,
                 'entidad' => 'SALVADOR ESCODA, S.A.',
@@ -9958,7 +9958,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '88281',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -9981,7 +9981,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            293 =>
+            293 => 
             array (
                 'id' => 294,
                 'entidad' => 'SÁNCHEZ MÉNDEZ, SERGIO',
@@ -9992,7 +9992,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2290505',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10015,7 +10015,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            294 =>
+            294 => 
             array (
                 'id' => 295,
                 'entidad' => 'SANTANDER FACTOR. Y CONFIR.,SA',
@@ -10026,7 +10026,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1187681',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10049,7 +10049,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            295 =>
+            295 => 
             array (
                 'id' => 296,
                 'entidad' => 'SERIMAX SERVEIS GRAFICS, S.L.',
@@ -10060,7 +10060,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2400225',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10083,7 +10083,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            296 =>
+            296 => 
             array (
                 'id' => 297,
                 'entidad' => 'SERVICIOS GRAFIC. SECONDARY,SL',
@@ -10094,7 +10094,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1771415',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10117,7 +10117,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            297 =>
+            297 => 
             array (
                 'id' => 298,
                 'entidad' => 'SERVICIO ESTACION, S.A.',
@@ -10128,7 +10128,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1656400',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10151,7 +10151,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            298 =>
+            298 => 
             array (
                 'id' => 299,
                 'entidad' => 'SET-PRAT PAPER DISTRIB., S.A.',
@@ -10162,7 +10162,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2967755',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10185,7 +10185,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            299 =>
+            299 => 
             array (
                 'id' => 300,
                 'entidad' => 'SOC. GRAL. DE AGUAS DE BCN,S.A',
@@ -10196,7 +10196,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3202907',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10219,7 +10219,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            300 =>
+            300 => 
             array (
                 'id' => 301,
                 'entidad' => 'SGS ICS IBERICA, S.A.',
@@ -10230,7 +10230,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '444608',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10253,7 +10253,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            301 =>
+            301 => 
             array (
                 'id' => 302,
                 'entidad' => 'SILIKON TECNICS, S.L.',
@@ -10264,7 +10264,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2614316',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10287,7 +10287,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            302 =>
+            302 => 
             array (
                 'id' => 303,
                 'entidad' => 'SITOUR',
@@ -10298,7 +10298,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1737757',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10321,7 +10321,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            303 =>
+            303 => 
             array (
                 'id' => 304,
                 'entidad' => 'SOC.UNIP.TRILEZA,CONF. Y EV,SA',
@@ -10332,7 +10332,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '845837',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10355,7 +10355,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            304 =>
+            304 => 
             array (
                 'id' => 305,
                 'entidad' => 'SPIRAX, S.L.',
@@ -10366,7 +10366,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2349248',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10389,7 +10389,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            305 =>
+            305 => 
             array (
                 'id' => 306,
                 'entidad' => 'SPRINT-ER SERV. AUX. GRAF.,S.L',
@@ -10400,7 +10400,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2542064',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10423,7 +10423,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            306 =>
+            306 => 
             array (
                 'id' => 307,
                 'entidad' => 'SUMINISTROS IND. SUGAR, S.L.',
@@ -10434,7 +10434,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2329242',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10457,7 +10457,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            307 =>
+            307 => 
             array (
                 'id' => 308,
                 'entidad' => 'SUMINISTROS IBERO DIGITAL, S.A',
@@ -10468,7 +10468,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '686687',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10491,7 +10491,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            308 =>
+            308 => 
             array (
                 'id' => 309,
                 'entidad' => 'SUMINISTROS IND. Y DEL EMB.,SL',
@@ -10502,7 +10502,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3112375',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10525,7 +10525,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            309 =>
+            309 => 
             array (
                 'id' => 310,
                 'entidad' => 'SUNCLEAR, S.A.U.',
@@ -10536,7 +10536,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '168482',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10559,7 +10559,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            310 =>
+            310 => 
             array (
                 'id' => 311,
                 'entidad' => 'SUNDIS, S.A.',
@@ -10570,7 +10570,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1505283',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10593,7 +10593,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            311 =>
+            311 => 
             array (
                 'id' => 312,
                 'entidad' => 'SUPORTS GRAFICS INTEGRAL, SLU',
@@ -10604,7 +10604,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '354303',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10627,7 +10627,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            312 =>
+            312 => 
             array (
                 'id' => 313,
                 'entidad' => 'SWIRE PACIFIC, S.L.',
@@ -10638,7 +10638,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '589001',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10661,7 +10661,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            313 =>
+            313 => 
             array (
                 'id' => 314,
                 'entidad' => 'SYL-CREAC. GRAF.Y PUBL., S.A.',
@@ -10672,7 +10672,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1882097',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10695,7 +10695,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            314 =>
+            314 => 
             array (
                 'id' => 315,
                 'entidad' => 'TROQUELAJES BARCINO, S.L.',
@@ -10706,7 +10706,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '976814',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10729,7 +10729,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            315 =>
+            315 => 
             array (
                 'id' => 316,
                 'entidad' => 'TECHNICAL GENERIC SECURITY,SL',
@@ -10740,7 +10740,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2571115',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10763,7 +10763,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            316 =>
+            316 => 
             array (
                 'id' => 317,
                 'entidad' => 'TECNITALL TECNOLOGIA, S.L.',
@@ -10774,7 +10774,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3258464',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10797,7 +10797,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            317 =>
+            317 => 
             array (
                 'id' => 318,
                 'entidad' => 'TELEFONICA DE ESPAÑA, S.A.',
@@ -10808,7 +10808,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1912309',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10831,7 +10831,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            318 =>
+            318 => 
             array (
                 'id' => 319,
                 'entidad' => 'TELEFONICA MOVILES ESPAÑA,SA',
@@ -10842,7 +10842,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3119486',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10865,7 +10865,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            319 =>
+            319 => 
             array (
                 'id' => 320,
                 'entidad' => 'TENDALS TOUS, S.L.',
@@ -10876,7 +10876,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3193837',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10899,7 +10899,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            320 =>
+            320 => 
             array (
                 'id' => 321,
                 'entidad' => 'TESIGRAF REALIZACIONES GRAF,SL',
@@ -10910,7 +10910,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3277396',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10933,7 +10933,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            321 =>
+            321 => 
             array (
                 'id' => 322,
                 'entidad' => 'THYSSENKRUPP PLASTIC IBERIC,SL',
@@ -10944,7 +10944,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '138802',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -10967,7 +10967,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            322 =>
+            322 => 
             array (
                 'id' => 323,
                 'entidad' => 'TOMPLA IND.INT.DEL SOBRE, S.L.',
@@ -10978,7 +10978,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '861822',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11001,7 +11001,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            323 =>
+            323 => 
             array (
                 'id' => 324,
                 'entidad' => 'TORNERIA ROMANS, S.L.',
@@ -11012,7 +11012,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '559370',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11035,7 +11035,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            324 =>
+            324 => 
             array (
                 'id' => 325,
                 'entidad' => 'TORRASPAPEL, S.A.',
@@ -11046,7 +11046,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '211384',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11069,7 +11069,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            325 =>
+            325 => 
             array (
                 'id' => 326,
                 'entidad' => 'TOYOTA MATERILA HAN. ESPAÑA,SA',
@@ -11080,7 +11080,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2712142',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11103,7 +11103,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            326 =>
+            326 => 
             array (
                 'id' => 327,
                 'entidad' => 'TRADUCTORUM, SCP',
@@ -11114,7 +11114,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2926559',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11137,7 +11137,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            327 =>
+            327 => 
             array (
                 'id' => 328,
                 'entidad' => 'TRANS MONJUIC BCN,S.L.',
@@ -11148,7 +11148,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '3163037',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11171,7 +11171,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            328 =>
+            328 => 
             array (
                 'id' => 329,
                 'entidad' => 'TRANSEUROP, S.A.',
@@ -11182,7 +11182,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '368842',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11205,7 +11205,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            329 =>
+            329 => 
             array (
                 'id' => 330,
                 'entidad' => 'TRANSP.BUYTRAGO ANDALUCIA,SA',
@@ -11216,7 +11216,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2355098',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11239,7 +11239,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            330 =>
+            330 => 
             array (
                 'id' => 331,
                 'entidad' => 'TREVOL SERVEIS JURIDICS, S.L.',
@@ -11250,7 +11250,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '668963',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11273,7 +11273,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            331 =>
+            331 => 
             array (
                 'id' => 332,
                 'entidad' => 'TRIA-TU, S.L.',
@@ -11284,7 +11284,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2946189',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11307,7 +11307,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            332 =>
+            332 => 
             array (
                 'id' => 333,
                 'entidad' => 'GRUPO TRITENICS INFORMÁTICA,SL',
@@ -11318,7 +11318,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2724057',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11341,7 +11341,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            333 =>
+            333 => 
             array (
                 'id' => 334,
                 'entidad' => 'TRIUNFO, SCP',
@@ -11352,7 +11352,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1448386',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11375,7 +11375,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            334 =>
+            334 => 
             array (
                 'id' => 335,
                 'entidad' => 'TUSET OFICINA Y SERVICIOS, S.L',
@@ -11386,7 +11386,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2403092',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11409,7 +11409,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            335 =>
+            335 => 
             array (
                 'id' => 336,
                 'entidad' => 'TÜV RHEINLAND IB.INSP.CER.T,SA',
@@ -11420,7 +11420,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1003638',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11443,7 +11443,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            336 =>
+            336 => 
             array (
                 'id' => 337,
                 'entidad' => 'TWENTIC, S.L.',
@@ -11454,7 +11454,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1142243',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11477,7 +11477,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            337 =>
+            337 => 
             array (
                 'id' => 338,
                 'entidad' => 'UNIPOST, S.A.',
@@ -11488,7 +11488,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2700305',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11511,7 +11511,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            338 =>
+            338 => 
             array (
                 'id' => 339,
                 'entidad' => 'UPM RAFLATAC OY',
@@ -11522,7 +11522,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '74795',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11545,7 +11545,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            339 =>
+            339 => 
             array (
                 'id' => 340,
                 'entidad' => 'UVE DISEÑO Y COMUNICACION,SL',
@@ -11556,7 +11556,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2273058',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11579,7 +11579,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            340 =>
+            340 => 
             array (
                 'id' => 341,
                 'entidad' => 'VANGUARD GRAFIC, S.A.',
@@ -11590,7 +11590,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1140909',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11613,7 +11613,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            341 =>
+            341 => 
             array (
                 'id' => 342,
                 'entidad' => 'VEGIO, S.L.',
@@ -11624,7 +11624,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2218701',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11647,7 +11647,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            342 =>
+            342 => 
             array (
                 'id' => 343,
                 'entidad' => 'VIAPACK ZONA FRANCA, S.L.',
@@ -11658,7 +11658,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1004114',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11681,7 +11681,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            343 =>
+            343 => 
             array (
                 'id' => 344,
                 'entidad' => 'VICENS PIERA, S.L.',
@@ -11692,7 +11692,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1697800',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11715,7 +11715,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            344 =>
+            344 => 
             array (
                 'id' => 345,
                 'entidad' => 'VIDRIOCAR, S.L.U.',
@@ -11726,7 +11726,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2143323',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11749,7 +11749,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            345 =>
+            345 => 
             array (
                 'id' => 346,
                 'entidad' => 'VILAJOSANA BADIA, BERNAT',
@@ -11760,7 +11760,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2289884',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11783,7 +11783,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            346 =>
+            346 => 
             array (
                 'id' => 347,
                 'entidad' => 'VINK PLASTICS SPAIN, S.L.U',
@@ -11794,7 +11794,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1686116',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11817,7 +11817,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            347 =>
+            347 => 
             array (
                 'id' => 348,
                 'entidad' => 'WERKHAUS,S.L.',
@@ -11828,7 +11828,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1560930',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11851,7 +11851,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            348 =>
+            348 => 
             array (
                 'id' => 349,
                 'entidad' => 'ZAMORA ALONSO, ANTONIO',
@@ -11862,7 +11862,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2746301',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11885,7 +11885,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            349 =>
+            349 => 
             array (
                 'id' => 350,
                 'entidad' => 'PONSA BALLESTER, VALENTÍ',
@@ -11896,7 +11896,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2382049',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11919,7 +11919,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            350 =>
+            350 => 
             array (
                 'id' => 351,
                 'entidad' => 'ZONA FRANCA COURIER, S.L.',
@@ -11930,7 +11930,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '338008',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11953,7 +11953,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            351 =>
+            351 => 
             array (
                 'id' => 352,
                 'entidad' => 'ARTE PLASTI',
@@ -11964,7 +11964,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1210562',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -11987,7 +11987,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            352 =>
+            352 => 
             array (
                 'id' => 353,
                 'entidad' => 'CANON',
@@ -11998,7 +11998,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1705450',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12021,7 +12021,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            353 =>
+            353 => 
             array (
                 'id' => 354,
                 'entidad' => 'CARPAPSA',
@@ -12032,7 +12032,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1562234',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12055,7 +12055,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            354 =>
+            354 => 
             array (
                 'id' => 355,
                 'entidad' => 'DISTRITECN',
@@ -12066,7 +12066,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2694820',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12089,7 +12089,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            355 =>
+            355 => 
             array (
                 'id' => 356,
                 'entidad' => 'EMBAGRAP',
@@ -12100,7 +12100,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2120733',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12123,7 +12123,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            356 =>
+            356 => 
             array (
                 'id' => 357,
                 'entidad' => 'EUROFILMPL',
@@ -12134,7 +12134,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2519205',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12157,7 +12157,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            357 =>
+            357 => 
             array (
                 'id' => 358,
                 'entidad' => 'FUJI',
@@ -12168,7 +12168,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2900495',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12191,7 +12191,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            358 =>
+            358 => 
             array (
                 'id' => 359,
                 'entidad' => 'LERMONT',
@@ -12202,7 +12202,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '278190',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12225,7 +12225,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            359 =>
+            359 => 
             array (
                 'id' => 360,
                 'entidad' => 'FUSTIER',
@@ -12236,7 +12236,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2689467',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12259,7 +12259,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            360 =>
+            360 => 
             array (
                 'id' => 361,
                 'entidad' => 'INAPA',
@@ -12270,7 +12270,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2612764',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12293,7 +12293,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            361 =>
+            361 => 
             array (
                 'id' => 362,
                 'entidad' => 'OFIJET',
@@ -12304,7 +12304,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1662085',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12327,7 +12327,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            362 =>
+            362 => 
             array (
                 'id' => 363,
                 'entidad' => 'PAPERGRAPH	',
@@ -12338,7 +12338,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '472136',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12361,7 +12361,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            363 =>
+            363 => 
             array (
                 'id' => 364,
                 'entidad' => 'POSTER',
@@ -12372,7 +12372,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '707756',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12395,7 +12395,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            364 =>
+            364 => 
             array (
                 'id' => 365,
                 'entidad' => 'SPANDEX',
@@ -12406,7 +12406,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '2122372',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12429,7 +12429,7 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            365 =>
+            365 => 
             array (
                 'id' => 366,
                 'entidad' => 'UNION PAPELERA',
@@ -12440,7 +12440,7 @@ class EntidadesTableSeeder extends Seeder
                 'localidad' => NULL,
                 'provincia_id' => NULL,
                 'pais_id' => 'ES',
-                'nif' => NULL,
+                'nif' => '1821928',
                 'tfno' => NULL,
                 'emailgral' => NULL,
                 'emailadm' => NULL,
@@ -12464,7 +12464,7 @@ class EntidadesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-
-
+        
+        
     }
 }

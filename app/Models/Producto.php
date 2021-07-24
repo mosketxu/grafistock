@@ -10,7 +10,7 @@ class Producto extends Model
 
     use HasFactory;
     protected $table = 'productos';
-    protected $fillable=['referencia','descripcion','tipo_id','material_id','grosor_mm','ancho_mm','desarrollo_mm','acabado_id','grupoproduccion_id','clase_id','calidad_id','udsolicitud_id','costeprov',
+    protected $fillable=['referencia','descripcion','tipo_id','material_id','grosor_mm','ancho','udancho_id','alto','udalto_id','acabado_id','grupoproduccion_id','clase_id','calidad_id','udsolicitud_id','costeprov',
         'udcoste_id','costegrafitex','udproducto_id','entidad_id','caja_id','costecaja','fichaproducto','observaciones','ref_optimus','refprov_optimus'];
 
 
@@ -31,6 +31,10 @@ class Producto extends Model
     public function tipo(){return $this->belongsTo(ProductoTipo::class,'tipo_id','sigla');}
 
     public function unidadsolicitud(){return $this->belongsTo(Unidad::class,'udsolicitud_id','sigla');}
+
+    public function unidadancho(){return $this->belongsTo(Unidad::class,'udancho_id','sigla');}
+
+    public function unidadalto(){return $this->belongsTo(Unidad::class,'udalto_id','sigla');}
 
     public function unidadproducto(){return $this->belongsTo(Unidad::class,'udproducto_id','sigla');}
 

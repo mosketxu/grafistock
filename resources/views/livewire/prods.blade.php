@@ -20,11 +20,21 @@
             <div class="flex justify-between">
                 <div class="flex w-10/12 space-x-3">
                     <div class="w-2/12 text-xs">
-                        <label class="px-1 text-gray-600">Ref.</label>
+                        <label class="px-1 text-gray-600">
+                            Ref.
+                            @if($search!='')
+                                <x-icon.filter-slash-a wire:click="$set('search', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <input type="text" wire:model="search" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Búsqueda Entidad/Factura" autofocus/>
                     </div>
                     <div class="w-2/12 text-xs">
-                        <label class="px-1 text-gray-600">Proveedor</label>
+                        <label class="px-1 text-gray-600">
+                            Proveedor
+                            @if($filtroproveedor!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroproveedor', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <select wire:model="filtroproveedor" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($proveedores as $proveedor)
@@ -32,8 +42,14 @@
                             @endforeach
                         </select>
                     </div>
+
                     <div class="w-3/12 text-xs">
-                        <label class="px-1 text-gray-600">Material</label>
+                        <label class="px-1 text-gray-600">
+                            Material
+                            @if($filtromaterial!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtromaterial', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <select wire:model="filtromaterial" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($materiales as $mat)
@@ -41,8 +57,14 @@
                             @endforeach
                         </select>
                     </div>
+
                     <div class="w-2/12 text-xs">
-                        <label class="px-1 text-gray-600">Acabado</label>
+                        <label class="px-1 text-gray-600">
+                            Acabado
+                            @if($filtroacabado!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroacabado', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <select wire:model="filtroacabado" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($acabados as $acabado)
@@ -51,7 +73,12 @@
                         </select>
                     </div>
                     <div class="w-2/12 text-xs">
-                        <label class="px-1 text-gray-600">Grupo Producción</label>
+                        <label class="px-1 text-gray-600">
+                            Grupo Producción
+                            @if($filtrogrupoprod!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtrogrupoprod', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <select wire:model="filtrogrupoprod" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($gruposprod as $grupoprod)
@@ -78,17 +105,16 @@
                         <x-table.heading class="pl-1 text-left">{{ __('Ubicación') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Tipo') }} </x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Material') }} </x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Grosor (mm)') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Ancho x Des (mm)') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Grosor(mm)') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Ancho') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Alto') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Acabado') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Grupo Producción') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Clase') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Calidad') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Prov') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Ud Solic.') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Ud Coste') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Grafitex') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Ud Prod.') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Caja') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Caja') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('PDF Ficha') }}</x-table.heading>
@@ -99,26 +125,25 @@
                     <x-slot name="body">
                         @forelse ($productos as $producto)
                             <x-table.row wire:loading.class.delay="opacity-50">
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}</td>
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->descrip_optimus }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->ubicacion_id}}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->tipo_id }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->material->nombre }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->grosor_mm }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->ancho_mm .' x '.$producto->desarrollo_mm }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->acabado->nombre ?? '-' }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->grupoproduccion->nombre ?? '-' }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->clase->nombre ?? '-'}}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->calidad->nombre  ?? '-' }}</td >
-                                <td class="pr-2 text-xs leading-5 text-right text-gray-600 whitespace-no-wrap">{{ $producto->costeprov }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->udsolicitud_id }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->udproducto_id }}</td >
-                                <td class="pr-2 text-xs leading-5 text-right text-gray-600 whitespace-no-wrap">{{ $producto->costegrafitex }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->udcoste_id }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $producto->caja->nombre ?? '-' }}</td >
-                                <td class="pr-2 text-xs leading-5 text-right text-gray-600 whitespace-no-wrap">{{ $producto->costecaja }}</td >
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}</td>
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->descripcion }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->ubicacion_id}}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->tipo_id }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->material->nombre }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->grosor_mm }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->ancho}} {{ $producto->udancho_id }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->alto }} {{ $producto->udalto_id }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->acabado->nombre ?? '-' }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->grupoproduccion->nombre ?? '-' }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->clase->nombre ?? '-'}}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->calidad->nombre  ?? '-' }}</td >
+                                <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costeprov }} {{ $producto->udproducto_id }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->udsolicitud_id }}</td >
+                                <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costegrafitex }} {{ $producto->udcoste_id }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->caja->nombre ?? '-' }}</td >
+                                <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costecaja }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
                                     @if($producto->fichaproducto)
                                         <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
                                     @else
@@ -153,3 +178,7 @@
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+    </script>
+@endpush

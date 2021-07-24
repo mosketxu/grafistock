@@ -24,8 +24,10 @@ class Prod extends Component
             'producto.tipo_id'=>'required',
             'producto.material_id'=>'required',
             'producto.grosor_mm'=>'nullable',
-            'producto.ancho_mm'=>'nullable',
-            'producto.desarrollo_mm'=>'nullable',
+            'producto.ancho'=>'nullable',
+            'producto.udancho_id'=>'nullable',
+            'producto.alto'=>'nullable',
+            'producto.udalto_id'=>'nullable',
             'producto.acabado_id'=>'nullable',
             'producto.grupoproduccion_id'=>'nullable',
             'producto.clase_id'=>'nullable',
@@ -70,7 +72,7 @@ class Prod extends Component
             $p=Entidad::find($this->producto->entidad_id);
             $p=$p->entidad5;
         }
-        $this->producto->referencia=$this->producto->tipo_id.'-'.$this->producto->material_id.'-'.str_pad($this->producto->ancho_mm, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->desarrollo_mm, 4, '0', STR_PAD_LEFT).'-'.$this->producto->acabado_id.'-'.$p;
+        $this->producto->referencia=$this->producto->tipo_id.'-'.$this->producto->material_id.'-'.str_pad($this->producto->ancho, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-'.$this->producto->acabado_id.'-'.$p;
     }
 
     public function updatedficheropdf()
@@ -119,8 +121,10 @@ class Prod extends Component
             'tipo_id'=>$this->producto->tipo_id,
             'material_id'=>$this->producto->material_id,
             'grosor_mm'=>$this->producto->grosor_mm,
-            'ancho_mm'=>$this->producto->ancho_mm,
-            'desarrollo_mm'=>$this->producto->desarrollo_mm,
+            'ancho'=>$this->producto->ancho,
+            'udancho_id'=>$this->producto->udancho_id,
+            'alto'=>$this->producto->alto,
+            'udalto_id'=>$this->producto->udalto_id,
             'acabado_id'=>$this->producto->acabado_id,
             'grupoproduccion_id'=>$this->producto->grupoproduccion_id,
             'clase_id'=>$this->producto->clase_id,

@@ -125,12 +125,20 @@
                     </div>
                     <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                         <div class="w-full form-item">
-                            <x-jet-label for="ancho_mm">{{ __('Ancho(mm)') }}</x-jet-label>
-                            <input  wire:model="producto.ancho_mm" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
+                            <x-jet-label for="ancho">{{ __('Ancho') }}</x-jet-label>
+                            <input  wire:model="producto.ancho" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="desarrollo_mm">{{ __('Desarrollo(mm)') }}</x-jet-label>
-                            <input  wire:model="producto.desarrollo_mm" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            <x-jet-label for="udancho__">{{ __('ud Ancho') }}</x-jet-label>
+                            <input  wire:model="producto.udancho_id" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="alto">{{ __('Alto') }}</x-jet-label>
+                            <input  wire:model="producto.alto" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="udalto_id">{{ __('ud Alto') }}</x-jet-label>
+                            <input  wire:model="producto.udalto_id" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="grosor">{{ __('Grosor (mm)') }}</x-jet-label>
