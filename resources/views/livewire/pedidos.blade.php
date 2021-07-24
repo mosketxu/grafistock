@@ -22,20 +22,39 @@
             <div class="flex justify-between space-x-1">
                 <div class="inline-flex space-x-2">
                     <div class="text-xs">
-                        <label class="px-1 text-gray-600">Pedido</label>
+                        <label class="px-1 text-gray-600">
+                            Pedido
+                            @if($search!='')
+                                <x-icon.filter-slash-a wire:click="$set('search', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <input type="text" wire:model="search" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Búsqueda" autofocus/>
                     </div>
                     <div class="text-xs">
-                        <label class="px-1 text-gray-600">Año</label>
+                        <label class="px-1 text-gray-600">
+                            Año
+                            @if($filtroanyo!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroanyo', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <input type="text" wire:model="filtroanyo" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Año"/>
                     </div>
                     <div class="text-xs">
-                        <label class="px-1 text-gray-600">Mes</label>
+                        <label class="px-1 text-gray-600">
+                            Mes
+                            @if($filtromes!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtromes', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <input type="text" wire:model="filtromes" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Mes (número)"/>
                     </div>
-
                     <div class="text-xs">
-                        <label class="px-1 text-gray-600">Proveedor</label>
+                        <label class="px-1 text-gray-600">
+                            Proveedor
+                            @if($filtroproveedor!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroproveedor', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
                         <select wire:model="filtroproveedor" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" >
                             <option value="">-- selecciona --</option>
                             @foreach ($proveedores as $proveedor )

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Entidad;
+use App\Models\{Entidad, ProductoMaterial};
 use App\Models\Pedido as ModelsPedido;
 use Illuminate\Support\Facades\Response;
 use Livewire\Component;
@@ -39,9 +39,11 @@ class Pedido extends Component
     public function mount(ModelsPedido $pedido)
     {
         $this->pedido=$pedido;
+        $this->pedido->entidad_id='';
         $this->showgenerar = $pedido->finalizado ? false : true;
         $this->realizado=$pedido->finalizado ? true : false;
         $this->showcrear = $pedido->id && !$pedido->finalizado ? true : false;
+
 
     }
 
@@ -54,7 +56,8 @@ class Pedido extends Component
         }
 
         $entidades=Entidad::orderBy('entidad')->get();
-        return view('livewire.pedido',compact('entidades'));
+        $materiales=ProductoMaterial::orderBy('nombre')->get();
+        return view('livewire.pedido',compact('entidades','materiales'));
     }
 
     public function updatedRealizado(){

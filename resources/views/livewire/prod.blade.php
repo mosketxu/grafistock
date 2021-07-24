@@ -2,11 +2,14 @@
     @livewire('menu',['producto'=>$producto],key($producto->id))
 
     <div class="p-1 mx-2">
-        @if($producto->id)
-            <h1 class="text-2xl font-semibold text-gray-900">Producto: {{ $producto->referencia }}</h1>
-        @else
-            <h1 class="text-2xl font-semibold text-gray-900">Nuevo Producto</h1>
-        @endif
+        <div class="flex flex-row space-x-3" >
+            @if($producto->id)
+                <h1 class="text-2xl font-semibold text-gray-900">Producto: {{ $producto->referencia }}</h1>
+            @else
+                <h1 class="text-2xl font-semibold text-gray-900">Nuevo Producto</h1>
+            @endif
+            <x-button.button  onclick="location.href = '{{ route('producto.create') }}'" color="blue" >{{ __('Nuevo') }}</x-button.button>
+        </div>
     </div>
 
     {{-- zona errores y mensajes --}}
@@ -50,7 +53,7 @@
                     <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                         <div class="w-2/12 form-item">
                             <x-jet-label for="referencia">{{ __('Referencia') }}</x-jet-label>
-                            <input wire:model.defer="producto.referencia" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
+                            <input wire:model="producto.referencia" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
                         <div class="w-10/12 form-item">
                             <x-jet-label for="descripcion">{{ __('Descripción') }}</x-jet-label>
@@ -58,6 +61,61 @@
                         </div>
                     </div>
                 </div>
+                <div class="p-2 m-2 border border-blue-300 rounded shadow-md ">
+                    <div class="p-1 rounded-md bg-blue-50">
+                        <h3 class="pl-1 font-semibold ">Proveedor</h3>
+                    </div>
+                    <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                        <div class="w-full form-item">
+                            <x-jet-label for="entidad_id">{{ __('Proveedor') }}</x-jet-label>
+                            <x-select wire:model="producto.entidad_id" selectname="entidad_id" class="w-full" required>
+                                <option value="">-- Selecciona proveedor --</option>
+                                @foreach ($proveedores as $proveedor)
+                                <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+
+                        <div class="w-full form-item">
+                            <x-jet-label for="costeprov">{{ __('Coste Prov') }}</x-jet-label>
+                            <input  wire:model.defer="producto.costeprov" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="udcoste_id">{{ __('Ud/coste Prov') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.udcoste_id" selectname="udcoste_id" class="w-full">
+                                <option value="">-- Selecciona unidad --</option>
+                                @foreach ($unidadescoste as $unidad)
+                                <option value="{{ $unidad->sigla }}">{{ $unidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="costegrafitex">{{ __('Coste Grafitex') }}</x-jet-label>
+                            <input  wire:model.defer="producto.costegrafitex" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+
+                        <div class="w-full form-item">
+                            <x-jet-label for="udproducto_id">{{ __('Ud Producto') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.udproducto_id" selectname="udproducto_id" class="w-full">
+                                <option value="">-- Selecciona unidad --</option>
+                                @foreach ($unidadescoste as $unidad)
+                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="udsolicitud_id">{{ __('Ud Solicitud') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.udsolicitud_id" selectname="udsolicitud_id" class="w-full">
+                                <option value="">-- Selecciona unidad --</option>
+                                @foreach ($unidades as $unidad)
+                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+
+                    </div>
+                </div>
+
                 <div class="p-2 m-2 border border-blue-300 rounded shadow-md ">
                     <div class="p-1 rounded-md bg-blue-50">
                         <h3 class="pl-1 font-semibold">Especificaciones</h3>
@@ -129,17 +187,28 @@
                             <input  wire:model="producto.ancho" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="udancho__">{{ __('ud Ancho') }}</x-jet-label>
-                            <input  wire:model="producto.udancho_id" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
+                            <x-jet-label for="udancho_id">{{ __('Ud Ancho') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.udancho_id" selectname="udancho_id" class="w-full" >
+                                <option value="">-- Selecciona unidad --</option>
+                                @foreach ($unidades as $unidad)
+                                <option value="{{ $unidad->sigla }}">{{ $unidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="alto">{{ __('Alto') }}</x-jet-label>
-                            <input  wire:model="producto.alto" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            <input  wire:model="producto.alto" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="udalto_id">{{ __('ud Alto') }}</x-jet-label>
-                            <input  wire:model="producto.udalto_id" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            <x-jet-label for="udalto_id">{{ __('Ud Ancho') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.udalto_id" selectname="udalto_id" class="w-full">
+                                <option value="">-- Selecciona unidad --</option>
+                                @foreach ($unidades as $unidad)
+                                <option value="{{ $unidad->sigla }}">{{ $unidad->nombre }}</option>
+                                @endforeach
+                            </x-select>
                         </div>
+
                         <div class="w-full form-item">
                             <x-jet-label for="grosor">{{ __('Grosor (mm)') }}</x-jet-label>
                             <input  wire:model.defer="producto.grosor_mm" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
@@ -153,56 +222,23 @@
                 </div>
                 <div class="p-2 m-2 border border-blue-300 rounded shadow-md ">
                     <div class="p-1 rounded-md bg-blue-50">
-                        <h3 class="pl-1 font-semibold ">Proveedor</h3>
+                        <h3 class="pl-1 font-semibold">Cajas</h3>
+                        <input  wire:model.defer="producto.id" type="hidden"/>
                     </div>
                     <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                         <div class="w-full form-item">
-                            <x-jet-label for="entidad_id">{{ __('Proveedor') }}</x-jet-label>
-                            <x-select wire:model="producto.entidad_id" selectname="entidad_id" class="w-full" required>
-                                <option value="">-- Selecciona proveedor --</option>
-                                @foreach ($proveedores as $proveedor)
-                                <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+                            <x-jet-label for="caja_id">{{ __('Caja') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.caja_id" selectname="caja_id" class="w-full">
+                                <option value="">-- Selecciona caja --</option>
+                                @foreach ($cajas as $caja)
+                                <option value="{{ $caja->sigla }}">{{ $caja->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
-
-                        <div class="w-full form-item">
-                            <x-jet-label for="costeprov">{{ __('Coste Prov') }}</x-jet-label>
-                            <input  wire:model.defer="producto.costeprov" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        <div class="w-10/12 form-item">
+                            <x-jet-label for="costecaja">{{ __('Coste Caja (€)') }}</x-jet-label>
+                            <input  wire:model.defer="producto.costecaja" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </div>
-                        <div class="w-full form-item">
-                            <x-jet-label for="udcoste_id">{{ __('Ud/coste Prov') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.udcoste_id" selectname="udcoste_id" class="w-full">
-                                <option value="">-- Selecciona unidad --</option>
-                                @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-                        <div class="w-full form-item">
-                            <x-jet-label for="costegrafitex">{{ __('Coste Grafitex') }}</x-jet-label>
-                            <input  wire:model.defer="producto.costegrafitex" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
-                        </div>
-
-                        <div class="w-full form-item">
-                            <x-jet-label for="udproducto_id">{{ __('Ud Producto') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.udproducto_id" selectname="udproducto_id" class="w-full">
-                                <option value="">-- Selecciona unidad --</option>
-                                @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-                        <div class="w-full form-item">
-                            <x-jet-label for="udsolicitud_id">{{ __('Ud Solicitud') }}</x-jet-label>
-                            <x-select wire:model.defer="producto.udsolicitud_id" selectname="udsolicitud_id" class="w-full">
-                                <option value="">-- Selecciona unidad --</option>
-                                @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->nombre }}">{{ $unidad->nombre }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-
                     </div>
                 </div>
                 <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">

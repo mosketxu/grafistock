@@ -19,24 +19,24 @@ class Prod extends Component
     {
         return [
             'producto.id'=>'nullable',
-            'producto.referencia'=>'required',
+            'producto.referencia'=>'required|unique:productos,referencia',
             'producto.descripcion'=>'nullable',
             'producto.tipo_id'=>'required',
             'producto.material_id'=>'required',
             'producto.grosor_mm'=>'nullable',
-            'producto.ancho'=>'nullable',
-            'producto.udancho_id'=>'nullable',
-            'producto.alto'=>'nullable',
-            'producto.udalto_id'=>'nullable',
+            'producto.ancho'=>'required',
+            'producto.udancho_id'=>'nullable|required_with:producto.ancho',
+            'producto.alto'=>'required',
+            'producto.udalto_id'=>'nullable|required_with:producto.alto',
             'producto.acabado_id'=>'nullable',
             'producto.grupoproduccion_id'=>'nullable',
             'producto.clase_id'=>'nullable',
             'producto.calidad_id'=>'nullable',
-            'producto.udsolicitud_id'=>'nullable',
+            'producto.udsolicitud_id'=>'required',
             'producto.costeprov'=>'nullable',
-            'producto.udcoste_id'=>'nullable',
+            'producto.udcoste_id'=>'nullable|required_with:producto.costeprov',
             'producto.costegrafitex'=>'nullable',
-            'producto.udproducto_id'=>'nullable',
+            'producto.udproducto_id'=>'nullable|required_with:producto.costegrafitex',
             'producto.entidad_id'=>'required',
             'producto.caja_id'=>'nullable',
             'producto.costecaja'=>'nullable',
@@ -73,6 +73,10 @@ class Prod extends Component
             $p=$p->entidad5;
         }
         $this->producto->referencia=$this->producto->tipo_id.'-'.$this->producto->material_id.'-'.str_pad($this->producto->ancho, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-'.$this->producto->acabado_id.'-'.$p;
+
+        if($this->producto->tipo_id && $this->producto->material_id && $this->producto->ancho && $this->producto->alto  && $this->producto->acabado_id && $p){
+            $this->validate(['producto.referencia'=>'unique:productos,referencia']);
+        }
     }
 
     public function updatedficheropdf()
@@ -108,9 +112,11 @@ class Prod extends Component
 
         // $filename=$this->ficheropdf->store('/','fichasproducto');
         // $filename=$this->ficheropdf->storeAs('/','pp.pdf','fichasproducto');
-        $nombre=$this->producto->referencia.'.'.$this->ficheropdf->extension();
-
-        $filename=$this->ficheropdf->storeAs('/',$nombre,'fichasproducto');
+        $filename="";
+        if ($this->ficheropdf) {
+            $nombre=$this->producto->referencia.'.'.$this->ficheropdf->extension();
+            $filename=$this->ficheropdf->storeAs('/', $nombre, 'fichasproducto');
+        }
 
         $prod=Producto::updateOrCreate([
             'id'=>$i
@@ -139,11 +145,9 @@ class Prod extends Component
             'costecaja'=>$this->producto->costecaja,
             'fichaproducto'=>$filename,
             'observaciones'=>$this->producto->observaciones,
-
-
-
             ]
         );
+
         if(!$this->producto->id){
             $this->producto->id=$prod->id;
             $mensaje=$this->producto->referencia . " creado satisfactoriamente";
