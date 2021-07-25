@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad,Producto, Stock,DetallePedido};
+use App\Models\{Entidad,Producto, Stock,PedidoDetalle};
 
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;

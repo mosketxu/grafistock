@@ -44,8 +44,8 @@ class Producto extends Model
 
     public function movimientos(){return $this->belongsTo(StockMovimiento::class);}
 
-    public function pedidodetalle(){return $this->belongsTo(DetallePedido::class,'producto_id');}
+    public function pedidodetalle(){return $this->belongsTo(PedidoDetalle::class,'producto_id');}
 
-    public function pedidodetalles(){return $this->hasMany(DetallePedido::class,'producto_id');}
+    public function pedidodetalles(){return $this->hasMany(PedidoDetalle::class,'producto_id');}
 
 }

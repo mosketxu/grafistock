@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{DetallePedido, Stock as ModelsStock,Producto, Entidad, Pedido, User};
+use App\Models\{PedidoDetalle, Stock as ModelsStock,Producto, Entidad, Pedido, User};
 
 
 class Stock extends Component

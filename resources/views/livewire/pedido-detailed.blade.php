@@ -20,7 +20,8 @@
                 <thead>
                     <tr>
                         <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50 ">{{ __('Orden') }}</th>
-                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Producto') }} </th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Referencia') }} </th>
+                        <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Material') }} </th>
                         <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Descripción') }} </th>
                         <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Uds.') }}</th>
                         <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Coste') }}</th>
@@ -34,6 +35,7 @@
                         <x-table.row wire:loading.class.delay="opacity-50">
                             <x-table.cell class="text-left">{{ $detalle->orden }}</x-table.cell>
                             <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->referencia }}</x-table.cell>
+                            <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->material->nombre }}</x-table.cell>
                             <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->descripcion }}</x-table.cell>
                             <x-table.cell class="text-right">{{ $detalle->cantidad }}</x-table.cell>
                             <x-table.cell class="text-right">{{ $detalle->coste }}</x-table.cell>
@@ -44,9 +46,10 @@
                                 @endif
                             </x-table.cell>
                             <x-table.cell class="text-right">
-                                {{-- <x-icon.save-a wire:click.prevent="saveDetalle({{$index}})" title="Actualizar"/> --}}
-                                <x-icon.edit-a wire:click.prevent="editDetalle({{$detalle}})" title="Editar"/>
-                                <x-icon.delete-a wire:click.prevent="delete({{ $detalle->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar detalle"/>
+                                @if($bloqueado!=true)
+                                    <x-icon.edit-a wire:click.prevent="editDetalle({{$detalle}})" title="Editar"/>
+                                    <x-icon.delete-a wire:click.prevent="delete({{ $detalle->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar detalle"/>
+                                @endif
                             </x-table.cell>
                         </x-table.row>
                     @empty
@@ -76,8 +79,10 @@
             </table>
         </div>
 
-        @if($showcrear)
-            @livewire('pedido-detalle-create',['pedido'=>$pedido],key($pedido->id))
+        @if($bloqueado!=true)
+            @if($showcrear)
+                @livewire('pedido-detalle-create',['pedido'=>$pedido],key($pedido->id))
+            @endif
         @endif
     </div>
 </div>

@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{DetallePedido,Pedido, Producto};
+use App\Models\{PedidoDetalle,Pedido, Producto};
 use Livewire\Component;
 
 
-class PedidoDetalle extends Component
+class PedidoDetailed extends Component
 {
     public $pedido;
     public $base;
@@ -14,16 +14,7 @@ class PedidoDetalle extends Component
     public $total;
     public $showcrear=false;
 
-    protected $listeners = [ 'funshow'=>'funshowdetalle', 'detallerefresh' => '$refresh'];
-
-    public function mount()
-    {
-        // $this->detalles = DetallePedido::where('pedido_id', $this->pedido->id)
-        //     ->orderBy('orden')
-        //     ->get()
-        //     ->toArray();
-    }
-
+    protected $listeners = [ 'showNuevoDetalle'=>'funshowdetalle', 'detallerefresh' => '$refresh'];
 
     public function render()
     {
@@ -33,27 +24,28 @@ class PedidoDetalle extends Component
         $this->totaliva=$pedido->pedidodetalles->sum('totaliva');
         $this->total=$pedido->pedidodetalles->sum('total');
 
-        $detalles = DetallePedido::where('pedido_id', $this->pedido->id)
+        $detalles = PedidoDetalle::where('pedido_id', $this->pedido->id)
+            ->with('producto','unidadcompra')
             ->orderBy('orden')
             ->get();
-        // dd($detalles->unidadcompra->nombre);
 
-        return view('livewire.pedido-detalle', compact('pedido','detalles'));
+        $bloqueado=$this->pedido->bloqueado;
+
+        return view('livewire.pedido-detailed', compact('pedido','detalles','bloqueado'));
     }
 
-    public function funshowdetalle()
+    public function showNuevoDetalle()
     {
         $this->showcrear=1;
-        // dd($this->showcrear);
         $this->emit('detallerefresh');
     }
 
-    public function saveDetalle($pedidodetalle)
+    public function saveDetalle($detallepedido)
     {
         // $this->validate();
         // $detalle = $this->pedidodetalle->id;
         // if (!is_null($detalle)) {
-        //     $p=DetallePedido::find($detalle['id']);
+        //     $p=PedidoDetalle::find($detalle['id']);
         //     $p->orden=$detalle['orden'];
         //     $p->pedido_id=$detalle['pedido_id'];
         //     $p->producto_id=$detalle['producto_id'];
@@ -64,9 +56,9 @@ class PedidoDetalle extends Component
         // }
     }
 
-    public function delete($pedidodetalleId)
+    public function delete($detallepedidoId)
     {
-        $pedidodetalleBorrar = DetallePedido::find($pedidodetalleId);
+        $pedidodetalleBorrar = PedidoDetalle::find($detallepedidoId);
 
         if ($pedidodetalleBorrar) {
             $pedidodetalleBorrar->delete();

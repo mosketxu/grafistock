@@ -24,6 +24,7 @@ class CreatePedidosTable extends Migration
             $table->string('fichero')->nullable();
             $table->string('observaciones')->nullable();
             $table->boolean('finalizado')->default(false);
+            $table->boolean('bloqueado')->default(false);
             $table->timestamps();
         });
     }

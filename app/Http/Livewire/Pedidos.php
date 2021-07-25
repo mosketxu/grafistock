@@ -44,7 +44,7 @@ class Pedidos extends Component
 
         $totales= Pedido::query()
         ->join('entidades','pedidos.entidad_id','=','entidades.id')
-        ->join('detalle_pedidos','pedidos.id','=','detalle_pedidos.pedido_id')
+        ->join('pedido_detalles','pedidos.id','=','pedido_detalles.pedido_id')
         ->select('pedidos.*', 'entidades.entidad', 'entidades.nif','entidades.emailadm',DB::raw('sum(cantidad * coste) as totalbase'),DB::raw('sum(cantidad * coste * iva) as totaliva'),DB::raw('sum(cantidad * coste * (1+ iva)) as totales'))
         ->searchYear('fechapedido',$this->filtroanyo)
         ->searchMes('fechapedido',$this->filtromes)

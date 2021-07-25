@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetallePedidosTable extends Migration
+class CreatePedidoDetallesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateDetallePedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('detalle_pedidos', function (Blueprint $table) {
+        Schema::create('pedido_detalles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pedido_id')->constrained('pedidos')->onDelete('cascade');
             $table->foreignId('producto_id')->constrained('productos');
             $table->integer('orden')->default('0')->nullable();
             $table->integer('cantidad')->default('0');
-            $table->string('udcompra')->default('0');
             $table->double('coste', 15, 2)->default(0.00);
+            $table->string('udcompra_id')->default('0');
             $table->double('iva', 15, 2)->default(0.00);
 
             $table->timestamps();
@@ -34,6 +34,6 @@ class CreateDetallePedidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalle_pedidos');
+        Schema::dropIfExists('pedido_detalles');
     }
 }

@@ -16,6 +16,7 @@ class Pedido extends Component
     public $showgenerar;
     public $showcrear='';
     public $realizado;
+    public $deshabilitado='asa';
 
     protected $listeners = [
         'pedidoupdate' => '$refresh',
@@ -33,13 +34,14 @@ class Pedido extends Component
             'pedido.fichero'=>'nullable',
             'pedido.observaciones'=>'nullable',
             'pedido.finalizado'=>'boolean',
+            'pedido.bloqueado'=>'boolean',
         ];
     }
 
     public function mount(ModelsPedido $pedido)
     {
         $this->pedido=$pedido;
-        $this->pedido->entidad_id='';
+        if(!$this->pedido->id) $this->pedido->entidad_id='';
         $this->showgenerar = $pedido->finalizado ? false : true;
         $this->realizado=$pedido->finalizado ? true : false;
         $this->showcrear = $pedido->id && !$pedido->finalizado ? true : false;
@@ -49,10 +51,10 @@ class Pedido extends Component
 
     public function render()
     {
+
         if($this->pedido->id){
-            if(!$this->pedido->pedido){
-                $this->mostrarGenerar=1;
-            }
+            if($this->pedido->bloqueado!=null) $this->deshabilitado='readonly';
+            if(!$this->pedido->pedido) $this->mostrarGenerar=1;
         }
 
         $entidades=Entidad::orderBy('entidad')->get();
@@ -73,14 +75,22 @@ class Pedido extends Component
         }
     }
 
+    public function desbloquear()
+    {
+        $this->pedido->bloqueado=false;
+        $this->pedido->save();
+        // $this->redirect( route('pedido.edit',$p) );
+        $this->emit('pedidoupdate'); //el problema es que no refresca el detalle
+        $this->emit('detallerefresh');
+    }
 
     public function save()
     {
         $this->validate();
         $this->message='';
 
-        if ($this->pedido->finalizado==true  ) {
-            $this->message="No se pueden modificar los datos del pedido una vez realizado.";
+        if ($this->pedido->bloqueado==true  ) {
+            $this->message="Pedido bloqueado. Desbloquear para modificar los datos.";
         } else {
             if ($this->pedido->id) {
                 $i=$this->pedido->id;
@@ -90,7 +100,7 @@ class Pedido extends Component
                 $mensaje="Pedido creado satisfactoriamente";
             }
 
-            $this->emit('funshow');
+            $this->emit('showNuevoDetalle');
 
             $ped=ModelsPedido::updateOrCreate(
                 [
@@ -109,11 +119,8 @@ class Pedido extends Component
                     'finalizado'=>$this->realizado,
                 ]
             );
-
             $this->redirect(route('pedido.edit', $ped));
             $this->emitSelf('notify-saved');
-
-
         }
     }
 

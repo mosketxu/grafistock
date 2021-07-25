@@ -22,11 +22,11 @@ class Pedido extends Model
         'fecharecepcion' => 'date:Y-m-d',
     ];
 
-    protected $fillable=['pedido','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','iva','ruta','fichero','observaciones','finalizado'];
+    protected $fillable=['pedido','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','iva','ruta','fichero','observaciones','finalizado','bloqueado'];
 
     public function pedidodetalles()
     {
-        return $this->hasMany(DetallePedido::class)->orderBy('orden');
+        return $this->hasMany(PedidoDetalle::class)->orderBy('orden');
     }
 
     public function entidad()

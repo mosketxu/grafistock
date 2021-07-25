@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetallePedido extends Model
+class PedidoDetalle extends Model
 {
     use HasFactory;
 
-    protected $fillable=['pedido_id','producto_id','orden','cantidad','coste','udcompra','iva'];
+    protected $table = 'pedido_detalles';
+
+    protected $fillable=['pedido_id','producto_id','orden','cantidad','coste','udcompra_id','iva'];
 
     public function pedido()
     {
@@ -23,7 +25,7 @@ class DetallePedido extends Model
 
     public function unidadcompra()
     {
-        return $this->belongsTo(ProductoUnidadcoste::class,'udcompra','sigla');
+        return $this->belongsTo(ProductoUnidadcoste::class,'udcompra_id','sigla');
     }
 
     public function getBaseAttribute(){

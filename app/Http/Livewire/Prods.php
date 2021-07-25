@@ -36,7 +36,9 @@ class Prods extends Component
         $proveedores=Entidad::orderBy('entidad')->get();
         // dd($proveedores->first());
         $productos=Producto::query()
+            ->with('entidad','material','acabado')
             ->search('referencia',$this->search)
+            ->orSearch('descripcion',$this->search)
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
                 })

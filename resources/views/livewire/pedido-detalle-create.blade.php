@@ -32,7 +32,9 @@
         <thead>
             <tr>
                 <x-table.headgreen class="w-32 pl-2">{{ __('Orden') }}</x-table.headgreen>
-                <x-table.headgreen class="pl-2">{{ __('Producto') }} </x-table.headgreen>
+                <x-table.headgreen class="w-32 pl-2">{{ __('Material') }}</x-table.headgreen>
+                <x-table.headgreen class="pl-2">{{ __('Referencia') }} </x-table.headgreen>
+                <x-table.headgreen class="pl-2">{{ __('Descripción') }} </x-table.headgreen>
                 <x-table.headgreen class="pl-2 text-right">{{ __('Uds.') }}</x-table.headgreen>
                 <x-table.headgreen class="pl-2 text-right">{{ __('Coste') }}</x-table.headgreen>
                 <x-table.headgreen class="pl-2 text-right">{{ __('Ud.Compra') }}</x-table.headgreen>
@@ -48,12 +50,23 @@
                         <input  wire:model="detalle.orden" type="text" class="w-32 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
                     <td>
+                        <x-select wire:model="material"  selectname="material" class="w-full">
+                            <option value="">-- Material--</option>
+                            @foreach ($materiales as $material)
+                            <option value="{{ $material->sigla }}">{{ $material->nombre }}</option>
+                            @endforeach>
+                        </x-select>
+                    </td>
+                    <td>
                         <x-select wire:model="detalle.producto_id"  selectname="producto_id" class="w-full">
                             <option value="">-- Producto--</option>
                             @foreach ($productos as $producto)
                             <option value="{{ $producto->id }}">{{ $producto->referencia }}</option>
                             @endforeach>
                         </x-select>
+                    </td>
+                    <td>
+                        <input  wire:model="descripcion" type="text" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                     </td>
                     <td>
                         <input  wire:model="detalle.cantidad" type="text"  class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
@@ -63,9 +76,9 @@
                         <input  wire:model="detalle.coste" type="number" step="any" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
                     <td>
-                        <x-select wire:model="udcompra"  selectname="udcompra" class="w-full">
+                        <x-select wire:model="detalle.udcompra_id"  selectname="udcompra_id" class="w-full">
                             <option value="">-- ud compra--</option>
-                            @foreach ($unidades as $ud)
+                            @foreach ($unidadescoste as $ud)
                             <option value="{{ $ud->sigla }}">{{ $ud->nombre }}</option>
                             @endforeach>
                         </x-select>
