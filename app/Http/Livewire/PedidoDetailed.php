@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\{PedidoDetalle,Pedido, Producto};
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 
@@ -38,6 +39,33 @@ class PedidoDetailed extends Component
     {
         $this->showcrear=1;
         $this->emit('detallerefresh');
+    }
+
+    public function changeOrden(PedidoDetalle $detalle,$orden)
+    {
+        Validator::make(['orden'=>$orden],[
+            'orden'=>'numeric',
+        ])->validate();
+        $detalle->update(['orden'=>$orden]);
+        $this->dispatchBrowserEvent('notify', 'Orden Actualizado.');
+    }
+
+    public function changeCantidad(PedidoDetalle $detalle,$cantidad)
+    {
+        Validator::make(['cantidad'=>$cantidad],[
+            'cantidad'=>'numeric',
+        ])->validate();
+        $detalle->update(['cantidad'=>$cantidad]);
+        $this->dispatchBrowserEvent('notify', 'Cantidad Actualizada.');
+    }
+
+    public function changeCoste(PedidoDetalle $detalle,$coste)
+    {
+        Validator::make(['coste'=>$coste],[
+            'coste'=>'numeric',
+        ])->validate();
+        $detalle->update(['coste'=>$coste]);
+        $this->dispatchBrowserEvent('notify', 'Coste Actualizado.');
     }
 
     public function saveDetalle($detallepedido)

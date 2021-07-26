@@ -85,13 +85,14 @@ class PedidoDetalleCreate extends Component
     public function save()
     {
         $this->validate();
+        // dd($this->detalle);
         PedidoDetalle::create([
             'pedido_id'=>$this->detalle->pedido_id,
             'orden'=>$this->detalle->orden,
             'producto_id'=>$this->detalle->producto_id,
             'cantidad'=>$this->detalle->cantidad,
             'coste'=>$this->detalle->coste,
-            'udcompra_id'=>$detalle->udcompra_id,
+            'udcompra_id'=>$this->detalle->udcompra_id,
             'iva'=>$this->detalle->iva,
             ]);
             $this->dispatchBrowserEvent('notify', 'Detalle añadido con éxito');
@@ -103,5 +104,8 @@ class PedidoDetalleCreate extends Component
         $this->detalle->udcompra_id='';
         $this->detalle->cantidad=1;
         $this->detalle->coste=0;
+        $this->descripcion='';
+        $this->material='';
+        $this->cantidad=0;
     }
 }

@@ -11,7 +11,6 @@
     <div class="px-2 py-1 space-y-4" >
         @if ($errors->any())
         <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
-            <x-jet-label class="text-red-600">Verifica los errores</x-jet-label>
             <ul class="mt-3 text-sm text-red-600 list-disc list-inside">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
