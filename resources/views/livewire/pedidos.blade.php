@@ -100,8 +100,6 @@
                         <th class="pl-4 font-medium text-left">{{ __('F.Recep.Prev.') }}</th>
                         <th class="pl-4 font-medium text-left">{{ __('F.Recep.') }}</th>
                         <th class="pl-4 font-medium text-left">{{ __('Proveedor') }} </th>
-                        <th class="pr-4 font-medium text-right">{{ __('Base (€)') }}</th>
-                        <th class="pr-4 font-medium text-right">{{ __('Iva (€)') }}</th>
                         <th class="pr-4 font-medium text-right">{{ __('Total (€)') }}</th>
                         <th colspan="2"></th>
                     </tr>
@@ -149,12 +147,6 @@
                             <td class="text-right">
                                 <span class="pr-4 text-xs text-blue-500">{{ number_format(round($pedido->pedidodetalles->sum('base'),2),2)}}</span>
                             </td>
-                            <td class="text-right">
-                                <span class="pr-4 text-xs text-blue-500">{{ number_format(round($pedido->pedidodetalles->sum('totaliva'),2),2)}}</span>
-                            </td>
-                            <td class="text-right">
-                                <span class="pr-4 text-xs text-blue-500">{{ number_format(round($pedido->pedidodetalles->sum('total'),2),2) }}</span>
-                            </td>
 
                             <td class="">
                                 <div class="flex items-center justify-center">
@@ -191,9 +183,10 @@
                         <td ></td>
                         <td ></td>
                         <td class="pt-2 text-sm text-right text-gray-600">Total:</td>
-                        <td class="w-24 pt-2 pr-4 text-sm text-right text-gray-600">{{ number_format(round($totales->totalbase ,2),2) }}</td>
-                        <td class="w-24 pt-2 pr-4 text-sm text-right text-gray-600">{{ number_format(round($totales->totaliva,2),2) }}</td>
-                        <td class="w-24 pt-2 pr-4 text-sm text-right text-gray-600">{{ number_format(round($totales->totales,2),2) }}</td>
+                        {{-- <td class="w-24 pt-2 pr-4 text-sm text-right text-gray-600">{{ number_format(round($pedidos.detallepedido->sum('cantidad * ') ,2),2) }}</td> --}}
+                        <td class="w-24 pt-2 pr-4 text-sm text-right text-gray-600">{{ number_format(round($totales,2),2) }}</td>
+                        <td ></td>
+                        <td ></td>
                         <td colspan="2"></td>
                     </tr>
 

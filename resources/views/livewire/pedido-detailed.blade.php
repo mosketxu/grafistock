@@ -37,10 +37,10 @@
                 <x-table.headyellow class="w-2/12 pl-2">{{ __('Material') }}</x-table.headyellow>
                 <x-table.headyellow class="w-2/12 pl-2">{{ __('Referencia') }} </x-table.headyellow>
                 <x-table.headyellow class="w-3/12 pl-2">{{ __('Descripción') }} </x-table.headyellow>
-                <x-table.headyellow class="w-1/12 pl-2 text-right">{{ __('Uds.') }}</x-table.headyellow>
-                <x-table.headyellow class="w-1/12 pl-2 text-right">{{ __('Coste') }}</x-table.headyellow>
-                <x-table.headyellow class="w-1/12 pl-2 text-right">{{ __('Ud.Compra') }}</x-table.headyellow>
-                <x-table.headyellow class="w-1/12 pr-10 text-right">{{ __('Total (€)') }}</x-table.headyellow>
+                <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('Uds.') }}</x-table.headyellow>
+                <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('Coste') }}</x-table.headyellow>
+                <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('Ud.Compra') }}</x-table.headyellow>
+                <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('Total (€)') }}</x-table.headyellow>
                 <x-table.headyellow colspan="2" class="w-1/12"/>
             </tr>
         </thead>
@@ -48,17 +48,17 @@
             @forelse ($detalles as $detalle)
                 <tr wire:loading.class.delay="opacity-50" class="py-0 my-0">
                     <td><input type="text" value="{{ $detalle->orden }}" wire:change="changeOrden({{ $detalle }},$event.target.value)" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
-                    <td><input type="text" value="{{ $detalle->producto->material->nombre }}" class="w-full text-xs tracking-tighter border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
-                    <td><input type="text" value="{{ $detalle->producto->referencia }}" class="w-full text-xs tracking-tighter border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
-                    <td><input type="text" value="{{ $detalle->producto->descripcion }}" class="w-full text-xs tracking-tighter border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
+                    <td><input type="text" value="{{ $detalle->producto->material->nombre }}" class="w-full text-xs tracking-tighter bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
+                    <td><input type="text" value="{{ $detalle->producto->referencia }}" class="w-full text-xs tracking-tighter bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
+                    <td><input type="text" value="{{ $detalle->producto->descripcion }}" class="w-full text-xs tracking-tighter bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
                     <td><input type="text" value="{{ $detalle->cantidad }}" wire:change="changeCantidad({{ $detalle }},$event.target.value)" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
                     <td><input type="text" value="{{ $detalle->coste }}" wire:change="changeCoste({{ $detalle }},$event.target.value)" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/></td>
-                    <td><input type="text" value="{{ $detalle->unidadcompra->nombre ?? '-' }}" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
+                    <td><input type="text" value="{{ $detalle->unidadcompra->nombre ?? '-' }}" class="w-full text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
                     <td>
                         @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
-                            <input type="text" value="{{ number_format(round($detalle->cantidad*$detalle->coste, 2),2,',','.') }}" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/>
+                            <input type="text" value="{{ number_format(round($detalle->cantidad*$detalle->coste, 2),2,',','.') }}" class="w-full text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/>
                         @else
-                        <input type="text" value="-" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/>
+                            <input type="text" value="-" class="w-full text-xs bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/>
                         @endif
                     </td>
                     <td>

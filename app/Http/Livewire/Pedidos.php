@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Pedido,Entidad};
+use App\Models\{Pedido,Entidad, PedidoDetalle};
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +19,7 @@ class Pedidos extends Component
     public $filtroproveedor='';
     public $entidad;
     public $message;
+    public $total;
 
     public $showDeleteModal=false;
 
@@ -43,15 +44,17 @@ class Pedidos extends Component
         $proveedores = Entidad::orderBy('entidad')->get();
 
         $totales= Pedido::query()
-        ->join('entidades','pedidos.entidad_id','=','entidades.id')
-        ->join('pedido_detalles','pedidos.id','=','pedido_detalles.pedido_id')
-        ->select('pedidos.*', 'entidades.entidad', 'entidades.nif','entidades.emailadm',DB::raw('sum(cantidad * coste) as totalbase'),DB::raw('sum(cantidad * coste * iva) as totaliva'),DB::raw('sum(cantidad * coste * (1+ iva)) as totales'))
-        ->searchYear('fechapedido',$this->filtroanyo)
-        ->searchMes('fechapedido',$this->filtromes)
-        ->search('pedidos.pedido',$this->search)
-        ->orSearch('entidades.entidad',$this->search)
-        ->first();
-        return view('livewire.pedidos',compact('pedidos','proveedores','totales'));
+            ->join('pedido_detalles','pedido_detalles.pedido_id','=','pedidos.id')
+            ->select(DB::raw('cantidad * coste as total'))
+            ->when($this->filtroproveedor!='', function ($query){
+                $query->where('entidad_id',$this->filtroproveedor);
+                })
+            ->searchYear('fechapedido',$this->filtroanyo)
+            ->searchMes('fechapedido',$this->filtromes)
+            ->search('pedidos.pedido',$this->search)
+            ->get()->sum('total');
+
+            return view('livewire.pedidos',compact('pedidos','proveedores','totales'));
     }
 
     public function getRowsQueryProperty(){
@@ -76,6 +79,7 @@ class Pedidos extends Component
     public function getRowsProperty(){
         return $this->rowsQuery->paginate();
     }
+
 
     public function exportSelected(){
         //toCsv es una macro a n AppServiceProvider

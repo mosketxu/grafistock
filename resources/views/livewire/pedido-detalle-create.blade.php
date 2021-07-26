@@ -34,10 +34,10 @@
                 <x-table.headgreen class="w-2/12 pl-2">{{ __('Material') }}</x-table.headgreen>
                 <x-table.headgreen class="w-2/12 pl-2">{{ __('Referencia') }} </x-table.headgreen>
                 <x-table.headgreen class="w-3/12 pl-2">{{ __('Descripción') }} </x-table.headgreen>
-                <x-table.headgreen class="w-1/12 pl-2 text-right">{{ __('Uds.') }}</x-table.headgreen>
-                <x-table.headgreen class="w-1/12 pl-2 text-right">{{ __('Coste') }}</x-table.headgreen>
-                <x-table.headgreen class="w-1/12 pl-2 text-right">{{ __('Ud.Compra') }}</x-table.headgreen>
-                <x-table.headgreen class="w-1/12 pr-10 text-right">{{ __('Total (€)') }}</x-table.headgreen>
+                <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('Uds.') }}</x-table.headgreen>
+                <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('Coste') }}</x-table.headgreen>
+                <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('Ud.Compra') }}</x-table.headgreen>
+                <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('Total (€)') }}</x-table.headgreen>
                 <x-table.headgreen colspan="2" class="w-1/12"/>
             </tr>
         </thead>
@@ -82,7 +82,7 @@
                         </x-select>
                     </td>
                     <x-table.cell>
-                        <div class="flex-1 py-1 pr-10 text-sm font-bold text-right text-gray-900 rounded-lg bg-gray-50">
+                        <div class="flex-1 py-1 pr-3 text-sm font-bold text-right text-gray-900 rounded-lg bg-gray-50">
                             @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
                                 {{ number_format(round($detalle->cantidad*$detalle->coste, 2),2) }}
                             @endif
