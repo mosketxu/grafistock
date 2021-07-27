@@ -92,14 +92,10 @@
                     <td>
                         <div class="text-center">
                             <x-button.button type="submit" color="blue" class="focus:bg-blue-900">{{ __('Añadir') }}</x-button.button>
-                        {{-- <button type='submit' class="py-2 text-xs font-semibold text-center text-white transition bg-blue-700 border border-transparent rounded-md hover:bg-blue-800 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25">
-                            {{ __('Añadir') }}
-                        </button> --}}
                     </div>
                     </td>
                 </form>
             </tr>
-
         </tbody>
     </table>
 </div>

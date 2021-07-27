@@ -33,12 +33,6 @@ class PedidoDetailed extends Component
         return view('livewire.pedido-detailed', compact('pedido','detalles'));
     }
 
-    // public function showNuevoDetalle()
-    // {
-    //     $this->showcrear=1;
-    //     $this->emit('detallerefresh');
-    // }
-
     public function changeOrden(PedidoDetalle $detalle,$orden)
     {
         Validator::make(['orden'=>$orden],[

@@ -17,11 +17,11 @@
         </div>
 
         {{-- mensajes y errores --}}
-        @if ($message)
-            <div class="py-1 mx-4 space-y-4">
-                <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
+        @if (Session::has('message'))
+            <div class="py-1 mx-4 space-y-4" id="mimensaje">
+                <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-green-200 border-green-500 rounded border-1">
                     <span class="inline-block mx-8 align-middle">
-                        {{ $message }}
+                        {{ $message }} {{ Session::get('message') }}
                     </span>
                     <button class="absolute top-0 right-0 mt-2 mr-6 text-2xl font-semibold leading-none bg-transparent outline-none focus:outline-none" onclick="document.getElementById('alert').remove();">
                         <span>×</span>
@@ -123,4 +123,9 @@
             </div>
         </div>
     </div>
+    <script>
+        setTimeout(function() {
+            getElementById('#mimensaje').fadeOut('fast');
+                }, 3000); // <-- time in milliseconds
+    </script>
 </div>

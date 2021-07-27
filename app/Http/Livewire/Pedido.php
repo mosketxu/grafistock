@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\{Entidad, ProductoMaterial};
 use App\Models\Pedido as ModelsPedido;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 
@@ -17,6 +18,7 @@ class Pedido extends Component
     public $showgenerar;
     public $showcrear='';
     public $realizado;
+    public $nuevo='No';
 
     protected $listeners = [
         'pedidoupdate' => '$refresh',
@@ -76,8 +78,8 @@ class Pedido extends Component
         $this->validate();
 
         $this->message='';
-
         if ($this->pedido->id) {
+            $this->nuevo="No";
             $i=$this->pedido->id;
             $this->validate([
                 'pedido.pedido'=>['required',Rule::unique('pedidos','pedido')->ignore($this->pedido->id)]
@@ -85,10 +87,12 @@ class Pedido extends Component
 
             $mensaje="Pedido actualizado satisfactoriamente";
         } else {
+            $this->nuevo="Sí";
             $this->numpedido();
             $i=$this->pedido->id;
             $mensaje="Pedido creado satisfactoriamente";
         }
+
 
         $pedido=ModelsPedido::updateOrCreate(
             [
@@ -111,53 +115,17 @@ class Pedido extends Component
         $this->pedido->id=$pedido->id;
         $this->showcrear=1;
         $this->emit('pedidoupdate');
-        // $this->emit('detallerefresh');
-        // $this->emit('showNuevoDetalle');
-        $this->dispatchBrowserEvent('notify', $mensaje);
 
-            // $this->redirect(route('pedido.edit', $ped));
-            // $this->emitSelf('notify-saved');
+        if ($this->nuevo=='Sí') {
+            // Session::flash('message', $mensaje);
+            $this->nuevo='No';
+            return redirect(route('pedido.edit', $pedido));
+
+        }
+        $this->dispatchBrowserEvent('notify', $mensaje);
     }
 
-    // public function creaPedido(ModelsPedido $pedido)
-    // {
-    //     $this->validate([
-    //         'pedido.entidad_id'=>'required',
-    //         'pedido.fechapedido'=>'required|date',
-    //     ]);
-
-    //     $anyo= substr($pedido->fechapedido->format('Y'), -4);
-    //     $anyo2= substr($pedido->fechapedido->format('Y'), -2);
-
-
-    //     if (!$pedido->pedido){
-    //         $ped=ModelsPedido::whereYear('fechapedido', $anyo)->max('pedido') ;
-    //         $ped= $ped ? $ped + 1 : ($anyo2 * 100000 +1) ;
-    //     }else{
-    //         $ped=$pedido->pedido;
-    //     }
-
-    //     $pedido->bloqueado=true;
-    //     $pedido->pedido=$ped;
-    //     $pedido->save();
-
-        // genero el pedido y la guardo en su carpeta de storage
-        // $pedido->ruta='pedidos/'.$pedido->fechapedido->format('Y').'/'.$pedido->fechapedido->format('m');
-        // $pedido->fichero=trim($ped.'.pdf');
-        // $pedido->imprimirpedido();
-
-        // actualizo las vbles del componente para que se refresque bien
-    //     $this->pedido->bloqueado=true;
-    //     $this->pedido->pedido=$pedido->pedido;
-
-    //     $this->emit('pedidoupdate');
-    //     $this->emit('detallerefresh');
-
-    //     $this->dispatchBrowserEvent('notify', 'Pedido creado!');
-    // }
-
     public function presentaPDF(Pedido $pedido){
-
         return Response::download('storage/'.$this->pedido->rutafichero);
     }
 

@@ -33,8 +33,6 @@ class PedidoDetalleCreate extends Component
         'udcompraId'=>'nullable',
     ];
 
-    protected $listeners = [ 'detallerefresh' => '$refresh'];
-
     public function mount($pedidoId)
     {
         $this->pedido=Pedido::find($pedidoId);

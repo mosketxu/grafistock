@@ -5,7 +5,7 @@
     </div>
     {{-- zona mensajes --}}
     <div class="py-1 mx-4 space-y-2">
-        @if (session()->has('message'))
+        {{-- @if (session()->has('message'))
             <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
                 <span class="inline-block mx-8 align-middle">
                     {{ session('message') }}
@@ -14,7 +14,7 @@
                     <span>×</span>
                 </button>
             </div>
-        @endif
+        @endif --}}
         @if ($errors->any())
             <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
                 <ul class="mt-3 text-sm text-red-600 list-disc list-inside">
