@@ -45,7 +45,7 @@
             <tr>
                 <form wire:submit.prevent="save">
                     <td>
-                        <input  wire:model="detalle.orden" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                        <input  wire:model="orden" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
                     <td>
                         <x-select wire:model="material"  selectname="material" class="w-full tracking-tighter">
@@ -56,25 +56,25 @@
                         </x-select>
                     </td>
                     <td>
-                        <x-select wire:model="detalle.producto_id"  selectname="producto_id" class="w-full tracking-tighter">
+                        <x-select wire:model="productoId"  selectname="productoId" class="w-full tracking-tighter">
                             <option value="">-- Referencia--</option>
                             @foreach ($productos as $producto)
-                            <option value="{{ $producto->id }}">{{ $producto->referencia }}</option>
+                            <option value="{{ $producto->id }}">{{ $producto->referencia }}&nbsp &nbsp- &nbsp &nbsp{{ $producto->descripcion }}</option>
                             @endforeach>
                         </x-select>
                     </td>
                     <td>
-                        <input  wire:model="descripcion" type="text" class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
+                        <input  wire:model="descripcion" type="text" class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                     </td>
                     <td>
-                        <input  wire:model="detalle.cantidad" type="text"  class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        <input  wire:model="cantidad" type="text"  class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                     </td>
 
                     <td>
-                        <input  wire:model="detalle.coste" type="number" step="any" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                        <input  wire:model="coste" type="number" step="any" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
                     <td>
-                        <x-select wire:model="detalle.udcompra_id"  selectname="udcompra_id" class="w-full">
+                        <x-select wire:model="udcompraId"  selectname="udcompraId" class="w-full">
                             <option value="">-- ud compra--</option>
                             @foreach ($unidadescoste as $ud)
                             <option value="{{ $ud->sigla }}">{{ $ud->nombre }}</option>
@@ -83,15 +83,15 @@
                     </td>
                     <x-table.cell>
                         <div class="flex-1 py-1 pr-3 text-sm font-bold text-right text-gray-900 rounded-lg bg-gray-50">
-                            @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
-                                {{ number_format(round($detalle->cantidad*$detalle->coste, 2),2) }}
+                            @if(is_numeric($cantidad) && is_numeric($coste))
+                                {{ number_format(round($cantidad*$coste, 2),2) }}
                             @endif
                         </div>
                     </x-table.cell>
 
                     <td>
                         <div class="text-center">
-                            <x-button.button type="submit" color="blue" class="">{{ __('Añadir') }}</x-button.button>
+                            <x-button.button type="submit" color="blue" class="focus:bg-blue-900">{{ __('Añadir') }}</x-button.button>
                         {{-- <button type='submit' class="py-2 text-xs font-semibold text-center text-white transition bg-blue-700 border border-transparent rounded-md hover:bg-blue-800 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25">
                             {{ __('Añadir') }}
                         </button> --}}
