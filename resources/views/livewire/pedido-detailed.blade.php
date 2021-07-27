@@ -1,6 +1,7 @@
 <div class="flex-col">
     <div class="bg-yellow-100 rounded-md">
         <h3 class="ml-2 font-semibold ">Detalle Pedido</h3>
+        {{-- entidad={{  }} --}}
     </div>
     {{-- zona mensajes --}}
     <div class="py-1 mx-4 space-y-2">
@@ -62,12 +63,9 @@
                         @endif
                     </td>
                     <td>
-                        @if($bloqueado!=true)
-                            <div class="text-center">
-                                {{-- <x-icon.edit-a wire:click.prevent="editDetalle({{$detalle}})" title="Editar"/> --}}
-                                <x-icon.delete-a wire:click.prevent="delete({{ $detalle->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar detalle"/>
-                            </div>
-                        @endif
+                        <div class="text-center">
+                            <x-icon.delete-a wire:click.prevent="delete({{ $detalle->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar detalle"/>
+                        </div>
                     </td>
                 </tr>
             @empty
@@ -97,10 +95,7 @@
         </tfoot>
     </table>
 
-
-    @if($bloqueado!=true)
-        @if($showcrear)
-            @livewire('pedido-detalle-create',['pedido'=>$pedido],key($pedido->id))
-        @endif
+    @if($showcrear)
+        @livewire('pedido-detalle-create',['pedidoId'=>$pedido->id])
     @endif
 </div>

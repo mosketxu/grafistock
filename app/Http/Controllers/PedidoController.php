@@ -18,9 +18,17 @@ class PedidoController extends Controller
     }
 
 
-    public function show($entidadId)
+    public function show($pedidoId)
     {
-        dd('mirar de FacturacionController');
+        $pedido=Pedido::with('entidad')
+        ->with('pedidodetalles')
+        ->find($pedidoId);
+
+        $base=$pedido->pedidodetalles->sum('base');
+
+        $pdf = \PDF::loadView('pedido.pedidopdf', compact(['pedido','base']));
+        return $pdf->stream('invoice.pdf');
+
     }
 
     public function edit(Pedido $pedido)

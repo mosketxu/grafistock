@@ -2,56 +2,57 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PedidoDetalle, Producto, ProductoMaterial, ProductoUnidadcoste};
+use App\Models\{PedidoDetalle, Producto, ProductoMaterial, ProductoUnidadcoste,Pedido};
 use Livewire\Component;
 use phpDocumentor\Reflection\Types\Nullable;
 
 class PedidoDetalleCreate extends Component
 {
+    public $entidadId;
     public $pedido;
+    public $pedidoId;
     public $detalle;
+    public $orden=0;
+    public $cantidad=0;
+    public $udcompraId='';
+    public $productoId='';
+    public $coste=0;
+
     public $message;
-    public $udcompra_id;
+
     public $material='';
     public $productos;
     public $descripcion='';
 
     protected $rules = [
-        'pedido.id' => 'required',
-        'detalle.pedido_id'=>'numeric|required',
-        'detalle.producto_id'=>'numeric|required',
-        'detalle.orden'=>'numeric',
-        'detalle.cantidad'=>'numeric|required',
-        'detalle.coste'=>'numeric|required',
-        'detalle.udcompra_id'=>'nullable',
-        'detalle.iva'=>'numeric|required',
+        'pedidoId'=>'numeric|required',
+        'productoId'=>'numeric|required',
+        'orden'=>'numeric',
+        'cantidad'=>'numeric|required',
+        'coste'=>'numeric|required',
+        'udcompraId'=>'nullable',
     ];
 
-    protected $listeners = [ 'showNuevoDetalle'=>'funshowdetalle', 'detallerefresh' => '$refresh'];
+    protected $listeners = [ 'detallerefresh' => '$refresh'];
 
-    public function mount(PedidoDetalle $detalle)
+    public function mount($pedidoId)
     {
-        $this->detalle=$detalle;
-        $this->detalle->pedido_id=$this->pedido->id;
-        $this->detalle->orden=0;
-        $this->detalle->cantidad=0;
-        $this->detalle->udcompra_id='';
-        $this->detalle->coste=0;
-        $this->detalle->iva=0;
-
+        $this->pedido=Pedido::find($pedidoId);
+        $this->entidadId=$this->pedido->entidad_id;
+        $this->pedidoId=$pedidoId;
     }
 
     public function render()
     {
         $this->productos=Producto::query()
-        ->where('entidad_id',$this->detalle->pedido->entidad_id)
+        ->where('entidad_id',$this->entidadId)
         ->when($this->material!='', function ($query){
             $query->where('material_id',$this->material);
             })
         ->orderBy('referencia')
         ->get();
 
-        $mat=Producto::select('material_id')->where('entidad_id',$this->detalle->pedido->entidad_id)
+        $mat=Producto::select('material_id')->where('entidad_id',$this->entidadId)
             ->groupBy('material_id')
             ->get()->toArray();
         $materiales=ProductoMaterial::whereIn('sigla',$mat)->orderBy('nombre')->get();
@@ -61,49 +62,49 @@ class PedidoDetalleCreate extends Component
         return view('livewire.pedido-detalle-create',compact('unidadescoste','materiales'));
     }
 
-    public function updatedDetalleProductoId()
+    public function updatedProductoId()
     {
-        $p=Producto::find($this->detalle->producto_id);
+        $p=Producto::find($this->productoId);
         if($p){
-            $this->detalle->coste=$p->costegrafitex;
-            $this->detalle->udcompra_id=$p->udsolicitud_id;
+            $this->coste=$p->costegrafitex;
+            $this->udcompraId=$p->udsolicitud_id;
             $this->descripcion=$p->descripcion;
         }else{
-            $this->detalle->coste=0;
-            $this->detalle->udcompra_id='';
+            $this->coste=0;
+            $this->udcompraId='';
             $this->descripcion='';
         }
     }
 
     public function updatedMaterial(){
-        $this->detalle->producto_id='';
-        $this->detalle->udcompra_id=0;
-        $this->detalle->udcompra_id='';
+        $this->productoId='';
+        $this->udcompraId=0;
+        $this->udcompraId='';
         $this->descripcion='';
     }
 
     public function save()
     {
         $this->validate();
-        // dd($this->detalle);
+
         PedidoDetalle::create([
-            'pedido_id'=>$this->detalle->pedido_id,
-            'orden'=>$this->detalle->orden,
-            'producto_id'=>$this->detalle->producto_id,
-            'cantidad'=>$this->detalle->cantidad,
-            'coste'=>$this->detalle->coste,
-            'udcompra_id'=>$this->detalle->udcompra_id,
-            'iva'=>$this->detalle->iva,
-            ]);
-            $this->dispatchBrowserEvent('notify', 'Detalle añadido con éxito');
+            'pedido_id'=>$this->pedidoId,
+            'orden'=>$this->orden,
+            'producto_id'=>$this->productoId,
+            'cantidad'=>$this->cantidad,
+            'coste'=>$this->coste,
+            'udcompra_id'=>$this->udcompraId
+        ]);
+
+        $this->dispatchBrowserEvent('notify', 'Detalle añadido con éxito');
 
         $this->emit('detallerefresh');
-        $this->detalle->pedido_id=$this->pedido->id;
-        $this->detalle->orden=0;
-        $this->detalle->producto_id='';
-        $this->detalle->udcompra_id='';
-        $this->detalle->cantidad=1;
-        $this->detalle->coste=0;
+        $this->pedidoId=$this->pedido->id;
+        $this->orden=0;
+        $this->productoId='';
+        $this->udcompraId='';
+        $this->cantidad=1;
+        $this->coste=0;
         $this->descripcion='';
         $this->material='';
         $this->cantidad=0;

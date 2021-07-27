@@ -15,7 +15,7 @@ class PedidoDetailed extends Component
     public $total;
     public $showcrear=false;
 
-    protected $listeners = [ 'showNuevoDetalle'=>'funshowdetalle', 'detallerefresh' => '$refresh'];
+    protected $listeners = [ 'showNuevoDetalle'=>'showNuevoDetalle', 'detallerefresh' => '$refresh'];
 
     public function render()
     {
@@ -30,16 +30,14 @@ class PedidoDetailed extends Component
             ->orderBy('orden')
             ->get();
 
-        $bloqueado=$this->pedido->bloqueado;
-
-        return view('livewire.pedido-detailed', compact('pedido','detalles','bloqueado'));
+        return view('livewire.pedido-detailed', compact('pedido','detalles'));
     }
 
-    public function showNuevoDetalle()
-    {
-        $this->showcrear=1;
-        $this->emit('detallerefresh');
-    }
+    // public function showNuevoDetalle()
+    // {
+    //     $this->showcrear=1;
+    //     $this->emit('detallerefresh');
+    // }
 
     public function changeOrden(PedidoDetalle $detalle,$orden)
     {
@@ -66,22 +64,6 @@ class PedidoDetailed extends Component
         ])->validate();
         $detalle->update(['coste'=>$coste]);
         $this->dispatchBrowserEvent('notify', 'Coste Actualizado.');
-    }
-
-    public function saveDetalle($detallepedido)
-    {
-        // $this->validate();
-        // $detalle = $this->pedidodetalle->id;
-        // if (!is_null($detalle)) {
-        //     $p=PedidoDetalle::find($detalle['id']);
-        //     $p->orden=$detalle['orden'];
-        //     $p->pedido_id=$detalle['pedido_id'];
-        //     $p->producto_id=$detalle['producto_id'];
-        //     $p->cantidad=$detalle['cantidad'];
-        //     $p->coste=$detalle['coste'];
-        //     $p->iva=$detalle['iva'];
-        //     $p->save();
-        // }
     }
 
     public function delete($detallepedidoId)
