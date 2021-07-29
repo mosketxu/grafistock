@@ -89,7 +89,7 @@
                 <td class="pr-2"></td>
                 <td class="pr-2"></td>
                 <td class="pl-2 text-right">Total</td>
-                <td class="pr-3 text-right">{{ number_format($total,2,',','.') }}</td>
+                {{-- <td class="pr-3 text-right">{{ number_format($total,2,',','.') }}</td> --}}
                 <td colspan="2" class="w-1/12"></td>
             </tr>
         </tfoot>

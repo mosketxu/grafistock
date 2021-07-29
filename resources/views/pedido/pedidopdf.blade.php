@@ -4,44 +4,43 @@
     <head>
         <meta charset="UTF-8">
         <title>{{ $pedido->pedido }}</title>
-        <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/pdf.css')}}">
 
+        {{-- sobreescribo margenes de pdf.css --}}
+        <style>
+            @page {margin: 20px 60px 20px 60px;}
+        </style>
     </head>
-    <body classpedidosm">
+    <body>
         <!-- Define header and footer blocks before your content -->
         <header>
-            {{-- cabecera del formulario --}}
             <div>
-                <table width="60%" style="margin:0 auto" cellspacing="0">
-                    <tbody>
-                        <tr>
-                            <td width="24%"></td>
-                            <td width="30%"><img src="{{asset('img/grafitexLogo.png')}}"  width="200"></td>
-                            <td width="36%"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div>
+                    <img src="{{asset('img/grafitexLogo.png')}}" width="50px">
+                </div>
+                <div>
+                    <b>Grafitex Servicios Digitales, S.A</b><br>
+                    Ferrocarrils Catalans, 103-107<br>
+                    08038 Barcelona<br>
+                    Tlf. 93.200.73.22
+                </div>
+           </div>
         </header>
-
         <footer>
             <div>
-                <table width="60%" style="margin:0 auto" cellspacing="0">
-                    <tbody>
-                        <tr>
-                            <td width="10%"></td>
-                            <td width="30%">Grafitex</td>
-                            <td width="36%"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div>
+                    <b>Grafitex Servicios Digitales, S.A</b> - CIF: A08875387
+                    </div>
             </div>
         </footer>
 
     <!-- Wrap the content of your PDF inside a main tag -->
         <main style="margin-top:140px; margin-right: 20px;">
+            <div class="">
+                <h1 style="color: gray">Orden de compra</h1>
+            </div>
             {{-- datos cliente  --}}
-            <table width="100%" style="text-align:left;margin-left:40px" cellspacing="0">
+            {{-- <table width="100%" style="text-align:left;margin-left:40px" cellspacing="0">
                 <tbody>
                     <tr>
                         <td width="49%"></td>
@@ -55,83 +54,120 @@
                         <td width="49%"></td>
                         <td width="49%">{{ $pedido->entidad->codpostal }} {{ $pedido->entidad->localidad }}</td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td><br></td>
-                    </tr>
+                    @if(strtolower($pedido->entidad->localidad) != strtolower($pedido->entidad->provincia->provincia))
                     <tr>
                         <td width="49%"></td>
-                        <td width="49%">{{ $pedido->entidad->nif  }}</td>
+                        <td width="49%">{{ $pedido->entidad->codpostal }} {{ $pedido->entidad->provincia->provincia }}</td>
+                    </tr>
+                    @endif
+                    <tr>
+                        <td width="49%"></td>
+                        <td width="49%">Cif: {{ $pedido->entidad->nif  }}</td>
                     </tr>
 
                 </tbody>
-            </table>
+            </table> --}}
 
             {{-- detalle del pedido --}}
 
-            <div style="margin-top:50px; ">
-            {{-- Fecha y Pedido --}}
+            {{-- <div style="margin-top:50px; ">
                 <div>FECHA: {{ $pedido->fechapedido->format('d-m-Y') }}</div>
                 <div>FACTURA: {{ $pedido->pedido }}</div>
-            </div>
+            </div> --}}
+            <table width="100%" style="margin-top:50px">
+                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
+                    <td style="padding-left:3px;" width="33%">Comercial</td>
+                    <td style="text-align:center" width="33%">Nº.Pedido</td>
+                    <td style="padding-righ:3px;text-align:right" width="33%">Fecha</td>
+                </tr>
+                <tr style="background-color: #fdf9f9; ">
+                    <td style="padding-left:3px;" width="33%">{{ $pedido->solicitante->nombre }}</td>
+                    <td style="text-align:center" width="33%">{{ $pedido->pedido }}</td>
+                    <td style="padding-righ:3px;text-align:right" width="33%">{{ $pedido->fechapedido->format('d/m/Y') }}</td>
+                </tr>
+            </table>
 
-            <div class="flex-col">
-                <table table class="min-w-full divide-y divide-gray-200">
-                    <thead>
-                        <tr>
-                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50 ">{{ __('Orden') }}</th>
-                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Producto') }} </th>
-                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-left text-gray-500 bg-yellow-50">{{ __('Descripción') }} </th>
-                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Uds.') }}</th>
-                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Coste') }}</th>
-                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Ud.Compra') }}</th>
-                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Base (€)') }}</th>
-                            <th class="py-3 text-xs font-medium leading-4 tracking-tighter text-right text-gray-500 bg-yellow-50">{{ __('Total (€)') }}</th>
-                            <th colspan="2" class="py-3 text-xs font-medium leading-4 tracking-tighter text-center text-gray-500 bg-yellow-50"> </th>
+            <table width="100%" style="margin-top:10px">
+                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
+                    <td style="padding-left:3px;" width="30%">Proveedor</td>
+                    <td style="padding-left:3px;" width="15%">Población</td>
+                    <td style="padding-left:3px;" width="15%">Tel</td>
+                    <td style="padding-left:3px;" width="30%">@</td>
+                </tr>
+                <tr style="background-color: #fdf9f9; ">
+                    <td style="padding-left:3px;" >{{ $pedido->entidad->entidad }}</td>
+                    <td style="padding-left:3px;" >{{ $pedido->entidad->localidad }}</td>
+                    <td style="padding-left:3px;" >{{ $pedido->entidad->tfno }} </td>
+                    <td style="padding-left:3px;" >{{ $pedido->entidad->emailgral }} </td>
+                </tr>
+            </table>
+
+            <table width="100%" style="margin-top:20px">
+                <tbody>
+                    <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
+                        <td style="padding-left:3px;" width="15%">Referencia</td>
+                        <td style="padding-left:3px;" width="40%">Descripción</td>
+                        <td style="padding-right:3px;text-align:right" width="15%">P.Unitario</td>
+                        <td style="padding-right:3px;text-align:right" width="15%">Cantidad</td>
+                        <td style="padding-right:3px;text-align:right" width="15%">Total</td>
+                    </tr>
+                    @forelse ( $pedido->pedidodetalles as $detalle )
+                        <tr >
+                            <td style="padding-left:3px;font-size:xx-small;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $detalle->producto->referencia }}</td>
+                            <td style="padding-left:3px;font-size:xx-small;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $detalle->producto->descripcion }}</td>
+                            <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $detalle->coste }} € </td>
+                            <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $detalle->cantidad }} </td>
+                            <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218)">
+                                @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
+                                    {{ number_format(round($detalle->cantidad*$detalle->coste, 2),2,',','.') }} €
+                                @endif
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @forelse ($pedido->pedidodetalles as $detalle)
-                            <x-table.row wire:loading.class.delay="opacity-50">
-                                <x-table.cell class="text-left">{{ $detalle->orden }}</x-table.cell>
-                                <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->referencia }}</x-table.cell>
-                                <x-table.cell class="tracking-tighter text-left">{{ $detalle->producto->descripcion }}</x-table.cell>
-                                <x-table.cell class="text-right">{{ $detalle->cantidad }}</x-table.cell>
-                                <x-table.cell class="text-right">{{ $detalle->coste }}</x-table.cell>
-                                <x-table.cell class="text-right">{{ $detalle->unidadcompra->nombre ?? '-' }}</x-table.cell>
-                                <x-table.cell class="text-right">
-                                    @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
-                                        {{ number_format(round($detalle->cantidad*$detalle->coste, 2),2,',','.') }}
-                                    @endif
-                                </x-table.cell>
-                            </x-table.row>
-                        @empty
-                            <x-table.row>
-                                <x-table.cell colspan="10">
-                                        <x-icon.inbox class="w-8 h-8 text-gray-300"/>
-                                        <span class="py-5 text-xl font-medium text-gray-500">
-                                            No se han encontrado detalles...
-                                        </span>
-                                    </div>
-                                </x-table.cell>
-                            </x-table.row>
-                        @endforelse
-                    </tbody>
-                    <tfoot class="font-bold divide-y divide-gray-200">
-                        <tr>
-                            <td class="pl-2"></td>
-                            <td class="pl-2"></td>
-                            <td class="pl-2 "></td>
-                            <td class="pl-2">Total</td>
-                            <td class="pr-2"></td>
-                            <x-table.cell class="text-right">{{ number_format($base,2,',','.') }}</x-table.cell>
-                            {{-- <x-table.cell class="text-right">{{ number_format($total,2,',','.') }}</x-table.cell> --}}
+                    @empty
+                        <tr colspan="4" style="background-color: #fdf9f9; ">
+                            <td style="padding-left:3px;" width="100%">No hay detalle</td>
                         </tr>
-                    </tfoot>
-                </table>
-            </div>
+                    @endforelse
+                </tbody>
+                <tfoot class="font-bold divide-y divide-gray-200">
+                    <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
+                        <td style="padding-left:3px;"></td>
+                        <td style="padding-left:3px;"></td>
+                        <td style="padding-right:3px;text-align:right">Base Imponible</td>
+                        <td style="padding-right:3px;text-align:right">% I.V.A</td>
+                        <td style="padding-right:3px;text-align:right">Total IVA incl</td>
+                    <tr style="background-color: #fdf9f9; ">
+                        <td style="padding-left:3px;" ></td>
+                        <td style="padding-left:3px;" ></td>
+                        <td style="padding-right:3px;text-align:right" >{{ number_format($base,2,',','.') }} €</td>
+                        <td style="padding-right:3px;text-align:right" >{{ number_format($base * 0.21,2,',','.') }} €</td>
+                        <td style="padding-right:3px;text-align:right" >{{ number_format($base * 1.21,2,',','.') }} €</td></tr>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <table width="100%" style="margin-top:10px">
+                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
+                    <td style="padding-left:3px;" width="30%">Fecha Entrega</td>
+                    <td style="padding-left:3px;" width="70%">Dirección Entrega</td>
+                </tr>
+                <tr style="background-color: #fdf9f9; ">
+                    <td style="padding-left:3px;" >{{ $pedido->fecharecepcionprevista ? $pedido->fecharecepcionprevista->format('d/m/Y') : '-' }}</td>
+                    <td style="padding-left:3px;" >Grafitex - Av/ Ferrocarrils Catalans, 103-107 08038 Barcelona</td>
+                </tr>
+            </table>
+
+            <table width="100%" style="margin-top:10px;">
+                <tr style=" color:rgb(10, 153, 220)">
+                    <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="70%">Observaciones</td>
+                    <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="30%">Firma Vº Bº</td>
+                </tr>
+                <tr>
+                    <td style="padding-left:3px;" >{{ $pedido->observaciones }}</td>
+                    <td style="padding-left:3px;" ></td>
+                </tr>
+            </table>
         </main>
-
     </body>
 </html>
 

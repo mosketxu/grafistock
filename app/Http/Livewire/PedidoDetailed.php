@@ -27,7 +27,7 @@ class PedidoDetailed extends Component
         $unidadescoste=ProductoUnidadcoste::orderBy('nombre')->get();
 
         $detalles = PedidoDetalle::where('pedido_id', $this->pedido->id)
-            ->with('producto','unidadcompra')
+            ->with('producto','unidadcompra','producto.material')
             ->orderBy('orden')
             ->get();
 

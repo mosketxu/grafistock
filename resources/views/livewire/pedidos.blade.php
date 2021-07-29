@@ -150,7 +150,7 @@
 
                             <td class="">
                                 <div class="flex items-center justify-center">
-                                    <x-icon.invoice-a href="{{ route('pedido.edit',$pedido) }}" title="Edit"/>
+                                    <x-icon.purchase-a href="{{ route('pedido.edit',$pedido) }}" class="text-green-600" title="Editar Pedido"/>
                                     {{-- @if($pedido->pedido)
                                         <x-icon.pdf-a href="{{route('facturacion.imprimirfactura',$pedido) }}" title="PDF"/>
                                     @else

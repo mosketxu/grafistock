@@ -44,7 +44,7 @@
         <tbody>
             <tr>
                 <form wire:submit.prevent="save">
-                    <td>
+                    {{-- <td>
                         <input  wire:model="orden" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
                     <td>
@@ -92,8 +92,8 @@
                     <td>
                         <div class="text-center">
                             <x-button.button type="submit" color="blue" class="focus:bg-blue-900">{{ __('Añadir') }}</x-button.button>
-                    </div>
-                    </td>
+                        </div>
+                    </td> --}}
                 </form>
             </tr>
         </tbody>

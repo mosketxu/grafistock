@@ -20,11 +20,11 @@ class PedidoController extends Controller
 
     public function show($pedidoId)
     {
-        $pedido=Pedido::with('entidad')
-        ->with('pedidodetalles')
-        ->find($pedidoId);
+        $pedido=Pedido::with('pedidodetalles','solicitante')->find($pedidoId);
 
         $base=$pedido->pedidodetalles->sum('base');
+
+        // return view('pedido.pedidopdf', compact(['pedido','base']));
 
         $pdf = \PDF::loadView('pedido.pedidopdf', compact(['pedido','base']));
         return $pdf->stream('invoice.pdf');
