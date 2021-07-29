@@ -27,12 +27,17 @@ class StockController extends Controller
     {
         return view('stock.movimientos');
     }
-    public function productos()
+
+    public function producto()
     {
-        return view('stock.productos');
+        $tipo='producto_id';
+        return view('stock.balance',compact('tipo'));
     }
+
     public function material()
     {
-        return view('stock.material');
+        $tipo='material_id';
+        return view('stock.balance',compact('tipo'));
     }
+
 }

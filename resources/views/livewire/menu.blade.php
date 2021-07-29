@@ -49,7 +49,7 @@
                         </x-jet-nav-link>
                     </div>
                     <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
-                        <x-jet-nav-link href="{{ route('stock.material') }}" :active="request()->routeIs('stock.material')">
+                        <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
                             {{ __('Por Material') }}
                         </x-jet-nav-link>
                     </div>
