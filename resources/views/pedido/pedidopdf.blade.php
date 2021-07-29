@@ -160,7 +160,7 @@
             <table width="100%" style="margin-top:10px;">
                 <tr style=" color:rgb(10, 153, 220)">
                     <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="68%">Observaciones</td>
-                    <td width="5%">Observaciones</td>
+                    <td width="5%"></td>
                     <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="27%">Firma Vº Bº</td>
                 </tr>
                 <tr>
