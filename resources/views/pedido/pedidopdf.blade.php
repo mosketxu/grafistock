@@ -159,8 +159,9 @@
 
             <table width="100%" style="margin-top:10px;">
                 <tr style=" color:rgb(10, 153, 220)">
-                    <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="70%">Observaciones</td>
-                    <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="30%">Firma Vº Bº</td>
+                    <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="68%">Observaciones</td>
+                    <td width="5%">Observaciones</td>
+                    <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="27%">Firma Vº Bº</td>
                 </tr>
                 <tr>
                     <td style="padding-left:3px;" >{{ $pedido->observaciones }}</td>
@@ -169,5 +170,7 @@
             </table>
         </main>
     </body>
+
+
 </html>
 
