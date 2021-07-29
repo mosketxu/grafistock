@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PedidoDetalle,Pedido, Producto};
+use App\Models\{PedidoDetalle,Pedido, Producto, ProductoUnidadcoste};
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
@@ -24,13 +24,14 @@ class PedidoDetailed extends Component
         $this->base=$pedido->pedidodetalles->sum('base');
         $this->totaliva=$pedido->pedidodetalles->sum('totaliva');
         $this->total=$pedido->pedidodetalles->sum('total');
+        $unidadescoste=ProductoUnidadcoste::orderBy('nombre')->get();
 
         $detalles = PedidoDetalle::where('pedido_id', $this->pedido->id)
             ->with('producto','unidadcompra')
             ->orderBy('orden')
             ->get();
 
-        return view('livewire.pedido-detailed', compact('pedido','detalles'));
+        return view('livewire.pedido-detailed', compact('pedido','detalles','unidadescoste'));
     }
 
     public function changeOrden(PedidoDetalle $detalle,$orden)

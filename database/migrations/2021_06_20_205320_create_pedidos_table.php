@@ -15,6 +15,7 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('solicitante_id')->nullable()->constrained('solicitantes')->cascadeOnUpdate()->nullOnDelete();
             $table->string('pedido')->index()->nullable();
             $table->foreignId('entidad_id')->constrained('entidades');
             $table->date('fechapedido');
@@ -23,8 +24,6 @@ class CreatePedidosTable extends Migration
             $table->string('ruta')->nullable();
             $table->string('fichero')->nullable();
             $table->string('observaciones')->nullable();
-            $table->boolean('finalizado')->default(false);
-            $table->boolean('bloqueado')->default(false);
             $table->timestamps();
         });
     }

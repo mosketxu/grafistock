@@ -2,19 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\{PedidoDetalle, StockMovimiento,Producto, Entidad, Pedido, ProductoMaterial, Solicitante};
 use Livewire\Component;
-use App\Models\{PedidoDetalle, Stock as ModelsStock,Producto, Entidad, Pedido, User};
 
-
-class Stock extends Component
+class StockEntrada extends Component
 {
+
     public $stock;
     public $message;
+    public $filtromaterial='';
 
     protected function rules(){
         return [
             'stock.id'=>'nullable',
-            'stock.user_id'=>'required',
+            'stock.solicitante_id'=>'required',
             'stock.fechamovimiento'=>'date|required',
             'stock.tipomovimiento'=>'required',
             'stock.cantidad'=>'required',
@@ -24,25 +25,27 @@ class Stock extends Component
         ];
     }
 
-    public function mount(ModelsStock $stock)
+    public function mount(StockMovimiento $stock)
     {
         $this->stock=$stock;
         $this->stock->reentrada=false;
-        $this->stock->fechamovimiento=now();
+        if (!$stock->fechamovimiento)
+            $this->stock->fechamovimiento=now();
 
     }
 
     public function render()
     {
-        $productos=Producto::whereHas('pedidodetalles')->orderBy('referencia')->get();
-        $usuarios=User::orderBy('name')->get();
-        return view('livewire.stock', compact('productos','usuarios'));
+        $materiales=ProductoMaterial::orderBy('nombre')->get();
+        $productos=Producto::query()
+            ->whereHas('pedidodetalles')
+            ->when($this->filtromaterial!='', function ($query){
+                $query->where('material_id',$this->filtromaterial);
+            })
+            ->orderBy('referencia')->get();
+        $solicitantes=Solicitante::orderBy('nombre')->get();
+        return view('livewire.stock-entrada', compact('productos','solicitantes','materiales'));
     }
-
-    // public function updatedstockProductoId()
-    // {
-
-    // }
 
     public function save()
     {
@@ -50,11 +53,11 @@ class Stock extends Component
 
         $c = $this->stock->tipomovimiento =='E' ? $this->stock->cantidad : -$this->stock->cantidad;
 
-        $s=ModelsStock::updateOrCreate([
+        $s=StockMovimiento::updateOrCreate([
             'id'=>$this->stock->id
             ],
             [
-            'user_id'=>$this->stock->user_id,
+            'solicitante_id'=>$this->stock->solicitante_id,
             'fechamovimiento'=>$this->stock->fechamovimiento,
             'tipomovimiento'=>$this->stock->tipomovimiento,
             'cantidad'=>$c,
@@ -66,7 +69,7 @@ class Stock extends Component
 
 
         $this->stock->id=null;
-        $this->stock->user_id=null;
+        $this->stock->solicitante_id=null;
         // $this->stock->fechamovimiento=null;
         $this->stock->tipomovimiento=null;
         $this->stock->cantidad=null;
@@ -82,7 +85,7 @@ class Stock extends Component
     public function cancelar()
     {
         $this->stock->id=null;
-        $this->stock->user_id=null;
+        $this->stock->solicitante_id=null;
         $this->stock->fechamovimiento=null;
         $this->stock->tipomovimiento=null;
         $this->stock->cantidad=null;
@@ -92,5 +95,4 @@ class Stock extends Component
         $this->stock->reentrada=false;
 
     }
-
 }

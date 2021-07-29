@@ -2,9 +2,7 @@
     <div class="p-2">
         <div class="max-w-full mx-auto">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                {{-- @livewire('stock-status',['tipo'=>'producto']) --}}
-                @livewire('menu')
-                Vista Stock de minimos por producto y por material
+                @livewire('stock-status',['tipo'=>'material'])
             </div>
         </div>
     </div>

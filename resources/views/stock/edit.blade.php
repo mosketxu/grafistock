@@ -2,7 +2,7 @@
     <div class="p-2">
         <div class="max-w-full mx-auto">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                @livewire('stock',['stock'=>$stock],key($stock->id))
+                @livewire('stock-entrada',['stock'=>$stock],key($stock->id))
             </div>
         </div>
     </div>

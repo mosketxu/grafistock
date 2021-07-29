@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
-use App\Models\Stock;
-use Illuminate\Http\Request;
+use App\Models\StockMovimiento;
+
 
 class StockController extends Controller
 {
@@ -14,21 +13,26 @@ class StockController extends Controller
         return view('stock.index');
     }
 
-    public function show($productoId)
-    {
-
-        return view('stock.movimientos',compact('productoId'));
-    }
-
     public function create()
     {
         return view('stock.create');
     }
 
-    public function edit(Stock $stock)
+    public function edit(StockMovimiento $stock)
     {
         return view('stock.edit',compact('stock'));
     }
 
-
+    public function movimientos()
+    {
+        return view('stock.movimientos');
+    }
+    public function productos()
+    {
+        return view('stock.productos');
+    }
+    public function material()
+    {
+        return view('stock.material');
+    }
 }

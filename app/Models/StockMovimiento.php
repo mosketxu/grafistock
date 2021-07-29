@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stock extends Model
+class StockMovimiento extends Model
 {
     use HasFactory;
+    protected $table = 'stock_movimientos';
 
-    protected $fillable=['fechamovimiento','tipomovimiento','cantidad','producto_id','reentrada','observaciones','user_id'];
+    protected $fillable=['fechamovimiento','tipomovimiento','cantidad','producto_id','reentrada','observaciones','solicitante_id'];
 
     protected $casts = [
         'fechamovimiento' => 'date:Y-m-d',
@@ -20,10 +21,9 @@ class Stock extends Model
         return $this->belongsTo(Producto::class,'producto_id');
     }
 
-
-    public function user()
+    public function solicitante()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Solicitante::class);
     }
 
     public function getEntradaAttribute()

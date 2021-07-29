@@ -9,7 +9,7 @@ class Solicitante extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sigla','nombre'];
+    protected $fillable = ['nombre'];
 
     public function productos()
     {

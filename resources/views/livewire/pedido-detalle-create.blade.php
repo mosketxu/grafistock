@@ -64,7 +64,7 @@
                         </x-select>
                     </td>
                     <td>
-                        <input  wire:model="descripcion" type="text" class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
+                        <input  wire:model="descripcion" type="text" class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                     </td>
                     <td>
                         <input  wire:model="cantidad" type="text"  class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
@@ -74,7 +74,7 @@
                         <input  wire:model="coste" type="number" step="any" class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
                     <td>
-                        <x-select wire:model="udcompraId"  selectname="udcompraId" class="w-full">
+                        <x-select wire:model="udcompraId"  selectname="udcompraId" class="w-full" required>
                             <option value="">-- ud compra--</option>
                             @foreach ($unidadescoste as $ud)
                             <option value="{{ $ud->sigla }}">{{ $ud->nombre }}</option>

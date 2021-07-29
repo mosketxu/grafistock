@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "308d4fc860917ccba51bb1994898d0a7",
+    "content-hash": "b0b492ee199862e3e4694090d42f3889",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2140,6 +2140,67 @@
                 }
             ],
             "time": "2020-12-14T13:15:25+00:00"
+        },
+        {
+            "name": "mouadziani/laravel-query-inspector",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MouadZIANI/laravel-query-inspector.git",
+                "reference": "f10a982b8d15ea72d135b63cf281e81ed63552ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MouadZIANI/laravel-query-inspector/zipball/f10a982b8d15ea72d135b63cf281e81ed63552ae",
+                "reference": "f10a982b8d15ea72d135b63cf281e81ed63552ae",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.6.0|~5.7.0|~5.8.0|^6.0.0|^7.0.0|^8.0.0",
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mouadziani\\LaravelQueryInspector\\LaravelQueryInspectorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mouadziani\\LaravelQueryInspector\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MouadZIANI",
+                    "email": "mouad.ziani1997@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The missing laravel helper that allows you to ispect your eloquent queries with their binding parameters",
+            "homepage": "https://github.com/mouadziani/laravel-query-inspector",
+            "keywords": [
+                "laravel",
+                "laravel-query-inspector",
+                "mouadziani"
+            ],
+            "support": {
+                "issues": "https://github.com/MouadZIANI/laravel-query-inspector/issues",
+                "source": "https://github.com/MouadZIANI/laravel-query-inspector/tree/1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mouadziani",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-07-15T13:49:41+00:00"
         },
         {
             "name": "nesbot/carbon",

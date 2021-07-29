@@ -27,21 +27,34 @@
                     <x-jet-nav-link href="{{ route('stock.index') }}" :active="request()->routeIs('stock.index')">
                         {{ __('Stock') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('stock.show',0) }}" :active="request()->routeIs('stock.show')">
-                        {{ __('Movimientos Stock') }}
-                    </x-jet-nav-link>
+
                 </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                {{-- @if($entmenu->id)
-                    <div class="hidden p-2 space-x-8 bg-gray-100 rounded-lg sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('entidad.edit',$entmenu) }}" :active="request()->routeIs('entidad.edit')">
-                            {{ __('Editar') }}
+                @if(explode('.',Request::route()->getName())[0] =='stock')
+                    <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
+                        <x-jet-nav-link href="{{ route('stock.index') }}" :active="request()->routeIs('stock.index')">
+                            {{ __('Control') }}
+                        </x-jet-nav-link>
+                    </div>
+                    <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
+                        <x-jet-nav-link href="{{ route('stock.movimientos') }}" :active="request()->routeIs('stock.movimientos')">
+                            {{ __('Movimientos') }}
+                        </x-jet-nav-link>
+                    </div>
+                    <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
+                        <x-jet-nav-link href="{{ route('stock.producto') }}" :active="request()->routeIs('stock.producto')">
+                            {{ __('Por Producto') }}
+                        </x-jet-nav-link>
+                    </div>
+                    <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
+                        <x-jet-nav-link href="{{ route('stock.material') }}" :active="request()->routeIs('stock.material')">
+                            {{ __('Por Material') }}
                         </x-jet-nav-link>
                     </div>
                 @endif
-                @if($productomenu->id)
+                {{-- @if($productomenu->id)
                     <div class="hidden p-2 space-x-8 bg-gray-100 rounded-lg sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('producto.edit',$productomenu) }}" :active="request()->routeIs('producto.edit')">
                             {{ __('Editar') }}
@@ -113,6 +126,15 @@
             </x-jet-nav-link>
             <x-jet-nav-link href="{{ route('pedido.index') }}" :active="request()->routeIs('pedido.index')">
                 {{ __('Pedido') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('stock.show',0) }}" :active="request()->routeIs('stock.show')">
+                {{ __('Movimientos Stock') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('stock.show',0) }}" :active="request()->routeIs('stock.index')">
+                {{ __('Stock x Producto') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('stock.show',0) }}" :active="request()->routeIs('stock.material')">
+                {{ __('Stock x Material') }}
             </x-jet-nav-link>
         </div>
 

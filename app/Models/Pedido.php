@@ -22,7 +22,7 @@ class Pedido extends Model
         'fecharecepcion' => 'date:Y-m-d',
     ];
 
-    protected $fillable=['pedido','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','iva','ruta','fichero','observaciones','finalizado','bloqueado'];
+    protected $fillable=['pedido','solicitante_id','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','iva','ruta','fichero','observaciones'];
 
     public function pedidodetalles()
     {
@@ -32,6 +32,11 @@ class Pedido extends Model
     public function entidad()
     {
         return $this->belongsTo(Entidad::class);
+    }
+
+    public function solicitante()
+    {
+        return $this->belongsTo(Solicitante::class);
     }
 
     public function getRutaficheroAttribute()

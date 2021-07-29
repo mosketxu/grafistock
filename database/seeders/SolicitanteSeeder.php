@@ -16,9 +16,9 @@ class SolicitanteSeeder extends Seeder
         \DB::table('solicitantes')->delete();
 
         \DB::table('solicitantes')->insert([
-            ['sigla' => 1,'nombre' => 'Alex'],
-            ['sigla' => 2,'nombre' => 'Juan'],
-            ['sigla' => 3,'nombre' => 'Jose'],
+            ['id' => 1,'nombre' => 'Alex'],
+            ['id' => 2,'nombre' => 'Juan'],
+            ['id' => 3,'nombre' => 'Jose'],
         ]);
     }
 }

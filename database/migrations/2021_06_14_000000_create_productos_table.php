@@ -15,6 +15,7 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('entidad_id')->constrained('entidades');
             $table->string('referencia')->unique()->index();
             $table->string('descripcion')->nullable();
             $table->string('tipo_id',15)->index();
@@ -33,7 +34,6 @@ class CreateProductosTable extends Migration
             $table->string('udcoste_id',15)->index()->nullable();
             $table->double('costegrafitex', 15, 2)->default(0.00)->nullable();
             $table->string('udproducto_id',15)->index()->nullable();
-            $table->foreignId('entidad_id')->constrained('entidades');
             $table->string('caja_id',15)->index()->nullable();
             $table->double('costecaja', 15, 2)->default(0.00)->nullable();
             $table->string('ubicacion_id',15)->index()->nullable();

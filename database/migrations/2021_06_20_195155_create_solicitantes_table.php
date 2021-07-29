@@ -14,7 +14,7 @@ class CreateSolicitantesTable extends Migration
     public function up()
     {
         Schema::create('solicitantes', function (Blueprint $table) {
-            $table->string('sigla', 15)->primary();
+            $table->id();
             $table->string('nombre')->unique();
             $table->timestamps();
         });

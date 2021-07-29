@@ -30,8 +30,9 @@ class PedidoDetalleCreate extends Component
         'orden'=>'numeric',
         'cantidad'=>'numeric|required',
         'coste'=>'numeric|required',
-        'udcompraId'=>'nullable',
+        'udcompraId'=>'required',
     ];
+
 
     public function mount($pedidoId)
     {

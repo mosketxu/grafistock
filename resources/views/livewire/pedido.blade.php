@@ -55,29 +55,43 @@
                             <h3 class="font-semibold ">Datos Pedido</h3>
                             <x-jet-input  wire:model.defer="pedido.id" type="hidden"/>
                         </div>
-                        {{-- <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-1 md:flex-justify-between"> --}}
                         <div class="flex flex-col justify-between ml-3 space-x-3 md:flex-row">
                             <div class="w-full form-item lg:w-3/12">
                                 <label class="block text-sm font-medium text-gray-700">
-                                    {{ __('Proveedor') }}
-                                    @if($pedido->entidad_id!='')
-                                        <x-icon.filter-slash-a wire:click="$set('pedido.entidad_id', '')" class="pb-1" title="reset"/>
+                                    {{ __('Solicitante') }}
+                                    @if($pedido->solicitante_id!='')
+                                        <x-icon.filter-slash-a wire:click="$set('pedido.solicitante_id', '')" class="pb-1" title="reset"/>
                                     @endif
                                 </label>
-                                <x-select wire:model="pedido.entidad_id" selectname="entidad_id" class="w-full" autofocus >
+                                <x-select wire:model="pedido.solicitante_id" selectname="solicitante_id" class="w-full" autofocus required >
                                     <option value="">-- choose --</option>
-                                    @foreach ($entidades as $entidad)
-                                        <option value="{{ $entidad->id }}">{{ $entidad->entidad }}</option>
+                                    @foreach ($solicitantes as $solicitante)
+                                        <option value="{{ $solicitante->id }}">{{ $solicitante->nombre }}</option>
                                     @endforeach
                                 </x-select>
                             </div>
-                            {{-- <div class="w-full form-item lg:w-1/12">
-                                <x-jet-label for="pedido">{{ __('Pedido') }}</x-jet-label>
-                                <input  wire:model.lazy="pedido.pedido" type="text" class="w-full text-xs bg-gray-100 border-gray-100 rounded-md shadow-sm "/>
-                            </div> --}}
+                            <div class="w-full form-item lg:w-3/12">
+                                <label class="block text-sm font-medium text-gray-700">
+                                    {{ __('Proveedor') }}
+                                    @if($pedido->entidad_id!='' && !$pedido->entidad)
+                                        <x-icon.filter-slash-a wire:click="$set('pedido.entidad_id', '')" class="pb-1" title="reset"/>
+                                    @endif
+                                </label>
+                                @if(!$pedido->pedido)
+                                    <x-select wire:model="pedido.entidad_id" selectname="entidad_id" class="w-full" required >
+                                        <option value="">-- choose --</option>
+                                        @foreach ($entidades as $entidad)
+                                            <option value="{{ $entidad->id }}">{{ $entidad->entidad }}</option>
+                                        @endforeach
+                                    </x-select>
+                                @else
+                                    <input  wire:model.defer="pedido.entidad_id" type="hidden"/>
+                                    <input  type="text" value="{{ $pedido->entidad->entidad }}" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
+                                @endif
+                            </div>
                             <div class="w-full form-item lg:w-1/12">
                                 <x-jet-label for="fechapedido">{{ __('F.Pedido') }}</x-jet-label>
-                                <input  wire:model.defer="pedido.fechapedido" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                                <input  wire:model.defer="pedido.fechapedido" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                             </div>
                             <div class="w-full form-item lg:w-1/12">
                                 <x-jet-label for="fecharecepcionprevista">{{ __('F.Recepcion Prev.') }}</x-jet-label>

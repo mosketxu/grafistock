@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad, ProductoMaterial};
+use App\Models\{Entidad, ProductoMaterial, Solicitante};
 use App\Models\Pedido as ModelsPedido;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
@@ -28,6 +28,7 @@ class Pedido extends Component
         return [
             'pedido.id'=>'nullable',
             'pedido.pedido'=>'nullable|max:7',
+            'pedido.solicitante_id'=>'required',
             'pedido.entidad_id'=>'required',
             'pedido.fechapedido'=>'date|required',
             'pedido.fecharecepcionprevista'=>'date|nullable',
@@ -35,8 +36,6 @@ class Pedido extends Component
             'pedido.ruta'=>'nullable',
             'pedido.fichero'=>'nullable',
             'pedido.observaciones'=>'nullable',
-            'pedido.finalizado'=>'boolean',
-            'pedido.bloqueado'=>'boolean',
         ];
     }
 
@@ -49,9 +48,10 @@ class Pedido extends Component
     public function render()
     {
         $this->showcrear = $this->pedido->pedido ? true : false;
-        $entidades=Entidad::orderBy('entidad')->get();
+        $entidades=Entidad::select('id','entidad')->orderBy('entidad')->get();
         $materiales=ProductoMaterial::orderBy('nombre')->get();
-        return view('livewire.pedido',compact('entidades','materiales'));
+        $solicitantes=Solicitante::orderBy('nombre')->get();
+        return view('livewire.pedido',compact('entidades','materiales','solicitantes'));
     }
 
     public function UpdatedPedidoPedido()
@@ -100,6 +100,7 @@ class Pedido extends Component
             ],
             [
                 'pedido'=>$this->pedido->pedido,
+                'solicitante_id'=>$this->pedido->solicitante_id,
                 'entidad_id'=>$this->pedido->entidad_id,
                 'fechapedido'=>$this->pedido->fechapedido,
                 'fecharecepcionprevista'=>$this->pedido->fecharecepcionprevista,
@@ -108,7 +109,6 @@ class Pedido extends Component
                 'ruta'=>$this->pedido->ruta,
                 'fichero'=>$this->pedido->fichero,
                 'observaciones'=>$this->pedido->observaciones,
-                'bloqueado'=>$this->pedido->bloqueado,
             ]
         );
 
