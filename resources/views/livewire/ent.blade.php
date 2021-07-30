@@ -136,7 +136,7 @@
                     <x-select wire:model.defer="entidad.metodopago_id" class="w-full" selectname="metodopago_id">
                         <option value="">-- choose --</option>
                         @foreach ($metodopagos as $metodopago)
-                        <option value="{{ $metodopago->id }}">{{ $metodopago->metodopagocorto }}</option>
+                        <option value="{{ $metodopago->id }}">{{ $metodopago->nombrecorto }}</option>
                         @endforeach
                     </x-select>
                 </div>

@@ -10,7 +10,7 @@ class ProductoCalidad extends Model
     use HasFactory;
 
     protected $table = 'producto_calidades';
-    protected $fillable = ['sigla','nombre'];
+    protected $fillable = ['nombre','nombrecorto'];
 
     public function productos()
     {

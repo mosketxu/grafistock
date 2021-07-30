@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{EntidadController, ProductoController, PedidoController,StockController};
+use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController, PedidoController,StockController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +30,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('stock/producto', [StockController::class,'producto'])->name('stock.producto');
     Route::get('stock/material', [StockController::class,'material'])->name('stock.material');
     Route::resource('stock', StockController::class);
+    Route::get('administracion/', [AdministracionController::class,'index'])->name('administracion.index');
 });;

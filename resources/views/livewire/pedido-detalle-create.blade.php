@@ -44,14 +44,14 @@
         <tbody>
             <tr>
                 <form wire:submit.prevent="save">
-                    {{-- <td>
+                    <td>
                         <input  wire:model="orden" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
                     <td>
                         <x-select wire:model="material"  selectname="material" class="w-full tracking-tighter">
                             <option value="">-- Material--</option>
                             @foreach ($materiales as $material)
-                            <option value="{{ $material->sigla }}">{{ $material->nombre }}</option>
+                            <option value="{{ $material->id }}">{{ $material->nombre }}</option>
                             @endforeach>
                         </x-select>
                     </td>
@@ -77,7 +77,7 @@
                         <x-select wire:model="udcompraId"  selectname="udcompraId" class="w-full" required>
                             <option value="">-- ud compra--</option>
                             @foreach ($unidadescoste as $ud)
-                            <option value="{{ $ud->sigla }}">{{ $ud->nombre }}</option>
+                            <option value="{{ $ud->id }}">{{ $ud->nombre }}</option>
                             @endforeach>
                         </x-select>
                     </td>
@@ -93,7 +93,7 @@
                         <div class="text-center">
                             <x-button.button type="submit" color="blue" class="focus:bg-blue-900">{{ __('Añadir') }}</x-button.button>
                         </div>
-                    </td> --}}
+                    </td>
                 </form>
             </tr>
         </tbody>

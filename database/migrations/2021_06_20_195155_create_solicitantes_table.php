@@ -16,6 +16,7 @@ class CreateSolicitantesTable extends Migration
         Schema::create('solicitantes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
+            $table->string('nombrecorto')->unique();
             $table->timestamps();
         });
     }

@@ -16,31 +16,31 @@ class Producto extends Model
 
     public function entidad(){return $this->belongsTo(Entidad::class);}
 
-    public function ubicacion(){return $this->belongsTo(Ubicacion::class,'ubicacion_id','sigla');}
+    public function ubicacion(){return $this->belongsTo(Ubicacion::class,'ubicacion_id','id');}
 
-    public function material(){return $this->belongsTo(ProductoMaterial::class,'material_id','sigla');}
+    public function material(){return $this->belongsTo(ProductoMaterial::class);}
 
-    public function acabado(){return $this->belongsTo(ProductoAcabado::class,'acabado_id','sigla');}
+    public function acabado(){return $this->belongsTo(ProductoAcabado::class,'acabado_id','id');}
 
-    public function calidad(){return $this->belongsTo(ProductoCalidad::class,'calidad_id','sigla');}
+    public function calidad(){return $this->belongsTo(ProductoCalidad::class,'calidad_id','id');}
 
-    public function clase(){return $this->belongsTo(ProductoClase::class,'clase_id','sigla');}
+    public function clase(){return $this->belongsTo(ProductoClase::class,'clase_id','id');}
 
-    public function grupoproduccion(){return $this->belongsTo(ProductoGrupoproduccion::class,'grupoproduccion_id','sigla');}
+    public function grupoproduccion(){return $this->belongsTo(ProductoGrupoproduccion::class,'grupoproduccion_id','id');}
 
-    public function tipo(){return $this->belongsTo(ProductoTipo::class,'tipo_id','sigla');}
+    public function tipo(){return $this->belongsTo(ProductoTipo::class,'tipo_id','id');}
 
-    public function unidadsolicitud(){return $this->belongsTo(Unidad::class,'udsolicitud_id','sigla');}
+    public function unidadsolicitud(){return $this->belongsTo(Unidad::class,'udsolicitud_id','id');}
 
-    public function unidadancho(){return $this->belongsTo(Unidad::class,'udancho_id','sigla');}
+    public function unidadancho(){return $this->belongsTo(Unidad::class,'udancho_id','id');}
 
-    public function unidadalto(){return $this->belongsTo(Unidad::class,'udalto_id','sigla');}
+    public function unidadalto(){return $this->belongsTo(Unidad::class,'udalto_id','id');}
 
-    public function unidadproducto(){return $this->belongsTo(Unidad::class,'udproducto_id','sigla');}
+    public function unidadproducto(){return $this->belongsTo(Unidad::class,'udproducto_id','id');}
 
-    public function unidadcoste(){return $this->belongsTo(ProductoUnidadcoste::class,'udcoste_id','sigla');}
+    public function unidadcoste(){return $this->belongsTo(ProductoUnidadcoste::class,'udcoste_id','id');}
 
-    public function caja(){return $this->belongsTo(ProductoCaja::class,'caja_id','sigla');}
+    public function caja(){return $this->belongsTo(ProductoCaja::class,'caja_id','id');}
 
     public function movimientos(){return $this->belongsTo(StockMovimiento::class);}
 

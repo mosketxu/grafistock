@@ -33,7 +33,7 @@
                         <select wire:model="filtromaterial" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($materiales as $material)
-                            <option value="{{ $material->sigla }}">{{ $material->nombre }}</option>
+                            <option value="{{ $material->id }}">{{ $material->nombre }}</option>
                             @endforeach
                         </select>
                     </div>

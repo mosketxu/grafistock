@@ -14,8 +14,9 @@ class CreateProductoMaterialesTable extends Migration
     public function up()
     {
         Schema::create('producto_materiales', function (Blueprint $table) {
-            $table->string('sigla', 15)->primary();
+            $table->id();
             $table->string('nombre')->unique();
+            $table->string('nombrecorto')->unique();
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MetodoPagosTableSeeder::class);
         $this->call(UbicacionesSeeder::class);
         $this->call(UnidadSeeder::class);
-        $this->call(SolicitanteSeeder::class);
+        $this->call(SolicitantesTableSeeder::class);
         $this->call(EntidadesTableSeeder::class);
         $this->call(ProductoTipoSeeder::class);
         $this->call(ProductoMaterialesSeeder::class);
@@ -30,7 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductoClaseSeeder::class);
         $this->call(ProductoCalidadSeeder::class);
         $this->call(ProductoCajaSeeder::class);
-        $this->call(ProductosTableSeeder::class);
         $this->call(ProductosTableSeeder::class);
     }
 }

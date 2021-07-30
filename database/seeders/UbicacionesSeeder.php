@@ -9,16 +9,16 @@ class UbicacionesSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return vonombrecorto
      */
     public function run()
     {
         \DB::table('ubicaciones')->delete();
 
         \DB::table('ubicaciones')->insert([
-            ['sigla' => 'alm1','nombre' => 'almacen 1'],
-            ['sigla' => 'alm2','nombre' => 'almacen 2'],
-            ['sigla' => 'alm3','nombre' => 'almacen 3'],
+            ['nombrecorto' => 'alm1','nombre' => 'almacen 1'],
+            ['nombrecorto' => 'alm2','nombre' => 'almacen 2'],
+            ['nombrecorto' => 'alm3','nombre' => 'almacen 3'],
         ]);
     }
 }

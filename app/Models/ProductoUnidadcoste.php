@@ -11,7 +11,7 @@ class ProductoUnidadcoste extends Model
 
     protected $table = 'producto_unidadescoste';
 
-    protected $fillable = ['sigla','nombre'];
+    protected $fillable = ['nombre','nombrecorto'];
 
     public function productos()
     {

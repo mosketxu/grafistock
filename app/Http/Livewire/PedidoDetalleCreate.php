@@ -54,7 +54,7 @@ class PedidoDetalleCreate extends Component
         $mat=Producto::select('material_id')->where('entidad_id',$this->entidadId)
             ->groupBy('material_id')
             ->get()->toArray();
-        $materiales=ProductoMaterial::whereIn('sigla',$mat)->orderBy('nombre')->get();
+        $materiales=ProductoMaterial::whereIn('id',$mat)->orderBy('nombre')->get();
 
         $unidadescoste=ProductoUnidadcoste::orderBy('nombre')->get();
 

@@ -14,16 +14,15 @@ class EntidadesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('entidades')->delete();
-        
+
         \DB::table('entidades')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'entidad' => 'JOSE RUBIO VALENTINE, S.A.',
-                'entidad5' => 'JOSE',
                 'cuentactble' => '4001x416',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -53,11 +52,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'entidad' => 'XANITA IBERIA, S.L.',
-                'entidad5' => 'XANI',
                 'cuentactble' => '4001x427',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -87,11 +85,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'entidad' => '4MES4 TECN.PER L´ACAB.DE L´IMP',
-                'entidad5' => '4MES',
                 'cuentactble' => '4001x202',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -121,11 +118,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2021-07-23 16:59:42',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'entidad' => 'ABACUS, SCCL',
-                'entidad5' => 'ABAC',
                 'cuentactble' => '40010007',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -155,11 +151,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'entidad' => 'ALCANTARA COLOMA, ABRAHAM',
-                'entidad5' => 'ALCA',
                 'cuentactble' => '40010040',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -189,11 +184,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'entidad' => 'ABZAC IBERICA, S.A.',
-                'entidad5' => 'ABZA',
                 'cuentactble' => '40010005',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -223,11 +217,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'entidad' => 'ACCESORIOS CUHER,S.A.',
-                'entidad5' => 'ACCE',
                 'cuentactble' => '40010004',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -257,11 +250,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'entidad' => 'ACTUALITY QUATRE, S.L.',
-                'entidad5' => 'ACTU',
                 'cuentactble' => '40010013',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -291,11 +283,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'entidad' => 'AGFA GRAPHICS N.V.',
-                'entidad5' => 'AGFA',
                 'cuentactble' => '40010031',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -325,11 +316,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'entidad' => 'AIGUES DE BARCELONA, S.A.',
-                'entidad5' => 'AIGU',
                 'cuentactble' => '40010003',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -359,11 +349,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'entidad' => 'AIT SPPYME, S.L.',
-                'entidad5' => 'AITS ',
                 'cuentactble' => '40010016',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -393,11 +382,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'entidad' => 'AJUNTAMENT DE BARCELONA',
-                'entidad5' => 'AJUN',
                 'cuentactble' => '40010029',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -427,11 +415,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'entidad' => 'ALABALL SUMINISTROS IND.,S.L.',
-                'entidad5' => 'ALAB',
                 'cuentactble' => '40010033',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -461,11 +448,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'entidad' => 'ALBERT SILVESTRE SEGURETAT,S.L',
-                'entidad5' => 'ALBE',
                 'cuentactble' => '40010030',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -495,11 +481,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'entidad' => 'ALOS MANERO PRODUCTION, SL',
-                'entidad5' => 'ALOS',
                 'cuentactble' => '40010014',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -529,11 +514,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'entidad' => 'ALQ. VENTA COMPACTADORES, S.L.',
-                'entidad5' => 'ALQ.',
                 'cuentactble' => '40010001',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -563,11 +547,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'entidad' => 'AMBIT DECORACION COMERCIAL, SL',
-                'entidad5' => 'AMBI',
                 'cuentactble' => '40010002',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -597,11 +580,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'entidad' => 'AN-CAR, S.L.',
-                'entidad5' => 'AN-C',
                 'cuentactble' => '40010012',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -631,11 +613,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'entidad' => 'ANE STORE, S.L.',
-                'entidad5' => 'ANES',
                 'cuentactble' => '40010009',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -665,11 +646,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'entidad' => 'ANTALIS IBERIA, S.A.',
-                'entidad5' => 'ANTA',
                 'cuentactble' => '40010025',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -699,11 +679,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'entidad' => 'AP PHOTO INDUSTRIES,SL',
-                'entidad5' => 'APPH',
                 'cuentactble' => '40010028',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -733,11 +712,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 22,
                 'entidad' => 'A.P.A. ESPAÑA, S.L.',
-                'entidad5' => 'A.P.',
                 'cuentactble' => '40010008',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -767,11 +745,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => '2021-07-23 16:59:58',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 23,
                 'entidad' => 'APLICCA IDENTITY SOLUTIONS, SL',
-                'entidad5' => 'APLI',
                 'cuentactble' => '40010049',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -801,11 +778,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 24,
                 'entidad' => 'APPLUS ITEUVE TECHNOLOGY, S.L.',
-                'entidad5' => 'APPL',
                 'cuentactble' => '40010006',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -835,11 +811,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 25,
                 'entidad' => 'AQUALOGY SOLUTIONS, SA',
-                'entidad5' => 'AQUA',
                 'cuentactble' => '40010023',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -869,11 +844,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 26,
                 'entidad' => 'ARMTEX, S.L.',
-                'entidad5' => 'ARMT',
                 'cuentactble' => '40010038',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -903,11 +877,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 27,
                 'entidad' => 'ARQUIDIB, S.L.',
-                'entidad5' => 'ARQU',
                 'cuentactble' => '40010010',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -937,11 +910,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 28,
                 'entidad' => 'ARTROK, S.L.',
-                'entidad5' => 'ARTR',
                 'cuentactble' => '40010041',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -971,11 +943,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 29,
                 'entidad' => 'ARYSTON, SCP',
-                'entidad5' => 'ARYS',
                 'cuentactble' => '40010020',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1005,11 +976,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 30,
                 'entidad' => 'ASM SUPPLY CHAIN SOLUTIONS, S.',
-                'entidad5' => 'ASMS',
                 'cuentactble' => '40010015',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1039,11 +1009,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 31,
                 'entidad' => 'ASOC.NOTARIOS RDA.UNIVERS,CB',
-                'entidad5' => 'ASOC',
                 'cuentactble' => '40010027',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1073,11 +1042,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 32,
                 'entidad' => 'ASTEVA, S.L.',
-                'entidad5' => 'ASTE',
                 'cuentactble' => '40010047',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1107,11 +1075,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 33,
                 'entidad' => 'AUTO BUIGAS, S.L.',
-                'entidad5' => 'AUTO',
                 'cuentactble' => '40010011',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1141,11 +1108,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 34,
                 'entidad' => 'AVANTI AVANTI ESTUDIO, S.L.',
-                'entidad5' => 'AVAN',
                 'cuentactble' => '40010022',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1175,11 +1141,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 35,
                 'entidad' => 'BANCO POPULAR LEASING',
-                'entidad5' => 'BANP',
                 'cuentactble' => '40010102',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1209,11 +1174,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 36,
                 'entidad' => 'BANCO SABADELL, S.A.',
-                'entidad5' => 'BANC',
                 'cuentactble' => '40010115',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1243,11 +1207,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 37,
                 'entidad' => 'BARCINO PACK',
-                'entidad5' => 'BARC',
                 'cuentactble' => '40011518',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1277,11 +1240,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 38,
                 'entidad' => 'BAYOT-COLLADO, S.L.',
-                'entidad5' => 'BAYO',
                 'cuentactble' => '40010112',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1311,11 +1273,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 39,
                 'entidad' => 'B.BILBAO VIZCAYA ARGENTARIA,SA',
-                'entidad5' => 'B.BI',
                 'cuentactble' => '40010129',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1345,11 +1306,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 40,
                 'entidad' => 'BEA HISPANIA, S.A.',
-                'entidad5' => 'BEAH',
                 'cuentactble' => '40010108',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1379,11 +1339,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 41,
                 'entidad' => 'BELDOSERJOS, S.L.',
-                'entidad5' => 'BELD',
                 'cuentactble' => '40010132',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1413,11 +1372,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 42,
                 'entidad' => 'BNP PARIBAS GROUP, S.A.',
-                'entidad5' => 'BNPP',
                 'cuentactble' => '40010101',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1447,11 +1405,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 43,
                 'entidad' => 'BOLETIN OFICIAL DEL ESTADO',
-                'entidad5' => 'BOLE',
                 'cuentactble' => '40010107',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1481,11 +1438,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 44,
                 'entidad' => 'BUFETE ZAMORA, SCP',
-                'entidad5' => 'BUFZ',
                 'cuentactble' => '40010103',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1515,11 +1471,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 45,
                 'entidad' => 'BUFETE ANTRAS ABOGADOS AS.,SL',
-                'entidad5' => 'BUFE',
                 'cuentactble' => '40010106',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1549,11 +1504,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 46,
                 'entidad' => 'COMERCIAL ANTONIO GARRIGA, S.A',
-                'entidad5' => 'COMA',
                 'cuentactble' => '40010207',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1583,11 +1537,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 47,
                 'entidad' => 'COMUNICACION SPANDEX ESPAÑA,SA',
-                'entidad5' => 'COMU',
                 'cuentactble' => '40011526',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1617,11 +1570,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 48,
                 'entidad' => 'COMERCIAL MAIN, S.A.',
-                'entidad5' => 'COMM',
                 'cuentactble' => '40010206',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1651,11 +1603,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 49,
                 'entidad' => 'CABLES MORENO, SCP',
-                'entidad5' => 'CABL',
                 'cuentactble' => '40010201',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1685,11 +1636,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 50,
                 'entidad' => 'CAIXABANK, S.A.',
-                'entidad5' => 'CAIX',
                 'cuentactble' => '40010223',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1719,11 +1669,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 51,
                 'entidad' => 'CALVO SERVEI TECNIC, SCP',
-                'entidad5' => 'CALV',
                 'cuentactble' => '40010262',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1753,11 +1702,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 52,
                 'entidad' => 'CAMBRA DE LA PROP. URB.DE BCN',
-                'entidad5' => 'CAMB',
                 'cuentactble' => '40010205',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1787,11 +1735,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 53,
                 'entidad' => 'JAIME CAMPMANY',
-                'entidad5' => 'JAIM',
                 'cuentactble' => '40010219',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1821,11 +1768,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 54,
                 'entidad' => 'CARTON NIDO DE ABEJA,S.L',
-                'entidad5' => 'CART1',
                 'cuentactble' => '40010208',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1855,11 +1801,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 55,
                 'entidad' => 'CARTONATGES TERRASSA, S.L.',
-                'entidad5' => 'CART',
                 'cuentactble' => '40010214',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1889,11 +1834,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 56,
                 'entidad' => 'CASTELLS VILASECA, S.L.',
-                'entidad5' => 'CAST',
                 'cuentactble' => '40010217',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1923,11 +1867,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 57,
                 'entidad' => 'CAT.INT DE PLV Y EQUIP., S.L.',
-                'entidad5' => 'CAT.',
                 'cuentactble' => '40010260',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1957,11 +1900,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 58,
                 'entidad' => 'CAVI C.B.',
-                'entidad5' => 'CAVI',
                 'cuentactble' => '40010215',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -1991,11 +1933,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 59,
                 'entidad' => 'CD CORTE UNIVERSAL, S.L.',
-                'entidad5' => 'CD C',
                 'cuentactble' => '40011422',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2025,11 +1966,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 60,
                 'entidad' => 'CERPROKEM, S.L.',
-                'entidad5' => 'CERP',
                 'cuentactble' => '40010203',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2059,11 +1999,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 61,
                 'entidad' => 'CHIKY DIGITAL, S.L.',
-                'entidad5' => 'CHIK',
                 'cuentactble' => '40010221',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2093,11 +2032,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 62,
                 'entidad' => 'COMERCIAL JACINTO PARERA,SA',
-                'entidad5' => 'COMJ',
                 'cuentactble' => '40010212',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2127,11 +2065,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 63,
                 'entidad' => 'CLAPERA ESTELA, ROGER',
-                'entidad5' => 'CLAP',
                 'cuentactble' => '40010252',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2161,11 +2098,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 64,
                 'entidad' => 'CLARKET MODET, CO',
-                'entidad5' => 'CLAR',
                 'cuentactble' => '40010218',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2195,11 +2131,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 65,
                 'entidad' => 'COLORS INTEGRAL, S.L.',
-                'entidad5' => 'COLO',
                 'cuentactble' => '40010213',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2229,11 +2164,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 66,
                 'entidad' => 'COMERCIAL BOLSERA, S.L.',
-                'entidad5' => 'COME',
                 'cuentactble' => '40010210',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2263,11 +2197,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 67,
                 'entidad' => 'COMGRAFIC, S.A.',
-                'entidad5' => 'COMG',
                 'cuentactble' => '40010239',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2297,11 +2230,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 68,
                 'entidad' => 'COMPLAS BARCELONA, S.A.',
-                'entidad5' => 'COMPB',
                 'cuentactble' => '40010231',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2331,11 +2263,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 69,
                 'entidad' => 'COMPLETGRAF, SCP',
-                'entidad5' => 'COMPL',
                 'cuentactble' => '40010209',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2365,11 +2296,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 70,
                 'entidad' => 'COMPRESORES QUI-TO, S.A.',
-                'entidad5' => 'COMP',
                 'cuentactble' => '40010234',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2399,11 +2329,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 71,
                 'entidad' => 'CONDAL COPIERS, S.L.',
-                'entidad5' => 'CONDC',
                 'cuentactble' => '40010227',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2433,11 +2362,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 72,
                 'entidad' => 'CONDAL FORMULARIOS, S.L.',
-                'entidad5' => 'COND',
                 'cuentactble' => '40010253',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2467,11 +2395,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 73,
                 'entidad' => 'CONFEX,S.A.',
-                'entidad5' => 'CONF',
                 'cuentactble' => '40010230',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2501,11 +2428,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 74,
                 'entidad' => 'CONTRA&ENCUNYS, S.L.',
-                'entidad5' => 'CONT',
                 'cuentactble' => '40010240',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2535,11 +2461,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 75,
                 'entidad' => 'COSTE ARAGONES, JOSE MARIA',
-                'entidad5' => 'COST',
                 'cuentactble' => '40010200',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2569,11 +2494,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 76,
                 'entidad' => 'TOUS ALSINA, JAUME',
-                'entidad5' => 'TOUS',
                 'cuentactble' => '40010250',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2603,11 +2527,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 77,
                 'entidad' => 'CRUZ JIMENEZ, MIGUEL',
-                'entidad5' => 'CRUZ',
                 'cuentactble' => '40010238',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2637,11 +2560,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 78,
                 'entidad' => 'CSI, S.L.',
-                'entidad5' => 'CSI,',
                 'cuentactble' => '40010211',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2671,11 +2593,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 79,
                 'entidad' => 'CULLA  ALABEDRA, ALEX',
-                'entidad5' => 'CULL',
                 'cuentactble' => '40010236',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2705,11 +2626,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 80,
                 'entidad' => 'DAVIDGRAF MANIPULATS, S.L.',
-                'entidad5' => 'DAVI',
                 'cuentactble' => '40010309',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2739,11 +2659,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 81,
                 'entidad' => 'DE LA CAL CABELLO, SUSANA',
-                'entidad5' => 'DELA',
                 'cuentactble' => '40010301',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2773,11 +2692,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 82,
                 'entidad' => 'DE LAGE LANDEN INTERNATIONAL B',
-                'entidad5' => 'DELG',
                 'cuentactble' => '40010307',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2807,11 +2725,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 83,
                 'entidad' => 'DEL RIO CARTONATGES, S.L.U.',
-                'entidad5' => 'DELR',
                 'cuentactble' => '40010317',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2841,11 +2758,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 84,
                 'entidad' => 'DGM SISTEMAS DE CIERRE, S.L.',
-                'entidad5' => 'DGMS',
                 'cuentactble' => '40010314',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2875,11 +2791,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            84 => 
+            84 =>
             array (
                 'id' => 85,
                 'entidad' => 'DHL EXPRESS BCN SPAIN, S.L.',
-                'entidad5' => 'DHLE',
                 'cuentactble' => '40010302',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2909,11 +2824,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            85 => 
+            85 =>
             array (
                 'id' => 86,
                 'entidad' => 'DIAZ-PLAZA, CANDELAS  CIA, S.A',
-                'entidad5' => 'DIAZ',
                 'cuentactble' => '40010315',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2943,11 +2857,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            86 => 
+            86 =>
             array (
                 'id' => 87,
                 'entidad' => 'DIGIPRINT CENTER, S.L.',
-                'entidad5' => 'DIGI',
                 'cuentactble' => '40010313',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -2977,11 +2890,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            87 => 
+            87 =>
             array (
                 'id' => 88,
                 'entidad' => 'DIMAS COSTA, PERE',
-                'entidad5' => 'DIMA',
                 'cuentactble' => '40010429',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3011,11 +2923,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            88 => 
+            88 =>
             array (
                 'id' => 89,
                 'entidad' => 'DIOTRONIC, S.A.',
-                'entidad5' => 'DIOT',
                 'cuentactble' => '40010311',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3045,11 +2956,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            89 => 
+            89 =>
             array (
                 'id' => 90,
                 'entidad' => 'DIR MENSAJERIA Y TRANSPOR., SL',
-                'entidad5' => 'DIRM',
                 'cuentactble' => '40010321',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3079,11 +2989,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            90 => 
+            90 =>
             array (
                 'id' => 91,
                 'entidad' => 'DISET CONTROL DE PLAGAS, SCP',
-                'entidad5' => 'DISE',
                 'cuentactble' => '40010303',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3113,11 +3022,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            91 => 
+            91 =>
             array (
                 'id' => 92,
                 'entidad' => 'DOMINGUEZ SANCHEZ, PEDRO',
-                'entidad5' => 'DOMI',
                 'cuentactble' => '40010316',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3147,11 +3055,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            92 => 
+            92 =>
             array (
                 'id' => 93,
                 'entidad' => 'DORGRAF, S.L.',
-                'entidad5' => 'DORG',
                 'cuentactble' => '40010300',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3181,11 +3088,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            93 => 
+            93 =>
             array (
                 'id' => 94,
                 'entidad' => 'DPI´S SUMINIST. DIGITALES, S.A',
-                'entidad5' => 'DPI´',
                 'cuentactble' => '40010312',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3215,11 +3121,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            94 => 
+            94 =>
             array (
                 'id' => 95,
                 'entidad' => 'DUARTE BARRERO, AURORA',
-                'entidad5' => 'DUAR',
                 'cuentactble' => '40011528',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3249,11 +3154,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            95 => 
+            95 =>
             array (
                 'id' => 96,
                 'entidad' => 'DUEDAS PEREZ, JAVIER',
-                'entidad5' => 'DUED',
                 'cuentactble' => '40010304',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3283,11 +3187,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            96 => 
+            96 =>
             array (
                 'id' => 97,
                 'entidad' => 'DUGOPA, S.A.',
-                'entidad5' => 'DUGO',
                 'cuentactble' => '40010054',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3317,11 +3220,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            97 => 
+            97 =>
             array (
                 'id' => 98,
                 'entidad' => 'DUMON, S.L.',
-                'entidad5' => 'DUMO',
                 'cuentactble' => '40010306',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3351,11 +3253,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            98 => 
+            98 =>
             array (
                 'id' => 99,
                 'entidad' => 'DURST IMAGE TECHNO. IBERICA,SA',
-                'entidad5' => 'DURS',
                 'cuentactble' => '40010310',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3385,11 +3286,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            99 => 
+            99 =>
             array (
                 'id' => 100,
                 'entidad' => 'EJES EXPANSIBLES EJEMATIC, S.L',
-                'entidad5' => 'EJES',
                 'cuentactble' => '40010423',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3419,11 +3319,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            100 => 
+            100 =>
             array (
                 'id' => 101,
                 'entidad' => 'EL CLUB ASESOR INTERSOFT, S.L.',
-                'entidad5' => 'EL C',
                 'cuentactble' => '40010453',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3453,11 +3352,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            101 => 
+            101 =>
             array (
                 'id' => 102,
                 'entidad' => 'EL GUANTE INDUSTRIAL, C.B.',
-                'entidad5' => 'EL G',
                 'cuentactble' => '40010405',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3487,11 +3385,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            102 => 
+            102 =>
             array (
                 'id' => 103,
                 'entidad' => 'ELCON IBERICA, S.A.',
-                'entidad5' => 'ELCO',
                 'cuentactble' => '40010448',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3521,11 +3418,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            103 => 
+            103 =>
             array (
                 'id' => 104,
                 'entidad' => 'ELECTRO ACUSTICA CONDAL, S.A.',
-                'entidad5' => 'ELECA',
                 'cuentactble' => '40010216',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3555,11 +3451,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            104 => 
+            104 =>
             array (
                 'id' => 105,
                 'entidad' => 'ELECTRONICS FOR IMAGING B.V.',
-                'entidad5' => 'ELECT',
                 'cuentactble' => '40010414',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3589,11 +3484,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            105 => 
+            105 =>
             array (
                 'id' => 106,
                 'entidad' => 'ELLEN DIEDRICH',
-                'entidad5' => 'ELLE',
                 'cuentactble' => '40010413',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3623,11 +3517,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            106 => 
+            106 =>
             array (
                 'id' => 107,
                 'entidad' => 'EMASER MAD, S.L.',
-                'entidad5' => 'EMASE',
                 'cuentactble' => '40010204',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3657,11 +3550,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            107 => 
+            107 =>
             array (
                 'id' => 108,
                 'entidad' => 'EMASER MARKET,S.L.',
-                'entidad5' => 'EMAS',
                 'cuentactble' => '40010419',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3691,11 +3583,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            108 => 
+            108 =>
             array (
                 'id' => 109,
                 'entidad' => 'EMBALAJES Y GRAPAS, S.A.',
-                'entidad5' => 'EMBAL',
                 'cuentactble' => '40010403',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3725,11 +3616,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            109 => 
+            109 =>
             array (
                 'id' => 110,
                 'entidad' => 'EMBALATGES REUS, S.L.',
-                'entidad5' => 'EMBA',
                 'cuentactble' => '40010425',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3759,11 +3649,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            110 => 
+            110 =>
             array (
                 'id' => 111,
                 'entidad' => 'EMILIANO MARTIN, S.A.',
-                'entidad5' => 'EMIL',
                 'cuentactble' => '40010421',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3793,11 +3682,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            111 => 
+            111 =>
             array (
                 'id' => 112,
                 'entidad' => 'ENCUADERNADORA RAPID, SCCL',
-                'entidad5' => 'ENCUA',
                 'cuentactble' => '40010443',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3827,11 +3715,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            112 => 
+            112 =>
             array (
                 'id' => 113,
                 'entidad' => 'ENCRI, SCP',
-                'entidad5' => 'ENCR',
                 'cuentactble' => '40010401',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3861,11 +3748,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            113 => 
+            113 =>
             array (
                 'id' => 114,
                 'entidad' => 'ENCUADERNACIONS RUEDA 99, S.L.',
-                'entidad5' => 'ENCUR',
                 'cuentactble' => '40010431',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3895,11 +3781,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            114 => 
+            114 =>
             array (
                 'id' => 115,
                 'entidad' => 'ENDUTEX IBERICA,S.A',
-                'entidad5' => 'ENDU',
                 'cuentactble' => '40010437',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3929,11 +3814,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            115 => 
+            115 =>
             array (
                 'id' => 116,
                 'entidad' => 'ENOVA MEDITERRANEA, S.L.',
-                'entidad5' => 'ENOV',
                 'cuentactble' => '40010325',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3963,11 +3847,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            116 => 
+            116 =>
             array (
                 'id' => 117,
                 'entidad' => 'ESKO-GRAPHICS NV',
-                'entidad5' => 'ESKO',
                 'cuentactble' => '40010435',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -3997,11 +3880,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            117 => 
+            117 =>
             array (
                 'id' => 118,
                 'entidad' => 'ESPALLARGAS I TROTÉ, XAVIER',
-                'entidad5' => 'ESPA',
                 'cuentactble' => '40010409',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4031,11 +3913,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            118 => 
+            118 =>
             array (
                 'id' => 119,
                 'entidad' => 'ESPRINT 2006, S.L.',
-                'entidad5' => 'ESPR',
                 'cuentactble' => '40010459',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4065,11 +3946,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            119 => 
+            119 =>
             array (
                 'id' => 120,
                 'entidad' => 'ESSENTRA COMPONENTS S.L.U.',
-                'entidad5' => 'ESSE',
                 'cuentactble' => '40010418',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4099,11 +3979,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            120 => 
+            120 =>
             array (
                 'id' => 121,
                 'entidad' => 'EVESTI ARNA, S.L.',
-                'entidad5' => 'EVES',
                 'cuentactble' => '40011413',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4133,11 +4012,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            121 => 
+            121 =>
             array (
                 'id' => 122,
                 'entidad' => 'EXPAND INTERNATIONAL AB',
-                'entidad5' => 'EXPA',
                 'cuentactble' => '40010411',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4167,11 +4045,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            122 => 
+            122 =>
             array (
                 'id' => 123,
                 'entidad' => 'FERRETERIA JANE, S.A.',
-                'entidad5' => 'FERR',
                 'cuentactble' => '40010415',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4201,11 +4078,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            123 => 
+            123 =>
             array (
                 'id' => 124,
                 'entidad' => 'FABRICANTE DE ETIQUETAS, S.L.',
-                'entidad5' => 'FABR',
                 'cuentactble' => '40010400',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4235,11 +4111,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            124 => 
+            124 =>
             array (
                 'id' => 125,
                 'entidad' => 'FARGAS FLORIACH, JUAN',
-                'entidad5' => 'FARG',
                 'cuentactble' => '40010427',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4269,11 +4144,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            125 => 
+            125 =>
             array (
                 'id' => 126,
                 'entidad' => 'FARRES DE ROCAFIGUERA NOT.,SCP',
-                'entidad5' => 'FARRE',
                 'cuentactble' => '40010456',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4303,11 +4177,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            126 => 
+            126 =>
             array (
                 'id' => 127,
                 'entidad' => 'FARRES USTRELL, JOAN CARLES',
-                'entidad5' => 'FARR',
                 'cuentactble' => '40011330',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4337,11 +4210,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            127 => 
+            127 =>
             array (
                 'id' => 128,
                 'entidad' => 'FARRRES VILAFORT, MANUEL',
-                'entidad5' => 'FARRS',
                 'cuentactble' => '40010408',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4371,11 +4243,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            128 => 
+            128 =>
             array (
                 'id' => 129,
                 'entidad' => 'FAST PACK, S.L.',
-                'entidad5' => 'FAST',
                 'cuentactble' => '40010444',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4405,11 +4276,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            129 => 
+            129 =>
             array (
                 'id' => 130,
                 'entidad' => 'FEDRIGONI ESPAÑA, S.L.',
-                'entidad5' => 'FEDR',
                 'cuentactble' => '40010430',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4439,11 +4309,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            130 => 
+            130 =>
             array (
                 'id' => 131,
                 'entidad' => 'FERNANDEZ BARRIOS, ANTONIO',
-                'entidad5' => 'FERN',
                 'cuentactble' => '40010402',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4473,11 +4342,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            131 => 
+            131 =>
             array (
                 'id' => 132,
                 'entidad' => 'FERRETERIA PUIG, S.L.',
-                'entidad5' => 'FERRE',
                 'cuentactble' => '40010412',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4507,11 +4375,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            132 => 
+            132 =>
             array (
                 'id' => 133,
                 'entidad' => 'FLAPPING FORMAT,S.L.',
-                'entidad5' => 'FLAP',
                 'cuentactble' => '40010406',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4541,11 +4408,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            133 => 
+            133 =>
             array (
                 'id' => 134,
                 'entidad' => 'FM DISSENY, SCP',
-                'entidad5' => 'FM D',
                 'cuentactble' => '40010458',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4575,11 +4441,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            134 => 
+            134 =>
             array (
                 'id' => 135,
                 'entidad' => 'FM PUBLICATIONS, S.L.',
-                'entidad5' => 'FM P',
                 'cuentactble' => '40010428',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4609,11 +4474,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            135 => 
+            135 =>
             array (
                 'id' => 136,
                 'entidad' => 'FONERIA UNIO, S.L.',
-                'entidad5' => 'FONE',
                 'cuentactble' => '40010442',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4643,11 +4507,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            136 => 
+            136 =>
             array (
                 'id' => 137,
                 'entidad' => 'FORMATO 3 SERV. MARK.DIRECT,SA',
-                'entidad5' => 'FORMA',
                 'cuentactble' => '40010420',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4677,11 +4540,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            137 => 
+            137 =>
             array (
                 'id' => 138,
                 'entidad' => 'FORMATO DIGITAL ACTI. PUB., SL',
-                'entidad5' => 'FORM',
                 'cuentactble' => '40010424',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4711,11 +4573,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            138 => 
+            138 =>
             array (
                 'id' => 139,
                 'entidad' => 'FORMATOS SERVEIS GRAFICS, S.L.',
-                'entidad5' => 'FORMT',
                 'cuentactble' => '40010416',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4745,11 +4606,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            139 => 
+            139 =>
             array (
                 'id' => 140,
                 'entidad' => 'FORNOS MESTRES, ALBERT',
-                'entidad5' => 'FORN',
                 'cuentactble' => '40010417',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4779,11 +4639,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            140 => 
+            140 =>
             array (
                 'id' => 141,
                 'entidad' => 'FORTUMAC, S.L.',
-                'entidad5' => 'FORT',
                 'cuentactble' => '40010422',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4813,11 +4672,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            141 => 
+            141 =>
             array (
                 'id' => 142,
                 'entidad' => 'FRANCESC CODINA, S.L.',
-                'entidad5' => 'FRAN',
                 'cuentactble' => '40010457',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4847,11 +4705,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            142 => 
+            142 =>
             array (
                 'id' => 143,
                 'entidad' => 'FUJIFILM ESPANA, S.A.',
-                'entidad5' => 'FUJIF',
                 'cuentactble' => '40010404',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4881,11 +4738,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            143 => 
+            143 =>
             array (
                 'id' => 144,
                 'entidad' => 'FUNDACIO INDUSTRIES GRAFIQUES',
-                'entidad5' => 'FUND',
                 'cuentactble' => '40010407',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4915,11 +4771,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            144 => 
+            144 =>
             array (
                 'id' => 145,
                 'entidad' => 'GRAFICA IMPULS, S.L.',
-                'entidad5' => 'GRAF',
                 'cuentactble' => '40010612',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4949,11 +4804,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            145 => 
+            145 =>
             array (
                 'id' => 146,
                 'entidad' => 'GARRIGA LUJAN, AIDA',
-                'entidad5' => 'GARR',
                 'cuentactble' => '40010614',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -4983,11 +4837,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            146 => 
+            146 =>
             array (
                 'id' => 147,
                 'entidad' => 'GEVEKO',
-                'entidad5' => 'GEVE',
                 'cuentactble' => '40010619',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5017,11 +4870,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            147 => 
+            147 =>
             array (
                 'id' => 148,
                 'entidad' => 'GLOBAL FILMS BARCELONA, S.L.',
-                'entidad5' => 'GLOBA',
                 'cuentactble' => '40010114',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5051,11 +4903,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            148 => 
+            148 =>
             array (
                 'id' => 149,
                 'entidad' => 'GLOBAL PRODUCTIONS INTEGRAL,SL',
-                'entidad5' => 'GLOB',
                 'cuentactble' => '40010609',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5085,11 +4936,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            149 => 
+            149 =>
             array (
                 'id' => 150,
                 'entidad' => 'GLOBOS Y MAPAS, S.L.',
-                'entidad5' => 'GLOBS',
                 'cuentactble' => '40010605',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5119,11 +4969,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            150 => 
+            150 =>
             array (
                 'id' => 151,
                 'entidad' => 'GOMEZ VENTURA, EMILIANO',
-                'entidad5' => 'GOME',
                 'cuentactble' => '40010602',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5153,11 +5002,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            151 => 
+            151 =>
             array (
                 'id' => 152,
                 'entidad' => 'GONELL GALINDO, MANEL',
-                'entidad5' => 'GONE',
                 'cuentactble' => '40010615',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5187,11 +5035,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            152 => 
+            152 =>
             array (
                 'id' => 153,
                 'entidad' => 'GRAFI-IMAGE',
-                'entidad5' => 'GRAFI',
                 'cuentactble' => '40010601',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5221,11 +5068,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            153 => 
+            153 =>
             array (
                 'id' => 154,
                 'entidad' => 'GRAFICAS 94, HMNOS. MOLINA,SL',
-                'entidad5' => 'GRAFC',
                 'cuentactble' => '40010600',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5255,11 +5101,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            154 => 
+            154 =>
             array (
                 'id' => 155,
                 'entidad' => 'GRAFILART SUM. Y SERV. GRAF,SL',
-                'entidad5' => 'GRAFL',
                 'cuentactble' => '40010607',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5289,11 +5134,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            155 => 
+            155 =>
             array (
                 'id' => 156,
                 'entidad' => 'Grafitex',
-                'entidad5' => 'GrafX',
                 'cuentactble' => '40010000',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5323,11 +5167,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            156 => 
+            156 =>
             array (
                 'id' => 157,
                 'entidad' => 'GRAFITYP ESPAÑA, S.A.',
-                'entidad5' => 'GRAFY',
                 'cuentactble' => '40010603',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5357,11 +5200,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            157 => 
+            157 =>
             array (
                 'id' => 158,
                 'entidad' => 'GRAVATS GRAVIMON, S.L.',
-                'entidad5' => 'GRAV',
                 'cuentactble' => '40010606',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5391,11 +5233,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            158 => 
+            158 =>
             array (
                 'id' => 159,
                 'entidad' => 'GREGORIO ARELLANO, EUSEBIO',
-                'entidad5' => 'GREG',
                 'cuentactble' => '40010604',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5425,11 +5266,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            159 => 
+            159 =>
             array (
                 'id' => 160,
                 'entidad' => 'GREMI D´INDUSTR. GRAF. DE BCN',
-                'entidad5' => 'GREM',
                 'cuentactble' => '40010608',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5459,11 +5299,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            160 => 
+            160 =>
             array (
                 'id' => 161,
                 'entidad' => 'GRUPO ENCUADERNADOR LAR, S.L.',
-                'entidad5' => 'GRUPO',
                 'cuentactble' => '40010618',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5493,11 +5332,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            161 => 
+            161 =>
             array (
                 'id' => 162,
                 'entidad' => 'GRUPART ALTEX, S.L.',
-                'entidad5' => 'GRUPA',
                 'cuentactble' => '40010616',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5527,11 +5365,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            162 => 
+            162 =>
             array (
                 'id' => 163,
                 'entidad' => 'GR. RAFAEL THE IMAGE COMP.,SL',
-                'entidad5' => 'GR.R',
                 'cuentactble' => '4011625',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5561,11 +5398,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            163 => 
+            163 =>
             array (
                 'id' => 164,
                 'entidad' => 'GUIA DE PRENSA, S.L.',
-                'entidad5' => 'GUIA',
                 'cuentactble' => '40010610',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5595,11 +5431,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            164 => 
+            164 =>
             array (
                 'id' => 165,
                 'entidad' => 'MAQ. ARTES GRAF. HARTMANN,SLU',
-                'entidad5' => 'MAQ.',
                 'cuentactble' => '40011229',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5629,11 +5464,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            165 => 
+            165 =>
             array (
                 'id' => 166,
                 'entidad' => 'HENCHE TECNOL.GRAF.INDUST.,S.A',
-                'entidad5' => 'HENC',
                 'cuentactble' => '40010706',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5663,11 +5497,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            166 => 
+            166 =>
             array (
                 'id' => 167,
                 'entidad' => 'HERRAMIENTAS SALVADOR, S.L.',
-                'entidad5' => 'HERR',
                 'cuentactble' => '40010704',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5697,11 +5530,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            167 => 
+            167 =>
             array (
                 'id' => 168,
                 'entidad' => 'HEXIS GRAPHICS ESPAÑA, S.L.',
-                'entidad5' => 'HEXI',
                 'cuentactble' => '40010710',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5731,11 +5563,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            168 => 
+            168 =>
             array (
                 'id' => 169,
                 'entidad' => 'HICIMEX SERVICIOS, S.L.',
-                'entidad5' => 'HICI',
                 'cuentactble' => '40010701',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5765,11 +5596,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            169 => 
+            169 =>
             array (
                 'id' => 170,
                 'entidad' => 'HIPER ALUMINIO, S.A.',
-                'entidad5' => 'HIPE',
                 'cuentactble' => '40010703',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5799,11 +5629,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            170 => 
+            170 =>
             array (
                 'id' => 171,
                 'entidad' => 'HL DISPLAY, S.A.',
-                'entidad5' => 'HL D',
                 'cuentactble' => '40010702',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5833,11 +5662,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            171 => 
+            171 =>
             array (
                 'id' => 172,
                 'entidad' => 'HOLZ INTER, S.L.',
-                'entidad5' => 'HOLZ',
                 'cuentactble' => '40010709',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5867,11 +5695,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            172 => 
+            172 =>
             array (
                 'id' => 173,
                 'entidad' => 'HEWLETT-PACKARD INDIGO BV',
-                'entidad5' => 'HEWL',
                 'cuentactble' => '40010705',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5901,11 +5728,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            173 => 
+            173 =>
             array (
                 'id' => 174,
                 'entidad' => 'IBERDROLA GENERACION, S.A.U.',
-                'entidad5' => 'IBERD',
                 'cuentactble' => '40010844',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5935,11 +5761,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            174 => 
+            174 =>
             array (
                 'id' => 175,
                 'entidad' => 'IBERICAR KELDENICH, S.L.',
-                'entidad5' => 'IBER',
                 'cuentactble' => '40010902',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -5969,11 +5794,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            175 => 
+            175 =>
             array (
                 'id' => 176,
                 'entidad' => 'ID GRUP, S.A.',
-                'entidad5' => 'IDGR',
                 'cuentactble' => '40010829',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6003,11 +5827,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            176 => 
+            176 =>
             array (
                 'id' => 177,
                 'entidad' => 'IKEA IBÉRICA, S.A.',
-                'entidad5' => 'IKEA',
                 'cuentactble' => '40010801',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6037,11 +5860,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            177 => 
+            177 =>
             array (
                 'id' => 178,
                 'entidad' => 'IMPRESIONES ON LINE, S.L.',
-                'entidad5' => 'IMPR',
                 'cuentactble' => '40010833',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6071,11 +5893,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            178 => 
+            178 =>
             array (
                 'id' => 179,
                 'entidad' => 'INDUSTRIAS DEU, S.A.',
-                'entidad5' => 'INDU',
                 'cuentactble' => '40010840',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6105,11 +5926,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            179 => 
+            179 =>
             array (
                 'id' => 180,
                 'entidad' => 'INDICE, S.L.',
-                'entidad5' => 'INDIC',
                 'cuentactble' => '40010835',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6139,11 +5959,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            180 => 
+            180 =>
             array (
                 'id' => 181,
                 'entidad' => 'INDIGRA, S.L.',
-                'entidad5' => 'INDI',
                 'cuentactble' => '40010825',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6173,11 +5992,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            181 => 
+            181 =>
             array (
                 'id' => 182,
                 'entidad' => 'FORNOS GALLARDO, RAMON',
-                'entidad5' => 'FORNO',
                 'cuentactble' => '40010410',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6207,11 +6025,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            182 => 
+            182 =>
             array (
                 'id' => 183,
                 'entidad' => 'INFORMA D&B, S.A.',
-                'entidad5' => 'INFO',
                 'cuentactble' => '40010824',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6241,11 +6058,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            183 => 
+            183 =>
             array (
                 'id' => 184,
                 'entidad' => 'INGERGA, S.L.',
-                'entidad5' => 'INGE',
                 'cuentactble' => '40010808',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6275,11 +6091,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            184 => 
+            184 =>
             array (
                 'id' => 185,
                 'entidad' => 'INGLET, S.L.',
-                'entidad5' => 'INGL',
                 'cuentactble' => '40010821',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6309,11 +6124,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            185 => 
+            185 =>
             array (
                 'id' => 186,
                 'entidad' => 'INSTALUZ LLOBREGAT, S.L.',
-                'entidad5' => 'INST',
                 'cuentactble' => '40010814',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6343,11 +6157,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            186 => 
+            186 =>
             array (
                 'id' => 187,
                 'entidad' => 'ITX MERKEN BV FRIBOURG BRANCH',
-                'entidad5' => 'ITXM',
                 'cuentactble' => '40010809',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6377,11 +6190,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            187 => 
+            187 =>
             array (
                 'id' => 188,
                 'entidad' => 'JUGUETES TEIXIDO, S.C.P.',
-                'entidad5' => 'JUGU',
                 'cuentactble' => '40010804',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6411,11 +6223,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            188 => 
+            188 =>
             array (
                 'id' => 189,
                 'entidad' => 'JUAN A. VELASCO, S.L.',
-                'entidad5' => 'JUAN',
                 'cuentactble' => '40010800',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6445,11 +6256,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            189 => 
+            189 =>
             array (
                 'id' => 190,
                 'entidad' => 'JORGE HERNANDEZ, S.L.',
-                'entidad5' => 'JORG',
                 'cuentactble' => '40010802',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6479,11 +6289,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            190 => 
+            190 =>
             array (
                 'id' => 191,
                 'entidad' => 'JOSE ROSAS TABERNER, S.A.',
-                'entidad5' => 'JOSER',
                 'cuentactble' => '40010803',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6513,11 +6322,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            191 => 
+            191 =>
             array (
                 'id' => 192,
                 'entidad' => 'CABRERO RABASSA, JUAN JOSE',
-                'entidad5' => 'CABR',
                 'cuentactble' => '40010224',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6547,11 +6355,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            192 => 
+            192 =>
             array (
                 'id' => 193,
                 'entidad' => 'JUVE Y CAMPS, S.A.',
-                'entidad5' => 'JUVE',
                 'cuentactble' => '40011209',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6581,11 +6388,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            193 => 
+            193 =>
             array (
                 'id' => 194,
                 'entidad' => 'KT-TWIN SISTEMAS INFORMAT., SA',
-                'entidad5' => 'KT-T',
                 'cuentactble' => '40010905',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6615,11 +6421,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            194 => 
+            194 =>
             array (
                 'id' => 195,
                 'entidad' => 'KIMAN 95, S.L.',
-                'entidad5' => 'KIMA',
                 'cuentactble' => '40010901',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6649,11 +6454,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            195 => 
+            195 =>
             array (
                 'id' => 196,
                 'entidad' => 'LA CARPETA I EL PAPER, S.A.',
-                'entidad5' => 'LA C',
                 'cuentactble' => '40011004',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6683,11 +6487,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            196 => 
+            196 =>
             array (
                 'id' => 197,
                 'entidad' => 'LA GENERAL ESTAMPADORA, S.L.',
-                'entidad5' => 'LA G',
                 'cuentactble' => '4001003',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6717,11 +6520,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            197 => 
+            197 =>
             array (
                 'id' => 198,
                 'entidad' => 'LA NOOGRAFICA, S.L.U.',
-                'entidad5' => 'LA N',
                 'cuentactble' => '40011003',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6751,11 +6553,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            198 => 
+            198 =>
             array (
                 'id' => 199,
                 'entidad' => 'LA VANGUARDIA EDICIONES, S.L.',
-                'entidad5' => 'LA V',
                 'cuentactble' => '40011013',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6785,11 +6586,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            199 => 
+            199 =>
             array (
                 'id' => 200,
                 'entidad' => 'LAVALL FORNOS, XAVIER',
-                'entidad5' => 'LAVA',
                 'cuentactble' => '40011014',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6819,11 +6619,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            200 => 
+            200 =>
             array (
                 'id' => 201,
                 'entidad' => 'LLORCA ARRAYAS, JORDI',
-                'entidad5' => 'LLOR',
                 'cuentactble' => '40011011',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6853,11 +6652,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            201 => 
+            201 =>
             array (
                 'id' => 202,
                 'entidad' => 'LOGIKARD TARJETAS PLAST., SLU',
-                'entidad5' => 'LOGI',
                 'cuentactble' => '40011000',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6887,11 +6685,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            202 => 
+            202 =>
             array (
                 'id' => 203,
                 'entidad' => 'LOPEZ PETIT, FRANCINA',
-                'entidad5' => 'LOPE',
                 'cuentactble' => '40011001',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6921,11 +6718,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            203 => 
+            203 =>
             array (
                 'id' => 204,
                 'entidad' => 'LOUBET DIAZ, GUSTAVO MARCELO',
-                'entidad5' => 'LOUB',
                 'cuentactble' => '40011002',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6955,11 +6751,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            204 => 
+            204 =>
             array (
                 'id' => 205,
                 'entidad' => 'RED DIGITAL FOTOGRÁFICA, S.L.',
-                'entidad5' => 'REDD',
                 'cuentactble' => '40011414',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -6989,11 +6784,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            205 => 
+            205 =>
             array (
                 'id' => 206,
                 'entidad' => 'LUZ NEGRA, S.L.',
-                'entidad5' => 'LUZN',
                 'cuentactble' => '40011005',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7023,11 +6817,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            206 => 
+            206 =>
             array (
                 'id' => 207,
                 'entidad' => 'MACTAC EUROPE, S.A.',
-                'entidad5' => 'MACT',
                 'cuentactble' => '40011249',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7057,11 +6850,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            207 => 
+            207 =>
             array (
                 'id' => 208,
                 'entidad' => 'MADERAS ESTADELLA, S.A.',
-                'entidad5' => 'MADE',
                 'cuentactble' => '40011218',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7091,11 +6883,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            208 => 
+            208 =>
             array (
                 'id' => 209,
                 'entidad' => 'MAESPA MANIPULADOS, S.L.',
-                'entidad5' => 'MAES',
                 'cuentactble' => '40011270',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7125,11 +6916,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            209 => 
+            209 =>
             array (
                 'id' => 210,
                 'entidad' => 'GONZALEZ FRANGANILLO, MANEL',
-                'entidad5' => 'GONZ',
                 'cuentactble' => '40010611',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7159,11 +6949,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            210 => 
+            210 =>
             array (
                 'id' => 211,
                 'entidad' => 'MANPOWER TEAM EMP.TR.TEMP,S.A.',
-                'entidad5' => 'MANP',
                 'cuentactble' => '40011230',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7193,11 +6982,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            211 => 
+            211 =>
             array (
                 'id' => 212,
                 'entidad' => 'MANUFACTURAS CARSOL, S.A.',
-                'entidad5' => 'MANUF',
                 'cuentactble' => '40011213',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7227,11 +7015,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            212 => 
+            212 =>
             array (
                 'id' => 213,
                 'entidad' => 'MANUFACT. METALICOS ROCA,SL',
-                'entidad5' => 'MANUC',
                 'cuentactble' => '40011202',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7261,11 +7048,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            213 => 
+            213 =>
             array (
                 'id' => 214,
                 'entidad' => 'MANUFACTURAS PALS, S.A.',
-                'entidad5' => 'MANU',
                 'cuentactble' => '40011203',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7295,11 +7081,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            214 => 
+            214 =>
             array (
                 'id' => 215,
                 'entidad' => 'MAQUIMPRES, S.A.',
-                'entidad5' => 'MAQU',
                 'cuentactble' => '40011205',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7329,11 +7114,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            215 => 
+            215 =>
             array (
                 'id' => 216,
                 'entidad' => 'MARESME SERVICE/J.SORIANO DELF',
-                'entidad5' => 'MARE',
                 'cuentactble' => '40011516',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7363,11 +7147,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            216 => 
+            216 =>
             array (
                 'id' => 217,
                 'entidad' => 'MARTI VILLANUEVA C.',
-                'entidad5' => 'MARTI',
                 'cuentactble' => '40011201',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7397,11 +7180,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            217 => 
+            217 =>
             array (
                 'id' => 218,
                 'entidad' => 'MARTINEZ ROJANO, JOSE LUIS',
-                'entidad5' => 'MART',
                 'cuentactble' => '40011211',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7431,11 +7213,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            218 => 
+            218 =>
             array (
                 'id' => 219,
                 'entidad' => 'MAS DE L´ABUNDANCIA VITICUL,SL',
-                'entidad5' => 'MASD',
                 'cuentactble' => '40011254',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7465,11 +7246,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            219 => 
+            219 =>
             array (
                 'id' => 220,
                 'entidad' => 'MATIC, S.A.',
-                'entidad5' => 'MATI',
                 'cuentactble' => '40011231',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7499,11 +7279,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            220 => 
+            220 =>
             array (
                 'id' => 221,
                 'entidad' => 'MAUSA MAD. DEL ALTO URGELL,S.A',
-                'entidad5' => 'MAUS',
                 'cuentactble' => '40011226',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7533,11 +7312,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            221 => 
+            221 =>
             array (
                 'id' => 222,
                 'entidad' => 'MAYOR SERVICIOS DE CORTE, SLU',
-                'entidad5' => 'MAYO',
                 'cuentactble' => '40011227',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7567,11 +7345,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            222 => 
+            222 =>
             array (
                 'id' => 223,
                 'entidad' => 'MECALUX, S.A.',
-                'entidad5' => 'MECA',
                 'cuentactble' => '40011262',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7601,11 +7378,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            223 => 
+            223 =>
             array (
                 'id' => 224,
                 'entidad' => 'MERCERIA STA.ANA MAYOR, S.A.',
-                'entidad5' => 'MERC',
                 'cuentactble' => '40011215',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7635,11 +7411,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            224 => 
+            224 =>
             array (
                 'id' => 225,
                 'entidad' => 'MERGARD, S.L.',
-                'entidad5' => 'MERG',
                 'cuentactble' => '40011247',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7669,11 +7444,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            225 => 
+            225 =>
             array (
                 'id' => 226,
                 'entidad' => 'MOMPART GIMENEZ, SUSANA',
-                'entidad5' => 'MOMP',
                 'cuentactble' => '40011214',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7703,11 +7477,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            226 => 
+            226 =>
             array (
                 'id' => 227,
                 'entidad' => 'MONTAJES JAMI, S.L.',
-                'entidad5' => 'MONT',
                 'cuentactble' => '40011223',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7737,11 +7510,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            227 => 
+            227 =>
             array (
                 'id' => 228,
                 'entidad' => 'MORA Y GOMA, S.A.',
-                'entidad5' => 'MORA',
                 'cuentactble' => '40011210',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7771,11 +7543,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            228 => 
+            228 =>
             array (
                 'id' => 229,
                 'entidad' => 'MORERA VILLALONGA, FERRAN',
-                'entidad5' => 'MORE',
                 'cuentactble' => '40011252',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7805,11 +7576,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            229 => 
+            229 =>
             array (
                 'id' => 230,
                 'entidad' => 'MOTORSOL, S.A.',
-                'entidad5' => 'MOTO',
                 'cuentactble' => '40011206',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7839,11 +7609,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            230 => 
+            230 =>
             array (
                 'id' => 231,
                 'entidad' => 'NAVARRO ROMA, JOSE MIGUEL',
-                'entidad5' => 'NAVAR',
                 'cuentactble' => '40011228',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7873,11 +7642,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            231 => 
+            231 =>
             array (
                 'id' => 232,
                 'entidad' => 'NAVARRO PLATERO, FRANCISCO',
-                'entidad5' => 'NAVA',
                 'cuentactble' => '40011327',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7907,11 +7675,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            232 => 
+            232 =>
             array (
                 'id' => 233,
                 'entidad' => 'NEON ALARCON, S.L.',
-                'entidad5' => 'NEON',
                 'cuentactble' => '40011207',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7941,11 +7708,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            233 => 
+            233 =>
             array (
                 'id' => 234,
                 'entidad' => 'NET DISPLAY, S.L.',
-                'entidad5' => 'NETD',
                 'cuentactble' => '40011217',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -7975,11 +7741,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            234 => 
+            234 =>
             array (
                 'id' => 235,
                 'entidad' => 'NEW SOLUTION, S.L.',
-                'entidad5' => 'NEWS',
                 'cuentactble' => '40011208',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8009,11 +7774,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            235 => 
+            235 =>
             array (
                 'id' => 236,
                 'entidad' => 'NEW GATE, S.L.',
-                'entidad5' => 'NEWG',
                 'cuentactble' => '40011212',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8043,11 +7807,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            236 => 
+            236 =>
             array (
                 'id' => 237,
                 'entidad' => 'NEWCOURT FINANCIAL ESPAÑA, S.A',
-                'entidad5' => 'NEWC',
                 'cuentactble' => '40011272',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8077,11 +7840,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            237 => 
+            237 =>
             array (
                 'id' => 238,
                 'entidad' => 'NIPAUTO BARCELONA, S.L.',
-                'entidad5' => 'NIPA',
                 'cuentactble' => '40011221',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8111,11 +7873,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            238 => 
+            238 =>
             array (
                 'id' => 239,
                 'entidad' => 'NOFER, S.L.',
-                'entidad5' => 'NOFE',
                 'cuentactble' => '40011204',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8145,11 +7906,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            239 => 
+            239 =>
             array (
                 'id' => 240,
                 'entidad' => 'NOTARIA BCN, SCP',
-                'entidad5' => 'NOTAR',
                 'cuentactble' => '40011220',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8179,11 +7939,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            240 => 
+            240 =>
             array (
                 'id' => 241,
                 'entidad' => 'NOTARIA CABADES VALLS GLEZ,SCP',
-                'entidad5' => 'NOTAC',
                 'cuentactble' => '40011225',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8213,11 +7972,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            241 => 
+            241 =>
             array (
                 'id' => 242,
                 'entidad' => 'NOTARIA PERALES FARRES NOT,SCP',
-                'entidad5' => 'NOTA',
                 'cuentactble' => '40011236',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8247,11 +8005,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            242 => 
+            242 =>
             array (
                 'id' => 243,
                 'entidad' => 'SANTIAGO LOPEZ-LEIS GONZALEZ',
-                'entidad5' => 'SANTI',
                 'cuentactble' => '40011006',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8281,11 +8038,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            243 => 
+            243 =>
             array (
                 'id' => 244,
                 'entidad' => 'NOVA PRISMA DIGITAL, S.L.',
-                'entidad5' => 'NOVA',
                 'cuentactble' => '40011222',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8315,11 +8071,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            244 => 
+            244 =>
             array (
                 'id' => 245,
                 'entidad' => 'OLIVER ZOTTI',
-                'entidad5' => 'OLIVE',
                 'cuentactble' => '40011323',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8349,11 +8104,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            245 => 
+            245 =>
             array (
                 'id' => 246,
                 'entidad' => 'OLIVERA MUDOZ, DIONISIO',
-                'entidad5' => 'OLIV',
                 'cuentactble' => '40011317',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8383,11 +8137,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            246 => 
+            246 =>
             array (
                 'id' => 247,
                 'entidad' => 'OPQ SYSTEMS MAQ. GRAFICA,SL',
-                'entidad5' => 'OPQS',
                 'cuentactble' => '40011305',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8417,11 +8170,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            247 => 
+            247 =>
             array (
                 'id' => 248,
                 'entidad' => 'ORDENA REPARACIONES Y SERV, SL',
-                'entidad5' => 'ORDE',
                 'cuentactble' => '40011309',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8451,11 +8203,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            248 => 
+            248 =>
             array (
                 'id' => 249,
                 'entidad' => 'JOSEP ORRIOLS RIERA, S.A.',
-                'entidad5' => 'JOSEO',
                 'cuentactble' => '40010805',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8485,11 +8236,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            249 => 
+            249 =>
             array (
                 'id' => 250,
                 'entidad' => 'PROFESIONAL L´ART, S.L.',
-                'entidad5' => 'PROF',
                 'cuentactble' => '40011310',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8519,11 +8269,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            250 => 
+            250 =>
             array (
                 'id' => 251,
                 'entidad' => 'PAPERLINX, S.L.',
-                'entidad5' => 'PAPE',
                 'cuentactble' => '40010120',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8553,11 +8302,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            251 => 
+            251 =>
             array (
                 'id' => 252,
                 'entidad' => 'PBX CENTRE DE CALCUL, SLP',
-                'entidad5' => 'PBXC',
                 'cuentactble' => '40011307',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8587,11 +8335,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            252 => 
+            252 =>
             array (
                 'id' => 253,
                 'entidad' => 'PELLISA RAFOLS, S.L.',
-                'entidad5' => 'PELL',
                 'cuentactble' => '40011315',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8621,11 +8368,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            253 => 
+            253 =>
             array (
                 'id' => 254,
                 'entidad' => 'PERALES SANZ, JOSE LUIS',
-                'entidad5' => 'PERA',
                 'cuentactble' => '40011304',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8655,11 +8401,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            254 => 
+            254 =>
             array (
                 'id' => 255,
                 'entidad' => 'PEREZ TORTOSA, XAVIER',
-                'entidad5' => 'PERE',
                 'cuentactble' => '40011302',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8689,11 +8434,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            255 => 
+            255 =>
             array (
                 'id' => 256,
                 'entidad' => 'PERSONAL COMPUTER GREEN, S.L.',
-                'entidad5' => 'PERS',
                 'cuentactble' => '4011326',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8723,11 +8467,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            256 => 
+            256 =>
             array (
                 'id' => 257,
                 'entidad' => 'PISTA CERO, S.L.',
-                'entidad5' => 'PIST',
                 'cuentactble' => '40011308',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8757,11 +8500,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            257 => 
+            257 =>
             array (
                 'id' => 258,
                 'entidad' => 'PLAN B BARCELONA PRESS, S.L.',
-                'entidad5' => 'PLAN',
                 'cuentactble' => '40011303',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8791,11 +8533,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            258 => 
+            258 =>
             array (
                 'id' => 259,
                 'entidad' => 'POLICRAM GRAPHIC ARTS, S.L.',
-                'entidad5' => 'POLI',
                 'cuentactble' => '40011333',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8825,11 +8566,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            259 => 
+            259 =>
             array (
                 'id' => 260,
                 'entidad' => 'POLO POVEDA, IGNACIO',
-                'entidad5' => 'POLO',
                 'cuentactble' => '40011328',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8859,11 +8599,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            260 => 
+            260 =>
             array (
                 'id' => 261,
                 'entidad' => 'POLYNORMA, S.A.',
-                'entidad5' => 'POLY',
                 'cuentactble' => '40011311',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8893,11 +8632,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            261 => 
+            261 =>
             array (
                 'id' => 262,
                 'entidad' => 'POSTER AND PANEL, S.L.',
-                'entidad5' => 'POST',
                 'cuentactble' => '40011325',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8927,11 +8665,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            262 => 
+            262 =>
             array (
                 'id' => 263,
                 'entidad' => 'POUS BARA, IGNASI',
-                'entidad5' => 'POUS',
                 'cuentactble' => '40011301',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8961,11 +8698,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            263 => 
+            263 =>
             array (
                 'id' => 264,
                 'entidad' => 'PRESSING IMPRESSIO DIGITAL,S.A',
-                'entidad5' => 'PRES',
                 'cuentactble' => '40011312',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -8995,11 +8731,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            264 => 
+            264 =>
             array (
                 'id' => 265,
                 'entidad' => 'PRODUCTOS CYS, SRL',
-                'entidad5' => 'PROD',
                 'cuentactble' => '40011300',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9029,11 +8764,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            265 => 
+            265 =>
             array (
                 'id' => 266,
                 'entidad' => 'PUBLISERVEI, S.L.',
-                'entidad5' => 'PUBL',
                 'cuentactble' => '40011306',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9063,11 +8797,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            266 => 
+            266 =>
             array (
                 'id' => 267,
                 'entidad' => 'PUJADAS BAQUE, ANNA',
-                'entidad5' => 'PUJA',
                 'cuentactble' => '40011331',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9097,11 +8830,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            267 => 
+            267 =>
             array (
                 'id' => 268,
                 'entidad' => 'QUERALT SUAU, JORDI',
-                'entidad5' => 'QUER',
                 'cuentactble' => '40011316',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9131,11 +8863,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            268 => 
+            268 =>
             array (
                 'id' => 269,
                 'entidad' => 'RABASSO LLORCA, ALBERT',
-                'entidad5' => 'RABA',
                 'cuentactble' => '40011403',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9165,11 +8896,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            269 => 
+            269 =>
             array (
                 'id' => 270,
                 'entidad' => 'RAJAPACK, S.A.',
-                'entidad5' => 'RAJA',
                 'cuentactble' => '40011407',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9199,11 +8929,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            270 => 
+            270 =>
             array (
                 'id' => 271,
                 'entidad' => 'RAMON CANALS CANALS, S.A.',
-                'entidad5' => 'RAMO',
                 'cuentactble' => '40010246',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9233,11 +8962,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            271 => 
+            271 =>
             array (
                 'id' => 272,
                 'entidad' => 'RED COORDINADORA MULTIS.CMS,SL',
-                'entidad5' => 'REDO',
                 'cuentactble' => '40011409',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9267,11 +8995,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            272 => 
+            272 =>
             array (
                 'id' => 273,
                 'entidad' => 'REDCOON ELECTRONIC TRADE,SLU',
-                'entidad5' => 'REDC',
                 'cuentactble' => '40011400',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9301,11 +9028,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            273 => 
+            273 =>
             array (
                 'id' => 274,
                 'entidad' => 'REGINCOS GINER, JORDI',
-                'entidad5' => 'REGIN',
                 'cuentactble' => '40011408',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9335,11 +9061,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            274 => 
+            274 =>
             array (
                 'id' => 275,
                 'entidad' => 'REGISTRO MERCANTIL DE BARCELON',
-                'entidad5' => 'REGI',
                 'cuentactble' => '40011416',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9369,11 +9094,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            275 => 
+            275 =>
             array (
                 'id' => 276,
                 'entidad' => 'REIAL AUTOM. CLUB DE CATALUNYA',
-                'entidad5' => 'REIA',
                 'cuentactble' => '40011410',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9403,11 +9127,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            276 => 
+            276 =>
             array (
                 'id' => 277,
                 'entidad' => 'RELIEVES J. BASA,S.L.',
-                'entidad5' => 'RELI',
                 'cuentactble' => '40011406',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9437,11 +9160,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            277 => 
+            277 =>
             array (
                 'id' => 278,
                 'entidad' => 'REMS EMBALATGES, S.L.',
-                'entidad5' => 'REMS',
                 'cuentactble' => '40011401',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9471,11 +9193,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            278 => 
+            278 =>
             array (
                 'id' => 279,
                 'entidad' => 'REVALIENTES E HIJOS, S.L.',
-                'entidad5' => 'REVA',
                 'cuentactble' => '40011437',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9505,11 +9226,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            279 => 
+            279 =>
             array (
                 'id' => 280,
                 'entidad' => 'RGR METALES, S.L.',
-                'entidad5' => 'RGRM',
                 'cuentactble' => '40011405',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9539,11 +9259,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            280 => 
+            280 =>
             array (
                 'id' => 281,
                 'entidad' => 'RIBERA DIGITAL, S.L.',
-                'entidad5' => 'RIBE',
                 'cuentactble' => '40011424',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9573,11 +9292,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            281 => 
+            281 =>
             array (
                 'id' => 282,
                 'entidad' => 'RICOH ESPAÑA, S.L.U.',
-                'entidad5' => 'RICO',
                 'cuentactble' => '40011402',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9607,11 +9325,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            282 => 
+            282 =>
             array (
                 'id' => 283,
                 'entidad' => 'RODRIGUEZ RIVERA, SAUL',
-                'entidad5' => 'RODR',
                 'cuentactble' => '40011418',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9641,11 +9358,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            283 => 
+            283 =>
             array (
                 'id' => 284,
                 'entidad' => 'ROLDAN GRAFICAS, S.L.',
-                'entidad5' => 'ROLD',
                 'cuentactble' => '40011412',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9675,11 +9391,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            284 => 
+            284 =>
             array (
                 'id' => 285,
                 'entidad' => 'ROMEO GARCIA, ELENA',
-                'entidad5' => 'ROMEO',
                 'cuentactble' => '40011404',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9709,11 +9424,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            285 => 
+            285 =>
             array (
                 'id' => 286,
                 'entidad' => 'ROMEO GARCIA, MARIO',
-                'entidad5' => 'ROME',
                 'cuentactble' => '40011427',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9743,11 +9457,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            286 => 
+            286 =>
             array (
                 'id' => 287,
                 'entidad' => 'RUEDAS ATLAS, S.L.',
-                'entidad5' => 'RUED',
                 'cuentactble' => '40011411',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9777,11 +9490,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            287 => 
+            287 =>
             array (
                 'id' => 288,
                 'entidad' => 'S.A. RACC',
-                'entidad5' => 'S.A.',
                 'cuentactble' => '40011520',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9811,11 +9523,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            288 => 
+            288 =>
             array (
                 'id' => 289,
                 'entidad' => 'S.P. JOVER, S.L.',
-                'entidad5' => 'S.P.',
                 'cuentactble' => '40011502',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9845,11 +9556,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            289 => 
+            289 =>
             array (
                 'id' => 290,
                 'entidad' => 'SOC. DE PREV. MAZ SEG.LAB., SL',
-                'entidad5' => 'SOCP',
                 'cuentactble' => '40011552',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9879,11 +9589,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            290 => 
+            290 =>
             array (
                 'id' => 291,
                 'entidad' => 'SABACOINSA, S.L.',
-                'entidad5' => 'SABA',
                 'cuentactble' => '40011511',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9913,11 +9622,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            291 => 
+            291 =>
             array (
                 'id' => 292,
                 'entidad' => 'REPRODUCCIONES SABATÉ, S.L.',
-                'entidad5' => 'REPR',
                 'cuentactble' => '40011415',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9947,11 +9655,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            292 => 
+            292 =>
             array (
                 'id' => 293,
                 'entidad' => 'SALVADOR ESCODA, S.A.',
-                'entidad5' => 'SALV',
                 'cuentactble' => '40011515',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -9981,11 +9688,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            293 => 
+            293 =>
             array (
                 'id' => 294,
                 'entidad' => 'SÁNCHEZ MÉNDEZ, SERGIO',
-                'entidad5' => 'SÁNC',
                 'cuentactble' => '40011517',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10015,11 +9721,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            294 => 
+            294 =>
             array (
                 'id' => 295,
                 'entidad' => 'SANTANDER FACTOR. Y CONFIR.,SA',
-                'entidad5' => 'SANTA',
                 'cuentactble' => '40011538',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10049,11 +9754,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            295 => 
+            295 =>
             array (
                 'id' => 296,
                 'entidad' => 'SERIMAX SERVEIS GRAFICS, S.L.',
-                'entidad5' => 'SERI',
                 'cuentactble' => '40011543',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10083,11 +9787,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            296 => 
+            296 =>
             array (
                 'id' => 297,
                 'entidad' => 'SERVICIOS GRAFIC. SECONDARY,SL',
-                'entidad5' => 'SERVI',
                 'cuentactble' => '40011506',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10117,11 +9820,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            297 => 
+            297 =>
             array (
                 'id' => 298,
                 'entidad' => 'SERVICIO ESTACION, S.A.',
-                'entidad5' => 'SERV',
                 'cuentactble' => '40011505',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10151,11 +9853,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            298 => 
+            298 =>
             array (
                 'id' => 299,
                 'entidad' => 'SET-PRAT PAPER DISTRIB., S.A.',
-                'entidad5' => 'SET-',
                 'cuentactble' => '40011532',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10185,11 +9886,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            299 => 
+            299 =>
             array (
                 'id' => 300,
                 'entidad' => 'SOC. GRAL. DE AGUAS DE BCN,S.A',
-                'entidad5' => 'SOCG',
                 'cuentactble' => '40011519',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10219,11 +9919,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            300 => 
+            300 =>
             array (
                 'id' => 301,
                 'entidad' => 'SGS ICS IBERICA, S.A.',
-                'entidad5' => 'SGSI',
                 'cuentactble' => '40011509',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10253,11 +9952,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            301 => 
+            301 =>
             array (
                 'id' => 302,
                 'entidad' => 'SILIKON TECNICS, S.L.',
-                'entidad5' => 'SILI',
                 'cuentactble' => '40011507',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10287,11 +9985,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            302 => 
+            302 =>
             array (
                 'id' => 303,
                 'entidad' => 'SITOUR',
-                'entidad5' => 'SITO',
                 'cuentactble' => '40011512',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10321,11 +10018,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            303 => 
+            303 =>
             array (
                 'id' => 304,
                 'entidad' => 'SOC.UNIP.TRILEZA,CONF. Y EV,SA',
-                'entidad5' => 'SOCU',
                 'cuentactble' => '40011510',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10355,11 +10051,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            304 => 
+            304 =>
             array (
                 'id' => 305,
                 'entidad' => 'SPIRAX, S.L.',
-                'entidad5' => 'SPIR',
                 'cuentactble' => '40011514',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10389,11 +10084,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            305 => 
+            305 =>
             array (
                 'id' => 306,
                 'entidad' => 'SPRINT-ER SERV. AUX. GRAF.,S.L',
-                'entidad5' => 'SPRI',
                 'cuentactble' => '40011553',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10423,11 +10117,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            306 => 
+            306 =>
             array (
                 'id' => 307,
                 'entidad' => 'SUMINISTROS IND. SUGAR, S.L.',
-                'entidad5' => 'SUMII',
                 'cuentactble' => '40011521',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10457,11 +10150,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            307 => 
+            307 =>
             array (
                 'id' => 308,
                 'entidad' => 'SUMINISTROS IBERO DIGITAL, S.A',
-                'entidad5' => 'SUMID',
                 'cuentactble' => '40011508',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10491,11 +10183,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            308 => 
+            308 =>
             array (
                 'id' => 309,
                 'entidad' => 'SUMINISTROS IND. Y DEL EMB.,SL',
-                'entidad5' => 'SUMIE',
                 'cuentactble' => '40011501',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10525,11 +10216,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            309 => 
+            309 =>
             array (
                 'id' => 310,
                 'entidad' => 'SUNCLEAR, S.A.U.',
-                'entidad5' => 'SUNC',
                 'cuentactble' => '40011504',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10559,11 +10249,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            310 => 
+            310 =>
             array (
                 'id' => 311,
                 'entidad' => 'SUNDIS, S.A.',
-                'entidad5' => 'SUND',
                 'cuentactble' => '40011500',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10593,11 +10282,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            311 => 
+            311 =>
             array (
                 'id' => 312,
                 'entidad' => 'SUPORTS GRAFICS INTEGRAL, SLU',
-                'entidad5' => 'SUPO',
                 'cuentactble' => '40011513',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10627,11 +10315,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            312 => 
+            312 =>
             array (
                 'id' => 313,
                 'entidad' => 'SWIRE PACIFIC, S.L.',
-                'entidad5' => 'SWIR',
                 'cuentactble' => '40011503',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10661,11 +10348,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            313 => 
+            313 =>
             array (
                 'id' => 314,
                 'entidad' => 'SYL-CREAC. GRAF.Y PUBL., S.A.',
-                'entidad5' => 'SYL-',
                 'cuentactble' => '40011522',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10695,11 +10381,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            314 => 
+            314 =>
             array (
                 'id' => 315,
                 'entidad' => 'TROQUELAJES BARCINO, S.L.',
-                'entidad5' => 'TROQ',
                 'cuentactble' => '40011652',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10729,11 +10414,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            315 => 
+            315 =>
             array (
                 'id' => 316,
                 'entidad' => 'TECHNICAL GENERIC SECURITY,SL',
-                'entidad5' => 'TECH',
                 'cuentactble' => '40011626',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10763,11 +10447,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            316 => 
+            316 =>
             array (
                 'id' => 317,
                 'entidad' => 'TECNITALL TECNOLOGIA, S.L.',
-                'entidad5' => 'TECN',
                 'cuentactble' => '40011602',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10797,11 +10480,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            317 => 
+            317 =>
             array (
                 'id' => 318,
                 'entidad' => 'TELEFONICA DE ESPAÑA, S.A.',
-                'entidad5' => 'TELEF',
                 'cuentactble' => '40011606',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10831,11 +10513,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            318 => 
+            318 =>
             array (
                 'id' => 319,
                 'entidad' => 'TELEFONICA MOVILES ESPAÑA,SA',
-                'entidad5' => 'TELE',
                 'cuentactble' => '40011608',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10865,11 +10546,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            319 => 
+            319 =>
             array (
                 'id' => 320,
                 'entidad' => 'TENDALS TOUS, S.L.',
-                'entidad5' => 'TEND',
                 'cuentactble' => '40011617',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10899,11 +10579,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            320 => 
+            320 =>
             array (
                 'id' => 321,
                 'entidad' => 'TESIGRAF REALIZACIONES GRAF,SL',
-                'entidad5' => 'TESI',
                 'cuentactble' => '40011616',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10933,11 +10612,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            321 => 
+            321 =>
             array (
                 'id' => 322,
                 'entidad' => 'THYSSENKRUPP PLASTIC IBERIC,SL',
-                'entidad5' => 'THYS',
                 'cuentactble' => '40011334',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -10967,11 +10645,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            322 => 
+            322 =>
             array (
                 'id' => 323,
                 'entidad' => 'TOMPLA IND.INT.DEL SOBRE, S.L.',
-                'entidad5' => 'TOMP',
                 'cuentactble' => '40011600',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11001,11 +10678,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            323 => 
+            323 =>
             array (
                 'id' => 324,
                 'entidad' => 'TORNERIA ROMANS, S.L.',
-                'entidad5' => 'TORN',
                 'cuentactble' => '40011610',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11035,11 +10711,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            324 => 
+            324 =>
             array (
                 'id' => 325,
                 'entidad' => 'TORRASPAPEL, S.A.',
-                'entidad5' => 'TORR',
                 'cuentactble' => '40011622',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11069,11 +10744,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            325 => 
+            325 =>
             array (
                 'id' => 326,
                 'entidad' => 'TOYOTA MATERILA HAN. ESPAÑA,SA',
-                'entidad5' => 'TOYO',
                 'cuentactble' => '40011644',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11103,11 +10777,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            326 => 
+            326 =>
             array (
                 'id' => 327,
                 'entidad' => 'TRADUCTORUM, SCP',
-                'entidad5' => 'TRAD',
                 'cuentactble' => '40011623',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11137,11 +10810,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            327 => 
+            327 =>
             array (
                 'id' => 328,
                 'entidad' => 'TRANS MONJUIC BCN,S.L.',
-                'entidad5' => 'TRANM',
                 'cuentactble' => '40011656',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11171,11 +10843,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            328 => 
+            328 =>
             array (
                 'id' => 329,
                 'entidad' => 'TRANSEUROP, S.A.',
-                'entidad5' => 'TRANE',
                 'cuentactble' => '40011611',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11205,11 +10876,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            329 => 
+            329 =>
             array (
                 'id' => 330,
                 'entidad' => 'TRANSP.BUYTRAGO ANDALUCIA,SA',
-                'entidad5' => 'TRANB',
                 'cuentactble' => '40011601',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11239,11 +10909,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            330 => 
+            330 =>
             array (
                 'id' => 331,
                 'entidad' => 'TREVOL SERVEIS JURIDICS, S.L.',
-                'entidad5' => 'TREV',
                 'cuentactble' => '40011627',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11273,11 +10942,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            331 => 
+            331 =>
             array (
                 'id' => 332,
                 'entidad' => 'TRIA-TU, S.L.',
-                'entidad5' => 'TRIA',
                 'cuentactble' => '40011619',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11307,11 +10975,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            332 => 
+            332 =>
             array (
                 'id' => 333,
                 'entidad' => 'GRUPO TRITENICS INFORMÁTICA,SL',
-                'entidad5' => 'GRUP',
                 'cuentactble' => '40010613',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11341,11 +11008,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            333 => 
+            333 =>
             array (
                 'id' => 334,
                 'entidad' => 'TRIUNFO, SCP',
-                'entidad5' => 'TRIU',
                 'cuentactble' => '40011655',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11375,11 +11041,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            334 => 
+            334 =>
             array (
                 'id' => 335,
                 'entidad' => 'TUSET OFICINA Y SERVICIOS, S.L',
-                'entidad5' => 'TUSE',
                 'cuentactble' => '40011010',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11409,11 +11074,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            335 => 
+            335 =>
             array (
                 'id' => 336,
                 'entidad' => 'TÜV RHEINLAND IB.INSP.CER.T,SA',
-                'entidad5' => 'TUVR',
                 'cuentactble' => '40011654',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11443,11 +11107,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            336 => 
+            336 =>
             array (
                 'id' => 337,
                 'entidad' => 'TWENTIC, S.L.',
-                'entidad5' => 'TWEN',
                 'cuentactble' => '40011615',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11477,11 +11140,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            337 => 
+            337 =>
             array (
                 'id' => 338,
                 'entidad' => 'UNIPOST, S.A.',
-                'entidad5' => 'UNIP',
                 'cuentactble' => '40011637',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11511,11 +11173,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            338 => 
+            338 =>
             array (
                 'id' => 339,
                 'entidad' => 'UPM RAFLATAC OY',
-                'entidad5' => 'UPMR',
                 'cuentactble' => '40011603',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11545,11 +11206,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            339 => 
+            339 =>
             array (
                 'id' => 340,
                 'entidad' => 'UVE DISEÑO Y COMUNICACION,SL',
-                'entidad5' => 'UVED',
                 'cuentactble' => '40011618',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11579,11 +11239,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            340 => 
+            340 =>
             array (
                 'id' => 341,
                 'entidad' => 'VANGUARD GRAFIC, S.A.',
-                'entidad5' => 'VANG',
                 'cuentactble' => '40011653',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11613,11 +11272,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            341 => 
+            341 =>
             array (
                 'id' => 342,
                 'entidad' => 'VEGIO, S.L.',
-                'entidad5' => 'VEGI',
                 'cuentactble' => '40011645',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11647,11 +11305,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            342 => 
+            342 =>
             array (
                 'id' => 343,
                 'entidad' => 'VIAPACK ZONA FRANCA, S.L.',
-                'entidad5' => 'VIAP',
                 'cuentactble' => '40011657',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11681,11 +11338,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            343 => 
+            343 =>
             array (
                 'id' => 344,
                 'entidad' => 'VICENS PIERA, S.L.',
-                'entidad5' => 'VICE',
                 'cuentactble' => '40011605',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11715,11 +11371,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            344 => 
+            344 =>
             array (
                 'id' => 345,
                 'entidad' => 'VIDRIOCAR, S.L.U.',
-                'entidad5' => 'VIDR',
                 'cuentactble' => '40011604',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11749,11 +11404,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            345 => 
+            345 =>
             array (
                 'id' => 346,
                 'entidad' => 'VILAJOSANA BADIA, BERNAT',
-                'entidad5' => 'VILA',
                 'cuentactble' => '40011607',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11783,11 +11437,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            346 => 
+            346 =>
             array (
                 'id' => 347,
                 'entidad' => 'VINK PLASTICS SPAIN, S.L.U',
-                'entidad5' => 'VINK',
                 'cuentactble' => '40011016',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11817,11 +11470,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            347 => 
+            347 =>
             array (
                 'id' => 348,
                 'entidad' => 'WERKHAUS,S.L.',
-                'entidad5' => 'WERK',
                 'cuentactble' => '40011636',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11851,11 +11503,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            348 => 
+            348 =>
             array (
                 'id' => 349,
                 'entidad' => 'ZAMORA ALONSO, ANTONIO',
-                'entidad5' => 'ZAMO',
                 'cuentactble' => '40011613',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11885,11 +11536,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            349 => 
+            349 =>
             array (
                 'id' => 350,
                 'entidad' => 'PONSA BALLESTER, VALENTÍ',
-                'entidad5' => 'PONS',
                 'cuentactble' => '40011313',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11919,11 +11569,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            350 => 
+            350 =>
             array (
                 'id' => 351,
                 'entidad' => 'ZONA FRANCA COURIER, S.L.',
-                'entidad5' => 'ZONA',
                 'cuentactble' => '40011348',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11953,11 +11602,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            351 => 
+            351 =>
             array (
                 'id' => 352,
                 'entidad' => 'ARTE PLASTI',
-                'entidad5' => 'ARTE',
                 'cuentactble' => 'x1',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -11987,11 +11635,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            352 => 
+            352 =>
             array (
                 'id' => 353,
                 'entidad' => 'CANON',
-                'entidad5' => 'CANO',
                 'cuentactble' => 'x2',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12021,11 +11668,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            353 => 
+            353 =>
             array (
                 'id' => 354,
                 'entidad' => 'CARPAPSA',
-                'entidad5' => 'CARP',
                 'cuentactble' => 'x3',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12055,11 +11701,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            354 => 
+            354 =>
             array (
                 'id' => 355,
                 'entidad' => 'DISTRITECN',
-                'entidad5' => 'DIST',
                 'cuentactble' => 'x4',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12089,11 +11734,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            355 => 
+            355 =>
             array (
                 'id' => 356,
                 'entidad' => 'EMBAGRAP',
-                'entidad5' => 'EMBAG',
                 'cuentactble' => 'x6',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12123,11 +11767,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            356 => 
+            356 =>
             array (
                 'id' => 357,
                 'entidad' => 'EUROFILMPL',
-                'entidad5' => 'EURO',
                 'cuentactble' => 'x7',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12157,11 +11800,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            357 => 
+            357 =>
             array (
                 'id' => 358,
                 'entidad' => 'FUJI',
-                'entidad5' => 'FUJI',
                 'cuentactble' => 'x8',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12191,11 +11833,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            358 => 
+            358 =>
             array (
                 'id' => 359,
                 'entidad' => 'LERMONT',
-                'entidad5' => 'LERM',
                 'cuentactble' => 'x9',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12225,11 +11866,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            359 => 
+            359 =>
             array (
                 'id' => 360,
                 'entidad' => 'FUSTIER',
-                'entidad5' => 'FUST',
                 'cuentactble' => 'x10',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12259,11 +11899,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            360 => 
+            360 =>
             array (
                 'id' => 361,
                 'entidad' => 'INAPA',
-                'entidad5' => 'INAP',
                 'cuentactble' => 'x11',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12293,11 +11932,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            361 => 
+            361 =>
             array (
                 'id' => 362,
                 'entidad' => 'OFIJET',
-                'entidad5' => 'OFIJ',
                 'cuentactble' => 'x12',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12327,11 +11965,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            362 => 
+            362 =>
             array (
                 'id' => 363,
                 'entidad' => 'PAPERGRAPH	',
-                'entidad5' => 'PAPEG',
                 'cuentactble' => 'x13',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12361,11 +11998,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            363 => 
+            363 =>
             array (
                 'id' => 364,
                 'entidad' => 'POSTER',
-                'entidad5' => 'POSTE',
                 'cuentactble' => 'x14',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12395,11 +12031,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            364 => 
+            364 =>
             array (
                 'id' => 365,
                 'entidad' => 'SPANDEX',
-                'entidad5' => 'SPAN',
                 'cuentactble' => 'x15',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12429,11 +12064,10 @@ class EntidadesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            365 => 
+            365 =>
             array (
                 'id' => 366,
                 'entidad' => 'UNION PAPELERA',
-                'entidad5' => 'UNIO',
                 'cuentactble' => 'x16',
                 'direccion' => NULL,
                 'cp' => NULL,
@@ -12464,7 +12098,7 @@ class EntidadesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

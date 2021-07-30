@@ -13,7 +13,7 @@ class Unidad extends Model
 
     protected $table = 'unidades';
 
-    protected $fillable = ['sigla','nombre'];
+    protected $fillable = ['nombre','nombrecorto'];
 
     public function productos()
     {

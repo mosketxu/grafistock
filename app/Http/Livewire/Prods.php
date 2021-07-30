@@ -36,7 +36,7 @@ class Prods extends Component
         $proveedores=Entidad::orderBy('entidad')->get();
         // dd($proveedores->first());
         $productos=Producto::query()
-            ->with('entidad','material','acabado')
+            ->with('entidad','material','acabado','tipo')
             ->search('referencia',$this->search)
             ->orSearch('descripcion',$this->search)
             ->when($this->filtromaterial!='', function ($query){
@@ -53,6 +53,9 @@ class Prods extends Component
                 })
             ->orderBy('referencia','asc')
             ->paginate(15);
+
+        // $p=$productos->first();
+        // dd($p->acabado);
         return view('livewire.prods',compact('productos','materiales','acabados','gruposprod','proveedores'));
     }
 

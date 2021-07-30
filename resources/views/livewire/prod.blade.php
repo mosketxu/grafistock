@@ -56,7 +56,7 @@
                         </div>
                         <div class="w-10/12 form-item">
                             <x-jet-label for="descripcion">{{ __('Descripción') }}</x-jet-label>
-                            <input wire:model="producto.descripcion" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" autofocus/>
+                            <input wire:model.defer="producto.descripcion" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" autofocus/>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                     <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                         <div class="w-full form-item">
                             <x-jet-label for="entidad_id">{{ __('Proveedor') }}</x-jet-label>
-                            <x-select wire:model="producto.entidad_id" selectname="entidad_id" class="w-full" required>
+                            <x-select wire:model.lazy="producto.entidad_id" selectname="entidad_id" class="w-full" required>
                                 <option value="">-- Selecciona proveedor --</option>
                                 @foreach ($proveedores as $proveedor)
                                 <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
@@ -84,7 +84,7 @@
                             <x-select wire:model.defer="producto.udcoste_id" selectname="udcoste_id" class="w-full">
                                 <option value="">-- Selecciona unidad --</option>
                                 @foreach ($unidadescoste as $unidad)
-                                <option value="{{ $unidad->sigla }}">{{ $unidad->nombre }}</option>
+                                <option value="{{ $unidad->id }}">{{ $unidad->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
@@ -122,55 +122,55 @@
                     <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                         <div class="w-full form-item">
                             <x-jet-label for="tipo_id">{{ __('Tipo') }} </x-jet-label>
-                            <x-select wire:model="producto.tipo_id" selectname="tipo_id" class="w-full" required>
+                            <x-select wire:model.lazy="producto.tipo_id" selectname="tipo_id" class="w-full" required>
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($tipos as $tipo)
-                                <option value="{{ $tipo->sigla }}">{{ $tipo->nombre }}</option>
+                                <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="material_id">{{ __('Material') }} {{ $producto->material_id }}</x-jet-label>
-                            <x-select wire:model="producto.material_id" selectname="material_id" class="w-full" required>
+                            <x-select wire:model.lazy="producto.material_id" selectname="material_id" class="w-full" required>
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($materiales as $material)
-                                <option value="{{ $material->sigla }}">{{ $material->nombre }}</option>
+                                <option value="{{ $material->id }}">{{ $material->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="acabado_id">{{ __('Acabado') }} </x-jet-label>
-                            <x-select wire:model="producto.acabado_id" selectname="acabado_id" class="w-full" required>
+                            <x-select wire:model.lazy="producto.acabado_id" selectname="acabado_id" class="w-full" required>
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($acabados as $acabado)
-                                <option value="{{ $acabado->sigla }}">{{ $acabado->nombre }}</option>
+                                <option value="{{ $acabado->id }}">{{ $acabado->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="grupoproduccion_id">{{ __('Grupo.Prod') }} </x-jet-label>
-                            <x-select wire:model="producto.grupoproduccion_id" selectname="grupoproduccion_id" class="w-full" required>
+                            <x-select wire:model.defer="producto.grupoproduccion_id" selectname="grupoproduccion_id" class="w-full" required>
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($gruposprod as $grupo)
-                                <option value="{{ $grupo->sigla }}">{{ $grupo->nombre }}</option>
+                                <option value="{{ $grupo->id }}">{{ $grupo->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="clase_id">{{ __('Clase') }} </x-jet-label>
-                            <x-select wire:model="producto.clase_id" selectname="clase_id" class="w-full" >
+                            <x-select wire:model.defer="producto.clase_id" selectname="clase_id" class="w-full" >
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($clases as $clase)
-                                <option value="{{ $clase->sigla }}">{{ $clase->nombre }}</option>
+                                <option value="{{ $clase->id }}">{{ $clase->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="calidad_id">{{ __('Calidad') }} </x-jet-label>
-                            <x-select wire:model="producto.calidad_id" selectname="calidad_id" class="w-full" >
+                            <x-select wire:model.defer="producto.calidad_id" selectname="calidad_id" class="w-full" >
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($calidades as $calidad)
-                                <option value="{{ $calidad->sigla }}">{{ $calidad->nombre }}</option>
+                                <option value="{{ $calidad->id }}">{{ $calidad->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
@@ -183,34 +183,34 @@
                     <div class="flex flex-col mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                         <div class="w-full form-item">
                             <x-jet-label for="ancho">{{ __('Ancho') }}</x-jet-label>
-                            <input  wire:model="producto.ancho" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
+                            <input  wire:model.lazy="producto.ancho" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="udancho_id">{{ __('Ud Ancho') }}</x-jet-label>
                             <x-select wire:model.defer="producto.udancho_id" selectname="udancho_id" class="w-full" >
                                 <option value="">-- Selecciona unidad --</option>
                                 @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->sigla }}">{{ $unidad->nombre }}</option>
+                                <option value="{{ $unidad->id }}">{{ $unidad->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="alto">{{ __('Alto') }}</x-jet-label>
-                            <input  wire:model="producto.alto" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
+                            <input  wire:model.lazy="producto.alto" type="number" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="udalto_id">{{ __('Ud Ancho') }}</x-jet-label>
                             <x-select wire:model.defer="producto.udalto_id" selectname="udalto_id" class="w-full">
                                 <option value="">-- Selecciona unidad --</option>
                                 @foreach ($unidades as $unidad)
-                                <option value="{{ $unidad->sigla }}">{{ $unidad->nombre }}</option>
+                                <option value="{{ $unidad->id }}">{{ $unidad->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>
 
                         <div class="w-full form-item">
                             <x-jet-label for="grosor">{{ __('Grosor (mm)') }}</x-jet-label>
-                            <input  wire:model.defer="producto.grosor_mm" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            <input  wire:model.lazy="producto.grosor_mm" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="ficheropdf">{{ __('Ficha producto') }} <span class="text-xs">{{ $producto->fichaproducto }}</span></x-jet-label>
@@ -230,7 +230,7 @@
                             <x-select wire:model.defer="producto.caja_id" selectname="caja_id" class="w-full">
                                 <option value="">-- Selecciona caja --</option>
                                 @foreach ($cajas as $caja)
-                                <option value="{{ $caja->sigla }}">{{ $caja->nombre }}</option>
+                                <option value="{{ $caja->id }}">{{ $caja->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>

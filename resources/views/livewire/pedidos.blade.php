@@ -1,4 +1,4 @@
-<div class="">
+    <div class="">
     @livewire('menu',['entidad'=>$entidad],key($entidad->id))
 <div class="p-1 mx-2">
     <h1 class="text-2xl font-semibold text-gray-900">Pedido {{ $entidad->id? 'de '. $entidad->entidad  :'' }} </h1>
@@ -32,6 +32,20 @@
                     </div>
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
+                            Proveedor
+                            @if($filtroproveedor!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroproveedor', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtroproveedor" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" >
+                            <option value="">-- selecciona --</option>
+                            @foreach ($proveedores as $proveedor )
+                            <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="text-xs">
+                        <label class="px-1 text-gray-600">
                             Año
                             @if($filtroanyo!='')
                                 <x-icon.filter-slash-a wire:click="$set('filtroanyo', '')" class="pb-1" title="reset filter"/>
@@ -48,20 +62,7 @@
                         </label>
                         <input type="text" wire:model="filtromes" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Mes (número)"/>
                     </div>
-                    <div class="text-xs">
-                        <label class="px-1 text-gray-600">
-                            Proveedor
-                            @if($filtroproveedor!='')
-                                <x-icon.filter-slash-a wire:click="$set('filtroproveedor', '')" class="pb-1" title="reset filter"/>
-                            @endif
-                        </label>
-                        <select wire:model="filtroproveedor" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" >
-                            <option value="">-- selecciona --</option>
-                            @foreach ($proveedores as $proveedor )
-                            <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+
                 </div>
                 <div class="inline-flex mt-3 space-x-2">
                     <x-dropdown label="Actions">
@@ -96,10 +97,10 @@
                         <th class="w-5 py-3 pl-2 font-medium text-center"><x-input.checkbox wire:model="selectPage"/></th>
                         <th class="w-5 py-3 pl-2 font-medium text-center ">#</th>
                         <th class="pl-4 font-medium text-left">{{ __('Pedido') }}</th>
+                        <th class="pl-4 font-medium text-left">{{ __('Proveedor') }} </th>
                         <th class="pl-4 font-medium text-left">{{ __('F.Pedido') }}</th>
                         <th class="pl-4 font-medium text-left">{{ __('F.Recep.Prev.') }}</th>
                         <th class="pl-4 font-medium text-left">{{ __('F.Recep.') }}</th>
-                        <th class="pl-4 font-medium text-left">{{ __('Proveedor') }} </th>
                         <th class="pr-4 font-medium text-right">{{ __('Total (€)') }}</th>
                         <th colspan="2"></th>
                     </tr>
@@ -133,6 +134,9 @@
                                 @endif
                             </td>
                             <td>
+                                <input type="text" value="{{ $pedido->entidad }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                            </td>
+                            <td>
                                 <input type="text" value="{{ $pedido->fechapedido->format('d/m/Y') }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                             </td>
                             <td>
@@ -141,9 +145,7 @@
                             <td>
                                 <input type="text" value="{{ $pedido->fecharecepcion ? $pedido->fecharecepcion->format('d/m/Y') : '-' }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                             </td>
-                            <td>
-                                <input type="text" value="{{ $pedido->entidad }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
-                            </td>
+
                             <td class="text-right">
                                 <span class="pr-4 text-xs text-blue-500">{{ number_format(round($pedido->pedidodetalles->sum('base'),2),2)}}</span>
                             </td>

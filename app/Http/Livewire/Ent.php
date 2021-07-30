@@ -63,6 +63,7 @@ class Ent extends Component
     {
         $this->validate();
         if($this->entidad->id){
+            // dd('1');
             $i=$this->entidad->id;
             $this->validate([
                 'entidad.entidad'=>[
@@ -73,15 +74,16 @@ class Ent extends Component
                     Rule::unique('entidades','nif')->ignore($this->entidad->id)],
                 ]
             );
-            $mensaje=$this->entidad->entidad . " actualizada satisfactoriamente";
+            $mensaje="Proveedor actualizad satisfactoriamente";
         }else{
+            // dd('2');
             $this->validate([
                 'entidad.entidad'=>'required|unique:entidades,entidad',
                 'entidad.nif'=>'max:12|unique:entidades,nif',
                 ]
             );
             $i=$this->entidad->id;
-            $message=$this->entidad->entidad . " creada satisfactoriamente";
+            $mensaje="Proveedor creado satisfactoriamente";
         }
 
         $ent=Entidad::updateOrCreate([
@@ -117,11 +119,12 @@ class Ent extends Component
         );
         if(!$this->entidad->id){
             $this->entidad->id=$ent->id;
-            $mensaje=$this->entidad->entidad . " creada satisfactoriamente";
-            session()->flash('message', $mensaje);
+            // $mensaje=$this->entidad->entidad . " creada satisfactoriamente";
+            // session()->flash('message', $mensaje);
         }
 
-        session()->flash('message', $mensaje);
-        $this->emitSelf('notify-saved');
+        // session()->flash('message', $mensaje);
+        // $this->emitSelf('notify-saved');
+        $this->dispatchBrowserEvent('notify', $mensaje);
     }
 }

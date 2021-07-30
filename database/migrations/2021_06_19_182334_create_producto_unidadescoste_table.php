@@ -14,8 +14,9 @@ class CreateProductoUnidadescosteTable extends Migration
     public function up()
     {
         Schema::create('producto_unidadescoste', function (Blueprint $table) {
-            $table->string('sigla', 15)->primary();
-            $table->string('nombre',);
+            $table->id();
+            $table->string('nombre')->unique();
+            $table->string('nombrecorto')->unique();
             $table->timestamps();
         });
     }

@@ -9,18 +9,18 @@ class ProductoTipoSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return vonombrecorto
      */
     public function run()
     {
         \DB::table('producto_tipos')->delete();
 
         \DB::table('producto_tipos')->insert([
-            ['sigla'=>'B','nombre' => 'Bobina'],
-            ['sigla'=>'C','nombre' => 'Consumible'],
-            ['sigla'=>'G','nombre' => 'Gran.Formato'],
-            ['sigla'=>'P','nombre' => 'Peq.Formato'],
-            ['sigla'=>'R','nombre' => 'Rígido'],
+            ['nombrecorto'=>'B','nombre' => 'Bobina'],
+            ['nombrecorto'=>'C','nombre' => 'Consumible'],
+            ['nombrecorto'=>'G','nombre' => 'Gran.Formato'],
+            ['nombrecorto'=>'P','nombre' => 'Peq.Formato'],
+            ['nombrecorto'=>'R','nombre' => 'Rígnombrecortoo'],
         ]);
     }
 }

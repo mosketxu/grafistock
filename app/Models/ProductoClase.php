@@ -9,7 +9,7 @@ class ProductoClase extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sigla','nombre'];
+    protected $fillable = ['id','nombre'];
 
     public function productos()
     {

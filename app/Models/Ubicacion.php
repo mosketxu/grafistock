@@ -11,7 +11,7 @@ class Ubicacion extends Model
 
     protected $table = 'ubicaciones';
 
-    protected $fillable = ['sigla','nombre'];
+    protected $fillable = ['nombre','nombrecorto'];
 
     public function productos()
     {

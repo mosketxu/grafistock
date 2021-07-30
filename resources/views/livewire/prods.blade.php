@@ -53,7 +53,7 @@
                         <select wire:model="filtromaterial" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($materiales as $mat)
-                            <option value="{{ $mat->sigla }}">{{ $mat->nombre }}</option>
+                            <option value="{{ $mat->id }}">{{ $mat->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -68,7 +68,7 @@
                         <select wire:model="filtroacabado" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($acabados as $acabado)
-                            <option value="{{ $acabado->sigla }}">{{ $acabado->nombre }}</option>
+                            <option value="{{ $acabado->id }}">{{ $acabado->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -82,7 +82,7 @@
                         <select wire:model="filtrogrupoprod" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($gruposprod as $grupoprod)
-                            <option value="{{ $grupoprod->sigla }}">{{ $grupoprod->nombre }}</option>
+                            <option value="{{ $grupoprod->id }}">{{ $grupoprod->nombre }}</option>
                             @endforeach
                         </select>
                     </div> --}}
@@ -128,8 +128,8 @@
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->descripcion }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad }}</td >
                                 {{-- <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->ubicacion_id}}</td > --}}
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->tipo_id }}</td >
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->material->nombre }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->tipo->nombrecorto }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->material->nombre ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->grosor_mm }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->ancho}} {{ $producto->udancho_id }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->alto }} {{ $producto->udalto_id }}</td >

@@ -24,8 +24,11 @@
                     <x-jet-nav-link href="{{ route('pedido.index') }}" :active="request()->routeIs('pedido.index')">
                         {{ __('Pedidos') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('stock.index') }}" :active="request()->routeIs('stock.index')">
+                    <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
                         {{ __('Stock') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('administracion.index') }}" :active="request()->routeIs('administracion.index')">
+                        {{ __('Administración') }}
                     </x-jet-nav-link>
 
                 </div>
@@ -33,11 +36,11 @@
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @if(explode('.',Request::route()->getName())[0] =='stock')
-                    <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
+                    {{-- <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
                         <x-jet-nav-link href="{{ route('stock.index') }}" :active="request()->routeIs('stock.index')">
                             {{ __('Control') }}
                         </x-jet-nav-link>
-                    </div>
+                    </div> --}}
                     <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
                         <x-jet-nav-link href="{{ route('stock.movimientos') }}" :active="request()->routeIs('stock.movimientos')">
                             {{ __('Movimientos') }}
@@ -127,14 +130,17 @@
             <x-jet-nav-link href="{{ route('pedido.index') }}" :active="request()->routeIs('pedido.index')">
                 {{ __('Pedido') }}
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ route('stock.show',0) }}" :active="request()->routeIs('stock.show')">
-                {{ __('Movimientos Stock') }}
+            <x-jet-nav-link href="{{ route('administracion.index') }}" :active="request()->routeIs('administracion.index')">
+                {{ __('Administración') }}
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ route('stock.show',0) }}" :active="request()->routeIs('stock.index')">
-                {{ __('Stock x Producto') }}
+            <x-jet-nav-link href="{{ route('stock.movimientos') }}" :active="request()->routeIs('stock.movimientos')">
+                {{ __('Movimientos') }}
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ route('stock.show',0) }}" :active="request()->routeIs('stock.material')">
-                {{ __('Stock x Material') }}
+            <x-jet-nav-link href="{{ route('stock.producto') }}" :active="request()->routeIs('stock.producto')">
+                {{ __('Por Producto') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
+                {{ __('Por Material') }}
             </x-jet-nav-link>
         </div>
 

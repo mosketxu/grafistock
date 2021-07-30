@@ -19,7 +19,7 @@ class Prod extends Component
     {
         return [
             'producto.id'=>'nullable',
-            'producto.referencia'=>'required|unique:productos,referencia',
+            'producto.referencia'=>'required',
             'producto.descripcion'=>'nullable',
             'producto.tipo_id'=>'required',
             'producto.material_id'=>'required',
@@ -70,9 +70,13 @@ class Prod extends Component
         $p='';
         if($this->producto->entidad_id){
             $p=Entidad::find($this->producto->entidad_id);
-            $p=$p->entidad5;
+            $p=$p->id;
         }
-        $this->producto->referencia=$this->producto->tipo_id.'-'.$this->producto->material_id.'-'.str_pad($this->producto->ancho, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-'.$this->producto->acabado_id.'-'.$p;
+        $tipo=$this->producto->tipo->nombrecorto ?? '';
+        $material=$this->producto->material->nombrecorto ?? '';
+        $acabado=$this->producto->acabado->nombrecorto ?? '';
+
+        $this->producto->referencia=$tipo.'-'.$material.'-'.str_pad($this->producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->ancho, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-'.$acabado.'-'.$p;
 
         if($this->producto->tipo_id && $this->producto->material_id && $this->producto->ancho && $this->producto->alto  && $this->producto->acabado_id && $p){
             $this->validate(['producto.referencia'=>'unique:productos,referencia']);
@@ -88,8 +92,9 @@ class Prod extends Component
     public function save()
     {
         // dd($this->ficheropdf);
-        $this->validate();
+        // $this->validate();
         if($this->producto->id){
+            // dd('1');
             $i=$this->producto->id;
             $this->validate([
                 'producto.referencia'=>[
@@ -101,6 +106,7 @@ class Prod extends Component
             );
             $mensaje=$this->producto->referencia . " actualizado satisfactoriamente";
         }else{
+            // dd('2');
             $this->validate([
                 'producto.referencia'=>'required|unique:productos,referencia',
 
@@ -151,12 +157,13 @@ class Prod extends Component
         if(!$this->producto->id){
             $this->producto->id=$prod->id;
             $mensaje=$this->producto->referencia . " creado satisfactoriamente";
-            session()->flash('message', $mensaje);
+            // session()->flash('message', $mensaje);
         }
 
-        session()->flash('message', $mensaje);
+        // session()->flash('message', $mensaje);
         // return redirect()->route('pedido.create');
         // $this->emitSelf('notify-saved');
+        $this->dispatchBrowserEvent('notify', $mensaje);
     }
 
 }
