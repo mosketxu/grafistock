@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,6 +18,14 @@ class Solicitantes extends Component
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
+    protected function rules()
+    {
+        return [
+            'nombrecorto'=>'required|unique:solicitantes,nombrecorto',
+            'nombre'=>'required|unique:solicitantes,nombre',
+        ];
+    }
+
     public function render()
     {
         $valores=Solicitante::query()
@@ -31,7 +38,7 @@ class Solicitantes extends Component
     public function changeCorto(Solicitante $valor,$nombrecorto)
     {
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'unique:solicitantes,nombrecorto',
+            'nombrecorto'=>'required|unique:solicitantes,nombrecorto',
         ])->validate();
 
         $p=Solicitante::find($valor->id);
@@ -43,7 +50,7 @@ class Solicitantes extends Component
     public function changeNombre(Solicitante $valor, $nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'unique:solicitantes,nombre',
+            'nombre'=>'required|unique:solicitantes,nombre',
         ])->validate();
         $p=Solicitante::find($valor->id);
         $p->nombre=$nombre;
@@ -53,17 +60,7 @@ class Solicitantes extends Component
 
     public function save()
     {
-        $this->validate([
-            'nombre'=>[
-                'required',
-                Rule::unique('solicitantes','nombre')
-                ],
-            'nombrecorto'=>[
-                'required',
-                Rule::unique('solicitantes','nombrecorto')
-                ],
-            ],
-        );
+        $this->validate();
 
         Solicitante::create([
             'nombre'=>$this->nombre,

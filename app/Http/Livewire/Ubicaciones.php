@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,6 +18,14 @@ class Ubicaciones extends Component
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
+    protected function rules()
+    {
+        return [
+            'nombrecorto'=>'required|unique:ubicaciones,nombrecorto',
+            'nombre'=>'required|unique:ubicaciones,nombre',
+        ];
+    }
+
     public function render()
     {
         $valores=Ubicacion::query()
@@ -31,7 +38,7 @@ class Ubicaciones extends Component
     public function changeCorto(Ubicacion $valor,$nombrecorto)
     {
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'unique:ubicaciones,nombrecorto',
+            'nombrecorto'=>'required|unique:ubicaciones,nombrecorto',
         ])->validate();
 
         $p=Ubicacion::find($valor->id);
@@ -43,7 +50,7 @@ class Ubicaciones extends Component
     public function changeNombre(Ubicacion $valor, $nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'unique:ubicaciones,nombre',
+            'nombre'=>'required|unique:ubicaciones,nombre',
         ])->validate();
         $p=Ubicacion::find($valor->id);
         $p->nombre=$nombre;
@@ -53,17 +60,7 @@ class Ubicaciones extends Component
 
     public function save()
     {
-        $this->validate([
-            'nombre'=>[
-                'required',
-                Rule::unique('ubicaciones','nombre')
-                ],
-            'nombrecorto'=>[
-                'required',
-                Rule::unique('ubicaciones','nombrecorto')
-                ],
-            ],
-        );
+        $this->validate();
 
         Ubicacion::create([
             'nombre'=>$this->nombre,

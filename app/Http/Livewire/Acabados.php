@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\ProductoAcabado;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Livewire\WithPagination;
 
@@ -15,6 +14,16 @@ class Acabados extends Component
     public $titulo='Acabados';
     public $nombre='';
     public $nombrecorto='';
+
+    protected $listeners = [ 'refresh' => '$refresh'];
+
+    protected function rules()
+    {
+        return [
+            'nombrecorto'=>'required|unique:producto_acabados,nombrecorto',
+            'nombre'=>'required|unique:producto_acabados,nombre',
+        ];
+    }
 
     public function render()
     {
@@ -29,7 +38,7 @@ class Acabados extends Component
     {
 
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'unique:producto_acabados,nombrecorto',
+            'nombrecorto'=>'required|unique:producto_acabados,nombrecorto',
         ])->validate();
 
         $p=ProductoAcabado::find($valor->id);
@@ -41,7 +50,7 @@ class Acabados extends Component
     public function changeNombre(ProductoAcabado $valor,$nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'unique:producto_acabados,nombre',
+            'nombre'=>'required|unique:producto_acabados,nombre',
         ])->validate();
 
         $p=ProductoAcabado::find($valor->id);
@@ -52,27 +61,12 @@ class Acabados extends Component
 
     public function save()
     {
-        $this->validate([
-            'nombre'=>[
-                'required',
-                Rule::unique('producto_acabados','nombre')
-                ],
-            'nombrecorto'=>[
-                'required',
-                Rule::unique('producto_acabados','nombrecorto')
-                ],
-            ],
-        );
-        // // dd($this->nombrecorto);
-        // $p=new ProductoAcabado;
-        // $p->nombre=$this->nombre;
-        // $p->nombrecorto=$this->nombrecorto;
-        // $p->save();
+        $this->validate();
+
         ProductoAcabado::create([
             'nombre'=>$this->nombre,
             'nombrecorto'=>$this->nombrecorto,
         ]);
-        // dd($p);
 
         $this->dispatchBrowserEvent('notify', 'Acabado añadido con éxito');
 

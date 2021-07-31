@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,6 +18,14 @@ class Unidades extends Component
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
+    protected function rules()
+    {
+        return [
+            'nombrecorto'=>'required|unique:unidades,nombrecorto',
+            'nombre'=>'required|unique:unidades,nombre',
+        ];
+    }
+
     public function render()
     {
         $valores=Unidad::query()
@@ -31,7 +38,7 @@ class Unidades extends Component
     public function changeCorto(Unidad $valor,$nombrecorto)
     {
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'unique:unidades,nombrecorto',
+            'nombrecorto'=>'required|unique:unidades,nombrecorto',
         ])->validate();
 
         $p=Unidad::find($valor->id);
@@ -43,7 +50,7 @@ class Unidades extends Component
     public function changeNombre(Unidad $valor, $nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'unique:unidades,nombre',
+            'nombre'=>'required|unique:unidades,nombre',
         ])->validate();
         $p=Unidad::find($valor->id);
         $p->nombre=$nombre;
@@ -53,17 +60,7 @@ class Unidades extends Component
 
     public function save()
     {
-        $this->validate([
-            'nombre'=>[
-                'required',
-                Rule::unique('unidades','nombre')
-                ],
-            'nombrecorto'=>[
-                'required',
-                Rule::unique('unidades','nombrecorto')
-                ],
-            ],
-        );
+        $this->validate();
 
         Unidad::create([
             'nombre'=>$this->nombre,

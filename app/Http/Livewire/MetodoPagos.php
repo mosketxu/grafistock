@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,6 +19,14 @@ class MetodoPagos extends Component
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
+    protected function rules()
+    {
+        return [
+            'nombrecorto'=>'required|unique:metodo_pagos,nombrecorto',
+            'nombre'=>'required|unique:metodo_pagos,nombre',
+        ];
+    }
+
     public function render()
     {
         $valores=MetodoPago::query()
@@ -32,7 +39,7 @@ class MetodoPagos extends Component
     public function changeNombre(MetodoPago $valor,$nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'unique:metodo_pagos,nombre',
+            'nombre'=>'required|unique:metodo_pagos,nombre',
         ])->validate();
         $p=MetodoPago::find($valor->id);
         $p->nombre=$nombre;
@@ -43,7 +50,7 @@ class MetodoPagos extends Component
     public function changeCorto(MetodoPago $valor,$corto)
     {
         Validator::make(['corto'=>$corto],[
-            'corto'=>'unique:metodo_pagos,nombrecorto',
+            'corto'=>'required|unique:metodo_pagos,nombrecorto',
         ])->validate();
         $p=MetodoPago::find($valor->id);
         $p->nombrecorto=$corto;
@@ -53,17 +60,7 @@ class MetodoPagos extends Component
 
     public function save()
     {
-        $this->validate([
-            'nombre'=>[
-                'required',
-                Rule::unique('metodo_pagos','nombre')
-                ],
-            'nombrecorto'=>[
-                'required',
-                Rule::unique('metodo_pagos','nombrecorto')
-                ],
-            ],
-        );
+        $this->validate();
 
         MetodoPago::create([
             'nombre'=>$this->nombre,

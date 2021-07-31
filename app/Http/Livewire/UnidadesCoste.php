@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,6 +19,14 @@ class UnidadesCoste extends Component
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
+    protected function rules()
+    {
+        return [
+            'nombrecorto'=>'required|unique:producto_unidadescoste,nombrecorto',
+            'nombre'=>'required|unique:producto_unidadescoste,nombre',
+        ];
+    }
+
     public function render()
     {
         $valores=ProductoUnidadcoste::query()
@@ -32,7 +39,7 @@ class UnidadesCoste extends Component
     public function changeCorto(ProductoUnidadcoste $valor,$nombrecorto)
     {
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'unique:producto_unidadescoste,nombrecorto',
+            'nombrecorto'=>'required|unique:producto_unidadescoste,nombrecorto',
         ])->validate();
 
         $p=ProductoUnidadcoste::find($valor->id);
@@ -44,7 +51,7 @@ class UnidadesCoste extends Component
     public function changeNombre(ProductoUnidadcoste $valor, $nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'unique:producto_unidadescoste,nombre',
+            'nombre'=>'required|unique:producto_unidadescoste,nombre',
         ])->validate();
         $p=ProductoUnidadcoste::find($valor->id);
         $p->nombre=$nombre;
@@ -54,17 +61,7 @@ class UnidadesCoste extends Component
 
     public function save()
     {
-        $this->validate([
-            'nombre'=>[
-                'required',
-                Rule::unique('producto_unidadescoste','nombre')
-                ],
-            'nombrecorto'=>[
-                'required',
-                Rule::unique('producto_unidadescoste','nombrecorto')
-                ],
-            ],
-        );
+        $this->validate();
 
         ProductoUnidadcoste::create([
             'nombre'=>$this->nombre,

@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,6 +20,14 @@ class Cajas extends Component
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
+    protected function rules()
+    {
+        return [
+            'nombrecorto'=>'required|unique:producto_cajas,nombrecorto',
+            'nombre'=>'required|unique:producto_cajas,nombre',
+        ];
+    }
+
     public function render(){
         $valores=ProductoCaja::query()
         ->search('id',$this->search)
@@ -32,7 +39,7 @@ class Cajas extends Component
     public function changeCorto(ProductoCaja $valor,$nombrecorto)
     {
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'unique:producto_cajas,nombrecorto',
+            'nombrecorto'=>'required|unique:producto_cajas,nombrecorto',
         ])->validate();
 
         $p=ProductoCaja::find($valor->id);
@@ -44,7 +51,7 @@ class Cajas extends Component
     public function changeNombre(ProductoCaja $valor, $nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'unique:producto_cajas,nombre',
+            'nombre'=>'required|unique:producto_cajas,nombre',
         ])->validate();
         $p=ProductoCaja::find($valor->id);
         $p->nombre=$nombre;
@@ -54,17 +61,7 @@ class Cajas extends Component
 
     public function save()
     {
-        $this->validate([
-            'nombre'=>[
-                'required',
-                Rule::unique('producto_cajas','nombre')
-                ],
-            'nombrecorto'=>[
-                'required',
-                Rule::unique('producto_cajas','nombrecorto')
-                ],
-            ],
-        );
+        $this->validate();
 
         ProductoCaja::create([
             'nombre'=>$this->nombre,

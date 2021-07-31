@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,6 +19,13 @@ class GruposProduccion extends Component
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
+    protected function rules()
+    {
+        return [
+            'nombrecorto'=>'required|unique:producto_gruposproduccion,nombrecorto',
+            'nombre'=>'required|unique:producto_gruposproduccion,nombre',
+        ];
+    }
 
     public function render()
     {
@@ -33,7 +39,7 @@ class GruposProduccion extends Component
     public function changeCorto(ProductoGrupoproduccion $valor,$nombrecorto)
     {
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'unique:productgruposproduccion,nombrecorto',
+            'nombrecorto'=>'required|unique:producto_gruposproduccion,nombrecorto',
         ])->validate();
 
         $p=ProductoGrupoproduccion::find($valor->id);
@@ -45,7 +51,7 @@ class GruposProduccion extends Component
     public function changeNombre(ProductoGrupoproduccion $valor, $nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'unique:producto_gruposproduccion,nombre',
+            'nombre'=>'required|unique:producto_gruposproduccion,nombre',
         ])->validate();
         $p=ProductoGrupoproduccion::find($valor->id);
         $p->nombre=$nombre;
@@ -55,17 +61,7 @@ class GruposProduccion extends Component
 
     public function save()
     {
-        $this->validate([
-            'nombre'=>[
-                'required',
-                Rule::unique('producto_gruposproduccion','nombre')
-                ],
-            'nombrecorto'=>[
-                'required',
-                Rule::unique('producto_gruposproduccion','nombrecorto')
-                ],
-            ],
-        );
+        $this->validate();
 
         ProductoGrupoproduccion::create([
             'nombre'=>$this->nombre,
