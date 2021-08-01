@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
         "mouadziani/laravel-query-inspector": "^1.0",
-        "orangehill/iseed": "^3.0"
+        "orangehill/iseed": "^3.0",
+        "spatie/laravel-permission": "^4.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

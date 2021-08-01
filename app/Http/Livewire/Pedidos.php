@@ -57,6 +57,16 @@ class Pedidos extends Component
             return view('livewire.pedidos',compact('pedidos','proveedores','totales'));
     }
 
+    public function updatingFiltroproveedor(){
+        $this->resetPage();
+    }
+    public function updatingFiltroanyo(){
+        $this->resetPage();
+    }
+    public function updatingFiltromes(){
+        $this->resetPage();
+    }
+
     public function getRowsQueryProperty(){
         return Pedido::query()
             ->join('entidades','pedidos.entidad_id','=','entidades.id')
@@ -77,7 +87,7 @@ class Pedidos extends Component
     }
 
     public function getRowsProperty(){
-        return $this->rowsQuery->paginate();
+        return $this->rowsQuery->paginate(10);
     }
 
 

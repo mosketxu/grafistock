@@ -17,6 +17,7 @@ class Materiales extends Component
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
+
     protected function rules()
     {
         return [
@@ -32,6 +33,10 @@ class Materiales extends Component
             ->orSearch('nombre',$this->search)
             ->orderBy('nombrecorto')->get();
         return view('livewire.auxiliarcard',compact('valores'));
+    }
+
+    public function updatingSearch(){
+        $this->resetPage();
     }
 
     public function changeCorto(ProductoMaterial $valor,$nombrecorto)

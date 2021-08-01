@@ -47,6 +47,28 @@ class StockMovimientos extends Component
         return view('livewire.stock-movimientos',compact('stocks','proveedores','productos','materiales','solicitantes'));
     }
 
+    public function updatingFiltroproveedor(){
+        $this->resetPage();
+    }
+    public function updatingFiltroproducto(){
+        $this->resetPage();
+    }
+    public function updatingFiltromaterial(){
+        $this->resetPage();
+    }
+    public function updatingFiltrosolicitante(){
+        $this->resetPage();
+    }
+    public function updatingFiltroanyo(){
+        $this->resetPage();
+    }
+    public function updatingFiltromes(){
+        $this->resetPage();
+    }
+    public function updatingDescripcion(){
+        $this->resetPage();
+    }
+
     public function getRowsQueryProperty(){
         return StockMovimiento::query()
         ->join('productos','productos.id','stock_movimientos.producto_id')

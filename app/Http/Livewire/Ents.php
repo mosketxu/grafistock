@@ -26,6 +26,10 @@ class Ents extends Component
         return view('livewire.ents',compact('entidades'));
     }
 
+    public function updatingSearch(){
+        $this->resetPage();
+    }
+
     public function delete($entidadId)
     {
         $entidad = Entidad::find($entidadId);

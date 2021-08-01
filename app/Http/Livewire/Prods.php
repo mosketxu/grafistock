@@ -54,10 +54,23 @@ class Prods extends Component
             ->orderBy('referencia','asc')
             ->paginate(15);
 
-        // $p=$productos->first();
-        // dd($p->acabado);
-        return view('livewire.prods',compact('productos','materiales','acabados','gruposprod','proveedores'));
+            return view('livewire.prods',compact('productos','materiales','acabados','gruposprod','proveedores'));
     }
+
+    public function updatingFiltroproveedor(){
+        $this->resetPage();
+    }
+    public function updatingFiltrmaterial(){
+        $this->resetPage();
+    }
+    public function updatingFiltroacabado(){
+        $this->resetPage();
+    }
+    public function updatingFiltrogrupoprod(){
+        $this->resetPage();
+    }
+
+
 
     public function presentaPDF(Producto $producto){
         $existe=Storage::disk('fichasproducto')->exists($producto->fichaproducto);
