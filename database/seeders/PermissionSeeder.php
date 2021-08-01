@@ -19,24 +19,28 @@ class PermissionSeeder extends Seeder
         $gestion=Role::find(2);
         $operario=Role::find(3);
 
-        Permission::create(['name'=>'dash'])->syncRoles($admin,$gestion);
+        // Permission::create(['name'=>'dash'])->syncRoles($admin,$gestion);
 
-        Permission::create(['name'=>'entidad.index'])->syncRoles($admin,$gestion);
-        Permission::create(['name'=>'entidad.index'])->syncRoles($admin,$gestion);
-        Permission::create(['name'=>'entidad.create'])->syncRoles($admin,$gestion);
-        Permission::create(['name'=>'entidad.edit'])->syncRoles($admin,$gestion);
+        // Permission::create(['name'=>'entidad.index'])->syncRoles($admin,$gestion);
+        // Permission::create(['name'=>'entidad.create'])->syncRoles($admin,$gestion);
+        // Permission::create(['name'=>'entidad.edit'])->syncRoles($admin,$gestion);
 
-        Permission::create(['name'=>'pedido.index'])->syncRoles($admin,$gestion);
-        Permission::create(['name'=>'pedido.create'])->syncRoles($admin,$gestion);
-        Permission::create(['name'=>'pedido.edit'])->syncRoles($admin,$gestion);
+        // Permission::create(['name'=>'pedido.index'])->syncRoles($admin,$gestion);
+        // Permission::create(['name'=>'pedido.create'])->syncRoles($admin,$gestion);
+        // Permission::create(['name'=>'pedido.edit'])->syncRoles($admin,$gestion);
 
-        Permission::create(['name'=>'stock.index'])->syncRoles($admin,$gestion,$operario);
-        Permission::create(['name'=>'stock.create'])->syncRoles($admin,$gestion,$operario);
-        Permission::create(['name'=>'stock.edit'])->syncRoles($admin,$gestion,$operario);
-        Permission::create(['name'=>'stock.movimientos'])->syncRoles($admin,$gestion,$operario);
-        Permission::create(['name'=>'stock.producto'])->syncRoles($admin,$gestion,$operario);
-        Permission::create(['name'=>'stock.material'])->syncRoles($admin,$gestion,$operario);
+        // Permission::create(['name'=>'stock.index'])->syncRoles($admin,$gestion,$operario);
+        // Permission::create(['name'=>'stock.create'])->syncRoles($admin,$gestion,$operario);
+        // Permission::create(['name'=>'stock.edit'])->syncRoles($admin,$gestion,$operario);
 
-        Permission::create(['name'=>'administracion.index'])->syncRoles($admin,$gestion);
+        // Permission::create(['name'=>'stock.movimientos'])->syncRoles($admin,$gestion,$operario);
+        // Permission::create(['name'=>'stock.producto'])->syncRoles($admin,$gestion,$operario);
+        // Permission::create(['name'=>'stock.material'])->syncRoles($admin,$gestion,$operario);
+
+        // Permission::create(['name'=>'administracion.index'])->syncRoles($admin,$gestion);
+
+        Permission::create(['name'=>'users.index'])->syncRoles($admin,$gestion);
+        Permission::create(['name'=>'users.edit'])->syncRoles($admin,$gestion);
+        Permission::create(['name'=>'users.update'])->syncRoles($admin,$gestion);
     }
 }
