@@ -27,12 +27,16 @@
                     <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
                         {{ __('Stock') }}
                     </x-jet-nav-link>
+                    @can('administracion.index')
                     <x-jet-nav-link href="{{ route('administracion.index') }}" :active="request()->routeIs('administracion.index')">
                         {{ __('Administración') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('Usuarios') }}
-                    </x-jet-nav-link>
+                    @endcan
+                    @can('users.index')
+                        <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                            {{ __('Usuarios') }}
+                        </x-jet-nav-link>
+                    @endcan
 
                 </div>
             </div>
@@ -136,9 +140,11 @@
             <x-jet-nav-link href="{{ route('administracion.index') }}" :active="request()->routeIs('administracion.index')">
                 {{ __('Administración') }}
             </x-jet-nav-link>
+            @can('users.index')
             <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                 {{ __('Usuarios') }}
             </x-jet-nav-link>
+            @endcan
             <x-jet-nav-link href="{{ route('stock.movimientos') }}" :active="request()->routeIs('stock.movimientos')">
                 {{ __('Movimientos') }}
             </x-jet-nav-link>

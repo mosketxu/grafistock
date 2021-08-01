@@ -19,17 +19,18 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+    Route::get('/dashboard', function () {return view('dashboard');})->middleware('can:dashboard')->name('dashboard');
 
-    Route::resource('users', UserController::class)->names('users');
+    Route::resource('users', UserController::class)->except(['create'])->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
     // rutas entidades
-    Route::resource('entidad', EntidadController::class);
+    Route::resource('entidad', EntidadController::class); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
     Route::resource('producto', ProductoController::class);
     Route::resource('pedido', PedidoController::class);
     //stock
-    Route::get('stock/movimientos', [StockController::class,'movimientos'])->name('stock.movimientos');
-    Route::get('stock/producto', [StockController::class,'producto'])->name('stock.producto');
-    Route::get('stock/material', [StockController::class,'material'])->name('stock.material');
+    Route::get('stock/movimientos', [StockController::class,'movimientos'])->middleware('can:stock.movimientos')->name('stock.movimientos');
+    Route::get('stock/producto', [StockController::class,'producto'])->middleware('can:stock.producto')->name('stock.producto');
+    Route::get('stock/material', [StockController::class,'material'])->middleware('can:stock.material')->name('stock.material');
     Route::resource('stock', StockController::class);
-    Route::get('administracion/', [AdministracionController::class,'index'])->name('administracion.index');
+
+    Route::get('administracion/', [AdministracionController::class,'index'])->middleware('can:administracion.index')->name('administracion.index');
 });;
