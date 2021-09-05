@@ -13,6 +13,8 @@ class Solicitantes extends Component
     use WithPagination;
     public $search='';
     public $titulo='Solicitantes';
+    public $campo1='Sigla';
+    public $campo2='Nombre';
     public $nombre='';
     public $nombrecorto='';
 

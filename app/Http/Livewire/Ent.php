@@ -17,6 +17,7 @@ class Ent extends Component
             'entidad.id'=>'nullable',
             'entidad.entidad'=>'required',
             'entidad.nif'=>'max:12',
+            'entidad.cuentactble'=>'numeric|nullable|unique:entidades,cuentactble',
             'entidad.direccion'=>'nullable',
             'entidad.cp'=>'max:10|nullable',
             'entidad.localidad'=>'nullable',
@@ -36,7 +37,6 @@ class Ent extends Component
             'entidad.diafactura'=>'numeric|nullable',
             'entidad.diavencimiento'=>'numeric|nullable',
             'entidad.observaciones'=>'nullable',
-            'entidad.cuentacontable'=>'numeric|nullable',
             'entidad.usuario'=>'nullable',
             'entidad.password'=>'nullable',
         ];
@@ -112,7 +112,7 @@ class Ent extends Component
             'diafactura'=>$this->entidad->diafactura,
             'diavencimiento'=>$this->entidad->diavencimiento,
             'observaciones'=>$this->entidad->observaciones,
-            'cuentacontable'=>$this->entidad->cuentacontable,
+            'cuentactble'=>$this->entidad->cuentactble,
             'usuario'=>$this->entidad->usuario,
             'password'=>$this->entidad->password,
             ]

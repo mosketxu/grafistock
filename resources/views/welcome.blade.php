@@ -45,6 +45,18 @@
                     <h1>Bienvenido a la aplicación de stock de Grafitex</h1>
                     <p class="text-center">Aquí podemos poner lo que queráis</p>
                 </div>
+                <div class="">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                                 onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-jet-dropdown-link>
+                    </form>
+
+                </div>
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                     <div class="text-sm text-center text-gray-500 sm:text-left">

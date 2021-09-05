@@ -16,7 +16,8 @@ class CreateEntidadesTable extends Migration
         Schema::create('entidades', function (Blueprint $table) {
             $table->id();
             $table->string('entidad')->unique();
-            $table->string('cuentactble')->unique()->nullable();
+            $table->string('cuentactble')->nullable();
+            $table->string('entidad5',4)->unique()->nullable();
             $table->string('direccion', 100)->nullable();
             $table->string('cp', 10)->nullable();
             $table->string('localidad', 100)->nullable();
@@ -38,10 +39,8 @@ class CreateEntidadesTable extends Migration
             $table->integer('metodopago_id')->nullable()->default(1);
             $table->integer('diafactura')->nullable()->default(1);
             $table->integer('diavencimiento')->nullable()->default(10);
-            $table->string('cuentacontable', 10)->nullable();
             $table->string('observaciones')->nullable();
             $table->boolean('estado')->nullable()->default(0);
-            $table->string('codeoptimus')->nullable();
             $table->timestamps();
         });
     }

@@ -14,6 +14,8 @@ class MetodoPagos extends Component
 
     public $search='';
     public $titulo='Métodos de Pago';
+    public $campo1='Sigla';
+    public $campo2='Nombre';
     public $nombre='';
     public $nombrecorto='';
 

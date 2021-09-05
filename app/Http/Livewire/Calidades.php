@@ -13,7 +13,8 @@ class Calidades extends Component
     use WithPagination;
     public $search='';
     public $titulo='Calidades';
-
+    public $campo1='Sigla';
+    public $campo2='Nombre';
     public $nombre='';
     public $nombrecorto='';
 

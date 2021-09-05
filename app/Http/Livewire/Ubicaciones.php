@@ -13,6 +13,8 @@ class Ubicaciones extends Component
     use WithPagination;
     public $search='';
     public $titulo='Ubicaciones';
+    public $campo1='Sigla';
+    public $campo2='Nombre';
     public $nombre='';
     public $nombrecorto='';
 

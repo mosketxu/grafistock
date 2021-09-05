@@ -12,6 +12,8 @@ class Acabados extends Component
     use WithPagination;
     public $search='';
     public $titulo='Acabados';
+    public $campo1='Sigla';
+    public $campo2='Nombre';
     public $nombre='';
     public $nombrecorto='';
 

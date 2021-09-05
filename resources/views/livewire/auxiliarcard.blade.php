@@ -27,8 +27,8 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr>
-                            <th class="w-2/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __('Sigla') }}</th>
-                            <th class="w-4/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __('Nombre') }} </th>
+                            <th class="w-2/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __($campo1) }}</th>
+                            <th class="w-4/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __($campo2) }} </th>
                             <th class="px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" ></th>
                         </tr>
                     </thead>
@@ -52,6 +52,10 @@
                                 </td>
                                 <td  class="px-4">
                                     <div class="flex items-center justify-center space-x-3">
+                                        @if($titulo=="Roles")
+                                            <x-icon.edit-a href="{{route('roles.edit',$valor) }}" class="pl-1"  title="Editar Role"/>
+
+                                        @endif
                                         <x-icon.delete-a wire:click.prevent="delete({{ $valor->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar detalle"/>
                                     </div>
                                 </td >

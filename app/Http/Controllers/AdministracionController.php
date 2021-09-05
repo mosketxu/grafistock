@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Spatie\Permission\Models\Role;
+
+
 
 class AdministracionController extends Controller
 {

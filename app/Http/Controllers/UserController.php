@@ -28,6 +28,16 @@ class UserController extends Controller
         return view('users.index');
     }
 
+       /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -94,7 +104,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-         $data = request()->validate([
+        $data = request()->validate([
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => '',

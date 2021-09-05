@@ -13,6 +13,8 @@ class GruposProduccion extends Component
     use WithPagination;
     public $search='';
     public $titulo='Grupos Producción';
+    public $campo1='Sigla';
+    public $campo2='Nombre';
 
     public $nombre='';
     public $nombrecorto='';

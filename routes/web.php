@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController, PedidoController,StockController, UserController};
+use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController, PedidoController,StockController, UserController, RoleController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +19,10 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {return view('dashboard');})->middleware('can:dashboard')->name('dashboard');
+    Route::get('/dashboard', function () {return view('dashboard');})->middleware('can:dash')->name('dashboard');
 
-    Route::resource('users', UserController::class)->except(['create'])->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
+    Route::resource('users', UserController::class)->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
+    // Route::resource('users', UserController::class)->except(['create'])->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
     // rutas entidades
     Route::resource('entidad', EntidadController::class); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
     Route::resource('producto', ProductoController::class);
@@ -33,4 +34,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('stock', StockController::class);
 
     Route::get('administracion/', [AdministracionController::class,'index'])->middleware('can:administracion.index')->name('administracion.index');
+
+    //roles
+    Route::resource('roles', RoleController::class)->names('roles');
+    Route::get('administracion/roles', [AdministracionController::class,'roles'])->middleware('can:administracion.index')->name('administracion.roles');
 });;

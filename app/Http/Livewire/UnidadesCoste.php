@@ -13,6 +13,8 @@ class UnidadesCoste extends Component
     use WithPagination;
     public $search='';
     public $titulo='Unidades Coste';
+    public $campo1='Sigla';
+    public $campo2='Nombre';
 
     public $nombre='';
     public $nombrecorto='';

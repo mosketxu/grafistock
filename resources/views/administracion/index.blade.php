@@ -19,6 +19,9 @@
                                 @livewire('unidades')
                                 @livewire('solicitantes')
                                 @livewire('ubicaciones')
+                                @livewire('roles')
+                                @livewire('permisos')
+
                             </div>
                         </div>
                     </div>

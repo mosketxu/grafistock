@@ -18,6 +18,11 @@
                     <x-jet-nav-link href="{{ route('entidad.index') }}" :active="request()->routeIs('entidad.index')">
                         {{ __('Proveedores') }}
                     </x-jet-nav-link>
+                    @can('users.index')
+                        <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                            {{ __('Usuarios') }}
+                        </x-jet-nav-link>
+                    @endcan
                     <x-jet-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')">
                         {{ __('Productos') }}
                     </x-jet-nav-link>
