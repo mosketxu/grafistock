@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PedidoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:pedido.index')->only('index');
+        $this->middleware('can:pedido.edit')->only('edit','update');
+    }
+
     public function index()
     {
         return view('pedido.index');

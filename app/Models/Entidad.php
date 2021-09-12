@@ -10,10 +10,10 @@ class Entidad extends Model
     use HasFactory;
     protected $table = 'entidades';
     protected $fillable=['entidad','direccion','cp','localidad','provincia_id','pais_id',
-                        'nif','tfno','emailgral','emailadm','web','idioma',
+                        'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
                         'banco1','iban1','banco2','iban2','banco3','iban3',
                         'metodopago_id','diafactura','diavencimiento',
-                        'cuentacontable','observaciones','estado','usuario','password'];
+                        'cuentacontable','observaciones','estado','cliente','proveedor','usuario','password'];
 
     public function pais()
     {

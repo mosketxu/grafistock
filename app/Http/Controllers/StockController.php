@@ -8,7 +8,7 @@ use App\Models\StockMovimiento;
 class StockController extends Controller
 {
 
-    public function __contruct()
+    public function __construct()
     {
         $this->middleware('can:stock.index')->only('index');
         $this->middleware('can:stock.edit')->only('edit','update');

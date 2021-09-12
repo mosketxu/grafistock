@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoFamilia, ProductoClase, ProductoTipo, ProductoUnidadcoste, Seccion, Ubicacion, Unidad};
+use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoFamilia, ProductoTipo, ProductoUnidadcoste, Seccion, Ubicacion, Unidad};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Livewire\WithFileUploads;
@@ -30,7 +30,6 @@ class Prod extends Component
             'producto.udalto_id'=>'nullable|required_with:producto.alto',
             'producto.acabado_id'=>'nullable',
             'producto.grupoproduccion_id'=>'nullable',
-            'producto.clase_id'=>'nullable',
             'producto.familia_id'=>'nullable',
             'producto.udsolicitud_id'=>'required',
             'producto.costeprov'=>'nullable',
@@ -55,7 +54,6 @@ class Prod extends Component
         $materiales=ProductoMaterial::orderBy('nombre')->get();
         $tipos=ProductoTipo::orderBy('nombre')->get();
         $acabados=ProductoAcabado::orderBy('nombre')->get();
-        $clases=ProductoClase::orderBy('nombre')->get();
         $familias=ProductoFamilia::orderBy('nombre')->get();
         $gruposprod=ProductoGrupoproduccion::orderBy('nombre')->get();
         $proveedores=Entidad::orderBy('entidad')->get();
@@ -63,7 +61,7 @@ class Prod extends Component
         $unidadescoste=ProductoUnidadcoste::orderBy('nombre')->get();
         $cajas=ProductoCaja::orderBy('nombre')->get();
         $ubicaciones=Ubicacion::orderBy('nombre')->get();
-        return view('livewire.prod',compact('materiales','tipos','acabados','clases','familias','gruposprod','proveedores','unidades','unidadescoste','unidades','cajas','ubicaciones'));
+        return view('livewire.prod',compact('materiales','tipos','acabados','familias','gruposprod','proveedores','unidades','unidadescoste','unidades','cajas','ubicaciones'));
     }
 
     public function updatedProducto(){
@@ -139,7 +137,6 @@ class Prod extends Component
             'udalto_id'=>$this->producto->udalto_id,
             'acabado_id'=>$this->producto->acabado_id,
             'grupoproduccion_id'=>$this->producto->grupoproduccion_id,
-            'clase_id'=>$this->producto->clase_id,
             'familia_id'=>$this->producto->familia_id,
             'udsolicitud_id'=>$this->producto->udsolicitud_id,
             'costeprov'=>$this->producto->costeprov,

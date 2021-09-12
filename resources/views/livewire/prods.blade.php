@@ -43,7 +43,22 @@
                         </select>
                     </div>
 
-                    <div class="w-3/12 text-xs">
+                    <div class="w-2/12 text-xs">
+                        <label class="px-1 text-gray-600">
+                            Familia
+                            @if($filtrofamilia!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtrofamilia', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtrofamilia" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                            <option value=""></option>
+                            @foreach ($familias as $fam)
+                            <option value="{{ $fam->id }}">{{ $fam->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="w-2/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Material
                             @if($filtromaterial!='')
@@ -101,6 +116,7 @@
                         <x-table.heading class="pl-1 text-left">{{ __('Referencia') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Descripcion') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Proveedor') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Familia') }}</x-table.heading>
                         {{-- <x-table.heading class="pl-1 text-left">{{ __('Ubicación') }}</x-table.heading> --}}
                         <x-table.heading class="pl-1 text-left">{{ __('Tipo') }} </x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Material') }} </x-table.heading>
@@ -109,8 +125,6 @@
                         <x-table.heading class="pl-1 text-right">{{ __('Alto') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-right">{{ __('Acabado') }}</x-table.heading>
                         {{-- <x-table.heading class="pl-1 text-left">{{ __('Grupo Producción') }}</x-table.heading> --}}
-                        {{-- <x-table.heading class="pl-1 text-left">{{ __('Clase') }}</x-table.heading> --}}
-                        <x-table.heading class="pl-1 text-left">{{ __('Familia') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Prov') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-right">{{ __('Ud Solic.') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Grafitex') }}</x-table.heading>
@@ -127,6 +141,7 @@
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}</td>
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->descripcion }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad }}</td >
+                                    <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->familia->nombre  ?? '-' }}</td >
                                 {{-- <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->ubicacion_id}}</td > --}}
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->tipo->nombrecorto }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->material->nombre ?? '-' }}</td >
@@ -135,8 +150,6 @@
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->alto }} {{ $producto->udalto_id }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->acabado->nombre ?? '-' }}</td >
                                 {{-- <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->grupoproduccion->nombre ?? '-' }}</td > --}}
-                                {{-- <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->clase->nombre ?? '-'}}</td > --}}
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->familia->nombre  ?? '-' }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costeprov }} {{ $producto->udproducto_id }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->udsolicitud_id }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costegrafitex }} {{ $producto->udcoste_id }}</td >

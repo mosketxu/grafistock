@@ -8,11 +8,18 @@ use Livewire\WithPagination;
 
 class Usuarios extends Component
 {
-    use WithPagination;
     public $search='';
+    public $name='';
+    public $email='';
 
-    public function updatingSearch(){
-        $this->resetPage();
+    protected $listeners = [ 'refresh' => '$refresh'];
+
+    protected function rules()
+    {
+        return [
+            'name'=>'required|unique:users,name',
+            'email'=>'email|required|unique:users,email',
+        ];
     }
 
     public function render()
@@ -20,10 +27,26 @@ class Usuarios extends Component
         $users=User::query()
             ->search('name',$this->search)
             ->orSearch('email',$this->search)
-            ->paginate(15);
+            ->get();
         return view('livewire.usuarios',compact('users'));
     }
 
+
+    public function save()
+    {
+        $this->validate();
+
+        User::create([
+            'name'=>$this->name,
+            'email'=>$this->email,
+        ]);
+
+        $this->dispatchBrowserEvent('notify', 'Usuario añadido con éxito');
+
+        $this->emit('refresh');
+        $this->name='';
+        $this->email='';
+    }
     public function delete($userId)
     {
         $user = User::find($userId);

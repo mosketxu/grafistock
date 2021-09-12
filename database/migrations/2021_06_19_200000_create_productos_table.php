@@ -28,7 +28,6 @@ class CreateProductosTable extends Migration
             $table->string('udalto_id',3)->nullable();
             $table->string('acabado_id',15)->index()->nullable();
             $table->string('grupoproduccion_id',15)->index();
-            $table->string('clase_id',15)->index()->nullable();
             $table->string('familia_id',15)->index()->nullable();
             $table->string('udsolicitud_id',15)->index()->nullable();
             $table->double('costeprov', 15, 2)->default(0.00)->nullable();

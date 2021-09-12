@@ -13,7 +13,7 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
 
-    public function __contruct()
+    public function __construct()
     {
         $this->middleware('can:users.index')->only('index');
         $this->middleware('can:users.edit')->only('edit','update');
@@ -28,7 +28,7 @@ class UserController extends Controller
         return view('users.index');
     }
 
-       /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

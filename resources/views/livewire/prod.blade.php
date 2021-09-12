@@ -157,15 +157,6 @@
                             </x-select>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="clase_id">{{ __('Clase') }} </x-jet-label>
-                            <x-select wire:model.defer="producto.clase_id" selectname="clase_id" class="w-full" >
-                                <option value="">-- Selecciona --</option>
-                                @foreach ($clases as $clase)
-                                <option value="{{ $clase->id }}">{{ $clase->nombre }}</option>
-                                @endforeach
-                            </x-select>
-                        </div>
-                        <div class="w-full form-item">
                             <x-jet-label for="familia_id">{{ __('Familia') }} </x-jet-label>
                             <x-select wire:model.defer="producto.familia_id" selectname="familia_id" class="w-full" >
                                 <option value="">-- Selecciona --</option>

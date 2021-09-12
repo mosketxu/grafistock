@@ -5,16 +5,19 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center flex-shrink-0">
-                    <a href="{{ route('entidad.index') }}">
-                        <x-jet-application-mark class="block w-auto h-9" />
+                    <a href="{{ route('dashboard')}}">
+                        <x-jet-application-mark class="block mx-auto h-9" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @can('entidad.index')
-                    <x-jet-nav-link href="{{ route('entidad.index') }}" :active="request()->routeIs('entidad.index')">
+                    <x-jet-nav-link href="{{ route('entidad.pro') }}" :active="request()->routeIs('entidad.pro')">
                         {{ __('Proveedores') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('entidad.cli') }}" :active="request()->routeIs('entidad.cli')">
+                        {{ __('Clientes') }}
                     </x-jet-nav-link>
                     @endcan
                     @can('producto.index')
@@ -126,8 +129,11 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @can('entidad.index')
-            <x-jet-responsive-nav-link href="{{ route('entidad.index') }}" :active="request()->routeIs('entidad.index')">
+            <x-jet-responsive-nav-link href="{{ route('entidad.pro') }}" :active="request()->routeIs('entidad.pro')">
                 {{ __('Proveedores') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('entidad.cli') }}" :active="request()->routeIs('entidad.cli')">
+                {{ __('Clientes') }}
             </x-jet-responsive-nav-link>
             @endcan
             @can('producto.index')

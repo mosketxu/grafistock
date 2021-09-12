@@ -9,16 +9,16 @@
                         {{-- Cards --}}
                         <div class="mx-auto ">
                             <div class="flex flex-row flex-wrap -mx-2">
-                                @livewire('metodo-pagos')
-                                @livewire('acabados')
-                                @livewire('materiales')
-                                @livewire('cajas')
                                 @livewire('familias')
+                                @livewire('materiales')
+                                @livewire('acabados')
                                 @livewire('grupos-produccion')
                                 @livewire('unidades-coste')
                                 @livewire('unidades')
                                 @livewire('solicitantes')
+                                @livewire('cajas')
                                 @livewire('ubicaciones')
+                                @livewire('metodo-pagos')
                             </div>
                         </div>
                     </div>

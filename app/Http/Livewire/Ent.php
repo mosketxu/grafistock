@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 class Ent extends Component
 {
     public $entidad;
+    public $tipo;
 
     protected function rules()
     {
@@ -26,6 +27,7 @@ class Ent extends Component
             'entidad.tfno'=>'nullable',
             'entidad.emailgral'=>'nullable',
             'entidad.emailadm'=>'nullable',
+            'entidad.emailaux'=>'nullable',
             'entidad.web'=>'nullable',
             'entidad.metodopago_id'=>'nullable',
             'entidad.banco1'=>'nullable',
@@ -39,12 +41,16 @@ class Ent extends Component
             'entidad.observaciones'=>'nullable',
             'entidad.usuario'=>'nullable',
             'entidad.password'=>'nullable',
+            'entidad.cliente'=>'nullable',
+            'entidad.proveedor'=>'nullable',
         ];
     }
 
-    public function mount(Entidad $entidad)
+    public function mount(Entidad $entidad,$tipo)
     {
         $this->entidad=$entidad;
+        if($tipo=='Cliente') $this->entidad->cliente=true;
+        if($tipo=='Proveedor') $this->entidad->proveedor=true;
     }
 
 
@@ -100,6 +106,7 @@ class Ent extends Component
             'tfno'=>$this->entidad->tfno,
             'emailgral'=>$this->entidad->emailgral,
             'emailadm'=>$this->entidad->emailadm,
+            'emailaux'=>$this->entidad->emailaux,
             'web'=>$this->entidad->web,
             'metodopago_id'=>$this->entidad->metodopago_id,
             'estado'=>$this->entidad->estado,
@@ -115,6 +122,8 @@ class Ent extends Component
             'cuentactble'=>$this->entidad->cuentactble,
             'usuario'=>$this->entidad->usuario,
             'password'=>$this->entidad->password,
+            'cliente'=>$this->entidad->cliente,
+            'proveedor'=>$this->entidad->proveedor,
             ]
         );
         if(!$this->entidad->id){

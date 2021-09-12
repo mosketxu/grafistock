@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Entidad;
 use App\Models\Producto;
 use App\Models\ProductoAcabado;
+use App\Models\ProductoFamilia;
 use App\Models\ProductoGrupoproduccion;
 use App\Models\ProductoMaterial;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,7 @@ class Prods extends Component
     use WithPagination;
 
     public $search='';
+    public $filtrofamilia='';
     public $filtromaterial='';
     public $filtroproveedor='';
     public $filtroacabado='';
@@ -31,6 +33,7 @@ class Prods extends Component
     {
         $this->producto= new Producto;
         $materiales=ProductoMaterial::orderBy('nombre')->get();
+        $familias=ProductoFamilia::orderBy('nombre')->get();
         $acabados=ProductoAcabado::orderBy('nombre')->get();
         $gruposprod=ProductoGrupoproduccion::orderBy('nombre')->get();
         $proveedores=Entidad::orderBy('entidad')->get();
@@ -39,6 +42,9 @@ class Prods extends Component
             ->with('entidad','material','acabado','tipo')
             ->search('referencia',$this->search)
             ->orSearch('descripcion',$this->search)
+            ->when($this->filtrofamilia!='', function ($query){
+                $query->where('familia_id',$this->filtrofamilia);
+                })
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
                 })
@@ -54,7 +60,7 @@ class Prods extends Component
             ->orderBy('referencia','asc')
             ->paginate(15);
 
-            return view('livewire.prods',compact('productos','materiales','acabados','gruposprod','proveedores'));
+            return view('livewire.prods',compact('productos','materiales','familias','acabados','gruposprod','proveedores'));
     }
 
     public function updatingFiltroproveedor(){

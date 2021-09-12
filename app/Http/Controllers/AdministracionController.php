@@ -8,6 +8,11 @@ use Spatie\Permission\Models\Role;
 
 class AdministracionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:administracio');
+    }
     /**
      * Display a listing of the resource.
      *
