@@ -91,6 +91,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        // $users = User::permission('administracion')->get();
+        // $users = User::permission('stock.index')->get();
+        // dd($users);
         $roles= Role::get();
         return view('users.edit',compact('user','roles'));
     }

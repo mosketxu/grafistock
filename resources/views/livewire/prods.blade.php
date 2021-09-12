@@ -110,7 +110,7 @@
                         <x-table.heading class="pl-1 text-right">{{ __('Acabado') }}</x-table.heading>
                         {{-- <x-table.heading class="pl-1 text-left">{{ __('Grupo Producción') }}</x-table.heading> --}}
                         {{-- <x-table.heading class="pl-1 text-left">{{ __('Clase') }}</x-table.heading> --}}
-                        {{-- <x-table.heading class="pl-1 text-left">{{ __('Calidad') }}</x-table.heading> --}}
+                        <x-table.heading class="pl-1 text-left">{{ __('Familia') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Prov') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-right">{{ __('Ud Solic.') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Grafitex') }}</x-table.heading>
@@ -136,7 +136,7 @@
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->acabado->nombre ?? '-' }}</td >
                                 {{-- <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->grupoproduccion->nombre ?? '-' }}</td > --}}
                                 {{-- <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->clase->nombre ?? '-'}}</td > --}}
-                                {{-- <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->calidad->nombre  ?? '-' }}</td > --}}
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->familia->nombre  ?? '-' }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costeprov }} {{ $producto->udproducto_id }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->udsolicitud_id }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costegrafitex }} {{ $producto->udcoste_id }}</td >

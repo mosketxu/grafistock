@@ -12,47 +12,37 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    {{-- <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link> --}}
+                    @can('entidad.index')
                     <x-jet-nav-link href="{{ route('entidad.index') }}" :active="request()->routeIs('entidad.index')">
                         {{ __('Proveedores') }}
                     </x-jet-nav-link>
-                    @can('users.index')
-                        <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                            {{ __('Usuarios') }}
-                        </x-jet-nav-link>
                     @endcan
+                    @can('producto.index')
                     <x-jet-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')">
                         {{ __('Productos') }}
                     </x-jet-nav-link>
+                    @endcan
+                    @can('pedido.index')
                     <x-jet-nav-link href="{{ route('pedido.index') }}" :active="request()->routeIs('pedido.index')">
                         {{ __('Pedidos') }}
                     </x-jet-nav-link>
+                    @endcan
+                    @can('stock.index')
                     <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
                         {{ __('Stock') }}
                     </x-jet-nav-link>
-                    @can('administracion.index')
+                    @endcan
+                    {{-- Auth::user()->name --}}
+                    @can('administracion')
                     <x-jet-nav-link href="{{ route('administracion.index') }}" :active="request()->routeIs('administracion.index')">
                         {{ __('Administración') }}
                     </x-jet-nav-link>
                     @endcan
-                    @can('users.index')
-                        <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                            {{ __('Usuarios') }}
-                        </x-jet-nav-link>
-                    @endcan
-
                 </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @if(explode('.',Request::route()->getName())[0] =='stock')
-                    {{-- <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
-                        <x-jet-nav-link href="{{ route('stock.index') }}" :active="request()->routeIs('stock.index')">
-                            {{ __('Control') }}
-                        </x-jet-nav-link>
-                    </div> --}}
                     <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
                         <x-jet-nav-link href="{{ route('stock.movimientos') }}" :active="request()->routeIs('stock.movimientos')">
                             {{ __('Movimientos') }}
@@ -69,13 +59,15 @@
                         </x-jet-nav-link>
                     </div>
                 @endif
-                {{-- @if($productomenu->id)
-                    <div class="hidden p-2 space-x-8 bg-gray-100 rounded-lg sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('producto.edit',$productomenu) }}" :active="request()->routeIs('producto.edit')">
-                            {{ __('Editar') }}
-                        </x-jet-nav-link>
-                    </div>
-                @endif --}}
+                @if(explode('.',Request::route()->getName())[0] =='administracion')
+                    @can('user.index')
+                        <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
+                            <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                                {{ __('Usuarios') }}
+                            </x-jet-nav-link>
+                        </div>
+                    @endcan
+                @endif
                 <!-- Settings Dropdown -->
                 <div class="relative ml-3">
                     <x-jet-dropdown align="right" width="48">
@@ -133,23 +125,32 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            @can('entidad.index')
             <x-jet-responsive-nav-link href="{{ route('entidad.index') }}" :active="request()->routeIs('entidad.index')">
                 {{ __('Proveedores') }}
             </x-jet-responsive-nav-link>
+            @endcan
+            @can('producto.index')
             <x-jet-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')">
                 {{ __('Productos') }}
             </x-jet-nav-link>
+            @endcan
+            @can('pedido.index')
             <x-jet-nav-link href="{{ route('pedido.index') }}" :active="request()->routeIs('pedido.index')">
                 {{ __('Pedido') }}
             </x-jet-nav-link>
+            @endcan
+            @can('administracion')
             <x-jet-nav-link href="{{ route('administracion.index') }}" :active="request()->routeIs('administracion.index')">
                 {{ __('Administración') }}
             </x-jet-nav-link>
-            @can('users.index')
+            @endcan
+            @can('user.index')
             <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                 {{ __('Usuarios') }}
             </x-jet-nav-link>
             @endcan
+            @can('stock.index')
             <x-jet-nav-link href="{{ route('stock.movimientos') }}" :active="request()->routeIs('stock.movimientos')">
                 {{ __('Movimientos') }}
             </x-jet-nav-link>
@@ -159,6 +160,7 @@
             <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
                 {{ __('Por Material') }}
             </x-jet-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->

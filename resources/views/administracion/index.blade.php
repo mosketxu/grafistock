@@ -13,15 +13,12 @@
                                 @livewire('acabados')
                                 @livewire('materiales')
                                 @livewire('cajas')
-                                @livewire('calidades')
+                                @livewire('familias')
                                 @livewire('grupos-produccion')
                                 @livewire('unidades-coste')
                                 @livewire('unidades')
                                 @livewire('solicitantes')
                                 @livewire('ubicaciones')
-                                @livewire('roles')
-                                @livewire('permisos')
-
                             </div>
                         </div>
                     </div>

@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="w-full form-item lg:w-3/12">
                                                 <label class="block text-sm font-medium text-gray-700">{{ __('password') }}</label>
-                                                <input  type="password" name="password" value="{{old('password',$user->password)}}" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
+                                                <input  type="password" name="password" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                                             </div>
                                         </div>
                                     </div>
@@ -78,6 +78,7 @@
                             @foreach ($roles as $role)
                                 <div class="ml-4">
                                     {{-- @can('user.edit') --}}
+                                    {{ $role->id }}
                                     <input type="checkbox" name="roles[]" value="{{$role->id}}"
                                         {{ (in_array($role->id, old('roles', [])) || isset($user) && $user->roles()->pluck('name', 'roles.id')->contains($role->name)) ? 'checked' : '' }}>&nbsp {{$role->name}}
                                     {{-- @elsecan('user.show')

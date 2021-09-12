@@ -73,7 +73,7 @@ class PermissionSeeder extends Seeder
         //otros
         Permission::create(['name'=>'dash','description'=>'Acceder al Dashboard'])->syncRoles($admin,$gestion);
 
-        Permission::create(['name'=>'administracion.index','description'=>'Acceder a tablas de administracion'])->syncRoles($admin,$gestion);
+        Permission::create(['name'=>'administracion','description'=>'Acceder a tablas de administracion'])->syncRoles($admin,$gestion);
 
 
     }

@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-use App\Models\ProductoCalidad;
+use App\Models\ProductoFamilia;
 
-class Calidades extends Component
+class Familias extends Component
 {
     use WithPagination;
     public $search='';
-    public $titulo='Calidades';
+    public $titulo='Familias';
     public $campo1='Sigla';
     public $campo2='Nombre';
     public $nombre='';
@@ -23,14 +23,14 @@ class Calidades extends Component
     protected function rules()
     {
         return [
-            'nombrecorto'=>'required|unique:producto_calidades,nombrecorto',
-            'nombre'=>'required|unique:producto_calidades,nombre',
+            'nombrecorto'=>'required|unique:producto_familias,nombrecorto',
+            'nombre'=>'required|unique:producto_familias,nombre',
         ];
     }
 
     public function render()
     {
-        $valores=ProductoCalidad::query()
+        $valores=ProductoFamilia::query()
             ->search('id',$this->search)
             ->orSearch('nombre',$this->search)
             ->orderBy('nombrecorto')->get();
@@ -38,39 +38,39 @@ class Calidades extends Component
         return view('livewire.auxiliarcard',compact('valores'));
     }
 
-    public function changeCorto(ProductoCalidad $valor,$nombrecorto)
+    public function changeCorto(ProductoFamilia $valor,$nombrecorto)
     {
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'required|unique:producto_calidades,nombrecorto',
+            'nombrecorto'=>'required|unique:producto_familias,nombrecorto',
         ])->validate();
 
-        $p=ProductoCalidad::find($valor->id);
+        $p=ProductoFamilia::find($valor->id);
         $p->nombrecorto=$nombrecorto;
         $p->save();
-        $this->dispatchBrowserEvent('notify', 'Calidad Actualizada.');
+        $this->dispatchBrowserEvent('notify', 'Familia Actualizada.');
     }
 
-    public function changeNombre(ProductoCalidad $valor, $nombre)
+    public function changeNombre(ProductoFamilia $valor, $nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'required|unique:producto_calidades,nombre',
+            'nombre'=>'required|unique:producto_familias,nombre',
         ])->validate();
-        $p=ProductoCalidad::find($valor->id);
+        $p=ProductoFamilia::find($valor->id);
         $p->nombre=$nombre;
         $p->save();
-        $this->dispatchBrowserEvent('notify', 'Calidad Actualizada.');
+        $this->dispatchBrowserEvent('notify', 'Familia Actualizada.');
     }
 
     public function save()
     {
         $this->validate();
 
-        ProductoCalidad::create([
+        ProductoFamilia::create([
             'nombre'=>$this->nombre,
             'nombrecorto'=>$this->nombrecorto,
         ]);
 
-        $this->dispatchBrowserEvent('notify', 'Calidad añadida con éxito');
+        $this->dispatchBrowserEvent('notify', 'Familia añadida con éxito');
 
         $this->emit('refresh');
         $this->nombre='';
@@ -79,11 +79,11 @@ class Calidades extends Component
 
     public function delete($valorId)
     {
-        $borrar = ProductoCalidad::find($valorId);
+        $borrar = ProductoFamilia::find($valorId);
 
         if ($borrar) {
             $borrar->delete();
-            $this->dispatchBrowserEvent('notify', 'Calidad añadida eliminado!');
+            $this->dispatchBrowserEvent('notify', 'Familia añadida eliminado!');
         }
     }
 }

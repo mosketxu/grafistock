@@ -5,10 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Spatie\Permission\Models\Permission;
+
+
 
 class RoleController extends Controller
 {
+
+    public function __contruct()
+    {
+        $this->middleware('can:users.index')->only('index');
+        $this->middleware('can:users.edit')->only('edit','update');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -73,6 +83,7 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $role->permissions()->sync($request->get('permisos'));
+            Artisan::call('cache:clear');
         return redirect()->route('roles.edit',$role)->with('info','Permisos Actualizados');
 
     }

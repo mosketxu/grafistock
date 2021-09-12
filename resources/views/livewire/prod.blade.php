@@ -166,11 +166,11 @@
                             </x-select>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="calidad_id">{{ __('Calidad') }} </x-jet-label>
-                            <x-select wire:model.defer="producto.calidad_id" selectname="calidad_id" class="w-full" >
+                            <x-jet-label for="familia_id">{{ __('Familia') }} </x-jet-label>
+                            <x-select wire:model.defer="producto.familia_id" selectname="familia_id" class="w-full" >
                                 <option value="">-- Selecciona --</option>
-                                @foreach ($calidades as $calidad)
-                                <option value="{{ $calidad->id }}">{{ $calidad->nombre }}</option>
+                                @foreach ($familias as $familia)
+                                <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>

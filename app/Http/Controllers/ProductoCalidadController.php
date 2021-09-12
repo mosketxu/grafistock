@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductoCalidad;
+use App\Models\ProductoFamilia;
 use Illuminate\Http\Request;
 
-class ProductoCalidadController extends Controller
+class ProductoFamiliaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ProductoCalidadController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProductoCalidad  $productoCalidad
+     * @param  \App\Models\ProductoFamilia  $productoFamilia
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductoCalidad $productoCalidad)
+    public function show(ProductoFamilia $productoFamilia)
     {
         //
     }
@@ -52,10 +52,10 @@ class ProductoCalidadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProductoCalidad  $productoCalidad
+     * @param  \App\Models\ProductoFamilia  $productoFamilia
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductoCalidad $productoCalidad)
+    public function edit(ProductoFamilia $productoFamilia)
     {
         //
     }
@@ -64,10 +64,10 @@ class ProductoCalidadController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProductoCalidad  $productoCalidad
+     * @param  \App\Models\ProductoFamilia  $productoFamilia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductoCalidad $productoCalidad)
+    public function update(Request $request, ProductoFamilia $productoFamilia)
     {
         //
     }
@@ -75,10 +75,10 @@ class ProductoCalidadController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProductoCalidad  $productoCalidad
+     * @param  \App\Models\ProductoFamilia  $productoFamilia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductoCalidad $productoCalidad)
+    public function destroy(ProductoFamilia $productoFamilia)
     {
         //
     }
