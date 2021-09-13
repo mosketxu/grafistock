@@ -41,7 +41,7 @@ class Pedidos extends Component
     {
         if($this->selectAll) $this->selectPageRows();
         $pedidos = $this->rows;
-        $proveedores = Entidad::orderBy('entidad')->get();
+        $proveedores = Entidad::has('pedidos')->orderBy('entidad')->get();
 
         $totales= Pedido::query()
             ->join('pedido_detalles','pedido_detalles.pedido_id','=','pedidos.id')

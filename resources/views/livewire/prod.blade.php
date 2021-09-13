@@ -80,7 +80,7 @@
                             <input  wire:model.defer="producto.costeprov" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="udcoste_id">{{ __('Ud/coste Prov') }}</x-jet-label>
+                            <x-jet-label for="udcoste_id">{{ __('Ud Prov') }}</x-jet-label>
                             <x-select wire:model.defer="producto.udcoste_id" selectname="udcoste_id" class="w-full">
                                 <option value="">-- Selecciona unidad --</option>
                                 @foreach ($unidadescoste as $unidad)
@@ -94,7 +94,7 @@
                         </div>
 
                         <div class="w-full form-item">
-                            <x-jet-label for="udproducto_id">{{ __('Ud Producto') }}</x-jet-label>
+                            <x-jet-label for="udproducto_id">{{ __('Ud Grafitex') }}</x-jet-label>
                             <x-select wire:model.defer="producto.udproducto_id" selectname="udproducto_id" class="w-full">
                                 <option value="">-- Selecciona unidad --</option>
                                 @foreach ($unidadescoste as $unidad)

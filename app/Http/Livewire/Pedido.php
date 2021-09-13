@@ -48,7 +48,7 @@ class Pedido extends Component
     public function render()
     {
         $this->showcrear = $this->pedido->pedido ? true : false;
-        $entidades=Entidad::select('id','entidad')->orderBy('entidad')->get();
+        $entidades=Entidad::has('productos')->select('id','entidad')->orderBy('entidad')->get();
         $materiales=ProductoMaterial::orderBy('nombre')->get();
         $solicitantes=Solicitante::orderBy('nombre')->get();
         return view('livewire.pedido',compact('entidades','materiales','solicitantes'));

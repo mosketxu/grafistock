@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoFamilia, ProductoTipo, ProductoUnidadcoste, Seccion, Ubicacion, Unidad};
+use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoFamilia, ProductoTipo, ProductoUnidadcoste, Ubicacion, Unidad};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Livewire\WithFileUploads;
@@ -70,11 +70,29 @@ class Prod extends Component
             $p=Entidad::find($this->producto->entidad_id);
             $p=$p->id;
         }
+
+
+
         $tipo=$this->producto->tipo->nombrecorto ?? '';
         $material=$this->producto->material->nombrecorto ?? '';
         $acabado=$this->producto->acabado->nombrecorto ?? '';
 
+        // Opcion quitando lo que no hay
+        // $tipo=$tipo ? $tipo.'-' : '';
+        // $material=$material ? $material.'-' : '';
+        // $acabado=$acabado ? $acabado.'-' : '';
+        // $grosor=$this->producto->grosor_mm ? str_pad($this->producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-' : '';
+        // $ancho=$this->producto->ancho_mm ? str_pad($this->producto->ancho_mm, 4, '0', STR_PAD_LEFT).'-' : '';
+        // $alto=$this->producto->alto ? str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-' : '';
+
+        // $this->producto->referencia=$tipo.$material.$grosor.$ancho.$alto.$acabado.$p;
+
+
+        // Opcion dejando todo
         $this->producto->referencia=$tipo.'-'.$material.'-'.str_pad($this->producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->ancho, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-'.$acabado.'-'.$p;
+
+
+
 
         if($this->producto->tipo_id && $this->producto->material_id && $this->producto->ancho && $this->producto->alto  && $this->producto->acabado_id && $p){
             $this->validate(['producto.referencia'=>'unique:productos,referencia']);
@@ -89,10 +107,7 @@ class Prod extends Component
 
     public function save()
     {
-        // dd($this->ficheropdf);
-        // $this->validate();
         if($this->producto->id){
-            // dd('1');
             $i=$this->producto->id;
             $this->validate([
                 'producto.referencia'=>[
@@ -104,7 +119,6 @@ class Prod extends Component
             );
             $mensaje=$this->producto->referencia . " actualizado satisfactoriamente";
         }else{
-            // dd('2');
             $this->validate([
                 'producto.referencia'=>'required|unique:productos,referencia',
 
@@ -154,13 +168,7 @@ class Prod extends Component
         if(!$this->producto->id){
             $this->producto->id=$prod->id;
             $mensaje=$this->producto->referencia . " creado satisfactoriamente";
-            // session()->flash('message', $mensaje);
         }
-
-        // session()->flash('message', $mensaje);
-        // return redirect()->route('pedido.create');
-        // $this->emitSelf('notify-saved');
         $this->dispatchBrowserEvent('notify', $mensaje);
     }
-
 }

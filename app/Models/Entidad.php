@@ -13,7 +13,7 @@ class Entidad extends Model
                         'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
                         'banco1','iban1','banco2','iban2','banco3','iban3',
                         'metodopago_id','diafactura','diavencimiento',
-                        'cuentacontable','observaciones','estado','cliente','proveedor','usuario','password'];
+                        'cuentacontble','observaciones','estado','cliente','proveedor','usuario','password'];
 
     public function pais()
     {
@@ -37,7 +37,7 @@ class Entidad extends Model
 
     public function productos()
     {
-        return $this->hasMany(Productos::class);
+        return $this->hasMany(Producto::class);
     }
 
     public function movimientos()
