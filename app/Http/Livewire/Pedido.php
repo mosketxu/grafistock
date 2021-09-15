@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad, ProductoMaterial, Solicitante, Ubicacion};
+use App\Models\{Entidad, PedidoDetalle, ProductoMaterial, Solicitante, Ubicacion};
 use App\Models\Pedido as ModelsPedido;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
@@ -19,6 +19,8 @@ class Pedido extends Component
     public $showcrear='';
     public $realizado;
     public $nuevo='No';
+
+    public $showDeleteModal=false;
 
     protected $listeners = [
         'pedidoupdate' => '$refresh',
@@ -62,6 +64,14 @@ class Pedido extends Component
             'pedido.pedido'=>['required',Rule::unique('pedidos','pedido')->ignore($this->pedido->id)]
         ]);
         $this->save();
+    }
+
+    public function UpdatedPedidoEntidadId()
+    {
+        $numdetalle=PedidoDetalle::where('pedido_id',$this->pedido->id)->count();
+
+        if($numdetalle>0)
+            $this->showDeleteModal=true;
     }
 
     public function numpedido()
@@ -140,5 +150,21 @@ class Pedido extends Component
             $pedidoBorrar->delete();
             $this->dispatchBrowserEvent('notify', 'Pedido eliminado!');
         }
+    }
+
+    public function cambiarproveedor()
+    {
+        $detalle=PedidoDetalle::where('pedido_id',$this->pedido->id);
+        $detalle->delete();
+        $p=ModelsPedido::find($this->pedido->id);
+        $p->entidad_id=$this->pedido->entidad_id;
+        $p->save();
+        return redirect(route('pedido.edit', $p));
+    }
+    public function recuperoproveedor()
+    {
+
+        $this->pedido->entidad_id=ModelsPedido::find($this->pedido->id)->entidad_id;
+        $this->showDeleteModal=false;
     }
 }

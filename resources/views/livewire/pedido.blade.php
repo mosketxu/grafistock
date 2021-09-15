@@ -61,33 +61,25 @@
                                     {{ __('Solicitante') }}
                                     @if($pedido->solicitante_id!='')
                                         <x-icon.filter-slash-a wire:click="$set('pedido.solicitante_id', '')" class="pb-1" title="reset"/>
-                                    @endif
+                                        @endif
                                 </label>
                                 <x-select wire:model="pedido.solicitante_id" selectname="solicitante_id" class="w-full" autofocus required >
                                     <option value="">-- choose --</option>
                                     @foreach ($solicitantes as $solicitante)
-                                        <option value="{{ $solicitante->id }}">{{ $solicitante->nombre }}</option>
+                                    <option value="{{ $solicitante->id }}">{{ $solicitante->nombre }}</option>
                                     @endforeach
                                 </x-select>
                             </div>
                             <div class="w-full form-item lg:w-3/12">
                                 <label class="block text-sm font-medium text-gray-700">
                                     {{ __('Proveedor') }}
-                                    @if($pedido->entidad_id!='' && !$pedido->entidad)
-                                        <x-icon.filter-slash-a wire:click="$set('pedido.entidad_id', '')" class="pb-1" title="reset"/>
-                                    @endif
                                 </label>
-                                @if(!$pedido->pedido)
-                                    <x-select wire:model="pedido.entidad_id" selectname="entidad_id" class="w-full" required >
-                                        <option value="">-- choose --</option>
-                                        @foreach ($entidades as $entidad)
-                                            <option value="{{ $entidad->id }}">{{ $entidad->entidad }}</option>
-                                        @endforeach
-                                    </x-select>
-                                @else
-                                    <input  wire:model.defer="pedido.entidad_id" type="hidden"/>
-                                    <input  type="text" value="{{ $pedido->entidad->entidad }}" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
-                                @endif
+                                <x-select wire:model="pedido.entidad_id" selectname="entidad_id" class="w-full" required >
+                                    <option value="">-- choose --</option>
+                                    @foreach ($entidades as $entidad)
+                                        <option value="{{ $entidad->id }}">{{ $entidad->entidad }}</option>
+                                    @endforeach
+                                </x-select>
                             </div>
                             <div class="w-full form-item lg:w-1/12">
                                 <x-jet-label for="fechapedido">{{ __('F.Pedido') }}</x-jet-label>
@@ -108,7 +100,7 @@
                                         <x-icon.filter-slash-a wire:click="$set('pedido.ubicacione_id', '')" class="pb-1" title="reset"/>
                                     @endif
                                 </label>
-                                <x-select wire:model="pedido.ubicacion_id" selectname="ubicacion_id" class="w-full" required >
+                                <x-select wire:model="pedido.ubicacion_id" selectname="ubicacion_id" class="w-full" >
                                     <option value="">-- choose --</option>
                                     @foreach ($ubicaciones as $ubicacion)
                                         <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</option>
@@ -152,6 +144,21 @@
             </div>
         </div>
     </div>
+        <!-- Delete Transactions Modal -->
+        <form wire:submit.prevent="cambiarproveedor">
+            <x-modal.confirmation wire:model.defer="showDeleteModal">
+                <x-slot name="title">Borrar Pedido</x-slot>
+
+                <x-slot name="content">
+                    <div class="py-8 text-gray-700">¿Esás seguro? <br>Al cambiar el proveedor se eliminarán las líneas de detalle. <br>Esta acción es irreversible.</div>
+                </x-slot>
+
+                <x-slot name="footer">
+                    <x-button.secondary wire:click="recuperoproveedor">Cancelar</x-button.secondary>
+
+                    <x-button.primary type="submit">Modificar</x-button.primary>
+                </x-slot>
+            </x-modal.confirmation>
     <script>
         setTimeout(function() {
             getElementById('#mimensaje').fadeOut('fast');
