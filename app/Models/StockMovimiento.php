@@ -31,6 +31,7 @@ class StockMovimiento extends Model
         return [
             'S'=>'red',
             'E'=>'green',
+            'R'=>'yellow',
         ][$this->tipomovimiento] ?? 'gray';
     }
 

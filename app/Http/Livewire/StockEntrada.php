@@ -51,7 +51,7 @@ class StockEntrada extends Component
     {
         $this->validate();
 
-        $c = $this->stock->tipomovimiento =='E' ? $this->stock->cantidad : -$this->stock->cantidad;
+        $c = $this->stock->tipomovimiento =='S' ? $this->stock->cantidad : -$this->stock->cantidad;
 
         $s=StockMovimiento::updateOrCreate([
             'id'=>$this->stock->id
@@ -71,6 +71,7 @@ class StockEntrada extends Component
         $this->stock->id=null;
         $this->stock->solicitante_id=null;
         // $this->stock->fechamovimiento=null;
+        $this->filtromaterial=null;
         $this->stock->tipomovimiento=null;
         $this->stock->cantidad=null;
         $this->stock->producto_id=null;

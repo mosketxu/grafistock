@@ -91,6 +91,7 @@ class StockBalance extends Component
             ->join('productos','productos.id','stock_movimientos.producto_id')
             ->with('producto')
             ->with('producto.entidad')
+            ->where('stock_movimientos.tipomovimiento','!=','R')
             ->select('stock_movimientos.*','productos.material_id','productos.referencia as referencia')
             ->selectRaw('sum(cantidad) as balance')
             ->searchYear('fechamovimiento',$this->filtroanyo)
