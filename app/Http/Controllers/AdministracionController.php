@@ -9,10 +9,10 @@ use Spatie\Permission\Models\Role;
 class AdministracionController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('can:administracio');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('can:administracion');
+    // }
     /**
      * Display a listing of the resource.
      *

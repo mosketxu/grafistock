@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePedidosTable extends Migration
+class CreateStockPeticionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreatePedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('stock_peticiones', function (Blueprint $table) {
             $table->id();
             $table->foreignId('solicitante_id')->nullable()->constrained('solicitantes')->cascadeOnUpdate()->nullOnDelete();
-            $table->string('pedido')->index()->nullable();
-            $table->foreignId('entidad_id')->constrained('entidades');
-            $table->date('fechapedido');
-            $table->date('fecharecepcionprevista')->nullable();
-            $table->date('fecharecepcion')->nullable();
-            $table->string('ruta')->nullable();
-            $table->string('fichero')->nullable();
+            $table->string('peticion');
+            $table->date('fechasolicitud');
+            $table->date('fecharealizado')->nullable();
             $table->integer('estado')->default('0');
             $table->string('observaciones')->nullable();
             $table->timestamps();
@@ -36,6 +32,6 @@ class CreatePedidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('stock_peticiones');
     }
 }

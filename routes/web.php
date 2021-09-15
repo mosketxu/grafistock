@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController, PedidoController,StockController, UserController, RoleController};
+use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController, PedidoController,StockController, UserController, RoleController,StockPeticionController};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //roles
     Route::resource('roles', RoleController::class)->names('roles');
     Route::get('administracion', [AdministracionController::class,'index'])->middleware('can:administracion')->name('administracion.index');
-    Route::get('administracion/roles', [AdministracionController::class,'roles'])->middleware('can:administracion')->name('administracion.roles');
+    // Route::get('administracion/roles', [AdministracionController::class,'roles'])->middleware('can:administracion')->name('administracion.roles');
 
         Route::resource('users', UserController::class)->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
     // Route::resource('users', UserController::class)->except(['create'])->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
@@ -45,9 +45,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('stock/producto', [StockController::class,'producto'])->middleware('can:stock.index')->name('stock.producto');
     Route::get('stock/material', [StockController::class,'material'])->middleware('can:stock.index')->name('stock.material');
     Route::resource('stock', StockController::class);
-    Route::get('/clear-cache', function() {
-        Artisan::call('cache:clear');
-        return "Cache is cleared";
-    })->name('clearcache');
+    Route::resource('stockpeticion', StockPeticionController::class);
+    // Route::get('/clear-cache', function() {
+    //     Artisan::call('cache:clear');
+    //     return "Cache is cleared";
+    // })->name('clearcache');
 
 });;

@@ -43,9 +43,15 @@
                     @endcan
                 </div>
             </div>
-
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                @if(explode('.',Request::route()->getName())[0] =='stock')
+                @if(explode('.',Request::route()->getName())[0] =='stock' || explode('.',Request::route()->getName())[0] =='stockpeticion' || Auth::user()->hasPermissionTo('stockpeticion.index'))
+                    @can('stockpeticion.index')
+                        <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
+                            <x-jet-nav-link href="{{ route('stockpeticion.index') }}" :active="request()->routeIs('stockpeticion.index')">
+                                {{ __('Peticiones Stock') }}
+                            </x-jet-nav-link>
+                        </div>
+                    @endcan
                     <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
                         <x-jet-nav-link href="{{ route('stock.movimientos') }}" :active="request()->routeIs('stock.movimientos')">
                             {{ __('Movimientos') }}
@@ -157,6 +163,11 @@
             </x-jet-nav-link>
             @endcan
             @can('stock.index')
+            @can('stockpeticion.index')
+                <x-jet-nav-link href="{{ route('stockpeticion.index') }}" :active="request()->routeIs('stockpeticion.index')">
+                    {{ __('Peticiones Stock') }}
+                </x-jet-nav-link>
+            @endcan
             <x-jet-nav-link href="{{ route('stock.movimientos') }}" :active="request()->routeIs('stock.movimientos')">
                 {{ __('Movimientos') }}
             </x-jet-nav-link>
