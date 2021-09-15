@@ -21,6 +21,7 @@ class CreatePedidosTable extends Migration
             $table->date('fechapedido');
             $table->date('fecharecepcionprevista')->nullable();
             $table->date('fecharecepcion')->nullable();
+            $table->foreignId('ubicacion_id')->nullable()->constrained('ubicaciones')->cascadeOnUpdate()->nullOnDelete();
             $table->string('ruta')->nullable();
             $table->string('fichero')->nullable();
             $table->integer('estado')->default('0');

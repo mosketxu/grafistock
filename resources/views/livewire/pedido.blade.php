@@ -56,7 +56,7 @@
                             <x-jet-input  wire:model.defer="pedido.id" type="hidden"/>
                         </div>
                         <div class="flex flex-col justify-between ml-3 space-x-3 md:flex-row">
-                            <div class="w-full form-item lg:w-3/12">
+                            <div class="w-full form-item lg:w-2/12">
                                 <label class="block text-sm font-medium text-gray-700">
                                     {{ __('Solicitante') }}
                                     @if($pedido->solicitante_id!='')
@@ -101,10 +101,25 @@
                                 <x-jet-label for="fecharecepcion">{{ __('F.Recepcion') }}</x-jet-label>
                                 <input  wire:model.defer="pedido.fecharecepcion" type="date"  class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                             </div>
-                            <div class="w-full form-item lg:w-5/12">
+                            <div class="w-full form-item lg:w-2/12">
+                                <label class="block text-sm font-medium text-gray-700">
+                                    {{ __('Almacén') }}
+                                    @if($pedido->ubicacion_id!='')
+                                        <x-icon.filter-slash-a wire:click="$set('pedido.ubicacione_id', '')" class="pb-1" title="reset"/>
+                                    @endif
+                                </label>
+                                <x-select wire:model="pedido.ubicacion_id" selectname="ubicacion_id" class="w-full" required >
+                                    <option value="">-- choose --</option>
+                                    @foreach ($ubicaciones as $ubicacion)
+                                        <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</option>
+                                    @endforeach
+                                </x-select>
+                            </div>
+                            <div class="w-full form-item lg:w-4/12">
                                 <x-jet-label for="observaciones">{{ __('Observaciones') }}</x-jet-label>
                                 <textarea  wire:model.defer="pedido.observaciones" rows="1" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></textarea>
                             </div>
+
                             <div class="w-1/12 pr-3 text-center form-item">
                                 <x-button.button type="submit" color="blue" class="mt-4 focus:bg-blue-900">{{ __('Guardar') }}</x-button.button>
                                 <span

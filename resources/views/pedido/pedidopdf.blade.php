@@ -105,15 +105,15 @@
             <table width="100%" style="margin-top:20px">
                 <tbody>
                     <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
-                        <td style="padding-left:3px;" width="15%">Referencia</td>
-                        <td style="padding-left:3px;" width="40%">Descripción</td>
+                        {{-- <td style="padding-left:3px;" width="15%">Referencia</td> --}}
+                        <td style="padding-left:3px;" width="55%">Descripción</td>
                         <td style="padding-right:3px;text-align:right" width="15%">P.Unitario</td>
                         <td style="padding-right:3px;text-align:right" width="15%">Cantidad</td>
                         <td style="padding-right:3px;text-align:right" width="15%">Total</td>
                     </tr>
                     @forelse ( $pedido->pedidodetalles as $detalle )
                         <tr >
-                            <td style="padding-left:3px;font-size:xx-small;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $detalle->producto->referencia }}</td>
+                            {{-- <td style="padding-left:3px;font-size:xx-small;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $detalle->producto->referencia }}</td> --}}
                             <td style="padding-left:3px;font-size:xx-small;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $detalle->producto->descripcion }}</td>
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $detalle->coste }} € </td>
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $detalle->cantidad }} </td>
@@ -131,13 +131,13 @@
                 </tbody>
                 <tfoot class="font-bold divide-y divide-gray-200">
                     <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
-                        <td style="padding-left:3px;"></td>
+                        {{-- <td style="padding-left:3px;"></td> --}}
                         <td style="padding-left:3px;"></td>
                         <td style="padding-right:3px;text-align:right">Base Imponible</td>
                         <td style="padding-right:3px;text-align:right">% I.V.A</td>
                         <td style="padding-right:3px;text-align:right">Total IVA incl</td>
                     <tr style="background-color: #fdf9f9; ">
-                        <td style="padding-left:3px;" ></td>
+                        {{-- <td style="padding-left:3px;" ></td> --}}
                         <td style="padding-left:3px;" ></td>
                         <td style="padding-right:3px;text-align:right" >{{ number_format($base,2,',','.') }} €</td>
                         <td style="padding-right:3px;text-align:right" >{{ number_format($base * 0.21,2,',','.') }} €</td>
@@ -148,12 +148,14 @@
 
             <table width="100%" style="margin-top:10px">
                 <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
-                    <td style="padding-left:3px;" width="30%">Fecha Entrega</td>
-                    <td style="padding-left:3px;" width="70%">Dirección Entrega</td>
+                    <td style="padding-left:3px;" width="20%">Fecha Entrega</td>
+                    <td style="padding-left:3px;" width="60%">Dirección Entrega</td>
+                    <td style="padding-left:3px;" width="20%">Zona Entrega</td>
                 </tr>
                 <tr style="background-color: #fdf9f9; ">
                     <td style="padding-left:3px;" >{{ $pedido->fecharecepcionprevista ? $pedido->fecharecepcionprevista->format('d/m/Y') : '-' }}</td>
                     <td style="padding-left:3px;" >Grafitex - Av/ Ferrocarrils Catalans, 103-107 08038 Barcelona</td>
+                    <td style="padding-left:3px;" >{{ $pedido->ubicacion->nombre }}</td>
                 </tr>
             </table>
 

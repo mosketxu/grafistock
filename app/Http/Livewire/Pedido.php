@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad, ProductoMaterial, Solicitante};
+use App\Models\{Entidad, ProductoMaterial, Solicitante, Ubicacion};
 use App\Models\Pedido as ModelsPedido;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
@@ -33,6 +33,7 @@ class Pedido extends Component
             'pedido.fechapedido'=>'date|required',
             'pedido.fecharecepcionprevista'=>'date|nullable',
             'pedido.fecharecepcion'=>'date|nullable',
+            'pedido.ubicacion_id'=>'nullable',
             'pedido.ruta'=>'nullable',
             'pedido.fichero'=>'nullable',
             'pedido.observaciones'=>'nullable',
@@ -51,7 +52,8 @@ class Pedido extends Component
         $entidades=Entidad::has('productos')->select('id','entidad')->orderBy('entidad')->get();
         $materiales=ProductoMaterial::orderBy('nombre')->get();
         $solicitantes=Solicitante::orderBy('nombre')->get();
-        return view('livewire.pedido',compact('entidades','materiales','solicitantes'));
+        $ubicaciones=Ubicacion::orderBy('nombre')->get();
+        return view('livewire.pedido',compact('entidades','materiales','solicitantes','ubicaciones'));
     }
 
     public function UpdatedPedidoPedido()
@@ -105,6 +107,7 @@ class Pedido extends Component
                 'fechapedido'=>$this->pedido->fechapedido,
                 'fecharecepcionprevista'=>$this->pedido->fecharecepcionprevista,
                 'fecharecepcion'=>$this->pedido->fecharecepcion,
+                'ubicacion_id'=>$this->pedido->ubicacion_id,
                 'metodopago_id'=>$this->pedido->metodopago_id,
                 'ruta'=>$this->pedido->ruta,
                 'fichero'=>$this->pedido->fichero,
