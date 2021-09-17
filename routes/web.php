@@ -23,8 +23,12 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
-        })->name('dashboard');
+        if (Auth::user()->hasRole('Operario'))
+            return redirect()->route('stock.movimientos');
+        else
+            return view('dashboard');}
+    )->name('dashboard');
+
 
     //roles
     Route::resource('roles', RoleController::class)->names('roles');
