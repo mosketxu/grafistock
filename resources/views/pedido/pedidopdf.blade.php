@@ -155,7 +155,7 @@
                 <tr style="background-color: #fdf9f9; ">
                     <td style="padding-left:3px;" >{{ $pedido->fecharecepcionprevista ? $pedido->fecharecepcionprevista->format('d/m/Y') : '-' }}</td>
                     <td style="padding-left:3px;" >Grafitex - Av/ Ferrocarrils Catalans, 103-107 08038 Barcelona</td>
-                    <td style="padding-left:3px;" >{{ $pedido->ubicacion->nombre }}</td>
+                    <td style="padding-left:3px;" >{{ $pedido->ubicacion->nombre ?? '-' }}</td>
                 </tr>
             </table>
 
