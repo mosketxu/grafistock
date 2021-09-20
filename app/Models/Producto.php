@@ -46,4 +46,7 @@ class Producto extends Model
 
     public function pedidodetalles(){return $this->hasMany(PedidoDetalle::class,'producto_id');}
 
+    public function stockmovimientos(){return $this->hasMany(StockMovimiento::class,'producto_id');}
+
+
 }

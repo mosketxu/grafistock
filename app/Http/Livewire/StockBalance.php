@@ -6,6 +6,8 @@ use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Models\{StockMovimiento,Entidad,ProductoMaterial,Producto, Solicitante};
 use Livewire\Component;
+use App\Exports\StockBalanceExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 // use Illuminate\Support\Facades\DB;
 
@@ -132,6 +134,16 @@ class StockBalance extends Component
         },'movimientos.csv');
 
         $this->dispatchBrowserEvent('notify', 'CSV Movimientos descargados!');
+    }
+
+
+    public function exportXLS()
+    {
+        // dd($this->tipo);
+        return Excel::download(new StockBalanceExport(
+            $this->search, $this->filtroproveedor, $this->filtromaterial, $this->filtroproducto, $this->filtrodescripcion, $this->filtrosolicitante, $this->filtroanyo, $this->filtromes, $this->filtrofecha, $this->tipo
+        ), 'stock.xlsx');
+
     }
 
 }

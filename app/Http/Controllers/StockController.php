@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\StockMovimiento;
+
 
 
 class StockController extends Controller
@@ -45,5 +47,7 @@ class StockController extends Controller
         $tipo='material_id';
         return view('stock.balance',compact('tipo'));
     }
+
+
 
 }

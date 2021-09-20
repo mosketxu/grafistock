@@ -62,8 +62,8 @@
                             </label>
                             <input type="text" wire:model="filtromes" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Mes (número)"/>
                         </div>
-
                     </div>
+                    {{-- Parte derecha --}}
                     <div class="inline-flex mt-3 space-x-2">
                         <x-dropdown label="Actions">
                             {{-- <x-dropdown.item type="button" wire:click="zipSelected" class="flex items-center space-x-2">

@@ -33,23 +33,26 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //roles
     Route::resource('roles', RoleController::class)->names('roles');
     Route::get('administracion', [AdministracionController::class,'index'])->middleware('can:administracion')->name('administracion.index');
-    // Route::get('administracion/roles', [AdministracionController::class,'roles'])->middleware('can:administracion')->name('administracion.roles');
 
-        Route::resource('users', UserController::class)->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
-    // Route::resource('users', UserController::class)->except(['create'])->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
-    // rutas entidades
+    //Users
+    Route::resource('users', UserController::class)->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
+
+    // Entidades
     Route::get('clientes', [EntidadController::class,'cli'])->middleware('can:entidad.index')->name('entidad.cli'); //
     Route::get('proveedores', [EntidadController::class,'pro'])->middleware('can:entidad.index')->name('entidad.pro'); //
     Route::get('entidad/{tipo}', [EntidadController::class,'nueva'])->name('entidad.nueva');
     Route::resource('entidad', EntidadController::class)->only(['create', 'edit']); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
     Route::resource('producto', ProductoController::class);
     Route::resource('pedido', PedidoController::class);
+
     //stock
     Route::get('stock/movimientos', [StockController::class,'movimientos'])->middleware('can:stock.index')->name('stock.movimientos');
     Route::get('stock/producto', [StockController::class,'producto'])->middleware('can:stock.index')->name('stock.producto');
     Route::get('stock/material', [StockController::class,'material'])->middleware('can:stock.index')->name('stock.material');
     Route::resource('stock', StockController::class);
     Route::resource('stockpeticion', StockPeticionController::class);
+
+
     // Route::get('/clear-cache', function() {
     //     Artisan::call('cache:clear');
     //     return "Cache is cleared";

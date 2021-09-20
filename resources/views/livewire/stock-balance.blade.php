@@ -1,15 +1,26 @@
 <div class="">
     @livewire('menu')
-
-    <div class="h-full p-1 mx-2">
-
+    <div class="p-1 mx-2">
         <h1 class="text-2xl font-semibold text-gray-900">Stock por {{ $titulo }}</h1>
 
         <div class="py-1 space-y-4">
-            <x-jet-validation-errors></x-jet-validation-errors>
-            <div class="flex justify-between">
-                <div class="flex w-10/12 space-x-3">
-                    <div class="w-2/12 text-xs">
+            @if (session()->has('message'))
+                <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-green-200 border-green-500 rounded border-1">
+                    <span class="inline-block mx-8 align-middle">
+                        {{ session('message') }}
+                    </span>
+                    <button class="absolute top-0 right-0 mt-2 mr-6 text-2xl font-semibold leading-none bg-transparent outline-none focus:outline-none" onclick="document.getElementById('alert').remove();">
+                        <span>×</span>
+                    </button>
+                </div>
+            @endif
+
+            <x-jet-validation-errors/>
+
+            {{-- filtros y boton --}}
+            <div class="flex justify-between space-x-1">
+                <div class="inline-flex space-x-2">
+                    <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Proveedor
                             @if($filtroproveedor!='')
@@ -23,7 +34,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="w-2/12 text-xs">
+                    <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Material
                             @if($filtromaterial!='')
@@ -38,7 +49,7 @@
                         </select>
                     </div>
                     @if($tipo=='producto_id')
-                        <div class="w-2/12 text-xs">
+                        <div class="text-xs">
                             <label class="px-1 text-gray-600">
                                 Referencia
                                 @if($filtroproducto!='')
@@ -52,7 +63,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="w-2/12 text-xs">
+                        <div class="text-xs">
                             <label class="px-1 text-gray-600">
                                 Descripción
                                 @if($filtrodescripcion!='')
@@ -81,54 +92,90 @@
                         <input type="text" wire:model="filtromes" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Mes (número)"/>
                     </div>
 
-
                 </div>
-                <div class="flex flex-row-reverse w-2/12">
-                    <div class="pt-3">
+                {{-- Parte derecha --}}
+                <div class="inline-flex mt-3 space-x-2">
+                    <div class="items-center text-xs">
+                        <x-button.button  wire:click="exportXLS" color="green"><x-icon.xls/></x-button.button>
+                    </div>
+                    <div class="items-center text-xs">
                         <x-button.button  onclick="location.href = '{{ route('stock.create') }}'" color="blue"><x-icon.plus/>{{ __('Nueva E/S') }}</x-button.button>
                     </div>
                 </div>
-
             </div>
-            {{-- tabla movimientos --}}
-            <div class="flex-col space-y-4">
-                <x-table>
-                    <x-slot name="head">
-                        <x-table.heading class="pl-1 text-left">{{ __('Proveedor') }} </x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Material') }} </x-table.heading>
-                        @if($tipo=='producto_id')
-                            <x-table.heading class="pl-1 text-left">{{ __('Referencia') }} </x-table.heading>
-                            <x-table.heading class="pl-1 text-left">{{ __('Descripcion') }} </x-table.heading>
-                        @endif
-                        <x-table.heading class="pl-1 text-right">{{ __('Cantidad') }}</x-table.heading>
-                        <x-table.heading colspan="2"/>
-                    </x-slot>
 
-                    <x-slot name="body">
-                        @forelse ($stocks as $stock)
-                            <x-table.row wire:loading.class.delay="opacity-50">
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->producto->entidad->entidad}}</td>
-                                <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->producto->material->nombre}}</td>
-                                @if($tipo=='producto_id')
-                                    <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->producto->referencia}}</td>
-                                    <td class="px-1 text-xs leading-5 text-gray-600 whitespace-no-wrap">{{ $stock->producto->descripcion}}</td>
+            {{-- tabla movimientos --}}
+            <div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="text-xs leading-4 tracking-wider text-gray-500 bg-blue-50 ">
+                        <tr class="">
+                            {{-- <th class="w-5 py-3 pl-2 font-medium text-center"><x-input.checkbox wire:model="selectPage"/></th> --}}
+                            {{-- <th class="w-5 py-3 pl-2 font-medium text-center ">#</th> --}}
+                            <th class="pl-4 font-medium text-left">{{ __('Proveedor') }}</th>
+                            <th class="pl-4 font-medium text-left">{{ __('Material') }} </th>
+                            @if($tipo=='producto_id')
+                                <th class="pl-4 font-medium text-left">{{ __('Referencia') }}</th>
+                                <th class="pl-4 font-medium text-left">{{ __('Descripcion') }}</th>
+                            @endif
+                            <th class="pl-4 font-medium text-right">{{ __('Cantidad') }}</th>
+                            <th colspan="2"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs bg-white divide-y divide-gray-200">
+                        {{-- @if($selectPage)
+                            <tr class="bg-gray-200" wire:key="row-message">
+                                <td  class="py-3 pl-2 font-medium" colspan="18">
+                                @unless($selectAll)
+                                    <span>Has seleccionado <strong>{{ $stocks->count() }}</strong> movimientos, ¿quieres seleccionar el total: <strong>{{ $stocks->total() }}</strong> ?</span>
+                                    <x-button.link wire:click="selectAll" class="ml-1 text-blue-600">Select all</x-button.link>
+                                @else
+                                    <span>Has seleccionado <strong>todos</strong> los {{ $sotcks->total() }} movimientos</span>
                                 @endif
-                                <td class="px-1 pr-3 text-xs leading-5 text-right text-gray-600 whitespace-no-wrap">{{ $stock->balance}}</td>
-                            </x-table.row>
+                                </td>
+                            </tr>
+                        @endif --}}
+                        @forelse ($stocks as $stock)
+                            <tr wire:loading.class.delay="opacity-50" wire:key="fila-{{ $stock->id }}">
+                                {{-- <td  class="w-5 py-3 pl-2 font-medium text-center">
+                                    <x-input.checkbox wire:model="selected" value="{{ $stock->id }}"/>
+                                </td> --}}
+                                {{-- <td class="text-right">
+                                    <a href="#" wire:click="edit" class="text-xs text-gray-200 transition duration-150 ease-in-out hover:outline-none hover:text-gray-800 hover:underline">
+                                        {{ $stock->id }}
+                                    </a>
+                                </td> --}}
+                                <td class="text-left">
+                                    <input type="text" value="{{ $stock->producto->entidad->entidad }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
+                                <td  class="text-left">
+                                    <input type="text" value="{{ $stock->producto->material->nombre }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
+                                @if($tipo=='producto_id')
+                                    <td class="text-left">
+                                        <input type="text" value="{{ $stock->producto->referencia }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    </td>
+                                    <td class="text-left">
+                                        <input type="text" value="{{ $stock->producto->descripcion }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    </td>
+                                @endif
+                                <td  class="text-right">
+                                    <input type="text" value="{{ $stock->balance }}" class="w-full text-xs font-thin text-right text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
+                            </tr>
                         @empty
-                            <x-table.row>
-                                <td  colspan="10">
+                            <tr>
+                                <td colspan="10">
                                     <div class="flex items-center justify-center">
                                         <x-icon.inbox class="w-8 h-8 text-gray-300"/>
                                         <span class="py-5 text-xl font-medium text-gray-500">
                                             No se han encontrado movimientos...
                                         </span>
                                     </div>
-                                </td >
-                            </x-table.row>
+                                </td>
+                            </tr>
                         @endforelse
-                    </x-slot>
-                </x-table>
+                    </tbody>
+                </table>
                 <div>
                     {{ $stocks->links() }}
                 </div>

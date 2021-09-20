@@ -51,7 +51,8 @@ class StockEntrada extends Component
     {
         $this->validate();
 
-        $c = $this->stock->tipomovimiento =='S' ? $this->stock->cantidad : -$this->stock->cantidad;
+        $c = $this->stock->tipomovimiento =='S' ? -$this->stock->cantidad : $this->stock->cantidad;
+        if ($this->stock->tipomovimiento =='R') $this->stock->reentrada='1';
 
         $s=StockMovimiento::updateOrCreate([
             'id'=>$this->stock->id
