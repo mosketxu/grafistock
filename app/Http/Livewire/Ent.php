@@ -41,8 +41,8 @@ class Ent extends Component
             'entidad.observaciones'=>'nullable',
             'entidad.usuario'=>'nullable',
             'entidad.password'=>'nullable',
-            'entidad.cliente'=>'nullable',
-            'entidad.proveedor'=>'nullable',
+            'entidad.cliente'=>'required_without:entidad.proveedor',
+            'entidad.proveedor'=>'required_without:entidad.cliente',
         ];
     }
 
@@ -67,9 +67,11 @@ class Ent extends Component
 
     public function save()
     {
+        if($this->cliente=null) $this->cliente='0';
+        if($this->proveedor=null) $this->proveedor='0';
+
         $this->validate();
         if($this->entidad->id){
-            // dd('1');
             $i=$this->entidad->id;
             $this->validate([
                 'entidad.entidad'=>[
@@ -82,7 +84,6 @@ class Ent extends Component
             );
             $mensaje="Proveedor actualizad satisfactoriamente";
         }else{
-            // dd('2');
             $this->validate([
                 'entidad.entidad'=>'required|unique:entidades,entidad',
                 'entidad.nif'=>'max:12|unique:entidades,nif',

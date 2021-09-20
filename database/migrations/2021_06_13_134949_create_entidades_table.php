@@ -41,8 +41,8 @@ class CreateEntidadesTable extends Migration
             $table->integer('diafactura')->nullable()->default(1);
             $table->integer('diavencimiento')->nullable()->default(10);
             $table->string('observaciones')->nullable();
-            $table->boolean('cliente')->default(0);
-            $table->boolean('proveedor')->default(0);
+            $table->boolean('cliente')->nullable()->default(0);
+            $table->boolean('proveedor')->nullable()->default(0);
             $table->boolean('estado')->nullable()->default(0);
             $table->timestamps();
         });

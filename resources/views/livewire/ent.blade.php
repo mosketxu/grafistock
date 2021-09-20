@@ -2,17 +2,29 @@
     @livewire('menu',['entidad'=>$entidad],key($entidad->id))
 
     <div class="p-1 mx-2">
-        @if($entidad->id)
-            <h1 class="text-2xl font-semibold text-gray-900">Entidad {{ $entidad->entidad }}</h1>
-        @else
-        <h1 class="text-2xl font-semibold text-gray-900">Nueva Entidad:</h1>
-        @endif
-        <div class="flex flex-col pl-2 mx-2 mt-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
-            <label for="">Cliente</label>
-            <x-input.checkbox wire:model.defer="entidad.cliente"></x-input.checkbox>
-            <label for="">Proveedor</label>
-            <x-input.checkbox wire:model.defer="entidad.proveedor"></x-input.checkbox>
+        <div class="flex flex-row">
+            <div class="w-6/12">
+                @if($entidad->id)
+                    <h1 class="text-2xl font-semibold text-gray-900">Entidad {{ $entidad->entidad }}</h1>
+                @else
+                <h1 class="text-2xl font-semibold text-gray-900">Nueva Entidad:</h1>
+                @endif
+                <div class="flex flex-col pl-2 mx-2 mt-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                    <label for="">Cliente</label>
+                    <x-input.checkbox wire:model.defer="entidad.cliente"></x-input.checkbox>
+                    <label for="">Proveedor</label>
+                    <x-input.checkbox wire:model.defer="entidad.proveedor"></x-input.checkbox>
+                </div>
+            </div>
+            <div class="w-6/12 text-right">
+                @if($tipo=="Cliente")
+                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Cliente') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Cliente') }}</x-button.button>
+                @else
+                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Proveedor') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Proveedor') }}</x-button.button>
+                @endif
+            </div>
         </div>
+
     </div>
     <div class="px-2 py-1 space-y-4" >
         @if ($errors->any())
@@ -39,6 +51,7 @@
         @endif
     </div>
     {{-- <x-jet-validation-errors/> --}}
+
 
     <div class="flex-col space-y-4 text-gray-500">
         <form wire:submit.prevent="save" class="">
