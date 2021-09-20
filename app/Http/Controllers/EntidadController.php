@@ -34,7 +34,8 @@ class EntidadController extends Controller
 
     public function edit(Entidad $entidad)
     {
-        return view('entidad.edit',compact('entidad'));
+        $tipo = $entidad->cliente=="1" ? 'Cliente' : 'Proveedor';
+        return view('entidad.edit',compact('entidad','tipo'));
     }
 
 }

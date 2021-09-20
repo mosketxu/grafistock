@@ -3,10 +3,16 @@
 
     <div class="p-1 mx-2">
         @if($entidad->id)
-            <h1 class="text-2xl font-semibold text-gray-900">{{ $tipo }}: {{ $entidad->entidad }}</h1>
+            <h1 class="text-2xl font-semibold text-gray-900">Entidad {{ $entidad->entidad }}</h1>
         @else
-        <h1 class="text-2xl font-semibold text-gray-900">Nuevo {{ $tipo }}</h1>
+        <h1 class="text-2xl font-semibold text-gray-900">Nueva Entidad:</h1>
         @endif
+        <div class="flex flex-col pl-2 mx-2 mt-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+            <label for="">Cliente</label>
+            <x-input.checkbox wire:model.defer="entidad.cliente"></x-input.checkbox>
+            <label for="">Proveedor</label>
+            <x-input.checkbox wire:model.defer="entidad.proveedor"></x-input.checkbox>
+        </div>
     </div>
     <div class="px-2 py-1 space-y-4" >
         @if ($errors->any())
@@ -105,12 +111,12 @@
                     </x-select>
                 </div>
             </div>
-            <div class="flex flex-col pl-2 mx-2 mt-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+            {{-- <div class="flex flex-col pl-2 mx-2 mt-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                 <label for="">Cliente</label>
                 <x-input.checkbox wire:model.defer="entidad.cliente"></x-input.checkbox>
                 <label for="">Proveedor</label>
                 <x-input.checkbox wire:model.defer="entidad.proveedor"></x-input.checkbox>
-            </div>
+            </div> --}}
             <div class="px-2 mx-2 my-2 rounded-md bg-blue-50">
                 <h3 class="font-semibold ">Datos Facturación</h3>
             </div>
@@ -202,7 +208,7 @@
                     style="display: none;"
                     class="p-2 m-2 text-gray-500 rounded-lg bg-green-50"
                     >Saved!</span>
-                    @if($tipo="Cliente")
+                    @if($tipo=="Cliente")
                         <x-jet-secondary-button  onclick="location.href = '{{route('entidad.cli')}}'">{{ __('Volver') }}</x-jet-secondary-button>
                     @else
                         <x-jet-secondary-button  onclick="location.href = '{{route('entidad.pro')}}'">{{ __('Volver') }}</x-jet-secondary-button>
