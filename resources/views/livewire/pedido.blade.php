@@ -4,15 +4,25 @@
     <div class="p-1 mx-2 ">
         <div class="flex flex-row">
             <div class="w-6/12 space-x-2">
-            <h1 class="mx-2 text-2xl font-semibold text-gray-900"> {{ $pedido->pedido ? 'Pedido: ' : 'Nuevo Pedido' }} <input  wire:model.lazy="pedido.pedido" type="text" class="text-2xl font-semibold text-gray-900 border-transparent "/></h1>
-        {{-- </div>
-        <div class="flex justify-between"> --}}
-                @if($pedido->id)
-                    <a href="{{ route('pedido.show',$pedido) }}" target="_blank" class="w-6 h-6 ml-2" title="Imprimir Pedido"><x-icon.printer></x-icon.printer></a>
-                @endif
+                {{-- <div class="flex flex-row"> --}}
+                    {{-- <div> --}}
+                        <h1 class="mx-2 text-2xl font-semibold text-gray-900"> {{ $pedido->pedido ? 'Pedido: ' : 'Nuevo Pedido' }} <input  wire:model.lazy="pedido.pedido" type="text" class="text-2xl font-semibold text-gray-900 border-transparent "/></h1>
+                    {{-- </div> --}}
+                    {{-- <div class="text-left">
+                        @if($pedido->id)
+                        <a href="{{ route('pedido.show',$pedido) }}" target="_blank" class="w-6 h-6 ml-2" title="Imprimir Pedido"><x-icon.printer></x-icon.printer></a>
+                        @endif
+                    </div> --}}
+                {{-- </div> --}}
             </div>
             <div class="w-6/12 mr-4 text-right">
-                <x-button.button  onclick="location.href = '{{ route('pedido.create') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo') }}</x-button.button>
+                <div class="flex flex-row-reverse">
+                    <x-button.button  onclick="location.href = '{{ route('pedido.create') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo') }}</x-button.button>
+                    @if($pedido->id)
+                    <a href="{{ route('pedido.show',$pedido) }}" target="_blank" class="items-center m-2 text-green-700 w-7 h-7" title="Imprimir Pedido"><x-icon.printer></x-icon.printer></a>
+                    @endif
+                    {{-- <x-button.button  onclick="location.href = '{{ route('pedido.show',$pedido) }}'" target="_blank" color="green"><x-icon.printer></x-icon.printer></x-button.button> --}}
+                </div>
             </div>
         </div>
 

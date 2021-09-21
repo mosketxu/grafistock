@@ -158,6 +158,17 @@
                     <td style="padding-left:3px;" >{{ $pedido->ubicacion->nombre ?? '-' }}</td>
                 </tr>
             </table>
+            <table width="100%" style="margin-top:10px;">
+                <tr style=" color:rgb(10, 153, 220)">
+                    <td style="padding-left:3px; border-top: 1px solid rgb(223, 218, 218); " width="100%">Horario de recepción de material:</td>
+                </tr>
+                <tr>
+                    <td style="padding-left:3px;" >- Mañana de 8:00 a 13:00  </td>
+                </tr>
+                <tr>
+                    <td style="padding-left:3px;" >- Tarde de 15:00 a 16:30  </td>
+                </tr>
+            </table>
 
             <table width="100%" style="margin-top:20px;">
                 <tr style=" color:rgb(10, 153, 220)">
@@ -170,6 +181,7 @@
                     <td style="padding-left:3px;" ></td>
                 </tr>
             </table>
+
         </main>
     </body>
 
