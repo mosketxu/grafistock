@@ -30,7 +30,7 @@
                     </div>
                     <div class="w-2/12 text-xs">
                         <label class="px-1 text-gray-600">Proveedor</label>
-                        <select wire:model="filtroproveedor" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                        <select wire:model="filtroclipro" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($proveedores as $proveedor)
                             <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>

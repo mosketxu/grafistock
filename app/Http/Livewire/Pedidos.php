@@ -16,7 +16,7 @@ class Pedidos extends Component
     public $search='';
     public $filtroanyo='';
     public $filtromes='';
-    public $filtroproveedor='';
+    public $filtroclipro='';
     public $entidad;
     public $message;
     public $total;
@@ -46,8 +46,8 @@ class Pedidos extends Component
         $totales= Pedido::query()
             ->join('pedido_detalles','pedido_detalles.pedido_id','=','pedidos.id')
             ->select(DB::raw('cantidad * coste as total'))
-            ->when($this->filtroproveedor!='', function ($query){
-                $query->where('entidad_id',$this->filtroproveedor);
+            ->when($this->filtroclipro!='', function ($query){
+                $query->where('entidad_id',$this->filtroclipro);
                 })
             ->searchYear('fechapedido',$this->filtroanyo)
             ->searchMes('fechapedido',$this->filtromes)
@@ -57,7 +57,7 @@ class Pedidos extends Component
             return view('livewire.pedidos',compact('pedidos','proveedores','totales'));
     }
 
-    public function updatingFiltroproveedor(){
+    public function updatingFiltroclipro(){
         $this->resetPage();
     }
     public function updatingFiltroanyo(){
@@ -74,8 +74,8 @@ class Pedidos extends Component
             ->when($this->entidad->id!='', function ($query){
                 $query->where('entidad_id',$this->entidad->id);
                 })
-            ->when($this->filtroproveedor!='', function ($query){
-                $query->where('entidad_id',$this->filtroproveedor);
+            ->when($this->filtroclipro!='', function ($query){
+                $query->where('entidad_id',$this->filtroclipro);
                 })
             ->searchYear('fechapedido',$this->filtroanyo)
             ->searchMes('fechapedido',$this->filtromes)

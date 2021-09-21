@@ -16,7 +16,9 @@ class CreateEntidadesTable extends Migration
         Schema::create('entidades', function (Blueprint $table) {
             $table->id();
             $table->string('entidad')->unique();
-            $table->string('cuentactble')->nullable();
+            $table->integer('clipro_id')->default(0);
+            $table->string('cuentactblepro')->nullable();
+            $table->string('cuentactblecli')->nullable();
             $table->string('entidad5',4)->unique()->nullable();
             $table->string('direccion', 100)->nullable();
             $table->string('cp', 10)->nullable();
@@ -41,8 +43,6 @@ class CreateEntidadesTable extends Migration
             $table->integer('diafactura')->nullable()->default(1);
             $table->integer('diavencimiento')->nullable()->default(10);
             $table->string('observaciones')->nullable();
-            $table->boolean('cliente')->nullable()->default(0);
-            $table->boolean('proveedor')->nullable()->default(0);
             $table->boolean('estado')->nullable()->default(0);
             $table->timestamps();
         });

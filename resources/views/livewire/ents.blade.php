@@ -3,7 +3,7 @@
 
     <div class="p-1 mx-2">
 
-        <h1 class="text-2xl font-semibold text-gray-900"> {{ $cliente=='1' ? 'Clientes' : 'Proveedores' }}</h1>
+        <h1 class="text-2xl font-semibold text-gray-900"> {{ $clipro_id=='1' ? 'Clientes' : 'Proveedores' }}</h1>
         <div class="py-1 space-y-4">
             @if (session()->has('message'))
                 <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
@@ -20,7 +20,7 @@
                 <div class="flex w-2/4 space-x-2">
                     <input type="text" wire:model="search" class="py-1 border border-blue-100 rounded-lg" placeholder="Búsqueda..." autofocus/>
                 </div>
-                @if($cliente==true)
+                @if($clipro_id=='1')
                     <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Cliente') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Cliente') }}</x-button.button>
                 @else
                     <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Proveedor') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Proveedor') }}</x-button.button>

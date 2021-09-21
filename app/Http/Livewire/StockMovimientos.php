@@ -13,7 +13,7 @@ class StockMovimientos extends Component
     use WithPagination, WithBulkActions;
 
     public $search='';
-    public $filtroproveedor='';
+    public $filtroclipro='';
     public $filtromaterial='';
     public $filtroproducto='';
     public $filtrodescripcion='';
@@ -35,8 +35,8 @@ class StockMovimientos extends Component
         $solicitantes=Solicitante::orderBy('nombre')->get();
 
         $productos=Producto::orderBy('referencia')
-            ->when($this->filtroproveedor!='', function ($query){
-                $query->where('entidad_id',$this->filtroproveedor);
+            ->when($this->filtroclipro!='', function ($query){
+                $query->where('entidad_id',$this->filtroclipro);
             })
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
@@ -47,7 +47,7 @@ class StockMovimientos extends Component
         return view('livewire.stock-movimientos',compact('stocks','proveedores','productos','materiales','solicitantes'));
     }
 
-    public function updatingFiltroproveedor(){
+    public function updatingFiltroclipro(){
         $this->resetPage();
     }
     public function updatingFiltroproducto(){
@@ -90,9 +90,9 @@ class StockMovimientos extends Component
         ->when($this->filtromaterial!='', function ($query){
             $query->where('material_id',$this->filtromaterial);
         })
-        ->when($this->filtroproveedor!='', function ($query){
+        ->when($this->filtroclipro!='', function ($query){
             $query->whereHas('producto',function($q){
-                $q->where('entidad_id',$this->filtroproveedor);
+                $q->where('entidad_id',$this->filtroclipro);
             });
         })
         ->searchYear('fechamovimiento',$this->filtroanyo)

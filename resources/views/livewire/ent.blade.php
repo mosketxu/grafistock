@@ -5,16 +5,17 @@
         <div class="flex flex-row">
             <div class="w-6/12">
                 @if($entidad->id)
-                    <h1 class="text-2xl font-semibold text-gray-900">Entidad {{ $entidad->entidad }}</h1>
+                    <h1 class="text-2xl font-semibold text-gray-900">{{ $entidad->entidad }}</h1>
                 @else
-                <h1 class="text-2xl font-semibold text-gray-900">Nueva Entidad:</h1>
+                <h1 class="text-2xl font-semibold text-gray-900">Nuevo:</h1>
                 @endif
-                <div class="flex flex-col pl-2 mx-2 mt-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
-                    <label for="">Cliente</label>
-                    <x-input.checkbox wire:model.defer="entidad.cliente"></x-input.checkbox>
-                    <label for="">Proveedor</label>
-                    <x-input.checkbox wire:model.defer="entidad.proveedor"></x-input.checkbox>
-                </div>
+                <x-jet-label for="clipro_id">{{ __('Tipo') }}</x-jet-label>
+                <x-select wire:model.defer="entidad.clipro_id" selectname="clipro_id" requiered>
+                    <option value="">-- Elige el tipo  --</option>
+                    @foreach ($tiposentidad as $tipoentidad)
+                    <option value="{{ $tipoentidad->id }}">{{ $tipoentidad->nombre }}</option>
+                    @endforeach
+                </x-select>
             </div>
             <div class="w-6/12 text-right">
                 @if($tipo=="Cliente")
@@ -124,12 +125,6 @@
                     </x-select>
                 </div>
             </div>
-            {{-- <div class="flex flex-col pl-2 mx-2 mt-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
-                <label for="">Cliente</label>
-                <x-input.checkbox wire:model.defer="entidad.cliente"></x-input.checkbox>
-                <label for="">Proveedor</label>
-                <x-input.checkbox wire:model.defer="entidad.proveedor"></x-input.checkbox>
-            </div> --}}
             <div class="px-2 mx-2 my-2 rounded-md bg-blue-50">
                 <h3 class="font-semibold ">Datos Facturación</h3>
             </div>
@@ -170,9 +165,14 @@
                     </x-select>
                 </div>
                 <div class="w-full form-item">
-                    <x-jet-label for="cuentactble" >{{ __('Cta.Contable') }}</x-jet-label>
-                    <x-jet-input  wire:model.defer="entidad.cuentactble" type="number" id="cuentactble" name="cuentactble" :value="old('cuentactble')" class="w-full"/>
-                    <x-jet-input-error for="cuentactble" class="mt-2" />
+                    <x-jet-label for="cuentactblepro" >{{ __('Cta.Contable Proveedor') }}</x-jet-label>
+                    <x-jet-input  wire:model.defer="entidad.cuentactblepro" type="number" id="cuentactblepro" name="cuentactblepro" :value="old('cuentactblepro')" class="w-full"/>
+                    <x-jet-input-error for="cuentactblepro" class="mt-2" />
+                </div>
+                <div class="w-full form-item">
+                    <x-jet-label for="cuentactblecli" >{{ __('Cta.Contable Cliente') }}</x-jet-label>
+                    <x-jet-input  wire:model.defer="entidad.cuentactblecli" type="number" id="cuentactblecli" name="cuentactblecli" :value="old('cuentactblecli')" class="w-full"/>
+                    <x-jet-input-error for="cuentactblecli" class="mt-2" />
                 </div>
                 <div class="w-full form-item">
                     <x-jet-label for="diafactura" >{{ __('Dia Factura') }}</x-jet-label>

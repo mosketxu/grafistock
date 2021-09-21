@@ -9,11 +9,11 @@ class Entidad extends Model
 {
     use HasFactory;
     protected $table = 'entidades';
-    protected $fillable=['entidad','direccion','cp','localidad','provincia_id','pais_id',
+    protected $fillable=['entidad','clipro_id','direccion','cp','localidad','provincia_id','pais_id',
                         'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
                         'banco1','iban1','banco2','iban2','banco3','iban3',
                         'metodopago_id','diafactura','diavencimiento',
-                        'cuentacontble','observaciones','estado','cliente','proveedor','usuario','password'];
+                        'cuentactblepro','cuentactblecli','observaciones','estado','password'];
 
     public function pais()
     {

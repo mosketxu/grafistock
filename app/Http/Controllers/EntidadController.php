@@ -16,15 +16,13 @@ class EntidadController extends Controller
 
     public function cli()
     {
-        $cliente='1';
-        $proveedor='0';
-        return view('entidad.index',compact('cliente','proveedor'));
+        $clipro_id='1';
+        return view('entidad.index',compact('clipro_id'));
     }
     public function pro()
     {
-        $cliente='0';
-        $proveedor='1';
-        return view('entidad.index',compact('cliente','proveedor'));
+        $clipro_id='2';
+        return view('entidad.index',compact('clipro_id'));
     }
 
     public function nueva($tipo)
@@ -34,7 +32,7 @@ class EntidadController extends Controller
 
     public function edit(Entidad $entidad)
     {
-        $tipo = $entidad->cliente=="1" ? 'Cliente' : 'Proveedor';
+        $tipo = $entidad->clipro_id=="1" ? 'Cliente' : 'Proveedor';
         return view('entidad.edit',compact('entidad','tipo'));
     }
 

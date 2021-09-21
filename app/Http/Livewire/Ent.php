@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad,MetodoPago,Pais,Provincia};
+use App\Models\{Entidad, EntidadTipo, MetodoPago,Pais,Provincia};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 
@@ -18,7 +18,8 @@ class Ent extends Component
             'entidad.id'=>'nullable',
             'entidad.entidad'=>'required',
             'entidad.nif'=>'max:12',
-            'entidad.cuentactble'=>'numeric|nullable|unique:entidades,cuentactble',
+            'entidad.cuentactblepro'=>'numeric|nullable|unique:entidades,cuentactblepro',
+            'entidad.cuentactblecli'=>'numeric|nullable|unique:entidades,cuentactblecli',
             'entidad.direccion'=>'nullable',
             'entidad.cp'=>'max:10|nullable',
             'entidad.localidad'=>'nullable',
@@ -41,16 +42,15 @@ class Ent extends Component
             'entidad.observaciones'=>'nullable',
             'entidad.usuario'=>'nullable',
             'entidad.password'=>'nullable',
-            'entidad.cliente'=>'required_without:entidad.proveedor',
-            'entidad.proveedor'=>'required_without:entidad.cliente',
+            'entidad.clipro_id'=>'required',
         ];
     }
 
     public function mount(Entidad $entidad,$tipo)
     {
         $this->entidad=$entidad;
-        if($tipo=='Cliente') $this->entidad->cliente=true;
-        if($tipo=='Proveedor') $this->entidad->proveedor=true;
+        if($tipo=='Cliente') $this->entidad->clipro_id=1;
+        if($tipo=='Proveedor') $this->entidad->clipro_id=2;
     }
 
 
@@ -62,14 +62,13 @@ class Ent extends Component
         $metodopagos=MetodoPago::all();
         $provincias=Provincia::all();
         $paises=Pais::all();
-        return view('livewire.ent',compact('metodopagos','provincias','paises'));
+        $paises=Pais::all();
+        $tiposentidad=EntidadTipo::orderBy('id')->get();
+        return view('livewire.ent',compact('metodopagos','provincias','paises','tiposentidad'));
     }
 
     public function save()
     {
-        if($this->cliente=null) $this->cliente='0';
-        if($this->proveedor=null) $this->proveedor='0';
-
         $this->validate();
         if($this->entidad->id){
             $i=$this->entidad->id;
@@ -93,6 +92,7 @@ class Ent extends Component
             $mensaje="Proveedor creado satisfactoriamente";
         }
 
+        // dd($this->entidad);
         $ent=Entidad::updateOrCreate([
             'id'=>$i
             ],
@@ -120,11 +120,11 @@ class Ent extends Component
             'diafactura'=>$this->entidad->diafactura,
             'diavencimiento'=>$this->entidad->diavencimiento,
             'observaciones'=>$this->entidad->observaciones,
-            'cuentactble'=>$this->entidad->cuentactble,
+            'cuentactblepro'=>$this->entidad->cuentactblepro,
+            'cuentactblecli'=>$this->entidad->cuentactblecli,
             'usuario'=>$this->entidad->usuario,
             'password'=>$this->entidad->password,
-            'cliente'=>$this->entidad->cliente,
-            'proveedor'=>$this->entidad->proveedor,
+            'clipro_id'=>$this->entidad->clipro_id,
             ]
         );
         if(!$this->entidad->id){

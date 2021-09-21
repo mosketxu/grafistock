@@ -33,11 +33,11 @@
                         <div class="text-xs">
                             <label class="px-1 text-gray-600">
                                 Proveedor
-                                @if($filtroproveedor!='')
-                                    <x-icon.filter-slash-a wire:click="$set('filtroproveedor', '')" class="pb-1" title="reset filter"/>
+                                @if($filtroclipro!='')
+                                    <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1" title="reset filter"/>
                                 @endif
                             </label>
-                            <select wire:model="filtroproveedor" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" >
+                            <select wire:model="filtroclipro" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" >
                                 <option value="">-- selecciona --</option>
                                 @foreach ($proveedores as $proveedor )
                                 <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
@@ -152,7 +152,7 @@
 
                                 <td class="">
                                     <div class="flex items-center justify-center">
-                                        <x-icon.purchase-a href="{{ route('pedido.edit',$pedido) }}" class="text-green-600" title="Editar Pedido"/>
+                                        <x-icon.edit-a href="{{ route('pedido.edit',$pedido) }}" class="text-green-600" title="Editar Pedido"/>
                                         {{-- @if($pedido->pedido)
                                             <x-icon.pdf-a href="{{route('facturacion.imprimirfactura',$pedido) }}" title="PDF"/>
                                         @else

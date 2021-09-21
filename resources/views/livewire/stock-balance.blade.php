@@ -23,11 +23,11 @@
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Proveedor
-                            @if($filtroproveedor!='')
-                                <x-icon.filter-slash-a wire:click="$set('filtroproveedor', '')" class="pb-1" title="reset filter"/>
+                            @if($filtroclipro!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1" title="reset filter"/>
                             @endif
                         </label>
-                        <select wire:model="filtroproveedor" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                        <select wire:model="filtroclipro" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             <option value=""></option>
                             @foreach ($proveedores as $proveedor)
                             <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
@@ -45,6 +45,20 @@
                             <option value=""></option>
                             @foreach ($materiales as $material)
                             <option value="{{ $material->id }}">{{ $material->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="text-xs">
+                        <label class="px-1 text-gray-600">
+                            Acabado
+                            @if($filtroacabado!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroacabado', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtroacabado" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                            <option value=""></option>
+                            @foreach ($acabados as $acabado)
+                            <option value="{{ $acabado->id }}">{{ $acabado->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -99,7 +113,7 @@
                         <x-button.button  wire:click="exportXLS" color="green"><x-icon.xls/></x-button.button>
                     </div>
                     <div class="items-center text-xs">
-                        <x-button.button  onclick="location.href = '{{ route('stock.create') }}'" color="blue"><x-icon.plus/>{{ __('Nueva E/S') }}</x-button.button>
+                        <x-button.button  onclick="location.href = '{{ route('stock.create') }}'" color="blue">{{ __('Nueva E/S') }}</x-button.button>
                     </div>
                 </div>
             </div>
@@ -112,43 +126,24 @@
                             {{-- <th class="w-5 py-3 pl-2 font-medium text-center"><x-input.checkbox wire:model="selectPage"/></th> --}}
                             {{-- <th class="w-5 py-3 pl-2 font-medium text-center ">#</th> --}}
                             <th class="pl-4 font-medium text-left">{{ __('Proveedor') }}</th>
-                            <th class="pl-4 font-medium text-left">{{ __('Material') }} </th>
                             @if($tipo=='producto_id')
                                 <th class="pl-4 font-medium text-left">{{ __('Referencia') }}</th>
                                 <th class="pl-4 font-medium text-left">{{ __('Descripcion') }}</th>
                             @endif
-                            <th class="pl-4 font-medium text-right">{{ __('Cantidad') }}</th>
+                            <th class="pl-4 font-medium text-left">{{ __('Material') }} </th>
+                            <th class="pl-4 font-medium text-left">{{ __('Acabado') }} </th>
+                            <th class="pr-4 font-medium text-right">{{ __('Ancho') }} </th>
+                            <th class="pr-4 font-medium text-right">{{ __('Alto') }} </th>
+                            <th class="pr-4 font-medium text-right">{{ __('Ubicación') }}</th>
+                            <th class="pr-4 font-medium text-right">{{ __('Cantidad') }}</th>
                             <th colspan="2"></th>
                         </tr>
                     </thead>
                     <tbody class="text-xs bg-white divide-y divide-gray-200">
-                        {{-- @if($selectPage)
-                            <tr class="bg-gray-200" wire:key="row-message">
-                                <td  class="py-3 pl-2 font-medium" colspan="18">
-                                @unless($selectAll)
-                                    <span>Has seleccionado <strong>{{ $stocks->count() }}</strong> movimientos, ¿quieres seleccionar el total: <strong>{{ $stocks->total() }}</strong> ?</span>
-                                    <x-button.link wire:click="selectAll" class="ml-1 text-blue-600">Select all</x-button.link>
-                                @else
-                                    <span>Has seleccionado <strong>todos</strong> los {{ $sotcks->total() }} movimientos</span>
-                                @endif
-                                </td>
-                            </tr>
-                        @endif --}}
                         @forelse ($stocks as $stock)
                             <tr wire:loading.class.delay="opacity-50" wire:key="fila-{{ $stock->id }}">
-                                {{-- <td  class="w-5 py-3 pl-2 font-medium text-center">
-                                    <x-input.checkbox wire:model="selected" value="{{ $stock->id }}"/>
-                                </td> --}}
-                                {{-- <td class="text-right">
-                                    <a href="#" wire:click="edit" class="text-xs text-gray-200 transition duration-150 ease-in-out hover:outline-none hover:text-gray-800 hover:underline">
-                                        {{ $stock->id }}
-                                    </a>
-                                </td> --}}
                                 <td class="text-left">
                                     <input type="text" value="{{ $stock->producto->entidad->entidad }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
-                                </td>
-                                <td  class="text-left">
-                                    <input type="text" value="{{ $stock->producto->material->nombre }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
                                 @if($tipo=='producto_id')
                                     <td class="text-left">
@@ -158,6 +153,21 @@
                                         <input type="text" value="{{ $stock->producto->descripcion }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                     </td>
                                 @endif
+                                <td  class="text-left">
+                                    <input type="text" value="{{ $stock->producto->material->nombre }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
+                                <td  class="text-left">
+                                    <input type="text" value="{{ $stock->producto->acabado->nombre }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
+                                <td  class="text-left">
+                                    <input type="text" value="{{ $stock->producto->ancho }} {{ $stock->producto->unidadancho->nombrecorto ?? '-' }}" class="w-full text-xs font-thin text-right text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
+                                <td  class="text-left">
+                                    <input type="text" value="{{ $stock->producto->alto }} {{ $stock->producto->unidadalto->nombrecorto ?? '-' }}" class="w-full text-xs font-thin text-right text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
+                                <td  class="text-right">
+                                    <input type="text" value="{{ $stock->producto->ubicacion->nombre ?? '-' }} " class="w-full text-xs font-thin text-right text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
                                 <td  class="text-right">
                                     <input type="text" value="{{ $stock->balance }}" class="w-full text-xs font-thin text-right text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>

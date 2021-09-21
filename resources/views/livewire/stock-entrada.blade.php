@@ -92,7 +92,7 @@
                             required>
                             <option value="">--selecciona--</option>
                             @foreach ($productos as $producto)
-                                <option value="{{ $producto->id }}">{{ $producto->descripcion }} &nbsp; ({{ $producto->referencia }})</option>
+                                <option value="{{ $producto->id }}">{{ $producto->descripcion }} &nbsp;/&nbsp;Ref: {{ $producto->referencia }}) &nbsp;/ &nbsp;Proveedor: {{ $producto->entidad->entidad }}</option>
                             @endforeach
                         </select>
                     </div>

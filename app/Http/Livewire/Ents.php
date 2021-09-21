@@ -11,8 +11,7 @@ class Ents extends Component
     use WithPagination;
 
     public $search='';
-    public $cliente='';
-    public $proveedor='';
+    public $clipro_id='';
     public Entidad $entidad;
 
     public function render()
@@ -20,8 +19,9 @@ class Ents extends Component
         $this->entidad= new Entidad;
         $entidades=Entidad::query()
             ->search('entidad',$this->search)
-            ->search('cliente',$this->cliente)
-            ->search('proveedor',$this->proveedor)
+            ->search('clipro_id',$this->clipro_id)
+            ->search('clipro_id',$this->clipro_id)
+            ->orSearch('clipro_id','3')
             ->orSearch('nif',$this->search)
             ->orderBy('entidad','asc')
             ->paginate(10);

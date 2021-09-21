@@ -22,7 +22,7 @@ class Prods extends Component
     public $search='';
     public $filtrofamilia='';
     public $filtromaterial='';
-    public $filtroproveedor='';
+    public $filtroclipro='';
     public $filtroacabado='';
     public $filtrogrupoprod='';
 
@@ -45,7 +45,7 @@ class Prods extends Component
             ->join('producto_materiales','producto_materiales.id','=','productos.material_id')
             ->select('producto_materiales.id', 'producto_materiales.nombre')
             ->groupBy('material_id')
-            ->when($this->filtroproveedor!='', function ($query){$query->where('entidad_id',$this->filtroproveedor);})
+            ->when($this->filtroclipro!='', function ($query){$query->where('entidad_id',$this->filtroclipro);})
             ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
             ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
             ->get();
@@ -54,7 +54,7 @@ class Prods extends Component
                 ->join('producto_familias','producto_familias.id','=','productos.familia_id')
                 ->select('producto_familias.id', 'producto_familias.nombre')
                 ->groupBy('familia_id')
-                ->when($this->filtroproveedor!='', function ($query){$query->where('entidad_id',$this->filtroproveedor);})
+                ->when($this->filtroclipro!='', function ($query){$query->where('entidad_id',$this->filtroclipro);})
                 ->when($this->filtromaterial!='', function ($query){$query->where('material_id',$this->filtromaterial);})
                 ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
                 ->get();
@@ -63,7 +63,7 @@ class Prods extends Component
                 ->join('producto_acabados','producto_acabados.id','=','productos.acabado_id')
                 ->select('producto_acabados.id', 'producto_acabados.nombre')
                 ->groupBy('acabado_id')
-                ->when($this->filtroproveedor!='', function ($query){$query->where('entidad_id',$this->filtroproveedor);})
+                ->when($this->filtroclipro!='', function ($query){$query->where('entidad_id',$this->filtroclipro);})
                 ->when($this->filtromaterial!='', function ($query){$query->where('material_id',$this->filtromaterial);})
                 ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
                 ->get();
@@ -79,8 +79,8 @@ class Prods extends Component
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
                 })
-            ->when($this->filtroproveedor!='', function ($query){
-                $query->where('entidad_id',$this->filtroproveedor);
+            ->when($this->filtroclipro!='', function ($query){
+                $query->where('entidad_id',$this->filtroclipro);
                 })
             ->when($this->filtroacabado!='', function ($query){
                 $query->where('acabado_id',$this->filtroacabado);
@@ -94,7 +94,7 @@ class Prods extends Component
             return view('livewire.prods',compact('productos','materiales','familias','acabados','proveedores'));
     }
 
-    public function updatingFiltroproveedor(){
+    public function updatingFiltroclipro(){
         $this->resetPage();
     }
     public function updatingFiltrmaterial(){

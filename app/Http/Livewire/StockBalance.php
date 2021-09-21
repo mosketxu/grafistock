@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
-use App\Models\{StockMovimiento,Entidad,ProductoMaterial,Producto, Solicitante};
+use App\Models\{StockMovimiento,Entidad,ProductoMaterial,Producto, Solicitante,ProductoAcabado};
 use Livewire\Component;
 use App\Exports\StockBalanceExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,8 +16,9 @@ class StockBalance extends Component
     use WithPagination, WithBulkActions;
 
     public $search='';
-    public $filtroproveedor='';
+    public $filtroclipro='';
     public $filtromaterial='';
+    public $filtroacabado='';
     public $filtroproducto='';
     public $filtrodescripcion='';
     public $filtrosolicitante='';
@@ -51,21 +52,25 @@ class StockBalance extends Component
             ->get();
         $materiales=ProductoMaterial::orderBy('nombre')->get();
         $solicitantes=Solicitante::orderBy('nombre')->get();
+        $acabados=ProductoAcabado::orderBy('nombre')->get();
 
         $productos=Producto::orderBy('referencia')
-            ->when($this->filtroproveedor!='', function ($query){
-                $query->where('entidad_id',$this->filtroproveedor);
+            ->when($this->filtroclipro!='', function ($query){
+                $query->where('entidad_id',$this->filtroclipro);
             })
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
             })
+            ->when($this->filtroacabado!='', function ($query){
+                $query->where('acabado_id',$this->filtroacabado);
+            })
             ->search('descripcion',$this->filtrodescripcion)
             ->get();
 
-        return view('livewire.stock-balance',compact('stocks','proveedores','productos','materiales','solicitantes'));
+        return view('livewire.stock-balance',compact('stocks','proveedores','productos','materiales','acabados','solicitantes'));
     }
 
-    public function updatingFiltroproveedor(){
+    public function updatingFiltroclipro(){
         $this->resetPage();
     }
     public function updatingFiltroproducto(){
@@ -75,6 +80,9 @@ class StockBalance extends Component
         $this->resetPage();
     }
     public function updatingFiltrosolicitante(){
+        $this->resetPage();
+    }
+    public function updatingFiltroacabado(){
         $this->resetPage();
     }
     public function updatingFiltroanyo(){
@@ -110,9 +118,12 @@ class StockBalance extends Component
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
             })
-            ->when($this->filtroproveedor!='', function ($query){
+            ->when($this->filtroacabado!='', function ($query){
+                $query->where('acabado_id',$this->filtroacabado);
+            })
+            ->when($this->filtroclipro!='', function ($query){
                 $query->whereHas('producto',function($q){
-                    $q->where('entidad_id',$this->filtroproveedor);
+                    $q->where('entidad_id',$this->filtroclipro);
                 });
             })
             ->searchYear('fechamovimiento',$this->filtroanyo)
@@ -141,7 +152,7 @@ class StockBalance extends Component
     {
         // dd($this->tipo);
         return Excel::download(new StockBalanceExport(
-            $this->search, $this->filtroproveedor, $this->filtromaterial, $this->filtroproducto, $this->filtrodescripcion, $this->filtrosolicitante, $this->filtroanyo, $this->filtromes, $this->filtrofecha, $this->tipo
+            $this->search, $this->filtroclipro, $this->filtromaterial, $this->filtroacabado, $this->filtroproducto, $this->filtrodescripcion, $this->filtrosolicitante, $this->filtroanyo, $this->filtromes, $this->filtrofecha, $this->tipo
         ), 'stock.xlsx');
 
     }
