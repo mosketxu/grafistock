@@ -3,15 +3,15 @@
 
     <div class="p-1 mx-2 ">
         <div class="flex flex-row">
+            <div class="w-6/12 space-x-2">
             <h1 class="mx-2 text-2xl font-semibold text-gray-900"> {{ $pedido->pedido ? 'Pedido: ' : 'Nuevo Pedido' }} <input  wire:model.lazy="pedido.pedido" type="text" class="text-2xl font-semibold text-gray-900 border-transparent "/></h1>
-        </div>
-        <div class="flex justify-between">
-            <div class="flex items-center w-2/4 space-x-2">
+        {{-- </div>
+        <div class="flex justify-between"> --}}
                 @if($pedido->id)
                     <a href="{{ route('pedido.show',$pedido) }}" target="_blank" class="w-6 h-6 ml-2" title="Imprimir Pedido"><x-icon.printer></x-icon.printer></a>
                 @endif
             </div>
-            <div class="mr-10">
+            <div class="w-6/12 mr-4 text-right">
                 <x-button.button  onclick="location.href = '{{ route('pedido.create') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo') }}</x-button.button>
             </div>
         </div>
@@ -60,17 +60,17 @@
                                 <label class="block text-sm font-medium text-gray-700">
                                     {{ __('Solicitante') }}
                                     @if($pedido->solicitante_id!='')
-                                        <x-icon.filter-slash-a wire:click="$set('pedido.solicitante_id', '')" class="pb-1" title="reset"/>
+                                    <x-icon.filter-slash-a wire:click="$set('pedido.solicitante_id', '')" class="pb-1" title="reset"/>
                                         @endif
-                                </label>
-                                <x-select wire:model="pedido.solicitante_id" selectname="solicitante_id" class="w-full" autofocus required >
-                                    <option value="">-- choose --</option>
-                                    @foreach ($solicitantes as $solicitante)
-                                    <option value="{{ $solicitante->id }}">{{ $solicitante->nombre }}</option>
-                                    @endforeach
-                                </x-select>
-                            </div>
-                            <div class="w-full form-item lg:w-3/12">
+                                    </label>
+                                    <x-select wire:model="pedido.solicitante_id" selectname="solicitante_id" class="w-full" autofocus required >
+                                        <option value="">-- choose --</option>
+                                        @foreach ($solicitantes as $solicitante)
+                                        <option value="{{ $solicitante->id }}">{{ $solicitante->nombre }}</option>
+                                        @endforeach
+                                    </x-select>
+                                </div>
+                                <div class="w-full form-item lg:w-3/12">
                                 <label class="block text-sm font-medium text-gray-700">
                                     {{ __('Proveedor') }}
                                 </label>
@@ -81,15 +81,15 @@
                                     @endforeach
                                 </x-select>
                             </div>
-                            <div class="w-full form-item lg:w-1/12">
+                            <div class="w-full form-item lg:w-2/12">
                                 <x-jet-label for="fechapedido">{{ __('F.Pedido') }}</x-jet-label>
                                 <input  wire:model.defer="pedido.fechapedido" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                             </div>
-                            <div class="w-full form-item lg:w-1/12">
+                            <div class="w-full form-item lg:w-2/12">
                                 <x-jet-label for="fecharecepcionprevista">{{ __('F.Recepcion Prev.') }}</x-jet-label>
                                 <input  wire:model.defer="pedido.fecharecepcionprevista" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                             </div>
-                            <div class="w-full form-item lg:w-1/12">
+                            <div class="w-full form-item lg:w-2/12">
                                 <x-jet-label for="fecharecepcion">{{ __('F.Recepcion') }}</x-jet-label>
                                 <input  wire:model.defer="pedido.fecharecepcion" type="date"  class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                             </div>
@@ -97,22 +97,24 @@
                                 <label class="block text-sm font-medium text-gray-700">
                                     {{ __('Almacén') }}
                                     @if($pedido->ubicacion_id!='')
-                                        <x-icon.filter-slash-a wire:click="$set('pedido.ubicacione_id', '')" class="pb-1" title="reset"/>
+                                    <x-icon.filter-slash-a wire:click="$set('pedido.ubicacione_id', '')" class="pb-1" title="reset"/>
                                     @endif
                                 </label>
                                 <x-select wire:model="pedido.ubicacion_id" selectname="ubicacion_id" class="w-full" >
                                     <option value="">-- choose --</option>
                                     @foreach ($ubicaciones as $ubicacion)
-                                        <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</option>
+                                    <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</option>
                                     @endforeach
                                 </x-select>
                             </div>
-                            <div class="w-full form-item lg:w-4/12">
+                        </div>
+                        <div class="flex flex-col justify-between ml-3 space-x-3 md:flex-row">
+                            <div class="w-full form-item lg:w-10/12">
                                 <x-jet-label for="observaciones">{{ __('Observaciones') }}</x-jet-label>
                                 <textarea  wire:model.defer="pedido.observaciones" rows="1" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></textarea>
                             </div>
 
-                            <div class="w-1/12 pr-3 text-center form-item">
+                            <div class="w-full pr-4 mr-4 text-right form-item lg:w-2/12">
                                 <x-button.button type="submit" color="blue" class="mt-4 focus:bg-blue-900">{{ __('Guardar') }}</x-button.button>
                                 <span
                                     x-data="{ open: false }"
