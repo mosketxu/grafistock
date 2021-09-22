@@ -111,7 +111,6 @@
                                 @endforeach
                             </x-select>
                         </div>
-
                     </div>
                 </div>
 
@@ -162,6 +161,15 @@
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($familias as $familia)
                                 <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="ubicacion_id">{{ __('Ubicación') }}</x-jet-label>
+                            <x-select wire:model.defer="producto.ubicacion_id" selectname="ubicacion_id" class="w-full">
+                                <option value="">-- Selecciona ubicación --</option>
+                                @foreach ($ubicaciones as $ubicacion)
+                                <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</option>
                                 @endforeach
                             </x-select>
                         </div>

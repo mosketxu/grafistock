@@ -19,6 +19,7 @@ class Prod extends Component
     {
         return [
             'producto.id'=>'nullable',
+            'producto.entidad_id'=>'required',
             'producto.referencia'=>'required',
             'producto.descripcion'=>'nullable',
             'producto.tipo_id'=>'required',
@@ -32,11 +33,11 @@ class Prod extends Component
             'producto.grupoproduccion_id'=>'nullable',
             'producto.familia_id'=>'nullable',
             'producto.udsolicitud_id'=>'required',
+            'producto.ubicacion_id'=>'nullable',
             'producto.costeprov'=>'nullable',
             'producto.udcosteprov_id'=>'nullable|required_with:producto.costeprov',
             'producto.costegrafitex'=>'nullable',
             'producto.udcostegrafitex_id'=>'nullable|required_with:producto.costegrafitex',
-            'producto.entidad_id'=>'required',
             'producto.caja_id'=>'nullable',
             'producto.costecaja'=>'nullable',
             'producto.fichaproducto'=>'nullable',
@@ -136,6 +137,8 @@ class Prod extends Component
             $filename=$this->ficheropdf->storeAs('/', $nombre, 'fichasproducto');
         }
 
+        // dd($this->producto);
+
         $prod=Producto::updateOrCreate([
             'id'=>$i
             ],
@@ -153,6 +156,7 @@ class Prod extends Component
             'grupoproduccion_id'=>$this->producto->grupoproduccion_id,
             'familia_id'=>$this->producto->familia_id,
             'udsolicitud_id'=>$this->producto->udsolicitud_id,
+            'ubicacion_id'=>$this->producto->ubicacion_id,
             'costeprov'=>$this->producto->costeprov,
             'udcosteprov_id'=>$this->producto->udcosteprov_id,
             'costegrafitex'=>$this->producto->costegrafitex,
