@@ -31,6 +31,9 @@ class UsersTableSeeder extends Seeder
         User::create(['name' => 'Gestion','email' => 'gestion@grafitex.net','password' => bcrypt('12345678'),
         ])->assignRole('Gestion');
 
+        User::create(['name' => 'Comercial','email' => 'comercial@grafitex.net','password' => bcrypt('12345678'),
+        ])->assignRole('Comercial');
+
 
         // User::factory(9)->create();
 

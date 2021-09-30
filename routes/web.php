@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController, PedidoController,StockController, UserController, RoleController,StockPeticionController};
+use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController,
+        PedidoController,StockController,
+        UserController, RoleController,
+        StockPeticionController, PresupuestoController};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -50,8 +53,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('stock/producto', [StockController::class,'producto'])->middleware('can:stock.index')->name('stock.producto');
     Route::get('stock/material', [StockController::class,'material'])->middleware('can:stock.index')->name('stock.material');
     Route::resource('stock', StockController::class);
+
+    //pedidos stock
     Route::resource('stockpeticion', StockPeticionController::class);
 
+    //presupuestos
+
+    Route::resource('presupuesto', PresupuestoController::class);
 
     // Route::get('/clear-cache', function() {
     //     Artisan::call('cache:clear');
