@@ -4,25 +4,31 @@
     <div class="p-1 mx-2">
         <div class="flex flex-row">
             <div class="w-6/12">
-                @if($entidad->id)
-                    <h1 class="text-2xl font-semibold text-gray-900">{{ $entidad->entidad }}</h1>
-                @else
-                <h1 class="text-2xl font-semibold text-gray-900">Nuevo:</h1>
-                @endif
-                <x-jet-label for="clipro_id">{{ __('Tipo') }}</x-jet-label>
-                <x-select wire:model.defer="entidad.clipro_id" selectname="clipro_id" requiered>
-                    <option value="">-- Elige el tipo  --</option>
-                    @foreach ($tiposentidad as $tipoentidad)
-                    <option value="{{ $tipoentidad->id }}">{{ $tipoentidad->nombre }}</option>
-                    @endforeach
-                </x-select>
+                <div class="flex flex-row items-center">
+                    <div class="">
+                        @if($entidad->id)
+                            <h1 class="text-2xl font-semibold text-gray-900">{{ $entidad->entidad }}</h1>
+                        @else
+                            <h1 class="text-2xl font-semibold text-gray-900">Nuevo </h1>
+                        @endif
+                    </div>
+                    <div class="ml-3">
+                        <x-select wire:model.defer="entidad.entidadtipo_id" class="text-xl" selectname="entidadtipo_id" required>
+                            @foreach ($tiposentidad as $tipoentidad)
+                            <option value="{{ $tipoentidad->id }}">{{ $tipoentidad->nombre }}</option>
+                            @endforeach
+                        </x-select>
+                    </div>
+                </div>
             </div>
             <div class="w-6/12 text-right">
-                @if($tipo=="Cliente")
+                {{-- @if($tipo=="Cliente")
                     <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Cliente') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Cliente') }}</x-button.button>
                 @else
                     <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Proveedor') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Proveedor') }}</x-button.button>
-                @endif
+                @endif --}}
+                <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$tipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $tipo->nombre }}</x-button.button>
+
             </div>
         </div>
 
@@ -63,7 +69,7 @@
             </div>
             <div class="flex flex-col pl-2 mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                 <div class="w-full form-item">
-                    <x-jet-label for="entidad">{{ $tipo }}</x-jet-label>
+                    <x-jet-label for="entidad">{{ $tipo->nombre }}</x-jet-label>
                     <x-jet-input wire:model.defer="entidad.entidad" type="text" class="w-full " id="entidad" name="entidad" :value="old('entidad') "/>
                     <x-jet-input-error for="entidad" class="mt-2" />
                 </div>
@@ -221,11 +227,12 @@
                     style="display: none;"
                     class="p-2 m-2 text-gray-500 rounded-lg bg-green-50"
                     >Saved!</span>
-                    @if($tipo=="Cliente")
+                    {{-- @if($tipo=="Cliente")
                         <x-jet-secondary-button  onclick="location.href = '{{route('entidad.cli')}}'">{{ __('Volver') }}</x-jet-secondary-button>
                     @else
                         <x-jet-secondary-button  onclick="location.href = '{{route('entidad.pro')}}'">{{ __('Volver') }}</x-jet-secondary-button>
-                    @endif
+                    @endif --}}
+                        <x-jet-secondary-button  onclick="location.href = '{{route('entidad.tipo',$tipo )}}'">{{ __('Volver') }}</x-jet-secondary-button>
                 </div>
             </div>
         </form>

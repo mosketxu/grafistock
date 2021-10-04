@@ -9,13 +9,13 @@ class EntidadTipo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre','nombrecorto'];
+    protected $fillable = ['nombre','nombrecorto','nombreplural'];
 
     protected $primaryKey = 'id';
     public $incrementing = false;
 
     public function entidad()
     {
-        return $this->hasOne(Entidad::class,'clipro_id','id');
+        return $this->hasOne(Entidad::class,'entidadtipo_id','id');
     }
 }

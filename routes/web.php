@@ -29,7 +29,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         if (Auth::user()->hasRole('Operario'))
             return redirect()->route('stock.movimientos');
         else
-            return view('dashboard');}
+            // return view('dashboard');
+            return redirect()->route('entidad.index');
+        }
     )->name('dashboard');
 
 
@@ -41,10 +43,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('users', UserController::class)->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
 
     // Entidades
-    Route::get('clientes', [EntidadController::class,'cli'])->middleware('can:entidad.index')->name('entidad.cli'); //
-    Route::get('proveedores', [EntidadController::class,'pro'])->middleware('can:entidad.index')->name('entidad.pro'); //
-    Route::get('entidad/{tipo}', [EntidadController::class,'nueva'])->name('entidad.nueva');
-    Route::resource('entidad', EntidadController::class)->only(['create', 'edit']); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
+    // Route::get('clientes', [EntidadController::class,'cli'])->middleware('can:entidad.index')->name('entidad.cli'); //
+    // Route::get('proveedores', [EntidadController::class,'pro'])->middleware('can:entidad.index')->name('entidad.pro'); //
+    Route::get('entidad/{tipo}/tipo', [EntidadController::class,'tipo'])->middleware('can:entidad.index')->name('entidad.tipo'); //
+    Route::get('entidad/{entidadtipo_id}/nueva', [EntidadController::class,'nueva'])->name('entidad.nueva');
+    Route::resource('entidad', EntidadController::class)->only(['index','create', 'edit']); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
     Route::resource('producto', ProductoController::class);
     Route::resource('pedido', PedidoController::class);
 

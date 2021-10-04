@@ -42,20 +42,21 @@ class Ent extends Component
             'entidad.observaciones'=>'nullable',
             'entidad.usuario'=>'nullable',
             'entidad.password'=>'nullable',
-            'entidad.clipro_id'=>'required',
+            'entidad.entidadtipo_id'=>'required',
         ];
     }
 
     public function mount(Entidad $entidad,$tipo)
     {
         $this->entidad=$entidad;
-        if($tipo=='Cliente') $this->entidad->clipro_id=1;
-        if($tipo=='Proveedor') $this->entidad->clipro_id=2;
+        $this->entidad->entidadtipo_id=$tipo;
+        $this->tipo=EntidadTipo::find($tipo);
     }
 
 
     public function render()
     {
+        // dd($this->tipo);
         if (!$this->entidad->estado) $this->entidad->estado=true;
         $entidad=$this->entidad;
 
@@ -124,7 +125,7 @@ class Ent extends Component
             'cuentactblecli'=>$this->entidad->cuentactblecli,
             'usuario'=>$this->entidad->usuario,
             'password'=>$this->entidad->password,
-            'clipro_id'=>$this->entidad->clipro_id,
+            'entidadtipo_id'=>$this->entidad->entidadtipo_id,
             ]
         );
         if(!$this->entidad->id){

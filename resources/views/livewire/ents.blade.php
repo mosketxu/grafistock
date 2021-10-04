@@ -1,9 +1,9 @@
 <div class="">
-    @livewire('menu',['entidad'=>$entidad],key($entidad->id))
+    @livewire('menu')
 
     <div class="p-1 mx-2">
 
-        <h1 class="text-2xl font-semibold text-gray-900"> {{ $clipro_id=='1' ? 'Clientes' : 'Proveedores' }}</h1>
+        <h1 class="text-2xl font-semibold text-gray-900">{{ $enttipo->nombreplural }}
         <div class="py-1 space-y-4">
             @if (session()->has('message'))
                 <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
@@ -20,18 +20,15 @@
                 <div class="flex w-2/4 space-x-2">
                     <input type="text" wire:model="search" class="py-1 border border-blue-100 rounded-lg" placeholder="Búsqueda..." autofocus/>
                 </div>
-                @if($clipro_id=='1')
-                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Cliente') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Cliente') }}</x-button.button>
-                @else
-                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Proveedor') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Proveedor') }}</x-button.button>
-                @endif
+                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$enttipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $enttipo->nombre }}</x-button.button>
             </div>
             {{-- tabla entidades --}}
             <div class="flex-col space-y-4">
                 <x-table>
                     <x-slot name="head">
                         {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
-                        <x-table.heading class="pl-4 text-left" >{{ __('Proveedor') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Entidad') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Tipo') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Nif') }} </x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Dirección') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('CP') }}</x-table.heading>
@@ -45,6 +42,9 @@
                             <x-table.row wire:loading.class.delay="opacity-50">
                                 <x-table.cell>
                                     <input type="text" value="{{ $entidad->entidad }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </x-table.cell>
+                                <x-table.cell>
+                                    <input type="text" value="{{ $entidad->entidadtipo->nombre }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell>
                                     <input type="text" value="{{ $entidad->nif }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>

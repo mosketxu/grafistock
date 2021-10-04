@@ -9,7 +9,7 @@ class Entidad extends Model
 {
     use HasFactory;
     protected $table = 'entidades';
-    protected $fillable=['entidad','clipro_id','direccion','cp','localidad','provincia_id','pais_id',
+    protected $fillable=['entidad','entidadtipo_id','direccion','cp','localidad','provincia_id','pais_id',
                         'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
                         'banco1','iban1','banco2','iban2','banco3','iban3',
                         'metodopago_id','diafactura','diavencimiento',
@@ -23,6 +23,11 @@ class Entidad extends Model
     public function provincia()
     {
         return $this->belongsTo(Provincia::class);
+    }
+
+    public function entidadtipo()
+    {
+        return $this->belongsTo(EntidadTipo::class);
     }
 
     public function metodopago()

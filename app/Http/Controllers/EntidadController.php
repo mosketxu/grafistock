@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Entidad;
+use App\Models\{Entidad,EntidadTipo};
 use Illuminate\Http\Request;
 
 class EntidadController extends Controller
@@ -14,25 +14,36 @@ class EntidadController extends Controller
         $this->middleware('can:entidad.edit')->only('edit','update');
     }
 
-    public function cli()
+    public function index()
     {
-        $clipro_id='1';
-        return view('entidad.index',compact('clipro_id'));
-    }
-    public function pro()
-    {
-        $clipro_id='2';
-        return view('entidad.index',compact('clipro_id'));
+        $entidadtipo_id='0';
+        return view('entidad.index',compact('entidadtipo_id'));
     }
 
-    public function nueva($tipo)
+    public function tipo($entidadtipo_id)
     {
-        return view('entidad.create',compact('tipo'));
+        return view('entidad.index',compact('entidadtipo_id'));
+    }
+
+    // public function cli()
+    // {
+    //     $entidadtipo_id='1';
+    //     return view('entidad.index',compact('entidadtipo_id'));
+    // }
+    // public function pro()
+    // {
+    //     $entidadtipo_id='2';
+    //     return view('entidad.index',compact('entidadtipo_id'));
+    // }
+
+    public function nueva($entidadtipo_id)
+    {
+        return view('entidad.create',compact('entidadtipo_id'));
     }
 
     public function edit(Entidad $entidad)
     {
-        $tipo = $entidad->clipro_id=="1" ? 'Cliente' : 'Proveedor';
+        $tipo = $entidad->entidadtipo_id;
         return view('entidad.edit',compact('entidad','tipo'));
     }
 
