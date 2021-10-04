@@ -16,10 +16,11 @@ class EntidadTiposTableSeeder extends Seeder
         \DB::table('entidad_tipos')->delete();
 
         \DB::table('entidad_tipos')->insert(array (
-            0 =>array ('id' => 0,'nombre' => 'Contacto','nombrecorto' => 'Solo contacto',),
-            1 =>array ('id' => 1,'nombre' => 'Cliente','nombrecorto' => 'Cli',),
-            2 =>array ('id' => 2,'nombre' => 'Proveedor','nombrecorto' => 'Pro',),
-            3 =>array ('id' => 3,'nombre' => 'Cliente-Proveedor','nombrecorto' => 'CliPro',),
+            0 =>array ('id' => 0,'nombre' => 'Contacto','nombrecorto' => 'CON','nombreplural'=>'Entidades'),
+            1 =>array ('id' => 1,'nombre' => 'Cliente','nombrecorto' => 'CLI','nombreplural'=>'Clientes'),
+            2 =>array ('id' => 2,'nombre' => 'Proveedor','nombrecorto' => 'PRO','nombreplural'=>'Proveedores'),
+            3 =>array ('id' => 3,'nombre' => 'Cliente-Proveedor','nombrecorto' => 'CLP','nombreplural'=>'Clientes/Proveedores'),
+            3 =>array ('id' => 4,'nombre' => 'Prospect','nombrecorto' => 'PRC','nombreplural'=>'Prospecciones'),
         ));
     }
 }
