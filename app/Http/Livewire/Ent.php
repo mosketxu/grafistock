@@ -37,6 +37,7 @@ class Ent extends Component
             'entidad.iban1'=>'nullable',
             'entidad.iban2'=>'nullable',
             'entidad.iban3'=>'nullable',
+            'entidad.ratio'=>'nullable|numeric',
             'entidad.diafactura'=>'numeric|nullable',
             'entidad.diavencimiento'=>'numeric|nullable',
             'entidad.observaciones'=>'nullable',
@@ -82,7 +83,7 @@ class Ent extends Component
                     Rule::unique('entidades','nif')->ignore($this->entidad->id)],
                 ]
             );
-            $mensaje="Proveedor actualizad satisfactoriamente";
+            $mensaje="Proveedor actualizado satisfactoriamente";
         }else{
             $this->validate([
                 'entidad.entidad'=>'required|unique:entidades,entidad',
@@ -118,6 +119,7 @@ class Ent extends Component
             'iban1'=>$this->entidad->iban1,
             'iban2'=>$this->entidad->iban2,
             'iban3'=>$this->entidad->iban3,
+            'ratio'=>$this->entidad->ratio,
             'diafactura'=>$this->entidad->diafactura,
             'diavencimiento'=>$this->entidad->diavencimiento,
             'observaciones'=>$this->entidad->observaciones,

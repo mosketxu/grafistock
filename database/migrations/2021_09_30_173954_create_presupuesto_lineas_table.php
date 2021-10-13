@@ -15,8 +15,18 @@ class CreatePresupuestoLineasTable extends Migration
     {
         Schema::create('presupuesto_lineas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-        });
+            $table->foreignId('presupuesto_id')->constrained('presupuestos')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('visible')->nullable()->default(true);
+            $table->integer('orden')->nullable()->default('0');
+            $table->string('descripcion');
+            $table->double('preciocoste', 15, 2)->default(0.00);
+            $table->double('precioventa', 15, 2)->default(0.00);
+            $table->double('ratio', 15, 2)->default(0.00);
+            $table->double('unidades', 15, 2)->default(0.00);
+            $table->string('ruta')->nullable();
+            $table->string('fichero')->nullable();
+            $table->string('observaciones')->nullable();
+            $table->timestamps();        });
     }
 
     /**

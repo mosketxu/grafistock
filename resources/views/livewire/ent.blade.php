@@ -136,6 +136,10 @@
             </div>
             <div class="flex flex-col pl-2 mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                 <div class="w-full form-item">
+                    <x-jet-label for="ratio" >{{ __('Ratio') }}</x-jet-label>
+                    <x-jet-input  wire:model.defer="entidad.ratio" type="number" step="any" id="ratio" name="ratio" :value="old('ratio')" class="w-full"/>
+                </div>
+                <div class="w-full form-item">
                     <x-jet-label for="banco1" >{{ __('Banco 1') }}</x-jet-label>
                     <x-jet-input  wire:model.defer="entidad.banco1" type="text" id="banco1" name="banco1" :value="old('banco1')" class="w-full"/>
                 </div>

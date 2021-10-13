@@ -79,11 +79,11 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'permiso.delete','description'=>'Permite Borrar un permiso'])->syncRoles($admin,$gestion);
 
         //Presupuestos
-        Permission::create(['name'=>'prespuesto.index','description'=>'Lista todos los presupuestos del sistema'])->syncRoles($admin,$comercial);
-        Permission::create(['name'=>'prespuesto.create','description'=>'Permite Crear un presupuesto'])->syncRoles($admin,$comercial);
-        Permission::create(['name'=>'prespuesto.edit','description'=>'Permite Editar una presupuesto'])->syncRoles($admin,$comercial);
-        Permission::create(['name'=>'prespuesto.update','description'=>'Permite Actualizar una presupuesto'])->syncRoles($admin,$comercial);
-        Permission::create(['name'=>'prespuesto.delete','description'=>'Permite Borrar un presupuesto'])->syncRoles($admin,$comercial);
+        Permission::create(['name'=>'presupuesto.index','description'=>'Lista todos los presupuestos del sistema'])->syncRoles($admin,$comercial);
+        Permission::create(['name'=>'presupuesto.create','description'=>'Permite Crear un presupuesto'])->syncRoles($admin,$comercial);
+        Permission::create(['name'=>'presupuesto.edit','description'=>'Permite Editar una presupuesto'])->syncRoles($admin,$comercial);
+        Permission::create(['name'=>'presupuesto.update','description'=>'Permite Actualizar una presupuesto'])->syncRoles($admin,$comercial);
+        Permission::create(['name'=>'presupuesto.delete','description'=>'Permite Borrar un presupuesto'])->syncRoles($admin,$comercial);
 
         //otros
         Permission::create(['name'=>'dash','description'=>'Acceder al Dashboard'])->syncRoles($admin,$gestion);

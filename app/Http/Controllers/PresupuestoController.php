@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PresupuestoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:presupuesto.index');
+        $this->middleware('can:presupuesto.edit')->only('edit','update');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class PresupuestoController extends Controller
      */
     public function index()
     {
-        //
+        return view('presupuesto.index');
     }
 
     /**
@@ -24,7 +30,7 @@ class PresupuestoController extends Controller
      */
     public function create()
     {
-        //
+        return view('presupuesto.create');
     }
 
     /**
@@ -57,7 +63,7 @@ class PresupuestoController extends Controller
      */
     public function edit(Presupuesto $presupuesto)
     {
-        //
+        return view('presupuesto.edit',compact('presupuesto'));
     }
 
     /**

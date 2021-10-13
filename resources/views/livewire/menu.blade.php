@@ -15,7 +15,12 @@
                     @can('entidad.index')
 
                     <x-jet-nav-link href="{{ route('entidad.index') }}" :active="explode('.',Request::route()->getName())[0] =='entidad'">
-                        {{ __('Entidades') }}
+                        {{ __('Contactos') }}
+                    </x-jet-nav-link>
+                    @endcan
+                    @can('presupuesto.index')
+                    <x-jet-nav-link href="{{ route('presupuesto.index') }}" :active="request()->routeIs('presupuesto.index')">
+                        {{ __('Presupuestos') }}
                     </x-jet-nav-link>
                     @endcan
                     @can('producto.index')
@@ -149,16 +154,13 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1 ">
             @can('entidad.index')
-            {{-- <x-jet-responsive-nav-link href="{{ route('entidad.pro') }}" :active="request()->routeIs('entidad.pro')">
-                {{ __('Proveedores') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('entidad.cli') }}" :active="request()->routeIs('entidad.cli')">
-                {{ __('Clientes') }}
-            </x-jet-responsive-nav-link> --}}
             <x-jet-nav-link href="{{ route('entidad.index') }}" :active="request()->routeIs('entidad.index')">
-                {{ __('Entidades') }}
+                {{ __('Contactos') }}
             </x-jet-nav-link>
             @endcan
+            <x-jet-nav-link href="{{ route('presupuesto.index') }}" :active="request()->routeIs('presupuesto.index')">
+                {{ __('Presupuestos') }}
+            </x-jet-nav-link>
             @can('producto.index')
             <x-jet-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')">
                 {{ __('Productos') }}

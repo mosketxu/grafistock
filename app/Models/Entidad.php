@@ -11,7 +11,7 @@ class Entidad extends Model
     protected $table = 'entidades';
     protected $fillable=['entidad','entidadtipo_id','direccion','cp','localidad','provincia_id','pais_id',
                         'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
-                        'banco1','iban1','banco2','iban2','banco3','iban3',
+                        'banco1','iban1','banco2','iban2','banco3','iban3','ratio',
                         'metodopago_id','diafactura','diavencimiento',
                         'cuentactblepro','cuentactblecli','observaciones','estado','password'];
 
@@ -38,6 +38,11 @@ class Entidad extends Model
     public function pedidos()
     {
         return $this->hasMany(Pedido::class);
+    }
+
+    public function presupuestos()
+    {
+        return $this->hasMany(Presupuesto::class);
     }
 
     public function productos()

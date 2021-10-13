@@ -13,9 +13,9 @@ class Presupuesto extends Model
         'fechapresupuesto' => 'date:Y-m-d',
     ];
 
-    protected $fillable=['presupuesto','entidad_id','fechapresupuesto','precioventa','ratio','unidades','iva','ruta','fichero','estado','observaciones'];
+    protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','precioventa','ratio','unidades','iva','ruta','fichero','estado','observaciones'];
 
-    public function prespuestolineas()
+    public function presupuestolineas()
     {
         return $this->hasMany(PresupuestoLinea::class)->orderBy('orden');
     }
@@ -29,5 +29,28 @@ class Presupuesto extends Model
     {
         return $this->belongsTo(Solicitante::class);
     }
+
+    public function getRutaficheroAttribute()
+    {
+        return $this->ruta.'/'.$this->fichero;
+    }
+
+    public function scopeImprimirPresupuesto()
+    {
+        $presupuesto=Presupuesto::with('entidad')
+        ->with('presupuestodetalles')
+        ->find($this->id);
+
+        $base=$presupuesto->presupuestodetalles->sum('base');
+
+
+        $pdf = \PDF::loadView('presupuesto.presupuestopdf', compact(['presupuesto','base']));
+
+        Storage::put('public/'.$presupuesto->ruta.'/'.$presupuesto->fichero, $pdf->output());
+
+        return $pdf->download($presupuesto->fichero);
+    }
+
+
 
 }

@@ -9,7 +9,7 @@ class PresupuestoLineaDetalle extends Model
 {
     use HasFactory;
 
-    protected $fillable= ['presupuesto_id','producto_id','visible','orden','descripcion','preciocoste','precioventa','ratio','unidades','ruta','fichero','observaciones'];
+    protected $fillable= ['presupuestolinea_id','tipo','productoaacion_id','visible','orden','descripcion','preciocoste','precioventa','ratio','unidades','ruta','fichero','observaciones'];
 
     public function presupuestolinea()
     {
