@@ -85,7 +85,6 @@ class Presups extends Component
         $this->fechapresupuesto='';
         $this->precioventa='0';
         $this->preciocoste='0';
-        $this->ratio='1';
         $this->unidades='0';
         $this->iva='0.21';
         $this->ruta='';
@@ -131,8 +130,11 @@ class Presups extends Component
             'estado'=>$this->estado,
             'observaciones'=>$this->observaciones,
         ]);
-        session()->flash('message',
-            $this->id ? 'Presupuesto actualizado satisfactoriamente.' : 'Presupuesto creado satisfactoriamente.');
+
+        $this->message='';
+        $message="Prespuesto creado satisfactoriamente";
+
+        session()->flash('message',$message);
 
         if($destino=="editar"){
             $this->closeNewModal();

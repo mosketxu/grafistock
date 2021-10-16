@@ -3,7 +3,7 @@
         <h3 class="ml-2 font-semibold ">Nueva composición</h3>
     </div>
     {{-- zona mensajes --}}
-    @include('errormessages')
+    @include('error')
 
     <table table class="min-w-full divide-y divide-gray-200">
         <thead>

@@ -5,7 +5,7 @@
 
     {{-- Lineas del prespuesot --}}
 
-    @include('errormessages')
+    @include('error')
 
     <table table class="min-w-full ">
         <thead>

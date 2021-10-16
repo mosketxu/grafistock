@@ -14,6 +14,7 @@ class Presup extends Component
     public $preciocoste;
     public $descripcion;
     public $observaciones;
+    public $mesagge;
 
     protected $listeners = [ 'presupuestorefresh' => 'presupuestorefresh'];
 
@@ -47,7 +48,6 @@ class Presup extends Component
 
     public function render()
     {
-        // dd($this->presupuesto);
         return view('livewire.presup');
     }
 

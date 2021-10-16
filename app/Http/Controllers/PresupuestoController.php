@@ -63,7 +63,8 @@ class PresupuestoController extends Controller
      */
     public function edit(Presupuesto $presupuesto)
     {
-        return view('presupuesto.edit',compact('presupuesto'));
+        $message='';
+        return view('presupuesto.edit',compact('presupuesto','message'));
     }
 
     /**

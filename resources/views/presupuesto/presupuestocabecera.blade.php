@@ -8,17 +8,17 @@
                 <div class="w-full form-item sm:w-3/12">
                     <label class="block text-gray-700">{{ __('Cliente') }}</label>
                     <input type="text" value="{{ $presupuesto->entidad->entidad }}" readonly
-                        class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                        class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                 </div>
                 <div class="w-full form-item sm:w-2/12">
                     <label class="block text-gray-700">{{ __('Solicitante') }}</label>
                     <input type="text" value="{{ $presupuesto->solicitante->nombre }}" readonly
-                        class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                        class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                 </div>
                 <div class="w-full form-item sm:w-1/12">
-                    <label class="block text-gray-700">{{ __('F.Presupuesto') }}</label>
-                    <input type="text" value="{{ $presupuesto->fechapresu }}" readonly
-                        class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                    <label class="block text-center text-gray-700">{{ __('F.Presupuesto') }}</label>
+                    <input type="text" value="{{ $presupuesto->fechapresu }}" disabled
+                        class="w-full text-xs tracking-tighter text-center border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('Unidades') }}</label>
@@ -27,14 +27,13 @@
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('€ Coste') }}</label>
-                    {{-- <input type="text" value="{{ $presupuesto->preciocoste }}" readonly --}}
-                    <input type="text" wire:model.defer="preciocoste" readonly
-                        class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                    <input type="text" wire:model.defer="preciocoste" disabled
+                        class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('Ratio') }}</label>
-                    <input type="text" value="{{ $presupuesto->ratio }}" readonly
-                        class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                    <input type="text" value="{{ $presupuesto->ratio }}" disabled
+                        class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('€ Venta') }}</label>

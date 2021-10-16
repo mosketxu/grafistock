@@ -32,7 +32,7 @@
                         <div class="flex space-x-2">
                             <div class="mb-2">
                                 <label for="entidad_id" class="px-1 text-sm text-gray-600">Cliente:</label>
-                                <x-select wire:model="entidad_id" selectname="entidad_id" required
+                                <x-select wire:model.lazy="entidad_id" selectname="entidad_id" required
                                     class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 <option value="">-- choose --</option>
                                     @foreach ($clientes as $cliente)
@@ -43,7 +43,7 @@
                             </div>
                             <div class="mb-2">
                                 <label for="solicitante_id" class="px-1 text-sm text-gray-600">Solicitante:</label>
-                                <x-select wire:model="solicitante_id" selectname="solicitante_id" required
+                                <x-select wire:model.defer="solicitante_id" selectname="solicitante_id" required
                                     class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 <option value="">-- choose --</option>
                                     @foreach ($solicitantes as $solicitante)
@@ -54,7 +54,7 @@
                             </div>
                             <div class="mb-2">
                                 <label for="fechapresupuesto" class="px-1 text-sm text-gray-600">Fecha:</label>
-                                <input type="date" id="fechapresupuesto" wire:model.lazy="fechapresupuesto" required
+                                <input type="date" id="fechapresupuesto" wire:model.defer="fechapresupuesto" required
                                 class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 @error('fechapresupuesto') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
@@ -62,7 +62,7 @@
                         <div class="flex">
                             <div class="w-full mb-2">
                                 <label for="descripcion" class="px-1 text-sm text-gray-600">Descripción:</label>
-                                <input type="text" id="descripcion" wire:model="descripcion" required
+                                <input type="text" id="descripcion" wire:model.defer="descripcion" required
                                     class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 @error('descripcion') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
@@ -70,25 +70,25 @@
                         <div class="flex space-x-2">
                             <div class="mb-2">
                                 <label for="preciocoste" class="px-1 text-sm text-gray-600">€ Coste:</label>
-                                <input type="number" id="preciocoste" wire:model="preciocoste" disabled
+                                <input type="number" id="preciocoste" wire:model.defer="preciocoste" disabled
                                 class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 @error('preciocoste') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
                                 <label for="ratio" class="px-1 text-sm text-gray-600">Ratio:</label>
-                                <input type="number" id="ratio" wire:model="ratio" disabled
+                                <input type="number" id="ratio" wire:model.defer="ratio" disabled
                                 class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 @error('ratio') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
                                 <label for="unidades" class="px-1 text-sm text-gray-600">Unidades:</label>
-                                <input type="number" id="unidades" wire:model="unidades"
+                                <input type="number" id="unidades" wire:model.defer="unidades"
                                 class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 @error('unidades') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
                                 <label for="precioventa" class="px-1 text-sm text-gray-600">€ Venta:</label>
-                                <input type="number" id="precioventa" wire:model="precioventa"
+                                <input type="number" id="precioventa" wire:model.defer="precioventa"
                                 class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 @error('precioventa') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>

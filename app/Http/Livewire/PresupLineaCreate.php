@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Entidad;
 use App\Models\Presupuesto;
 use App\Models\PresupuestoLinea;
 use Livewire\Component;
@@ -16,7 +17,7 @@ public $orden=0;
 public $descripcion;
 public $preciocoste='0';
 public $precioventa;
-public $ratio='1';
+public $ratio;
 public $unidades;
 public $fichero;
 public $observaciones;
@@ -38,6 +39,7 @@ protected $rules = [
     {
         $this->presupuesto=Presupuesto::find($presupuestoId);
         $this->presupuesto_id=$presupuestoId;
+        $this->ratio=Entidad::find($this->presupuesto->entidad_id)->ratio;
     }
 
     public function render()
@@ -64,13 +66,15 @@ protected $rules = [
 
         $this->dispatchBrowserEvent('notify', 'Línea añadida con éxito');
 
+        $p=Presupuesto::find($this->presupuesto->id)->recalculo();
+        $this->emit('presupuestorefresh');
         $this->emit('linearefresh');
+
         $this->visible='';
         $this->orden='';
         $this->descripcion='';
         $this->preciocoste='0';
         $this->precioventa='0';
-        $this->ratio='1';
         $this->unidades='0';
         $this->observaciones='';
     }

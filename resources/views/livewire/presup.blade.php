@@ -16,7 +16,7 @@
         </div>
 
         {{-- mensajes y errores --}}
-        @include('errormessages')
+        @include('error')
 
         {{-- cabecera --}}
         <div class="flex-col text-gray-500 rounded-lg">
