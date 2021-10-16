@@ -32,7 +32,7 @@
                         </div>
                         <div class="text-xs">
                             <label class="px-1 text-gray-600">
-                                Presupuesto
+                                Cliente
                                 @if($filtroclipro!='')
                                     <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1" title="reset filter"/>
                                 @endif
@@ -61,6 +61,20 @@
                                 @endif
                             </label>
                             <input type="text" wire:model="filtromes" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Mes (número)"/>
+                        </div>
+                        <div class="text-xs">
+                            <label class="px-1 text-gray-600">
+                                Estado
+                                @if($filtroestado!='')
+                                    <x-icon.filter-slash-a wire:click="$set('filtroestado', '')" class="pb-1" title="reset filter"/>
+                                @endif
+                            </label>
+                            <select wire:model="filtroestado" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" >
+                                <option value="">-- selecciona --</option>
+                                <option value="0">En curso</option>
+                                <option value="1">Aceptado</option>
+                                <option value="2">Rechazado</option>
+                            </select>
                         </div>
                     </div>
                     {{-- Parte derecha --}}
@@ -99,13 +113,14 @@
                             <th class="w-5 py-3 pl-2 font-medium text-center ">#</th>
                             <th class="pl-4 font-medium text-left">{{ __('Presupuesto') }}</th>
                             <th class="pl-4 font-medium text-left">{{ __('Cliente') }} </th>
-                            <th class="pl-4 font-medium text-left">{{ __('F.Presupuesto') }}</th>
+                            <th class="pr-4 font-medium text-right">{{ __('F.Presupuesto') }}</th>
                             <th class="pl-4 font-medium text-left">{{ __('Solicitante') }} </th>
                             <th class="pl-4 font-medium text-left">{{ __('Descripción') }} </th>
                             <th class="pr-4 font-medium text-right">{{ __('Unidades') }}</th>
                             <th class="pr-4 font-medium text-right">{{ __('€ Coste') }}</th>
                             <th class="pl-4 font-medium text-left">{{ __('Ratio') }} </th>
                             <th class="pr-4 font-medium text-right">{{ __('€ Venta') }}</th>
+                            <th class="pr-4 font-medium text-right">{{ __('Estado') }}</th>
                             <th colspan="2"></th>
                         </tr>
                     </thead>
@@ -141,7 +156,7 @@
                                     <input type="text" value="{{ $presupuesto->entidad }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $presupuesto->fechapresupuesto->format('d/m/Y') }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    <input type="text" value="{{ $presupuesto->fechapresu }}" class="w-full text-xs font-thin text-right text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
                                 <td>
                                     <input type="text" value="{{ $presupuesto->solicitante->nombre ?? '-' }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
@@ -161,17 +176,16 @@
                                 <td class="text-right">
                                     <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->precioventa}}</span>
                                 </td>
-
+                                <td>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs leading-4 bg-{{ $presupuesto->status_color[0] }}-100 text-green-800">
+                                        {{ $presupuesto->status_color[1] }}
+                                    </span>
+                                </td>
                                 <td class="">
                                     <div class="flex items-center justify-center">
-                                        {{-- <x-icon.edit-a href="{{ route('presupuesto.edit',$presupuesto) }}" class="text-green-600" title="Editar Presupuesto"/> --}}
                                         <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600" title="Editar Presupuesto"/>
-                                        {{-- @if($presupuesto->presupuesto)
-                                            <x-icon.pdf-a href="{{route('facturacion.imprimirfactura',$presupuesto) }}" title="PDF"/>
-                                        @else
-                                            <x-icon.pdf-b title="PDF" disabled/>
-                                        @endif
-                                        &nbsp;&nbsp;&nbsp; --}}
+                                        <x-icon.clipboard-a href="{{route('presupuesto.edit', $presupuesto) }}" class="text-green-600" title="Composición Presupuesto"/>
+
                                         <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1 " title="Borrar"/>
                                     </div>
                                 </td>
@@ -216,22 +230,6 @@
         </div>
 
     </div>
-    <!-- Nuevo  Modal -->
-    <form wire:submit.prevent="nuevopresupuesto">
-        <x-modal.confirmation wire:model.defer="showDeleteModal">
-            <x-slot name="title">Borrar Presupuesto</x-slot>
-
-            <x-slot name="content">
-                <div class="py-8 text-gray-700">¿Esás seguro? Esta acción es irreversible.</div>
-            </x-slot>
-
-            <x-slot name="footer">
-                <x-button.secondary wire:click="$set('showDeleteModal', false)">Cancel</x-button.secondary>
-
-                <x-button.primary type="submit">Delete</x-button.primary>
-            </x-slot>
-        </x-modal.confirmation>
-    </form>
 
     <!-- Delete Transactions Modal -->
     <form wire:submit.prevent="deleteSelected">

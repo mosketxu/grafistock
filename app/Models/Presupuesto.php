@@ -4,16 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
+
 
 class Presupuesto extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-        'fechapresupuesto' => 'date:Y-m-d',
-    ];
+    // protected $casts = [
+    //     'fechapresupuesto' => 'date:Y-m-d',
+    // ];
 
-    protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','precioventa','ratio','unidades','iva','ruta','fichero','estado','observaciones'];
+
+    protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','precioventa','preciocoste','ratio','unidades','iva','ruta','fichero','estado','observaciones'];
 
     public function presupuestolineas()
     {
@@ -29,6 +32,28 @@ class Presupuesto extends Model
     {
         return $this->belongsTo(Solicitante::class);
     }
+
+    public function recalculo()
+    {
+        $this->precioventa=$this->presupuestolineas->sum('precioventa');
+        $this->preciocoste=$this->presupuestolineas->sum('preciocoste');
+        $this->save();
+    }
+
+    public function getFechapresuAttribute()
+    {
+        return Carbon::parse($this->fechapresupuesto)->format('d-m-Y');
+    }
+
+    public function getStatusColorAttribute()
+    {
+        return [
+            '0'=>['gray','En curso'],
+            '1'=>['green','Aceptado'],
+            '2'=>['red','Rechazado']
+        ][$this->estado] ?? ['gray',''];
+    }
+
 
     public function getRutaficheroAttribute()
     {

@@ -171,6 +171,7 @@
                     <x-button.primary type="submit">Modificar</x-button.primary>
                 </x-slot>
             </x-modal.confirmation>
+        </form>
     <script>
         setTimeout(function() {
             getElementById('#mimensaje').fadeOut('fast');
