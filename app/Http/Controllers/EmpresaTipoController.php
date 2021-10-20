@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Presupuesto;
+use App\Models\EmpresaTipo;
 use Illuminate\Http\Request;
 
-class PresupuestoController extends Controller
+class EmpresaTipoController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('can:presupuesto.index');
-        $this->middleware('can:presupuesto.edit')->only('edit','update');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +14,7 @@ class PresupuestoController extends Controller
      */
     public function index()
     {
-        return view('presupuesto.index');
+        //
     }
 
     /**
@@ -31,7 +24,7 @@ class PresupuestoController extends Controller
      */
     public function create()
     {
-        // return view('presupuesto.create');
+        //
     }
 
     /**
@@ -48,10 +41,10 @@ class PresupuestoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Presupuesto  $presupuesto
+     * @param  \App\Models\EmpresaTipo  $empresaTipo
      * @return \Illuminate\Http\Response
      */
-    public function show(Presupuesto $presupuesto)
+    public function show(EmpresaTipo $empresaTipo)
     {
         //
     }
@@ -59,22 +52,22 @@ class PresupuestoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Presupuesto  $presupuesto
+     * @param  \App\Models\EmpresaTipo  $empresaTipo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Presupuesto $presupuesto)
+    public function edit(EmpresaTipo $empresaTipo)
     {
-        return view('presupuesto.edit',compact('presupuesto'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Presupuesto  $presupuesto
+     * @param  \App\Models\EmpresaTipo  $empresaTipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Presupuesto $presupuesto)
+    public function update(Request $request, EmpresaTipo $empresaTipo)
     {
         //
     }
@@ -82,10 +75,10 @@ class PresupuestoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Presupuesto  $presupuesto
+     * @param  \App\Models\EmpresaTipo  $empresaTipo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Presupuesto $presupuesto)
+    public function destroy(EmpresaTipo $empresaTipo)
     {
         //
     }

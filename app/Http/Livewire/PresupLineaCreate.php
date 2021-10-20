@@ -39,7 +39,7 @@ protected $rules = [
     {
         $this->presupuesto=Presupuesto::find($presupuestoId);
         $this->presupuesto_id=$presupuestoId;
-        $this->ratio=Entidad::find($this->presupuesto->entidad_id)->ratio;
+        $this->ratio=Entidad::find($this->presupuesto->entidad_id)->ratio ;
     }
 
     public function render()
@@ -49,6 +49,7 @@ protected $rules = [
 
     public function save()
     {
+        $this->ratio= !$this->ratio ? 1 : $this->ratio;
         $this->validate();
 
         PresupuestoLinea::create([

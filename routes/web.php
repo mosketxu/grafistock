@@ -3,7 +3,7 @@
 use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController,
         PedidoController,StockController,
         UserController, RoleController,
-        StockPeticionController, PresupuestoController};
+        StockPeticionController, PresupuestoController, PresupuestoLineaController};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,8 +61,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('stockpeticion', StockPeticionController::class);
 
     //presupuestos
-
     Route::resource('presupuesto', PresupuestoController::class);
+
+    //presupuestolineadetalle
+    Route::get('presupuestolinea/{presupuestolinea}]', [PresupuestoLineaController::class,'index'])->name('presupuestolinea.index');
+    Route::get('presupuestolinea/{presupuestolinea}/{acciontipoId}', [PresupuestoLineaController::class,'create'])->name('presupuestolinea.create');
 
     // Route::get('/clear-cache', function() {
     //     Artisan::call('cache:clear');

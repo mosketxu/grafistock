@@ -20,7 +20,7 @@ class EntidadTiposTableSeeder extends Seeder
             1 =>array ('id' => 1,'nombre' => 'Cliente','nombrecorto' => 'CLI','nombreplural'=>'Clientes'),
             2 =>array ('id' => 2,'nombre' => 'Proveedor','nombrecorto' => 'PRO','nombreplural'=>'Proveedores'),
             3 =>array ('id' => 3,'nombre' => 'Cliente-Proveedor','nombrecorto' => 'CLP','nombreplural'=>'Clientes/Proveedores'),
-            3 =>array ('id' => 4,'nombre' => 'Prospect','nombrecorto' => 'PRC','nombreplural'=>'Prospecciones'),
+            4 =>array ('id' => 4,'nombre' => 'Prospect','nombrecorto' => 'PRC','nombreplural'=>'Prospecciones'),
         ));
     }
 }

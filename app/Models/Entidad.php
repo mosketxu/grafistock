@@ -9,7 +9,7 @@ class Entidad extends Model
 {
     use HasFactory;
     protected $table = 'entidades';
-    protected $fillable=['entidad','entidadtipo_id','direccion','cp','localidad','provincia_id','pais_id',
+    protected $fillable=['entidad','entidadtipo_id','empresatipo_id','direccion','cp','localidad','provincia_id','pais_id',
                         'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
                         'banco1','iban1','banco2','iban2','banco3','iban3','ratio',
                         'metodopago_id','diafactura','diavencimiento',
@@ -18,6 +18,11 @@ class Entidad extends Model
     public function pais()
     {
         return $this->belongsTo(Pais::class);
+    }
+
+    public function empresatipo()
+    {
+        return $this->belongsTo(EmpresaTipo::class);
     }
 
     public function provincia()

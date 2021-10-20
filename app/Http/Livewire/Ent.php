@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad, EntidadTipo, MetodoPago,Pais,Provincia};
+use App\Models\{Entidad, EntidadTipo, EmpresaTipo, MetodoPago,Pais,Provincia};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 
@@ -44,6 +44,7 @@ class Ent extends Component
             'entidad.usuario'=>'nullable',
             'entidad.password'=>'nullable',
             'entidad.entidadtipo_id'=>'required',
+            'entidad.empresatipo_id'=>'nullable',
         ];
     }
 
@@ -66,7 +67,8 @@ class Ent extends Component
         $paises=Pais::all();
         $paises=Pais::all();
         $tiposentidad=EntidadTipo::orderBy('id')->get();
-        return view('livewire.ent',compact('metodopagos','provincias','paises','tiposentidad'));
+        $tiposempresa=EmpresaTipo::orderBy('nombrecorto')->get();
+        return view('livewire.ent',compact('metodopagos','provincias','paises','tiposentidad','tiposempresa'));
     }
 
     public function save()
@@ -128,6 +130,7 @@ class Ent extends Component
             'usuario'=>$this->entidad->usuario,
             'password'=>$this->entidad->password,
             'entidadtipo_id'=>$this->entidad->entidadtipo_id,
+            'empresatipo_id'=>$this->entidad->empresatipo_id,
             ]
         );
         if(!$this->entidad->id){

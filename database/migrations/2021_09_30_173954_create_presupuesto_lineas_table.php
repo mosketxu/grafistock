@@ -18,7 +18,7 @@ class CreatePresupuestoLineasTable extends Migration
             $table->foreignId('presupuesto_id')->constrained('presupuestos')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('visible')->nullable()->default(true);
             $table->integer('orden')->nullable()->default('0');
-            $table->string('descripcion');
+            $table->string('descripcion',255);
             $table->double('preciocoste', 15, 2)->default(0.00);
             $table->double('precioventa', 15, 2)->default(0.00);
             $table->double('ratio', 15, 2)->default(0.00);

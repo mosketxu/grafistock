@@ -135,6 +135,17 @@
                 <h3 class="font-semibold ">Datos Facturación</h3>
             </div>
             <div class="flex flex-col pl-2 mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+                @if($entidad->entidadtipo_id=='1' || $entidad->entidadtipo_id=='3'|| $entidad->entidadtipo_id=='4' )
+                <div class="w-full form-item">
+                    <x-jet-label >{{ __('Cat.Empresa') }}</x-jet-label>
+                    <x-select wire:model.defer="entidad.empresatipo_id" selectname="empresatipo_id" class="w-full">
+                        <option value="">-- choose --</option>
+                        @foreach ($tiposempresa as $tipoempresa)
+                            <option value="{{ $tipoempresa->id }}">{{ $tipoempresa->nombre }}</option>
+                        @endforeach
+                    </x-select>
+                </div>
+                @endif
                 <div class="w-full form-item">
                     <x-jet-label for="ratio" >{{ __('Ratio') }}</x-jet-label>
                     <x-jet-input  wire:model.defer="entidad.ratio" type="number" step="any" id="ratio" name="ratio" :value="old('ratio')" class="w-full"/>

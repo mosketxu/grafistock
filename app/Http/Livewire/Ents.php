@@ -20,6 +20,7 @@ class Ents extends Component
         $enttipo=EntidadTipo::find($this->entidadtipo_id);
         $entidades=Entidad::query()
         ->with('entidadtipo')
+        ->with('empresatipo')
         ->search('entidad',$this->search)
         ->when($this->entidadtipo_id>'3', function ($query){
             $query->where('entidadtipo_id',$this->entidadtipo_id);

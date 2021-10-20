@@ -18,7 +18,7 @@
                 <x-table.headyellow class="w-1/12 pr-3 text-right ">{{ __('€ Venta') }}</x-table.headyellow>
                 <x-table.headyellow class="w-1/12 pr-3 text-right ">{{ __('Unidades') }}</x-table.headyellow>
                 <x-table.headyellow class="w-4/12 pl-3 ">{{ __('Observaciones') }} </x-table.headyellow>
-                <x-table.headyellow colspan="2" class=""/>
+                <x-table.headyellow colspan="3" class=""/>
             </tr>
         </thead>
         <tbody>
@@ -41,7 +41,8 @@
                     <td><input type="text" value="{{ $linea->observaciones }}" wire:change="changeObs({{ $linea }},$event.target.value)"
                         class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/></td>
                     <td>
-                        <div class="text-center">
+                        <div class="flex items-center justify-center">
+                            <x-icon.calc-a href="{{route('presupuestolinea.index', $linea) }}" class="ml-2 text-green-600" title="Editar Cálculo"/>
                             <x-icon.delete-a wire:click.prevent="delete({{ $linea->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar linea"/>
                         </div>
                     </td>

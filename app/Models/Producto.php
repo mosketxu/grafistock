@@ -48,5 +48,7 @@ class Producto extends Model
 
     public function stockmovimientos(){return $this->hasMany(StockMovimiento::class,'producto_id');}
 
+    public function prespuestolineadetalle(){return $this->hasMany(PresupuestoLineaDetalle::class,'producto_id');}
+
 
 }

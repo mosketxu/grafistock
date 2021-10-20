@@ -15,9 +15,9 @@ class CreatePresupuestoLineaDetallesTable extends Migration
     {
         Schema::create('presupuesto_linea_detalles', function (Blueprint $table) {
             $table->id();
-            $table->integer('tipo')->default(0);
+            $table->acciontipo_id('tipo')->index();
             $table->foreignId('presupuestolinea_id')->constrained('presupuesto_lineas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('productoaccion_id')->nullable();
+            $table->bigInteger('accion_id')->index();
             $table->boolean('visible')->nullable()->default(true);
             $table->integer('orden')->nullable()->default('0');
             $table->string('descripcion');

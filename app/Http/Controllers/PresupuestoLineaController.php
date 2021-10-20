@@ -2,84 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accion;
+use App\Models\AccionTipo;
 use App\Models\PresupuestoLinea;
 use Illuminate\Http\Request;
 
 class PresupuestoLineaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function __construct()
     {
-        //
+        $this->middleware('can:presupuesto.index')->only('index');
+        $this->middleware('can:presupuesto.edit')->only('index','create');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function index(PresupuestoLinea $presupuestolinea)
     {
-        //
+        return view('presupuestolinea.index',compact('presupuestolinea'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function create(PresupuestoLinea $presupuestolinea,$acciontipoId)
     {
-        //
+        return view('presupuestolinea.create',compact('presupuestolinea','acciontipoId'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PresupuestoLinea  $presupuestoLinea
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PresupuestoLinea $presupuestoLinea)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PresupuestoLinea  $presupuestoLinea
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PresupuestoLinea $presupuestoLinea)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PresupuestoLinea  $presupuestoLinea
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PresupuestoLinea $presupuestoLinea)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PresupuestoLinea  $presupuestoLinea
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PresupuestoLinea $presupuestoLinea)
-    {
-        //
-    }
 }
