@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PresupuestoLinea,PresupuestoLineaDetalle,Producto,Accion};
+use App\Models\{Presupuesto, PresupuestoLineaDetalle,Producto,Accion, PresupuestoLinea};
+use Illuminate\Support\Facades\Validator;
+
 use Livewire\Component;
 
 class PresupLineaDetalles extends Component
 {
     public $presupuestolinea;
+
+    protected $listeners = [ 'presuplineadetallesrefresh' => '$refresh'];
 
     public function render()
     {
@@ -33,4 +37,76 @@ class PresupLineaDetalles extends Component
         $presuplinea=$this->presupuestolinea;
         return view('livewire.presup-linea-detalles',compact(['presupproductos','presupimpresion','presupacabados','presupmanipulados','presupembalajes','presuptransportes','presupexternos','productos','impresion','acabados','manipulados','embalajes','transportes','externos','presuplinea']));
     }
+
+    public function changeVisible(PresupuestoLineaDetalle $presupaccion,$visible)
+    {
+        $visible=$visible==false ? true : false;
+        Validator::make(['visible'=>$visible],[
+            'visible'=>'boolean',
+        ])->validate();
+        $presupaccion->update(['visible'=>$visible]);
+        $this->dispatchBrowserEvent('notify', 'Visible Actualizado.');
+    }
+
+    public function changeOrden(PresupuestoLineaDetalle $presupaccion,$orden)
+    {
+        Validator::make(['orden'=>$orden],[
+            'orden'=>'numeric',
+        ])->validate();
+        $presupaccion->update(['orden'=>$orden]);
+        $this->dispatchBrowserEvent('notify', 'Orden Actualizado.');
+        $this->emit('linearefresh');
+    }
+
+    public function changeDescripcion(PresupuestoLineaDetalle $presupaccion,$descripcion)
+    {
+        Validator::make(['descripcion'=>$descripcion],[
+            'descripcion'=>'required',
+        ])->validate();
+        $presupaccion->update(['descripcion'=>$descripcion]);
+        $this->dispatchBrowserEvent('notify', 'Descripción Actualizada.');
+    }
+
+
+    public function changeUnidades(PresupuestoLineaDetalle $presupaccion,$unidades)
+    {
+        Validator::make(['unidades'=>$unidades],[
+            'unidades'=>'numeric|nullable',
+            ])->validate();
+        $presupaccion->update(['unidades'=>$unidades]);
+
+        $p=PresupuestoLinea::find($this->presupuestolinea->id)->recalculo();
+        // $this->emit('presupuestorefresh');
+        // $this->emit('linearefresh');
+        $this->emit('presuplineadetallesrefresh');
+
+        $this->dispatchBrowserEvent('notify', 'Unidades Actualizadas.');
+    }
+
+    public function changeVenta(PresupuestoLineaDetalle $presupaccion,$precioventa)
+    {
+        Validator::make(['precioventa'=>$precioventa],[
+            'precioventa'=>'numeric|nullable',
+        ])->validate();
+        $presupaccion->update(['precioventa'=>$precioventa]);
+        $pl=PresupuestoLinea::find($this->presupuestolinea->id);
+        $pl->recalculo();
+        $p=Presupuesto::find($pl->presupuesto_id)->recalculo();
+
+        // $this->emit('presupuestorefresh');
+        // $this->emit('linearefresh');
+        $this->emit('presuplineadetallesrefresh');
+
+        $this->dispatchBrowserEvent('notify', 'Precio Venta Actualizado.');
+    }
+
+    public function changeObs(PresupuestoLineaDetalle $presupaccion,$observaciones)
+    {
+        Validator::make(['observaciones'=>$observaciones],[
+            'observaciones'=>'text|nullable',
+        ])->validate();
+        $presupaccion->update(['observaciones'=>$observaciones]);
+        $this->dispatchBrowserEvent('notify', 'Observaciones Actualizado.');
+    }
+
 }

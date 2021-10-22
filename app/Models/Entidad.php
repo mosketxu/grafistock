@@ -22,7 +22,7 @@ class Entidad extends Model
 
     public function empresatipo()
     {
-        return $this->belongsTo(EmpresaTipo::class);
+        return $this->belongsTo(EmpresaTipo::class,'empresatipo_id');
     }
 
     public function provincia()

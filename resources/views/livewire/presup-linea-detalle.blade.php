@@ -1,40 +1,12 @@
 <div class="">
     @livewire('menu')
     <div class="">
-        <div class="flex flex-row items-center justify-between p-1 mx-2 my-0">
-            <div class="py-0 my-0">
-                <p class="text-2xl font-semibold text-gray-900">Presupuesto: {{ $presupuestolinea->presupuesto->presupuesto ?? '-'}}
-                </p>
-            </div>
-            <div class="">
-                <p class="text-xl font-semibold text-gray-900">Cliente: {{ $presupuestolinea->presupuesto->entidad->entidad ?? '-'
-                    }}</p>
-            </div>
-            <div class="">
-                <p class="text-sm font-semibold text-gray-900">Descripción: {{ $presupuestolinea->presupuesto->descripcion ?? '-'}}
-                </p>
-            </div>
-        </div>
+        @include('presupuestolinea.presupuestocabecera')
         <div class="py-1 space-y-4">
             @include('errormessages')
         </div>
         <div class="mx-2 border rounded">
-            <div class="">
-                <div class="flex flex-row items-center justify-between p-1 mx-2 my-0">
-                    <div class="w-8/12 py-0 my-0">
-                        <p class="text-xl font-semibold text-gray-900">Descripción línea: {{ $presupuestolinea->descripcion}}</p>
-                    </div>
-                    <div class="w-8/12 py-0 my-0">
-                        <p class="text-xl font-semibold text-gray-900">{{ $acciontipo->nombre}}</p>
-                    </div>
-                    <div class="w-2/12">
-                        <p class="text-lg font-semibold text-right text-gray-900">€ Coste: {{ $presupuestolinea->preciocoste }}</p>
-                    </div>
-                    <div class="w-2/12">
-                        <p class="text-lg font-semibold text-right text-gray-900">€ Venta: {{ $presupuestolinea->precioventa}}</p>
-                    </div>
-                </div>
-            </div>
+            @include('presupuestolinea.presupuestolineacabecera')
             <form>
                 <div class="mx-2 mt-2">
                     <div class="flex space-x-2">
@@ -107,9 +79,13 @@
                         <x-jet-button wire:click.prevent="save()" class="bg-blue-600">{{ __('Guardar') }}
                         </x-jet-button>
                         <x-jet-secondary-button
-                            onclick="location.href = '{{route('presupuestolinea.index',$presupuestolinea)}}'">{{ __('Volver') }}</x-jet-secondary-button>
+                            onclick="location.href = '{{route('presupuestolinea.index',$presuplinea)}}'">{{ __('Volver') }}</x-jet-secondary-button>
                     </div>
                 </div>
             </form>
+            <div class="space-y-2 ">
+                @include('presupuestolinea.acciones',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
+            </div>
+        </div>
     </div>
 </div>
