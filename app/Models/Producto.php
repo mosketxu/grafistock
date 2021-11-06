@@ -11,7 +11,7 @@ class Producto extends Model
     use HasFactory;
     protected $table = 'productos';
     protected $fillable=['referencia','descripcion','tipo_id','material_id','grosor_mm','ancho','udancho_id','alto','udalto_id','ubicacion_id','acabado_id','grupoproduccion_id','familia_id','udsolicitud_id','costeprov',
-        'udcosteprov_id','costegrafitex','udcostegrafitex_id','entidad_id','caja_id','costecaja','fichaproducto','observaciones'];
+        'udcosteprov_id','preciotarifa','udpreciotarifa_id','entidad_id','caja_id','costecaja','fichaproducto','observaciones'];
 
 
     public function entidad(){return $this->belongsTo(Entidad::class);}
@@ -36,7 +36,7 @@ class Producto extends Model
 
     public function unidadcosteprov(){return $this->belongsTo(ProductoUnidadcoste::class,'udcosteprov_id','id');}
 
-    public function unidadcostegrafitex(){return $this->belongsTo(ProductoUnidadcoste::class,'udcostegrafitex_id','id');}
+    public function unidadpreciotarifa(){return $this->belongsTo(ProductoUnidadcoste::class,'udpreciotarifa_id','id');}
 
     public function caja(){return $this->belongsTo(ProductoCaja::class,'caja_id','id');}
 

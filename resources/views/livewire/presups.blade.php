@@ -114,7 +114,7 @@
                         <th class="pl-4 font-medium text-left">{{ __('Solicitante') }} </th>
                         <th class="pl-4 font-medium text-left">{{ __('Descripción') }} </th>
                         <th class="pr-4 font-medium text-right">{{ __('Unidades') }}</th>
-                        <th class="pr-4 font-medium text-right">{{ __('€ Coste') }}</th>
+                        <th class="pr-4 font-medium text-right">{{ __('€ Tarifa') }}</th>
                         <th class="pl-4 font-medium text-left">{{ __('Ratio') }} </th>
                         <th class="pr-4 font-medium text-right">{{ __('€ Venta') }}</th>
                         <th class="pr-4 font-medium text-right">{{ __('Estado') }}</th>
@@ -172,7 +172,7 @@
                                 <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->unidades}}</span>
                             </td>
                             <td class="text-right">
-                                <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->preciocoste}}</span>
+                                <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->preciotarifa}}</span>
                             </td>
                             <td class="text-right">
                                 <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->ratio}}</span>

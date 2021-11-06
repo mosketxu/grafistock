@@ -65,7 +65,7 @@ class PedidoDetalleCreate extends Component
     {
         $p=Producto::find($this->productoId);
         if($p){
-            $this->coste=$p->costegrafitex;
+            $this->coste=$p->preciotarifa;
             $this->udcompraId=$p->udsolicitud_id;
             $this->descripcion=$p->descripcion;
         }else{

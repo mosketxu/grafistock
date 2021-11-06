@@ -31,8 +31,8 @@ class CreateProductosTable extends Migration
             $table->integer('udsolicitud_id')->nullable();
             $table->double('costeprov', 15, 2)->default(0.00)->nullable();
             $table->integer('udcosteprov_id')->nullable();
-            $table->double('costegrafitex', 15, 2)->default(0.00)->nullable();
-            $table->integer('udcostegrafitex_id')->nullable();
+            $table->double('preciotarifa', 15, 2)->default(0.00)->nullable();
+            $table->integer('udpreciotarifa_id')->nullable();
             $table->integer('caja_id')->nullable();
             $table->double('costecaja', 15, 2)->default(0.00)->nullable();
             $table->integer('ubicacion_id')->nullable();

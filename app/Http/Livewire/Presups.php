@@ -21,7 +21,7 @@ class Presups extends Component
     public $message;
     public $total;
 
-    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciocoste,$ratio,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciotarifa,$ratio,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -46,7 +46,7 @@ class Presups extends Component
         $clientes = Entidad::whereIn('entidadtipo_id',['1','4'])->orderBy('entidad')->get();
         $solicitantes = Solicitante::orderBy('nombre')->get();
 
-        $totalcoste=$presupuestos->sum('preciocoste');
+        $totalcoste=$presupuestos->sum('preciotarifa');
         $totalventa=$presupuestos->sum('precioventa');
 
         return view('livewire.presups',compact('presupuestos','clientes','solicitantes','totalcoste','totalventa'));
@@ -84,7 +84,7 @@ class Presups extends Component
         $this->solicitante_id='';
         $this->fechapresupuesto='';
         $this->precioventa='0';
-        $this->preciocoste='0';
+        $this->preciotarifa='0';
         $this->unidades='0';
         $this->iva='0.21';
         $this->ruta='';
@@ -101,7 +101,7 @@ class Presups extends Component
             'solicitante_id' => 'required|numeric',
             'descripcion' => 'required',
             'fechapresupuesto' => 'required|date',
-            'preciocoste' => 'nullable|numeric',
+            'preciotarifa' => 'nullable|numeric',
             'precioventa' => 'nullable|numeric',
             'estado' => 'required',
             'iva' => 'required',
@@ -121,7 +121,7 @@ class Presups extends Component
             'solicitante_id'=>$this->solicitante_id,
             'fechapresupuesto'=>$this->fechapresupuesto,
             'precioventa'=>$this->precioventa,
-            'preciocoste'=>$this->preciocoste,
+            'preciotarifa'=>$this->preciotarifa,
             'ratio'=>$this->ratio,
             'unidades'=>$this->unidades,
             'iva'=>$this->iva,
@@ -153,7 +153,7 @@ class Presups extends Component
         $this->entidad_id=$presupuesto->entidad_id;
         $this->solicitante_id=$presupuesto->solicitante_id;
         $this->fechapresupuesto=$presupuesto->fechapresupuesto;
-        $this->preciocoste=$presupuesto->preciocoste;
+        $this->preciotarifa=$presupuesto->preciotarifa;
         $this->precioventa=$presupuesto->precioventa;
         $this->ratio=$presupuesto->ratio;
         $this->unidades=$presupuesto->unidades;
@@ -168,12 +168,7 @@ class Presups extends Component
     public function updatedEntidadId()
     {
         $e=Entidad::find($this->entidad_id);
-        if($e){
-
-            $this->ratio=$e->ratio ? $e->ratio : '1.00';
-        }else{
-            $this->ratio='1.00';
-        }
+        $this->ratio=$e->empresatipo->factormaterial ?? '1';
     }
 
     public function numpresupuesto()
@@ -231,14 +226,12 @@ class Presups extends Component
 
     public function delete($presupuestoId)
     {
-        $presupuesto = Pedido::find($presupuestoId);
+        $presupuesto = Presupuesto::find($presupuestoId);
         if ($presupuesto) {
+            // $pl=PresupuestoLinea::where('prespuesto_id',$presupuesto->id);
             $presupuesto->delete();
             // session()->flash('message', $presupuesto->entidad.' eliminado!');
-            $this->dispatchBrowserEvent('notify', 'La línea de pedido: '.$presupuesto->id.'-'.$presupuesto->presupuesto.' ha sido eliminada!');
+            $this->dispatchBrowserEvent('notify', 'Presupuesto borrado, ');
         }
     }
-
-
-
 }

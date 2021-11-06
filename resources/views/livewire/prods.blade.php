@@ -111,7 +111,7 @@
                         <x-table.heading class="pl-1 text-right">{{ __('Acabado') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Prov') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-right">{{ __('Ud Solic.') }}</x-table.heading>
-                        <x-table.heading class="pr-2 text-right">{{ __('Coste Grafitex') }}</x-table.heading>
+                        <x-table.heading class="pr-2 text-right">{{ __('€ Tarifa') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Ficha') }}</x-table.heading>
                         <x-table.heading colspan="2"/>
                     </x-slot>
@@ -131,7 +131,7 @@
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->acabado->nombre ?? '-' }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costeprov }} {{ $producto->unidadcosteprov->nombrecorto ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->unidadsolicitud->nombrecorto ?? '-' }}</td >
-                                <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costegrafitex }} {{ $producto->unidadcostegrafitex->nombrecorto ?? '-' }}</td >
+                                <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->preciotarifa }} {{ $producto->unidadpreciotarifa->nombrecorto ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
                                     @if($producto->fichaproducto)
                                         <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>

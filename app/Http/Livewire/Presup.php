@@ -11,7 +11,7 @@ class Presup extends Component
     public $estado;
     public $unidades;
     public $precioventa;
-    public $preciocoste;
+    public $preciotarifa;
     public $descripcion;
     public $observaciones;
     public $mesagge;
@@ -22,7 +22,7 @@ class Presup extends Component
         return [
 
             'precioventa'=>'nullable|numeric',
-            'preciocoste'=>'nullable|numeric',
+            'preciotarifa'=>'nullable|numeric',
             'unidades'=>'nullable|numeric',
             'descripcion'=>'required',
             'observaciones'=>'nullable',
@@ -32,7 +32,7 @@ class Presup extends Component
     public function presupuestorefresh()
     {
         $this->precioventa=$this->presupuesto->precioventa;
-        $this->preciocoste=$this->presupuesto->preciocoste;
+        $this->preciotarifa=$this->presupuesto->preciotarifa;
     }
 
     public function mount(Presupuesto $presupuesto)
@@ -41,7 +41,7 @@ class Presup extends Component
         $this->descripcion=$presupuesto->descripcion;
         $this->estado=$presupuesto->estado;
         $this->precioventa=$presupuesto->precioventa;
-        $this->preciocoste=$presupuesto->preciocoste;
+        $this->preciotarifa=$presupuesto->preciotarifa;
         $this->unidades=$presupuesto->unidades;
         $this->observaciones=$presupuesto->observaciones;
     }

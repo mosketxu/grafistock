@@ -4,9 +4,9 @@
             <p class="text-lg font-semibold text-gray-900">Descripción: {{ $presuplinea->descripcion}}</p>
         </div>
         <div class="w-4/12">
-            <div class="flex flex-row-reverse justify-between">
+            <div class="flex flex-row justify-between mr-3">
                 <div class="">
-                    <p class="font-semibold text-right text-gray-900 text-md">€ Coste: {{ $presuplinea->preciocoste }}</p>
+                    <p class="font-semibold text-right text-gray-900 text-md">€ Tarifa: {{ $presuplinea->preciotarifa }}</p>
                 </div>
                 <div class="">
                     <p class="font-semibold text-right text-gray-900 text-md">Unidades: {{ $presuplinea->unidades }}</p>

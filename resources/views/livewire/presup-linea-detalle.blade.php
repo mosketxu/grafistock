@@ -39,10 +39,10 @@
                             @error('descripcion') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-2">
-                            <label for="preciocoste" class="px-1 text-sm text-gray-600">€ Coste:</label>
-                            <input type="number" id="preciocoste" wire:model.defer="preciocoste" disabled
+                            <label for="preciotarifa" class="px-1 text-sm text-gray-600">€ Tarifa:</label>
+                            <input type="number" id="preciotarifa" wire:model.defer="preciotarifa" disabled
                             class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                            @error('preciocoste') <span class="text-red-500">{{ $message }}</span>@enderror
+                            @error('preciotarifa') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-2">
                             <label for="ratio" class="px-1 text-sm text-gray-600">Ratio:</label>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="mb-2">
                             <label for="unidades" class="px-1 text-sm text-gray-600">Unidades:</label>
-                            <input type="number" id="unidades" wire:model.defer="unidades"
+                            <input type="number" id="unidades" wire:model="unidades"
                             class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             @error('unidades') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>

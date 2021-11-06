@@ -13,7 +13,7 @@
                 <x-table.headyellow class="pl-3 text-center">{{ __('Visible') }}</x-table.headyellow>
                 <x-table.headyellow class="w-1/12 pl-3">{{ __('Orden') }}</x-table.headyellow>
                 <x-table.headyellow class="w-3/12 pl-3 ">{{ __('Descripción') }} </x-table.headyellow>
-                <x-table.headyellow class="w-1/12 pr-3 text-right ">{{ __('€ Coste') }}</x-table.headyellow>
+                <x-table.headyellow class="w-1/12 pr-3 text-right ">{{ __('€ Tarifa') }}</x-table.headyellow>
                 <x-table.headyellow class="w-1/12 pr-3 text-right ">{{ __('Ratio') }}</x-table.headyellow>
                 <x-table.headyellow class="w-1/12 pr-3 text-right ">{{ __('€ Venta') }}</x-table.headyellow>
                 <x-table.headyellow class="w-1/12 pr-3 text-right ">{{ __('Unidades') }}</x-table.headyellow>
@@ -30,7 +30,7 @@
                         class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
                     <td><input type="text" value="{{ $linea->descripcion }}" wire:change="changeDescripcion({{ $linea }},$event.target.value)"
                         class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
-                    <td><input type="text" value="{{ $linea->preciocoste }}"
+                    <td><input type="text" value="{{ $linea->preciotarifa }}"
                         class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
                     <td><input type="text" value="{{ $linea->ratio }}"
                         class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>

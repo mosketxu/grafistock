@@ -20,7 +20,7 @@ class CreatePresupuestosTable extends Migration
             $table->string('descripcion')->nullable();
             $table->foreignId('entidad_id')->constrained('entidades');
             $table->date('fechapresupuesto');
-            $table->double('preciocoste', 15, 2)->nullable();
+            $table->double('preciotarifa', 15, 2)->nullable();
             $table->double('precioventa', 15, 2)->nullable();
             $table->double('ratio', 15, 2);
             $table->double('unidades', 15, 2)->nullable();

@@ -87,7 +87,7 @@ class PresupLineas extends Component
     // public function recalculo()
     // {
     //     $this->presupuesto->precioventa=$this->presupuesto->presupuestolineas->sum('precioventa');
-    //     $this->presupuesto->preciocoste=$this->presupuesto->presupuestolineas->sum('preciocoste');
+    //     $this->presupuesto->preciotarifa=$this->presupuesto->presupuestolineas->sum('preciotarifa');
     //     $this->presupuesto->save();
     // }
 

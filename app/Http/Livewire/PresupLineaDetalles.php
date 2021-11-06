@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Presupuesto, PresupuestoLineaDetalle,Producto,Accion, PresupuestoLinea};
+use App\Models\{Presupuesto, PresupuestoLineaDetalle,Producto,Accion, AccionTipo, PresupuestoLinea};
 use Illuminate\Support\Facades\Validator;
 
 use Livewire\Component;
@@ -27,15 +27,9 @@ class PresupLineaDetalles extends Component
         $productos=Producto::orderBy('descripcion')->get();
 
         $acciones=Accion::orderBy('acciontipo_id')->orderBy('descripcion')->get();
-        $impresion=$acciones->where('acciontipo_id','2');
-        $acabados=$acciones->where('acciontipo_id','3');
-        $manipulados=$acciones->where('acciontipo_id','4');
-        $embalajes=$acciones->where('acciontipo_id','5');
-        $transportes=$acciones->where('acciontipo_id','6');
-        $externos=$acciones->where('acciontipo_id','7');
-
+        $acciontipos=AccionTipo::orderBy('id')->get();
         $presuplinea=$this->presupuestolinea;
-        return view('livewire.presup-linea-detalles',compact(['presupproductos','presupimpresion','presupacabados','presupmanipulados','presupembalajes','presuptransportes','presupexternos','productos','impresion','acabados','manipulados','embalajes','transportes','externos','presuplinea']));
+        return view('livewire.presup-linea-detalles',compact(['acciontipos','acciones','presuplineadetalles','presuplinea']));
     }
 
     public function changeVisible(PresupuestoLineaDetalle $presupaccion,$visible)
@@ -109,4 +103,14 @@ class PresupLineaDetalles extends Component
         $this->dispatchBrowserEvent('notify', 'Observaciones Actualizado.');
     }
 
+    public function delete($lineaId)
+    {
+        $lineaBorrar = PresupuestoLineaDetalle::find($lineaId);
+
+        if ($lineaBorrar) {
+            $lineaBorrar->delete();
+            $this->dispatchBrowserEvent('notify', 'Linea de presupuesto eliminada!');
+            $this->emit('linearefresh');
+        }
+    }
 }

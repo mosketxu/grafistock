@@ -22,13 +22,7 @@
                 </div>
             </div>
             <div class="w-6/12 text-right">
-                {{-- @if($tipo=="Cliente")
-                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Cliente') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Cliente') }}</x-button.button>
-                @else
-                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva','Proveedor') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo Proveedor') }}</x-button.button>
-                @endif --}}
                 <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$tipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $tipo->nombre }}</x-button.button>
-
             </div>
         </div>
 
@@ -135,21 +129,21 @@
                 <h3 class="font-semibold ">Datos Facturación</h3>
             </div>
             <div class="flex flex-col pl-2 mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
-                @if($entidad->entidadtipo_id=='1' || $entidad->entidadtipo_id=='3'|| $entidad->entidadtipo_id=='4' )
                 <div class="w-full form-item">
                     <x-jet-label >{{ __('Cat.Empresa') }}</x-jet-label>
-                    <x-select wire:model.defer="entidad.empresatipo_id" selectname="empresatipo_id" class="w-full">
+                    <select wire:model.defer="entidad.empresatipo_id" selectname="empresatipo_id"
+                    class="w-full text-xs text-gray-600 bg-white border-gray-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                        {{ Auth::user()->hasRole(['Admin', 'Gestion']) ? '' : 'disabled' }}>
                         <option value="">-- choose --</option>
                         @foreach ($tiposempresa as $tipoempresa)
                             <option value="{{ $tipoempresa->id }}">{{ $tipoempresa->nombre }}</option>
                         @endforeach
-                    </x-select>
+                    </select>
                 </div>
-                @endif
-                <div class="w-full form-item">
+                {{-- <div class="w-full form-item">
                     <x-jet-label for="ratio" >{{ __('Ratio') }}</x-jet-label>
                     <x-jet-input  wire:model.defer="entidad.ratio" type="number" step="any" id="ratio" name="ratio" :value="old('ratio')" class="w-full"/>
-                </div>
+                </div> --}}
                 <div class="w-full form-item">
                     <x-jet-label for="banco1" >{{ __('Banco 1') }}</x-jet-label>
                     <x-jet-input  wire:model.defer="entidad.banco1" type="text" id="banco1" name="banco1" :value="old('banco1')" class="w-full"/>

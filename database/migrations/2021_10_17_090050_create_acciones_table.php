@@ -19,7 +19,7 @@ class CreateAccionesTable extends Migration
             $table->string('descripcion')->nullable();
             // $table->bigInteger('accion_id')->index();
             $table->foreignId('acciontipo_id')->constrained('accion_tipos');
-            $table->double('preciocoste', 15, 2)->default(0.00)->nullable();
+            $table->double('preciotarifa', 15, 2)->default(0.00)->nullable();
             $table->integer('ud_id')->nullable();
             $table->double('precioventa', 15, 2)->default(0.00)->nullable();
             $table->string('observaciones')->nullable();

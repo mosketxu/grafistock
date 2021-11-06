@@ -10,27 +10,10 @@
 
         <div class="mx-2 border rounded">
             @include('presupuestolinea.presupuestolineacabecera')
-            {{-- <div class="">
-                <div class="flex flex-row items-center justify-between p-1 mx-2 my-0">
-                    <div class="w-8/12 py-0 my-0">
-                        <p class="text-xl font-semibold text-gray-900">Descripción línea: {{ $presuplinea->descripcion}}</p>
-                    </div>
-                    <div class="w-2/12">
-                        <p class="text-lg font-semibold text-right text-gray-900">€ Coste: {{ $presuplinea->preciocoste }}</p>
-                    </div>
-                    <div class="w-2/12">
-                        <p class="text-lg font-semibold text-right text-gray-900">€ Venta: {{ $presuplinea->precioventa}}</p>
-                    </div>
-                </div>
-            </div> --}}
             <div class="space-y-2 ">
-                @include('presupuestolinea.acciones',['presupacciones' => $presupproductos,'acciontipoId'=>'1','accion'=>'Material'])
-                @include('presupuestolinea.acciones', ['presupacciones' => $presupimpresion,'acciontipoId'=>'2','accion'=>'Impresión'])
-                @include('presupuestolinea.acciones', ['presupacciones' => $presupacabados,'acciontipoId'=>'3','accion'=>'Acabados'])
-                @include('presupuestolinea.acciones', ['presupacciones' => $presupmanipulados,'acciontipoId'=>'4','accion'=>'Manipulados'])
-                @include('presupuestolinea.acciones', ['presupacciones' => $presupembalajes,'acciontipoId'=>'5','accion'=>'Embalajes'])
-                @include('presupuestolinea.acciones', ['presupacciones' => $presuptransportes,'acciontipoId'=>'6','accion'=>'Trasnportes'])
-                @include('presupuestolinea.acciones', ['presupacciones' => $presupexternos,'acciontipoId'=>'7','accion'=>'Externos'])
+                @foreach($acciontipos as $actipo)
+                    @include('presupuestolinea.acciones',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
+                @endforeach
             </div>
         </div>
 

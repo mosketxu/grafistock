@@ -52,6 +52,8 @@ class Ent extends Component
     {
         $this->entidad=$entidad;
         $this->entidad->entidadtipo_id=$tipo;
+        if(!$this->entidad->empresatipo_id) $this->entidad->empresatipo_id='5';
+        $this->entidad->ratio=$entidad->empresatipo->factormaterial ?? '1';
         $this->tipo=EntidadTipo::find($tipo);
     }
 
@@ -121,7 +123,7 @@ class Ent extends Component
             'iban1'=>$this->entidad->iban1,
             'iban2'=>$this->entidad->iban2,
             'iban3'=>$this->entidad->iban3,
-            'ratio'=>$this->entidad->ratio,
+            'ratio'=>$this->entidad->empresatipo->factormaterial,
             'diafactura'=>$this->entidad->diafactura,
             'diavencimiento'=>$this->entidad->diavencimiento,
             'observaciones'=>$this->entidad->observaciones,
@@ -135,12 +137,8 @@ class Ent extends Component
         );
         if(!$this->entidad->id){
             $this->entidad->id=$ent->id;
-            // $mensaje=$this->entidad->entidad . " creada satisfactoriamente";
-            // session()->flash('message', $mensaje);
         }
 
-        // session()->flash('message', $mensaje);
-        // $this->emitSelf('notify-saved');
         $this->dispatchBrowserEvent('notify', $mensaje);
     }
 }
