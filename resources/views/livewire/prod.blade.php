@@ -212,7 +212,11 @@
                             <input  wire:model.lazy="producto.grosor_mm" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="ficheropdf">{{ __('Ficha producto') }} <span class="text-xs">{{ $producto->fichaproducto }}</span></x-jet-label>
+                            <x-jet-label for="ficheropdf">{{ __('Ficha producto') }}
+                                @if($producto->fichaproducto)
+                                    <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
+                                @endif
+                            </x-jet-label>
                             <input type="file" wire:model="ficheropdf">
                             @error('ficheropdf') <p class="text-red-500">{{ $message }}</p> @enderror
                         </div>

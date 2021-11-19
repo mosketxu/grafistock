@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoFamilia, ProductoTipo, ProductoUnidadcoste, Ubicacion, Unidad};
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Livewire\WithFileUploads;
@@ -72,28 +73,21 @@ class Prod extends Component
             $p=$p->id;
         }
 
-
-
         $tipo=$this->producto->tipo->nombrecorto ?? '';
         $material=$this->producto->material->nombrecorto ?? '';
         $acabado=$this->producto->acabado->nombrecorto ?? '';
 
         // Opcion quitando lo que no hay
-        // $tipo=$tipo ? $tipo.'-' : '';
-        // $material=$material ? $material.'-' : '';
-        // $acabado=$acabado ? $acabado.'-' : '';
-        // $grosor=$this->producto->grosor_mm ? str_pad($this->producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-' : '';
-        // $ancho=$this->producto->ancho_mm ? str_pad($this->producto->ancho_mm, 4, '0', STR_PAD_LEFT).'-' : '';
-        // $alto=$this->producto->alto ? str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-' : '';
-
-        // $this->producto->referencia=$tipo.$material.$grosor.$ancho.$alto.$acabado.$p;
-
+            // $tipo=$tipo ? $tipo.'-' : '';
+            // $material=$material ? $material.'-' : '';
+            // $acabado=$acabado ? $acabado.'-' : '';
+            // $grosor=$this->producto->grosor_mm ? str_pad($this->producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-' : '';
+            // $ancho=$this->producto->ancho_mm ? str_pad($this->producto->ancho_mm, 4, '0', STR_PAD_LEFT).'-' : '';
+            // $alto=$this->producto->alto ? str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-' : '';
+            // $this->producto->referencia=$tipo.$material.$grosor.$ancho.$alto.$acabado.$p;
 
         // Opcion dejando todo
         $this->producto->referencia=$tipo.'-'.$material.'-'.str_pad($this->producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->ancho, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-'.$acabado.'-'.$p;
-
-
-
 
         if($this->producto->tipo_id && $this->producto->material_id && $this->producto->ancho && $this->producto->alto  && $this->producto->acabado_id && $p){
             $this->validate(['producto.referencia'=>'unique:productos,referencia']);
@@ -105,6 +99,11 @@ class Prod extends Component
         $this->validate(['ficheropdf'=>'file|max:5000']);
     }
 
+    public function presentaPDF(Producto $producto){
+        $existe=Storage::disk('fichasproducto')->exists($producto->fichaproducto);
+        if ($existe)
+            return Storage::disk('fichasproducto')->download($producto->fichaproducto);
+    }
 
     public function save()
     {

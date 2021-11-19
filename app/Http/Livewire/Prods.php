@@ -107,13 +107,10 @@ class Prods extends Component
         $this->resetPage();
     }
 
-
-
     public function presentaPDF(Producto $producto){
         $existe=Storage::disk('fichasproducto')->exists($producto->fichaproducto);
         if ($existe)
             return Storage::disk('fichasproducto')->download($producto->fichaproducto);
-
     }
 
     public function delete($productoId)
