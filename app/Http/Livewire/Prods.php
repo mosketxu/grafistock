@@ -70,7 +70,7 @@ class Prods extends Component
 
 
         $productos=Producto::query()
-            ->with('entidad','material','acabado','tipo')
+            ->with('entidad:entidad','material:nombre','acabado:nombre','tipo:nombre')
             ->search('referencia',$this->search)
             ->orSearch('descripcion',$this->search)
             ->when($this->filtrofamilia!='', function ($query){

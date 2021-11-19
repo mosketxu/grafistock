@@ -164,10 +164,15 @@ class Prod extends Component
             'entidad_id'=>$this->producto->entidad_id,
             'caja_id'=>$this->producto->caja_id,
             'costecaja'=>$this->producto->costecaja,
-            'fichaproducto'=>$filename,
+            // 'fichaproducto'=>$filename,
             'observaciones'=>$this->producto->observaciones,
             ]
         );
+        if($this->ficheropdf){
+            $prod->fichaproducto=$filename;
+            // dd($prod->fichaproducto);
+            $prod->save();
+        }
 
         if(!$this->producto->id){
             $this->producto->id=$prod->id;

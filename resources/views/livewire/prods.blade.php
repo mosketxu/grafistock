@@ -136,7 +136,7 @@
                                     @if($producto->fichaproducto)
                                         <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
                                     @else
-                                        <x-icon.pdfc class="w-5 h-5 pt-2 ml-2 text-blue-100" title="PDF"/>
+                                        <x-icon.pdfc class="w-5 h-5 pt-2 ml-2 text-blue-100" title="No hay PDF"/>
                                     @endif
                                 </td>
                                 <td  class="px-4">
