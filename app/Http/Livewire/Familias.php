@@ -83,7 +83,7 @@ class Familias extends Component
 
         if ($borrar) {
             $borrar->delete();
-            $this->dispatchBrowserEvent('notify', 'Familia añadida eliminado!');
+            $this->dispatchBrowserEvent('notify', '¡Familia eliminada!');
         }
     }
 }

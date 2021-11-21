@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class AccionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:accion.index')->only('index');
+        $this->middleware('can:accion.edit')->only('edit','update');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,7 @@ class AccionController extends Controller
      */
     public function index()
     {
-        //
+        return view('accion.index');
     }
 
     /**

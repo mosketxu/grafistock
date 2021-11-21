@@ -71,17 +71,15 @@
                             <tr>
                                 <td class="w-2/6 p-2 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
                                     <input type="text" wire:model.defer="nombrecorto"
-                                    {{-- class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/> --}}
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                 </td>
                                 <td class="w-4/6 p-2 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
                                     <input type="text" wire:model.defer="nombre"
-                                    {{-- class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/> --}}
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                 </td>
                                 <td  class="p-2">
                                     <div class="flex items-center justify-center space-x-3">
-                                    <button type="submit" class="pl-1 mx-0 text-center "><x-icon.save-a class="text-blue"></x-icon.save-a></button>
+                                        <button type="submit" class="pl-1 mx-0 text-center "><x-icon.save-a class="text-blue"></x-icon.save-a></button>
                                     </div>
                                 </td>
                             </tr>

@@ -3,7 +3,7 @@
 use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController,
         PedidoController,StockController,
         UserController, RoleController,
-        StockPeticionController, PresupuestoController, PresupuestoLineaController};
+        StockPeticionController, PresupuestoController, PresupuestoLineaController,AccionController};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,8 +43,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('users', UserController::class)->names('users'); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
 
     // Entidades
-    // Route::get('clientes', [EntidadController::class,'cli'])->middleware('can:entidad.index')->name('entidad.cli'); //
-    // Route::get('proveedores', [EntidadController::class,'pro'])->middleware('can:entidad.index')->name('entidad.pro'); //
     Route::get('entidad/{tipo}/tipo', [EntidadController::class,'tipo'])->middleware('can:entidad.index')->name('entidad.tipo'); //
     Route::get('entidad/{entidadtipo_id}/nueva', [EntidadController::class,'nueva'])->name('entidad.nueva');
     Route::resource('entidad', EntidadController::class)->only(['index','create', 'edit']); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
@@ -66,6 +64,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //presupuestolineadetalle
     Route::get('presupuestolinea/{presupuestolinea}]', [PresupuestoLineaController::class,'index'])->name('presupuestolinea.index');
     Route::get('presupuestolinea/{presupuestolinea}/{acciontipoId}', [PresupuestoLineaController::class,'create'])->name('presupuestolinea.create');
+
+    //Acciones
+    Route::resource('accion', AccionController::class);
+
 
     // Route::get('/clear-cache', function() {
     //     Artisan::call('cache:clear');

@@ -14,6 +14,7 @@ class Accion extends Model
 
     public function prespuestolineadetalle(){return $this->hasMany(PresupuestoLineaDetalle::class,'accion_id');}
     public function acciontipo(){return $this->belongsTo(AccionTipo::class,'acciontipo_id');}
+    public function unidad(){return $this->belongsTo(Unidad::class,'ud_id');}
 
 
 }

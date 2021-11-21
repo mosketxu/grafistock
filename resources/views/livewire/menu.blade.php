@@ -13,7 +13,6 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @can('entidad.index')
-
                     <x-jet-nav-link href="{{ route('entidad.index') }}" :active="explode('.',Request::route()->getName())[0] =='entidad'">
                         {{ __('Contactos') }}
                     </x-jet-nav-link>
@@ -94,6 +93,11 @@
                                 {{ __('Usuarios') }}
                             </x-jet-nav-link>
                         </div>
+                    @endcan
+                    @can('accion.index')
+                        <x-jet-nav-link href="{{ route('accion.index') }}" :active="request()->routeIs('accion.index')">
+                            {{ __('Acciones') }}
+                        </x-jet-nav-link>
                     @endcan
                 @endif
                 <!-- Settings Dropdown -->
