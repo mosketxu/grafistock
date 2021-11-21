@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Accion;
 use App\Models\AccionTipo;
 use App\Models\Unidad;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -81,40 +82,41 @@ class Acciones extends Component
         $this->observaciones='';
     }
 
-
-
     public function store()
     {
+        $cond=Auth::user()->can('accion.edit');
+        if ($cond==true) {
+            $this->validate();
+            if ($this->accion_id) {
+                $this->validate(
+                    [
+                    'referencia'=>[
+                        'required',
+                        Rule::unique('acciones', 'referencia')->ignore($this->accion_id)],
+                    ]
+                );
+            } else {
+                $this->validate(
+                    [
+                    'referencia'=>'required|unique:acciones,referencia'
+                    ]
+                );
+            }
 
-        $this->validate();
-        if($this->accion_id){
-            $this->validate([
-                'referencia'=>[
-                    'required',
-                    Rule::unique('acciones','referencia')->ignore($this->accion_id)],
-                ]
-            );
-        }else{
-            $this->validate([
-                'referencia'=>'required|unique:acciones,referencia'
-                ]
-            );
+            $accion=Accion::updateOrCreate(['id'=>$this->accion_id], [
+                'referencia'=>$this->referencia,
+                'descripcion'=>$this->descripcion,
+                'acciontipo_id'=>$this->acciontipo_id,
+                'preciotarifa'=>$this->preciotarifa,
+                'ud_id'=>$this->ud_id,
+                'precioventa'=>$this->precioventa,
+                'observaciones'=>$this->observaciones,
+            ]);
+
+            $this->dispatchBrowserEvent('notify', 'Accion añadida con éxito');
+
+            $this->closeNewModal();
         }
-
-        $accion=Accion::updateOrCreate(['id'=>$this->accion_id],[
-            'referencia'=>$this->referencia,
-            'descripcion'=>$this->descripcion,
-            'acciontipo_id'=>$this->acciontipo_id,
-            'preciotarifa'=>$this->preciotarifa,
-            'ud_id'=>$this->ud_id,
-            'precioventa'=>$this->precioventa,
-            'observaciones'=>$this->observaciones,
-        ]);
-
-        $this->dispatchBrowserEvent('notify', 'Accion añadida con éxito');
-
-        $this->closeNewModal();
-        $this->resetInputFields();
     }
 
     public function edit($id) {

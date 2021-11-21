@@ -10,7 +10,7 @@
                         <div class="mx-auto ">
                             <div class="flex flex-row flex-wrap -mx-2">
                                 @livewire('acciones')
-                                <div class="">aqui va acciones tipos</div>
+                                @livewire('accion-tipos')
                             </div>
                         </div>
                     </div>

@@ -38,12 +38,14 @@
                 </div>
                 {{-- Parte derecha --}}
                 <div class="">
-                    <div class="text-xs">
-                        <x-button.button wire:click="create()" color="blue">Nuevo</x-button.button>
-                    </div>
-                    @if($showNewModal)
-                        @include('livewire.accioncreate')
-                    @endif
+                    @can('accion.edit')
+                        <div class="text-xs">
+                            <x-button.button wire:click="create()" color="blue">Nuevo</x-button.button>
+                        </div>
+                        @if($showNewModal)
+                            @include('livewire.accioncreate')
+                        @endif
+                    @endcan
                 </div>
             </div>
             <div class="py-1 space-y-1">

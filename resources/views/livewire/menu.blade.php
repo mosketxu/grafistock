@@ -86,7 +86,7 @@
                         </x-jet-nav-link>
                     </div>
                 @endif
-                @if(explode('.',Request::route()->getName())[0] =='administracion')
+                @if(explode('.',Request::route()->getName())[0] ==('administracion'||'accion'))
                     @can('user.index')
                         <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
                             <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">

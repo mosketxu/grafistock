@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AccionTipo extends Model
 {
     use HasFactory;
-    protected $fillable=['nombre','nombre_corto'];
+    protected $fillable=['nombre','nombrecorto'];
 
     public function acciones()
     {
