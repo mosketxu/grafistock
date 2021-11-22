@@ -10,6 +10,7 @@
                         <div class="mx-auto ">
                             <div class="flex flex-row flex-wrap -mx-2">
                                 @livewire('familias')
+                                @livewire('producto-tipos')
                                 @livewire('materiales')
                                 @livewire('acabados')
                                 @livewire('grupos-produccion')
