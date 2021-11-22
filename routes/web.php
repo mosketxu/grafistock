@@ -29,7 +29,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         if (Auth::user()->hasRole('Operario'))
             return redirect()->route('stock.movimientos');
         else
-            // return view('dashboard');
             return redirect()->route('entidad.index');
         }
     )->name('dashboard');

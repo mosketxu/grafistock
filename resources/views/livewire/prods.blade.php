@@ -19,7 +19,7 @@
             <x-jet-validation-errors></x-jet-validation-errors>
             <div class="flex justify-between">
                 <div class="flex w-10/12 space-x-3">
-                    <div class="w-2/12 text-xs">
+                    <div class="w-1/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Ref./Descrip.
                             @if($search!='')
@@ -27,6 +27,20 @@
                             @endif
                         </label>
                         <input type="text" wire:model="search" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Búsqueda Entidad/Factura" autofocus/>
+                    </div>
+                    <div class="w-1/12 text-xs">
+                        <label class="px-1 text-gray-600">
+                            Tipo
+                            @if($filtrotipo!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtrotipo', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtrotipo" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                            <option value=""></option>
+                            @foreach ($tipos as $tipo)
+                            <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="w-2/12 text-xs">
                         <label class="px-1 text-gray-600">
@@ -42,8 +56,7 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="w-2/12 text-xs">
+                    <div class="w-1/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Familia
                             @if($filtrofamilia!='')
@@ -58,7 +71,7 @@
                         </select>
                     </div>
 
-                    <div class="w-2/12 text-xs">
+                    <div class="w-1/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Material
                             @if($filtromaterial!='')
@@ -99,7 +112,7 @@
                 <x-table>
                     <x-slot name="head">
                         {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
-                        <x-table.heading class="pl-1 text-left">{{ __('Referencia') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Referencissssa') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Descripcion') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Proveedor') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Familia') }}</x-table.heading>
@@ -119,6 +132,7 @@
                     <x-slot name="body">
                         @forelse ($productos as $producto)
                             <x-table.row wire:loading.class.delay="opacity-50">
+
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}</td>
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->descripcion }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad ?? '-'}}</td >

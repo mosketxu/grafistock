@@ -43,13 +43,19 @@
                             </div>
                             <div class="mb-2">
                                 <label for="solicitante_id" class="px-1 text-sm text-gray-600">Solicitante:</label>
-                                <x-select wire:model.defer="solicitante_id" selectname="solicitante_id" required
-                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                <option value="">-- choose --</option>
-                                    @foreach ($solicitantes as $solicitante)
-                                        <option value="{{ $solicitante->id }}">{{ $solicitante->nombre }}</option>
-                                    @endforeach
-                                </x-select>
+                                @if(Auth::user()->hasRole('Admin'))
+                                    <x-select wire:model.defer="solicitante_id" selectname="solicitante_id"
+                                        class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                        <option value="">-- choose --</option>
+                                        @foreach ($solicitantes as $solicitante)
+                                            <option value="{{ $solicitante->id }}">{{ $solicitante->name }}</option>
+                                        @endforeach
+                                    </x-select>
+                                @else
+                                    <input type="text" value="{{ Auth::user()->name }}"
+                                        class="py-2 text-sm text-gray-600 bg-white border-none rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                        disabled>
+                                @endif
                                 @error('solicitante_id') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
@@ -67,7 +73,7 @@
                                 @error('descripcion') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                         </div>
-                        <div class="flex space-x-2">
+                        {{-- <div class="flex space-x-2">
                             <div class="mb-2">
                                 <label for="preciotarifa" class="px-1 text-sm text-gray-600">€ Tarifa:</label>
                                 <input type="number" id="preciotarifa" wire:model.defer="preciotarifa" disabled
@@ -93,7 +99,7 @@
                                 @error('precioventa') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                                 <input type="hidden" id="iva" wire:model="iva">
-                        </div>
+                        </div> --}}
                         {{-- <div class="flex space-x-2">
                             <div class="mb-2">
                                 <label for="ruta" class="px-1 text-sm text-gray-600">Ruta:</label>

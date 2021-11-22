@@ -8,6 +8,7 @@ use App\Models\ProductoAcabado;
 use App\Models\ProductoFamilia;
 use App\Models\ProductoGrupoproduccion;
 use App\Models\ProductoMaterial;
+use App\Models\ProductoTipo;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithPagination;
 
@@ -21,6 +22,7 @@ class Prods extends Component
 
     public $search='';
     public $filtrofamilia='';
+    public $filtrotipo='';
     public $filtromaterial='';
     public $filtroclipro='';
     public $filtroacabado='';
@@ -48,6 +50,7 @@ class Prods extends Component
             ->when($this->filtroclipro!='', function ($query){$query->where('entidad_id',$this->filtroclipro);})
             ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
             ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
+            ->when($this->filtrotipo!='', function ($query){$query->where('tipo_id',$this->filtrotipo);})
             ->get();
 
         $familias= Producto::query()
@@ -57,6 +60,7 @@ class Prods extends Component
                 ->when($this->filtroclipro!='', function ($query){$query->where('entidad_id',$this->filtroclipro);})
                 ->when($this->filtromaterial!='', function ($query){$query->where('material_id',$this->filtromaterial);})
                 ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
+                ->when($this->filtrotipo!='', function ($query){$query->where('tipo_id',$this->filtrotipo);})
                 ->get();
 
         $acabados= Producto::query()
@@ -66,11 +70,22 @@ class Prods extends Component
                 ->when($this->filtroclipro!='', function ($query){$query->where('entidad_id',$this->filtroclipro);})
                 ->when($this->filtromaterial!='', function ($query){$query->where('material_id',$this->filtromaterial);})
                 ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
+                ->when($this->filtrotipo!='', function ($query){$query->where('tipo_id',$this->filtrotipo);})
+                ->get();
+
+        $tipos= Producto::query()
+                ->join('producto_tipos','producto_tipos.id','=','productos.tipo_id')
+                ->select('producto_tipos.id', 'producto_tipos.nombre')
+                ->groupBy('tipo_id')
+                ->when($this->filtroclipro!='', function ($query){$query->where('entidad_id',$this->filtroclipro);})
+                ->when($this->filtromaterial!='', function ($query){$query->where('material_id',$this->filtromaterial);})
+                ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
+                ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
                 ->get();
 
 
         $productos=Producto::query()
-            ->with('entidad:entidad','material:nombre','acabado:nombre','tipo:nombre')
+            ->with('entidad','material','acabado','tipo')
             ->search('referencia',$this->search)
             ->orSearch('descripcion',$this->search)
             ->when($this->filtrofamilia!='', function ($query){
@@ -85,13 +100,16 @@ class Prods extends Component
             ->when($this->filtroacabado!='', function ($query){
                 $query->where('acabado_id',$this->filtroacabado);
                 })
-            ->when($this->filtrogrupoprod!='', function ($query){
-                $query->where('grupoproduccion_id',$this->filtrogrupoprod);
+            ->when($this->filtrotipo!='', function ($query){
+                $query->where('tipo_id',$this->filtrotipo);
                 })
+            // ->when($this->filtrogrupoprod!='', function ($query){
+            //     $query->where('grupoproduccion_id',$this->filtrogrupoprod);
+            //     })
             ->orderBy('referencia','asc')
             ->paginate(15);
 
-            return view('livewire.prods',compact('productos','materiales','familias','acabados','proveedores'));
+            return view('livewire.prods',compact('productos','materiales','familias','acabados','proveedores','tipos'));
     }
 
     public function updatingFiltroclipro(){

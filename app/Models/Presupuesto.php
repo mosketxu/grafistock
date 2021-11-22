@@ -30,7 +30,7 @@ class Presupuesto extends Model
 
     public function solicitante()
     {
-        return $this->belongsTo(Solicitante::class);
+        return $this->belongsTo(User::class,'solicitante_id','id');
     }
 
     public function recalculo()

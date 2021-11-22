@@ -3,10 +3,11 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{Presupuesto,Entidad, Solicitante};
+use App\Models\{Presupuesto,Entidad, User};
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\DataTable\WithBulkActions;
+use Illuminate\Support\Facades\Auth;
 
 class Presups extends Component
 {
@@ -44,7 +45,7 @@ class Presups extends Component
         if($this->selectAll) $this->selectPageRows();
         $presupuestos = $this->rows;
         $clientes = Entidad::whereIn('entidadtipo_id',['1','4'])->orderBy('entidad')->get();
-        $solicitantes = Solicitante::orderBy('nombre')->get();
+        $solicitantes = User::orderBy('name')->get();
 
         $totalcoste=$presupuestos->sum('preciotarifa');
         $totalventa=$presupuestos->sum('precioventa');
@@ -74,6 +75,7 @@ class Presups extends Component
     }
 
     public function closeNewModal(){
+        $this->resetInputFields();
         $this->showNewModal = false;
     }
 
@@ -94,6 +96,9 @@ class Presups extends Component
     }
 
     public function store(){
+        if($this->solicitante_id==''){
+            $this->solicitante_id=Auth()->user()->id;
+        }
 
         $this->validate([
             // 'presupuesto' => 'required',
@@ -112,8 +117,8 @@ class Presups extends Component
         if(!$this->presupuesto){
             $this->numpresupuesto();
             $destino="nuevo";
-
         }
+
         $presupuesto = Presupuesto::updateOrCreate(['id' => $this->presupuesto_id], [
             'presupuesto'=>$this->presupuesto,
             'descripcion'=>$this->descripcion,
