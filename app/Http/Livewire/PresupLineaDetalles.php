@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Presupuesto, PresupuestoLineaDetalle,Producto,Accion, AccionTipo, PresupuestoLinea};
+use App\Models\{PresupuestoLineaDetalle,Producto,Accion, AccionTipo, Presupuesto, PresupuestoLinea};
 use Illuminate\Support\Facades\Validator;
 
 use Livewire\Component;
@@ -15,7 +15,7 @@ class PresupLineaDetalles extends Component
 
     public function render()
     {
-        $presuplineadetalles=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presupuestolinea->id)->get();
+        $presuplineadetalles=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presupuestolinea->id)->orderBy('orden')->get();
         $presupproductos=$presuplineadetalles->where('acciontipo_id','1');
         $presupimpresion=$presuplineadetalles->where('acciontipo_id','2');
         $presupacabados=$presuplineadetalles->where('acciontipo_id','3');
@@ -39,7 +39,7 @@ class PresupLineaDetalles extends Component
             'visible'=>'boolean',
         ])->validate();
         $presupaccion->update(['visible'=>$visible]);
-        $this->dispatchBrowserEvent('notify', 'Visible Actualizado.');
+        $this->dispatchBrowserEvent('notify', 'Visible actualizado.');
     }
 
     public function changeOrden(PresupuestoLineaDetalle $presupaccion,$orden)
@@ -49,7 +49,6 @@ class PresupLineaDetalles extends Component
         ])->validate();
         $presupaccion->update(['orden'=>$orden]);
         $this->dispatchBrowserEvent('notify', 'Orden Actualizado.');
-        $this->emit('linearefresh');
     }
 
     public function changeDescripcion(PresupuestoLineaDetalle $presupaccion,$descripcion)
@@ -58,9 +57,50 @@ class PresupLineaDetalles extends Component
             'descripcion'=>'required',
         ])->validate();
         $presupaccion->update(['descripcion'=>$descripcion]);
-        $this->dispatchBrowserEvent('notify', 'Descripción Actualizada.');
+        $this->dispatchBrowserEvent('notify', 'Descripción Actualizado.');
     }
 
+    public function changeAncho(PresupuestoLineaDetalle $presupaccion,$ancho)
+    {
+        Validator::make(['ancho'=>$ancho],[
+            'ancho'=>'numeric|required',
+        ])->validate();
+        $presupaccion->update([
+            'ancho'=>$ancho,
+            'metros2'=>round($ancho * $presupaccion->alto,2),
+        ]);
+        $this->calculoPrecioVenta($presupaccion);
+    }
+
+    public function changeAlto(PresupuestoLineaDetalle $presupaccion,$alto)
+    {
+        Validator::make(['alto'=>$alto],[
+            'alto'=>'numeric|required',
+        ])->validate();
+        $presupaccion->update([
+            'alto'=>$alto,
+            'metros2'=>round($alto * $presupaccion->ancho,2),
+        ]);
+        $this->calculoPrecioVenta($presupaccion);
+    }
+
+    public function changeFactor(PresupuestoLineaDetalle $presupaccion,$factor)
+    {
+        Validator::make(['factor'=>$factor],[
+            'factor'=>'numeric|required',
+        ])->validate();
+
+        $p=Presupuesto::find($presupaccion->presupuestolinea_id);
+        $factormin=$p->entidad->empresatipo->factormin;
+        if($factor<$factormin){
+            $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
+            $factor=$factormin ?? '1';
+        }
+        $presupaccion->update([
+            'factor'=>$factor,
+        ]);
+        $this->calculoPrecioVenta($presupaccion);
+    }
 
     public function changeUnidades(PresupuestoLineaDetalle $presupaccion,$unidades)
     {
@@ -68,30 +108,9 @@ class PresupLineaDetalles extends Component
             'unidades'=>'numeric|nullable',
             ])->validate();
         $presupaccion->update(['unidades'=>$unidades]);
+        $this->calculoPrecioVenta($presupaccion);
 
         $p=PresupuestoLinea::find($this->presupuestolinea->id)->recalculo();
-        // $this->emit('presupuestorefresh');
-        // $this->emit('linearefresh');
-        $this->emit('presuplineadetallesrefresh');
-
-        $this->dispatchBrowserEvent('notify', 'Unidades Actualizadas.');
-    }
-
-    public function changeVenta(PresupuestoLineaDetalle $presupaccion,$precioventa)
-    {
-        Validator::make(['precioventa'=>$precioventa],[
-            'precioventa'=>'numeric|nullable',
-        ])->validate();
-        $presupaccion->update(['precioventa'=>$precioventa]);
-        $pl=PresupuestoLinea::find($this->presupuestolinea->id);
-        $pl->recalculo();
-        $p=Presupuesto::find($pl->presupuesto_id)->recalculo();
-
-        // $this->emit('presupuestorefresh');
-        // $this->emit('linearefresh');
-        $this->emit('presuplineadetallesrefresh');
-
-        $this->dispatchBrowserEvent('notify', 'Precio Venta Actualizado.');
     }
 
     public function changeObs(PresupuestoLineaDetalle $presupaccion,$observaciones)
@@ -100,7 +119,23 @@ class PresupLineaDetalles extends Component
             'observaciones'=>'text|nullable',
         ])->validate();
         $presupaccion->update(['observaciones'=>$observaciones]);
-        $this->dispatchBrowserEvent('notify', 'Observaciones Actualizado.');
+    }
+
+    public function calculoPrecioVenta($presupacciondetalle)
+    {
+        $presupacciondetalle->precioventa=round($presupacciondetalle->metros2 * $presupacciondetalle->preciotarifa * $presupacciondetalle->factor * $presupacciondetalle->unidades,2);
+        $presupacciondetalle->save();
+        $this->dispatchBrowserEvent('notify', 'Precio venta actualizado.');
+    }
+
+    public function save($presupacciondetalle)
+    {
+        // $this->validate();
+        $pl=$presupacciondetalle->recalculo();
+        $p=Presupuesto::find($presupacciondetalle->presupuesto_id);
+        $p->recalculo();
+
+        // return redirect()->route('presupuestolinea.create',[$this->presuplinea,$this->acciontipo->id]);
     }
 
     public function delete($lineaId)

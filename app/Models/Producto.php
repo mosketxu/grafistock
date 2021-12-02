@@ -36,7 +36,7 @@ class Producto extends Model
 
     public function unidadcosteprov(){return $this->belongsTo(ProductoUnidadcoste::class,'udcosteprov_id','id');}
 
-    public function unidadpreciotarifa(){return $this->belongsTo(ProductoUnidadcoste::class,'udpreciotarifa_id','id');}
+    public function unidadpreciotarifa(){return $this->belongsTo(Unidad::class,'udpreciotarifa_id','id');}
 
     public function caja(){return $this->belongsTo(ProductoCaja::class,'caja_id','id');}
 
@@ -48,6 +48,6 @@ class Producto extends Model
 
     public function stockmovimientos(){return $this->hasMany(StockMovimiento::class,'producto_id');}
 
-    public function prespuestolineadetalle(){return $this->hasMany(PresupuestoLineaDetalle::class,'producto_id');}
+    public function prespuestolineadetalle(){return $this->hasMany(PresupuestoLineaDetalle::class,'accionproducto_id');}
 
 }

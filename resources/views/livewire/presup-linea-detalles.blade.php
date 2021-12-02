@@ -12,7 +12,7 @@
             @include('presupuestolinea.presupuestolineacabecera')
             <div class="space-y-2 ">
                 @foreach($acciontipos as $actipo)
-                    @include('presupuestolinea.acciones',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
+                    @include('presupuestolinea.presupuestolineadetalles',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
                 @endforeach
             </div>
         </div>

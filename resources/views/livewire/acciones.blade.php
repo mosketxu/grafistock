@@ -1,4 +1,4 @@
-<div class="w-full px-2 mb-4 md:w-1/3 lg:w-3/4">
+<div class="w-full px-2 mb-4 md:w-1/3 lg:w-2/4">
     <div class="relative bg-white border rounded">
         <div class="p-4 ">
             <div class="flex justify-between">
@@ -74,7 +74,7 @@
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Tipo</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Tarifa</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Ud.</th>
-                            <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Venta</th>
+                            {{-- <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Venta</th> --}}
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Observaciones</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" ></th>
                         </tr>
@@ -97,9 +97,9 @@
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-left text-gray-600 whitespace-no-wrap text">
                                     {{ $accion->unidad->nombre }}
                                 </td>
-                                <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
+                                {{-- <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
                                     {{ $accion->precioventa }}
-                                </td>
+                                </td> --}}
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-left text-gray-600 whitespace-no-wrap">
                                     {{ $accion->observaciones }}
                                 </td>

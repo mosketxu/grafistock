@@ -17,8 +17,8 @@ class CreateEmpresaTiposTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('nombrecorto',3);
-            $table->double('factormaterial', 15, 2);
-            $table->double('preciotintamin', 15, 2);
+            $table->double('factor', 15, 2);
+            $table->double('factormin', 15, 2);
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use App\Models\{Presupuesto,Entidad, User};
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\DataTable\WithBulkActions;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class Presups extends Component
@@ -178,9 +179,11 @@ class Presups extends Component
 
     public function numpresupuesto()
     {
-        $anyo= substr($this->fechapresupuesto,0, 4);
-        $anyo2= substr($this->fechapresupuesto,2, 2);
-        $p=Presupuesto::whereYear('fechapresupuesto', $anyo)->max('presupuesto') ;
+        $anyo= Carbon::parse($this->fechapresupuesto)->year;
+        $anyo2= Carbon::parse($this->fechapresupuesto)->format('y');
+
+        $p=Presupuesto::withTrashed()->whereYear('fechapresupuesto', $anyo)->max('presupuesto') ;
+        // $a=;
         $this->presupuesto= $p ? $p + 1 : ($anyo2 * 100000 +1) ;
     }
 

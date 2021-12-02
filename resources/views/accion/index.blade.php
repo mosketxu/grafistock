@@ -11,6 +11,7 @@
                             <div class="flex flex-row flex-wrap -mx-2">
                                 @livewire('acciones')
                                 @livewire('accion-tipos')
+                                @livewire('empresa-tipos')
                             </div>
                         </div>
                     </div>

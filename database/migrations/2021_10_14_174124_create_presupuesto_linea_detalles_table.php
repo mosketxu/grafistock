@@ -15,16 +15,19 @@ class CreatePresupuestoLineaDetallesTable extends Migration
     {
         Schema::create('presupuesto_linea_detalles', function (Blueprint $table) {
             $table->id();
-            $table->integer('tipo')->index();
             $table->foreignId('presupuestolinea_id')->constrained('presupuesto_lineas')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('accion_id')->index();
+            $table->foreignId('acciontipo_id')->constrained('accion_tipos')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('accionproducto_id')->index();
             $table->boolean('visible')->nullable()->default(true);
             $table->integer('orden')->nullable()->default('0');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->double('preciotarifa', 15, 2)->default(0.00);
             $table->double('precioventa', 15, 2)->default(0.00);
-            $table->double('ratio', 15, 2)->default(0.00);
+            $table->double('factor', 15, 2)->default(0.00);
             $table->double('unidades', 15, 2)->default(0.00);
+            $table->double('alto', 15, 2)->nullable()->default(0.00);
+            $table->double('ancho', 15, 2)->nullable()->default(0.00);
+            $table->double('metros2', 15, 2)->nullable()->default(0.00);
             $table->string('ruta')->nullable();
             $table->string('fichero')->nullable();
             $table->string('observaciones')->nullable();

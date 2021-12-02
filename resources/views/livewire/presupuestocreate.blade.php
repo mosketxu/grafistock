@@ -14,7 +14,8 @@
                     <div class="flex items-center justify-between p-1 rounded-lg shadow-md bg-blue-50">
                         <div class="">
                             <input type="number" id="presupuesto" wire:model="presupuesto"
-                                    class="py-2 text-sm text-gray-600 bg-white border-none rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" disabled>
+                                    class="py-2 text-sm text-gray-600 bg-white border-none rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                    disabled>
                             @error('presupuesto') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                             <div class="items-center ">
@@ -32,13 +33,14 @@
                         <div class="flex space-x-2">
                             <div class="mb-2">
                                 <label for="entidad_id" class="px-1 text-sm text-gray-600">Cliente:</label>
-                                <x-select wire:model.lazy="entidad_id" selectname="entidad_id" required
-                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                <option value="">-- choose --</option>
+                                <select wire:model.defer="entidad_id"
+                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                    required autofocus>
+                                    <option value="">-- choose --</option>
                                     @foreach ($clientes as $cliente)
                                         <option value="{{ $cliente->id }}">{{ $cliente->entidad }}</option>
                                     @endforeach
-                                </x-select>
+                                </select>
                                 @error('entidad_id') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
@@ -117,7 +119,7 @@
                         <div class="flex">
                             <div class="w-full mb-2">
                                 <label for="observaciones" class="px-1 text-sm text-gray-600">Observaciones:</label>
-                                <textarea id="observaciones" wire:model="observaciones"
+                                <textarea id="observaciones" wire:model.defer="observaciones"
                                 class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                                 placeholder="Introduce las observaciones"></textarea>
                                 @error('observaciones') <span class="text-red-500">{{ $message }}</span>@enderror

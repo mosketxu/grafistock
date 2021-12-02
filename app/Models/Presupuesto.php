@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Presupuesto extends Model
 {
     use HasFactory;
-
+    use SoftDeletes;
     // protected $casts = [
     //     'fechapresupuesto' => 'date:Y-m-d',
     // ];
+    protected $dates = ['deleted_at'];
 
 
     protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','precioventa','preciotarifa','ratio','unidades','iva','ruta','fichero','estado','observaciones'];
