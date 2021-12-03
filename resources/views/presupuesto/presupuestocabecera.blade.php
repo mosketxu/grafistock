@@ -30,11 +30,6 @@
                     <input type="text" wire:model.defer="preciotarifa" disabled
                         class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                 </div>
-                {{-- <div class="w-full form-item sm:w-1/12">
-                    <label class="block text-gray-700">{{ __('Ratio') }}</label>
-                    <input type="text" value="{{ $presupuesto->ratio }}" disabled
-                        class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
-                </div> --}}
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('€ Venta') }}</label>
                     <input type="number" step="any" wire:model.defer="precioventa" disabled

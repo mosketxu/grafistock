@@ -17,11 +17,11 @@ class Ent extends Component
         return [
             'entidad.id'=>'nullable',
             'entidad.entidad'=>'required',
-            'entidad.nif'=>'max:12',
-            'entidad.cuentactblepro'=>'numeric|nullable|unique:entidades,cuentactblepro',
-            'entidad.cuentactblecli'=>'numeric|nullable|unique:entidades,cuentactblecli',
+            'entidad.nif'=>'nullable|max:12',
+            'entidad.cuentactblepro'=>'nullable|numeric',
+            'entidad.cuentactblecli'=>'nullable|numeric',
             'entidad.direccion'=>'nullable',
-            'entidad.cp'=>'max:10|nullable',
+            'entidad.cp'=>'nullable|max:10',
             'entidad.localidad'=>'nullable',
             'entidad.provincia_id'=>'nullable',
             'entidad.pais_id'=>'nullable',
@@ -37,7 +37,6 @@ class Ent extends Component
             'entidad.iban1'=>'nullable',
             'entidad.iban2'=>'nullable',
             'entidad.iban3'=>'nullable',
-            'entidad.ratio'=>'nullable|numeric',
             'entidad.diafactura'=>'numeric|nullable',
             'entidad.diavencimiento'=>'numeric|nullable',
             'entidad.observaciones'=>'nullable',
@@ -53,14 +52,12 @@ class Ent extends Component
         $this->entidad=$entidad;
         $this->entidad->entidadtipo_id=$tipo;
         if(!$this->entidad->empresatipo_id) $this->entidad->empresatipo_id='5';
-        $this->entidad->ratio=$entidad->empresatipo->factormaterial ?? '1';
         $this->tipo=EntidadTipo::find($tipo);
     }
 
 
     public function render()
     {
-        // dd($this->tipo);
         if (!$this->entidad->estado) $this->entidad->estado=true;
         $entidad=$this->entidad;
 
@@ -83,15 +80,25 @@ class Ent extends Component
                     'required',
                     Rule::unique('entidades','entidad')->ignore($this->entidad->id)],
                 'entidad.nif'=>[
+                    'nullable',
                     'max:12',
                     Rule::unique('entidades','nif')->ignore($this->entidad->id)],
+                'entidad.cuentactblepro'=>[
+                    'nullable',
+                    Rule::unique('entidades','cuentactblepro')->ignore($this->entidad->id)],
+                'entidad.cuentactblecli'=>[
+                    'nullable',
+                    Rule::unique('entidades','cuentactblecli')->ignore($this->entidad->id)],
                 ]
             );
             $mensaje="Proveedor actualizado satisfactoriamente";
         }else{
             $this->validate([
                 'entidad.entidad'=>'required|unique:entidades,entidad',
-                'entidad.nif'=>'max:12|unique:entidades,nif',
+                'entidad.nif'=>'nullable|max:12|unique:entidades,nif',
+                'entidad.cuentactblepro'=>'nullable|numeric|unique:entidades,cuentactblepro',
+                'entidad.cuentactblecli'=>'nullable|numeric|unique:entidades,cuentactblecli',
+
                 ]
             );
             $i=$this->entidad->id;
@@ -123,7 +130,6 @@ class Ent extends Component
             'iban1'=>$this->entidad->iban1,
             'iban2'=>$this->entidad->iban2,
             'iban3'=>$this->entidad->iban3,
-            'ratio'=>$this->entidad->empresatipo->factormaterial,
             'diafactura'=>$this->entidad->diafactura,
             'diavencimiento'=>$this->entidad->diavencimiento,
             'observaciones'=>$this->entidad->observaciones,

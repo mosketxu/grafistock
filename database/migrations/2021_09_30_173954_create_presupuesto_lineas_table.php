@@ -21,7 +21,6 @@ class CreatePresupuestoLineasTable extends Migration
             $table->string('descripcion',255);
             $table->double('preciotarifa', 15, 2)->default(0.00);
             $table->double('precioventa', 15, 2)->default(0.00);
-            $table->double('ratio', 15, 2)->default(0.00);
             $table->double('unidades', 15, 2)->default(0.00);
             $table->string('ruta')->nullable();
             $table->string('fichero')->nullable();

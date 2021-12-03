@@ -45,6 +45,17 @@ class PresupuestoController extends Controller
         //
     }
 
+    public function imprimir(Presupuesto $presupuesto)
+    {
+        $presupuesto=Presupuesto::with('presupuestolineasvisibles')->find($presupuesto->id);
+
+        // return view('pedido.pedidopdf', compact(['pedido','base']));
+
+        $pdf = \PDF::loadView('presupuesto.presupuestofichapdf', compact(['presupuesto']));
+
+        return $pdf->stream('ficha.pdf');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -53,7 +64,15 @@ class PresupuestoController extends Controller
      */
     public function show(Presupuesto $presupuesto)
     {
-        //
+        $presupuesto=Presupuesto::with('presupuestolineas','presupuestolineas.presupuestolineadetalles')->find($presupuesto->id);
+
+
+        // return view('pedido.pedidopdf', compact(['pedido','base']));
+
+        $pdf = \PDF::loadView('presupuesto.presupuestopdf', compact(['presupuesto']));
+
+        return $pdf->stream('invoice.pdf');
+
     }
 
     /**

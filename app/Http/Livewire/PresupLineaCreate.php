@@ -17,7 +17,6 @@ public $orden=0;
 public $descripcion;
 public $preciotarifa='0';
 public $precioventa='0';
-public $ratio;
 public $unidades='0';
 public $fichero;
 public $observaciones;
@@ -29,7 +28,6 @@ protected $rules = [
     'descripcion'=>'required',
     'preciotarifa'=>'numeric',
     'precioventa'=>'numeric',
-    'ratio'=>'numeric',
     'unidades'=>'numeric',
     'observaciones'=>'nullable',
 
@@ -39,7 +37,6 @@ protected $rules = [
     {
         $this->presupuesto=Presupuesto::find($presupuestoId);
         $this->presupuesto_id=$presupuestoId;
-        $this->ratio=Entidad::find($this->presupuesto->entidad_id)->empresatipo->factormaterial ?? '1' ;
 
     }
 
@@ -50,7 +47,6 @@ protected $rules = [
 
     public function save()
     {
-        // $this->ratio= !$this->ratio ? 1 : $this->ratio;
         $this->validate();
 
         PresupuestoLinea::create([
@@ -60,7 +56,6 @@ protected $rules = [
             'descripcion'=>$this->descripcion,
             'preciotarifa'=>$this->preciotarifa,
             'precioventa'=>$this->precioventa,
-            'ratio'=>$this->ratio,
             'unidades'=>$this->unidades,
             'observaciones'=>$this->observaciones,
 

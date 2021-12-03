@@ -21,11 +21,12 @@ class PresupLineas extends Component
 
     public function changeVisible(PresupuestoLinea $linea,$visible)
     {
-        $visible=$visible==false ? true : false;
         Validator::make(['visible'=>$visible],[
             'visible'=>'boolean',
         ])->validate();
-        $linea->update(['visible'=>$visible]);
+        $linea->visible=$linea->visible=='1'? '0' : '1';
+        $linea->update(['visible'=>$linea->visible]);
+        $this->emit('linearefresh');
         $this->dispatchBrowserEvent('notify', 'Visible Actualizado.');
     }
 

@@ -17,11 +17,16 @@ class Presupuesto extends Model
     protected $dates = ['deleted_at'];
 
 
-    protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','precioventa','preciotarifa','ratio','unidades','iva','ruta','fichero','estado','observaciones'];
+    protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','precioventa','preciotarifa','unidades','iva','ruta','fichero','estado','observaciones'];
 
     public function presupuestolineas()
     {
         return $this->hasMany(PresupuestoLinea::class)->orderBy('orden');
+    }
+
+    public function presupuestolineasvisibles()
+    {
+        return $this->hasMany(PresupuestoLinea::class)->where('visible',true)->orderBy('orden');
     }
 
     public function entidad()

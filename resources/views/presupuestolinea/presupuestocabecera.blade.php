@@ -24,6 +24,10 @@
                 <div class="">
                     <p class="text-sm font-semibold text-gray-900">€ Venta: {{ $presuplinea->presupuesto->precioventa ?? '-'}}</p>
                 </div>
+                <div class="flex">
+                    <a href="{{ route('presupuesto.show',$presuplinea->presupuesto) }}" target="_blank" class="w-6 h-6 ml-2 text" title="Imprimir Presupuesto"><x-icon.printer></x-icon.printer></a>
+                    <a href="{{ route('presupuesto.imprimir',$presuplinea->presupuesto) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.pdfred ></x-icon.pdfred></a>
+                </div>
             </div>
         </div>
     </div>

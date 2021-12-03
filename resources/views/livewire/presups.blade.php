@@ -115,7 +115,6 @@
                         <th class="pl-4 font-medium text-left">{{ __('Descripción') }} </th>
                         <th class="pr-4 font-medium text-right">{{ __('Unidades') }}</th>
                         <th class="pr-4 font-medium text-right">{{ __('€ Tarifa') }}</th>
-                        {{-- <th class="pl-4 font-medium text-left">{{ __('Ratio') }} </th> --}}
                         <th class="pr-4 font-medium text-right">{{ __('€ Venta') }}</th>
                         <th class="pr-4 font-medium text-center">{{ __('Estado') }}</th>
                         <th colspan="2"></th>
@@ -191,12 +190,14 @@
                                     @if(Auth::user()->id==$presupuesto->solicitante_id || Auth::user()->hasRole('Admin'))
                                     <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600"
                                         title="Editar Presupuesto" />
-                                    <x-icon.clipboard-a href="{{route('presupuesto.edit', $presupuesto) }}"
+                                        <x-icon.clipboard-a href="{{route('presupuesto.edit', $presupuesto) }}"
                                         class="text-green-600" title="Composición Presupuesto" />
-                                    <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})"
-                                        onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()"
-                                        class="pl-1 " title="Borrar" />
+                                        <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})"
+                                            onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()"
+                                            class="pl-1 " title="Borrar" />
                                     @endif
+                                    <a href="{{ route('presupuesto.show',$presupuesto) }}" target="_blank" class="w-6 h-6 ml-2 text" title="Imprimir Presupuesto"><x-icon.printer></x-icon.printer></a>
+                                    <a href="{{ route('presupuesto.imprimir',$presupuesto) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.pdfred ></x-icon.pdfred></a>
                                 </div>
                             </td>
                         </tr>

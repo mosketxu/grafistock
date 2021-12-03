@@ -26,6 +26,11 @@ class PresupuestoLineaDetalle extends Model
         return $this->belongsTo(Accion::class,'accionproducto_id');
     }
 
+    public function acciontipo()
+    {
+        return $this->belongsTo(AccionTipo::class,'acciontipo_id');
+    }
+
     public function unidadpreciotarifa()
     {
         return $this->belongsTo(Unidad::class,'udpreciotarifa_id');

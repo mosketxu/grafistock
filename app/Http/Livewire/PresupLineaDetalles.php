@@ -116,9 +116,11 @@ class PresupLineaDetalles extends Component
     public function changeObs(PresupuestoLineaDetalle $presupaccion,$observaciones)
     {
         Validator::make(['observaciones'=>$observaciones],[
-            'observaciones'=>'text|nullable',
+            'observaciones'=>'nullable',
         ])->validate();
         $presupaccion->update(['observaciones'=>$observaciones]);
+        $this->dispatchBrowserEvent('notify', 'Observación actualizada.');
+
     }
 
     public function calculoPrecioVenta($presupacciondetalle)

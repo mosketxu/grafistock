@@ -22,7 +22,6 @@ class CreatePresupuestosTable extends Migration
             $table->date('fechapresupuesto');
             $table->double('preciotarifa', 15, 2)->nullable();
             $table->double('precioventa', 15, 2)->nullable();
-            $table->double('ratio', 15, 2);
             $table->double('unidades', 15, 2)->nullable();
             $table->double('iva', 15, 2)->default('0.21');
             $table->string('ruta')->nullable();

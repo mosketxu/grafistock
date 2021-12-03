@@ -11,7 +11,7 @@ class Entidad extends Model
     protected $table = 'entidades';
     protected $fillable=['entidad','entidadtipo_id','empresatipo_id','direccion','cp','localidad','provincia_id','pais_id',
                         'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
-                        'banco1','iban1','banco2','iban2','banco3','iban3','ratio',
+                        'banco1','iban1','banco2','iban2','banco3','iban3','factor',
                         'metodopago_id','diafactura','diavencimiento',
                         'cuentactblepro','cuentactblecli','observaciones','estado','password'];
 

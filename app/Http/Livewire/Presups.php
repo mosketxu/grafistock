@@ -23,7 +23,7 @@ class Presups extends Component
     public $message;
     public $total;
 
-    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciotarifa,$ratio,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciotarifa,$factor,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -111,7 +111,7 @@ class Presups extends Component
             'precioventa' => 'nullable|numeric',
             'estado' => 'required',
             'iva' => 'required',
-            'ratio' => 'required',
+            'factor' => 'required',
         ]);
 
         $destino="editar";
@@ -128,7 +128,7 @@ class Presups extends Component
             'fechapresupuesto'=>$this->fechapresupuesto,
             'precioventa'=>$this->precioventa,
             'preciotarifa'=>$this->preciotarifa,
-            'ratio'=>$this->ratio,
+            'factor'=>$this->factor,
             'unidades'=>$this->unidades,
             'iva'=>$this->iva,
             'ruta'=>$this->ruta,
@@ -161,7 +161,7 @@ class Presups extends Component
         $this->fechapresupuesto=$presupuesto->fechapresupuesto;
         $this->preciotarifa=$presupuesto->preciotarifa;
         $this->precioventa=$presupuesto->precioventa;
-        $this->ratio=$presupuesto->ratio;
+        $this->factor=$presupuesto->factor;
         $this->unidades=$presupuesto->unidades;
         $this->iva=$presupuesto->iva;
         $this->ruta=$presupuesto->ruta;
@@ -174,7 +174,7 @@ class Presups extends Component
     public function updatedEntidadId()
     {
         $e=Entidad::find($this->entidad_id);
-        $this->ratio=$e->empresatipo->factormaterial ?? '1';
+        $this->factor=$e->empresatipo->factormaterial ?? '1';
     }
 
     public function numpresupuesto()

@@ -14,7 +14,6 @@ class AddColumnsToEntidadesTable extends Migration
     public function up()
     {
         Schema::table('entidades', function (Blueprint $table) {
-            $table->double('ratio', 15, 2)->nullable()->after('iban3');
             $table->foreignId('empresatipo_id')->nullable()->constrained('empresa_tipos')->after('entidadtipo_id');
 
         });
@@ -28,7 +27,7 @@ class AddColumnsToEntidadesTable extends Migration
     public function down()
     {
         Schema::table('entidades', function (Blueprint $table) {
-            $table->dropColumn('ratio');
+            $table->dropColumn('empresatipo_id');
         });
     }
 }

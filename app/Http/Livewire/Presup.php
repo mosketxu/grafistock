@@ -65,7 +65,7 @@ class Presup extends Component
                 'estado'=>$this->estado,
                 'descripcion'=>$this->descripcion,
                 'observaciones'=>$this->observaciones
-           ]);
+        ]);
 
         $this->dispatchBrowserEvent('notify', $mensaje);
     }
