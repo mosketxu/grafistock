@@ -78,7 +78,7 @@ class PresupLineas extends Component
     public function changeObs(PresupuestoLinea $linea,$observaciones)
     {
         Validator::make(['observaciones'=>$observaciones],[
-            'observaciones'=>'text|nullable',
+            'observaciones'=>'nullable',
         ])->validate();
         $linea->update(['observaciones'=>$observaciones]);
         $this->dispatchBrowserEvent('notify', 'Observaciones Actualizado.');

@@ -71,7 +71,21 @@
                     </div>
                     <div class="flex space-x-2">
                         <div class="w-full mb-2">
-                            <label for="preciotarifa" class="px-1 text-sm text-gray-600">€ Tarifa:
+                            <label for="preciotarifa_ud" class="px-1 text-sm text-gray-600">€ Tarifa Ud:
+                                <input type="hidden" id="udpreciotarifa_id" wire:model.defer="udpreciotarifa_id"/>
+                                @if($accionproducto!='')
+                                    (x {{ $unidadventa }})
+                                @endif
+                            </label>
+
+                                <input type="number" id="preciotarifa_ud" wire:model.defer="preciotarifa_ud"
+                                class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                disabled>
+                            @error('preciotarifa_ud') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="w-full mb-2">
+                            <label for="preciotarifa" class="px-1 text-sm text-gray-600">€ Precio Tarifa:
+                                <input type="hidden" id="udpreciotarifa_id" wire:model.defer="udpreciotarifa_id"/>
                                 @if($accionproducto!='')
                                     (x {{ $unidadventa }})
                                 @endif

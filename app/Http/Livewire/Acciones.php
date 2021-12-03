@@ -23,6 +23,7 @@ class Acciones extends Component
     public $descripcion='';
     public $acciontipo_id='';
     public $preciotarifa='';
+    public $preciotarifa_ud='';
     public $udpreciotarifa_id='';
     public $precioventa='';
     public $observaciones='';
@@ -38,6 +39,7 @@ class Acciones extends Component
             'descripcion'=>'nullable',
             'acciontipo_id'=>'required|numeric',
             'preciotarifa'=>'numeric|nullable',
+            'preciotarifa_ud'=>'numeric|nullable',
             'udpreciotarifa_id'=>'numeric|nullable',
             'precioventa'=>'numeric|nullable',
             'observaciones'=>'string|nullable',
@@ -77,6 +79,7 @@ class Acciones extends Component
         $this->descripcion='';
         $this->acciontipo_id='';
         $this->preciotarifa='';
+        $this->preciotarifa_ud='';
         $this->udpreciotarifa_id='';
         $this->precioventa='';
         $this->observaciones='';
@@ -108,6 +111,7 @@ class Acciones extends Component
                 'descripcion'=>$this->descripcion,
                 'acciontipo_id'=>$this->acciontipo_id,
                 'preciotarifa'=>$this->preciotarifa,
+                'preciotarifa_ud'=>$this->preciotarifa_ud,
                 'udpreciotarifa_id'=>$this->udpreciotarifa_id,
                 'precioventa'=>$this->precioventa,
                 'observaciones'=>$this->observaciones,
@@ -126,6 +130,7 @@ class Acciones extends Component
         $this->descripcion=$accion->descripcion;
         $this->acciontipo_id=$accion->acciontipo_id;
         $this->preciotarifa=$accion->preciotarifa;
+        $this->preciotarifa_ud=$accion->preciotarifa_ud;
         $this->udpreciotarifa_id=$accion->udpreciotarifa_id;
         $this->precioventa=$accion->precioventa;
         $this->observaciones=$accion->observaciones;
@@ -142,6 +147,4 @@ class Acciones extends Component
             $this->dispatchBrowserEvent('notify', '¡Acción eliminada!');
         }
     }
-
-
 }

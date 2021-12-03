@@ -27,6 +27,8 @@ class PresupLineaDetalle extends Component
     public $orden=1;
     public $descripcion;
     public $preciotarifa=0;
+    public $preciotarifa_ud=0;
+    public $udpreciotarifa_id;
     public $precioventa=0;
     public $ancho=1;
     public $alto=1;
@@ -42,7 +44,9 @@ class PresupLineaDetalle extends Component
         'visible'=>'',
         'orden'=>'nullable|numeric',
         'preciotarifa'=>'nullable|numeric',
+        'preciotarifa_ud'=>'nullable|numeric',
         'precioventa'=>'nullable|numeric',
+        'udpreciotarifa_id'=>'nullable|numeric',
         'ancho'=>'nullable|numeric',
         'alto'=>'nullable|numeric',
         'metros2'=>'nullable|numeric',
@@ -96,8 +100,10 @@ class PresupLineaDetalle extends Component
         }else{
             $this->accionproducto=Producto::find($this->accionproducto_id);
         }
+        $this->preciotarifa_ud=$this->accionproducto->preciotarifa;
+        $this->udpreciotarifa_id=$this->accionproducto->udpreciotarifa_id;
 
-        $this->preciotarifa=number_format($this->preciotarifa,2,',','.');
+
         $this->unidadventa=$this->accionproducto->unidadpreciotarifa->nombrecorto;
         $this->calculoPrecioVenta();
     }
@@ -179,7 +185,8 @@ class PresupLineaDetalle extends Component
         $presupaccion->update([
             'ancho'=>$ancho,
             'metros2'=>round($ancho * $presupaccion->alto ,2),
-            'precioventa'=>round($ancho * $presupaccion->alto * $presupaccion->preciotarifa * $presupaccion->factor * $presupaccion->unidades,2),
+            'preciotarifa'=>round($ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades,2),
+            'precioventa'=>round($ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->factor * $presupaccion->unidades,2),
         ]);
         $this->recalcular($presupaccion);
 
@@ -195,6 +202,7 @@ class PresupLineaDetalle extends Component
         $presupaccion->update([
             'alto'=>$alto,
             'metros2'=>round($alto * $presupaccion->ancho ,2),
+            'preciotarifa'=>round($alto * $presupaccion->ancho * $presupaccion->preciotarifa_ud * $presupaccion->unidades,2),
             'precioventa'=>round($alto * $presupaccion->ancho * $presupaccion->preciotarifa * $presupaccion->factor * $presupaccion->unidades,2),
         ]);
 
@@ -210,7 +218,8 @@ class PresupLineaDetalle extends Component
         ])->validate();
         $presupaccion->update([
             'unidades'=>$unidades,
-            'precioventa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa * $presupaccion->factor * $unidades,2),
+            'preciotarifa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $unidades,2),
+            'precioventa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->factor * $unidades,2),
         ]);
         $this->recalcular($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
@@ -228,7 +237,8 @@ class PresupLineaDetalle extends Component
         }
         $presupaccion->update([
             'factor'=>$factor,
-            'precioventa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa * $presupaccion->unidades * $factor,2),
+            'preciotarifa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades ,2),
+            'precioventa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades * $factor,2),
         ]);
 
         $this->recalcular($presupaccion);
@@ -236,23 +246,10 @@ class PresupLineaDetalle extends Component
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
     }
 
-    public function calculoPrecioVenta()
-    {
-        $this->preciotarifa=$this->accionproducto->preciotarifa;
-        if($this->unidadventa=='m2' || $this->unidadventa=='pla'){
-            $this->showAnchoAlto = true;
-        }else{
-            $this->alto='1';
-            $this->ancho='1';
-            $this->showAnchoAlto= false;
-        }
-        $this->metros2=round($this->ancho * $this->alto ,2);
-        $this->precioventa=round($this->metros2 * $this->preciotarifa * $this->factor * $this->unidades,2);
-    }
-
     public function save()
     {
         $this->validate();
+
         $pldetalle = PresupuestoLineaDetalle::create( [
             'presupuestolinea_id'=>$this->presuplinea->id,
             'acciontipo_id'=>$this->acciontipoId,
@@ -260,6 +257,8 @@ class PresupLineaDetalle extends Component
             'orden'=>$this->orden,
             'descripcion'=>$this->descripcion,
             'preciotarifa'=>$this->preciotarifa,
+            'preciotarifa_ud'=>$this->preciotarifa_ud,
+            'udpreciotarifa_id'=>$this->udpreciotarifa_id,
             'precioventa'=>$this->precioventa,
             'factor'=>$this->factor,
             'unidades'=>$this->unidades,
@@ -281,7 +280,20 @@ class PresupLineaDetalle extends Component
         $p=Presupuesto::find($pl->presupuesto_id);
         $p->recalculo();
         return redirect()->route('presupuestolinea.create',[$pl,$presupaccion->acciontipo_id]);
+    }
 
+    public function calculoPrecioVenta()
+    {
+        if($this->unidadventa=='m2' || $this->unidadventa=='pla'){
+            $this->showAnchoAlto = true;
+        }else{
+            $this->alto='1';
+            $this->ancho='1';
+            $this->showAnchoAlto= false;
+        }
+        $this->metros2=round($this->ancho * $this->alto ,2);
+        $this->preciotarifa=round($this->metros2 * $this->preciotarifa_ud * $this->unidades,2);
+        $this->precioventa=round($this->metros2 * $this->preciotarifa_ud * $this->factor * $this->unidades,2);
     }
 
     public function delete($lineaId)

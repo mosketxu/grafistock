@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Livewire\PresupLineaDetalle;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,11 @@ class Unidad extends Model
     public function productos()
     {
         return $this->hasMany(Producto::class);
+    }
+
+    public function presupuestolineadetalles()
+    {
+        return $this->hasMany(PresupLineaDetalle::class,'udpreciotarifa_id');
     }
 
 }

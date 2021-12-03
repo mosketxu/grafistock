@@ -30,6 +30,7 @@
                     <td class="pl-3 ">{{ __('Descr.Prespuesto') }} </td>
                     <td class="pl-3 ">{{ __('Descripción') }} </td>
                     <td class="pl-3 ">{{ __('Ref.') }} </td>
+                    <td class="w-20 pr-3 text-right ">{{ __('€ Tarifa/Ud') }}</td>
                     <td class="w-20 pr-3 text-right ">{{ __('€ Tarifa') }}</td>
                     <td class="w-16 pr-3 text-right ">{{ __('Ancho') }}</td>
                     <td class="w-16 pr-3 text-right ">{{ __('Ancho') }}</td>
@@ -56,17 +57,35 @@
                         <td><input type="text" value="{{ $acciontipo->nombre=="Material" ? $presupaccion->producto->referencia ?? '-' : $presupaccion->accion->referencia ?? '-'  }}" readonly
                             class="w-full py-1 text-xs bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                         </td>
-                        <td><input type="text" value="{{ $presupaccion->preciotarifa }}"
+                        <td>
+                            <input type="text" value="{{ $presupaccion->preciotarifa_ud }} {{ $presupaccion->unidadpreciotarifa->nombrecorto ?? '' }}"
                             class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                         </td>
-                        <td><input type="text" value="{{ $presupaccion->ancho }}" wire:change="changeAncho({{ $presupaccion }},$event.target.value)"
-                            class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                            />
+                        <td>
+                            <input type="text" value="{{ $presupaccion->preciotarifa }} {{ $presupaccion->unidadpreciotarifa->nombrecorto ?? '' }}"
+                            class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                         </td>
-                        <td><input type="text" value="{{ $presupaccion->alto }}" wire:change="changeAlto({{ $presupaccion }},$event.target.value)"
-                            class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                            />
-                        </td>
+                        @if($presupaccion->unidadpreciotarifa->nombrecorto=='m2' || $presupaccion->unidadpreciotarifa->nombrecorto=='pla')
+                            <td><input type="text" value="{{ $presupaccion->ancho }}" wire:change="changeAncho({{ $presupaccion }},$event.target.value)"
+                                class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                />
+                            </td>
+                            <td><input type="text" value="{{ $presupaccion->alto }}" wire:change="changeAlto({{ $presupaccion }},$event.target.value)"
+                                class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                {{ ($presupaccion->unidadpreciotarifa->nombrecorto=='m2' || $presupaccion->unidadpreciotarifa->nombrecorto=='pla') ? '' : 'disabled'}}
+                                />
+                            </td>
+                        @else
+                            <td><input type="text" value="{{ $presupaccion->ancho }}" wire:change="changeAncho({{ $presupaccion }},$event.target.value)"
+                                class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                disabled/>
+                            </td>
+                            <td><input type="text" value="{{ $presupaccion->alto }}" wire:change="changeAlto({{ $presupaccion }},$event.target.value)"
+                                class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                disabled/>
+                            </td>
+
+                        @endif
                         <td><input type="text" value="{{ number_format($presupaccion->metros2,2,',','.') }}"
                             class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                         </td>
