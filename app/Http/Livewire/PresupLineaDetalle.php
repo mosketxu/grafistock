@@ -100,8 +100,8 @@ class PresupLineaDetalle extends Component
     {
         if($this->acciontipoId!='1'){
             $this->accionproducto=Accion::find($this->accionproducto_id);
-            $this->mermamin=1;
-            $this->merma=1;
+            $this->mermamin=0;
+            $this->merma=0;
         }else{
             $this->accionproducto=Producto::find($this->accionproducto_id);
             $this->mermamin=$this->accionproducto->tipo->merma;
@@ -155,7 +155,7 @@ class PresupLineaDetalle extends Component
         ]);
         if($this->merma<$this->mermamin){
             $this->dispatchBrowserEvent("notify", "La merma es inferior a la mínima. Se asignará la mínima.");
-            $this->merma=$this->mermamin ?? '1';
+            $this->merma=$this->mermamin ?? '0';
         }
         $this->calculoPrecioVenta();
     }
@@ -200,11 +200,12 @@ class PresupLineaDetalle extends Component
         Validator::make(['ancho'=>$ancho],[
             'ancho'=>'numeric|required',
         ])->validate();
+        $preciotarifa=$ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades;
         $presupaccion->update([
             'ancho'=>$ancho,
             'metros2'=>round($ancho * $presupaccion->alto ,2),
-            'preciotarifa'=>round($ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades,2),
-            'precioventa'=>round($ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->factor * $presupaccion->unidades,2),
+            'preciotarifa'=>round($preciotarifa,2),
+            'precioventa'=>round($preciotarifa * ($this->presupaccion->factor +  $this->presupaccion->merma) ,2),
         ]);
         $this->recalcular($presupaccion);
 
@@ -217,11 +218,13 @@ class PresupLineaDetalle extends Component
         Validator::make(['alto'=>$alto],[
             'alto'=>'numeric|required',
         ])->validate();
+        $preciotarifa=$alto * $presupaccion->ancho * $presupaccion->preciotarifa_ud * $presupaccion->unidades;
+
         $presupaccion->update([
             'alto'=>$alto,
             'metros2'=>round($alto * $presupaccion->ancho ,2),
-            'preciotarifa'=>round($alto * $presupaccion->ancho * $presupaccion->preciotarifa_ud * $presupaccion->unidades,2),
-            'precioventa'=>round($alto * $presupaccion->ancho * $presupaccion->preciotarifa * $presupaccion->factor * $presupaccion->unidades,2),
+            'preciotarifa'=>round($preciotarifa,2),
+            'precioventa'=>round($preciotarifa * ($this->presupaccion->factor +  $this->presupaccion->merma) ,2),
         ]);
 
         $this->recalcular($presupaccion);
@@ -234,10 +237,12 @@ class PresupLineaDetalle extends Component
         Validator::make(['unidades'=>$unidades],[
             'unidades'=>'numeric|required',
         ])->validate();
+        $preciotarifa=$presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $unidades;
+
         $presupaccion->update([
             'unidades'=>$unidades,
-            'preciotarifa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $unidades,2),
-            'precioventa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->factor * $unidades,2),
+            'preciotarifa'=>round($preciotarifa,2),
+            'precioventa'=>round($preciotarifa * ($this->presupaccion->factor +  $this->presupaccion->merma) ,2),
         ]);
         $this->recalcular($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
@@ -249,14 +254,17 @@ class PresupLineaDetalle extends Component
             'factor'=>'numeric|required',
             ])->validate();
         $factormin=$presupaccion->presupuestolinea->presupuesto->entidad->empresatipo->factormin ?? '1';
+
         if($factor<$factormin){
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $factor=$factormin;
         }
+        $preciotarifa=$presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades;
+
         $presupaccion->update([
             'factor'=>$factor,
-            'preciotarifa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades ,2),
-            'precioventa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades * $factor,2),
+            'preciotarifa'=>round($preciotarifa,2),
+            'precioventa'=>round($preciotarifa * ($factor +  $this->presupaccion->merma) ,2),
         ]);
 
         $this->recalcular($presupaccion);
@@ -275,10 +283,13 @@ class PresupLineaDetalle extends Component
             $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
             $merma=$mermamin;
         }
+
+        $preciotarifa=$presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades;
+
         $presupaccion->update([
             'merma'=>$merma,
-            'preciotarifa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades ,2),
-            'precioventa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades * $presupaccion->factor * $merma,2),
+            'preciotarifa'=>round($preciotarifa,2),
+            'precioventa'=>round($preciotarifa * ($this->factor +   $merma) ,2),
         ]);
 
         $this->recalcular($presupaccion);
@@ -331,7 +342,7 @@ class PresupLineaDetalle extends Component
         }
         $this->metros2=round($this->ancho * $this->alto ,2);
         $this->preciotarifa=round($this->metros2 * $this->preciotarifa_ud * $this->unidades,2);
-        $this->precioventa=round($this->metros2 * $this->preciotarifa_ud * $this->factor * $this->merma * $this->unidades,2);
+        $this->precioventa=round($this->preciotarifa *( $this->factor +  $this->merma),2);
     }
 
     public function delete($lineaId)

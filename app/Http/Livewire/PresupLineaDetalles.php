@@ -145,7 +145,7 @@ class PresupLineaDetalles extends Component
     public function calculoPrecioVenta($presupacciondetalle)
     {
         $presupacciondetalle->preciotarifa=round($presupacciondetalle->metros2 * $presupacciondetalle->preciotarifa_ud *  $presupacciondetalle->unidades,2);
-        $presupacciondetalle->precioventa=round($presupacciondetalle->metros2 * $presupacciondetalle->preciotarifa_ud * $presupacciondetalle->factor* $presupacciondetalle->merma * $presupacciondetalle->unidades,2);
+        $presupacciondetalle->precioventa=round($presupacciondetalle->preciotarifa * ($presupacciondetalle->factor + $presupacciondetalle->merma) ,2);
         $presupacciondetalle->save();
         $this->dispatchBrowserEvent('notify', 'Precio venta actualizado.');
         $this->save($presupacciondetalle);
