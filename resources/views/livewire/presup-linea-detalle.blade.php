@@ -132,6 +132,12 @@
                             disabled>
                         </div>
                         <div class="w-full mb-2">
+                            <label for="merma" class="px-1 text-sm text-gray-600">Merma:</label>
+                            <input type="number" id="merma" wire:model="merma"
+                            class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                            @error('merma') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="w-full mb-2">
                             <label for="precioventa" class="px-1 text-sm text-gray-600">€ Venta:
                                 @if($accionproducto!='')
                                     (x {{ $unidadventa }})

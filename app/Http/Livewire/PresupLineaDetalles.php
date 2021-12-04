@@ -90,8 +90,8 @@ class PresupLineaDetalles extends Component
             'factor'=>'numeric|required',
         ])->validate();
 
-        $p=Presupuesto::find($presupaccion->presupuestolinea_id);
-        $factormin=$p->entidad->empresatipo->factormin;
+        $factormin=$presupaccion->presupuestolinea->presupuesto->entidad->empresatipo->factormin;
+
         if($factor<$factormin){
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $factor=$factormin ?? '1';
@@ -102,15 +102,34 @@ class PresupLineaDetalles extends Component
         $this->calculoPrecioVenta($presupaccion);
     }
 
+    public function changeMerma(PresupuestoLineaDetalle $presupaccion,$merma)
+    {
+        Validator::make(['merma'=>$merma],[
+            'merma'=>'numeric|required',
+        ])->validate();
+
+        $mermamin=$presupaccion->producto->tipo->merma;
+        if($merma<$mermamin){
+            $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
+            $merma=$mermamin;
+        }
+        $presupaccion->update([
+            'merma'=>$merma,
+        ]);
+
+        $this->calculoPrecioVenta($presupaccion);
+
+    }
+
     public function changeUnidades(PresupuestoLineaDetalle $presupaccion,$unidades)
     {
         Validator::make(['unidades'=>$unidades],[
             'unidades'=>'numeric|nullable',
             ])->validate();
         $presupaccion->update(['unidades'=>$unidades]);
+
         $this->calculoPrecioVenta($presupaccion);
 
-        $p=PresupuestoLinea::find($this->presupuestolinea->id)->recalculo();
     }
 
     public function changeObs(PresupuestoLineaDetalle $presupaccion,$observaciones)
@@ -125,29 +144,32 @@ class PresupLineaDetalles extends Component
 
     public function calculoPrecioVenta($presupacciondetalle)
     {
-        $presupacciondetalle->precioventa=round($presupacciondetalle->metros2 * $presupacciondetalle->preciotarifa * $presupacciondetalle->factor * $presupacciondetalle->unidades,2);
+        $presupacciondetalle->preciotarifa=round($presupacciondetalle->metros2 * $presupacciondetalle->preciotarifa_ud *  $presupacciondetalle->unidades,2);
+        $presupacciondetalle->precioventa=round($presupacciondetalle->metros2 * $presupacciondetalle->preciotarifa_ud * $presupacciondetalle->factor* $presupacciondetalle->merma * $presupacciondetalle->unidades,2);
         $presupacciondetalle->save();
         $this->dispatchBrowserEvent('notify', 'Precio venta actualizado.');
+        $this->save($presupacciondetalle);
     }
+
 
     public function save($presupacciondetalle)
     {
-        // $this->validate();
-        $pl=$presupacciondetalle->recalculo();
-        $p=Presupuesto::find($presupacciondetalle->presupuesto_id);
-        $p->recalculo();
-
-        // return redirect()->route('presupuestolinea.create',[$this->presuplinea,$this->acciontipo->id]);
+        $presuplinea=$presupacciondetalle->presupuestolinea;
+        $pl=$presuplinea->recalculo();
+        $p=$presuplinea->presupuesto->recalculo();
+        return redirect()->route('presupuestolinea.index',$presuplinea);
     }
 
     public function delete($lineaId)
     {
         $lineaBorrar = PresupuestoLineaDetalle::find($lineaId);
-
+        $presuplinea=$lineaBorrar->presupuestolinea;
         if ($lineaBorrar) {
             $lineaBorrar->delete();
+            $pl=$presuplinea->recalculo();
+            $p=$presuplinea->presupuesto->recalculo();
             $this->dispatchBrowserEvent('notify', 'Linea de presupuesto eliminada!');
-            $this->emit('linearefresh');
+            return redirect()->route('presupuestolinea.index',$presuplinea);
         }
     }
 }

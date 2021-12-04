@@ -36,6 +36,9 @@
                     <td class="w-16 pr-3 text-right ">{{ __('Ancho') }}</td>
                     <td class="w-20 pr-3 text-right ">{{ __('Mts 2') }}</td>
                     <td class="w-20 pr-3 text-right ">{{ __('Factor') }}</td>
+                    @if ($acciontipo->id=='1')
+                        <td class="w-20 pr-3 text-right ">{{ __('Merma') }}</td>
+                    @endif
                     <td class="w-20 pr-3 text-right ">{{ __('Unidades') }}</td>
                     <td class="w-20 pr-3 text-right ">{{ __('€ Venta') }}</td>
                     <td class="pl-3 ">{{ __('Observaciones') }} </td>
@@ -92,6 +95,11 @@
                         <td><input type="text" value="{{ $presupaccion->factor }}" wire:change="changeFactor({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </td>
+                        @if ($acciontipo->id=='1')
+                            <td><input type="text" value="{{ $presupaccion->merma }}" wire:change="changeMerma({{ $presupaccion }},$event.target.value)"
+                                class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                            </td>
+                        @endif
                         <td><input type="text" value="{{ $presupaccion->unidades }}" wire:change="changeUnidades({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                         </td>
@@ -108,7 +116,7 @@
                     </tr>
                 @empty
                     <tr class="">
-                        <td colspan="10" class="text-center ">
+                        <td colspan="16" class="text-center ">
                             <div class="mx-2 bg-yellow-200 rounded">
                                 No hay {{ $acciontipo->nombre }} en el presupuesto
                             </div>

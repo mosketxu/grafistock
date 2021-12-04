@@ -34,6 +34,8 @@ class PresupLineaDetalle extends Component
     public $alto=1;
     public $metros2=0;
     public $factor;
+    public $merma;
+    public $mermamin;
     public $factormin;
     public $unidades=1;
     public $accionproducto_id;
@@ -51,6 +53,7 @@ class PresupLineaDetalle extends Component
         'alto'=>'nullable|numeric',
         'metros2'=>'nullable|numeric',
         'factor'=>'nullable|numeric',
+        'merma'=>'nullable|numeric',
         'unidades'=>'nullable|numeric',
         'accionproducto_id'=>'required',
     ];
@@ -97,9 +100,14 @@ class PresupLineaDetalle extends Component
     {
         if($this->acciontipoId!='1'){
             $this->accionproducto=Accion::find($this->accionproducto_id);
+            $this->mermamin=1;
+            $this->merma=1;
         }else{
             $this->accionproducto=Producto::find($this->accionproducto_id);
+            $this->mermamin=$this->accionproducto->tipo->merma;
+            $this->merma=$this->accionproducto->tipo->merma;
         }
+
         $this->preciotarifa_ud=$this->accionproducto->preciotarifa;
         $this->udpreciotarifa_id=$this->accionproducto->udpreciotarifa_id;
 
@@ -139,7 +147,17 @@ class PresupLineaDetalle extends Component
             $this->factor=$this->empresaTipo->factormin ?? '1';
         }
         $this->calculoPrecioVenta();
-
+    }
+    public function UpdatedMerma()
+    {
+        $this->validate([
+            'merma'=>'numeric',
+        ]);
+        if($this->merma<$this->mermamin){
+            $this->dispatchBrowserEvent("notify", "La merma es inferior a la mínima. Se asignará la mínima.");
+            $this->merma=$this->mermamin ?? '1';
+        }
+        $this->calculoPrecioVenta();
     }
 
     public function changeVisible(PresupuestoLineaDetalle $presupaccion,$visible)
@@ -246,10 +264,31 @@ class PresupLineaDetalle extends Component
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
     }
 
+    public function changeMerma(PresupuestoLineaDetalle $presupaccion,$merma)
+    {
+        Validator::make(['merma'=>$merma],[
+            'merma'=>'numeric|required',
+            ])->validate();
+        $mermamin=$presupaccion->producto->tipo->merma;
+
+        if($merma<$mermamin){
+            $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
+            $merma=$mermamin;
+        }
+        $presupaccion->update([
+            'merma'=>$merma,
+            'preciotarifa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades ,2),
+            'precioventa'=>round($presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $presupaccion->unidades * $presupaccion->factor * $merma,2),
+        ]);
+
+        $this->recalcular($presupaccion);
+
+        $this->dispatchBrowserEvent('notify', 'Merma y Precio Venta Actualizados.');
+    }
+
     public function save()
     {
         $this->validate();
-
         $pldetalle = PresupuestoLineaDetalle::create( [
             'presupuestolinea_id'=>$this->presuplinea->id,
             'acciontipo_id'=>$this->acciontipoId,
@@ -261,6 +300,7 @@ class PresupLineaDetalle extends Component
             'udpreciotarifa_id'=>$this->udpreciotarifa_id,
             'precioventa'=>$this->precioventa,
             'factor'=>$this->factor,
+            'merma'=>$this->merma,
             'unidades'=>$this->unidades,
             'alto'=>$this->alto,
             'ancho'=>$this->ancho,
@@ -275,11 +315,9 @@ class PresupLineaDetalle extends Component
 
     public function recalcular($presupaccion)
     {
-        $pl=PresupuestoLinea::find($presupaccion->presupuestolinea_id);
-        $pl->recalculo();
-        $p=Presupuesto::find($pl->presupuesto_id);
-        $p->recalculo();
-        return redirect()->route('presupuestolinea.create',[$pl,$presupaccion->acciontipo_id]);
+        $pl=$presupaccion->presupuestolinea->recalculo();
+        $p=$presupaccion->presupuestolinea->presupuesto->recalculo();
+        return redirect()->route('presupuestolinea.create',[$presupaccion->presupuestolinea,$presupaccion->acciontipo_id]);
     }
 
     public function calculoPrecioVenta()
@@ -293,7 +331,7 @@ class PresupLineaDetalle extends Component
         }
         $this->metros2=round($this->ancho * $this->alto ,2);
         $this->preciotarifa=round($this->metros2 * $this->preciotarifa_ud * $this->unidades,2);
-        $this->precioventa=round($this->metros2 * $this->preciotarifa_ud * $this->factor * $this->unidades,2);
+        $this->precioventa=round($this->metros2 * $this->preciotarifa_ud * $this->factor * $this->merma * $this->unidades,2);
     }
 
     public function delete($lineaId)
