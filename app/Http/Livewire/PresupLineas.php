@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PedidoDetalle, Presupuesto, PresupuestoLinea,PresupuestoLineaDetalle};
+use App\Models\{PedidoDetalle, Presupuesto, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle};
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 
@@ -85,22 +85,38 @@ class PresupLineas extends Component
         $this->dispatchBrowserEvent('notify', 'Observaciones Actualizado.');
     }
 
-    // public function recalculo()
-    // {
-    //     $this->presupuesto->precioventa=$this->presupuesto->presupuestolineas->sum('precioventa');
-    //     $this->presupuesto->preciotarifa=$this->presupuesto->presupuestolineas->sum('preciotarifa');
-    //     $this->presupuesto->save();
-    // }
+    public function actualizaPartida($presuplinea)
+    {
+        $partidas=PresupuestoControlpartida::where('presupuesto_id',$presuplinea->presupuesto->id)->get();
+        foreach ($partidas as $partida) {
+            $contador=PresupuestoLinea::query()
+            ->join('presupuesto_linea_detalles', 'presupuesto_lineas.id', '=', 'presupuesto_linea_detalles.presupuestolinea_id')
+            ->select('presupuesto_lineas.presupuesto_id', 'presupuesto_linea_detalles.acciontipo_id')
+            ->where('presupuesto_lineas.presupuesto_id', $presuplinea->presupuesto_id)
+            ->where('presupuesto_linea_detalles.acciontipo_id', $partida->acciontipo_id)
+            ->count();
+
+            $p=PresupuestoControlpartida::query()
+            ->where('presupuesto_id', $presuplinea->presupuesto_id)
+            ->where('acciontipo_id', $partida->acciontipo_id)
+            ->update([
+                'contador'=>$contador
+            ]);
+        }
+
+    }
 
     public function delete($lineaId)
     {
         $lineaBorrar = PresupuestoLinea::find($lineaId);
-
+        $presupuesto=Presupuesto::find($lineaBorrar->presupuesto_id);
         if ($lineaBorrar) {
             $lineasdetalle = PresupuestoLineaDetalle::where('presupuestolinea_id', $lineaBorrar->id)->delete();
+            $this->actualizaPartida($lineaBorrar);
             $lineaBorrar->delete();
             $this->dispatchBrowserEvent('notify', 'Detalle de presupuesto eliminado!');
-            $this->emit('linearefresh');
+
+            return redirect()->route('presupuesto.edit',$presupuesto);
         }
     }
 }

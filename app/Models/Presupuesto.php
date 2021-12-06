@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -39,12 +40,18 @@ class Presupuesto extends Model
         return $this->belongsTo(User::class,'solicitante_id','id');
     }
 
+    public function presupuestocontrolpartidas()
+    {
+        return $this->hasMany(PresupuestoControlpartida::class,'presupuesto_id');
+    }
+
     public function recalculo()
     {
         $this->precioventa=$this->presupuestolineas->sum('precioventa');
         $this->preciotarifa=$this->presupuestolineas->sum('preciotarifa');
         $this->save();
     }
+
 
     public function getFechapresuAttribute()
     {

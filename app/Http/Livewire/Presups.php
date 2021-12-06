@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{Presupuesto,Entidad, User};
+use App\Models\{AccionTipo, Presupuesto,Entidad, PresupuestoControl, PresupuestoControlpartida, User};
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\DataTable\WithBulkActions;
@@ -23,7 +23,7 @@ class Presups extends Component
     public $message;
     public $total;
 
-    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciotarifa,$factor,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciotarifa,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -47,7 +47,6 @@ class Presups extends Component
         $presupuestos = $this->rows;
         $clientes = Entidad::whereIn('entidadtipo_id',['1','4'])->orderBy('entidad')->get();
         $solicitantes = User::orderBy('name')->get();
-
         $totalcoste=$presupuestos->sum('preciotarifa');
         $totalventa=$presupuestos->sum('precioventa');
 
@@ -102,7 +101,6 @@ class Presups extends Component
         }
 
         $this->validate([
-            // 'presupuesto' => 'required',
             'entidad_id' => 'required',
             'solicitante_id' => 'required|numeric',
             'descripcion' => 'required',
@@ -111,8 +109,8 @@ class Presups extends Component
             'precioventa' => 'nullable|numeric',
             'estado' => 'required',
             'iva' => 'required',
-            'factor' => 'required',
         ]);
+
 
         $destino="editar";
         if(!$this->presupuesto){
@@ -128,7 +126,6 @@ class Presups extends Component
             'fechapresupuesto'=>$this->fechapresupuesto,
             'precioventa'=>$this->precioventa,
             'preciotarifa'=>$this->preciotarifa,
-            'factor'=>$this->factor,
             'unidades'=>$this->unidades,
             'iva'=>$this->iva,
             'ruta'=>$this->ruta,
@@ -137,6 +134,16 @@ class Presups extends Component
             'observaciones'=>$this->observaciones,
         ]);
 
+        if ($presupuesto->presupuestocontrolpartidas->count()==0) {
+            $acciontipos=AccionTipo::get();
+            foreach ($acciontipos as $acciontipo) {
+                PresupuestoControlpartida::create([
+                    'presupuesto_id'=>$presupuesto->id,
+                    'acciontipo_id'=>$acciontipo->id,
+                    'activo'=>'1'
+                ]);
+            }
+        }
         $this->message='';
         $message="Prespuesto creado satisfactoriamente";
 
@@ -161,7 +168,6 @@ class Presups extends Component
         $this->fechapresupuesto=$presupuesto->fechapresupuesto;
         $this->preciotarifa=$presupuesto->preciotarifa;
         $this->precioventa=$presupuesto->precioventa;
-        $this->factor=$presupuesto->factor;
         $this->unidades=$presupuesto->unidades;
         $this->iva=$presupuesto->iva;
         $this->ruta=$presupuesto->ruta;
@@ -174,7 +180,6 @@ class Presups extends Component
     public function updatedEntidadId()
     {
         $e=Entidad::find($this->entidad_id);
-        $this->factor=$e->empresatipo->factormaterial ?? '1';
     }
 
     public function numpresupuesto()
@@ -237,6 +242,7 @@ class Presups extends Component
         $presupuesto = Presupuesto::find($presupuestoId);
         if ($presupuesto) {
             // $pl=PresupuestoLinea::where('prespuesto_id',$presupuesto->id);
+            $presupuesto->presupuestocontrolpartidas()->delete();
             $presupuesto->delete();
             // session()->flash('message', $presupuesto->entidad.' eliminado!');
             $this->dispatchBrowserEvent('notify', 'Presupuesto borrado, ');

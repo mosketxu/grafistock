@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Producto,Accion,AccionTipo, EmpresaTipo, Presupuesto,PresupuestoLinea,PresupuestoLineaDetalle, ProductoFamilia};
+use App\Models\{Producto,Accion,AccionTipo, EmpresaTipo, Presupuesto, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle, ProductoFamilia};
 use Illuminate\Support\Facades\Validator;
 
 use Livewire\Component;
@@ -236,14 +236,14 @@ class PresupLineaDetalle extends Component
     {
         Validator::make(['unidades'=>$unidades],[
             'unidades'=>'numeric|required',
-        ])->validate();
-        $preciotarifa=$presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $unidades;
+            ])->validate();
+            $preciotarifa=$presupaccion->ancho * $presupaccion->alto * $presupaccion->preciotarifa_ud * $unidades;
 
-        $presupaccion->update([
-            'unidades'=>$unidades,
-            'preciotarifa'=>round($preciotarifa,2),
-            'precioventa'=>round($preciotarifa * ($this->presupaccion->factor +  $this->presupaccion->merma) ,2),
-        ]);
+            $presupaccion->update([
+                'unidades'=>$unidades,
+                'preciotarifa'=>round($preciotarifa,2),
+                'precioventa'=>round($preciotarifa * ($presupaccion->factor +  $presupaccion->merma) ,2),
+            ]);
         $this->recalcular($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
     }
@@ -264,7 +264,7 @@ class PresupLineaDetalle extends Component
         $presupaccion->update([
             'factor'=>$factor,
             'preciotarifa'=>round($preciotarifa,2),
-            'precioventa'=>round($preciotarifa * ($factor +  $this->presupaccion->merma) ,2),
+            'precioventa'=>round($preciotarifa * ($factor +  $presupaccion->merma) ,2),
         ]);
 
         $this->recalcular($presupaccion);
@@ -289,7 +289,7 @@ class PresupLineaDetalle extends Component
         $presupaccion->update([
             'merma'=>$merma,
             'preciotarifa'=>round($preciotarifa,2),
-            'precioventa'=>round($preciotarifa * ($this->factor +   $merma) ,2),
+            'precioventa'=>round($preciotarifa * ($presupaccion->factor +   $merma) ,2),
         ]);
 
         $this->recalcular($presupaccion);
@@ -320,6 +320,7 @@ class PresupLineaDetalle extends Component
         ]);
 
         $this->recalcular($pldetalle);
+        $this->actualizaPartida();
 
         return redirect()->route('presupuestolinea.create',[$this->presuplinea,$this->acciontipo->id]);
     }
@@ -345,6 +346,24 @@ class PresupLineaDetalle extends Component
         $this->precioventa=round($this->preciotarifa *( $this->factor +  $this->merma),2);
     }
 
+    public function actualizaPartida()
+    {
+
+        $contador=PresupuestoLinea::query()
+            ->join('presupuesto_linea_detalles','presupuesto_lineas.id','=','presupuesto_linea_detalles.presupuestolinea_id')
+            ->select('presupuesto_lineas.presupuesto_id','presupuesto_linea_detalles.acciontipo_id')
+            ->where('presupuesto_lineas.presupuesto_id',$this->presuplinea->presupuesto_id)
+            ->where('presupuesto_linea_detalles.acciontipo_id',$this->acciontipoId)
+            ->count();
+
+        $p=PresupuestoControlpartida::query()
+        ->where('presupuesto_id',$this->presuplinea->presupuesto_id)
+        ->where('acciontipo_id',$this->acciontipoId)
+        ->update([
+            'contador'=>$contador
+        ]);
+    }
+
     public function delete($lineaId)
     {
         $lineaBorrar = PresupuestoLineaDetalle::find($lineaId);
@@ -354,5 +373,6 @@ class PresupLineaDetalle extends Component
             $this->recalcular($lineaBorrar);
             $this->dispatchBrowserEvent('notify', 'Linea de presupuesto eliminada!');
         }
+            $this->actualizaPartida();
     }
 }

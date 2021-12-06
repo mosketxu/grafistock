@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Presupuesto;
+use App\Models\PresupuestoControlpartida;
 use Livewire\Component;
 
 class Presup extends Component
@@ -20,7 +21,6 @@ class Presup extends Component
 
     protected function rules(){
         return [
-
             'precioventa'=>'nullable|numeric',
             'preciotarifa'=>'nullable|numeric',
             'unidades'=>'nullable|numeric',
@@ -48,7 +48,8 @@ class Presup extends Component
 
     public function render()
     {
-        return view('livewire.presup');
+        $controlpartidas=PresupuestoControlpartida::where('presupuesto_id',$this->presupuesto->id)->get();
+        return view('livewire.presup',compact(['controlpartidas']));
     }
 
     public function save()
@@ -57,7 +58,7 @@ class Presup extends Component
 
         $mensaje="Presupuesto actualizado satisfactoriamente";
 
-        $pres=Presupuesto::find($this->presupuesto->id);
+        // $pres=Presupuesto::find($this->presupuesto->id);
         Presupuesto::findOrFail($this->presupuesto->id)
             ->update([
                 'precioventa'=>$this->precioventa,

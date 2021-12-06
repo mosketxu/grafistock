@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PresupuestoLineaDetalle,Producto,Accion, AccionTipo, Presupuesto, PresupuestoLinea};
+use App\Models\{PresupuestoLineaDetalle,Producto,Accion, AccionTipo, Presupuesto, PresupuestoLinea, PresupuestoControlpartida};
 use Illuminate\Support\Facades\Validator;
 
 use Livewire\Component;
@@ -151,6 +151,22 @@ class PresupLineaDetalles extends Component
         $this->save($presupacciondetalle);
     }
 
+    public function actualizaPartida($presuplineadetalle)
+    {
+        $contador=PresupuestoLinea::query()
+            ->join('presupuesto_linea_detalles', 'presupuesto_lineas.id', '=', 'presupuesto_linea_detalles.presupuestolinea_id')
+            ->select('presupuesto_lineas.presupuesto_id', 'presupuesto_linea_detalles.acciontipo_id')
+            ->where('presupuesto_lineas.presupuesto_id', $presuplineadetalle->presupuestolinea->presupuesto_id)
+            ->where('presupuesto_linea_detalles.acciontipo_id', $presuplineadetalle->acciontipo_id)
+            ->count();
+
+        $p=PresupuestoControlpartida::query()
+        ->where('presupuesto_id', $presuplineadetalle->presupuestolinea->presupuesto_id)
+        ->where('acciontipo_id', $presuplineadetalle->acciontipo_id)
+        ->update([
+            'contador'=>$contador
+        ]);
+    }
 
     public function save($presupacciondetalle)
     {
@@ -163,12 +179,14 @@ class PresupLineaDetalles extends Component
     public function delete($lineaId)
     {
         $lineaBorrar = PresupuestoLineaDetalle::find($lineaId);
+
         $presuplinea=$lineaBorrar->presupuestolinea;
         if ($lineaBorrar) {
             $lineaBorrar->delete();
             $pl=$presuplinea->recalculo();
             $p=$presuplinea->presupuesto->recalculo();
             $this->dispatchBrowserEvent('notify', 'Linea de presupuesto eliminada!');
+            $this->actualizaPartida($lineaBorrar);
             return redirect()->route('presupuestolinea.index',$presuplinea);
         }
     }

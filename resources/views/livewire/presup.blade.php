@@ -10,8 +10,11 @@
                     </div>
                 </div>
             </div>
-            <div class="w-6/12 mr-4 text-right">
-
+            <div class="flex flex-row-reverse w-6/12 mr-4 text-right">
+                {{-- <div class="flex-row-reverse"> --}}
+                    <a href="{{ route('presupuesto.show',$presupuesto) }}" target="_blank" class="w-6 h-6 ml-2 text" title="Imprimir Presupuesto"><x-icon.printer></x-icon.printer></a>
+                    <a href="{{ route('presupuesto.imprimir',$presupuesto) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.pdfred ></x-icon.pdfred></a>
+                {{-- </div> --}}
             </div>
         </div>
 
@@ -23,7 +26,18 @@
             @include('presupuesto.presupuestocabecera')
         </div>
 
-        <hr class="my-2">
+        {{-- Partidas --}}
+        <div class="flex mb-2 ">
+            <div class="flex-initial w-full py-1 mt-1 space-y-1 bg-white rounded-lg shadow-md">
+                <div class="flex flex-row flex-wrap px-2 my-1 space-x-4 bg-blue-100 rounded-md">
+                    <h3 class="mr-2 font-bold">Partidas:</h3>
+                    @foreach($controlpartidas as $controlpartida)
+                        @livewire('presup-controlpartida',['controlpartida'=>$controlpartida],key($controlpartida->id))
+                    @endforeach
+                </div>
+            </div>
+        </div>
+       {{-- <hr class="my-2"> --}}
 
         @livewire('presup-lineas',['presupuesto'=>$presupuesto],key($presupuesto->id))
 

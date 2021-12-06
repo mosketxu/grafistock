@@ -1,7 +1,7 @@
 <div class="">
     @livewire('menu',['entidad'=>$entidad],key($entidad->id))
     <div class="p-1 mx-2">
-        <h1 class="text-2xl font-semibold text-gray-900">Presupuesto {{ $entidad->id? 'de '. $entidad->entidad :'' }}
+        <h1 class="text-2xl font-semibold text-gray-900">Presupuestos
         </h1>
         <div class="py-1 space-y-4">
             @include('error')

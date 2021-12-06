@@ -11,7 +11,7 @@
             <div class="w-4/12 text-base">
                 <div class="flex flex-row-reverse justify-between">
                     <div class="mr-2 text-right ">
-                        € Venta : {{ $presupacciones->sum('precioventa') }}
+                        € Ventas : {{ $presupacciones->sum('precioventa') }}
                     </div>
                     <div class="mr-2 text-right ">
                         Unidades : {{ $presupacciones->sum('unidades') }}
@@ -40,7 +40,7 @@
                         <td class="w-20 pr-3 text-right ">{{ __('Merma') }}</td>
                     @endif
                     <td class="w-20 pr-3 text-right ">{{ __('Unidades') }}</td>
-                    <td class="w-20 pr-3 text-right ">{{ __('€ Venta') }}</td>
+                    <td class="w-20 pr-3 text-right ">{{ __('€ Ventas') }}</td>
                     <td class="pl-3 ">{{ __('Observaciones') }} </td>
                     <td colspan="3" class=""></td>
                 </tr>

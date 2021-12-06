@@ -28,6 +28,4 @@ class PresupuestoLinea extends Model
         $this->preciotarifa=$this->presupuestolineadetalles->sum('preciotarifa');
         $this->save();
     }
-
-
 }

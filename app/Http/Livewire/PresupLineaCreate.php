@@ -58,21 +58,23 @@ protected $rules = [
             'precioventa'=>$this->precioventa,
             'unidades'=>$this->unidades,
             'observaciones'=>$this->observaciones,
-
         ]);
 
-        $this->dispatchBrowserEvent('notify', 'Línea añadida con éxito');
+        $presupuesto=Presupuesto::find($this->presupuesto->id);
+        return redirect()->route('presupuesto.edit',$presupuesto);
 
-        $p=Presupuesto::find($this->presupuesto->id)->recalculo();
-        $this->emit('presupuestorefresh');
-        $this->emit('linearefresh');
+        // $this->dispatchBrowserEvent('notify', 'Línea añadida con éxito');
 
-        $this->visible='';
-        $this->orden='';
-        $this->descripcion='';
-        $this->preciotarifa='0';
-        $this->precioventa='0';
-        $this->unidades='0';
-        $this->observaciones='';
+        // $this->emit('presupuestorefresh');
+        // $this->emit('linearefresh');
+
+        // $this->visible='';
+        // $this->orden='';
+        // $this->descripcion='';
+        // $this->preciotarifa='0';
+        // $this->precioventa='0';
+        // $this->unidades='0';
+        // $this->observaciones='';
     }
+
 }
