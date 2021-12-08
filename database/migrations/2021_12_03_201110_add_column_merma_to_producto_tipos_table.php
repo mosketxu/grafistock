@@ -14,7 +14,7 @@ class AddColumnAuxToProductoTiposTable extends Migration
     public function up()
     {
         Schema::table('producto_tipos', function (Blueprint $table) {
-            $table->double('aux', 15, 2)->default(0.05)->after('nombrecorto');
+            $table->double('auxiliar', 15, 2)->default(0.05)->after('nombrecorto');
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnAuxToProductoTiposTable extends Migration
     public function down()
     {
         Schema::table('producto_tipos', function (Blueprint $table) {
-            $table->dropColumn('aux');
+            $table->dropColumn('auxiliar');
         });
     }
 }
