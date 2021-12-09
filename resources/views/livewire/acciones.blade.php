@@ -95,7 +95,7 @@
                                     {{ $accion->preciotarifa }}
                                 </td>
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-left text-gray-600 whitespace-no-wrap text">
-                                    {{ $accion->unidad->nombre }}
+                                    {{ $accion->unidad->nombre ?? '-' }}
                                 </td>
                                 {{-- <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
                                     {{ $accion->precioventa }}
