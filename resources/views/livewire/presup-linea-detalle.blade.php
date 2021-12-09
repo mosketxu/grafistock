@@ -95,7 +95,7 @@
                                 disabled>
                             @error('preciotarifa') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
-                        @if($showAnchoAlto)
+                        {{-- @if($showAnchoAlto) --}}
                             <div class="w-full mb-2">
                                 <label for="ancho" class="px-1 text-sm text-gray-600">Ancho(mts):</label>
                                 <input type="number" id="ancho" wire:model.lazy="ancho"
@@ -112,7 +112,7 @@
                                 class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                                 disabled>
                             </div>
-                        @endif
+                        {{-- @endif --}}
                         <div class="w-full mb-2">
                             <label for="unidades" class="px-1 text-sm text-gray-600">Unidades:</label>
                             <input type="number" id="unidades" wire:model="unidades"
