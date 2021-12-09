@@ -59,7 +59,7 @@
                                 </td>
                                 <td class="w-2/12 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
                                     <input type="text" value="{{ $valor->factormin }}"
-                                    wire:change="changefactormin({{ $valor }},$event.target.value)"
+                                    wire:change="changeFactormin({{ $valor }},$event.target.value)"
                                     class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/>
                                 </td>
                                 <td  class="w-1/12 px-4">
