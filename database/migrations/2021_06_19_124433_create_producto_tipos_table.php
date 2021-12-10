@@ -17,6 +17,7 @@ class CreateProductoTiposTable extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->string('nombrecorto')->unique();
+            $table->double('aux', 15, 2)->default(0.05);
             $table->timestamps();
         });
     }

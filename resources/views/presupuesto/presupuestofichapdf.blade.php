@@ -153,7 +153,7 @@
                                         <td>{{ $detalle->metros2 }}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="8">{{ $detalle->observaciones }}</td>
+                                        <td colspan="8"><span style="font-style: italic; text-decoration: underline">Observaciones</span>: {{ $detalle->observaciones }}</td>
                                     </tr>
                                     @endif
                                     @if ($loop->last)
