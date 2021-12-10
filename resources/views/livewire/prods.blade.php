@@ -123,9 +123,9 @@
                         <x-table.heading class="pl-1 text-right">{{ __('Alto') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-right">{{ __('Acabado') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('Coste Prov') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-right">{{ __('Ud Solic.') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-center">{{ __('Ud Solic.') }}</x-table.heading>
                         <x-table.heading class="pr-2 text-right">{{ __('€ Tarifa') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Ficha') }}</x-table.heading>
+                        {{-- <x-table.heading class="pl-1 text-left">{{ __('Ficha') }}</x-table.heading> --}}
                         <x-table.heading colspan="2"/>
                     </x-slot>
 
@@ -144,21 +144,22 @@
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->alto }} {{ $producto->unidadalto->nombrecorto ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->acabado->nombre ?? '-' }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costeprov }} {{ $producto->unidadcosteprov->nombrecorto ?? '-' }}</td >
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->unidadsolicitud->nombrecorto ?? '-' }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-center text-gray-600 whitespace-no-wrap">{{ $producto->unidadsolicitud->nombrecorto ?? '-' }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->preciotarifa }} {{ $producto->unidadpreciotarifa->nombrecorto ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
                                     @if($producto->fichaproducto)
                                         <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
                                     @else
-                                        <x-icon.pdfc class="w-5 h-5 pt-2 ml-2 text-blue-100" title="No hay PDF"/>
+                                        <x-icon.pdf-b class="pt-2 ml-2 text-blue-100" title="PDF"/>
                                     @endif
                                 </td>
-                                <td  class="px-4">
-                                    <div class="flex items-center justify-center space-x-3">
+                                <td  class="px-1">
+                                    <div class="flex">
                                         <x-icon.edit-a href="{{ route('producto.edit',$producto) }}"  title="Editar"/>
                                         <x-icon.delete-a wire:click.prevent="delete({{ $producto->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"/>
                                     </div>
                                 </td >
+
                             </x-table.row>
                         @empty
                             <x-table.row>
