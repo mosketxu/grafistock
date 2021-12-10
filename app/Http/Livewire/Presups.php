@@ -45,7 +45,7 @@ class Presups extends Component
     {
         if($this->selectAll) $this->selectPageRows();
         $presupuestos = $this->rows;
-        $clientes = Entidad::whereIn('entidadtipo_id',['1','4'])->orderBy('entidad')->get();
+        $clientes = Entidad::whereIn('entidadtipo_id',['1','3'])->orderBy('entidad')->get();
         $solicitantes = User::orderBy('name')->get();
         $totalcoste=$presupuestos->sum('preciotarifa');
         $totalventa=$presupuestos->sum('precioventa');

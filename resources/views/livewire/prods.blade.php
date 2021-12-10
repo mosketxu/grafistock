@@ -112,7 +112,7 @@
                 <x-table>
                     <x-slot name="head">
                         {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
-                        <x-table.heading class="pl-1 text-left">{{ __('Referencissssa') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Referencia') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Descripcion') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Proveedor') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Familia') }}</x-table.heading>

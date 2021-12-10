@@ -11,7 +11,9 @@
             @include('presupuestolinea.presupuestolineacabecera')
             <div class="space-y-2 ">
                 @foreach($acciontipos as $actipo)
-                    @include('presupuestolinea.presupuestolineadetalles',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
+                    @if (in_array($actipo->id,$controlpartidas))
+                        @include('presupuestolinea.presupuestolineadetalles',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
+                    @endif
                 @endforeach
             </div>
         </div>

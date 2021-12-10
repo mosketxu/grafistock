@@ -22,6 +22,11 @@ class PresupuestoLinea extends Model
         return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('orden');
     }
 
+    public function presupuestolineadetallesportipo()
+    {
+        return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('acciontipo_id')->orderBy('orden');
+    }
+
     public function recalculo()
     {
         $this->precioventa=$this->presupuestolineadetalles->sum('precioventa');

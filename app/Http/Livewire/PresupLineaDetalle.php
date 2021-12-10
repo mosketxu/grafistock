@@ -17,6 +17,7 @@ class PresupLineaDetalle extends Component
     public $presupuestolineadetalleId='';
     public $accionproducto;
     public $showAnchoAlto=false;
+    public $controlpartidas;
 
 
     public AccionTipo $acciontipo;
@@ -66,12 +67,14 @@ class PresupLineaDetalle extends Component
         $this->empresaTipo=EmpresaTipo::find($presupuestolinea->presupuesto->entidad->empresatipo_id);
         $this->factor=$this->empresaTipo->factor ?? '1';
         $this->factormin=$this->empresaTipo->factormin ?? '1';
+        $this->controlpartidas=$this->presuplinea->presupuesto->presupuestocontrolpartidas;
     }
 
     public function render()
     {
         $this->acciontipo=AccionTipo::find($this->acciontipoId);
         $familias=ProductoFamilia::orderBy('nombre')->get();
+        $partidas=
 
         $presupacciones=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presuplinea->id)
         ->where('acciontipo_id',$this->acciontipoId)

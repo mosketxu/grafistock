@@ -39,7 +39,6 @@
             <table width="100%" style="margin-top:10px">
                 <tr>
                     <td style="padding-left:3px;" width="50%"><h1 style="color: gray">Nº Presupuesto: {{ $presupuesto->presupuesto }}</h1></td>
-                    <td style="padding-right:3px;text-align:right;color:{{ $presupuesto->status_color[0] }};"><h1> {{ $presupuesto->status_color[1] }} </h1></td>
                 </tr>
             </table>
             {{-- datos cliente  --}}

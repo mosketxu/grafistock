@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Presupuesto;
+use App\Models\PresupuestoControlpartida;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 
 class PresupuestoController extends Controller
 {
@@ -48,10 +50,18 @@ class PresupuestoController extends Controller
     public function imprimir(Presupuesto $presupuesto)
     {
         $presupuesto=Presupuesto::with('presupuestolineasvisibles')->find($presupuesto->id);
+        $controlpartidas=PresupuestoControlpartida::get();
+        $controlpartidaspendientes=$controlpartidas->where('presupuesto_id',$presupuesto->id)
+            ->where('activo',true)
+            ->where('contador','0');
+        $controlpartidasactivas=PresupuestoControlpartida::query()
+            ->where('presupuesto_id',$presupuesto->id)
+            ->where('activo',true)
+            ->where('contador','>','0')
+            ->get();
 
-        // return view('pedido.pedidopdf', compact(['pedido','base']));
-
-        $pdf = \PDF::loadView('presupuesto.presupuestofichapdf', compact(['presupuesto']));
+        $pdf = \PDF::loadView('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']))
+            ->setPaper('a4','landscape');
 
         return $pdf->stream('ficha.pdf');
     }

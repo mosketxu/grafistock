@@ -50,6 +50,27 @@
                     <h1>Bienvenido a Grafitex</h1>
                 </div>
 
+                @if (Route::has('login'))
+                <div class="">
+                    @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                        <a href="{{ route('logout') }}" class="ml-4 text-sm text-gray-700 underline" onclick="event.preventDefault(); this.closest('form').submit();"> {{ __('Log Out') }} </a>
+                    </form>
+
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
+
+
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                     <div class="text-sm text-center text-gray-500 sm:text-left">
                         powered by <a href="mailto:alex.arregui@hotmail.es" class="text-blue-800 underline">alex.arregui@hotmail.es</a>

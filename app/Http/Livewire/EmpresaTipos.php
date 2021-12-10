@@ -72,7 +72,7 @@ class EmpresaTipos extends Component
     public function changeFactor(EmpresaTipo $valor,$factor)
     {
         Validator::make(['factor'=>$factor],[
-            'factor'=>'required|unique:empresa_tipos,factor',
+            'factor'=>'required|numeric',
         ])->validate();
 
         $p=EmpresaTipo::find($valor->id);
@@ -85,7 +85,7 @@ class EmpresaTipos extends Component
     public function changeFactormin(EmpresaTipo $valor,$factormin)
     {
         Validator::make(['factormin'=>$factormin],[
-            'factormin'=>'required|unique:empresa_tipos,factormin',
+            'factormin'=>'required|numeric',
         ])->validate();
 
         $p=EmpresaTipo::find($valor->id);

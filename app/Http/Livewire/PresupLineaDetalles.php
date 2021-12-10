@@ -15,6 +15,7 @@ class PresupLineaDetalles extends Component
 
     public function render()
     {
+        $controlpartidas=$this->presupuestolinea->presupuesto->presupuestocontrolpartidas->where('activo',true)->pluck('acciontipo_id')->toArray();
         $presuplineadetalles=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presupuestolinea->id)->orderBy('orden')->get();
         $presupproductos=$presuplineadetalles->where('acciontipo_id','1');
         $presupimpresion=$presuplineadetalles->where('acciontipo_id','2');
@@ -29,7 +30,7 @@ class PresupLineaDetalles extends Component
         $acciones=Accion::orderBy('acciontipo_id')->orderBy('descripcion')->get();
         $acciontipos=AccionTipo::orderBy('id')->get();
         $presuplinea=$this->presupuestolinea;
-        return view('livewire.presup-linea-detalles',compact(['acciontipos','acciones','presuplineadetalles','presuplinea']));
+        return view('livewire.presup-linea-detalles',compact(['acciontipos','acciones','presuplineadetalles','presuplinea','controlpartidas']));
     }
 
     public function changeVisible(PresupuestoLineaDetalle $presupaccion,$visible)

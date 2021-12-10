@@ -25,6 +25,21 @@ class Presupuesto extends Model
         return $this->hasMany(PresupuestoLinea::class)->orderBy('orden');
     }
 
+    public function detalles()
+    {
+        // return $this->hasManyThrough(PresupuestoLineaDetalle::class, PresupuestoLinea::class);
+
+        return $this->hasManyThrough(
+            PresupuestoLineaDetalle::class,
+            PresupuestoLinea::class,
+            'presupuesto_id', // Foreign key on the PresupuestoLinea table...
+            'presupuestolinea_id', // Foreign key on the PresupuestoLineaDetalle table...
+            'id', // Local key on the Presupuestos table...
+            'id' // Local key on the presupuestolinea table...
+        );
+
+    }
+
     public function presupuestolineasvisibles()
     {
         return $this->hasMany(PresupuestoLinea::class)->where('visible',true)->orderBy('orden');
