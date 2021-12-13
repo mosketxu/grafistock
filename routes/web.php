@@ -51,7 +51,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     //stock
     Route::get('stock/movimientos', [StockController::class,'movimientos'])->middleware('can:stock.index')->name('stock.movimientos');
     Route::get('stock/producto', [StockController::class,'producto'])->middleware('can:stock.index')->name('stock.producto');
-    Route::get('stock/material', [StockController::class,'material'])->middleware('can:stock.index')->name('stock.material');
+    // Route::get('stock/material', [StockController::class,'material'])->middleware('can:stock.index')->name('stock.material');
     Route::resource('stock', StockController::class);
 
     //pedidos stock

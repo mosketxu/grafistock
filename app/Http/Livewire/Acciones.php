@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Accion;
 use App\Models\AccionTipo;
+use App\Models\ProductoUnidadcoste;
 use App\Models\Unidad;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -42,6 +43,8 @@ class Acciones extends Component
             'preciotarifa_ud'=>'numeric|nullable',
             'udpreciotarifa_id'=>'numeric|nullable',
             'precioventa'=>'numeric|nullable',
+            'porcentaje'=>'numeric|nullable',
+            'porcentajemin'=>'numeric|nullable',
             'observaciones'=>'string|nullable',
         ];
     }
@@ -50,9 +53,10 @@ class Acciones extends Component
     public function render()
     {
         $acciontipos=AccionTipo::orderBy('nombre')->get();
-        $unidades=Unidad::orderBy('nombre')->get();
+        $unidades=ProductoUnidadcoste::orderBy('nombre')->get();
 
         $acciones=Accion::query()
+            ->with('acciontipo','unidadpreciotarifa')
             ->search('referencia',$this->search)
             ->orSearch('descripcion',$this->search)
             ->when($this->acciontipofiltro!='', function ($query){$query->where('acciontipo_id',$this->acciontipofiltro);})
@@ -81,6 +85,8 @@ class Acciones extends Component
         $this->preciotarifa='';
         $this->preciotarifa_ud='';
         $this->udpreciotarifa_id='';
+        $this->porcentaje='';
+        $this->porcentajemin='';
         $this->precioventa='';
         $this->observaciones='';
     }
@@ -113,6 +119,8 @@ class Acciones extends Component
                 'preciotarifa'=>$this->preciotarifa,
                 'preciotarifa_ud'=>$this->preciotarifa_ud,
                 'udpreciotarifa_id'=>$this->udpreciotarifa_id,
+                'porcentaje'=>$this->porcentaje,
+                'porcentajemin'=>$this->porcentajemin,
                 'precioventa'=>$this->precioventa,
                 'observaciones'=>$this->observaciones,
             ]);
@@ -132,6 +140,8 @@ class Acciones extends Component
         $this->preciotarifa=$accion->preciotarifa;
         $this->preciotarifa_ud=$accion->preciotarifa_ud;
         $this->udpreciotarifa_id=$accion->udpreciotarifa_id;
+        $this->porcentaje=$accion->porcentaje;
+        $this->porcentajemin=$accion->porcentajemin;
         $this->precioventa=$accion->precioventa;
         $this->observaciones=$accion->observaciones;
         $this->openNewModal();

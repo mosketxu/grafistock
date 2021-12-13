@@ -40,7 +40,7 @@
                             <select wire:model="filtrosolicitante" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" >
                                 <option value="">-- selecciona --</option>
                                 @foreach ($solicitantes as $solicitante )
-                                <option value="{{ $solicitante->id }}">{{ $solicitante->nombre }}</option>
+                                <option value="{{ $solicitante->id }}">{{ $solicitante->nombre ?? '-'}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -106,7 +106,7 @@
                                     <input type="text" value="{{ $stockpeticion->peticion }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
                                 <td class="text-right">
-                                    <input type="text" value="{{ $stockpeticion->solicitante->nombre }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    <input type="text" value="{{ $stockpeticion->solicitante->nombre ?? '-' }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
                                 <td>
                                     <input type="text" value="{{ $stockpeticion->fechasolicitud->format('d/m/Y') }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>

@@ -33,7 +33,7 @@
                     </x-jet-nav-link>
                     @endcan
                     @can('stock.index')
-                    <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
+                    <x-jet-nav-link href="{{ route('stock.producto','producto') }}" :active="request()->routeIs('stock.producto')">
                         {{ __('Stock') }}
                     </x-jet-nav-link>
                     @endcan
@@ -80,11 +80,11 @@
                             {{ __('Por Producto') }}
                         </x-jet-nav-link>
                     </div>
-                    <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
+                    {{-- <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
                         <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
                             {{ __('Por Material') }}
                         </x-jet-nav-link>
-                    </div>
+                    </div> --}}
                 @endif
                 @if(explode('.',Request::route()->getName())[0] ==('administracion'||'accion'))
                     @can('user.index')
@@ -105,7 +105,7 @@
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <span class="inline-flex rounded-md">
-                                <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
+                                <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition border border-blue-900 rounded-md bg-blue-50 hover:text-gray-700 focus:outline-none">
                                     {{ Auth::user()->name }}
 
                                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -197,9 +197,9 @@
             <x-jet-nav-link href="{{ route('stock.producto') }}" :active="request()->routeIs('stock.producto')">
                 {{ __('Por Producto') }}
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
+            {{-- <x-jet-nav-link href="{{ route('stock.material','material') }}" :active="request()->routeIs('stock.material')">
                 {{ __('Por Material') }}
-            </x-jet-nav-link>
+            </x-jet-nav-link> --}}
             @endcan
         </div>
 

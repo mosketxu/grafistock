@@ -74,7 +74,8 @@
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Tipo</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Tarifa</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Ud.</th>
-                            {{-- <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Venta</th> --}}
+                            <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >%</th>
+                            <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >% min</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Observaciones</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" ></th>
                         </tr>
@@ -95,11 +96,14 @@
                                     {{ $accion->preciotarifa }}
                                 </td>
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-left text-gray-600 whitespace-no-wrap text">
-                                    {{ $accion->unidad->nombre ?? '-' }}
+                                    {{ $accion->unidadpreciotarifa->nombre ?? '-' }}
                                 </td>
-                                {{-- <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
-                                    {{ $accion->precioventa }}
-                                </td> --}}
+                                <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
+                                    {{ $accion->porcentaje }}
+                                </td>
+                                <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
+                                    {{ $accion->porcentajemin }}
+                                </td>
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-left text-gray-600 whitespace-no-wrap">
                                     {{ $accion->observaciones }}
                                 </td>

@@ -19,14 +19,14 @@
             <x-jet-validation-errors></x-jet-validation-errors>
             <div class="flex justify-between">
                 <div class="flex w-10/12 space-x-3">
-                    <div class="w-1/12 text-xs">
+                    <div class="w-2/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Ref./Descrip.
                             @if($search!='')
                                 <x-icon.filter-slash-a wire:click="$set('search', '')" class="pb-1" title="reset filter"/>
                             @endif
                         </label>
-                        <input type="text" wire:model="search" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Búsqueda Entidad/Factura" autofocus/>
+                        <input type="text" wire:model.lazy="search" class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none" placeholder="Búsqueda Entidad/Factura" autofocus/>
                     </div>
                     <div class="w-1/12 text-xs">
                         <label class="px-1 text-gray-600">
@@ -56,7 +56,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="w-1/12 text-xs">
+                    <div class="w-2/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Familia
                             @if($filtrofamilia!='')
@@ -71,7 +71,7 @@
                         </select>
                     </div>
 
-                    <div class="w-1/12 text-xs">
+                    <div class="w-2/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Material
                             @if($filtromaterial!='')
@@ -155,8 +155,12 @@
                                 </td>
                                 <td  class="px-1">
                                     <div class="flex">
-                                        <x-icon.edit-a href="{{ route('producto.edit',$producto) }}"  title="Editar"/>
-                                        <x-icon.delete-a wire:click.prevent="delete({{ $producto->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"/>
+                                        @can('producto.edit')
+                                            <x-icon.edit-a href="{{ route('producto.edit',$producto) }}"  title="Editar"/>
+                                        @endcan
+                                        @can('producto.delete')
+                                            <x-icon.delete-a wire:click.prevent="delete({{ $producto->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"/>
+                                        @endcan
                                     </div>
                                 </td >
 

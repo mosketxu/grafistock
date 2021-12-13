@@ -42,11 +42,11 @@ class StockController extends Controller
         return view('stock.balance',compact('tipo'));
     }
 
-    public function material()
-    {
-        $tipo='material_id';
-        return view('stock.balance',compact('tipo'));
-    }
+    // public function material()
+    // {
+    //     $tipo='material_id';
+    //     return view('stock.balance',compact('tipo'));
+    // }
 
 
 

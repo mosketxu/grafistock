@@ -7,18 +7,21 @@
             <div class="flex flex-col justify-between ml-3 space-x-3 text-xs font-medium md:flex-row">
                 <div class="w-full form-item sm:w-3/12">
                     <label class="block text-gray-700">{{ __('Cliente') }}</label>
-                    <input type="text" value="{{ $presupuesto->entidad->entidad }}" disabled
-                        class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
+                    <input type="text" value="{{ $presupuesto->entidad->entidad }}"
+                        class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                        disabled/>
                 </div>
                 <div class="w-full form-item sm:w-2/12">
                     <label class="block text-gray-700">{{ __('Solicitante') }}</label>
-                    <input type="text" value="{{ $presupuesto->solicitante->name }}" disabled
-                        class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
+                    <input type="text" value="{{ $presupuesto->solicitante->name }}"
+                        class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                        disabled/>
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-center text-gray-700">{{ __('F.Presupuesto') }}</label>
-                    <input type="text" value="{{ $presupuesto->fechapresu }}" disabled
-                        class="w-full text-xs tracking-tighter text-center border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
+                    <input type="text" value="{{ $presupuesto->fechapresu }}"
+                        class="w-full text-xs tracking-tighter text-center border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                        disabled/>
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('Unidades') }}</label>
@@ -27,13 +30,15 @@
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('€ Tarifa') }}</label>
-                    <input type="text" wire:model.defer="preciotarifa" disabled
-                        class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
+                    <input type="text" wire:model.defer="preciotarifa"
+                        class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                        disabled/>
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('€ Venta') }}</label>
-                    <input type="number" step="any" wire:model.defer="precioventa" disabled
-                        class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
+                    <input type="number" step="any" wire:model.defer="precioventa"
+                        class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm {{ Auth::user()->hasRole('Admin') ? '' : 'bg-gray-50' }}  focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                        {{ Auth::user()->hasRole('Admin') ? '' : 'disabled' }}  />
                 </div>
                 <div class="w-full form-item sm:w-2/12">
                     <label class="block text-gray-700">{{ __('Estado') }}</label>

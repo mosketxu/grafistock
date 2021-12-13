@@ -36,13 +36,6 @@ class Prods extends Component
         $this->producto= new Producto;
         $proveedores=Entidad::orderBy('entidad')->has('productos')->get();
 
-        // $materiales = ProductoMaterial::query()
-        //     ->whereIn('id', function ($query) {
-        //         $query->select('material_id')->from('productos');
-        //         })
-        //     ->orderBy('nombre')
-        //     ->get();
-
         $materiales= Producto::query()
             ->join('producto_materiales','producto_materiales.id','=','productos.material_id')
             ->select('producto_materiales.id', 'producto_materiales.nombre')
@@ -51,6 +44,7 @@ class Prods extends Component
             ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
             ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
             ->when($this->filtrotipo!='', function ($query){$query->where('tipo_id',$this->filtrotipo);})
+            ->orderBy('producto_materiales.nombre')
             ->get();
 
         $familias= Producto::query()
@@ -61,6 +55,7 @@ class Prods extends Component
                 ->when($this->filtromaterial!='', function ($query){$query->where('material_id',$this->filtromaterial);})
                 ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
                 ->when($this->filtrotipo!='', function ($query){$query->where('tipo_id',$this->filtrotipo);})
+                ->orderBy('producto_familias.nombre')
                 ->get();
 
         $acabados= Producto::query()
@@ -71,6 +66,7 @@ class Prods extends Component
                 ->when($this->filtromaterial!='', function ($query){$query->where('material_id',$this->filtromaterial);})
                 ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
                 ->when($this->filtrotipo!='', function ($query){$query->where('tipo_id',$this->filtrotipo);})
+                ->orderBy('producto_acabados.nombre')
                 ->get();
 
         $tipos= Producto::query()
@@ -81,6 +77,7 @@ class Prods extends Component
                 ->when($this->filtromaterial!='', function ($query){$query->where('material_id',$this->filtromaterial);})
                 ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
                 ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
+                ->orderBy('producto_tipos.nombre')
                 ->get();
 
 
@@ -112,10 +109,19 @@ class Prods extends Component
             return view('livewire.prods',compact('productos','materiales','familias','acabados','proveedores','tipos'));
     }
 
+    public function updatingSearch(){
+        $this->resetPage();
+    }
     public function updatingFiltroclipro(){
         $this->resetPage();
     }
-    public function updatingFiltrmaterial(){
+    public function updatingFiltrofamilia(){
+        $this->resetPage();
+    }
+    public function updatingFiltrotipo(){
+        $this->resetPage();
+    }
+    public function updatingFiltromaterial(){
         $this->resetPage();
     }
     public function updatingFiltroacabado(){

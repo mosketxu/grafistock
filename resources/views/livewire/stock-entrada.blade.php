@@ -113,7 +113,7 @@
                 <div class='flex items-center justify-center gap-4 pt-5 pb-5 md:gap-8'>
                     <x-jet-button class="bg-blue-700">{{ __('Guardar') }}</x-jet-button>
                     <x-jet-secondary-button  class="text-white bg-red-500" wire:click="cancelar()">{{ __('Cancelar') }}</x-jet-secondary-button>
-                    <x-jet-secondary-button  onclick="location.href = '{{route('stock.material')}}'">{{ __('Volver') }}</x-jet-secondary-button>
+                    <x-jet-secondary-button  onclick="location.href = '{{route('stock.producto')}}'">{{ __('Volver') }}</x-jet-secondary-button>
                 </div>
 
             </div>
