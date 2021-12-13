@@ -36,6 +36,20 @@
                     </div>
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
+                            Familia
+                            @if($filtrofamilia!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtrofamilia', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtrofamilia" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                            <option value=""></option>
+                            @foreach ($familias as $familia)
+                            <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="text-xs">
+                        <label class="px-1 text-gray-600">
                             Material
                             @if($filtromaterial!='')
                                 <x-icon.filter-slash-a wire:click="$set('filtromaterial', '')" class="pb-1" title="reset filter"/>
@@ -63,7 +77,7 @@
                         </select>
                     </div>
                     @if($tipo=='producto_id')
-                        <div class="text-xs">
+                        {{-- <div class="text-xs">
                             <label class="px-1 text-gray-600">
                                 Referencia
                                 @if($filtroproducto!='')
@@ -76,7 +90,7 @@
                                 <option value="{{ $producto->id }}">{{ $producto->referencia }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="text-xs">
                             <label class="px-1 text-gray-600">
                                 Descripción
@@ -130,6 +144,7 @@
                                 <th class="pl-4 font-medium text-left">{{ __('Referencia') }}</th>
                                 <th class="pl-4 font-medium text-left">{{ __('Descripcion') }}</th>
                             @endif
+                            <th class="pl-4 font-medium text-left">{{ __('Familia') }} </th>
                             <th class="pl-4 font-medium text-left">{{ __('Material') }} </th>
                             <th class="pl-4 font-medium text-left">{{ __('Acabado') }} </th>
                             <th class="pr-4 font-medium text-right">{{ __('Ancho') }} </th>
@@ -153,6 +168,9 @@
                                         <input type="text" value="{{ $stock->producto->descripcion }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                     </td>
                                 @endif
+                                <td  class="text-left">
+                                    <input type="text" value="{{ $stock->producto->familia->nombre }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                </td>
                                 <td  class="text-left">
                                     <input type="text" value="{{ $stock->producto->material->nombre }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>

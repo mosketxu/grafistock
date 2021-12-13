@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
-use App\Models\{StockMovimiento,Entidad,ProductoMaterial,Producto, Solicitante,ProductoAcabado};
+use App\Models\{StockMovimiento,Entidad,ProductoMaterial,Producto, Solicitante,ProductoAcabado, ProductoFamilia};
 use Livewire\Component;
 use App\Exports\StockBalanceExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,6 +18,7 @@ class StockBalance extends Component
     public $search='';
     public $filtroclipro='';
     public $filtromaterial='';
+    public $filtrofamilia='';
     public $filtroacabado='';
     public $filtroproducto='';
     public $filtrodescripcion='';
@@ -50,6 +51,7 @@ class StockBalance extends Component
             ->whereHas('pedidos')
             ->orderBy('entidad')
             ->get();
+        $familias=ProductoFamilia::orderBy('nombre')->get();
         $materiales=ProductoMaterial::orderBy('nombre')->get();
         $solicitantes=Solicitante::orderBy('nombre')->get();
         $acabados=ProductoAcabado::orderBy('nombre')->get();
@@ -61,13 +63,16 @@ class StockBalance extends Component
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
             })
+            ->when($this->filtrofamilia!='', function ($query){
+                $query->where('familia_id',$this->filtrofamilia);
+            })
             ->when($this->filtroacabado!='', function ($query){
                 $query->where('acabado_id',$this->filtroacabado);
             })
             ->search('descripcion',$this->filtrodescripcion)
             ->get();
 
-        return view('livewire.stock-balance',compact('stocks','proveedores','productos','materiales','acabados','solicitantes'));
+        return view('livewire.stock-balance',compact('stocks','proveedores','familias','materiales','acabados','solicitantes'));
     }
 
     public function updatingFiltroclipro(){
@@ -102,7 +107,7 @@ class StockBalance extends Component
             ->with('producto')
             ->with('producto.entidad')
             ->where('stock_movimientos.tipomovimiento','!=','R')
-            ->select('stock_movimientos.*','productos.material_id','productos.referencia as referencia')
+            ->select('stock_movimientos.*','productos.material_id','productos.referencia as referencia',)
             ->selectRaw('sum(cantidad) as balance')
             ->searchYear('fechamovimiento',$this->filtroanyo)
             ->searchMes('fechamovimiento',$this->filtromes)
@@ -117,6 +122,9 @@ class StockBalance extends Component
             })
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
+            })
+            ->when($this->filtrofamilia!='', function ($query){
+                $query->where('familia_id',$this->filtrofamilia);
             })
             ->when($this->filtroacabado!='', function ($query){
                 $query->where('acabado_id',$this->filtroacabado);
@@ -151,8 +159,9 @@ class StockBalance extends Component
     public function exportXLS()
     {
         // dd($this->tipo);
+        // dd('s');
         return Excel::download(new StockBalanceExport(
-            $this->search, $this->filtroclipro, $this->filtromaterial, $this->filtroacabado, $this->filtroproducto, $this->filtrodescripcion, $this->filtrosolicitante, $this->filtroanyo, $this->filtromes, $this->filtrofecha, $this->tipo
+            $this->search, $this->filtroclipro, $this->filtromaterial,$this->filtrofamilia, $this->filtroacabado, $this->filtroproducto, $this->filtrodescripcion, $this->filtrosolicitante, $this->filtroanyo, $this->filtromes, $this->filtrofecha, $this->tipo
         ), 'stock.xlsx');
 
     }

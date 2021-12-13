@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PedidoDetalle, StockMovimiento,Producto, Entidad, Pedido, ProductoMaterial, Solicitante};
+use App\Models\{PedidoDetalle, StockMovimiento,Producto, Entidad, Pedido, ProductoFamilia, ProductoMaterial, ProductoTipo, Solicitante};
 use Livewire\Component;
 
 class StockEntrada extends Component
@@ -11,6 +11,11 @@ class StockEntrada extends Component
     public $stock;
     public $message;
     public $filtromaterial='';
+    public $filtrofamilia='';
+    public $filtrotipo='';
+    public $filtroclipro='';
+    public $filtroproveedor='';
+
 
     protected function rules(){
         return [
@@ -42,9 +47,24 @@ class StockEntrada extends Component
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
             })
+            ->when($this->filtrofamilia!='', function ($query){
+                $query->where('familia_id',$this->filtrofamilia);
+            })
+            ->when($this->filtroclipro!='', function ($query){
+                $query->where('entidad_id',$this->filtroclipro);
+            })
+            ->when($this->filtrotipo!='', function ($query){
+                $query->where('tipo_id',$this->filtrotipo);
+            })
             ->orderBy('referencia')->get();
+        $familias=ProductoFamilia::orderBy('nombre')->get();
+        $proveedores=Entidad::query()
+            ->whereHas('pedidos')
+            ->orderBy('entidad')
+            ->get();
+        $tipos=ProductoTipo::orderBy('nombre')->get();
         $solicitantes=Solicitante::orderBy('nombre')->get();
-        return view('livewire.stock-entrada', compact('productos','solicitantes','materiales'));
+        return view('livewire.stock-entrada', compact('productos','solicitantes','familias','proveedores','tipos','materiales'));
     }
 
     public function save()

@@ -23,6 +23,20 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="text-xs">
+                        <label class="px-1 text-gray-600">
+                            Familia
+                            @if($filtrofamilia!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtrofamilia', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtrofamilia" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                            <option value=""></option>
+                            @foreach ($familias as $familia)
+                            <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="w-2/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Material
@@ -37,7 +51,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="w-2/12 text-xs">
+                    {{-- <div class="w-2/12 text-xs">
                         <label class="px-1 text-gray-600">
                             Referencia
                             @if($filtroproducto!='')
@@ -48,6 +62,20 @@
                             <option value=""></option>
                             @foreach ($productos as $producto)
                             <option value="{{ $producto->id }}">{{ $producto->referencia }}</option>
+                            @endforeach
+                        </select>
+                    </div> --}}
+                    <div class="text-xs">
+                        <label class="px-1 text-gray-600">
+                            Acabado
+                            @if($filtroacabado!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroacabado', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtroacabado" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                            <option value=""></option>
+                            @foreach ($acabados as $acabado)
+                            <option value="{{ $acabado->id }}">{{ $acabado->nombre }}</option>
                             @endforeach
                         </select>
                     </div>

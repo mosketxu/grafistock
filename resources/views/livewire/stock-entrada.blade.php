@@ -55,6 +55,54 @@
                     </div>
                 </div>
 
+                <div class="grid grid-cols-1 gap-5 mt-5 md:grid-cols-3 md:gap-8 mx-7">
+                    <div class="grid grid-cols-1">
+                        <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">
+                            Proveedor
+                            @if($filtroclipro!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtroclipro"
+                            class="px-3 py-2 mt-1 border-2 border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            <option value="">--filtra--</option>
+                            @foreach ($proveedores as $proveedor)
+                            <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1">
+                        <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">
+                            Tipo
+                            @if($filtrotipo!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtrotipo', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtrotipo"
+                            class="px-3 py-2 mt-1 border-2 border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            <option value="">--filtra--</option>
+                            @foreach ($tipos as $tipo)
+                            <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1">
+                        <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">
+                            Familia
+                            @if($filtrofamilia!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtrofamilia', '')" class="pb-1" title="reset filter"/>
+                            @endif
+                        </label>
+                        <select wire:model="filtrofamilia"
+                            class="px-3 py-2 mt-1 border-2 border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            <option value="">--filtra--</option>
+                            @foreach ($familias as $familia)
+                            <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                </div>
                 <div class="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 md:gap-8 mx-7">
                     <div class="grid grid-cols-1">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">

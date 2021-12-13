@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use Livewire\Component;
-use App\Models\{StockMovimiento,Entidad,ProductoMaterial,Producto, Solicitante};
+use App\Models\{StockMovimiento,Entidad,ProductoMaterial,Producto, ProductoAcabado, ProductoFamilia, Solicitante};
 
 
 class StockMovimientos extends Component
@@ -15,6 +15,8 @@ class StockMovimientos extends Component
     public $search='';
     public $filtroclipro='';
     public $filtromaterial='';
+    public $filtrofamilia='';
+    public $filtroacabado='';
     public $filtroproducto='';
     public $filtrodescripcion='';
     public $filtrosolicitante='';
@@ -31,8 +33,10 @@ class StockMovimientos extends Component
             ->whereHas('pedidos')
             ->orderBy('entidad')
             ->get();
+        $familias=ProductoFamilia::orderBy('nombre')->get();
         $materiales=ProductoMaterial::orderBy('nombre')->get();
         $solicitantes=Solicitante::orderBy('nombre')->get();
+        $acabados=ProductoAcabado::orderBy('nombre')->get();
 
         $productos=Producto::orderBy('referencia')
             ->when($this->filtroclipro!='', function ($query){
@@ -41,10 +45,16 @@ class StockMovimientos extends Component
             ->when($this->filtromaterial!='', function ($query){
                 $query->where('material_id',$this->filtromaterial);
             })
+            ->when($this->filtrofamilia!='', function ($query){
+                $query->where('familia_id',$this->filtrofamilia);
+            })
+            ->when($this->filtroacabado!='', function ($query){
+                $query->where('acabado_id',$this->filtroacabado);
+            })
             ->search('descripcion',$this->filtrodescripcion)
             ->get();
 
-        return view('livewire.stock-movimientos',compact('stocks','proveedores','productos','materiales','solicitantes'));
+        return view('livewire.stock-movimientos',compact('stocks','proveedores','productos','familias','acabados','materiales','solicitantes'));
     }
 
     public function updatingFiltroclipro(){

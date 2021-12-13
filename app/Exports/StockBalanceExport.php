@@ -13,6 +13,7 @@ class StockBalanceExport implements FromCollection,WithHeadings
     protected $filtroclipro='';
     protected $filtromaterial='';
     protected $filtroacabado='';
+    protected $filtrofamilia='';
     protected $filtroproducto='';
     protected $filtrodescripcion='';
     protected $filtrosolicitante='';
@@ -21,10 +22,11 @@ class StockBalanceExport implements FromCollection,WithHeadings
     protected $filtrofecha='';
     protected $tipo='';
 
-    function __construct($search, $filtroclipro, $filtromaterial, $filtroacabado, $filtroproducto, $filtrodescripcion, $filtrosolicitante, $filtroanyo, $filtromes, $filtrofecha, $tipo  ) {
+    function __construct($search, $filtroclipro, $filtromaterial, $filtrofamilia, $filtroacabado, $filtroproducto, $filtrodescripcion, $filtrosolicitante, $filtroanyo, $filtromes, $filtrofecha, $tipo  ) {
         $this->search=$search;
         $this->filtroclipro=$filtroclipro;
         $this->filtromaterial=$filtromaterial;
+        $this->filtrofamilia=$filtrofamilia;
         $this->filtroacabado=$filtroacabado;
         $this->filtroproducto=$filtroproducto;
         $this->filtrodescripcion=$filtrodescripcion;
@@ -42,6 +44,7 @@ class StockBalanceExport implements FromCollection,WithHeadings
             'Entidad',
             'Cuenta Proveedor',
             'Cuenta Cliente',
+            'Familia',
             'Material',
             'Acabado',
             'Referencia',
@@ -60,6 +63,7 @@ class StockBalanceExport implements FromCollection,WithHeadings
         $exportacion=Entidad::join('productos','entidades.id','productos.entidad_id')
         ->join('stock_movimientos','productos.id','stock_movimientos.producto_id')
         ->join('producto_materiales','productos.material_id','producto_materiales.id')
+        ->join('producto_familias','productos.familia_id','producto_familias.id')
         ->join('producto_acabados','productos.acabado_id','producto_acabados.id')
         ->select('entidades.entidad','entidades.cuentactblepro','entidades.cuentactblecli','producto_materiales.nombre as material','producto_acabados.nombre as acabado','productos.referencia','productos.descripcion','productos.costeprov')
         ->selectRaw('sum(stock_movimientos.cantidad) as balance')
@@ -74,6 +78,9 @@ class StockBalanceExport implements FromCollection,WithHeadings
         })
         ->when($this->filtromaterial!='', function ($query){
             $query->where('material_id',$this->filtromaterial);
+        })
+        ->when($this->filtrofamilia!='', function ($query){
+            $query->where('familia_id',$this->filtrofamilia);
         })
         ->when($this->filtroacabado!='', function ($query){
             $query->where('acabado_id',$this->filtroacabado);
