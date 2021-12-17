@@ -134,14 +134,18 @@ class Presups extends Component
             'observaciones'=>$this->observaciones,
         ]);
 
-        if ($presupuesto->presupuestocontrolpartidas->count()==0) {
+        if ($presupuesto->presupuestocontrolpartidas->count()<AccionTipo::count()) {
             $acciontipos=AccionTipo::get();
+
             foreach ($acciontipos as $acciontipo) {
-                PresupuestoControlpartida::create([
-                    'presupuesto_id'=>$presupuesto->id,
-                    'acciontipo_id'=>$acciontipo->id,
-                    'activo'=>'1'
-                ]);
+                $existe=PresupuestoControlpartida::where('acciontipo_id',$acciontipo->id)->count();
+                if ($existe==0) {
+                    PresupuestoControlpartida::create([
+                        'presupuesto_id'=>$presupuesto->id,
+                        'acciontipo_id'=>$acciontipo->id,
+                        'activo'=>'1'
+                    ]);
+                }
             }
         }
         $this->message='';

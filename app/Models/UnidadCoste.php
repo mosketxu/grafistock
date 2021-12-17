@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductoUnidadcoste extends Model
+class UnidadCoste extends Model
 {
     use HasFactory;
 
-    protected $table = 'producto_unidadescoste';
+    protected $table = 'unidadescoste';
 
     protected $fillable = ['nombre','nombrecorto'];
 

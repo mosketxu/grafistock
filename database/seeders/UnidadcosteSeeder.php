@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class ProductoUnidadcosteSeeder extends Seeder
+class UnidadCosteSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,9 +13,9 @@ class ProductoUnidadcosteSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('producto_unidadescoste')->delete();
+        \DB::table('unidadescoste')->delete();
 
-        \DB::table('producto_unidadescoste')->insert([
+        \DB::table('unidadescoste')->insert([
             ['nombrecorto'=>'e_kg','nombre'=>'€/kg'],
             ['nombrecorto'=>'e_ud','nombre'=>'€/ud'],
             ['nombrecorto'=>'e_caj','nombre'=>'€/caja'],

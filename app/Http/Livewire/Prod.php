@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoFamilia, ProductoTipo, ProductoUnidadcoste, Ubicacion, Unidad};
+use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoFamilia, ProductoTipo, UnidadCoste, Ubicacion, Unidad};
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
@@ -60,7 +60,7 @@ class Prod extends Component
         $gruposprod=ProductoGrupoproduccion::orderBy('nombre')->get();
         $proveedores=Entidad::orderBy('entidad')->get();
         $unidades=Unidad::orderBy('nombre','asc')->get();
-        $unidadescoste=ProductoUnidadcoste::orderBy('nombre')->get();
+        $unidadescoste=UnidadCoste::orderBy('nombre')->get();
         $cajas=ProductoCaja::orderBy('nombre')->get();
         $ubicaciones=Ubicacion::orderBy('nombre')->get();
         return view('livewire.prod',compact('materiales','tipos','acabados','familias','gruposprod','proveedores','unidades','unidadescoste','unidades','cajas','ubicaciones'));

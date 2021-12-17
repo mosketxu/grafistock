@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductoUnidadescosteTable extends Migration
+class AddPreciominimoColumnToAccionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateProductoUnidadescosteTable extends Migration
      */
     public function up()
     {
-        Schema::create('producto_unidadescoste', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre')->unique();
-            $table->string('nombrecorto')->unique();
-            $table->timestamps();
+        Schema::table('acciones', function (Blueprint $table) {
+            $table->double('preciominimo', 15, 2)->default(0.00)->nullable()->after('preciotarifa');
         });
     }
 
@@ -28,6 +25,9 @@ class CreateProductoUnidadescosteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producto_unidadescoste');
+        Schema::table('acciones', function (Blueprint $table) {
+            $table->dropColumn('preciominimo');
+
+        });
     }
 }

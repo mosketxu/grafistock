@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-use App\Models\ProductoUnidadcoste;
+use App\Models\UnidadCoste;
 
 class UnidadesCoste extends Component
 {
@@ -24,38 +24,38 @@ class UnidadesCoste extends Component
     protected function rules()
     {
         return [
-            'nombrecorto'=>'required|unique:producto_unidadescoste,nombrecorto',
-            'nombre'=>'required|unique:producto_unidadescoste,nombre',
+            'nombrecorto'=>'required|unique:unidadescoste,nombrecorto',
+            'nombre'=>'required|unique:unidadescoste,nombre',
         ];
     }
 
     public function render()
     {
-        $valores=ProductoUnidadcoste::query()
+        $valores=UnidadCoste::query()
             ->search('id',$this->search)
             ->orSearch('nombre',$this->search)
             ->orderBy('nombrecorto')->get();
         return view('livewire.auxiliarcard',compact('valores'));
     }
 
-    public function changeCorto(ProductoUnidadcoste $valor,$nombrecorto)
+    public function changeCorto(UnidadCoste $valor,$nombrecorto)
     {
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'required|unique:producto_unidadescoste,nombrecorto',
+            'nombrecorto'=>'required|unique:unidadescoste,nombrecorto',
         ])->validate();
 
-        $p=ProductoUnidadcoste::find($valor->id);
+        $p=UnidadCoste::find($valor->id);
         $p->nombrecorto=$nombrecorto;
         $p->save();
         $this->dispatchBrowserEvent('notify', 'Acabado Actualizado.');
     }
 
-    public function changeNombre(ProductoUnidadcoste $valor, $nombre)
+    public function changeNombre(UnidadCoste $valor, $nombre)
     {
         Validator::make(['nombre'=>$nombre],[
-            'nombre'=>'required|unique:producto_unidadescoste,nombre',
+            'nombre'=>'required|unique:unidadescoste,nombre',
         ])->validate();
-        $p=ProductoUnidadcoste::find($valor->id);
+        $p=UnidadCoste::find($valor->id);
         $p->nombre=$nombre;
         $p->save();
         $this->dispatchBrowserEvent('notify', 'Material Actualizado.');
@@ -65,7 +65,7 @@ class UnidadesCoste extends Component
     {
         $this->validate();
 
-        ProductoUnidadcoste::create([
+        UnidadCoste::create([
             'nombre'=>$this->nombre,
             'nombrecorto'=>$this->nombrecorto,
         ]);
@@ -79,7 +79,7 @@ class UnidadesCoste extends Component
 
     public function delete($valorId)
     {
-        $borrar = ProductoUnidadcoste::find($valorId);
+        $borrar = UnidadCoste::find($valorId);
 
         if ($borrar) {
             $borrar->delete();

@@ -25,7 +25,7 @@ class PedidoDetalle extends Model
 
     public function unidadcompra()
     {
-        return $this->belongsTo(ProductoUnidadcoste::class,'udcompra_id','id');
+        return $this->belongsTo(UnidadCoste::class,'udcompra_id','id');
     }
 
     public function getBaseAttribute(){

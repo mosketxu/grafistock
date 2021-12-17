@@ -41,9 +41,21 @@
                             </div>
                             <div class="mb-2">
                                 <label for="preciotarifa" class="px-1 text-sm text-gray-600">€ Tarifa:</label>
-                                <input type="number" id="preciotarifa" wire:model.defer="preciotarifa"
+                                <input type="number" step="any" id="preciotarifa" wire:model.defer="preciotarifa"
                                 class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 @error('preciotarifa') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="precioventa" class="px-1 text-sm text-gray-600">€ Venta:</label>
+                                <input type="number"  step="any" id="precioventa" wire:model.defer="precioventa"
+                                class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                @error('precioventa') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="preciominimo" class="px-1 text-sm text-gray-600">€ Mínimo:</label>
+                                <input type="number"  step="any" id="preciominimo" wire:model.defer="preciominimo"
+                                class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                @error('preciominimo') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
                                 <label for="udpreciotarifa_id" class="px-1 text-sm text-gray-600">Uds:</label>
@@ -56,25 +68,6 @@
                                 </x-select>
                                 @error('udpreciotarifa_id') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
-                            <div class="mb-2">
-                                <label for="porcentaje" class="px-1 text-sm text-gray-600">Porcentaje:</label>
-                                <input type="number" id="porcentaje" wire:model.defer="porcentaje"
-                                class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                @error('porcentaje') <span class="text-red-500">{{ $message }}</span>@enderror
-                            </div>
-                            <div class="mb-2">
-                                <label for="porcentajemin" class="px-1 text-sm text-gray-600">Porcentaje Min.:</label>
-                                <input type="number" id="porcentajemin" wire:model.defer="porcentajemin"
-                                class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                @error('porcentajemin') <span class="text-red-500">{{ $message }}</span>@enderror
-                            </div>
-
-                            {{-- <div class="mb-2">
-                                <label for="precioventa" class="px-1 text-sm text-gray-600">€ Venta:</label>
-                                <input type="number" id="precioventa" wire:model.defer="precioventa"
-                                class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                @error('precioventa') <span class="text-red-500">{{ $message }}</span>@enderror
-                            </div> --}}
                         </div>
                         <div class="flex">
                             <div class="w-full mb-2">

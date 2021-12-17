@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PedidoDetalle, Producto, ProductoMaterial, ProductoUnidadcoste,Pedido};
+use App\Models\{PedidoDetalle, Producto, ProductoMaterial, UnidadCoste,Pedido};
 use Livewire\Component;
 use phpDocumentor\Reflection\Types\Nullable;
 
@@ -56,7 +56,7 @@ class PedidoDetalleCreate extends Component
             ->get()->toArray();
         $materiales=ProductoMaterial::whereIn('id',$mat)->orderBy('nombre')->get();
 
-        $unidadescoste=ProductoUnidadcoste::orderBy('nombre')->get();
+        $unidadescoste=UnidadCoste::orderBy('nombre')->get();
 
         return view('livewire.pedido-detalle-create',compact('unidadescoste','materiales'));
     }

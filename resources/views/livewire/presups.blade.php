@@ -173,9 +173,6 @@
                             <td class="text-right">
                                 <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->preciotarifa}}</span>
                             </td>
-                            {{-- <td class="text-right">
-                                <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->ratio}}</span>
-                            </td> --}}
                             <td class="text-right">
                                 <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->precioventa}}</span>
                             </td>
@@ -190,7 +187,7 @@
                                     @if(Auth::user()->id==$presupuesto->solicitante_id || Auth::user()->hasRole('Admin'))
                                     <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600"
                                         title="Editar Presupuesto" />
-                                        <x-icon.clipboard-a href="{{route('presupuesto.edit', $presupuesto) }}"
+                                        <x-icon.calc-a href="{{route('presupuesto.edit', $presupuesto) }}"
                                         class="text-green-600" title="Composición Presupuesto" />
                                         <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})"
                                             onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()"

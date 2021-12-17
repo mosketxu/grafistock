@@ -22,7 +22,7 @@ class CreatePresupuestoLineaDetallesTable extends Migration
             $table->integer('orden')->nullable()->default('0');
             $table->string('descripcion')->nullable();
             $table->double('preciotarifa_ud', 15, 2)->default(0.00);
-            $table->double('preciotarifa', 15, 2)->default(0.00);
+            $table->double('precioventa_ud', 15, 2)->default(0.00);
             $table->double('precioventa', 15, 2)->default(0.00);
             $table->integer('udpreciotarifa_id')->nullable();
             $table->double('factor', 15, 2)->default(1);

@@ -1,6 +1,4 @@
 <div class="mx-1 mb-1 bg-white border border-blue-500 rounded-md shadow-md  {{ $presupacciones->count()>0 ? 'bg-blue-100' : 'bg-white' }}">
-
-    Esto es impresion
     <div class="mx-2 ">
         <div class="flex flex-row mt-1 ml-3 border-b-2">
             <div class="flex w-8/12">

@@ -12,16 +12,16 @@
         @error('preciotarifa_ud') <span class="text-red-500">{{ $message }}</span>@enderror
     </div>
     <div class="w-full mb-2">
-        <label for="preciotarifa" class="px-1 text-sm text-gray-600">€ Precio Tarifa:
+        <label for="precioventa_ud" class="px-1 text-sm text-gray-600">€ Venta Ud:
             <input type="hidden" id="udpreciotarifa_id" wire:model.defer="udpreciotarifa_id"/>
             @if($accionproducto!='')
                 (x {{ $unidadventa }})
             @endif
         </label>
-            <input type="number" id="preciotarifa" wire:model.defer="preciotarifa"
+            <input type="number" id="precioventa_ud" wire:model.defer="precioventa_ud"
             class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
             disabled>
-        @error('preciotarifa') <span class="text-red-500">{{ $message }}</span>@enderror
+        @error('precioventa_ud') <span class="text-red-500">{{ $message }}</span>@enderror
     </div>
     @if($showAnchoAlto)
         <div class="w-full mb-2">

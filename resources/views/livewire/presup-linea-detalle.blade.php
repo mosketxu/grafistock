@@ -60,7 +60,7 @@
                         </div>
                         <div class="w-full mb-2">
                             <label for="accionproducto_id" class="px-1 text-sm text-gray-600">{{ $acciontipo->nombre }}</label>
-                            <x-select wire:model.lazy="accionproducto_id" selectname="accionproducto_id" required
+                            <x-select wire:model.lazy="accionproducto_id" selectname="accionproducto_id"
                                 class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                     <option value="">-- choose --</option>
                                 @foreach ($acciones as $accion)
@@ -90,8 +90,8 @@
                     {{-- Cálculo en función del tipo de accion --}}
                     @if($acciontipo->id=='1')
                         @include('presupuestolineadetalle.material')
-                    @elseif ($acciontipo->id=='2')
-                        @include('presupuestolineadetalle.impresion')
+                    @else
+                        @include('presupuestolineadetalle.nomaterial')
                     @endif
                 </div>
                 <div class="flex pl-2 mb-2 ml-2 space-x-4">
@@ -104,10 +104,10 @@
                 </div>
             </form>
             <div class="space-y-2 ">
-                @if($acciontipo->id=='1')
+                @if($acciontipo->nombrecorto=='MAT')
                     @include('presupuestolinea.presupuestolineadetallesMaterial',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
                 @else
-                    @include('presupuestolinea.presupuestolineadetallesImpresion',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
+                    @include('presupuestolinea.presupuestolineadetallesNomaterial',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
                 @endif
             </div>
         </div>

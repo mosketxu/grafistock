@@ -16,7 +16,7 @@
                         @if($actipo->id=='1')
                             @include('presupuestolinea.presupuestolineadetallesMaterial',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
                         @else
-                            @include('presupuestolinea.presupuestolineadetallesImpresion',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
+                            @include('presupuestolinea.presupuestolineadetallesNomaterial',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
                         @endif
 
                     @endif

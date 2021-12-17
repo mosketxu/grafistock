@@ -1,27 +1,41 @@
 <div class="flex space-x-2">
+    @if($acciontipo->nombrecorto=='EXT')
     <div class="w-full mb-2">
-        <label for="preciotarifa_ud" class="px-1 text-sm text-gray-600">€ Tarifa Ud:
-            <input type="hidden" id="udpreciotarifa_id" wire:model.defer="udpreciotarifa_id"/>
-            @if($accionproducto!='')
-                (x {{ $unidadventa }})
-            @endif
-        </label>
+        <label for="proveedor_id" class="px-1 text-sm text-gray-600">Proveedor:</label>
+        <x-select wire:model.lazy="proveedor_id" selectname="proveedor_id"
+            class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                <option value="">-- choose --</option>
+            @foreach ($proveedores as $proveedor)
+                <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+            @endforeach
+        </x-select>
+        @error('proveedor_id') <span class="text-red-500">{{ $message }}</span>@enderror
+    </div>
+    @endif
+    <div class="w-full mb-2">
+        <label for="preciotarifa_ud" class="px-1 text-sm text-gray-600">€ Tarifa Ud:</label>
         <input type="number" id="preciotarifa_ud" wire:model.defer="preciotarifa_ud"
-            class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-            disabled>
+            class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 {{ $colorfondoTarifa }} border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+            {{ $deshabilitadoPTarifa }}>
         @error('preciotarifa_ud') <span class="text-red-500">{{ $message }}</span>@enderror
     </div>
     <div class="w-full mb-2">
-        <label for="preciotarifa" class="px-1 text-sm text-gray-600">€ Precio Tarifa:
-            <input type="hidden" id="udpreciotarifa_id" wire:model.defer="udpreciotarifa_id"/>
-            @if($accionproducto!='')
-                (x {{ $unidadventa }})
-            @endif
-        </label>
-            <input type="number" id="preciotarifa" wire:model.defer="preciotarifa"
-            class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-            disabled>
-        @error('preciotarifa') <span class="text-red-500">{{ $message }}</span>@enderror
+        <label for="precioventa_ud" class="px-1 text-sm text-gray-600">€ Venta Ud:</label>
+            <input type="number" id="precioventa_ud" wire:model.lazy="precioventa_ud"
+            class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 {{ $colorfondoVenta }} border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+            {{ $deshabilitadoPVenta }}>
+        @error('precioventa_ud') <span class="text-red-500">{{ $message }}</span>@enderror
+    </div>
+    <div class="w-full mb-2">
+        <label for="udpreciotarifa_id" class="px-1 text-sm text-gray-600">€ ud</label>
+        <x-select wire:model.lazy="udpreciotarifa_id" selectname="udpreciotarifa_id"
+            class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                <option value="">-- choose --</option>
+            @foreach ($unidadesventa as $uventa)
+                <option value="{{ $uventa->id }}">{{ $uventa->nombre }}</option>
+            @endforeach
+        </x-select>
+        @error('udpreciotarifa_id') <span class="text-red-500">{{ $message }}</span>@enderror
     </div>
     @if($showAnchoAlto)
         <div class="w-full mb-2">
@@ -46,18 +60,6 @@
         <input type="number" id="unidades" wire:model="unidades"
         class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
         @error('unidades') <span class="text-red-500">{{ $message }}</span>@enderror
-    </div>
-    <div class="w-full mb-2">
-        <label for="factor" class="px-1 text-sm text-gray-600">%</label>
-        <input type="text" id="factor" wire:model.lazy="factor"
-        class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-        @error('factor') <span class="text-red-500">{{ $message }}</span>@enderror
-    </div>
-    <div class="w-full mb-2">
-        <label for="factormin" class="px-1 text-sm text-gray-600">%.Min:</label>
-        <input type="number" id="factormin" wire:model="factormin"
-        class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-        disabled>
     </div>
     <div class="w-full mb-2">
         <label for="precioventa" class="px-1 text-sm text-gray-600">€ Venta:

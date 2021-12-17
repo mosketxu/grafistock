@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Accion;
 use App\Models\AccionTipo;
-use App\Models\ProductoUnidadcoste;
+use App\Models\UnidadCoste;
 use App\Models\Unidad;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -24,9 +24,9 @@ class Acciones extends Component
     public $descripcion='';
     public $acciontipo_id='';
     public $preciotarifa='';
-    public $preciotarifa_ud='';
-    public $udpreciotarifa_id='';
+    public $preciominimo='';
     public $precioventa='';
+    public $udpreciotarifa_id='';
     public $observaciones='';
 
     // protected $listeners = [ 'refresh' => '$refresh'];
@@ -40,11 +40,9 @@ class Acciones extends Component
             'descripcion'=>'nullable',
             'acciontipo_id'=>'required|numeric',
             'preciotarifa'=>'numeric|nullable',
-            'preciotarifa_ud'=>'numeric|nullable',
-            'udpreciotarifa_id'=>'numeric|nullable',
+            'preciominimo'=>'numeric|nullable',
             'precioventa'=>'numeric|nullable',
-            'porcentaje'=>'numeric|nullable',
-            'porcentajemin'=>'numeric|nullable',
+            'udpreciotarifa_id'=>'numeric|nullable',
             'observaciones'=>'string|nullable',
         ];
     }
@@ -53,7 +51,7 @@ class Acciones extends Component
     public function render()
     {
         $acciontipos=AccionTipo::orderBy('nombre')->get();
-        $unidades=ProductoUnidadcoste::orderBy('nombre')->get();
+        $unidades=UnidadCoste::orderBy('nombre')->get();
 
         $acciones=Accion::query()
             ->with('acciontipo','unidadpreciotarifa')
@@ -83,11 +81,9 @@ class Acciones extends Component
         $this->descripcion='';
         $this->acciontipo_id='';
         $this->preciotarifa='';
-        $this->preciotarifa_ud='';
-        $this->udpreciotarifa_id='';
-        $this->porcentaje='';
-        $this->porcentajemin='';
+        $this->preciominimo='';
         $this->precioventa='';
+        $this->udpreciotarifa_id='';
         $this->observaciones='';
     }
 
@@ -112,16 +108,15 @@ class Acciones extends Component
                 );
             }
 
+            $this->preciominimo =($this->preciominimo=='' || $this->preciominimo=='0') ? $this->preciotarifa : $this->preciominimo;
             $accion=Accion::updateOrCreate(['id'=>$this->accion_id], [
                 'referencia'=>$this->referencia,
                 'descripcion'=>$this->descripcion,
                 'acciontipo_id'=>$this->acciontipo_id,
                 'preciotarifa'=>$this->preciotarifa,
-                'preciotarifa_ud'=>$this->preciotarifa_ud,
-                'udpreciotarifa_id'=>$this->udpreciotarifa_id,
-                'porcentaje'=>$this->porcentaje,
-                'porcentajemin'=>$this->porcentajemin,
+                'preciominimo'=>$this->preciominimo,
                 'precioventa'=>$this->precioventa,
+                'udpreciotarifa_id'=>$this->udpreciotarifa_id,
                 'observaciones'=>$this->observaciones,
             ]);
 
@@ -138,11 +133,9 @@ class Acciones extends Component
         $this->descripcion=$accion->descripcion;
         $this->acciontipo_id=$accion->acciontipo_id;
         $this->preciotarifa=$accion->preciotarifa;
-        $this->preciotarifa_ud=$accion->preciotarifa_ud;
-        $this->udpreciotarifa_id=$accion->udpreciotarifa_id;
-        $this->porcentaje=$accion->porcentaje;
-        $this->porcentajemin=$accion->porcentajemin;
+        $this->preciominimo=$accion->preciominimo;
         $this->precioventa=$accion->precioventa;
+        $this->udpreciotarifa_id=$accion->udpreciotarifa_id;
         $this->observaciones=$accion->observaciones;
         $this->openNewModal();
     }

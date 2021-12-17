@@ -50,6 +50,11 @@ class Entidad extends Model
         return $this->hasMany(Presupuesto::class);
     }
 
+    public function presuplindetalleproveedor()
+    {
+        return $this->hasMany(PresupuestoLineaDetalle::class);
+    }
+
     public function productos()
     {
         return $this->hasMany(Producto::class);

@@ -34,9 +34,9 @@ class Producto extends Model
 
     public function unidadalto(){return $this->belongsTo(Unidad::class,'udalto_id','id');}
 
-    public function unidadcosteprov(){return $this->belongsTo(ProductoUnidadcoste::class,'udcosteprov_id','id');}
+    public function unidadcosteprov(){return $this->belongsTo(UnidadCoste::class,'udcosteprov_id','id');}
 
-    public function unidadpreciotarifa(){return $this->belongsTo(ProductoUnidadcoste::class,'udpreciotarifa_id','id');}
+    public function unidadpreciotarifa(){return $this->belongsTo(UnidadCoste::class,'udpreciotarifa_id','id');}
 
     public function caja(){return $this->belongsTo(ProductoCaja::class,'caja_id','id');}
 
