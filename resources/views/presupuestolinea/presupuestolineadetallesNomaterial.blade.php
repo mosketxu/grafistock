@@ -32,14 +32,10 @@
                         <td class="pl-3 ">{{ __('Descripción') }} </td>
                         <td class="pl-3 ">{{ __('Ref.') }} </td>
                         <td class="w-20 pr-3 text-right ">{{ __('€ Tarifa/Ud') }}</td>
-                        <td class="w-20 pr-3 text-right ">{{ __('€ Tarifa') }}</td>
+                        <td class="w-20 pr-3 text-right ">{{ __('€ Venta/Ud') }}</td>
                         <td class="w-16 pr-3 text-right ">{{ __('Ancho') }}</td>
                         <td class="w-16 pr-3 text-right ">{{ __('Ancho') }}</td>
                         <td class="w-20 pr-3 text-right ">{{ __('Mts 2') }}</td>
-                        <td class="w-20 pr-3 text-right ">{{ __('%') }}</td>
-                        @if ($acciontipo->id=='1')
-                            <td class="w-20 pr-3 text-right ">{{ __('Merma') }}</td>
-                        @endif
                         <td class="w-20 pr-3 text-right ">{{ __('Unidades') }}</td>
                         <td class="w-20 pr-3 text-right ">{{ __('€ Ventas') }}</td>
                         <td class="pl-3 ">{{ __('Observaciones') }} </td>
@@ -60,21 +56,20 @@
                             class="w-full py-1 text-xs bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                         </td>
                         <td>
-                            <input type="text" value="{{ $presupaccion->preciotarifa_ud }} {{ $presupaccion->unidadpreciotarifa->nombrecorto ?? '' }}"
+                            <input type="text" value="{{ $presupaccion->preciotarifa_ud }} {{ $presupaccion->unidadpreciotarifa->nombre ?? '' }}"
                             class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                         </td>
                         <td>
-                            <input type="text" value="{{ $presupaccion->preciotarifa }} {{ $presupaccion->unidadpreciotarifa->nombrecorto ?? '' }}"
+                            <input type="text" value="{{ $presupaccion->precioventa_ud }} {{ $presupaccion->unidadpreciotarifa->nombre ?? '' }}"
                             class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                         </td>
-                        @if($presupaccion->unidadpreciotarifa->nombrecorto=='m2' || $presupaccion->unidadpreciotarifa->nombrecorto=='pla')
+                        @if($presupaccion->unidadpreciotarifa->nombrecorto=='e_m2')
                             <td><input type="text" value="{{ $presupaccion->ancho }}" wire:change="changeAncho({{ $presupaccion }},$event.target.value)"
                                 class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                 />
                             </td>
                             <td><input type="text" value="{{ $presupaccion->alto }}" wire:change="changeAlto({{ $presupaccion }},$event.target.value)"
                                 class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                                {{ ($presupaccion->unidadpreciotarifa->nombrecorto=='m2' || $presupaccion->unidadpreciotarifa->nombrecorto=='pla') ? '' : 'disabled'}}
                                 />
                             </td>
                         @else
@@ -91,14 +86,7 @@
                         <td><input type="text" value="{{ number_format($presupaccion->metros2,2,',','.') }}"
                             class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                         </td>
-                        <td><input type="text" value="{{ $presupaccion->factor }}" wire:change="changeFactor({{ $presupaccion }},$event.target.value)"
-                            class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
-                        </td>
-                        @if ($acciontipo->id=='1')
-                            <td><input type="text" value="{{ $presupaccion->merma }}" wire:change="changeMerma({{ $presupaccion }},$event.target.value)"
-                                class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
-                            </td>
-                        @endif
+
                         <td><input type="text" value="{{ $presupaccion->unidades }}" wire:change="changeUnidades({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                         </td>

@@ -196,7 +196,6 @@ class PresupLineaDetalle extends Component
     // con el factor tenemos en cuenta el minimo
     public function UpdatedFactor(){
         $this->validate(['factor'=>'numeric',]);
-
         if($this->factor<$this->factormin){
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $this->factor=$this->factormin;
@@ -259,9 +258,7 @@ class PresupLineaDetalle extends Component
     {
         Validator::make(['ancho'=>$ancho],['ancho'=>'numeric|required'])->validate();
         $presupaccion->update(['ancho'=>$ancho,'metros2'=>round($ancho * $presupaccion->alto ,2)]);
-
-        $this->calculoPrecioVenta();
-
+        $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Ancho y Precio Venta actualizados.');
     }
 
@@ -269,9 +266,7 @@ class PresupLineaDetalle extends Component
     {
         Validator::make(['alto'=>$alto],['alto'=>'numeric|required'])->validate();
         $presupaccion->update(['alto'=>$alto,'metros2'=>round($alto * $presupaccion->ancho ,2)]);
-
-        $this->calculoPrecioVenta();
-
+        $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Alto y Precio Venta Actualizados.');
     }
 
@@ -279,9 +274,7 @@ class PresupLineaDetalle extends Component
     {
         Validator::make(['unidades'=>$unidades],['unidades'=>'numeric|required'])->validate();
         $presupaccion->update(['unidades'=>$unidades,]);
-
-        $this->calculoPrecioVenta();
-
+        $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
     }
 
@@ -293,25 +286,19 @@ class PresupLineaDetalle extends Component
             $factor=$this->fmin;
         }
         $presupaccion->update(['factor'=>$factor]);
-
-        $this->calculoPrecioVenta();
-
+        $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
     }
 
     public function changePrecioventaUd(PresupuestoLineaDetalle $presupaccion,$precioventa_ud)
     {
         Validator::make(['precioventa_ud'=>$precioventa_ud],['precioventa_ud'=>'numeric|required',])->validate();
-
         if($precioventa_ud<$this->preciominimo){
             $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
             $precioventa_ud=$this->preciominimo;
         }
-
         $presupaccion->update(['precioventa_ud'=>$precioventa_ud,]);
-
-        $this->calculoPrecioVenta();
-
+        $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Precio venta unidad y Precio Venta Actualizados.');
     }
 
@@ -319,16 +306,12 @@ class PresupLineaDetalle extends Component
     {
         Validator::make(['merma'=>$merma],['merma'=>'numeric|required'])->validate();
         $mermamin=$presupaccion->producto->tipo->merma;
-
         if($merma<$mermamin){
             $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
             $merma=$mermamin;
         }
-
         $presupaccion->update(['merma'=>$merma,]);
-
-        $this->calculoPrecioVenta();
-
+        $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Merma y Precio Venta Actualizados.');
     }
 
@@ -374,11 +357,27 @@ class PresupLineaDetalle extends Component
         if($this->acciontipoId!='1'){
             $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades ;
         }else{
-            $this->precioventa=$this->preciotarifa_ud * $this->ancho * $this->alto * $this->unidades * ($this->factor + $this->merma);
+            $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades * ($this->factor + $this->merma);
         }
         $this->precioventa=round($this->precioventa,2);
+    }
 
-        // $this->save();
+    public function recalculoPrecioVenta($presupacciondetalle)
+    {
+        if($presupacciondetalle->acciontipo_id!='1'){
+            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
+        }else{
+            $presupacciondetalle->precioventa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
+        }
+        $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
+        $presupacciondetalle->save();
+        $this->dispatchBrowserEvent('notify', 'Precio venta actualizado.');
+
+        $this->recalcular($presupacciondetalle);
+        $this->actualizaPartida();
+
+
+        // $this->save($presupacciondetalle);
     }
 
     public function actualizaPartida()
