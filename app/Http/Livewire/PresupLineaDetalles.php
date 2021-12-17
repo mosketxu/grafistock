@@ -98,10 +98,10 @@ class PresupLineaDetalles extends Component
     {
         Validator::make(['precioventa_ud'=>$precioventa_ud],['precioventa_ud'=>'numeric|required',])->validate();
         $preciominimo=$presupaccion->accion->preciominimo;
-        if($preciominimo=='0') $preciominimo=$presupaccion->accion->preciotarifa_ud;
+        if( $preciominimo=='0') $preciominimo=$presupaccion->accion->preciotarifa_ud;
         if($precioventa_ud< $preciominimo){
             $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
-            $precioventa_ud=$this->preciominimo;
+            $precioventa_ud=$preciominimo;
         }
         $presupaccion->update(['precioventa_ud'=>$precioventa_ud,]);
         $this->calculoPrecioVenta($presupaccion);
