@@ -36,117 +36,97 @@ class PresupLineaDetalles extends Component
     public function changeVisible(PresupuestoLineaDetalle $presupaccion,$visible)
     {
         $visible=$visible==false ? true : false;
-        Validator::make(['visible'=>$visible],[
-            'visible'=>'boolean',
-        ])->validate();
+        Validator::make(['visible'=>$visible],['visible'=>'boolean',])->validate();
         $presupaccion->update(['visible'=>$visible]);
         $this->dispatchBrowserEvent('notify', 'Visible actualizado.');
     }
 
     public function changeOrden(PresupuestoLineaDetalle $presupaccion,$orden)
     {
-        Validator::make(['orden'=>$orden],[
-            'orden'=>'numeric',
-        ])->validate();
+        Validator::make(['orden'=>$orden],['orden'=>'numeric',])->validate();
         $presupaccion->update(['orden'=>$orden]);
         $this->dispatchBrowserEvent('notify', 'Orden Actualizado.');
     }
 
     public function changeDescripcion(PresupuestoLineaDetalle $presupaccion,$descripcion)
     {
-        Validator::make(['descripcion'=>$descripcion],[
-            'descripcion'=>'required',
-        ])->validate();
+        Validator::make(['descripcion'=>$descripcion],['descripcion'=>'required',])->validate();
         $presupaccion->update(['descripcion'=>$descripcion]);
         $this->dispatchBrowserEvent('notify', 'Descripción Actualizado.');
     }
 
+    public function changeObs(PresupuestoLineaDetalle $presupaccion,$observaciones)
+    {
+        $presupaccion->update(['observaciones'=>$observaciones]);
+        $this->dispatchBrowserEvent('notify', 'Observación actualizada.');
+    }
+
     public function changeAncho(PresupuestoLineaDetalle $presupaccion,$ancho)
     {
-        Validator::make(['ancho'=>$ancho],[
-            'ancho'=>'numeric|required',
-        ])->validate();
-        $presupaccion->update([
-            'ancho'=>$ancho,
-            'metros2'=>round($ancho * $presupaccion->alto,2),
-        ]);
+        Validator::make(['ancho'=>$ancho],['ancho'=>'numeric|required',])->validate();
+        $presupaccion->update(['ancho'=>$ancho,'metros2'=>round($ancho * $presupaccion->alto,2),]);
         $this->calculoPrecioVenta($presupaccion);
     }
 
     public function changeAlto(PresupuestoLineaDetalle $presupaccion,$alto)
     {
-        Validator::make(['alto'=>$alto],[
-            'alto'=>'numeric|required',
-        ])->validate();
-        $presupaccion->update([
-            'alto'=>$alto,
-            'metros2'=>round($alto * $presupaccion->ancho,2),
-        ]);
+        Validator::make(['alto'=>$alto],['alto'=>'numeric|required',])->validate();
+        $presupaccion->update(['alto'=>$alto,'metros2'=>round($alto * $presupaccion->ancho,2),]);
+        $this->calculoPrecioVenta($presupaccion);
+    }
+
+    public function changeUnidades(PresupuestoLineaDetalle $presupaccion,$unidades)
+    {
+        Validator::make(['unidades'=>$unidades],['unidades'=>'numeric|nullable',])->validate();
+        $presupaccion->update(['unidades'=>$unidades]);
         $this->calculoPrecioVenta($presupaccion);
     }
 
     public function changeFactor(PresupuestoLineaDetalle $presupaccion,$factor)
     {
-        Validator::make(['factor'=>$factor],[
-            'factor'=>'numeric|required',
-        ])->validate();
-
+        Validator::make(['factor'=>$factor],['factor'=>'numeric|required',])->validate();
         $factormin=$presupaccion->presupuestolinea->presupuesto->entidad->empresatipo->factormin;
-
         if($factor<$factormin){
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $factor=$factormin ?? '1';
         }
-        $presupaccion->update([
-            'factor'=>$factor,
-        ]);
+        $presupaccion->update(['factor'=>$factor,]);
+        $this->calculoPrecioVenta($presupaccion);
+    }
+
+    public function changePrecioventaUd(PresupuestoLineaDetalle $presupaccion,$precioventa_ud)
+    {
+        Validator::make(['precioventa_ud'=>$precioventa_ud],['precioventa_ud'=>'numeric|required',])->validate();
+        $preciominimo=$presupaccion->accion->preciominimo;
+        if($preciominimo=='0') $preciominimo=$presupaccion->accion->preciotarifa_ud;
+        if($precioventa_ud< $preciominimo){
+            $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
+            $precioventa_ud=$this->preciominimo;
+        }
+        $presupaccion->update(['precioventa_ud'=>$precioventa_ud,]);
         $this->calculoPrecioVenta($presupaccion);
     }
 
     public function changeMerma(PresupuestoLineaDetalle $presupaccion,$merma)
     {
-        Validator::make(['merma'=>$merma],[
-            'merma'=>'numeric|required',
-        ])->validate();
-
+        Validator::make(['merma'=>$merma],['merma'=>'numeric|required',])->validate();
         $mermamin=$presupaccion->producto->tipo->merma;
         if($merma<$mermamin){
             $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
             $merma=$mermamin;
         }
-        $presupaccion->update([
-            'merma'=>$merma,
-        ]);
-
+        $presupaccion->update(['merma'=>$merma,]);
         $this->calculoPrecioVenta($presupaccion);
-
-    }
-
-    public function changeUnidades(PresupuestoLineaDetalle $presupaccion,$unidades)
-    {
-        Validator::make(['unidades'=>$unidades],[
-            'unidades'=>'numeric|nullable',
-            ])->validate();
-        $presupaccion->update(['unidades'=>$unidades]);
-
-        $this->calculoPrecioVenta($presupaccion);
-
-    }
-
-    public function changeObs(PresupuestoLineaDetalle $presupaccion,$observaciones)
-    {
-        Validator::make(['observaciones'=>$observaciones],[
-            'observaciones'=>'nullable',
-        ])->validate();
-        $presupaccion->update(['observaciones'=>$observaciones]);
-        $this->dispatchBrowserEvent('notify', 'Observación actualizada.');
-
     }
 
     public function calculoPrecioVenta($presupacciondetalle)
     {
-        $presupacciondetalle->preciotarifa=round($presupacciondetalle->metros2 * $presupacciondetalle->preciotarifa_ud *  $presupacciondetalle->unidades,2);
-        $presupacciondetalle->precioventa=round($presupacciondetalle->preciotarifa * ($presupacciondetalle->factor + $presupacciondetalle->merma) ,2);
+        if($presupacciondetalle->acciontipo_id!='1'){
+            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
+        }else{
+            $presupacciondetalle->precioventa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
+        }
+        $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();
         $this->dispatchBrowserEvent('notify', 'Precio venta actualizado.');
         $this->save($presupacciondetalle);
@@ -175,6 +155,8 @@ class PresupLineaDetalles extends Component
         $pl=$presuplinea->recalculo();
         $p=$presuplinea->presupuesto->recalculo();
         return redirect()->route('presupuestolinea.index',$presuplinea);
+        $this->dispatchBrowserEvent('notify', 'Precio venta actualizado.');
+
     }
 
     public function delete($lineaId)
