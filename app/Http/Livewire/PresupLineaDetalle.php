@@ -283,7 +283,7 @@ class PresupLineaDetalle extends Component
         Validator::make(['factor'=>$factor],['factor'=>'numeric|required',])->validate();
         if($factor<$this->factormin){
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
-            $factor=$this->fmin;
+            $factor=$this->factormin;
         }
         $presupaccion->update(['factor'=>$factor]);
         $this->recalculoPrecioVenta($presupaccion);
