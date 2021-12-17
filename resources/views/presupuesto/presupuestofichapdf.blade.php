@@ -14,7 +14,7 @@
     <body>
         <!-- Define header and footer blocks before your content -->
         <header>
-            <table width="100%" style="margin-top:10px">
+            <table width="100%" style="margin-top:0px">
                 <tr>
                     <td style="text-align: right;" width="60px">
                         <img src="{{asset('img/grafitexLogo.png')}}" width="50px">
@@ -59,7 +59,7 @@
             {{-- Descripción general --}}
             <table width="100%" style="margin-top:20px">
                 <tbody>
-                    <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
+                    <tr style="background-color: #6cd0e2; color:rgb(60, 35, 128)">
                         <td style="padding-left:3px;" width="55%">Descrip. Presupuesto</td>
                         <td style="padding-right:3px;text-align:right" width="15%">P.Tarifa</td>
                         <td style="padding-right:3px;text-align:right" width="15%">Unidades</td>
@@ -100,18 +100,22 @@
                 <tbody>
                     @foreach ( $presupuesto->presupuestolineas as $presupuestolinea )
                         <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
-                            <td colspan="4" style="padding-left:3px;" >Descrip. Partida</td>
-                            <td style="padding-right:3px;text-align:right" >P.Tarifa</td>
+                            <td colspan="7" style="padding-left:3px;" >Descrip. Partida</td>
+                            <td style="padding-right:3px;text-align:right" >€ Tarifa</td>
+                            <td style="padding-right:3px;text-align:right" >€ Venta</td>
                             <td style="padding-right:3px;text-align:right" >Unidades</td>
                             <td style="padding-right:3px;text-align:right" >P.Venta</td>
-                            <td  colspan="5" style="padding-right:3px;text-align:right" >Observaciones</td>
                         </tr>
                         <tr >
-                            <td colspan="4" style="padding-left:3px;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $presupuestolinea->descripcion }}</td>
-                            <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->preciotarifa }} € </td>
+                            <td colspan="7" style="padding-left:3px;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $presupuestolinea->descripcion }}</td>
+                            <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->preciotarifa }}</td>
+                            <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->precioventa }} € </td>
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->unidades }} </td>
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->precioventa }}  €</td>
-                            <td colspan="5" style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->observaciones }} </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right:3px;text-align:left;border-bottom: 1px solid rgb(223, 218, 218);">Observaciones:</td>
+                            <td colspan="10" style="padding-left:3px;text-align:left;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->observaciones }} </td>
                         </tr>
                         @foreach ($controlpartidasactivas as $partida )
                             <tr>
@@ -124,18 +128,15 @@
                                         <tr >
                                             <td style="font-weight: bold" colspan="2">Ref</td>
                                             <td style="font-weight: bold" colspan="3">Descripcion</td>
-                                            <td style="font-weight: bold">€ Tarifa</td>
-                                            <td style="font-weight: bold">€ Venta</td>
-                                            <td style="font-weight: bold">F/Fmin</td>
-                                            <td style="font-weight: bold">Uds.</td>
-                                            <td style="font-weight: bold">Ancho x Alto</td>
-                                            <td style="font-weight: bold">Mts2</td>
+                                            <td style="font-weight: bold;text-align:right;">€ Tarifa Ud</td>
+                                            <td style="font-weight: bold;text-align:right;">€ Venta Ud</td>
+                                            <td style="font-weight: bold;text-align:right;">F/Fmin</td>
+                                            <td style="font-weight: bold;text-align:right;">Uds.</td>
+                                            <td style="font-weight: bold;text-align:right;">€ Venta</td>
+                                            <td style="font-weight: bold;text-align:right;">Ancho x Alto</td>
                                         </tr>
                                     @endif
                                     @if($detalle->acciontipo_id==$partida->acciontipo_id)
-                                    {{-- <tr>
-                                        <td colspan="8">{{ $partida->acciontipo_id }} - {{  $detalle->acciontipo_id}}</td>
-                                    </tr> --}}
                                     <tr>
                                         <td colspan="2">
                                             @if($detalle->acciontipo_id=='1')
@@ -145,23 +146,27 @@
                                             @endif
                                         </td>
                                         <td colspan="3">{{ $detalle->descripcion }}</td>
-                                        <td>{{ $detalle->preciotarifa }}</td>
-                                        <td>{{ $detalle->precioventa }} ({{ $detalle->unidadpreciotarifa->nombrecorto }})</td>
-                                        <td>{{ $detalle->factor }}/{{ $presupuesto->entidad->empresatipo->factormin }}</td>
-                                        <td>{{ $detalle->unidades }}</td>
-                                        <td>{{ $detalle->ancho }}x {{ $detalle->alto }}</td>
-                                        <td>{{ $detalle->metros2 }}</td>
+                                        <td style="text-align:right;">{{ $detalle->preciotarifa_ud }}</td>
+                                        <td style="text-align:right;">{{ $detalle->precioventa_ud }}</td>
+                                        <td style="text-align:right;">{{ $detalle->factor }}/{{ $presupuesto->entidad->empresatipo->factormin }}</td>
+                                        <td style="text-align:right;">{{ $detalle->unidades }}</td>
+                                        <td style="text-align:right;">{{ $detalle->precioventa }} </td>
+                                        <td style="text-align:right;">{{ $detalle->ancho }}x {{ $detalle->alto }}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="8"><span style="font-style: italic; text-decoration: underline">Observaciones</span>: {{ $detalle->observaciones }}</td>
                                     </tr>
                                     @endif
                                     @if ($loop->last)
-                                        <tr>
-                                            <td colspan="12">
-                                                <hr>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td colspan="3"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-align:right;color:#ffffff;background-color:#173777">Subtotal partida: </td>
+                                        <td style="text-align:right;color:#ffffff;background-color:#173777">{{ $partida->presupuesto->detalles->where('acciontipo_id',$partida->acciontipo_id)->sum('precioventa') }} </td>
+                                        <td></td>
                                     @endif
                                 @endforeach
                             </tr>

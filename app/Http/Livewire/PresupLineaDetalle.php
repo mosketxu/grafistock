@@ -34,6 +34,7 @@ class PresupLineaDetalle extends Component
     public $descripcion;
     public $proveedor_id;
     public $preciotarifa_ud=0;
+    public $preciotarifa=0;
     public $precioventa_ud=0;
     public $preciominimo=0;
     public $udpreciotarifa_id;
@@ -85,7 +86,6 @@ class PresupLineaDetalle extends Component
     {
         $familias=ProductoFamilia::where('id','<>','16')->orderBy('nombre')->get();
         $proveedores='';
-        // $unidadesventa='';
         if($this->acciontipo->nombrecorto=='EXT'){
             $proveedores=Entidad::where('entidadtipo_id','2')->orWhere('entidadtipo_id','3')->get();
         }
@@ -334,6 +334,7 @@ class PresupLineaDetalle extends Component
             'unidades'=>$this->unidades,
             'alto'=>$this->alto,
             'ancho'=>$this->ancho,
+            'preciotarifa'=>$this->preciotarifa,
             'precioventa'=>$this->precioventa,
             'metros2'=>$this->metros2,
             'observaciones'=>$this->observaciones,
@@ -355,29 +356,32 @@ class PresupLineaDetalle extends Component
     public function calculoPrecioVenta()
     {
         if($this->acciontipoId!='1'){
+            $this->preciotarifa=$this->preciotarifa_ud * $this->ancho * $this->alto * $this->unidades;
             $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades ;
         }else{
-            $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades * ($this->factor + $this->merma);
+            $this->preciotarifa=$this->preciotarifa_ud * $this->ancho * $this->alto * $this->unidades ;
+            $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades * (1 + $this->merma);
         }
+        $this->preciotarifa=round($this->preciotarifa,2);
         $this->precioventa=round($this->precioventa,2);
     }
 
     public function recalculoPrecioVenta($presupacciondetalle)
     {
         if($presupacciondetalle->acciontipo_id!='1'){
+            $presupacciondetalle->preciotarifa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
         }else{
+            $presupacciondetalle->preciotarifa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
         }
+        $presupacciondetalle->preciotarifa=round($presupacciondetalle->preciotarifa,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();
-        $this->dispatchBrowserEvent('notify', 'Precio venta actualizado.');
+        $this->dispatchBrowserEvent('notify', 'Precio actualizado.');
 
         $this->recalcular($presupacciondetalle);
         $this->actualizaPartida();
-
-
-        // $this->save($presupacciondetalle);
     }
 
     public function actualizaPartida()

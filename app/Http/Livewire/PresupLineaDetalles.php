@@ -122,13 +122,16 @@ class PresupLineaDetalles extends Component
     public function calculoPrecioVenta($presupacciondetalle)
     {
         if($presupacciondetalle->acciontipo_id!='1'){
+            $presupacciondetalle->preciotarifa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
         }else{
-            $presupacciondetalle->precioventa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
+            $presupacciondetalle->preciotarifa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
+            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
         }
+        $presupacciondetalle->preciotarifa=round($presupacciondetalle->preciotarifa,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();
-        $this->dispatchBrowserEvent('notify', 'Precio venta actualizado.');
+        $this->dispatchBrowserEvent('notify', 'Precio actualizado.');
         $this->save($presupacciondetalle);
     }
 

@@ -60,10 +60,11 @@ class PresupuestoController extends Controller
             ->where('contador','>','0')
             ->get();
 
-        $pdf = \PDF::loadView('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']))
-            ->setPaper('a4','landscape');
+        return view('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']));
+        // $pdf = \PDF::loadView('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']))
+        //     ->setPaper('a4','landscape');
 
-        return $pdf->stream('ficha.pdf');
+        // return $pdf->stream('ficha.pdf');
     }
 
     /**
@@ -75,9 +76,6 @@ class PresupuestoController extends Controller
     public function show(Presupuesto $presupuesto)
     {
         $presupuesto=Presupuesto::with('presupuestolineas','presupuestolineas.presupuestolineadetalles')->find($presupuesto->id);
-
-
-        // return view('pedido.pedidopdf', compact(['pedido','base']));
 
         $pdf = \PDF::loadView('presupuesto.presupuestopdf', compact(['presupuesto']));
 
