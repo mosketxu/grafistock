@@ -142,7 +142,7 @@
                                             @if($detalle->acciontipo_id=='1')
                                                 {{ $detalle->producto->referencia }}
                                             @else
-                                                {{ $detalle->accion->descripcion }}
+                                                {{ $detalle->accion->descripcion ?? '-' }}
                                             @endif
                                         </td>
                                         <td colspan="3">{{ $detalle->descripcion }}</td>
