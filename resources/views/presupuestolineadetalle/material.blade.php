@@ -34,12 +34,6 @@
             <input type="number" id="alto" wire:model.lazy="alto"
             class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
         </div>
-        <div class="w-full mb-2">
-            <label for="metros2" class="px-1 text-sm text-gray-600">Metros 2:</label>
-            <input type="number" id="metros2" wire:model="metros2"
-            class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-gray-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-            disabled>
-        </div>
     @endif
     <div class="w-full mb-2">
         <label for="unidades" class="px-1 text-sm text-gray-600">Unidades:</label>

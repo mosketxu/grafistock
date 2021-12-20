@@ -18,7 +18,7 @@ class PresupControlpartida extends Component
     {
         $this->controlpartida=$controlpartida;
         $this->activo=$controlpartida->activo;
-        $this->partida=$controlpartida->acciontipo->nombre;
+        $this->partida=$controlpartida->acciontipo->nombre ?? 'No Activo';
         $this->contador=$controlpartida->contador;
     }
 

@@ -42,7 +42,7 @@ class PresupLineaDetalle extends Component
     public $factor=1;
     public $factormin=1;
     public $merma;
-    public $mermamin;
+    // public $mermamin;
     public $ancho=1;
     public $alto=1;
     public $metros2=0;
@@ -87,7 +87,7 @@ class PresupLineaDetalle extends Component
         $familias=ProductoFamilia::where('id','<>','16')->orderBy('nombre')->get();
         $proveedores='';
         if($this->acciontipo->nombrecorto=='EXT'){
-            $proveedores=Entidad::where('entidadtipo_id','2')->orWhere('entidadtipo_id','3')->get();
+            $proveedores=Entidad::whereIn('entidadtipo_id', ['2', '3'])->where('presupuesto',true)->orderBy('entidad')->get();
         }
 
         $presupacciones=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presuplinea->id)->where('acciontipo_id',$this->acciontipoId)->orderBy('orden')->get();
@@ -123,9 +123,30 @@ class PresupLineaDetalle extends Component
         return view('livewire.presup-linea-detalle',compact('acciones','presupacciones','familias','proveedores','unidadesventa'));
     }
 
+    public function edit(PresupuestoLineaDetalle $presupuestoaccion)
+    {
+            $this->presupuestolinea_id=$presupuestoaccion->id;
+            $this->acciontipo_id=$presupuestoaccion->acciontipo_id;
+            $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
+            $this->entidad_id=$presupuestoaccion->entidad_id;
+            $this->orden=$presupuestoaccion->orden;
+            $this->descripcion=$presupuestoaccion->descripcion;
+            $this->preciocoste_ud=$presupuestoaccion->preciocoste_ud;
+            $this->precioventa_ud=$presupuestoaccion->precioventa_ud;
+            $this->udpreciocoste_id=$presupuestoaccion->udpreciocoste_id;
+            $this->factor=$presupuestoaccion->factor;
+            $this->merma=$presupuestoaccion->merma;
+            $this->unidades=$presupuestoaccion->unidades;
+            $this->alto=$presupuestoaccion->alto;
+            $this->ancho=$presupuestoaccion->ancho;
+            $this->preciocoste=$presupuestoaccion->preciocoste;
+            $this->precioventa=$presupuestoaccion->precioventa;
+            $this->observaciones=$presupuestoaccion->observaciones;
+    }
+
     public function UpdatedAccionproductoId()
     {
-        $this->mermamin=0;
+        // $this->mermamin=0;
         $this->merma=0;
         $this->factor=1;
         $this->factormin=1;
@@ -154,7 +175,7 @@ class PresupLineaDetalle extends Component
                 $this->descrip=$this->accionproducto->descripcion;
                 if ($this->descrip!=' Genérico') {
                     $this->preciocoste_ud=$this->accionproducto->preciocoste;
-                    $this->mermamin=$this->accionproducto->tipo->merma;
+                    // $this->mermamin=$this->accionproducto->tipo->merma;
                     $this->merma=$this->accionproducto->tipo->merma;
                     $this->factor=$this->empresaTipo->factor ?? '1';
                     $this->factormin=$this->empresaTipo->factormin ?? '1';
@@ -165,7 +186,7 @@ class PresupLineaDetalle extends Component
                     $this->colorfondoPCoste='bg-gray-100';
                 }else{
                     $this->preciocoste_ud='0';
-                    $this->mermamin='0';
+                    // $this->mermamin='0';
                     $this->merma='0';
                     $this->factor='1';
                     $this->factormin='1';
@@ -207,10 +228,10 @@ class PresupLineaDetalle extends Component
     // con la merma tenemos en cuenta el minimo
     public function UpdatedMerma(){
         $this->validate(['merma'=>'numeric']);
-        if($this->merma<$this->mermamin){
-            $this->dispatchBrowserEvent("notify", "La merma es inferior a la mínima. Se asignará la mínima.");
-            $this->merma=$this->mermamin ?? '0';
-        }
+        // if($this->merma<$this->mermamin){
+        //     $this->dispatchBrowserEvent("notify", "La merma es inferior a la mínima. Se asignará la mínima.");
+        //     $this->merma=$this->mermamin ?? '0';
+        // }
         $this->calculoPrecioVenta();
     }
 
@@ -305,11 +326,11 @@ class PresupLineaDetalle extends Component
     public function changeMerma(PresupuestoLineaDetalle $presupaccion,$merma)
     {
         Validator::make(['merma'=>$merma],['merma'=>'numeric|required'])->validate();
-        $mermamin=$presupaccion->producto->tipo->merma;
-        if($merma<$mermamin){
-            $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
-            $merma=$mermamin;
-        }
+        // $mermamin=$presupaccion->producto->tipo->merma;
+        // if($merma<$mermamin){
+        //     $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
+        //     $merma=$mermamin;
+        // }
         $presupaccion->update(['merma'=>$merma,]);
         $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Merma y Precio Venta Actualizados.');
@@ -318,8 +339,7 @@ class PresupLineaDetalle extends Component
     public function save()
     {
         $this->validate();
-
-        $pldetalle = PresupuestoLineaDetalle::updateOrCreate(['id'=>$this->pldetalleId], [
+        $pldetalle = PresupuestoLineaDetalle::updateOrCreate(['id'=>$this->presupuestolinea_id], [
             'presupuestolinea_id'=>$this->presuplinea->id,
             'acciontipo_id'=>$this->acciontipoId,
             'accionproducto_id'=>$this->accionproducto_id,
@@ -360,7 +380,7 @@ class PresupLineaDetalle extends Component
             $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades ;
         }else{
             $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades ;
-            $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades * (1 + $this->merma);
+            $this->precioventa=$this->ancho * $this->alto * $this->unidades * ($this->precioventa_ud * $this->factor   + $this->preciocoste_ud*$this->merma);
         }
         $this->preciocoste=round($this->preciocoste,2);
         $this->precioventa=round($this->precioventa,2);
@@ -373,7 +393,7 @@ class PresupLineaDetalle extends Component
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
         }else{
             $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
-            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
+            $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->precioventa_ud *$presupacciondetalle->factor + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
         }
         $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);

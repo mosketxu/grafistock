@@ -45,7 +45,11 @@ class Presups extends Component
     {
         if($this->selectAll) $this->selectPageRows();
         $presupuestos = $this->rows;
-        $clientes = Entidad::whereIn('entidadtipo_id',['1','3'])->orderBy('entidad')->get();
+        $clientes = Entidad::query()
+            ->when(Auth::user()->hasRole('Comercial'),function ($query){
+                $query->where('comercial_id',Auth::user()->id);
+            })
+            ->whereIn('entidadtipo_id',['1','3'])->orderBy('entidad')->get();
         $solicitantes = User::orderBy('name')->get();
         $totalcoste=$presupuestos->sum('preciocoste');
         $totalventa=$presupuestos->sum('precioventa');
@@ -209,6 +213,9 @@ class Presups extends Component
                 })
             ->when($this->filtroestado!='', function ($query){
                 $query->where('estado',$this->filtroestado);
+            })
+            ->when(Auth::user()->hasRole('Comercial'),function ($query){
+                $query->where('solicitante_id',Auth::user()->id);
             })
             ->searchYear('fechapresupuesto',$this->filtroanyo)
             ->searchMes('fechapresupuesto',$this->filtromes)

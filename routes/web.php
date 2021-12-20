@@ -28,8 +28,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         if (Auth::user()->hasRole('Operario'))
             return redirect()->route('stock.movimientos');
-        else
-            return redirect()->route('entidad.index');
+        elseif (Auth::user()->hasRole('Comercial'))
+            return redirect()->route('presupuesto.index');
         }
     )->name('dashboard');
 

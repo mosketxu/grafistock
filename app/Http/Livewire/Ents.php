@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Entidad;
 use App\Models\EntidadTipo;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,6 +22,7 @@ class Ents extends Component
         $entidades=Entidad::query()
         ->with('entidadtipo')
         ->with('empresatipo')
+        ->with('comercial')
         ->search('entidad',$this->search)
         ->when($this->entidadtipo_id>'3', function ($query){
             $query->where('entidadtipo_id',$this->entidadtipo_id);
@@ -29,9 +31,13 @@ class Ents extends Component
             $query->where('entidadtipo_id',$this->entidadtipo_id)
             ->orWhere('entidadtipo_id','3');
         })
+        ->when(Auth::user()->hasRole('Comercial'),function ($query){
+            $query->where('comercial_id',Auth::user()->id);
+        })
         ->orSearch('nif',$this->search)
         ->orderBy('entidad','asc')
         ->paginate(10);
+
         return view('livewire.ents',compact('entidades','enttipo'));
     }
 

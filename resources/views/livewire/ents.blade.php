@@ -31,8 +31,7 @@
                         <x-table.heading class="pl-4 text-left" >{{ __('Tipo') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Nif') }} </x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Cat.Empresa') }} </x-table.heading>
-                        <x-table.heading class="pl-4 text-left" >{{ __('Dirección') }}</x-table.heading>
-                        <x-table.heading class="pl-4 text-left" >{{ __('CP') }}</x-table.heading>
+                        <x-table.heading class="pl-4 text-left" >{{ __('Comercial') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Localidad') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Tfno.') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Email.') }}</x-table.heading>
@@ -54,10 +53,7 @@
                                     <input type="text" value="{{ $entidad->empresatipo->nombrecorto ?? '-'}}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell>
-                                    <input type="text" value="{{ $entidad->direccion }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
-                                </x-table.cell>
-                                <x-table.cell>
-                                    <input type="text" value="{{ $entidad->cp }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    <input type="text" value="{{ $entidad->comercial->name ?? 'no def'}}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
                                 <x-table.cell>
                                     <input type="text" value="{{ $entidad->localidad }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>

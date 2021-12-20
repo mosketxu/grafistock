@@ -37,6 +37,7 @@ class Acciones extends Component
     protected function rules()
     {
         return [
+            'referencia'=>'max:4',
             'descripcion'=>'nullable',
             'acciontipo_id'=>'required|numeric',
             'preciocoste'=>'numeric|nullable',
@@ -97,13 +98,14 @@ class Acciones extends Component
                     [
                     'referencia'=>[
                         'required',
+                        'max:4',
                         Rule::unique('acciones', 'referencia')->ignore($this->accion_id)],
                     ]
                 );
             } else {
                 $this->validate(
                     [
-                    'referencia'=>'required|unique:acciones,referencia'
+                    'referencia'=>'required|max:4|unique:acciones,referencia'
                     ]
                 );
             }

@@ -124,6 +124,20 @@
                         @endforeach
                     </x-select>
                 </div>
+                <div class="w-full form-item">
+                    <x-jet-label for="pais">{{ __('Comercial') }}</x-jet-label>
+                    <x-select wire:model.defer="entidad.comercial_id" selectname="comercial_id" class="w-full">
+                        <option value="">-- choose --</option>
+                        @foreach ($comerciales as $comercial)
+                            <option value="{{ $comercial->id }}">{{ $comercial->name }}</option>
+                        @endforeach
+                    </x-select>
+                </div>
+                <div class="w-full form-item">
+                    <x-jet-label for="presupuesto">{{ __('Presupuesto') }}</x-jet-label>
+                    <input type="checkbox" id="presupuesto" name="presupuesto" wire:model.defer="entidad.presupuesto">
+                </div>
+
             </div>
             <div class="px-2 mx-2 my-2 rounded-md bg-blue-50">
                 <h3 class="font-semibold ">Datos Facturación</h3>

@@ -110,11 +110,11 @@ class PresupLineaDetalles extends Component
     public function changeMerma(PresupuestoLineaDetalle $presupaccion,$merma)
     {
         Validator::make(['merma'=>$merma],['merma'=>'numeric|required',])->validate();
-        $mermamin=$presupaccion->producto->tipo->merma;
-        if($merma<$mermamin){
-            $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
-            $merma=$mermamin;
-        }
+        // $mermamin=$presupaccion->producto->tipo->merma;
+        // if($merma<$mermamin){
+        //     $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
+        //     $merma=$mermamin;
+        // }
         $presupaccion->update(['merma'=>$merma,]);
         $this->calculoPrecioVenta($presupaccion);
     }
@@ -126,7 +126,7 @@ class PresupLineaDetalles extends Component
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
         }else{
             $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
-            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
+            $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->precioventa_ud * $presupacciondetalle->factor + $presupacciondetalle->preciocoste_ud * $presupacciondetalle->merma);
         }
         $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);

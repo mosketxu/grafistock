@@ -45,13 +45,7 @@
 
                     {{-- seleccion accionproducto y material--}}
                     <div class="flex space-x-2">
-                        <div class="w-1/12 mb-2">
-                            <label for="visible" class="px-1 text-sm text-gray-600">Visible:</label>
-                            <div class="w-full">
-                                <input wire:model="visible" type="checkbox"
-                                class="ml-4 text-xs border-gray-300 rounded-sm shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-                            </div>
-                        </div>
+                        <input wire:model="presupuestolinea_id" type="hidden"/>
                         <div class="w-1/12 mb-2">
                             <label for="orden" class="px-1 text-sm text-gray-600">Orden:</label>
                             <input wire:model="orden" type="number"
@@ -113,3 +107,12 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('input[type=text]').forEach( node => node.addEventListener('keypress', e => {
+        if(e.keyCode == 13) {
+          e.preventDefault();
+        }
+      }))
+    });
+  </script>

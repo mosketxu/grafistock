@@ -42,6 +42,7 @@
                                     @endforeach
                                 </select>
                                 @error('entidad_id') <span class="text-red-500">{{ $message }}</span>@enderror
+                                <a href="{{ route('entidad.nueva','4') }}" class="text-xs text-blue-600 underline">Nuevo Prospect</a>
                             </div>
                             <div class="mb-2">
                                 <label for="solicitante_id" class="px-1 text-sm text-gray-600">Solicitante:</label>

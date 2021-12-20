@@ -26,7 +26,6 @@
                 @foreach ($presupacciones as $presupaccion)
                     @if ($loop->first)
                     <tr>
-                        <td class="pl-3 text-center">{{ __('Visible') }}</td>
                         <td class="w-12 pl-3">{{ __('Orden') }}</td>
                         <td class="pl-3 ">{{ __('Descr.Prespuesto') }} </td>
                         <td class="pl-3 ">{{ __('Descripción') }} </td>
@@ -36,7 +35,6 @@
                         <td class="w-16 pr-3 text-right ">{{ __('Uds') }}</td>
                         <td class="w-16 pr-3 text-right ">{{ __('Ancho') }}</td>
                         <td class="w-16 pr-3 text-right ">{{ __('Ancho') }}</td>
-                        <td class="w-20 pr-3 text-right ">{{ __('Mts 2') }}</td>
                         <td class="w-20 pr-3 text-right ">{{ __('Unidades') }}</td>
                         <td class="w-20 pr-3 text-right ">{{ __('€ Ventas') }}</td>
                         <td class="pl-3 ">{{ __('Observaciones') }} </td>
@@ -44,8 +42,6 @@
                     </tr>
                     @endif
                     <tr class="py-0 my-0">
-                        <td><input type="checkbox" value="{{ $presupaccion->visible }}" {{ $presupaccion->visible==true ? 'checked' : ''  }} wire:change="changeVisible({{ $presupaccion }},$event.target.value)"
-                            class="py-1 ml-4 text-xs border-gray-300 rounded-sm shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
                         <td><input type="text" value="{{ $presupaccion->orden }}" wire:change="changeOrden({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
                         <td><input type="text" value="{{ $presupaccion->descripcion }}" wire:change="changeDescripcion({{ $presupaccion }},$event.target.value)"
@@ -90,9 +86,6 @@
                             </td>
 
                         @endif
-                        <td><input type="text" value="{{ number_format($presupaccion->metros2,2,',','.') }}"
-                            class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
-                        </td>
 
                         <td><input type="text" value="{{ $presupaccion->unidades }}" wire:change="changeUnidades({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
@@ -103,9 +96,15 @@
                         <td><input type="text" value="{{ $presupaccion->observaciones }}" wire:change="changeObs({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/></td>
                         <td>
-                            <div class="flex items-center justify-center">
-                                <x-icon.delete-a wire:click.prevent="delete({{ $presupaccion->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar linea"/>
-                            </div>
+                            <div class="flex">
+                                {{ Route::currentRouteName() }}
+                                <div class="flex items-center justify-center">
+                                    <x-icon.edit-a wire:click.prevent="edit({{ $presupaccion }})" class="pl-1"  title="Editar linea"/>
+                                </div>
+                                <div class="flex items-center justify-center">
+                                    <x-icon.delete-a wire:click.prevent="delete({{ $presupaccion->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar linea"/>
+                                </div>
+                                </div>
                         </td>
                     </tr>
                 @endforeach

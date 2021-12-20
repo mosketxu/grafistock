@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad, EntidadTipo, EmpresaTipo, MetodoPago,Pais,Provincia};
+use App\Models\{Entidad, EntidadTipo, EmpresaTipo, MetodoPago,Pais,Provincia, User};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class Ent extends Component
@@ -17,7 +19,9 @@ class Ent extends Component
         return [
             'entidad.id'=>'nullable',
             'entidad.entidad'=>'required',
+            'entidad.comercial_id'=>'nullable|numeric',
             'entidad.nif'=>'nullable|max:12',
+            'entidad.presupuesto'=>'nullable',
             'entidad.cuentactblepro'=>'nullable|numeric',
             'entidad.cuentactblecli'=>'nullable|numeric',
             'entidad.direccion'=>'nullable',
@@ -53,6 +57,7 @@ class Ent extends Component
         $this->entidad->entidadtipo_id=$tipo;
         if(!$this->entidad->empresatipo_id) $this->entidad->empresatipo_id='5';
         $this->tipo=EntidadTipo::find($tipo);
+        if(Auth::user()->hasRole('Comercial')) $this->entidad->comercial_id=Auth::user()->id;
     }
 
 
@@ -60,14 +65,14 @@ class Ent extends Component
     {
         if (!$this->entidad->estado) $this->entidad->estado=true;
         $entidad=$this->entidad;
-
+        $comerciales=User::role('Comercial')->orderBy('name')->get();
         $metodopagos=MetodoPago::all();
         $provincias=Provincia::all();
         $paises=Pais::all();
         $paises=Pais::all();
         $tiposentidad=EntidadTipo::orderBy('id')->get();
         $tiposempresa=EmpresaTipo::orderBy('nombrecorto')->get();
-        return view('livewire.ent',compact('metodopagos','provincias','paises','tiposentidad','tiposempresa'));
+        return view('livewire.ent',compact('metodopagos','provincias','paises','tiposentidad','tiposempresa','comerciales'));
     }
 
     public function save()
@@ -104,13 +109,13 @@ class Ent extends Component
             $i=$this->entidad->id;
             $mensaje="Proveedor creado satisfactoriamente";
         }
-
-        // dd($this->entidad);
         $ent=Entidad::updateOrCreate([
             'id'=>$i
             ],
             [
             'entidad'=>$this->entidad->entidad,
+            'comercial_id'=>$this->entidad->comercial_id,
+            'presupuesto'=>$this->entidad->presupuesto,
             'nif'=>$this->entidad->nif,
             'direccion'=>$this->entidad->direccion,
             'cp'=>$this->entidad->cp,
@@ -144,6 +149,7 @@ class Ent extends Component
         if(!$this->entidad->id){
             $this->entidad->id=$ent->id;
         }
+
 
         $this->dispatchBrowserEvent('notify', $mensaje);
     }

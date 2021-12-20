@@ -46,7 +46,7 @@
                     <td style="padding-left:3px;" >Comercial</td>
                     <td style="padding-left:3px;" >Cliente</td>
                     <td style="padding-righ:3px;text-align:right" >Fecha</td>
-                    <td style="padding-left:3px;" >@</td>
+                    <td style="padding-left:3px;" >Mail cliente</td>
                 </tr>
                 <tr style="background-color: #fdf9f9; ">
                     <td style="padding-left:3px;" ><span style="font-size: medium">{{ $presupuesto->solicitante->name }}</span></td>
