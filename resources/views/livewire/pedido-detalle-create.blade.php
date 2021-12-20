@@ -35,7 +35,7 @@
                 <x-table.headgreen class="w-2/12 pl-2">{{ __('Referencia') }} </x-table.headgreen>
                 <x-table.headgreen class="w-3/12 pl-2">{{ __('Descripción') }} </x-table.headgreen>
                 <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('Uds.') }}</x-table.headgreen>
-                <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('Coste') }}</x-table.headgreen>
+                <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('€ Compra') }}</x-table.headgreen>
                 <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('Ud.Compra') }}</x-table.headgreen>
                 <x-table.headgreen class="w-1/12 pr-3 text-right">{{ __('Total (€)') }}</x-table.headgreen>
                 <x-table.headgreen colspan="2" class="w-1/12"/>

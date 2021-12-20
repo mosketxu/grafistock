@@ -5,16 +5,6 @@
     </div>
     {{-- zona mensajes --}}
     <div class="py-1 mx-4 space-y-2">
-        {{-- @if (session()->has('message'))
-            <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
-                <span class="inline-block mx-8 align-middle">
-                    {{ session('message') }}
-                </span>
-                <button class="absolute top-0 right-0 mt-2 mr-6 text-2xl font-semibold leading-none bg-transparent outline-none focus:outline-none" onclick="document.getElementById('alert').remove();">
-                    <span>×</span>
-                </button>
-            </div>
-        @endif --}}
         @if ($errors->any())
             <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
                 <ul class="mt-3 text-sm text-red-600 list-disc list-inside">
@@ -39,7 +29,7 @@
                 <x-table.headyellow class="w-2/12 pl-2">{{ __('Referencia') }} </x-table.headyellow>
                 <x-table.headyellow class="w-3/12 pl-2">{{ __('Descripción') }} </x-table.headyellow>
                 <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('Uds.') }}</x-table.headyellow>
-                <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('Coste') }}</x-table.headyellow>
+                <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('€ Compra') }}</x-table.headyellow>
                 <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('Ud.Compra') }}</x-table.headyellow>
                 <x-table.headyellow class="w-1/12 pr-3 text-right">{{ __('Total (€)') }}</x-table.headyellow>
                 <x-table.headyellow colspan="2" class="w-1/12"/>

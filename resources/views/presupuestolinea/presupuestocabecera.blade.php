@@ -16,7 +16,7 @@
         <div class="items-center w-4/12">
             <div class="flex flex-row items-baseline justify-between mr-6">
                 <div class="">
-                    <p class="text-sm font-semibold text-gray-900">€ Tarifa: {{ $presuplinea->presupuesto->preciotarifa ?? '-'}}</p>
+                    <p class="text-sm font-semibold text-gray-900">€ Compra: {{ $presuplinea->presupuesto->preciocoste ?? '-'}}</p>
                 </div>
                 <div class="">
                     <p class="text-sm font-semibold text-gray-900">Unidades: {{ $presuplinea->presupuesto->unidades ?? '-'}} </p>

@@ -61,15 +61,15 @@
                 <tbody>
                     <tr style="background-color: #6cd0e2; color:rgb(60, 35, 128)">
                         <td style="padding-left:3px;" width="55%">Descrip. Presupuesto</td>
-                        <td style="padding-right:3px;text-align:right" width="15%">P.Tarifa</td>
+                        <td style="padding-right:3px;text-align:right" width="15%">€ Coste</td>
                         <td style="padding-right:3px;text-align:right" width="15%">Unidades</td>
-                        <td style="padding-right:3px;text-align:right" width="15%">P.Venta</td>
+                        <td style="padding-right:3px;text-align:right" width="15%">€ Venta</td>
                         <td style="padding-right:3px;text-align:right" width="15%">Creado</td>
                         <td style="padding-right:3px;text-align:right" width="15%">Actualizado</td>
                     </tr>
                     <tr >
                         <td style="padding-left:3px;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $presupuesto->descripcion }}</td>
-                        <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuesto->preciotarifa }} € </td>
+                        <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuesto->preciocoste }} € </td>
                         <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuesto->unidades }} </td>
                         <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuesto->precioventa }} </td>
                         <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ \Carbon\Carbon::parse($presupuesto->created_at)->format('d-m-y') }} </td>
@@ -101,14 +101,14 @@
                     @foreach ( $presupuesto->presupuestolineas as $presupuestolinea )
                         <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
                             <td colspan="7" style="padding-left:3px;" >Descrip. Partida</td>
-                            <td style="padding-right:3px;text-align:right" >€ Tarifa</td>
+                            <td style="padding-right:3px;text-align:right" >€ Compra</td>
                             <td style="padding-right:3px;text-align:right" >€ Venta</td>
                             <td style="padding-right:3px;text-align:right" >Unidades</td>
                             <td style="padding-right:3px;text-align:right" >P.Venta</td>
                         </tr>
                         <tr >
                             <td colspan="7" style="padding-left:3px;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $presupuestolinea->descripcion }}</td>
-                            <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->preciotarifa }}</td>
+                            <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->preciocoste }}</td>
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->precioventa }} € </td>
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->unidades }} </td>
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->precioventa }}  €</td>
@@ -128,7 +128,7 @@
                                         <tr >
                                             <td style="font-weight: bold" colspan="2">Ref</td>
                                             <td style="font-weight: bold" colspan="3">Descripcion</td>
-                                            <td style="font-weight: bold;text-align:right;">€ Tarifa Ud</td>
+                                            <td style="font-weight: bold;text-align:right;">€ Compra Ud</td>
                                             <td style="font-weight: bold;text-align:right;">€ Venta Ud</td>
                                             <td style="font-weight: bold;text-align:right;">F/Fmin</td>
                                             <td style="font-weight: bold;text-align:right;">Uds.</td>
@@ -146,7 +146,7 @@
                                             @endif
                                         </td>
                                         <td colspan="3">{{ $detalle->descripcion }}</td>
-                                        <td style="text-align:right;">{{ $detalle->preciotarifa_ud }}</td>
+                                        <td style="text-align:right;">{{ $detalle->preciocoste_ud }}</td>
                                         <td style="text-align:right;">{{ $detalle->precioventa_ud }}</td>
                                         <td style="text-align:right;">{{ $detalle->factor }}/{{ $presupuesto->entidad->empresatipo->factormin }}</td>
                                         <td style="text-align:right;">{{ $detalle->unidades }}</td>

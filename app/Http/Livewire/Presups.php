@@ -23,7 +23,7 @@ class Presups extends Component
     public $message;
     public $total;
 
-    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciotarifa,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciocoste,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -47,7 +47,7 @@ class Presups extends Component
         $presupuestos = $this->rows;
         $clientes = Entidad::whereIn('entidadtipo_id',['1','3'])->orderBy('entidad')->get();
         $solicitantes = User::orderBy('name')->get();
-        $totalcoste=$presupuestos->sum('preciotarifa');
+        $totalcoste=$presupuestos->sum('preciocoste');
         $totalventa=$presupuestos->sum('precioventa');
 
         return view('livewire.presups',compact('presupuestos','clientes','solicitantes','totalcoste','totalventa'));
@@ -86,7 +86,7 @@ class Presups extends Component
         $this->solicitante_id='';
         $this->fechapresupuesto='';
         $this->precioventa='0';
-        $this->preciotarifa='0';
+        $this->preciocoste='0';
         $this->unidades='0';
         $this->iva='0.21';
         $this->ruta='';
@@ -105,7 +105,7 @@ class Presups extends Component
             'solicitante_id' => 'required|numeric',
             'descripcion' => 'required',
             'fechapresupuesto' => 'required|date',
-            'preciotarifa' => 'nullable|numeric',
+            'preciocoste' => 'nullable|numeric',
             'precioventa' => 'nullable|numeric',
             'estado' => 'required',
             'iva' => 'required',
@@ -125,7 +125,7 @@ class Presups extends Component
             'solicitante_id'=>$this->solicitante_id,
             'fechapresupuesto'=>$this->fechapresupuesto,
             'precioventa'=>$this->precioventa,
-            'preciotarifa'=>$this->preciotarifa,
+            'preciocoste'=>$this->preciocoste,
             'unidades'=>$this->unidades,
             'iva'=>$this->iva,
             'ruta'=>$this->ruta,
@@ -170,7 +170,7 @@ class Presups extends Component
         $this->entidad_id=$presupuesto->entidad_id;
         $this->solicitante_id=$presupuesto->solicitante_id;
         $this->fechapresupuesto=$presupuesto->fechapresupuesto;
-        $this->preciotarifa=$presupuesto->preciotarifa;
+        $this->preciocoste=$presupuesto->preciocoste;
         $this->precioventa=$presupuesto->precioventa;
         $this->unidades=$presupuesto->unidades;
         $this->iva=$presupuesto->iva;

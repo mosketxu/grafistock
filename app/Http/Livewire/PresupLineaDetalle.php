@@ -19,8 +19,8 @@ class PresupLineaDetalle extends Component
     public $showAnchoAlto=false;
     public $controlpartidas;
     public $deshabilitadoPVenta='';
-    public $deshabilitadoPTarifa='disabled';
-    public $colorfondoTarifa='';
+    public $deshabilitadoPCoste='disabled';
+    public $colorfondoCoste='';
     public $colorfondoVenta='';
     public $descrip='';
 
@@ -33,11 +33,11 @@ class PresupLineaDetalle extends Component
     public $pldetalleId='';
     public $descripcion;
     public $proveedor_id;
-    public $preciotarifa_ud=0;
-    public $preciotarifa=0;
+    public $preciocoste_ud=0;
+    public $preciocoste=0;
     public $precioventa_ud=0;
     public $preciominimo=0;
-    public $udpreciotarifa_id;
+    public $udpreciocoste_id;
     public $unidadventa='';
     public $factor=1;
     public $factormin=1;
@@ -54,10 +54,10 @@ class PresupLineaDetalle extends Component
         'visible'=>'',
         'orden'=>'nullable|numeric',
         'proveedor_id'=>'nullable|numeric',
-        'preciotarifa_ud'=>'nullable|numeric',
+        'preciocoste_ud'=>'nullable|numeric',
         'precioventa_ud'=>'nullable|numeric',
         'precioventa'=>'nullable|numeric',
-        'udpreciotarifa_id'=>'required|numeric',
+        'udpreciocoste_id'=>'required|numeric',
         'ancho'=>'nullable|numeric',
         'alto'=>'nullable|numeric',
         'metros2'=>'nullable|numeric',
@@ -77,8 +77,8 @@ class PresupLineaDetalle extends Component
         $this->acciontipo=AccionTipo::find($this->acciontipoId);
         $condiciones=['IMP','ACA','MAN','TRA'];
         if(in_array($this->acciontipo->nombrecorto, $condiciones)){
-            $this->deshabilitadoPTarifa='disabled';
-            $this->colorfondoTarifa='bg-gray-100';
+            $this->deshabilitadoPCoste='disabled';
+            $this->colorfondoPCoste='bg-gray-100';
         }
     }
 
@@ -129,56 +129,56 @@ class PresupLineaDetalle extends Component
         $this->merma=0;
         $this->factor=1;
         $this->factormin=1;
-        $this->preciotarifa_ud=0;
+        $this->preciocoste_ud=0;
         $this->precioventa_ud=0;
         $this->preciominimo=0;
-        $this->udpreciotarifa_id='';
+        $this->udpreciocoste_id='';
         $this->unidadventa='';
 
         if($this->accionproducto_id!=''){
             if($this->acciontipo->nombrecorto!='MAT' && $this->acciontipo->nombrecorto!='EMB'){
                 $this->accionproducto=Accion::find($this->accionproducto_id);
-                $this->preciotarifa_ud=$this->accionproducto->preciotarifa;
+                $this->preciocoste_ud=$this->accionproducto->preciocoste;
                 $this->precioventa_ud=$this->accionproducto->precioventa;
                 $this->preciominimo=$this->accionproducto->preciominimo;
-                $this->udpreciotarifa_id=$this->accionproducto->udpreciotarifa_id;
-                $this->unidadventa=$this->accionproducto->unidadpreciotarifa->nombrecorto;
+                $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
+                $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto;
                 $this->descrip=$this->accionproducto->descripcion;
                 if($this->descrip==' Genérico'){
-                    $this->deshabilitadoPTarifa='';
-                    $this->colorfondoTarifa='';
+                    $this->deshabilitadoPCoste='';
+                    $this->colorfondoCoste='';
                 }
 
             }else{
                 $this->accionproducto=Producto::find($this->accionproducto_id);
                 $this->descrip=$this->accionproducto->descripcion;
                 if ($this->descrip!=' Genérico') {
-                    $this->preciotarifa_ud=$this->accionproducto->preciotarifa;
+                    $this->preciocoste_ud=$this->accionproducto->preciocoste;
                     $this->mermamin=$this->accionproducto->tipo->merma;
                     $this->merma=$this->accionproducto->tipo->merma;
                     $this->factor=$this->empresaTipo->factor ?? '1';
                     $this->factormin=$this->empresaTipo->factormin ?? '1';
-                    $this->precioventa_ud=round($this->preciotarifa_ud * $this->factor, 2);
-                    $this->udpreciotarifa_id=$this->accionproducto->udpreciotarifa_id;
-                    $this->unidadventa=$this->accionproducto->unidadpreciotarifa->nombrecorto;
-                    $this->deshabilitadoPTarifa='disabled';
-                    $this->colorfondoTarifa='bg-gray-100';
+                    $this->precioventa_ud=round($this->preciocoste_ud * $this->factor, 2);
+                    $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
+                    $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto;
+                    $this->deshabilitadoPCoste='disabled';
+                    $this->colorfondoPCoste='bg-gray-100';
                 }else{
-                    $this->preciotarifa_ud='0';
+                    $this->preciocoste_ud='0';
                     $this->mermamin='0';
                     $this->merma='0';
                     $this->factor='1';
                     $this->factormin='1';
                     $this->precioventa_ud='0';
-                    $this->udpreciotarifa_id='';
+                    $this->udpreciocoste_id='';
                     $this->unidadventa='';
-                    $this->deshabilitadoPTarifa='';
-                    $this->colorfondoTarifa='';
+                    $this->deshabilitadoPCoste='';
+                    $this->colorfondoCoste='';
                 }
             }
 
             if ($this->descrip!=' Genérico') {
-                $this->showAnchoAlto= $this->accionproducto->unidadpreciotarifa->nombrecorto=='e_m2' ? true : false;
+                $this->showAnchoAlto= $this->accionproducto->unidadpreciocoste->nombrecorto=='e_m2' ? true : false;
                 $this->metros2=$this->alto * $this->ancho;
             }
             $this->emit('presuplineadetallerefresh');
@@ -200,7 +200,7 @@ class PresupLineaDetalle extends Component
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $this->factor=$this->factormin;
         }
-        $this->precioventa_ud=round($this->preciotarifa_ud * $this->factor,2);
+        $this->precioventa_ud=round($this->preciocoste_ud * $this->factor,2);
         $this->calculoPrecioVenta();
     }
 
@@ -216,7 +216,7 @@ class PresupLineaDetalle extends Component
 
     // con el precio de venta tenemos en cuenta el minimo
     public function UpdatedPrecioventaUd(){
-        if($this->preciominimo=='0') $this->preciominimo=$this->preciotarifa_ud;
+        if($this->preciominimo=='0') $this->preciominimo=$this->preciocoste_ud;
         if($this->precioventa_ud<$this->preciominimo){
             $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
             $this->precioventa_ud=$this->preciominimo;
@@ -326,15 +326,15 @@ class PresupLineaDetalle extends Component
             'entidad_id'=>$this->proveedor_id,
             'orden'=>$this->orden,
             'descripcion'=>$this->descripcion,
-            'preciotarifa_ud'=>$this->preciotarifa_ud,
+            'preciocoste_ud'=>$this->preciocoste_ud,
             'precioventa_ud'=>$this->precioventa_ud,
-            'udpreciotarifa_id'=>$this->udpreciotarifa_id,
+            'udpreciocoste_id'=>$this->udpreciocoste_id,
             'factor'=>$this->factor,
             'merma'=>$this->merma,
             'unidades'=>$this->unidades,
             'alto'=>$this->alto,
             'ancho'=>$this->ancho,
-            'preciotarifa'=>$this->preciotarifa,
+            'preciocoste'=>$this->preciocoste,
             'precioventa'=>$this->precioventa,
             'metros2'=>$this->metros2,
             'observaciones'=>$this->observaciones,
@@ -356,26 +356,26 @@ class PresupLineaDetalle extends Component
     public function calculoPrecioVenta()
     {
         if($this->acciontipoId!='1'){
-            $this->preciotarifa=$this->preciotarifa_ud * $this->ancho * $this->alto * $this->unidades;
+            $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades;
             $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades ;
         }else{
-            $this->preciotarifa=$this->preciotarifa_ud * $this->ancho * $this->alto * $this->unidades ;
+            $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades ;
             $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades * (1 + $this->merma);
         }
-        $this->preciotarifa=round($this->preciotarifa,2);
+        $this->preciocoste=round($this->preciocoste,2);
         $this->precioventa=round($this->precioventa,2);
     }
 
     public function recalculoPrecioVenta($presupacciondetalle)
     {
         if($presupacciondetalle->acciontipo_id!='1'){
-            $presupacciondetalle->preciotarifa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
+            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
         }else{
-            $presupacciondetalle->preciotarifa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
+            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
         }
-        $presupacciondetalle->preciotarifa=round($presupacciondetalle->preciotarifa,2);
+        $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();
         $this->dispatchBrowserEvent('notify', 'Precio actualizado.');

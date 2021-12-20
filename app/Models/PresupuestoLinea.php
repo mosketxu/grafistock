@@ -10,7 +10,7 @@ class PresupuestoLinea extends Model
     use HasFactory;
 
 
-    protected $fillable=['presupuesto_id','visible','orden','descripcion','preciotarifa','precioventa','factor','unidades','ruta','fichero','observaciones'];
+    protected $fillable=['presupuesto_id','visible','orden','descripcion','preciocoste','precioventa','factor','unidades','ruta','fichero','observaciones'];
 
     public function presupuesto()
     {
@@ -30,7 +30,7 @@ class PresupuestoLinea extends Model
     public function recalculo()
     {
         $this->precioventa=$this->presupuestolineadetalles->sum('precioventa');
-        $this->preciotarifa=$this->presupuestolineadetalles->sum('preciotarifa');
+        $this->preciocoste=$this->presupuestolineadetalles->sum('preciocoste');
         $this->save();
     }
 }

@@ -29,10 +29,10 @@ class CreateProductosTable extends Migration
             $table->integer('grupoproduccion_id')->index();
             $table->integer('familia_id')->index()->nullable();
             $table->integer('udsolicitud_id')->nullable();
-            $table->double('costeprov', 15, 3)->default(0.00)->nullable();
-            $table->integer('udcosteprov_id')->nullable();
-            $table->double('preciotarifa', 15, 3)->default(0.00)->nullable();
-            $table->integer('udpreciotarifa_id')->nullable();
+            $table->double('preciocoste', 15, 3)->default(0.00)->nullable();
+            $table->integer('udpreciocoste_id')->nullable();
+            $table->double('preciocompra', 15, 3)->default(0.00)->nullable();
+            $table->integer('udpreciocompra_id')->nullable();
             $table->integer('caja_id')->nullable();
             $table->double('costecaja', 15, 2)->default(0.00)->nullable();
             $table->integer('ubicacion_id')->nullable();

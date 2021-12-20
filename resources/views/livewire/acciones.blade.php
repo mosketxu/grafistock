@@ -59,7 +59,7 @@
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Referencia</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Descripcion</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Tipo</th>
-                            <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Tarifa</th>
+                            <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Compra</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Venta</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-right text-gray-500 bg-blue-50" >€ Mínimo</th>
                             <th class="px-2 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Ud.</th>
@@ -80,7 +80,7 @@
                                     {{ $accion->acciontipo->nombre }}
                                 </td>
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
-                                    {{ $accion->preciotarifa }}
+                                    {{ $accion->preciocoste }}
                                 </td>
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
                                     {{ $accion->precioventa }}
@@ -89,7 +89,7 @@
                                     {{ $accion->preciominimo }}
                                 </td>
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-left text-gray-600 whitespace-no-wrap text">
-                                    {{ $accion->unidadpreciotarifa->nombre ?? '-' }}
+                                    {{ $accion->unidadpreciocoste->nombre ?? '-' }}
                                 </td>
                                 <td class="px-3 py-1 text-xs leading-5 tracking-tighter text-left text-gray-600 whitespace-no-wrap">
                                     {{ $accion->observaciones }}

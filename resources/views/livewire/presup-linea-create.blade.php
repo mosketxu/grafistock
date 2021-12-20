@@ -11,7 +11,7 @@
                 <x-table.headgreen class="pl-3 text-left">{{ __('Visible') }}</x-table.headgreen>
                 <x-table.headgreen class="w-1/12 pl-3">{{ __('Orden') }}</x-table.headgreen>
                 <x-table.headgreen class="w-3/12 pl-3 ">{{ __('Descripción') }} </x-table.headgreen>
-                <x-table.headgreen class="w-1/12 pr-3 text-right ">{{ __('€ Tarifa') }}</x-table.headgreen>
+                <x-table.headgreen class="w-1/12 pr-3 text-right ">{{ __('€ Compra') }}</x-table.headgreen>
                 <x-table.headgreen class="w-1/12 pr-3 text-right ">{{ __('€ Venta') }}</x-table.headgreen>
                 <x-table.headgreen class="w-1/12 pr-3 text-right ">{{ __('Unidades') }}</x-table.headgreen>
                 <x-table.headgreen class="w-4/12 pl-3 ">{{ __('Observaciones') }} </x-table.headgreen>
@@ -34,7 +34,7 @@
                             class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                     </td>
                     <td>
-                        <input  wire:model="preciotarifa" type="number" step="any"
+                        <input  wire:model="preciocoste" type="number" step="any"
                             class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             disabled/>
                     </td>

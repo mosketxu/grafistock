@@ -18,10 +18,10 @@ class CreateAccionesTable extends Migration
             $table->string('referencia')->unique()->index();
             $table->string('descripcion')->nullable();
             $table->foreignId('acciontipo_id')->constrained('accion_tipos');
-            $table->double('preciotarifa', 15, 2)->default(0.00)->nullable();
+            $table->double('preciocoste', 15, 2)->default(0.00)->nullable();
             $table->double('preciominimo', 15, 2)->default(0.00)->nullable();
             $table->double('precioventa', 15, 2)->default(0.00)->nullable();
-            $table->integer('udpreciotarifa_id')->nullable();
+            $table->integer('udpreciocoste_id')->nullable();
             $table->string('observaciones')->nullable();
             $table->timestamps();
         });

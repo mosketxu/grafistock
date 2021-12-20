@@ -18,7 +18,7 @@ class Presupuesto extends Model
     protected $dates = ['deleted_at'];
 
 
-    protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','precioventa','preciotarifa','unidades','iva','ruta','fichero','estado','observaciones'];
+    protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','precioventa','preciocoste','unidades','iva','ruta','fichero','estado','observaciones'];
 
     public function presupuestolineas()
     {
@@ -63,7 +63,7 @@ class Presupuesto extends Model
     public function recalculo()
     {
         $this->precioventa=$this->presupuestolineas->sum('precioventa');
-        $this->preciotarifa=$this->presupuestolineas->sum('preciotarifa');
+        $this->preciocoste=$this->presupuestolineas->sum('preciocoste');
         $this->save();
     }
 

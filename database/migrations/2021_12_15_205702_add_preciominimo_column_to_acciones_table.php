@@ -14,7 +14,7 @@ class AddPreciominimoColumnToAccionesTable extends Migration
     public function up()
     {
         Schema::table('acciones', function (Blueprint $table) {
-            $table->double('preciominimo', 15, 2)->default(0.00)->nullable()->after('preciotarifa');
+            $table->double('preciominimo', 15, 2)->default(0.00)->nullable()->after('preciocoste');
         });
     }
 

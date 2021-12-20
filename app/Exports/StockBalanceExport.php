@@ -65,7 +65,7 @@ class StockBalanceExport implements FromCollection,WithHeadings
         ->join('producto_materiales','productos.material_id','producto_materiales.id')
         ->join('producto_familias','productos.familia_id','producto_familias.id')
         ->join('producto_acabados','productos.acabado_id','producto_acabados.id')
-        ->select('entidades.entidad','entidades.cuentactblepro','entidades.cuentactblecli','producto_materiales.nombre as material','producto_acabados.nombre as acabado','productos.referencia','productos.descripcion','productos.costeprov')
+        ->select('entidades.entidad','entidades.cuentactblepro','entidades.cuentactblecli','producto_materiales.nombre as material','producto_acabados.nombre as acabado','productos.referencia','productos.descripcion','productos.preciocoste')
         ->selectRaw('sum(stock_movimientos.cantidad) as balance')
         ->where('stock_movimientos.tipomovimiento','<>','R')
         ->searchYear('fechamovimiento',$this->filtroanyo)

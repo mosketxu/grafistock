@@ -40,10 +40,10 @@
                                 @error('acciontipo_id') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
-                                <label for="preciotarifa" class="px-1 text-sm text-gray-600">€ Tarifa:</label>
-                                <input type="number" step="any" id="preciotarifa" wire:model.defer="preciotarifa"
+                                <label for="preciocoste" class="px-1 text-sm text-gray-600">€ Compra:</label>
+                                <input type="number" step="any" id="preciocoste" wire:model.defer="preciocoste"
                                 class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                @error('preciotarifa') <span class="text-red-500">{{ $message }}</span>@enderror
+                                @error('preciocoste') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
                                 <label for="precioventa" class="px-1 text-sm text-gray-600">€ Venta:</label>
@@ -58,15 +58,15 @@
                                 @error('preciominimo') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                             <div class="mb-2">
-                                <label for="udpreciotarifa_id" class="px-1 text-sm text-gray-600">Uds:</label>
-                                <x-select wire:model.defer="udpreciotarifa_id" selectname="udpreciotarifa_id" required
+                                <label for="udpreciocoste_id" class="px-1 text-sm text-gray-600">Uds:</label>
+                                <x-select wire:model.defer="udpreciocoste_id" selectname="udpreciocoste_id" required
                                     class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                     <option value="">-- choose --</option>
                                     @foreach ($unidades as $ud)
                                         <option value="{{ $ud->id }}">{{ $ud->nombre }}</option>
                                     @endforeach
                                 </x-select>
-                                @error('udpreciotarifa_id') <span class="text-red-500">{{ $message }}</span>@enderror
+                                @error('udpreciocoste_id') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="flex">

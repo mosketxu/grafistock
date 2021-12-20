@@ -23,7 +23,7 @@ class Unidad extends Model
 
     public function presupuestolineadetalles()
     {
-        return $this->hasMany(PresupLineaDetalle::class,'udpreciotarifa_id');
+        return $this->hasMany(PresupLineaDetalle::class,'udpreciocoste_id');
     }
 
 }

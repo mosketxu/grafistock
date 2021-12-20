@@ -19,7 +19,7 @@ class CreatePresupuestoLineasTable extends Migration
             $table->boolean('visible')->nullable()->default(true);
             $table->integer('orden')->nullable()->default('0');
             $table->string('descripcion',255);
-            $table->double('preciotarifa', 15, 2)->default(0.00);
+            $table->double('preciocoste', 15, 2)->default(0.00);
             $table->double('precioventa', 15, 2)->default(0.00);
             $table->double('unidades', 15, 2)->default(0.00);
             $table->string('ruta')->nullable();

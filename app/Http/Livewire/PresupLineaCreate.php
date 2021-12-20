@@ -15,7 +15,7 @@ public $presupuesto_id;
 public $visible;
 public $orden=0;
 public $descripcion;
-public $preciotarifa='0';
+public $preciocoste='0';
 public $precioventa='0';
 public $unidades='0';
 public $fichero;
@@ -26,7 +26,7 @@ protected $rules = [
     'visible'=>'nullable',
     'orden'=>'nullable|numeric',
     'descripcion'=>'required',
-    'preciotarifa'=>'numeric',
+    'preciocoste'=>'numeric',
     'precioventa'=>'numeric',
     'unidades'=>'numeric',
     'observaciones'=>'nullable',
@@ -54,7 +54,7 @@ protected $rules = [
             'visible'=>$this->visible,
             'orden'=>$this->orden,
             'descripcion'=>$this->descripcion,
-            'preciotarifa'=>$this->preciotarifa,
+            'preciocoste'=>$this->preciocoste,
             'precioventa'=>$this->precioventa,
             'unidades'=>$this->unidades,
             'observaciones'=>$this->observaciones,
@@ -71,7 +71,7 @@ protected $rules = [
         // $this->visible='';
         // $this->orden='';
         // $this->descripcion='';
-        // $this->preciotarifa='0';
+        // $this->preciocoste='0';
         // $this->precioventa='0';
         // $this->unidades='0';
         // $this->observaciones='';

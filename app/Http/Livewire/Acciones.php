@@ -23,10 +23,10 @@ class Acciones extends Component
     public $referencia='';
     public $descripcion='';
     public $acciontipo_id='';
-    public $preciotarifa='';
+    public $preciocoste='';
     public $preciominimo='';
     public $precioventa='';
-    public $udpreciotarifa_id='';
+    public $udpreciocoste_id='';
     public $observaciones='';
 
     // protected $listeners = [ 'refresh' => '$refresh'];
@@ -39,10 +39,10 @@ class Acciones extends Component
         return [
             'descripcion'=>'nullable',
             'acciontipo_id'=>'required|numeric',
-            'preciotarifa'=>'numeric|nullable',
+            'preciocoste'=>'numeric|nullable',
             'preciominimo'=>'numeric|nullable',
             'precioventa'=>'numeric|nullable',
-            'udpreciotarifa_id'=>'numeric|nullable',
+            'udpreciocoste_id'=>'numeric|nullable',
             'observaciones'=>'string|nullable',
         ];
     }
@@ -54,7 +54,7 @@ class Acciones extends Component
         $unidades=UnidadCoste::orderBy('nombre')->get();
 
         $acciones=Accion::query()
-            ->with('acciontipo','unidadpreciotarifa')
+            ->with('acciontipo','unidadpreciocoste')
             ->search('referencia',$this->search)
             ->orSearch('descripcion',$this->search)
             ->when($this->acciontipofiltro!='', function ($query){$query->where('acciontipo_id',$this->acciontipofiltro);})
@@ -80,10 +80,10 @@ class Acciones extends Component
         $this->referencia='';
         $this->descripcion='';
         $this->acciontipo_id='';
-        $this->preciotarifa='';
+        $this->preciocoste='';
         $this->preciominimo='';
         $this->precioventa='';
-        $this->udpreciotarifa_id='';
+        $this->udpreciocoste_id='';
         $this->observaciones='';
     }
 
@@ -108,15 +108,15 @@ class Acciones extends Component
                 );
             }
 
-            $this->preciominimo =($this->preciominimo=='' || $this->preciominimo=='0') ? $this->preciotarifa : $this->preciominimo;
+            $this->preciominimo =($this->preciominimo=='' || $this->preciominimo=='0') ? $this->preciocoste : $this->preciominimo;
             $accion=Accion::updateOrCreate(['id'=>$this->accion_id], [
                 'referencia'=>$this->referencia,
                 'descripcion'=>$this->descripcion,
                 'acciontipo_id'=>$this->acciontipo_id,
-                'preciotarifa'=>$this->preciotarifa,
+                'preciocoste'=>$this->preciocoste,
                 'preciominimo'=>$this->preciominimo,
                 'precioventa'=>$this->precioventa,
-                'udpreciotarifa_id'=>$this->udpreciotarifa_id,
+                'udpreciocoste_id'=>$this->udpreciocoste_id,
                 'observaciones'=>$this->observaciones,
             ]);
 
@@ -132,10 +132,10 @@ class Acciones extends Component
         $this->referencia=$accion->referencia;
         $this->descripcion=$accion->descripcion;
         $this->acciontipo_id=$accion->acciontipo_id;
-        $this->preciotarifa=$accion->preciotarifa;
+        $this->preciocoste=$accion->preciocoste;
         $this->preciominimo=$accion->preciominimo;
         $this->precioventa=$accion->precioventa;
-        $this->udpreciotarifa_id=$accion->udpreciotarifa_id;
+        $this->udpreciocoste_id=$accion->udpreciocoste_id;
         $this->observaciones=$accion->observaciones;
         $this->openNewModal();
     }

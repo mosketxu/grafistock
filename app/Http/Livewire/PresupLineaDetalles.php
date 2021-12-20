@@ -98,7 +98,7 @@ class PresupLineaDetalles extends Component
     {
         Validator::make(['precioventa_ud'=>$precioventa_ud],['precioventa_ud'=>'numeric|required',])->validate();
         $preciominimo=$presupaccion->accion->preciominimo;
-        if( $preciominimo=='0') $preciominimo=$presupaccion->accion->preciotarifa_ud;
+        if( $preciominimo=='0') $preciominimo=$presupaccion->accion->preciocoste_ud;
         if($precioventa_ud< $preciominimo){
             $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
             $precioventa_ud=$preciominimo;
@@ -122,13 +122,13 @@ class PresupLineaDetalles extends Component
     public function calculoPrecioVenta($presupacciondetalle)
     {
         if($presupacciondetalle->acciontipo_id!='1'){
-            $presupacciondetalle->preciotarifa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
+            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
         }else{
-            $presupacciondetalle->preciotarifa=$presupacciondetalle->preciotarifa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
+            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->factor + $presupacciondetalle->merma);
         }
-        $presupacciondetalle->preciotarifa=round($presupacciondetalle->preciotarifa,2);
+        $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();
         $this->dispatchBrowserEvent('notify', 'Precio actualizado.');
