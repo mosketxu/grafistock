@@ -27,7 +27,7 @@
                     @auth
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Iniciar</a>
                         <a href="{{ route('logout') }}" class="ml-4 text-sm text-gray-700 underline" onclick="event.preventDefault(); this.closest('form').submit();"> {{ __('Log Out') }} </a>
                     </form>
 
@@ -55,7 +55,7 @@
                     @auth
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Iniciar</a>
                         <a href="{{ route('logout') }}" class="ml-4 text-sm text-gray-700 underline" onclick="event.preventDefault(); this.closest('form').submit();"> {{ __('Log Out') }} </a>
                     </form>
 

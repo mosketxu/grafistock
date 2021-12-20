@@ -26,12 +26,14 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        if (Auth::user()->hasRole('Operario'))
+        if (Auth::user()->hasRole('Operario')) {
             return redirect()->route('stock.movimientos');
-        elseif (Auth::user()->hasRole('Comercial'))
+        } elseif (Auth::user()->hasRole('Comercial')) {
             return redirect()->route('presupuesto.index');
+        } else {
+            return redirect()->route('producto.index');
         }
-    )->name('dashboard');
+    })->name('dashboard');
 
 
     //roles
