@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UnidadSeeder::class);
         // $this->call(SolicitantesTableSeeder::class);
         // $this->call(EntidadTiposTableSeeder::class);
-        // $this->call(EntidadesTableSeeder::class);
+        $this->call(EntidadesTableSeeder::class);
         // $this->call(ProductoTipoSeeder::class);
         // $this->call(ProductoMaterialesSeeder::class);
         // $this->call(ProductoAcabadoSeeder::class);
@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(ProductoFamiliaSeeder::class);
         // $this->call(ProductoCajaSeeder::class);
         // $this->call(ProductosTableSeeder::class);
-        $this->call(AccionTipoSeeder::class);
-        $this->call(AccionesTableSeeder::class);
-        $this->call(EmpresaTipoSeeder::class);
+        // $this->call(AccionTipoSeeder::class);
+        // $this->call(AccionesTableSeeder::class);
+        // $this->call(EmpresaTipoSeeder::class);
     }
 }
