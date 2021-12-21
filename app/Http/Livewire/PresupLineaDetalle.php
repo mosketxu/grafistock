@@ -163,7 +163,7 @@ class PresupLineaDetalle extends Component
                 $this->precioventa_ud=$this->accionproducto->precioventa;
                 $this->preciominimo=$this->accionproducto->preciominimo;
                 $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
-                $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto;
+                $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
                 $this->descrip=$this->accionproducto->descripcion;
                 if($this->descrip==' Genérico'){
                     $this->deshabilitadoPCoste='';
@@ -181,7 +181,7 @@ class PresupLineaDetalle extends Component
                     $this->factormin=$this->empresaTipo->factormin ?? '1';
                     $this->precioventa_ud=round($this->preciocoste_ud * $this->factor, 2);
                     $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
-                    $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto;
+                    $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
                     $this->deshabilitadoPCoste='disabled';
                     $this->colorfondoPCoste='bg-gray-100';
                 }else{
