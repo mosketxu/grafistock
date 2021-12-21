@@ -100,6 +100,7 @@ class Presups extends Component
     }
 
     public function store(){
+
         if($this->solicitante_id==''){
             $this->solicitante_id=Auth()->user()->id;
         }
@@ -138,11 +139,14 @@ class Presups extends Component
             'observaciones'=>$this->observaciones,
         ]);
 
+        // dd($presupuesto->id);
+        // $control=PresupuestoControlpartida::where('presupuesto_id',$presupuesto->id)->get();
+        // dd($control);
         if ($presupuesto->presupuestocontrolpartidas->count()<AccionTipo::count()) {
             $acciontipos=AccionTipo::get();
 
             foreach ($acciontipos as $acciontipo) {
-                $existe=PresupuestoControlpartida::where('acciontipo_id',$acciontipo->id)->count();
+                $existe=PresupuestoControlpartida::where('acciontipo_id',$acciontipo->id)->where('presupuesto_id',$presupuesto->id)->count();
                 if ($existe==0) {
                     PresupuestoControlpartida::create([
                         'presupuesto_id'=>$presupuesto->id,
