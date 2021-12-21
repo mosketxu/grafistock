@@ -30,7 +30,7 @@ class CreatePresupuestoLineaDetallesTable extends Migration
             $table->double('unidades', 15, 2)->default(0.00);
             $table->double('alto', 15, 2)->nullable()->default(0.00);
             $table->double('ancho', 15, 2)->nullable()->default(0.00);
-            $table->double('metros2', 15, 2)->nullable()->default(0.00);
+            // $table->double('metros2', 15, 2)->nullable()->default(0.00);
             $table->string('ruta')->nullable();
             $table->string('fichero')->nullable();
             $table->string('observaciones')->nullable();

@@ -13,6 +13,7 @@ class PresupLineaDetalle extends Component
     public $filtrofamilia='';
     public $filtrodescripcion='';
     public $presuplinea;
+    public $presupuestolinea_id;
     public $presupuestolinea;
     public $presupuestolineadetalleId='';
     public $accionproducto;
@@ -45,7 +46,7 @@ class PresupLineaDetalle extends Component
     // public $mermamin;
     public $ancho=1;
     public $alto=1;
-    public $metros2=0;
+    // public $metros2=0;
     public $unidades=1;
     public $accionproducto_id;
     public $observaciones;
@@ -57,10 +58,10 @@ class PresupLineaDetalle extends Component
         'preciocoste_ud'=>'nullable|numeric',
         'precioventa_ud'=>'nullable|numeric',
         'precioventa'=>'nullable|numeric',
-        'udpreciocoste_id'=>'required|numeric',
+        // 'udpreciocoste_id'=>'numeric',
         'ancho'=>'nullable|numeric',
         'alto'=>'nullable|numeric',
-        'metros2'=>'nullable|numeric',
+        // 'metros2'=>'nullable|numeric',
         'factor'=>'nullable|numeric',
         'merma'=>'nullable|numeric',
         'unidades'=>'nullable|numeric',
@@ -199,8 +200,9 @@ class PresupLineaDetalle extends Component
             }
 
             if ($this->descrip!=' Genérico') {
-                $this->showAnchoAlto= $this->accionproducto->unidadpreciocoste->nombrecorto=='e_m2' ? true : false;
-                $this->metros2=$this->alto * $this->ancho;
+                $ud=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
+                $this->showAnchoAlto= $ud=='e_m2' ? true : false;
+                // $this->metros2=$this->alto * $this->ancho;
             }
             $this->emit('presuplineadetallerefresh');
         }
@@ -278,7 +280,7 @@ class PresupLineaDetalle extends Component
     public function changeAncho(PresupuestoLineaDetalle $presupaccion,$ancho)
     {
         Validator::make(['ancho'=>$ancho],['ancho'=>'numeric|required'])->validate();
-        $presupaccion->update(['ancho'=>$ancho,'metros2'=>round($ancho * $presupaccion->alto ,2)]);
+        $presupaccion->update(['ancho'=>$ancho]);
         $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Ancho y Precio Venta actualizados.');
     }
@@ -338,7 +340,10 @@ class PresupLineaDetalle extends Component
 
     public function save()
     {
+        if(!$this->udpreciocoste_id) $this->udpreciocoste_id='2';
+        // dd($this->presupuestolinea_id);
         $this->validate();
+
         $pldetalle = PresupuestoLineaDetalle::updateOrCreate(['id'=>$this->presupuestolinea_id], [
             'presupuestolinea_id'=>$this->presuplinea->id,
             'acciontipo_id'=>$this->acciontipoId,
@@ -356,7 +361,7 @@ class PresupLineaDetalle extends Component
             'ancho'=>$this->ancho,
             'preciocoste'=>$this->preciocoste,
             'precioventa'=>$this->precioventa,
-            'metros2'=>$this->metros2,
+            // 'metros2'=>$this->metros2,
             'observaciones'=>$this->observaciones,
         ]);
 

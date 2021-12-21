@@ -64,14 +64,14 @@ class PresupLineaDetalles extends Component
     public function changeAncho(PresupuestoLineaDetalle $presupaccion,$ancho)
     {
         Validator::make(['ancho'=>$ancho],['ancho'=>'numeric|required',])->validate();
-        $presupaccion->update(['ancho'=>$ancho,'metros2'=>round($ancho * $presupaccion->alto,2),]);
+        $presupaccion->update(['ancho'=>$ancho]);
         $this->calculoPrecioVenta($presupaccion);
     }
 
     public function changeAlto(PresupuestoLineaDetalle $presupaccion,$alto)
     {
         Validator::make(['alto'=>$alto],['alto'=>'numeric|required',])->validate();
-        $presupaccion->update(['alto'=>$alto,'metros2'=>round($alto * $presupaccion->ancho,2),]);
+        $presupaccion->update(['alto'=>$alto,]);
         $this->calculoPrecioVenta($presupaccion);
     }
 
