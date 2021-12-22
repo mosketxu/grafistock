@@ -58,7 +58,7 @@ class Prod extends Component
         $acabados=ProductoAcabado::orderBy('nombre')->get();
         $familias=ProductoFamilia::orderBy('nombre')->get();
         $gruposprod=ProductoGrupoproduccion::orderBy('nombre')->get();
-        $proveedores=Entidad::orderBy('entidad')->get();
+        $proveedores=Entidad::orderBy('entidad')->whereIn('entidadtipo_id',['2','3'])->get();
         $unidades=Unidad::orderBy('nombre','asc')->get();
         $unidadescoste=UnidadCoste::orderBy('nombre')->get();
         $cajas=ProductoCaja::orderBy('nombre')->get();
