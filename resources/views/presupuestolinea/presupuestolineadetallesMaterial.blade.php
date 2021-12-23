@@ -41,8 +41,8 @@
                         @endif
                         <td class="w-20 pr-3 text-right ">{{ __('Unidades') }}</td>
                         <td class="w-20 pr-3 text-right ">{{ __('€ Ventas') }}</td>
-                        <td class="pl-3 ">{{ __('Observaciones') }} </td>
-                        <td colspan="3" class=""></td>
+                        {{-- <td class="pl-3 ">{{ __('Observaciones') }} </td> --}}
+                        <td  class="w-10"></td>
                     </tr>
                     @endif
                     <tr class="py-0 my-0">
@@ -105,8 +105,8 @@
                         <td><input type="text" value="{{ number_format($presupaccion->precioventa,2,',','.')  }}"
                             class="w-full py-1 text-xs font-bold text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" disabled/>
                         </td>
-                        <td><input type="text" value="{{ $presupaccion->observaciones }}" wire:change="changeObs({{ $presupaccion }},$event.target.value)"
-                            class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/></td>
+                        {{-- <td><input type="text" value="{{ $presupaccion->observaciones }}" wire:change="changeObs({{ $presupaccion }},$event.target.value)"
+                            class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/></td> --}}
                         <td>
                             <div class="flex">
                                 @if( Route::currentRouteName() =='presupuestolinea.create')

@@ -22,7 +22,7 @@
                     <div class="text-xs">
                         <div class="flex">
                             <label class="px-1 text-gray-600">
-                                Tipo Acción
+                                Tipo
                                 @if($acciontipofiltro!='')
                                     <x-icon.filter-slash-a wire:click="$set('acciontipofiltro', '')" class="pb-1" title="reset filter"/>
                                 @endif

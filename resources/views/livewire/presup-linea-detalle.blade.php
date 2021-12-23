@@ -1,10 +1,30 @@
 <div class="">
     @livewire('menu')
     <div class="">
-        @include('presupuestolinea.presupuestocabecera')
+        {{-- @include('presupuestolinea.presupuestocabecera') --}}
+        {{-- <div class="items-center">
+                        <div class="py-0 my-0">
+                            <p class="text-xl font-semibold text-gray-900">Presupuesto: <span class="font-light"> {{ $presuplinea->presupuesto->presupuesto ?? '-'}} </span></p>
+                        </div>
+                        <div class="">
+                            <p class="text-xl font-semibold text-gray-900">Cliente: <span class="font-light">{{ $presuplinea->presupuesto->entidad->entidad ?? '-' }} </span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+
         <div class="items-center">
-            <div class="mx-6">
-                <p class="text-lg font-bold text-gray-900"> Partida: {{ $acciontipo->nombre }} </p>
+            <div class="flex mx-6 space-x-4 align-baseline">
+                <div class="">
+                    <p class="text-lg font-bold text-gray-900"> Partida: {{ $acciontipo->nombre }} </p>
+                </div>
+                <div class="align-baseline">
+                    <p class="font-semibold text-gray-900 ">Presupuesto: <span class="font-light"> {{ $presuplinea->presupuesto->presupuesto ?? '-'}} </span></p>
+                </div>
+                <div class="align-baseline">
+                    <p class="font-semibold text-gray-900 ">Cliente: <span class="font-light">{{ $presuplinea->presupuesto->entidad->entidad ?? '-' }} </span></p>
+                </div>
             </div>
         </div>
 

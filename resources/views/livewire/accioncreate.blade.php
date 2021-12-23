@@ -72,7 +72,7 @@
                         <div class="flex">
                             <div class="w-full mb-2">
                                 <label for="observaciones" class="px-1 text-sm text-gray-600">Observaciones:</label>
-                                <textarea id="observaciones" wire:model="observaciones"
+                                <textarea id="observaciones" wire:model.defer="observaciones"
                                 class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                                 placeholder="Introduce las observaciones"></textarea>
                                 @error('observaciones') <span class="text-red-500">{{ $message }}</span>@enderror
