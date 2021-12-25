@@ -112,11 +112,11 @@ class Acciones extends Component
     {
         if (Auth::user()->can('accion.edit')==true) {
             $a=Accion::find($valor->id);
-            $a->preciominimo=$preciominimo;
-            if ($preciominimo<$this->preciocoste) {
-                $this->preciominimo=$this->preciocoste;
+            if ($preciominimo<$valor->preciocoste) {
+                $preciominimo=$valor->preciocoste;
                 $this->dispatchBrowserEvent('notify', 'El precio mínimo no puede ser inferior al precio de coste. Se asignará el precio de coste');
             }
+            $a->preciominimo=$preciominimo;
             $a->save();
             $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
         }
@@ -147,22 +147,11 @@ class Acciones extends Component
     {
         if (Auth::user()->can('accion.edit')==true) {
             $this->validate();
-            // if ($this->accion_id) {
-            //     $this->validate(
-            //         [
-            //         'referencia'=>[
-            //             'required',
-            //             'max:4',
-            //             Rule::unique('acciones', 'referencia')->ignore($this->accion_id)],
-            //         ]
-            //     );
-            // } else {
                 $this->validate(
                     [
                     'referencia'=>'required|max:4|unique:acciones,referencia'
                     ]
                 );
-            // }
 
             $this->preciominimo =($this->preciominimo=='' || $this->preciominimo=='0' ) ? $this->preciocoste : $this->preciominimo;
             if ($this->preciominimo<$this->preciocoste) {
