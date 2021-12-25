@@ -46,6 +46,7 @@
 
             </footer>
             <x-notification />
+            <x-notificationred />
         </div>
 
         @stack('modals')

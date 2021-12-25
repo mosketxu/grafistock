@@ -6,8 +6,6 @@ use App\Models\Accion;
 use App\Models\AccionTipo;
 use App\Models\UnidadCoste;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -27,6 +25,7 @@ class Acciones extends Component
     public $precioventa='';
     public $udpreciocoste_id='';
     public $observaciones='';
+
 
     protected function rules()
     {
@@ -113,12 +112,12 @@ class Acciones extends Component
         if (Auth::user()->can('accion.edit')==true) {
             $a=Accion::find($valor->id);
             if ($preciominimo<$valor->preciocoste) {
-                $preciominimo=$valor->preciocoste;
-                $this->dispatchBrowserEvent('notify', 'El precio mínimo no puede ser inferior al precio de coste. Se asignará el precio de coste');
+                $this->dispatchBrowserEvent('notifyred', 'El precio mínimo no puede ser inferior al precio de coste. No se realizará la actualización');
+            }else{
+                $a->preciominimo=$preciominimo;
+                $a->save();
+                $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
             }
-            $a->preciominimo=$preciominimo;
-            $a->save();
-            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
 
@@ -147,11 +146,7 @@ class Acciones extends Component
     {
         if (Auth::user()->can('accion.edit')==true) {
             $this->validate();
-                $this->validate(
-                    [
-                    'referencia'=>'required|max:4|unique:acciones,referencia'
-                    ]
-                );
+            $this->validate(['referencia'=>'required|max:4|unique:acciones,referencia']);
 
             $this->preciominimo =($this->preciominimo=='' || $this->preciominimo=='0' ) ? $this->preciocoste : $this->preciominimo;
             if ($this->preciominimo<$this->preciocoste) {
