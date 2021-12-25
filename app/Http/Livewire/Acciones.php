@@ -64,7 +64,7 @@ class Acciones extends Component
             $a=Accion::find($valor->id);
             $a->descripcion=$descripcion;
             $a->save();
-            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
 
@@ -74,7 +74,7 @@ class Acciones extends Component
             $a=Accion::find($valor->id);
             $a->acciontipo_id=$acciontipo_id;
             $a->save();
-            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
 
@@ -84,7 +84,7 @@ class Acciones extends Component
             $a=Accion::find($valor->id);
             $a->preciocoste=$preciocoste;
             $a->save();
-            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
 
@@ -94,7 +94,7 @@ class Acciones extends Component
             $a=Accion::find($valor->id);
             $a->precioventa=$precioventa;
             $a->save();
-            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
 
@@ -104,7 +104,7 @@ class Acciones extends Component
             $a=Accion::find($valor->id);
             $a->udpreciocoste_id=$udpreciocoste_id;
             $a->save();
-            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
 
@@ -118,7 +118,7 @@ class Acciones extends Component
             }
             $a->preciominimo=$preciominimo;
             $a->save();
-            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
 
@@ -128,7 +128,7 @@ class Acciones extends Component
             $a=Accion::find($valor->id);
             $a->observaciones=$observaciones;
             $a->save();
-            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
 
