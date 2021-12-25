@@ -1,4 +1,4 @@
-<div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+{{-- <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4"> --}}
     <div class="relative bg-white border rounded">
         <div class="p-4 ">
             <div class="flex justify-between">
@@ -99,4 +99,4 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}

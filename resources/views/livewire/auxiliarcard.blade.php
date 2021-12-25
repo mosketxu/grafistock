@@ -1,4 +1,4 @@
-<div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+{{-- <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4"> --}}
     <div class="relative bg-white border rounded">
         <div class="p-4 ">
             <div class="flex justify-between">
@@ -27,9 +27,9 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr>
-                            <th class="w-2/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __($campo1) }}</th>
+                            <th class="w-1/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __($campo1) }}</th>
                             <th class="w-4/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __($campo2) }} </th>
-                            <th class="px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" ></th>
+                            <th class="w-1/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" ></th>
                         </tr>
                     </thead>
                 </table>
@@ -40,7 +40,7 @@
                     <tbody class="bg-white divide-y divide-gray-200 ">
                         @foreach ($valores as $valor)
                             <tr wire:loading.class.delay="opacity-50">
-                                <td class="w-2/6 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
+                                <td class="w-1/6 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
                                     <input type="text" value="{{ $valor->nombrecorto }}"
                                     wire:change="changeCorto({{ $valor }},$event.target.value)"
                                     class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/>
@@ -50,11 +50,10 @@
                                     wire:change="changeNombre({{ $valor }},$event.target.value)"
                                     class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/>
                                 </td>
-                                <td  class="px-4">
+                                <td  class="w-1/6 px-4">
                                     <div class="flex items-center justify-center space-x-3">
                                         @if($titulo=="Roles")
                                             <x-icon.edit-a href="{{route('roles.edit',$valor) }}" class="pl-1"  title="Editar Role"/>
-
                                         @endif
                                         <x-icon.delete-a wire:click.prevent="delete({{ $valor->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar detalle"/>
                                     </div>
@@ -78,7 +77,7 @@
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                 </td>
                                 <td  class="p-2">
-                                    <div class="flex items-center justify-center space-x-3">
+                                    <div class="">
                                         <button type="submit" class="pl-1 mx-0 text-center "><x-icon.save-a class="text-blue"></x-icon.save-a></button>
                                     </div>
                                 </td>
@@ -89,4 +88,4 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}

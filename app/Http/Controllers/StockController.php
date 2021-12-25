@@ -47,7 +47,4 @@ class StockController extends Controller
     //     $tipo='material_id';
     //     return view('stock.balance',compact('tipo'));
     // }
-
-
-
 }

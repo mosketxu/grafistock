@@ -136,7 +136,7 @@
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}</td>
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->descripcion }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad ?? '-'}}</td >
-                                    <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->familia->nombre  ?? '-' }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->familia->nombre  ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->tipo->nombrecorto ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->material->nombre ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->grosor_mm }}</td >
@@ -146,15 +146,14 @@
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->preciocoste }} {{ $producto->unidadpreciocoste->nombrecorto ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-center text-gray-600 whitespace-no-wrap">{{ $producto->unidadsolicitud->nombrecorto ?? '-' }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->preciocompra }} {{ $producto->unidadpreciocompra->nombrecorto ?? '-' }}</td >
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
-                                    @if($producto->fichaproducto)
-                                        <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
-                                    @else
-                                        <x-icon.pdf-b class="pt-2 ml-2 text-blue-100" title="PDF"/>
-                                    @endif
-                                </td>
                                 <td  class="px-1">
                                     <div class="flex">
+                                        @if($producto->fichaproducto)
+                                            <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" title="PDF"/>
+                                        @else
+                                            <x-icon.pdf-b class="text-blue-100 " title="PDF"/>
+                                        @endif
+
                                         @can('producto.edit')
                                             <x-icon.edit-a href="{{ route('producto.edit',$producto) }}"  title="Editar"/>
                                         @endcan

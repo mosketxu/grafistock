@@ -127,7 +127,7 @@
                         <x-button.button  wire:click="exportXLS" color="green"><x-icon.xls/></x-button.button>
                     </div>
                     <div class="items-center text-xs">
-                        <x-button.button  onclick="location.href = '{{ route('stock.create') }}'" color="blue">{{ __('Nueva E/S') }}</x-button.button>
+                        <x-button.button  onclick="location.href = '{{ route('stock.create') }}'" color="blue">{{ __('Nueva') }}</x-button.button>
                     </div>
                 </div>
             </div>

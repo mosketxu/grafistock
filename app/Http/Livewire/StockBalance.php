@@ -158,8 +158,6 @@ class StockBalance extends Component
 
     public function exportXLS()
     {
-        // dd($this->tipo);
-        // dd('s');
         return Excel::download(new StockBalanceExport(
             $this->search, $this->filtroclipro, $this->filtromaterial,$this->filtrofamilia, $this->filtroacabado, $this->filtroproducto, $this->filtrodescripcion, $this->filtrosolicitante, $this->filtroanyo, $this->filtromes, $this->filtrofecha, $this->tipo
         ), 'stock.xlsx');

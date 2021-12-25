@@ -9,18 +9,39 @@
                         {{-- Cards --}}
                         <div class="mx-auto ">
                             <div class="flex flex-row flex-wrap -mx-2">
-                                @livewire('familias')
-                                @livewire('producto-tipos')
-                                @livewire('materiales')
-                                @livewire('acabados')
-                                @livewire('grupos-produccion')
-                                @livewire('unidades-coste')
-                                @livewire('unidades')
-                                @livewire('solicitantes')
-                                @livewire('cajas')
-                                @livewire('ubicaciones')
-                                @livewire('metodo-pagos')
-                            </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('familias')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('producto-tipos')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('materiales')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('acabados')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('grupos-produccion')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('unidades-coste')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('unidades')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('solicitantes')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('cajas')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('ubicaciones')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+                                    @livewire('metodo-pagos')
+                                </div>
                         </div>
                     </div>
                 </div>

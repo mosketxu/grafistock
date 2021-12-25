@@ -1,4 +1,4 @@
-<div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
+{{-- <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4"> --}}
     <div class="relative bg-white border rounded">
         <div class="p-4 ">
             <div class="flex justify-between">
@@ -93,8 +93,8 @@
                                     <input type="number" step="any" wire:model.defer="factormin"
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                 </td>
-                                <td  class="w-1/12 p-2">
-                                    <div class="flex items-center justify-center space-x-3">
+                                <td  class="p-2 ">
+                                    <div class="">
                                         <button type="submit" class="pl-1 mx-0 text-center "><x-icon.save-a class="text-blue"></x-icon.save-a></button>
                                     </div>
                                 </td>
@@ -105,4 +105,4 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}

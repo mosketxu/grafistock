@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Accion;
 use App\Models\AccionTipo;
 use App\Models\UnidadCoste;
-use App\Models\Unidad;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -29,15 +28,10 @@ class Acciones extends Component
     public $udpreciocoste_id='';
     public $observaciones='';
 
-    // protected $listeners = [ 'refresh' => '$refresh'];
-
-    public $showDeleteModal=false;
-    public $showNewModal = false;
-
     protected function rules()
     {
         return [
-            'referencia'=>'max:4',
+            'referencia'=>'required|max:4|unique:acciones,referencia',
             'descripcion'=>'nullable',
             'acciontipo_id'=>'required|numeric',
             'preciocoste'=>'numeric|nullable',
@@ -59,22 +53,83 @@ class Acciones extends Component
             ->search('referencia',$this->search)
             ->orSearch('descripcion',$this->search)
             ->when($this->acciontipofiltro!='', function ($query){$query->where('acciontipo_id',$this->acciontipofiltro);})
-            ->orderBy('referencia')->paginate(15);
+            ->orderBy('acciontipo_id')
+            ->orderBy('referencia')->get();
         return view('livewire.acciones',compact('acciones','acciontipos','unidades'));
     }
 
-    public function create(){
-        $this->resetInputFields();
-        $this->openNewModal();
+    public function changeDescripcion(Accion $valor,$descripcion)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->descripcion=$descripcion;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+        }
     }
 
-
-    public function openNewModal(){
-        $this->showNewModal = true;
+    public function changeAcciontipo(Accion $valor,$acciontipo_id)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->acciontipo_id=$acciontipo_id;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+        }
     }
 
-    public function closeNewModal(){
-        $this->showNewModal = false;
+    public function changePreciocoste(Accion $valor,$preciocoste)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->preciocoste=$preciocoste;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+        }
+    }
+
+    public function changePrecioventa(Accion $valor,$precioventa)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->precioventa=$precioventa;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+        }
+    }
+
+    public function changeUdpreciocoste(Accion $valor,$udpreciocoste_id)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->udpreciocoste_id=$udpreciocoste_id;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+        }
+    }
+
+    public function changePreciominimo(Accion $valor,$preciominimo)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->preciominimo=$preciominimo;
+            if ($preciominimo<$this->preciocoste) {
+                $this->preciominimo=$this->preciocoste;
+                $this->dispatchBrowserEvent('notify', 'El precio mínimo no puede ser inferior al precio de coste. Se asignará el precio de coste');
+            }
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+        }
+    }
+
+    public function changeObservaciones(Accion $valor,$observaciones)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->observaciones=$observaciones;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizado.');
+        }
     }
 
     private function resetInputFields(){
@@ -90,28 +145,32 @@ class Acciones extends Component
 
     public function store()
     {
-        $cond=Auth::user()->can('accion.edit');
-        if ($cond==true) {
+        if (Auth::user()->can('accion.edit')==true) {
             $this->validate();
-            if ($this->accion_id) {
-                $this->validate(
-                    [
-                    'referencia'=>[
-                        'required',
-                        'max:4',
-                        Rule::unique('acciones', 'referencia')->ignore($this->accion_id)],
-                    ]
-                );
-            } else {
+            // if ($this->accion_id) {
+            //     $this->validate(
+            //         [
+            //         'referencia'=>[
+            //             'required',
+            //             'max:4',
+            //             Rule::unique('acciones', 'referencia')->ignore($this->accion_id)],
+            //         ]
+            //     );
+            // } else {
                 $this->validate(
                     [
                     'referencia'=>'required|max:4|unique:acciones,referencia'
                     ]
                 );
-            }
+            // }
 
-            $this->preciominimo =($this->preciominimo=='' || $this->preciominimo=='0') ? $this->preciocoste : $this->preciominimo;
-            $accion=Accion::updateOrCreate(['id'=>$this->accion_id], [
+            $this->preciominimo =($this->preciominimo=='' || $this->preciominimo=='0' ) ? $this->preciocoste : $this->preciominimo;
+            if ($this->preciominimo<$this->preciocoste) {
+                $this->preciominimo=$this->preciocoste;
+                $this->dispatchBrowserEvent('notify', 'El precio mínimo no puede ser inferior al precio de coste. Se asignará el precio de coste');
+            }
+            // $accion=Accion::updateOrCreate(['id'=>$this->accion_id], [
+            $accion=Accion::create([
                 'referencia'=>$this->referencia,
                 'descripcion'=>$this->descripcion,
                 'acciontipo_id'=>$this->acciontipo_id,
@@ -122,26 +181,13 @@ class Acciones extends Component
                 'observaciones'=>$this->observaciones,
             ]);
 
+            $this->resetInputFields();
+
             $this->dispatchBrowserEvent('notify', 'Accion añadida con éxito');
 
             $this->closeNewModal();
         }
     }
-
-    public function edit($id) {
-        $this->accion_id=$id;
-        $accion = Accion::findOrFail($id);
-        $this->referencia=$accion->referencia;
-        $this->descripcion=$accion->descripcion;
-        $this->acciontipo_id=$accion->acciontipo_id;
-        $this->preciocoste=$accion->preciocoste;
-        $this->preciominimo=$accion->preciominimo;
-        $this->precioventa=$accion->precioventa;
-        $this->udpreciocoste_id=$accion->udpreciocoste_id;
-        $this->observaciones=$accion->observaciones;
-        $this->openNewModal();
-    }
-
 
     public function delete($valorId)
     {
