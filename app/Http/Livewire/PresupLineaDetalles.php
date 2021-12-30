@@ -10,6 +10,7 @@ use Livewire\Component;
 class PresupLineaDetalles extends Component
 {
     public $presupuestolinea;
+    public $showEdit=false;
 
     protected $listeners = [ 'presuplineadetallesrefresh' => '$refresh'];
 

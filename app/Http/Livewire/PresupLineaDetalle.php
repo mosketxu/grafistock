@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class PresupLineaDetalle extends Component
 {
+    public $showEdit=true;
     public $acciontipoId;
     public $filtrofamilia='';
     public $filtrodescripcion='';

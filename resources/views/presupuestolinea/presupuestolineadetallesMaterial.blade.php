@@ -109,7 +109,7 @@
                             class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/></td> --}}
                         <td>
                             <div class="flex">
-                                @if( Route::currentRouteName() =='presupuestolinea.create')
+                                @if( $showEdit)
                                     <div class="flex items-center justify-center">
                                         <x-icon.edit-a wire:click.prevent="edit({{ $presupaccion }})" class="pl-1"  title="Editar linea"/>
                                     </div>
