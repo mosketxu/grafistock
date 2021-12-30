@@ -18,6 +18,7 @@ class PresupLineaDetalle extends Component
     public $presupuestolineadetalleId='';
     public $accionproducto;
     public $showAnchoAlto=false;
+    public $showMinutos=false;
     public $controlpartidas;
     public $deshabilitadoPVenta='';
     public $deshabilitadoPCoste='disabled';
@@ -43,11 +44,10 @@ class PresupLineaDetalle extends Component
     public $factor=1;
     public $factormin=1;
     public $merma;
-    // public $mermamin;
     public $ancho=1;
     public $alto=1;
-    // public $metros2=0;
     public $unidades=1;
+    public $minutos=1;
     public $accionproducto_id;
     public $observaciones;
 
@@ -65,6 +65,7 @@ class PresupLineaDetalle extends Component
         'factor'=>'nullable|numeric',
         'merma'=>'nullable|numeric',
         'unidades'=>'nullable|numeric',
+        'minutos'=>'numeric',
         'accionproducto_id'=>'required',
     ];
 
@@ -126,6 +127,7 @@ class PresupLineaDetalle extends Component
 
     public function edit(PresupuestoLineaDetalle $presupuestoaccion)
     {
+
             $this->presupuestolinea_id=$presupuestoaccion->id;
             $this->acciontipo_id=$presupuestoaccion->acciontipo_id;
             $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
@@ -138,11 +140,17 @@ class PresupLineaDetalle extends Component
             $this->factor=$presupuestoaccion->factor;
             $this->merma=$presupuestoaccion->merma;
             $this->unidades=$presupuestoaccion->unidades;
+            $this->minutos=$presupuestoaccion->minutos;
             $this->alto=$presupuestoaccion->alto;
             $this->ancho=$presupuestoaccion->ancho;
             $this->preciocoste=$presupuestoaccion->preciocoste;
             $this->precioventa=$presupuestoaccion->precioventa;
             $this->observaciones=$presupuestoaccion->observaciones;
+
+            $ud=$presupuestoaccion->unidadpreciocoste->nombrecorto ?? '';
+            $this->showAnchoAlto= $ud=='e_m2' ? true : false;
+            $this->showMinutos= $ud=='e_min' ? true : false;
+
     }
 
     public function UpdatedAccionproductoId()
@@ -199,22 +207,31 @@ class PresupLineaDetalle extends Component
                 }
             }
 
-            if ($this->descrip!=' Genérico') {
-                $ud=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
-                $this->showAnchoAlto= $ud=='e_m2' ? true : false;
-                // $this->metros2=$this->alto * $this->ancho;
-            }
+            $ud=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
+            $this->showAnchoAlto= $ud=='e_m2' ? true : false;
+            $this->showMinutos= $ud=='e_min' ? true : false;
+
             $this->emit('presuplineadetallerefresh');
         }
 
         $this->calculoPrecioVenta();
     }
 
+    public function UpdatedUdpreciocosteId(){
+        $this->showAnchoAlto= UnidadCoste::find($this->udpreciocoste_id)->nombrecorto=='e_m2' ? true : false;
+        $this->showMinutos= UnidadCoste::find($this->udpreciocoste_id)->nombrecorto=='e_min' ? true : false;
+    }
+
     public function UpdatedUnidades(){$this->validate(['unidades'=>'numeric',]);$this->calculoPrecioVenta();}
+
+    public function UpdatedMinutos(){$this->validate(['minutos'=>'numeric',]);$this->calculoPrecioVenta();}
 
     public function UpdatedAncho(){ $this->validate(['ancho'=>'numeric',]);$this->calculoPrecioVenta();}
 
     public function UpdatedAlto(){$this->validate(['alto'=>'numeric',]);$this->calculoPrecioVenta();}
+
+
+
 
     // con el factor tenemos en cuenta el minimo
     public function UpdatedFactor(){
@@ -301,6 +318,14 @@ class PresupLineaDetalle extends Component
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
     }
 
+    public function changeMinutos(PresupuestoLineaDetalle $presupaccion,$minutos)
+    {
+        Validator::make(['minutos'=>$minutos],['minutos'=>'numeric|required'])->validate();
+        $presupaccion->update(['minutos'=>$minutos,]);
+        $this->recalculoPrecioVenta($presupaccion);
+        $this->dispatchBrowserEvent('notify', 'Minutos y Precio Venta Actualizados.');
+    }
+
     public function changeFactor(PresupuestoLineaDetalle $presupaccion,$factor)
     {
         Validator::make(['factor'=>$factor],['factor'=>'numeric|required',])->validate();
@@ -357,6 +382,7 @@ class PresupLineaDetalle extends Component
                 'factor'=>$this->factor,
                 'merma'=>$this->merma,
                 'unidades'=>$this->unidades,
+                'minutos'=>$this->minutos,
                 'alto'=>$this->alto,
                 'ancho'=>$this->ancho,
                 'preciocoste'=>$this->preciocoste,
@@ -382,11 +408,11 @@ class PresupLineaDetalle extends Component
     public function calculoPrecioVenta()
     {
         if($this->acciontipoId!='1'){
-            $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades;
-            $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades ;
+            $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades * $this->minutos;
+            $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades * $this->minutos ;
         }else{
-            $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades ;
-            $this->precioventa=$this->ancho * $this->alto * $this->unidades * ($this->precioventa_ud * $this->factor   + $this->preciocoste_ud*$this->merma);
+            $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades * $this->minutos ;
+            $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * ($this->precioventa_ud * $this->factor   + $this->preciocoste_ud*$this->merma);
             // dd($this->precioventa.'='.$this->ancho .'*'. $this->alto .'*'. $this->unidades .'*'. '('.$this->precioventa_ud .'*'. $this->factor   .'+'. $this->preciocoste_ud.'*'.$this->merma.')');
         }
         $this->preciocoste=round($this->preciocoste,2);
@@ -396,11 +422,11 @@ class PresupLineaDetalle extends Component
     public function recalculoPrecioVenta($presupacciondetalle)
     {
         if($presupacciondetalle->acciontipo_id!='1'){
-            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
-            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
+            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
+            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
         }else{
-            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades ;
-            $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * ($presupacciondetalle->precioventa_ud *$presupacciondetalle->factor + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
+            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
+            $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud *$presupacciondetalle->factor + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
         }
         $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
