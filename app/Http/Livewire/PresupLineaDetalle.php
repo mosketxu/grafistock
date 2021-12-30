@@ -223,7 +223,7 @@ class PresupLineaDetalle extends Component
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $this->factor=$this->factormin;
         }
-        $this->precioventa_ud=round($this->preciocoste_ud * $this->factor,2);
+        // $this->precioventa_ud=round($this->preciocoste_ud * $this->factor,2);
         $this->calculoPrecioVenta();
     }
 
@@ -340,35 +340,36 @@ class PresupLineaDetalle extends Component
 
     public function save()
     {
-        if(!$this->udpreciocoste_id) $this->udpreciocoste_id='2';
-        // dd($this->presupuestolinea_id);
-        $this->validate();
+        if($this->accionproducto_id){
+            if(!$this->udpreciocoste_id) $this->udpreciocoste_id='2';
+            $this->validate();
 
-        $pldetalle = PresupuestoLineaDetalle::updateOrCreate(['id'=>$this->presupuestolinea_id], [
-            'presupuestolinea_id'=>$this->presuplinea->id,
-            'acciontipo_id'=>$this->acciontipoId,
-            'accionproducto_id'=>$this->accionproducto_id,
-            'entidad_id'=>$this->proveedor_id,
-            'orden'=>$this->orden,
-            'descripcion'=>$this->descripcion,
-            'preciocoste_ud'=>$this->preciocoste_ud,
-            'precioventa_ud'=>$this->precioventa_ud,
-            'udpreciocoste_id'=>$this->udpreciocoste_id,
-            'factor'=>$this->factor,
-            'merma'=>$this->merma,
-            'unidades'=>$this->unidades,
-            'alto'=>$this->alto,
-            'ancho'=>$this->ancho,
-            'preciocoste'=>$this->preciocoste,
-            'precioventa'=>$this->precioventa,
-            // 'metros2'=>$this->metros2,
-            'observaciones'=>$this->observaciones,
-        ]);
+            $pldetalle = PresupuestoLineaDetalle::updateOrCreate(['id'=>$this->presupuestolinea_id], [
+                'presupuestolinea_id'=>$this->presuplinea->id,
+                'acciontipo_id'=>$this->acciontipoId,
+                'accionproducto_id'=>$this->accionproducto_id,
+                'entidad_id'=>$this->proveedor_id,
+                'orden'=>$this->orden,
+                'descripcion'=>$this->descripcion,
+                'preciocoste_ud'=>$this->preciocoste_ud,
+                'precioventa_ud'=>$this->precioventa_ud,
+                'udpreciocoste_id'=>$this->udpreciocoste_id,
+                'factor'=>$this->factor,
+                'merma'=>$this->merma,
+                'unidades'=>$this->unidades,
+                'alto'=>$this->alto,
+                'ancho'=>$this->ancho,
+                'preciocoste'=>$this->preciocoste,
+                'precioventa'=>$this->precioventa,
+                // 'metros2'=>$this->metros2,
+                'observaciones'=>$this->observaciones,
+            ]);
 
-        $this->recalcular($pldetalle);
-        $this->actualizaPartida();
+            $this->recalcular($pldetalle);
+            $this->actualizaPartida();
 
-        return redirect()->route('presupuestolinea.create',[$this->presuplinea,$this->acciontipo->id]);
+            return redirect()->route('presupuestolinea.create',[$this->presuplinea,$this->acciontipo->id]);
+        }
     }
 
     public function recalcular($presupaccion)
@@ -386,6 +387,7 @@ class PresupLineaDetalle extends Component
         }else{
             $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades ;
             $this->precioventa=$this->ancho * $this->alto * $this->unidades * ($this->precioventa_ud * $this->factor   + $this->preciocoste_ud*$this->merma);
+            // dd($this->precioventa.'='.$this->ancho .'*'. $this->alto .'*'. $this->unidades .'*'. '('.$this->precioventa_ud .'*'. $this->factor   .'+'. $this->preciocoste_ud.'*'.$this->merma.')');
         }
         $this->preciocoste=round($this->preciocoste,2);
         $this->precioventa=round($this->precioventa,2);

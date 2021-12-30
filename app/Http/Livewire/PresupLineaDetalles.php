@@ -85,7 +85,8 @@ class PresupLineaDetalles extends Component
     public function changeFactor(PresupuestoLineaDetalle $presupaccion,$factor)
     {
         Validator::make(['factor'=>$factor],['factor'=>'numeric|required',])->validate();
-        $factormin=$presupaccion->presupuestolinea->presupuesto->entidad->empresatipo->factormin;
+
+        $factormin=$presupaccion->presupuestolinea->presupuesto->entidad->empresatipo->factormin ?? '1';
         if($factor<$factormin){
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $factor=$factormin ?? '1';
@@ -110,11 +111,6 @@ class PresupLineaDetalles extends Component
     public function changeMerma(PresupuestoLineaDetalle $presupaccion,$merma)
     {
         Validator::make(['merma'=>$merma],['merma'=>'numeric|required',])->validate();
-        // $mermamin=$presupaccion->producto->tipo->merma;
-        // if($merma<$mermamin){
-        //     $this->dispatchBrowserEvent("notify", "La merma es inferior al mínimo. Se asignará el mínimo.");
-        //     $merma=$mermamin;
-        // }
         $presupaccion->update(['merma'=>$merma,]);
         $this->calculoPrecioVenta($presupaccion);
     }

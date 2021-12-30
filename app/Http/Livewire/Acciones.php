@@ -169,7 +169,6 @@ class Acciones extends Component
 
             $this->dispatchBrowserEvent('notify', 'Accion añadida con éxito');
 
-            $this->closeNewModal();
         }
     }
 
