@@ -13,69 +13,75 @@
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Presupuesto
-                            @if($search!='')
-                            <x-icon.filter-slash-a wire:click="$set('search', '')" class="pb-1" title="reset filter" />
-                            @endif
                         </label>
-                        <input type="text" wire:model="search"
+                        <div class="flex">
+                            <input type="text" wire:model="search"
                             class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                             placeholder="Búsqueda" autofocus />
+                            @if($search!='')
+                                <x-icon.filter-slash-a wire:click="$set('search', '')" class="pb-1" title="reset filter" />
+                            @endif
+                        </div>
                     </div>
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Cliente
-                            @if($filtroclipro!='')
-                            <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1"
-                                title="reset filter" />
-                            @endif
                         </label>
-                        <select wire:model="filtroclipro"
-                            class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                            <option value="">-- selecciona --</option>
-                            @foreach ($clientes as $cliente )
-                            <option value="{{ $cliente->id }}">{{ $cliente->entidad }}</option>
-                            @endforeach
-                        </select>
+                        <div class="flex">
+                            <select wire:model="filtroclipro"
+                                class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                <option value="">-- selecciona --</option>
+                                @foreach ($clientes as $cliente )
+                                <option value="{{ $cliente->id }}">{{ $cliente->entidad }}</option>
+                                @endforeach
+                            </select>
+                            @if($filtroclipro!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1" title="reset filter" />
+                            @endif
+                       </div>
                     </div>
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Año
-                            @if($filtroanyo!='')
-                            <x-icon.filter-slash-a wire:click="$set('filtroanyo', '')" class="pb-1"
-                                title="reset filter" />
-                            @endif
                         </label>
-                        <input type="text" wire:model="filtroanyo"
-                            class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-                            placeholder="Año" />
+                        <div class="flex">
+                            <input type="text" wire:model="filtroanyo"
+                                class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                placeholder="Año" />
+                            @if($filtroanyo!='')
+                            <x-icon.filter-slash-a wire:click="$set('filtroanyo', '')" class="pb-1" title="reset filter" />
+                            @endif
+                        </div>
                     </div>
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Mes
-                            @if($filtromes!='')
-                            <x-icon.filter-slash-a wire:click="$set('filtromes', '')" class="pb-1"
-                                title="reset filter" />
-                            @endif
                         </label>
-                        <input type="text" wire:model="filtromes"
-                            class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-                            placeholder="Mes (número)" />
+                        <div class="flex">
+                            <input type="text" wire:model="filtromes"
+                                class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                placeholder="Mes (número)" />
+                            @if($filtromes!='')
+                            <x-icon.filter-slash-a wire:click="$set('filtromes', '')" class="pb-1" title="reset filter" />
+                            @endif
+                        </div>
                     </div>
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Estado
-                            @if($filtroestado!='')
-                            <x-icon.filter-slash-a wire:click="$set('filtroestado', '')" class="pb-1"
-                                title="reset filter" />
-                            @endif
                         </label>
-                        <select wire:model="filtroestado"
-                            class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                            <option value="">-- selecciona --</option>
-                            <option value="0">En curso</option>
-                            <option value="1">Aceptado</option>
-                            <option value="2">Rechazado</option>
-                        </select>
+                        <div class="flex">
+                            <select wire:model="filtroestado"
+                                class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                <option value="">-- selecciona --</option>
+                                <option value="0">En curso</option>
+                                <option value="1">Aceptado</option>
+                                <option value="2">Rechazado</option>
+                            </select>
+                            @if($filtroestado!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtroestado', '')" class="pb-1" title="reset filter" />
+                            @endif
+                        </div>
                     </div>
                 </div>
                 {{-- Parte derecha --}}

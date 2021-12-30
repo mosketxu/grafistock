@@ -139,9 +139,6 @@ class Presups extends Component
             'observaciones'=>$this->observaciones,
         ]);
 
-        // dd($presupuesto->id);
-        // $control=PresupuestoControlpartida::where('presupuesto_id',$presupuesto->id)->get();
-        // dd($control);
         if ($presupuesto->presupuestocontrolpartidas->count()<AccionTipo::count()) {
             $acciontipos=AccionTipo::get();
 
@@ -216,7 +213,7 @@ class Presups extends Component
                 $query->where('entidad_id',$this->filtroclipro);
                 })
             ->when($this->filtroestado!='', function ($query){
-                $query->where('estado',$this->filtroestado);
+                $query->where('presupuestos.estado',$this->filtroestado);
             })
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
                 $query->where('solicitante_id',Auth::user()->id);
