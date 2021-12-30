@@ -95,13 +95,11 @@
             <table width="100%" style="margin-top:20px">
                 <tbody>
                     <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
-                        <td style="padding-left:3px;" width="55%">Descrip. Presupuesto</td>
-                        <td style="padding-right:3px;text-align:right" width="15%">Unidades</td>
+                        <td style="padding-left:3px;" width="70%">Descrip. Presupuesto</td>
                         <td style="padding-right:3px;text-align:right" width="15%">P.Venta</td>
                     </tr>
                     <tr >
                         <td style="padding-left:3px;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $presupuesto->descripcion }}</td>
-                        <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuesto->unidades }} </td>
                         <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuesto->precioventa }} </td>
                     </tr>
                 </tbody>
