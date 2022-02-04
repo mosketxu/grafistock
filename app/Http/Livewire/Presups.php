@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{AccionTipo, Presupuesto,Entidad, PresupuestoControl, PresupuestoControlpartida, User};
+use App\Models\{AccionTipo, Presupuesto,Entidad, PresupuestoControl, PresupuestoControlpartida, PresupuestoLineaDetalle, User};
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\DataTable\WithBulkActions;
@@ -75,25 +75,44 @@ class Presups extends Component
 
     public function replicateRow(Presupuesto $presupuesto)
     {
-        hay que llamar a la funcion store para crear el presupuesto por el tema de las acciones
+        // $partidas= PresupuestoControlpartida::where('presupuesto_id',$presupuesto->id)->get();
+        // dd($partidas);
+        // imicializo las vbles nuevas
         $this->fechapresupuesto=now();
         $this->numpresupuesto();
 
+        // clono la cabecera del presupuesto
         $clone = $presupuesto->replicate()->fill([
             'fechapresupuesto'=>$this->fechapresupuesto,
             'presupuesto'=>$this->presupuesto,
         ]);
-
         $clone->save();
 
+        // clono las acciones
+        $partidas= PresupuestoControlpartida::where('presupuesto_id',$presupuesto->id)->get();
+        foreach ($partidas as $partida) {
+            $partida->replicate()->fill([
+                'presupuesto_id'=>$clone->id,
+            ])->save();
+            // $clonepartida->save();
+        }
 
+        // clono las lineas del presupuesto
         foreach($presupuesto->presupuestolineas as $presupuestolinea)
         {
             $clonelinea = $presupuestolinea->replicate()->fill([
                 'presupuesto_id'=>$clone->id,
             ]);
             $clonelinea->save();
+            // clono las lineasdetalle del presupuesto
+            $detallelineas=PresupuestoLineaDetalle::where('presupuestolinea_id',$presupuestolinea->id)->get();
+            foreach ($detallelineas as $detallelinea) {
+                $clonedetallelinea = $detallelinea->replicate()->fill([
+                    'presupuestolinea_id'=>$clonelinea->id,
+                ])->save();
+            }
         }
+
 
         $this->dispatchBrowserEvent('notify', 'Presupuestos copiado!');
 
