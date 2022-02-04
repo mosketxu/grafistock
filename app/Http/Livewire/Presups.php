@@ -73,6 +73,32 @@ class Presups extends Component
         $this->openNewModal();
     }
 
+    public function replicateRow(Presupuesto $presupuesto)
+    {
+        hay que llamar a la funcion store para crear el presupuesto por el tema de las acciones
+        $this->fechapresupuesto=now();
+        $this->numpresupuesto();
+
+        $clone = $presupuesto->replicate()->fill([
+            'fechapresupuesto'=>$this->fechapresupuesto,
+            'presupuesto'=>$this->presupuesto,
+        ]);
+
+        $clone->save();
+
+
+        foreach($presupuesto->presupuestolineas as $presupuestolinea)
+        {
+            $clonelinea = $presupuestolinea->replicate()->fill([
+                'presupuesto_id'=>$clone->id,
+            ]);
+            $clonelinea->save();
+        }
+
+        $this->dispatchBrowserEvent('notify', 'Presupuestos copiado!');
+
+    }
+
 
     public function openNewModal(){
         $this->showNewModal = true;
@@ -195,9 +221,7 @@ class Presups extends Component
     {
         $anyo= Carbon::parse($this->fechapresupuesto)->year;
         $anyo2= Carbon::parse($this->fechapresupuesto)->format('y');
-
         $p=Presupuesto::withTrashed()->whereYear('fechapresupuesto', $anyo)->max('presupuesto') ;
-        // $a=;
         $this->presupuesto= $p ? $p + 1 : ($anyo2 * 100000 +1) ;
     }
 

@@ -27,8 +27,6 @@ class Presupuesto extends Model
 
     public function detalles()
     {
-        // return $this->hasManyThrough(PresupuestoLineaDetalle::class, PresupuestoLinea::class);
-
         return $this->hasManyThrough(
             PresupuestoLineaDetalle::class,
             PresupuestoLinea::class,
@@ -66,7 +64,6 @@ class Presupuesto extends Model
         $this->preciocoste=$this->presupuestolineas->sum('preciocoste');
         $this->save();
     }
-
 
     public function getFechapresuAttribute()
     {

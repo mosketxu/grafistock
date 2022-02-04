@@ -191,13 +191,10 @@
                             <td class="">
                                 <div class="flex items-center justify-center">
                                     @if(Auth::user()->id==$presupuesto->solicitante_id || Auth::user()->hasRole('Admin'))
-                                    <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600"
-                                        title="Editar Presupuesto" />
-                                        <x-icon.calc-a href="{{route('presupuesto.edit', $presupuesto) }}"
-                                        class="text-green-600" title="Composición Presupuesto" />
-                                        <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})"
-                                            onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()"
-                                            class="pl-1 " title="Borrar" />
+                                        <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600" title="Editar Presupuesto" />
+                                        <x-icon.copy-a wire:click="replicateRow({{ $presupuesto }})" class="text-purple-500" title="Copiar Presupuesto" />
+                                        <x-icon.calc-a href="{{route('presupuesto.edit', $presupuesto) }}" class="text-green-600" title="Composición Presupuesto" />
+                                        <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1 " title="Borrar" />
                                     @endif
                                     <a href="{{ route('presupuesto.show',$presupuesto) }}" target="_blank" class="w-6 h-6 ml-2 text" title="Imprimir Presupuesto"><x-icon.printer></x-icon.printer></a>
                                     <a href="{{ route('presupuesto.imprimir',$presupuesto) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.pdfred ></x-icon.pdfred></a>

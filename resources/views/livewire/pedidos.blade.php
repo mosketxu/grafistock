@@ -137,13 +137,13 @@
                                     <input type="text" value="{{ $pedido->entidad }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $pedido->fechapedido->format('d/m/Y') }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    <input type="text" value="{{ $pedido->fechaped }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $pedido->fecharecepcionprevista ? $pedido->fecharecepcionprevista->format('d/m/Y') : '-' }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    <input type="text" value="{{ $pedido->fecharecepprev  }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $pedido->fecharecepcion ? $pedido->fecharecepcion->format('d/m/Y') : '-' }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    <input type="text" value="{{ $pedido->fecharecepcion ? $pedido->fecharecep : '-' }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
 
                                 <td class="text-right">

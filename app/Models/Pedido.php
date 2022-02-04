@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
-
+use function PHPUnit\Framework\returnSelf;
 
 class Pedido extends Model
 {
@@ -16,13 +17,32 @@ class Pedido extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $casts = [
-        'fechapedido' => 'date:Y-m-d',
-        'fecharecepcionprevista' => 'date:Y-m-d',
-        'fecharecepcion' => 'date:Y-m-d',
-    ];
 
     protected $fillable=['pedido','solicitante_id','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','ubicacion_id','iva','ruta','fichero','observaciones'];
+
+    // protected $casts = [
+    //     'fechapedido' => 'date:Y-m-d',
+    //     'fecharecepcionprevista' => 'date:Y-m-d',
+    //     'fecharecepcion' => 'date:Y-m-d',
+    // ];
+
+    public function getFechapedAttribute()
+    {
+        return Carbon::parse($this->fechapedido)->format('d-m-Y');
+    }
+
+    public function getFecharecepprevAttribute()
+    {
+        if($this->fecharecepcionprevista)
+            return Carbon::parse($this->fecharecepcionprevista)->format('d-m-Y');
+        else
+            return '-';
+    }
+
+    public function getFecharecepAttribute()
+    {
+        return Carbon::parse($this->fecharecepcion)->format('d-m-Y');
+    }
 
     public function pedidodetalles()
     {
