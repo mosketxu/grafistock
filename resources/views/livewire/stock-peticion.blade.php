@@ -78,7 +78,7 @@
                             <div class="flex">
                                 <input wire:model="stockpeticion.fecharealizado" type="date" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                                 @if($stockpeticion->fecharealizado)
-                                <x-icon.cross-a wire:click="borrafecharealizado" class="m-2" title="reset fecha"/>
+                                    <x-icon.cross-a wire:click="borrafecharealizado" class="m-2" title="reset fecha"/>
                                 @endif
                             </div>
                         </div>

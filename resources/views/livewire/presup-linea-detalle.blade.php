@@ -40,16 +40,18 @@
                         <div class="flex px-2 space-x-2 bg-blue-100 rounded">
                             <div class="w-full mb-2">
                                 <label class="px-1 text-sm text-gray-600">Filtro Familia</label>
+                                <div class="flex">
+                                    <x-select wire:model.lazy="filtrofamilia" selectname="filtrofamilia"
+                                        class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                        <option value="">-- choose --</option>
+                                        @foreach ($familias as $familia)
+                                            <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
+                                        @endforeach
+                                    </x-select>
                                     @if($filtrofamilia!='')
                                         <x-icon.filter-slash-a wire:click="$set('filtrofamilia', '')" class="pb-1" title="reset filter"/>
                                     @endif
-                                <x-select wire:model.lazy="filtrofamilia" selectname="filtrofamilia"
-                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                    <option value="">-- choose --</option>
-                                    @foreach ($familias as $familia)
-                                        <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
-                                    @endforeach
-                                </x-select>
+                                </div>
                             </div>
                             <div class="w-full mb-2">
                                 <label for="filtrodescripcion" class="px-1 text-sm text-gray-600">Filtro Referencia/Descripción:</label>
