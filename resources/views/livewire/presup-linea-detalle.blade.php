@@ -55,11 +55,13 @@
                             </div>
                             <div class="w-full mb-2">
                                 <label for="filtrodescripcion" class="px-1 text-sm text-gray-600">Filtro Referencia/Descripción:</label>
-                                @if($filtrodescripcion!='')
-                                    <x-icon.filter-slash-a wire:click.lazy="$set('filtrodescripcion', '')" class="pb-1" title="reset filter"/>
-                                @endif
-                                <input wire:model="filtrodescripcion" type="text"
-                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                <div class="flex">
+                                    <input wire:model="filtrodescripcion" type="text"
+                                        class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                    @if($filtrodescripcion!='')
+                                        <x-icon.filter-slash-a wire:click.lazy="$set('filtrodescripcion', '')" class="pb-1" title="reset filter"/>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     @endif
