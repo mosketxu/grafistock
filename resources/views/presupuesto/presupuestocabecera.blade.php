@@ -35,6 +35,11 @@
                         disabled/>
                 </div>
                 <div class="w-full form-item sm:w-1/12">
+                    <label class="block text-gray-700">{{ __('%Incremento') }}</label>
+                    <input type="number" step="any" wire:model="incremento"
+                        class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                </div>
+                <div class="w-full form-item sm:w-1/12">
                     <label class="block text-gray-700">{{ __('€ Venta') }}</label>
                     <input type="number" step="any" wire:model.defer="precioventa"
                         class="w-full text-xs tracking-tighter text-right border-gray-300 rounded-md shadow-sm {{ Auth::user()->hasRole('Admin') ? '' : 'bg-gray-50' }}  focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"

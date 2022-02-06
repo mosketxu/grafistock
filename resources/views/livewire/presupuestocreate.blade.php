@@ -61,11 +61,21 @@
                                 @endif
                                 @error('solicitante_id') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
-                            <div class="mb-2">
+                        </div>
+                        <div class="flex space-x-2">
+                            <div class="w-full mb-2">
                                 <label for="fechapresupuesto" class="px-1 text-sm text-gray-600">Fecha:</label>
-                                <input type="date" id="fechapresupuesto" wire:model.defer="fechapresupuesto" required
-                                class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                @error('fechapresupuesto') <span class="text-red-500">{{ $message }}</span>@enderror
+                                <input type="date" id="fechapresupuesto" wire:model.defer="fechapresupuesto"
+                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                    required>
+                                    @error('fechapresupuesto') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="w-full mb-2">
+                                <label for="incremento" class="px-1 text-sm text-gray-600">Incremento (%):</label>
+                                <input type="number" step="any" id="fechapresupuesto" wire:model.defer="incremento"
+                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                    required>
+                                @error('incremento') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="flex">

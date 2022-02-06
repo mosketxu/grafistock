@@ -27,7 +27,9 @@ class Entidad extends Model
 
     public function empresatipo()
     {
-        return $this->belongsTo(EmpresaTipo::class,'empresatipo_id');
+        return $this->belongsTo(EmpresaTipo::class,'empresatipo_id')->withDefault([
+            'factormin' => '-',
+        ]);
     }
 
     public function provincia()

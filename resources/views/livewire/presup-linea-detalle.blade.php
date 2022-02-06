@@ -80,7 +80,7 @@
                             <label for="accionproducto_id" class="px-1 text-sm text-gray-600">{{ $acciontipo->nombre }}</label>
                             <x-select wire:model.lazy="accionproducto_id" selectname="accionproducto_id"
                                 class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                    <option value="">-- choose --</option>
+                                <option value="">-- choose --</option>
                                 @foreach ($acciones as $accion)
                                     <option value="{{ $accion->id }}">{{ $accion->descripcion }}</option>
                                 @endforeach

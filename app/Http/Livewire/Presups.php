@@ -23,7 +23,7 @@ class Presups extends Component
     public $message;
     public $total;
 
-    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciocoste,$unidades,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciocoste,$unidades,$incremento,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -75,19 +75,15 @@ class Presups extends Component
 
     public function replicateRow(Presupuesto $presupuesto)
     {
-        // $partidas= PresupuestoControlpartida::where('presupuesto_id',$presupuesto->id)->get();
-        // dd($partidas);
         // imicializo las vbles nuevas
         $this->fechapresupuesto=now();
         $this->numpresupuesto();
-
         // clono la cabecera del presupuesto
         $clone = $presupuesto->replicate()->fill([
             'fechapresupuesto'=>$this->fechapresupuesto,
             'presupuesto'=>$this->presupuesto,
         ]);
         $clone->save();
-
         // clono las acciones
         $partidas= PresupuestoControlpartida::where('presupuesto_id',$presupuesto->id)->get();
         foreach ($partidas as $partida) {
@@ -96,7 +92,6 @@ class Presups extends Component
             ])->save();
             // $clonepartida->save();
         }
-
         // clono las lineas del presupuesto
         foreach($presupuesto->presupuestolineas as $presupuestolinea)
         {
@@ -112,10 +107,7 @@ class Presups extends Component
                 ])->save();
             }
         }
-
-
         $this->dispatchBrowserEvent('notify', 'Presupuestos copiado!');
-
     }
 
 
@@ -137,6 +129,7 @@ class Presups extends Component
         $this->precioventa='0';
         $this->preciocoste='0';
         $this->unidades='0';
+        $this->incremento='0';
         $this->iva='0.21';
         $this->ruta='';
         $this->fichero='';
@@ -157,6 +150,7 @@ class Presups extends Component
             'fechapresupuesto' => 'required|date',
             'preciocoste' => 'nullable|numeric',
             'precioventa' => 'nullable|numeric',
+            'incremento' => 'required|numeric',
             'estado' => 'required',
             'iva' => 'required',
         ]);
@@ -177,12 +171,14 @@ class Presups extends Component
             'precioventa'=>$this->precioventa,
             'preciocoste'=>$this->preciocoste,
             'unidades'=>$this->unidades,
+            'incremento'=>$this->incremento,
             'iva'=>$this->iva,
             'ruta'=>$this->ruta,
             'fichero'=>$this->fichero,
             'estado'=>$this->estado,
             'observaciones'=>$this->observaciones,
         ]);
+        $presupuesto->recalculo(); // por si se ha modificado el %Incremento
 
         if ($presupuesto->presupuestocontrolpartidas->count()<AccionTipo::count()) {
             $acciontipos=AccionTipo::get();
@@ -209,7 +205,6 @@ class Presups extends Component
         }else{
             return redirect()->route('presupuesto.edit',$presupuesto);
         }
-
     }
 
     public function edit($id) {
@@ -223,6 +218,7 @@ class Presups extends Component
         $this->preciocoste=$presupuesto->preciocoste;
         $this->precioventa=$presupuesto->precioventa;
         $this->unidades=$presupuesto->unidades;
+        $this->incremento=$presupuesto->incremento;
         $this->iva=$presupuesto->iva;
         $this->ruta=$presupuesto->ruta;
         $this->fichero=$presupuesto->fichero;

@@ -78,6 +78,8 @@ class PresupLineaDetalles extends Component
 
     public function changeUnidades(PresupuestoLineaDetalle $presupaccion,$unidades)
     {
+        if(!$unidades) $unidades=1;
+
         Validator::make(['unidades'=>$unidades],['unidades'=>'numeric|nullable',])->validate();
         $presupaccion->update(['unidades'=>$unidades]);
         $this->calculoPrecioVenta($presupaccion);
@@ -130,7 +132,7 @@ class PresupLineaDetalles extends Component
             $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
         }else{
             $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
-            $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud * $presupacciondetalle->factor + $presupacciondetalle->preciocoste_ud * $presupacciondetalle->merma);
+            $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud * $presupacciondetalle->merma);
         }
         $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);

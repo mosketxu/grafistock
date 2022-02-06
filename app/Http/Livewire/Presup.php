@@ -11,6 +11,7 @@ class Presup extends Component
     public $presupuesto;
     public $estado;
     public $unidades;
+    public $incremento;
     public $precioventa;
     public $preciocoste;
     public $descripcion;
@@ -24,6 +25,7 @@ class Presup extends Component
             'precioventa'=>'nullable|numeric',
             'preciocoste'=>'nullable|numeric',
             'unidades'=>'nullable|numeric',
+            'incremento'=>'required|numeric',
             'descripcion'=>'required',
             'observaciones'=>'nullable',
         ];
@@ -43,6 +45,7 @@ class Presup extends Component
         $this->precioventa=$presupuesto->precioventa;
         $this->preciocoste=$presupuesto->preciocoste;
         $this->unidades=$presupuesto->unidades;
+        $this->incremento=$presupuesto->incremento;
         $this->observaciones=$presupuesto->observaciones;
     }
 
@@ -59,14 +62,20 @@ class Presup extends Component
         $mensaje="Presupuesto actualizado satisfactoriamente";
 
         // $pres=Presupuesto::find($this->presupuesto->id);
-        Presupuesto::findOrFail($this->presupuesto->id)
+        $presup=Presupuesto::findOrFail($this->presupuesto->id)
             ->update([
                 'precioventa'=>$this->precioventa,
                 'unidades'=>$this->unidades,
+                'incremento'=>$this->incremento,
                 'estado'=>$this->estado,
                 'descripcion'=>$this->descripcion,
                 'observaciones'=>$this->observaciones
         ]);
+
+        $presup=Presupuesto::find($this->presupuesto->id);
+        $presup->recalculo();
+
+        $this->emit('presupuestorefresh');
 
         $this->dispatchBrowserEvent('notify', $mensaje);
     }
