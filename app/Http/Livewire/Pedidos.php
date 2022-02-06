@@ -7,6 +7,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\DataTable\WithBulkActions;
+use App\Exports\PedidoExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 class Pedidos extends Component
@@ -85,6 +88,30 @@ class Pedidos extends Component
             // ->paginate(5); solo contemplo la query, no el resultado. Luego pongo el resultado: get, paginate o lo que quiera
     }
 
+    public function getXlsQueryProperty(){
+        return Pedido::query()
+            ->join('entidades','pedidos.entidad_id','=','entidades.id')
+            ->join('solicitantes','pedidos.solicitante_id','=','solicitantes.id')
+            ->join('ubicaciones','pedidos.ubicacion_id','=','ubicaciones.id')
+            ->select('pedidos.pedido','entidades.entidad','solicitantes.nombre as solicitante',
+                'pedidos.fechapedido','pedidos.fecharecepcionprevista','pedidos.fecharecepcion',
+                'ubicaciones.nombre as almacen','pedidos.estado','pedidos.observaciones','pedidos.total',
+                )
+            ->when($this->entidad->id!='', function ($query){
+                $query->where('entidad_id',$this->entidad->id);
+                })
+            ->when($this->filtroclipro!='', function ($query){
+                $query->where('entidad_id',$this->filtroclipro);
+                })
+            ->searchYear('fechapedido',$this->filtroanyo)
+            ->searchMes('fechapedido',$this->filtromes)
+            ->search('entidades.entidad',$this->search)
+            ->orSearch('pedidos.pedido',$this->search)
+            ->orderBy('pedidos.fechapedido','desc')
+            ->orderBy('pedidos.id','desc');
+            // ->paginate(5); solo contemplo la query, no el resultado. Luego pongo el resultado: get, paginate o lo que quiera
+    }
+
     public function getRowsProperty(){
         return $this->rowsQuery->paginate(10);
     }
@@ -92,11 +119,22 @@ class Pedidos extends Component
 
     public function exportSelected(){
         //toCsv es una macro a n AppServiceProvider
+
         return response()->streamDownload(function(){
             echo $this->selectedRowsQuery->toCsv();
         },'pedidos.csv');
 
         $this->dispatchBrowserEvent('notify', 'CSV Pedidos descargado!');
+    }
+
+    public function exportPedidosSelectedXLS()
+    {
+        $seleccion=$this->selectedXlsQuery->get();
+        // dd($seleccion);
+        return Excel::download(new PedidoExport(
+           $seleccion
+        ), 'pedidos.xlsx');
+
     }
 
     public function deleteSelected(){

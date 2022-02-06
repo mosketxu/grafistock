@@ -18,13 +18,19 @@ class Pedido extends Model
     protected $dates = ['deleted_at'];
 
 
-    protected $fillable=['pedido','solicitante_id','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','ubicacion_id','iva','ruta','fichero','observaciones'];
+    protected $fillable=['pedido','solicitante_id','entidad_id','fechapedido','fecharecepcionprevista','fecharecepcion','ubicacion_id','iva','ruta','fichero','estado','total','observaciones'];
 
     // protected $casts = [
     //     'fechapedido' => 'date:Y-m-d',
     //     'fecharecepcionprevista' => 'date:Y-m-d',
     //     'fecharecepcion' => 'date:Y-m-d',
     // ];
+
+    public function recalculo()
+    {
+        $this->total=$this->pedidodetalles->sum('total');
+        $this->save();
+    }
 
     public function getFechapedAttribute()
     {
@@ -42,6 +48,15 @@ class Pedido extends Model
     public function getFecharecepAttribute()
     {
         return Carbon::parse($this->fecharecepcion)->format('d-m-Y');
+    }
+
+    public function getStatusColorAttribute()
+    {
+        return [
+            '0'=>['gray','En curso'],
+            '1'=>['green','Recibido'],
+            '2'=>['red','Anulado']
+        ][$this->estado] ?? ['gray',''];
     }
 
     public function pedidodetalles()

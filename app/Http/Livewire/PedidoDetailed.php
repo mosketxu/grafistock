@@ -49,6 +49,8 @@ class PedidoDetailed extends Component
             'cantidad'=>'numeric',
         ])->validate();
         $detalle->update(['cantidad'=>$cantidad]);
+        $detalle->update(['total'=>$cantidad * $detalle->coste]);
+        $detalle->pedido->recalculo();
         $this->dispatchBrowserEvent('notify', 'Cantidad Actualizada.');
     }
 
@@ -58,6 +60,8 @@ class PedidoDetailed extends Component
             'coste'=>'numeric',
         ])->validate();
         $detalle->update(['coste'=>$coste]);
+        $detalle->update(['total'=>$coste * $detalle->cantidad]);
+        $detalle->pedido->recalculo();
         $this->dispatchBrowserEvent('notify', 'Coste Actualizado.');
     }
 

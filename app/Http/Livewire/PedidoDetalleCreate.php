@@ -86,14 +86,17 @@ class PedidoDetalleCreate extends Component
     {
         $this->validate();
 
-        PedidoDetalle::create([
+        $p=PedidoDetalle::create([
             'pedido_id'=>$this->pedidoId,
             'orden'=>$this->orden,
             'producto_id'=>$this->productoId,
             'cantidad'=>$this->cantidad,
             'coste'=>$this->coste,
+            'total'=>$this->coste * $this->cantidad,
             'udcompra_id'=>$this->udcompraId
         ]);
+        $p->pedido->recalculo();
+
 
         $this->dispatchBrowserEvent('notify', 'Detalle añadido con éxito');
 

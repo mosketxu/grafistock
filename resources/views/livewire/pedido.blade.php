@@ -3,19 +3,26 @@
 
     <div class="p-1 mx-2 ">
         <div class="flex flex-row">
-            <div class="w-6/12 space-x-2">
-                {{-- <div class="flex flex-row"> --}}
-                    {{-- <div> --}}
-                        <h1 class="mx-2 text-2xl font-semibold text-gray-900"> {{ $pedido->pedido ? 'Pedido: ' : 'Nuevo Pedido' }} <input  wire:model.lazy="pedido.pedido" type="text" class="text-2xl font-semibold text-gray-900 border-transparent "/></h1>
-                    {{-- </div> --}}
-                    {{-- <div class="text-left">
-                        @if($pedido->id)
-                        <a href="{{ route('pedido.show',$pedido) }}" target="_blank" class="w-6 h-6 ml-2" title="Imprimir Pedido"><x-icon.printer></x-icon.printer></a>
-                        @endif
-                    </div> --}}
-                {{-- </div> --}}
+            <div class="w-9/12 space-x-2 flex flex-row">
+                <div class="">
+                    <h1 class="mx-2 text-2xl font-semibold text-gray-900"> {{ $pedido->pedido ? 'Pedido: ' : 'Nuevo Pedido' }} <input  wire:model.lazy="pedido.pedido" type="text" class="text-2xl font-semibold text-gray-900 border-transparent "/></h1>
+                </div>
+                <div class="flex flex-row mt-1">
+                    <div class="">
+                        <label class="block  mt-1 pr-2 font-medium text-gray-700">
+                            {{ __('Estado ') }}
+                        </label>
+                    </div>
+                    <div class="">
+                        <x-select wire:model="pedido.estado" selectname="estado" class="w-full" autofocus required >
+                            <option value="0">En curso</option>
+                            <option value="1">Recibido</option>
+                            <option value="2">Anulado</option>
+                        </x-select>
+                    </div>
+                </div>
             </div>
-            <div class="w-6/12 mr-4 text-right">
+            <div class="w-3/12 mr-4 text-right">
                 <div class="flex flex-row-reverse">
                     <x-button.button  onclick="location.href = '{{ route('pedido.create') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo') }}</x-button.button>
                     @if($pedido->id)
@@ -69,27 +76,34 @@
                             <div class="w-full form-item lg:w-2/12">
                                 <label class="block text-sm font-medium text-gray-700">
                                     {{ __('Solicitante') }}
-                                    @if($pedido->solicitante_id!='')
-                                    <x-icon.filter-slash-a wire:click="$set('pedido.solicitante_id', '')" class="pb-1" title="reset"/>
-                                        @endif
-                                    </label>
+                                </label>
+                                <div class="flex">
                                     <x-select wire:model="pedido.solicitante_id" selectname="solicitante_id" class="w-full" autofocus required >
                                         <option value="">-- choose --</option>
                                         @foreach ($solicitantes as $solicitante)
                                         <option value="{{ $solicitante->id }}">{{ $solicitante->nombre }}</option>
                                         @endforeach
                                     </x-select>
+                                    @if($pedido->solicitante_id!='')
+                                        <x-icon.filter-slash-a wire:click="$set('pedido.solicitante_id', '')" class="pb-1" title="reset"/>
+                                    @endif
+                                    </div>
                                 </div>
                                 <div class="w-full form-item lg:w-3/12">
                                 <label class="block text-sm font-medium text-gray-700">
                                     {{ __('Proveedor') }}
                                 </label>
-                                <x-select wire:model="pedido.entidad_id" selectname="entidad_id" class="w-full" required >
-                                    <option value="">-- choose --</option>
-                                    @foreach ($entidades as $entidad)
+                                <div class="flex">
+                                    <x-select wire:model="pedido.entidad_id" selectname="entidad_id" class="w-full" required >
+                                        <option value="">-- choose --</option>
+                                        @foreach ($entidades as $entidad)
                                         <option value="{{ $entidad->id }}">{{ $entidad->entidad }}</option>
-                                    @endforeach
-                                </x-select>
+                                        @endforeach
+                                    </x-select>
+                                    @if($pedido->entidad_id!='')
+                                    <x-icon.filter-slash-a wire:click="$set('pedido.entidad_id', '')" class="pb-1" title="reset"/>
+                                @endif
+                                </div>
                             </div>
                             <div class="w-full form-item lg:w-2/12">
                                 <x-jet-label for="fechapedido">{{ __('F.Pedido') }}</x-jet-label>
@@ -106,16 +120,18 @@
                             <div class="w-full form-item lg:w-2/12">
                                 <label class="block text-sm font-medium text-gray-700">
                                     {{ __('Almacén') }}
-                                    @if($pedido->ubicacion_id!='')
-                                    <x-icon.filter-slash-a wire:click="$set('pedido.ubicacione_id', '')" class="pb-1" title="reset"/>
-                                    @endif
                                 </label>
-                                <x-select wire:model="pedido.ubicacion_id" selectname="ubicacion_id" class="w-full" >
-                                    <option value="">-- choose --</option>
-                                    @foreach ($ubicaciones as $ubicacion)
-                                    <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</option>
-                                    @endforeach
-                                </x-select>
+                                <div class="flex">
+                                    <x-select wire:model="pedido.ubicacion_id" selectname="ubicacion_id" class="w-full" >
+                                        <option value="">-- choose --</option>
+                                        @foreach ($ubicaciones as $ubicacion)
+                                        <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</option>
+                                        @endforeach
+                                    </x-select>
+                                    @if($pedido->ubicacion_id!='')
+                                        <x-icon.filter-slash-a wire:click="$set('pedido.ubicacione_id', '')" class="pb-1" title="reset"/>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="flex flex-col justify-between ml-3 space-x-3 md:flex-row">

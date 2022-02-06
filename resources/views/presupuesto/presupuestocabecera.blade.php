@@ -19,7 +19,7 @@
                 </div>
                 <div class="w-full form-item sm:w-1/12">
                     <label class="block text-center text-gray-700">{{ __('F.Presupuesto') }}</label>
-                    <input type="text" value="{{ $presupuesto->fechapresu }}"
+                    <input type="date" value="{{ $presupuesto->fechapresu }}"
                         class="w-full text-xs tracking-tighter text-center border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                         disabled/>
                 </div>

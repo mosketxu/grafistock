@@ -53,8 +53,10 @@
                         @endif
                     </td>
                     <td>
-                        <div class="text-center">
-                            <x-icon.delete-a wire:click.prevent="delete({{ $detalle->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar detalle"/>
+                        <div class="flex items-center justify-center">
+                            <x-icon.delete-a wire:click.prevent="delete({{ $detalle->id }})"
+                                onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()"
+                                class="pl-1 " title="Borrar" />
                         </div>
                     </td>
                 </tr>

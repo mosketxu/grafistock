@@ -1,7 +1,7 @@
     <div class="">
     @livewire('menu',['entidad'=>$entidad],key($entidad->id))
     <div class="p-1 mx-2">
-        <h1 class="text-2xl font-semibold text-gray-900">Pedido {{ $entidad->id? 'de '. $entidad->entidad  :'' }} </h1>
+        <h1 class="text-2xl font-semibold text-gray-900">Pedidos {{ $entidad->id? 'de '. $entidad->entidad  :'' }} </h1>
 
         <div class="py-1 space-y-4">
             @if (session()->has('message'))
@@ -80,7 +80,10 @@
                             <x-dropdown.item type="button" wire:click="mailSelected" class="flex items-center space-x-2">
                                 <x-icon.arroba class="text-gray-400"></x-icon.arroba> <span>Enviar Mail </span>
                             </x-dropdown.item> --}}
-                            <x-dropdown.item type="button" wire:click="exportSelected" class="flex items-center space-x-2">
+                            {{-- <x-dropdown.item type="button" wire:click="exportSelected" class="flex items-center space-x-2">
+                                <x-icon.csv class="text-green-400"></x-icon.csv><span>Export </span>
+                            </x-dropdown.item> --}}
+                            <x-dropdown.item type="button" wire:click="exportPedidosSelectedXLS" class="flex items-center space-x-2">
                                 <x-icon.csv class="text-green-400"></x-icon.csv><span>Export </span>
                             </x-dropdown.item>
                             {{-- <x-dropdown.item type="button" onclick="confirm('¿Estas seguro?') || event.stopImmediatePropagation()" wire:click="deleteSelected" class="flex items-center space-x-2"> --}}
@@ -110,6 +113,7 @@
                             <th class="pl-4 font-medium text-left">{{ __('F.Recep.Prev.') }}</th>
                             <th class="pl-4 font-medium text-left">{{ __('F.Recep.') }}</th>
                             <th class="pr-4 font-medium text-right">{{ __('Total (€)') }}</th>
+                            <th class="font-medium text-center pr-3">{{ __('Estado') }}</th>
                             <th colspan="2"></th>
                         </tr>
                     </thead>
@@ -153,11 +157,15 @@
                                 <td>
                                     <input type="text" value="{{ $pedido->fecharecepcion ? $pedido->fecharecep : '-' }}" class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </td>
-
                                 <td class="text-right">
                                     <span class="pr-4 text-xs text-blue-500">{{ number_format(round($pedido->pedidodetalles->sum('base'),2),2)}}</span>
                                 </td>
-
+                                <td>
+                                    <span
+                                    class="inline-flex items-center text-center  px-2 rounded-full text-xs leading-4 bg-{{ $pedido->status_color[0] }}-100 text-green-800">
+                                    {{ $pedido->status_color[1] }}
+                                </span>
+                                </td>
                                 <td class="">
                                     <div class="flex items-center justify-center">
                                         <x-icon.edit-a href="{{ route('pedido.edit',$pedido) }}" class="text-green-600" title="Editar Pedido"/>

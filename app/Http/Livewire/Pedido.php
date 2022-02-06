@@ -37,6 +37,7 @@ class Pedido extends Component
             'pedido.fecharecepcion'=>'date|nullable',
             'pedido.ubicacion_id'=>'nullable',
             'pedido.ruta'=>'nullable',
+            'pedido.estado'=>'required',
             'pedido.fichero'=>'nullable',
             'pedido.observaciones'=>'nullable',
         ];
@@ -110,11 +111,9 @@ class Pedido extends Component
             $i=$this->pedido->id;
             $mensaje="Pedido creado satisfactoriamente";
         }
-
-
         $pedido=ModelsPedido::updateOrCreate(
             [
-            'id'=>$this->pedido->id
+                'id'=>$this->pedido->id
             ],
             [
                 'pedido'=>$this->pedido->pedido,
@@ -126,11 +125,11 @@ class Pedido extends Component
                 'ubicacion_id'=>$this->pedido->ubicacion_id,
                 'metodopago_id'=>$this->pedido->metodopago_id,
                 'ruta'=>$this->pedido->ruta,
+                'estado'=>$this->pedido->estado,
                 'fichero'=>$this->pedido->fichero,
                 'observaciones'=>$this->pedido->observaciones,
-            ]
-        );
-
+                ]
+            );
         $this->pedido->id=$pedido->id;
         $this->showcrear=1;
         $this->emit('pedidoupdate');
