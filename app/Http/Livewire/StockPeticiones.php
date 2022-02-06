@@ -46,7 +46,7 @@ class StockPeticiones extends Component
         $stockpeticion = StockPeticion::find($stockpeticionId);
         if ($stockpeticion) {
             $stockpeticion->delete();
-            $this->dispatchBrowserEvent('notify', 'La petición: '.$pedido->id.'-'.$pedido->pedido.' ha sido eliminada!');
+            $this->dispatchBrowserEvent('notify', 'La petición  ha sido eliminada!');
         }
     }
 

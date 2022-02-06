@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\{Entidad};
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
@@ -51,6 +52,7 @@ class StockBalanceExport implements FromCollection,WithHeadings
             'Descripción',
             '€ Compra',
             'Cantidad Stock',
+            '€ Total',
         ];
     }
 
@@ -73,43 +75,12 @@ class StockBalanceExport implements FromCollection,WithHeadings
             'producto_acabados.nombre as acabado',
             'productos.referencia',
             'productos.descripcion',
-            'productos.preciocompra'
+            'productos.preciocompra as precio',
             )
         ->selectRaw('sum(stock_movimientos.cantidad) as balance')
+        ->selectRaw('sum(stock_movimientos.cantidad * productos.preciocompra) as total')
         ->groupBy($this->tipo)
         ->get();
-        // $exportacion=Entidad::join('productos','entidades.id','productos.entidad_id')
-        // ->join('stock_movimientos','productos.id','stock_movimientos.producto_id')
-        // ->join('producto_materiales','productos.material_id','producto_materiales.id')
-        // ->join('producto_familias','productos.familia_id','producto_familias.id')
-        // ->join('producto_acabados','productos.acabado_id','producto_acabados.id')
-        // ->select('entidades.entidad','entidades.cuentactblepro','entidades.cuentactblecli','producto_materiales.nombre as material','producto_acabados.nombre as acabado','productos.referencia','productos.descripcion','productos.preciocompra')
-        // ->selectRaw('sum(stock_movimientos.cantidad) as balance')
-        // ->where('stock_movimientos.tipomovimiento','<>','R')
-        // ->searchYear('fechamovimiento',$this->filtroanyo)
-        // ->searchMes('fechamovimiento',$this->filtromes)
-        // ->when($this->filtroproducto!='', function ($query){
-        //     $query->where('producto_id',$this->filtroproducto);
-        // })
-        // ->when($this->filtrodescripcion!='', function ($query){
-        //     $query->where('descripcion','LIKE','%'.$this->filtrodescripcion.'%');
-        // })
-        // ->when($this->filtromaterial!='', function ($query){
-        //     $query->where('material_id',$this->filtromaterial);
-        // })
-        // ->when($this->filtrofamilia!='', function ($query){
-        //     $query->where('familia_id',$this->filtrofamilia);
-        // })
-        // ->when($this->filtroacabado!='', function ($query){
-        //     $query->where('acabado_id',$this->filtroacabado);
-        // })
-        // ->when($this->filtroclipro!='', function ($query){
-        //     $query->where('entidad_id',$this->filtroclipro);
-        // })
-        // ->searchYear('fechamovimiento',$this->filtroanyo)
-        // ->searchMes('fechamovimiento',$this->filtromes)
-        // ->groupBy($this->tipo)
-        // ->get();
 
         return $exportacion;
     }

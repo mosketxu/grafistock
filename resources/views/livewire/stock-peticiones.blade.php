@@ -30,7 +30,7 @@
                                 @if($filtropeticion!='')
                                     <x-icon.filter-slash-a wire:click="$set('filtropeticion', '')" class="pb-1" title="reset filter"/>
                                 @endif
-                           </div>
+                            </div>
                         </div>
                         <div class="text-xs">
                             <label class="px-1 text-gray-600">
@@ -46,7 +46,7 @@
                                 @if($filtrosolicitante!='')
                                     <x-icon.filter-slash-a wire:click="$set('filtrosolicitante', '')" class="pb-1" title="reset filter"/>
                                 @endif
-                           </div>
+                            </div>
                         </div>
                         <div class="text-xs">
                             <label class="px-1 text-gray-600">
@@ -68,7 +68,7 @@
                                 @if($filtromes!='')
                                     <x-icon.filter-slash-a wire:click="$set('filtromes', '')" class="pb-1" title="reset filter"/>
                                 @endif
-                           </div>
+                            </div>
                         </div>
                         <div class="text-xs">
                             <label class="px-1 text-gray-600">

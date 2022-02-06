@@ -213,12 +213,14 @@
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="ficheropdf">{{ __('Ficha producto') }}
+                            </x-jet-label>
+                            <div class="flex">
+                                <input type="file" wire:model="ficheropdf">
                                 @if($producto->fichaproducto)
                                     <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
                                 @endif
-                            </x-jet-label>
-                            <input type="file" wire:model="ficheropdf">
-                            @error('ficheropdf') <p class="text-red-500">{{ $message }}</p> @enderror
+                                @error('ficheropdf') <p class="text-red-500">{{ $message }}</p> @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
