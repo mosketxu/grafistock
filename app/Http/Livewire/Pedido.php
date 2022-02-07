@@ -77,8 +77,8 @@ class Pedido extends Component
 
     public function numpedido()
     {
-        $anyo= substr($this->pedido->fechapedido->format('Y'), -4);
-        $anyo2= substr($this->pedido->fechapedido->format('Y'), -2);
+        $anyo= substr($this->pedido->fechapedido, 0,4);
+        $anyo2= substr($anyo, -2);
 
         if (!$this->pedido->pedido){
             $ped=ModelsPedido::whereYear('fechapedido', $anyo)->max('pedido') ;
@@ -93,6 +93,7 @@ class Pedido extends Component
             $this->pedido->fecharecepcion=null;
         if($this->pedido->fecharecepcionprevista=='0000-00-00'  || $this->pedido->fecharecepcionprevista=='')
             $this->pedido->fecharecepcionprevista=null;
+        if(!$this->pedido->estado) $this->pedido->estado=1;
 
         $this->validate();
 
