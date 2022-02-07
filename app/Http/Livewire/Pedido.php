@@ -93,27 +93,28 @@ class Pedido extends Component
             $this->pedido->fecharecepcion=null;
         if($this->pedido->fecharecepcionprevista=='0000-00-00'  || $this->pedido->fecharecepcionprevista=='')
             $this->pedido->fecharecepcionprevista=null;
-        if(!$this->pedido->estado) $this->pedido->estado=1;
 
-        $this->validate();
+            if(!$this->pedido->estado) $this->pedido->estado=0;
 
-        $this->message='';
-        if ($this->pedido->id) {
-            $this->nuevo="No";
-            $i=$this->pedido->id;
-            $this->validate([
-                'pedido.pedido'=>['required',Rule::unique('pedidos','pedido')->ignore($this->pedido->id)]
-            ]);
+            $this->validate();
 
-            $mensaje="Pedido actualizado satisfactoriamente";
-        } else {
-            $this->nuevo="Sí";
-            $this->numpedido();
-            $i=$this->pedido->id;
-            $mensaje="Pedido creado satisfactoriamente";
-        }
-        $pedido=ModelsPedido::updateOrCreate(
-            [
+            $this->message='';
+            if ($this->pedido->id) {
+                $this->nuevo="No";
+                $i=$this->pedido->id;
+                $this->validate([
+                    'pedido.pedido'=>['required',Rule::unique('pedidos','pedido')->ignore($this->pedido->id)]
+                ]);
+
+                $mensaje="Pedido actualizado satisfactoriamente";
+            } else {
+                $this->nuevo="Sí";
+                $this->numpedido();
+                $i=$this->pedido->id;
+                $mensaje="Pedido creado satisfactoriamente";
+            }
+            $pedido=ModelsPedido::updateOrCreate(
+                [
                 'id'=>$this->pedido->id
             ],
             [
@@ -131,6 +132,7 @@ class Pedido extends Component
                 'observaciones'=>$this->pedido->observaciones,
                 ]
             );
+
         $this->pedido->id=$pedido->id;
         $this->showcrear=1;
         $this->emit('pedidoupdate');
