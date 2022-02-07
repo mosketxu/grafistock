@@ -83,7 +83,7 @@
                 <tr style="background-color: #fdf9f9; ">
                     <td style="padding-left:3px;" width="33%">{{ $pedido->solicitante->nombre }}</td>
                     <td style="text-align:center" width="33%">{{ $pedido->pedido }}</td>
-                    <td style="padding-righ:3px;text-align:right" width="33%">{{ $pedido->fechapedido }}</td>
+                    <td style="padding-righ:3px;text-align:right" width="33%">{{ $pedido->fechaped }}</td>
                 </tr>
             </table>
 
@@ -153,7 +153,7 @@
                     <td style="padding-left:3px;" width="20%">Zona Entrega</td>
                 </tr>
                 <tr style="background-color: #fdf9f9; ">
-                    <td style="padding-left:3px;" >{{ $pedido->fecharecepcionprevista ? $pedido->fecharecepcionprevista : '-' }}</td>
+                    <td style="padding-left:3px;" >{{ $pedido->fecharecepcionprevista ? $pedido->fecharecepprev : '-' }}</td>
                     <td style="padding-left:3px;" >Grafitex - Av/ Ferrocarrils Catalans, 103-107 08038 Barcelona</td>
                     <td style="padding-left:3px;" >{{ $pedido->ubicacion->nombre ?? '-' }}</td>
                 </tr>
