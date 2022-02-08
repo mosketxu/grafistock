@@ -1,19 +1,6 @@
 <div class="">
     @livewire('menu')
     <div class="">
-        {{-- @include('presupuestolinea.presupuestocabecera') --}}
-        {{-- <div class="items-center">
-                        <div class="py-0 my-0">
-                            <p class="text-xl font-semibold text-gray-900">Presupuesto: <span class="font-light"> {{ $presuplinea->presupuesto->presupuesto ?? '-'}} </span></p>
-                        </div>
-                        <div class="">
-                            <p class="text-xl font-semibold text-gray-900">Cliente: <span class="font-light">{{ $presuplinea->presupuesto->entidad->entidad ?? '-' }} </span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
         <div class="items-center">
             <div class="flex mx-6 space-x-4 align-baseline">
                 <div class="">
@@ -37,8 +24,13 @@
                 <div class="mx-2 mt-2">
                     {{-- Filtro para facilitar la elección de los producto --}}
                     @if($acciontipo->id==1)
-                        <div class="flex px-2 space-x-2 bg-blue-100 rounded">
-                            <div class="w-full mb-2">
+                        {{-- <div class="flex px-2 space-x-2 bg-blue-100 rounded"> --}}
+                            <div class="bg-blue-100 rounded">
+                                <div class="px-2">Filtros de producto</div>
+                                <div class="flex w-full p-2 space-x-2 ">
+                                    @include('producto.productofilters')
+                                </div>
+                            {{-- <div class="w-full mb-2">
                                 <label class="px-1 text-sm text-gray-600">Filtro Familia</label>
                                 <div class="flex">
                                     <x-select wire:model.lazy="filtrofamilia" selectname="filtrofamilia"
@@ -62,7 +54,7 @@
                                         <x-icon.filter-slash-a wire:click.lazy="$set('filtrodescripcion', '')" class="pb-1" title="reset filter"/>
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     @endif
                     {{-- fin --}}

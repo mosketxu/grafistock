@@ -4,11 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Entidad;
 use App\Models\Producto;
-use App\Models\ProductoAcabado;
-use App\Models\ProductoFamilia;
-use App\Models\ProductoGrupoproduccion;
-use App\Models\ProductoMaterial;
-use App\Models\ProductoTipo;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithPagination;
 
