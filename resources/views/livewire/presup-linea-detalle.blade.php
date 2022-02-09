@@ -22,39 +22,13 @@
             @include('presupuestolinea.presupuestolineacabecera')
             <form>
                 <div class="mx-2 mt-2">
-                    {{-- Filtro para facilitar la elección de los producto --}}
                     @if($acciontipo->id==1)
-                        {{-- <div class="flex px-2 space-x-2 bg-blue-100 rounded"> --}}
-                            <div class="bg-blue-100 rounded">
-                                <div class="px-2">Filtros de producto</div>
+                        <div class="bg-blue-100 rounded">
+                            <div class="px-2">Filtros de producto</div>
                                 <div class="flex w-full p-2 space-x-2 ">
                                     @include('producto.productofilters')
                                 </div>
-                            {{-- <div class="w-full mb-2">
-                                <label class="px-1 text-sm text-gray-600">Filtro Familia</label>
-                                <div class="flex">
-                                    <x-select wire:model.lazy="filtrofamilia" selectname="filtrofamilia"
-                                        class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                        <option value="">-- choose --</option>
-                                        @foreach ($familias as $familia)
-                                            <option value="{{ $familia->id }}">{{ $familia->nombre }}</option>
-                                        @endforeach
-                                    </x-select>
-                                    @if($filtrofamilia!='')
-                                        <x-icon.filter-slash-a wire:click="$set('filtrofamilia', '')" class="pb-1" title="reset filter"/>
-                                    @endif
-                                </div>
                             </div>
-                            <div class="w-full mb-2">
-                                <label for="filtrodescripcion" class="px-1 text-sm text-gray-600">Filtro Referencia/Descripción:</label>
-                                <div class="flex">
-                                    <input wire:model="filtrodescripcion" type="text"
-                                        class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                    @if($filtrodescripcion!='')
-                                        <x-icon.filter-slash-a wire:click.lazy="$set('filtrodescripcion', '')" class="pb-1" title="reset filter"/>
-                                    @endif
-                                </div>
-                            </div> --}}
                         </div>
                     @endif
                     {{-- fin --}}

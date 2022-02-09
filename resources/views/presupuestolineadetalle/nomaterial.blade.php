@@ -14,9 +14,10 @@
     @endif
     <div class="w-full mb-2">
         <label for="preciocoste_ud" class="px-1 text-sm text-gray-600">€ Compra Ud:</label>
-        <input type="number" id="preciocoste_ud" wire:model.defer="preciocoste_ud"
+        <input type="number" id="preciocoste_ud" wire:model.lazy="preciocoste_ud"
             class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 {{ $colorfondoCoste }} border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
             {{ $deshabilitadoPCoste }}>
+            <p>{{ $deshabilitadoPCoste }}</p>
         @error('preciocoste_ud') <span class="text-red-500">{{ $message }}</span>@enderror
     </div>
     <div class="w-full mb-2">

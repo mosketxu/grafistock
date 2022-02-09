@@ -9,73 +9,32 @@ use Livewire\Component;
 
 class PresupLineaDetalle extends Component
 {
-    public $search='';
-    public $filtrofamilia='';
-    public $filtrotipo='';
-    public $filtromaterial='';
-    public $filtroclipro='';
-    public $filtroacabado='';
-    // public $filtrogrupoprod='';
-    public $filtrodescripcion='';
+    // Vbles filtros
+    public $search='';public $filtrofamilia='';public $filtrotipo='';public $filtromaterial='';public $filtroclipro='';public $filtroacabado='';public $filtrodescripcion='';
 
-
-    public $message;
-    public $showEdit=true;
-    public $acciontipoId;
-    public $presuplinea;
-    public $presupuestolinea_id;
-    public $presupuestolinea;
-    public $presupuestolineadetalleId='';
-    public $accionproducto;
-    public $showAnchoAlto=false;
-    public $showMinutos=false;
-    public $controlpartidas;
-    public $deshabilitadoPVenta='';
-    public $deshabilitadoPCoste='disabled';
-    public $colorfondoCoste='';
-    public $colorfondoVenta='';
-    public $descrip='';
+    // Vbles apoyo
+    public $message;public $showEdit=true;public $acciontipoId;public $presuplinea;public $presupuestolinea_id;public $presupuestolinea;public $presupuestolineadetalleId='';
+    public $accionproducto;public $showAnchoAlto=false;public $showMinutos=false;public $controlpartidas;public $deshabilitadoPVenta='';public $deshabilitadoPCoste='disabled';
+    public $colorfondoCoste='';public $colorfondoVenta='';public $descrip='';
 
     public AccionTipo $acciontipo;
-
     public $empresaTipo;
 
-    public $visible=true;
-    public $orden=1;
-    public $pldetalleId='';
-    public $descripcion;
-    public $proveedor_id;
-    public $preciocoste_ud=0;
-    public $preciocoste=0;
-    public $precioventa_ud=0;
-    public $preciominimo=0;
-    public $udpreciocoste_id;
-    public $unidadventa='';
-    public $factor=1;
-    public $factormin=1;
-    public $merma=0;
-    public $ancho=1;
-    public $alto=1;
-    public $unidades=1;
-    public $minutos=1;
-    public $accionproducto_id;
-    public $observaciones;
+    // vbles modelo
+    public $visible=true;public $orden=1;public $pldetalleId='';public $descripcion;public $proveedor_id;
+    public $preciocoste_ud=0;public $preciocoste=0;public $udpreciocoste_id;
+    public $precioventa_ud=0;public $preciominimo=0;public $unidadventa='';
+    public $factor=1;public $factormin=1;public $merma=0;
+    public $ancho=1;public $alto=1;
+    public $unidades=1;public $minutos=1;
+    public $accionproducto_id;public $observaciones;
 
     protected $rules = [
-        'visible'=>'',
-        'orden'=>'nullable|numeric',
-        'proveedor_id'=>'nullable|numeric',
-        'preciocoste_ud'=>'numeric',
-        'precioventa_ud'=>'numeric',
-        // 'precioventa'=>'numeric',
-        // 'udpreciocoste_id'=>'numeric',
-        'ancho'=>'numeric',
-        'alto'=>'numeric',
-        // 'metros2'=>'nullable|numeric',
-        'factor'=>'numeric',
-        'merma'=>'numeric',
-        'unidades'=>'numeric',
-        'minutos'=>'numeric',
+        'visible'=>'','orden'=>'nullable|numeric','proveedor_id'=>'nullable|numeric',
+        'preciocoste_ud'=>'numeric','precioventa_ud'=>'numeric',
+        'ancho'=>'numeric','alto'=>'numeric',
+        'factor'=>'numeric','merma'=>'numeric',
+        'unidades'=>'numeric','minutos'=>'numeric',
         'accionproducto_id'=>'required',
     ];
 
@@ -96,35 +55,19 @@ class PresupLineaDetalle extends Component
 
     public function render()
     {
-        $proveedores='';
-        $materiales='';
-        $acabados='';
-        $tipos='';
-
+        $proveedores='';$materiales='';$acabados='';$tipos='';
         $familias=ProductoFamilia::where('id','<>','16')->orderBy('nombre')->get();
         if($this->acciontipo->nombrecorto=='EXT'){
             $proveedores=Entidad::whereIn('entidadtipo_id', ['2', '3'])->where('presupuesto',true)->orderBy('entidad')->get();
         }
 
-
         $presupacciones=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presuplinea->id)->where('acciontipo_id',$this->acciontipoId)->orderBy('orden')->get();
-
         $this->tituloaccion=$this->acciontipo->nombre;
 
         if($this->acciontipo->nombrecorto!='MAT' && $this->acciontipo->nombrecorto!='EMB')
             $acciones=Accion::where('acciontipo_id',$this->acciontipoId)->orderBy('descripcion')->get();
         else{
             if($this->acciontipo->nombrecorto=='MAT'){
-                // $acciones=Producto::query()
-                //     ->search('referencia',$this->filtrodescripcion)
-                //     ->orSearch('descripcion',$this->filtrodescripcion)
-                //     ->when($this->filtrofamilia!='', function ($query){
-                //         $query->where('familia_id',$this->filtrofamilia);
-                //     })
-                //     ->where('descripcion','<>',' Genérico')
-                //     ->orderBy('descripcion','asc')
-                //     ->get();
-
                 $proveedores=Entidad::orderBy('entidad')->has('productos')->get();
                 $materiales= Producto::query()
                     ->join('producto_materiales','producto_materiales.id','=','productos.material_id')
@@ -206,30 +149,37 @@ class PresupLineaDetalle extends Component
 
     public function edit(PresupuestoLineaDetalle $presupuestoaccion)
     {
+        $this->presupuestolinea_id=$presupuestoaccion->id;
+        $this->acciontipo_id=$presupuestoaccion->acciontipo_id;
+        $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
+        $this->entidad_id=$presupuestoaccion->entidad_id;
+        $this->orden=$presupuestoaccion->orden;
+        $this->descripcion=$presupuestoaccion->descripcion;
+        $this->preciocoste_ud=$presupuestoaccion->preciocoste_ud;
+        $this->precioventa_ud=$presupuestoaccion->precioventa_ud;
+        $this->udpreciocoste_id=$presupuestoaccion->udpreciocoste_id;
+        $this->factor=$presupuestoaccion->factor;
+        $this->merma=$presupuestoaccion->merma;
+        $this->unidades=$presupuestoaccion->unidades;
+        $this->minutos=$presupuestoaccion->minutos;
+        $this->alto=$presupuestoaccion->alto;
+        $this->ancho=$presupuestoaccion->ancho;
+        $this->preciocoste=$presupuestoaccion->preciocoste;
+        $this->precioventa=$presupuestoaccion->precioventa;
+        $this->observaciones=$presupuestoaccion->observaciones;
 
-            $this->presupuestolinea_id=$presupuestoaccion->id;
-            $this->acciontipo_id=$presupuestoaccion->acciontipo_id;
-            $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
-            $this->entidad_id=$presupuestoaccion->entidad_id;
-            $this->orden=$presupuestoaccion->orden;
-            $this->descripcion=$presupuestoaccion->descripcion;
-            $this->preciocoste_ud=$presupuestoaccion->preciocoste_ud;
-            $this->precioventa_ud=$presupuestoaccion->precioventa_ud;
-            $this->udpreciocoste_id=$presupuestoaccion->udpreciocoste_id;
-            $this->factor=$presupuestoaccion->factor;
-            $this->merma=$presupuestoaccion->merma;
-            $this->unidades=$presupuestoaccion->unidades;
-            $this->minutos=$presupuestoaccion->minutos;
-            $this->alto=$presupuestoaccion->alto;
-            $this->ancho=$presupuestoaccion->ancho;
-            $this->preciocoste=$presupuestoaccion->preciocoste;
-            $this->precioventa=$presupuestoaccion->precioventa;
-            $this->observaciones=$presupuestoaccion->observaciones;
+        $ud=$presupuestoaccion->unidadpreciocoste->nombrecorto ?? '';
+        $this->showAnchoAlto= $ud=='e_m2' ? true : false;
+        $this->showMinutos= $ud=='e_min' ? true : false;
 
-            $ud=$presupuestoaccion->unidadpreciocoste->nombrecorto ?? '';
-            $this->showAnchoAlto= $ud=='e_m2' ? true : false;
-            $this->showMinutos= $ud=='e_min' ? true : false;
-
+        $condiciones=['IMP','ACA','MAN','TRA'];
+        $this->deshabilitadoPCoste='';
+        $this->colorfondoPCoste='';
+        $this->acciontipo=AccionTipo::find($this->acciontipo_id);
+        if(in_array($this->acciontipo->nombrecorto, $condiciones)){
+            $this->deshabilitadoPCoste='disabled';
+            $this->colorfondoPCoste='bg-gray-100';
+        }
     }
 
     public function UpdatedAccionproductoId()
@@ -244,8 +194,8 @@ class PresupLineaDetalle extends Component
         $this->preciominimo=0;
         $this->udpreciocoste_id='';
         $this->unidadventa='';
-
         if($this->accionproducto_id!=''){
+            // si no es material ni embalaje
             if($this->acciontipo->nombrecorto!='MAT' && $this->acciontipo->nombrecorto!='EMB'){
                 $this->accionproducto=Accion::find($this->accionproducto_id);
                 $this->preciocoste_ud=$this->accionproducto->preciocoste;
@@ -254,16 +204,15 @@ class PresupLineaDetalle extends Component
                 $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
                 $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
                 $this->descrip=$this->accionproducto->descripcion;
-                if($this->descrip==' Genérico'){
+                if($this->descrip==' Genérico' || $this->acciontipo->nombrecorto=='PFM'){
                     $this->deshabilitadoPCoste='';
                     $this->colorfondoCoste='';
                 }
-            }else{
+            }else{ //es material o embalaje
                 $this->accionproducto=Producto::find($this->accionproducto_id);
                 $this->descrip=$this->accionproducto->descripcion;
                 if ($this->descrip!=' Genérico') {
                     $this->preciocoste_ud=$this->accionproducto->preciocoste;
-                    // $this->mermamin=$this->accionproducto->tipo->merma;
                     $this->merma=$this->accionproducto->tipo->merma;
                     $this->factor=$this->empresaTipo->factor ?? '1';
                     $this->factormin=$this->empresaTipo->factormin ?? '1';
@@ -274,7 +223,6 @@ class PresupLineaDetalle extends Component
                     $this->colorfondoPCoste='bg-gray-100';
                 }else{
                     $this->preciocoste_ud='0';
-                    // $this->mermamin='0';
                     $this->merma='0';
                     $this->factor='1';
                     $this->factormin='1';
@@ -285,11 +233,9 @@ class PresupLineaDetalle extends Component
                     $this->colorfondoCoste='';
                 }
             }
-
             $ud=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
             $this->showAnchoAlto= $ud=='e_m2' ? true : false;
             $this->showMinutos= $ud=='e_min' ? true : false;
-
             $this->emit('presuplineadetallerefresh');
         }
 
@@ -326,10 +272,9 @@ class PresupLineaDetalle extends Component
         if(!$this->factor) $this->factor=1;
         $this->validate(['factor'=>'numeric',]);
         if($this->factor<$this->factormin){
-            $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $this->factor=$this->factormin;
         }
-        // $this->precioventa_ud=round($this->preciocoste_ud * $this->factor,2);
+        $this->precioventa_ud=round($this->preciocoste_ud * $this->factor,2);
         $this->calculoPrecioVenta();
     }
 
@@ -337,14 +282,18 @@ class PresupLineaDetalle extends Component
     public function UpdatedMerma(){
         if(!$this->merma) $this->merma=0;
         $this->validate(['merma'=>'numeric']);
-        // if($this->merma<$this->mermamin){
-        //     $this->dispatchBrowserEvent("notify", "La merma es inferior a la mínima. Se asignará la mínima.");
-        //     $this->merma=$this->mermamin ?? '0';
-        // }
         $this->calculoPrecioVenta();
     }
 
     // con el precio de venta tenemos en cuenta el minimo
+    public function UpdatedPreciocosteUd(){
+        if(!$this->preciocoste_ud) $this->preciocoste_ud=0;
+        if($this->preciominimo=='0' || $this->preciocoste_ud<$this->preciominimo)
+            $this->preciominimo=$this->preciocoste_ud;
+        $this->validate(['preciocoste_ud'=>'numeric']);
+        $this->calculoPrecioVenta();
+    }
+
     public function UpdatedPrecioventaUd(){
         if(!$this->precioventa_ud) $this->precioventa_ud=0;
         if($this->preciominimo=='0') $this->preciominimo=$this->preciocoste_ud;
@@ -353,7 +302,6 @@ class PresupLineaDetalle extends Component
             $this->precioventa_ud=$this->preciominimo;
         }
         $this->validate(['precioventa_ud'=>'numeric']);
-
         $this->calculoPrecioVenta();
     }
 
@@ -426,7 +374,11 @@ class PresupLineaDetalle extends Component
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $factor=$this->factormin;
         }
-        $presupaccion->update(['factor'=>$factor]);
+        $presupaccion->update([
+            'factor'=>$factor,
+            'precioventa_ud'=>round($presupaccion->preciocoste_ud * $factor,2)
+        ]);
+
         $this->recalculoPrecioVenta($presupaccion);
         $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
     }
@@ -476,7 +428,6 @@ class PresupLineaDetalle extends Component
                 'ancho'=>$this->ancho,
                 'preciocoste'=>$this->preciocoste,
                 'precioventa'=>$this->precioventa,
-                // 'metros2'=>$this->metros2,
                 'observaciones'=>$this->observaciones,
             ]);
 
@@ -496,28 +447,30 @@ class PresupLineaDetalle extends Component
 
     public function calculoPrecioVenta()
     {
+        // si no es material la merma es 0 así que el cálculo es el mismo.
+        $this->preciocoste=$this->ancho * $this->alto * $this->unidades * $this->minutos * $this->preciocoste_ud  ;
+        $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * ($this->precioventa_ud  + $this->preciocoste_ud*$this->merma);
 
-        if($this->acciontipoId!='1'){
-            $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades * $this->minutos;
-            $this->precioventa=$this->precioventa_ud * $this->ancho * $this->alto * $this->unidades * $this->minutos ;
-        }else{
-            $this->preciocoste=$this->preciocoste_ud * $this->ancho * $this->alto * $this->unidades * $this->minutos ;
-            $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * ($this->precioventa_ud  + $this->preciocoste_ud*$this->merma);
-            // dd($this->precioventa.'='.$this->ancho .'*'. $this->alto .'*'. $this->unidades .'*'. '('.$this->precioventa_ud .'*'. $this->factor   .'+'. $this->preciocoste_ud.'*'.$this->merma.')');
-        }
+        // if($this->acciontipoId!='1'){ // No es material
+        //     $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * $this->precioventa_ud;
+        // }else{ // Es material
+        //     $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * ($this->precioventa_ud  + $this->preciocoste_ud*$this->merma);
+        // }
         $this->preciocoste=round($this->preciocoste,2);
         $this->precioventa=round($this->precioventa,2);
     }
 
     public function recalculoPrecioVenta($presupacciondetalle)
     {
-        if($presupacciondetalle->acciontipo_id!='1'){
-            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
-            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
-        }else{
-            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
-            $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
-        }
+        // si no es material la merma es 0 así que el cálculo es el mismo.
+        $presupacciondetalle->preciocoste= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * $presupacciondetalle->preciocoste_ud  ;
+        $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
+
+        // if($presupacciondetalle->acciontipo_id!='1'){
+        //     $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * $presupacciondetalle->precioventa_ud ;
+        // }else{
+        //     $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
+        // }
         $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();

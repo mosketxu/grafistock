@@ -101,7 +101,10 @@ class PresupLineaDetalles extends Component
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $factor=$factormin ?? '1';
         }
-        $presupaccion->update(['factor'=>$factor,]);
+        $presupaccion->update([
+            'factor'=>$factor,
+            'precioventa_ud'=>round($presupaccion->preciocoste_ud * $factor,2)
+        ]);
         $this->calculoPrecioVenta($presupaccion);
     }
 
@@ -127,16 +130,21 @@ class PresupLineaDetalles extends Component
 
     public function calculoPrecioVenta($presupacciondetalle)
     {
-        if($presupacciondetalle->acciontipo_id!='1'){
-            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
-            $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
-        }else{
-            $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
-            $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud * $presupacciondetalle->merma);
-        }
+        // Si no hay merma el calculo es el mismo pq la merma debe ser 0
+        // if($presupacciondetalle->acciontipo_id!='1'){
+        //     $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
+        //     $presupacciondetalle->precioventa=$presupacciondetalle->precioventa_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
+        // }else{
+        //     $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
+        //     $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud * $presupacciondetalle->merma);
+        // }
+        $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
+        $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud * $presupacciondetalle->merma);
+
         $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();
+
         $this->dispatchBrowserEvent('notify', 'Precio actualizado.');
         $this->save($presupacciondetalle);
     }
