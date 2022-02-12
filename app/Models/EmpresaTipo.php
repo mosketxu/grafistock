@@ -15,5 +15,10 @@ class EmpresaTipo extends Model
         return $this->hasMany(Entidad::class);
     }
 
+    public function presupuestolineadetalle()
+    {
+        return $this->hasMany(PresupuestoLineaDetalle::class);
+    }
+
 
 }

@@ -21,7 +21,7 @@ class PresupLineaDetalle extends Component
     public $empresaTipo;
 
     // vbles modelo
-    public $visible=true;public $orden=1;public $pldetalleId='';public $descripcion;public $proveedor_id;
+    public $visible=true;public $orden=1;public $pldetalleId='';public $descripcion;public $proveedor_id;public $empresatipo_id;
     public $preciocoste_ud=0;public $preciocoste=0;public $udpreciocoste_id;
     public $precioventa_ud=0;public $preciominimo=0;public $unidadventa='';
     public $factor=1;public $factormin=1;public $merma=0;
@@ -43,7 +43,8 @@ class PresupLineaDetalle extends Component
     public function mount(PresupuestoLinea $presupuestolinea)
     {
         $this->presuplinea=$presupuestolinea;
-        $this->empresaTipo=EmpresaTipo::find($presupuestolinea->presupuesto->entidad->empresatipo_id);
+        $this->empresaTipo=$presupuestolinea->presupuesto->entidad->empresatipo;
+        $this->empresatipo_id=$this->empresaTipo->id;
         $this->controlpartidas=$this->presuplinea->presupuesto->presupuestocontrolpartidas;
         $this->acciontipo=AccionTipo::find($this->acciontipoId);
         $condiciones=['IMP','ACA','MAN','TRA'];
@@ -56,6 +57,7 @@ class PresupLineaDetalle extends Component
     public function render()
     {
         $proveedores='';$materiales='';$acabados='';$tipos='';
+        $empresatipos='';
         $familias=ProductoFamilia::where('id','<>','16')->orderBy('nombre')->get();
         if($this->acciontipo->nombrecorto=='EXT'){
             $proveedores=Entidad::whereIn('entidadtipo_id', ['2', '3'])->where('presupuesto',true)->orderBy('entidad')->get();
@@ -64,9 +66,10 @@ class PresupLineaDetalle extends Component
         $presupacciones=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presuplinea->id)->where('acciontipo_id',$this->acciontipoId)->orderBy('orden')->get();
         $this->tituloaccion=$this->acciontipo->nombre;
 
-        if($this->acciontipo->nombrecorto!='MAT' && $this->acciontipo->nombrecorto!='EMB')
+        if($this->acciontipo->nombrecorto!='MAT' && $this->acciontipo->nombrecorto!='EMB'){
             $acciones=Accion::where('acciontipo_id',$this->acciontipoId)->orderBy('descripcion')->get();
-        else{
+            $empresatipos=EmpresaTipo::get();
+        }else{
             if($this->acciontipo->nombrecorto=='MAT'){
                 $proveedores=Entidad::orderBy('entidad')->has('productos')->get();
                 $materiales= Producto::query()
@@ -144,7 +147,7 @@ class PresupLineaDetalle extends Component
 
         $unidadesventa=UnidadCoste::orderBy('nombre')->get();
 
-        return view('livewire.presup-linea-detalle',compact('acciones','presupacciones','familias','proveedores','unidadesventa','tipos','acabados','familias','materiales'));
+        return view('livewire.presup-linea-detalle',compact('acciones','presupacciones','familias','proveedores','unidadesventa','tipos','acabados','familias','materiales','empresatipos'));
     }
 
     public function edit(PresupuestoLineaDetalle $presupuestoaccion)
@@ -153,6 +156,7 @@ class PresupLineaDetalle extends Component
         $this->acciontipo_id=$presupuestoaccion->acciontipo_id;
         $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
         $this->entidad_id=$presupuestoaccion->entidad_id;
+        $this->empresatipo_id=$presupuestoaccion->empresatipo_id;
         $this->orden=$presupuestoaccion->orden;
         $this->descripcion=$presupuestoaccion->descripcion;
         $this->preciocoste_ud=$presupuestoaccion->preciocoste_ud;
@@ -167,6 +171,8 @@ class PresupLineaDetalle extends Component
         $this->preciocoste=$presupuestoaccion->preciocoste;
         $this->precioventa=$presupuestoaccion->precioventa;
         $this->observaciones=$presupuestoaccion->observaciones;
+
+        $this->empresaTipo=EmpresaTipo::find($this->empresatipo_id);
 
         $ud=$presupuestoaccion->unidadpreciocoste->nombrecorto ?? '';
         $this->showAnchoAlto= $ud=='e_m2' ? true : false;
@@ -191,8 +197,6 @@ class PresupLineaDetalle extends Component
 
     public function UpdatedAccionproductoId()
     {
-        // $this->mermamin=0;
-
         $this->merma=0;
         $this->factor=1;
         $this->factormin=1;
@@ -247,6 +251,10 @@ class PresupLineaDetalle extends Component
         }
 
         $this->calculoPrecioVenta();
+    }
+
+    public function UpdatedEmpresatipoId(){
+        $this->empresaTipo=EmpresaTipo::find($this->empresatipo_id);
     }
 
     public function UpdatedUdpreciocosteId(){
@@ -421,6 +429,7 @@ class PresupLineaDetalle extends Component
                 'presupuestolinea_id'=>$this->presuplinea->id,
                 'acciontipo_id'=>$this->acciontipoId,
                 'accionproducto_id'=>$this->accionproducto_id,
+                'empresatipo_id'=>$this->empresatipo_id,
                 'entidad_id'=>$this->proveedor_id,
                 'orden'=>$this->orden,
                 'descripcion'=>$this->descripcion,

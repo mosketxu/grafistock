@@ -23,8 +23,13 @@ class Acciones extends Component
     public $preciocoste='';
     public $preciominimo='';
     public $precioventa='';
+    public $precioventa2='';
+    public $precioventa3='';
+    public $precioventa4='';
     public $udpreciocoste_id='';
     public $observaciones='';
+    public $deshabilitado='disabled';
+
 
 
     protected function rules()
@@ -36,6 +41,9 @@ class Acciones extends Component
             'preciocoste'=>'numeric|nullable',
             'preciominimo'=>'numeric|nullable',
             'precioventa'=>'numeric|nullable',
+            'precioventa2'=>'numeric|nullable',
+            'precioventa3'=>'numeric|nullable',
+            'precioventa4'=>'numeric|nullable',
             'udpreciocoste_id'=>'numeric|nullable',
             'observaciones'=>'string|nullable',
         ];
@@ -96,6 +104,33 @@ class Acciones extends Component
             $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
         }
     }
+    public function changePrecioventa2(Accion $valor,$precioventa2)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->precioventa2=$precioventa2;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
+        }
+    }
+    public function changePrecioventa3(Accion $valor,$precioventa3)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->precioventa3=$precioventa3;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
+        }
+    }
+    public function changePrecioventa4(Accion $valor,$precioventa4)
+    {
+        if (Auth::user()->can('accion.edit')==true) {
+            $a=Accion::find($valor->id);
+            $a->precioventa4=$precioventa4;
+            $a->save();
+            $this->dispatchBrowserEvent('notify', 'Acción Actualizada.');
+        }
+    }
 
     public function changeUdpreciocoste(Accion $valor,$udpreciocoste_id)
     {
@@ -131,6 +166,12 @@ class Acciones extends Component
         }
     }
 
+    public function updatedAcciontipoId()
+    {
+        if(AccionTipo::find($this->acciontipo_id)->nombrecorto=='IMP')
+            $this->deshabilitado='';
+    }
+
     private function resetInputFields(){
         $this->referencia='';
         $this->descripcion='';
@@ -138,6 +179,9 @@ class Acciones extends Component
         $this->preciocoste='';
         $this->preciominimo='';
         $this->precioventa='';
+        $this->precioventa2='';
+        $this->precioventa3='';
+        $this->precioventa4='';
         $this->udpreciocoste_id='';
         $this->observaciones='';
     }
@@ -161,6 +205,9 @@ class Acciones extends Component
                 'preciocoste'=>$this->preciocoste,
                 'preciominimo'=>$this->preciominimo,
                 'precioventa'=>$this->precioventa,
+                'precioventa2'=>$this->precioventa2,
+                'precioventa3'=>$this->precioventa3,
+                'precioventa4'=>$this->precioventa4,
                 'udpreciocoste_id'=>$this->udpreciocoste_id,
                 'observaciones'=>$this->observaciones,
             ]);

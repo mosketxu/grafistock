@@ -8,8 +8,10 @@
                         <h1 class="text-2xl font-semibold text-gray-900">Administración comercial</h1>
                         {{-- Cards --}}
                         {{-- <div class="mx-auto "> --}}
-                            <div class="w-full px-2 mb-4">
+                            <div class="flex">
                                 @livewire('acciones')
+                            </div>
+                            <div class="w-full px-2 mb-4">
                             </div>
                             <div class="flex">
                                 <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/2">

@@ -42,10 +42,13 @@
                             <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >Referencia</th>
                             <th class="w-2/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >Descripcion</th>
                             <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >Tipo</th>
-                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-right text-gray-500 bg-blue-50" >€ Compra</th>
-                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-right text-gray-500 bg-blue-50" >€ Venta</th>
-                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-right text-gray-500 bg-blue-50" >€ Mínimo</th>
-                            <th class="w-1/12 ml-12 text-xs font-medium leading-4 text-center text-gray-500 bg-blue-50" >Ud.</th>
+                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >€ Compra</th>
+                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >€ Venta</th>
+                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >€ Venta B </th>
+                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >€ Venta C</th>
+                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >€ Venta D</th>
+                            <th class="w-1/12 px-2 py-2 text-xs font-medium leading-4 text-gray-500 text-lelt bg-blue-50" >€ Mínimo</th>
+                            <th class="w-1/12 ml-12 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >Ud.</th>
                             <th class="w-3/12 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" >Observaciones</th>
                             <th class="w-10 px-2 py-2 text-xs font-medium leading-4 text-left text-gray-500 bg-blue-50" ></th>
                         </tr>
@@ -59,7 +62,7 @@
                             <tr wire:loading.class.delay="opacity-50">
                                 <td class="w-1/12 px-2 py-2 text-xs font-medium leading-4 tracking-tighter text-left text-gray-600 " >
                                     <input type="text" value="{{ $accion->referencia }}"
-                                    class="w-full text-xs font-thin bg-gray-100 text-gray-500 border-0 rounded-md"
+                                    class="w-full text-xs font-thin text-gray-500 bg-gray-100 border-0 rounded-md"
                                     disabled/>
                                 </td>
                                 <td class="w-2/12 px-2 py-2 text-xs font-medium leading-4 tracking-tighter text-left text-gray-600 ">
@@ -88,6 +91,27 @@
                                     class="w-full text-xs font-thin text-right text-gray-500 border-0 rounded-md"/>
                                 </td>
                                 <td class="w-1/12 px-2 py-2 text-xs font-medium leading-4 tracking-tighter text-right text-gray-600 ">
+                                    <input type="{{ $accion->acciontipo->nombrecorto== 'IMP' ? 'number' : 'text' }}"  step="any" value="{{ $accion->precioventa2 }}"
+                                    wire:change="changePrecioventa2({{ $accion }},$event.target.value)"
+                                    class="w-full text-xs font-thin text-right text-gray-500 border-0 rounded-md"
+                                    {{ $accion->acciontipo->nombrecorto== 'IMP' ? '' : 'disabled' }}
+                                    />
+                                </td>
+                                <td class="w-1/12 px-2 py-2 text-xs font-medium leading-4 tracking-tighter text-right text-gray-600 ">
+                                    <input type="{{ $accion->acciontipo->nombrecorto== 'IMP' ? 'number' : 'text' }}" step="any" value="{{ $accion->precioventa3 }}"
+                                    wire:change="changePrecioventa3({{ $accion }},$event.target.value)"
+                                    class="w-full text-xs font-thin text-right text-gray-500 border-0 rounded-md"
+                                    {{ $accion->acciontipo->nombrecorto== 'IMP' ? '' : 'disabled' }}
+                                    />
+                                </td>
+                                <td class="w-1/12 px-2 py-2 text-xs font-medium leading-4 tracking-tighter text-right text-gray-600 ">
+                                    <input type="{{ $accion->acciontipo->nombrecorto== 'IMP' ? 'number' : 'text' }}" step="any" value="{{ $accion->precioventa4 }}"
+                                    wire:change="changePrecioventa4({{ $accion }},$event.target.value)"
+                                    class="w-full text-xs font-thin text-right text-gray-500 border-0 rounded-md"
+                                    {{ $accion->acciontipo->nombrecorto== 'IMP' ? '' : 'disabled' }}
+                                    />
+                                </td>
+                                <td class="w-1/12 px-2 py-2 text-xs font-medium leading-4 tracking-tighter text-right text-gray-600 ">
                                     <input type="number" step="any" value="{{ $accion->preciominimo }}"
                                     wire:change="changePreciominimo({{ $accion }},$event.target.value)"
                                     class="w-full text-xs font-thin text-right text-gray-500 border-0 rounded-md"/>
@@ -96,7 +120,7 @@
                                     <select value="{{ $accion->udpreciocoste_id }}"
                                         wire:change="changeUdpreciocoste({{ $accion }},$event.target.value)"
                                         required
-                                        class="w-full  text-xs text-gray-600 bg-white border-none rounded-md appearance-none 300 hover:border-gray-400 focus:outline-none">
+                                        class="w-full text-xs text-gray-600 bg-white border-none rounded-md appearance-none 300 hover:border-gray-400 focus:outline-none">
                                         @foreach ($unidades as $unidad)
                                             <option value="{{ $unidad->id }}" {{ $unidad->id== $accion->udpreciocoste_id? 'selected' : '' }}>{{ $unidad->nombre }}</option>
                                         @endforeach
@@ -133,7 +157,7 @@
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                 </td>
                                 <td class="w-1/12 py-2 text-xs font-medium leading-4 tracking-tighter text-left text-gray-600 " >
-                                    <x-select wire:model.defer="acciontipo_id" selectname="acciontipo_id" required
+                                    <x-select wire:model.lazy="acciontipo_id" selectname="acciontipo_id" required
                                         class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                         <option value="">-- choose --</option>
                                         @foreach ($acciontipos as $tipo)
@@ -151,6 +175,24 @@
                                     <input type="number" step="any" wire:model.defer="precioventa"
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                     @error('precioventa') <span class="text-red-500">{{ $message }}</span>@enderror
+                                </td>
+                                <td class="w-1/12 py-2 text-xs font-medium leading-4 tracking-tighter text-left text-gray-600 " >
+                                    <input type="number" step="any" wire:model.defer="precioventa2"
+                                    class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                    {{ $deshabilitado }}/>
+                                    @error('precioventa2') <span class="text-red-500">{{ $message }}</span>@enderror
+                                </td>
+                                <td class="w-1/12 py-2 text-xs font-medium leading-4 tracking-tighter text-left text-gray-600 " >
+                                    <input type="number" step="any" wire:model.defer="precioventa3"
+                                    class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                    {{ $deshabilitado }}/>
+                                    @error('precioventa3') <span class="text-red-500">{{ $message }}</span>@enderror
+                                </td>
+                                <td class="w-1/12 py-2 text-xs font-medium leading-4 tracking-tighter text-left text-gray-600 " >
+                                    <input type="number" step="any" wire:model.defer="precioventa4"
+                                    class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                    {{ $deshabilitado }}/>
+                                    @error('precioventa4') <span class="text-red-500">{{ $message }}</span>@enderror
                                 </td>
                                 <td class="w-1/12 py-2 text-xs font-medium leading-4 tracking-tighter text-left text-gray-600 " >
                                     <input type="number" step="any" wire:model.lazy="preciominimo"

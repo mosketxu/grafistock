@@ -27,6 +27,9 @@
                     @if ($loop->first)
                     <tr>
                         <td class="w-12 pl-3">{{ __('Orden') }}</td>
+                        @if ($presupaccion->acciontipo->nombrecorto=="IMP")
+                        <td class="w-12 pl-3">{{ __('Cat.Emp') }}</td>
+                        @endif
                         <td class="pl-3 ">{{ __('Descr.Prespuesto') }} </td>
                         <td class="pl-3 ">{{ __('Descripción') }} </td>
                         <td class="pl-3 ">{{ __('Ref.') }} </td>
@@ -45,6 +48,11 @@
                     <tr class="py-0 my-0">
                         <td><input type="text" value="{{ $presupaccion->orden }}" wire:change="changeOrden({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
+                        @if ($presupaccion->acciontipo->nombrecorto=="IMP")
+                        <td><input type="text" value="{{ $presupaccion->empresatipo->nombrecorto }}"
+                            class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                            disabled/>
+                        @endif
                         <td><input type="text" value="{{ $presupaccion->descripcion }}" wire:change="changeDescripcion({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
                         <td><input type="text" value="{{ $acciontipo->nombre=="Material" ? $presupaccion->producto->descripcion ?? '-' : $presupaccion->accion->descripcion ?? '-'  }}" readonly

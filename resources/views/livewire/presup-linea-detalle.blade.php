@@ -31,7 +31,6 @@
                             </div>
                         </div>
                     @endif
-                    {{-- fin --}}
 
                     {{-- seleccion accionproducto y material--}}
                     <div class="flex space-x-2">
@@ -42,6 +41,18 @@
                                 class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                             @error('orden') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
+                        @if($acciontipo->nombrecorto=='IMP')
+                            <div class="w-1/12 mb-2">
+                                <label for="empresatipo_id" class="px-1 text-sm text-gray-600">Cat.Empresa</label>
+                                <x-select wire:model.lazy="empresatipo_id" selectname="empresatipo_id"
+                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                    @foreach ($empresatipos as $tipo)
+                                    <option value="{{ $tipo->id }}">{{ $tipo->nombrecorto }}</option>
+                                    @endforeach
+                                </x-select>
+                                @error('empresatipo_id') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                        @endif
                         <div class="w-full mb-2">
                             <label for="accionproducto_id" class="px-1 text-sm text-gray-600">{{ $acciontipo->nombre }}</label>
                             <x-select wire:model.lazy="accionproducto_id" selectname="accionproducto_id"
