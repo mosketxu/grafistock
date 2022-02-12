@@ -49,7 +49,7 @@
                         <td><input type="text" value="{{ $presupaccion->orden }}" wire:change="changeOrden({{ $presupaccion }},$event.target.value)"
                             class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td>
                         @if ($presupaccion->acciontipo->nombrecorto=="IMP")
-                        <td><input type="text" value="{{ $presupaccion->empresatipo->nombrecorto }}"
+                        <td><input type="text" value="{{ $presupaccion->empresatipo->nombrecorto?? '-' }}"
                             class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             disabled/>
                         @endif
