@@ -30,7 +30,9 @@
                         <x-table.heading class="pl-4 text-left" >{{ __('Entidad') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Tipo') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Nif') }} </x-table.heading>
-                        <x-table.heading class="pl-4 text-left" >{{ __('Cat.Empresa') }} </x-table.heading>
+                        @if(in_array($enttipo->nombrecorto,['Cli','CliPro','Prop']))
+                            <x-table.heading class="pl-4 text-left" >{{ __('Cat.Empresa') }}  </x-table.heading>
+                        @endif
                         <x-table.heading class="pl-4 text-left" >{{ __('Comercial') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Localidad') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Tfno.') }}</x-table.heading>
@@ -49,21 +51,20 @@
                                 <x-table.cell>
                                     <input type="text" value="{{ $entidad->nif }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
-                                <x-table.cell>
-                                    <x-select  selectname="empresatipo_id" wire:change="changeEmpresatipo({{ $entidad }},$event.target.value)"
-                                        class="w-20 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                        @foreach ($empresatipos as $tipo)
-                                            <option value="{{ $tipo->id }}" {{ $tipo->id== $entidad->empresatipo_id? 'selected' : '' }}>{{ $tipo->nombrecorto }}</option>
-                                        @endforeach
-                                    </x-select>
-                                </x-table.cell>
-
-                                {{-- <td><input type="text" value="{{ $entidad->empresatipo_id }}" wire:change="changeEmpresatipo({{ $entidad }},$event.target.value)"
-                                    class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" /></td> --}}
-                                {{-- <x-table.cell>
-                                    <input type="text" value="{{ $entidad->empresatipo_id}}" wire:change="changeEmpresatipo({{ $entidad }},$event.target.value)"
-                                    class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md" />
-                                </x-table.cell> --}}
+                                @if(in_array($enttipo->nombrecorto,['Cli','CliPro','Prop']))
+                                    <x-table.cell>
+                                        @if(Auth::user()->hasRole(['Admin', 'Gestion']))
+                                            <select   wire:change="changeEmpresatipo({{ $entidad }},$event.target.value)"
+                                                class="w-20 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                                @foreach ($empresatipos as $tipo)
+                                                    <option value="{{ $tipo->id }}" {{ $tipo->id== $entidad->empresatipo_id? 'selected' : '' }}>{{ $tipo->nombrecorto }}</option>
+                                                @endforeach
+                                            </select>
+                                        @else
+                                            <input type="text" value="{{ $entidad->empresatipo->nombrecorto }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                        @endif
+                                    </x-table.cell>
+                                @endif
                                 <x-table.cell>
                                     <input type="text" value="{{ $entidad->comercial->name ?? 'no def'}}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
