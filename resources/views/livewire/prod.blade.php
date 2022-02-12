@@ -76,8 +76,12 @@
                         </div>
 
                         <div class="w-full form-item">
-                            <x-jet-label for="preciocoste">{{ __('€ Coste') }}</x-jet-label>
+                            <x-jet-label for="preciocoste">{{ __('€ Coste Presup') }}</x-jet-label>
                             <input  wire:model.defer="producto.preciocoste" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                        </div>
+                        <div class="w-full form-item">
+                            <x-jet-label for="costereal">{{ __('€ Coste Real') }}</x-jet-label>
+                            <input  wire:model.defer="producto.costereal" type="number" step="any" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
                         </div>
                         <div class="w-full form-item">
                             <x-jet-label for="udpreciocoste_id">{{ __('Ud Coste') }}</x-jet-label>

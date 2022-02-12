@@ -36,6 +36,7 @@ class Prod extends Component
             'producto.udsolicitud_id'=>'required',
             'producto.ubicacion_id'=>'nullable',
             'producto.preciocoste'=>'nullable',
+            'producto.costereal'=>'nullable',
             'producto.udpreciocoste_id'=>'nullable|required_with:producto.preciocoste',
             'producto.preciocompra'=>'nullable',
             'producto.udpreciocompra_id'=>'nullable|required_with:producto.preciocompra',
@@ -77,16 +78,6 @@ class Prod extends Component
         $material=$this->producto->material->nombrecorto ?? '';
         $acabado=$this->producto->acabado->nombrecorto ?? '';
 
-        // Opcion quitando lo que no hay
-            // $tipo=$tipo ? $tipo.'-' : '';
-            // $material=$material ? $material.'-' : '';
-            // $acabado=$acabado ? $acabado.'-' : '';
-            // $grosor=$this->producto->grosor_mm ? str_pad($this->producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-' : '';
-            // $ancho=$this->producto->ancho_mm ? str_pad($this->producto->ancho_mm, 4, '0', STR_PAD_LEFT).'-' : '';
-            // $alto=$this->producto->alto ? str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-' : '';
-            // $this->producto->referencia=$tipo.$material.$grosor.$ancho.$alto.$acabado.$p;
-
-        // Opcion dejando todo
         $this->producto->referencia=$tipo.'-'.$material.'-'.str_pad($this->producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->ancho, 4, '0', STR_PAD_LEFT).'-'.str_pad($this->producto->alto, 4, '0', STR_PAD_LEFT).'-'.$acabado.'-'.$p;
 
         if($this->producto->tipo_id && $this->producto->material_id && $this->producto->ancho && $this->producto->alto  && $this->producto->acabado_id && $p){
@@ -157,6 +148,7 @@ class Prod extends Component
             'udsolicitud_id'=>$this->producto->udsolicitud_id,
             'ubicacion_id'=>$this->producto->ubicacion_id,
             'preciocoste'=>$this->producto->preciocoste,
+            'costereal'=>$this->producto->costereal,
             'udpreciocoste_id'=>$this->producto->udpreciocoste_id,
             'preciocompra'=>$this->producto->preciocompra,
             'udpreciocompra_id'=>$this->producto->udpreciocompra_id,

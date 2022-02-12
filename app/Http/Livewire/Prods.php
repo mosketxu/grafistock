@@ -75,7 +75,6 @@ class Prods extends Component
                 ->orderBy('producto_tipos.nombre')
                 ->get();
 
-
         $productos=Producto::query()
             ->with('entidad','material','acabado','tipo')
             ->search('referencia',$this->search)
@@ -95,9 +94,6 @@ class Prods extends Component
             ->when($this->filtrotipo!='', function ($query){
                 $query->where('tipo_id',$this->filtrotipo);
                 })
-            // ->when($this->filtrogrupoprod!='', function ($query){
-            //     $query->where('grupoproduccion_id',$this->filtrogrupoprod);
-            //     })
             ->orderBy('referencia','asc')
             ->paginate(15);
 
