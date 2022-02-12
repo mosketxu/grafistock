@@ -103,7 +103,25 @@ class PresupLineas extends Component
                 'contador'=>$contador
             ]);
         }
+    }
 
+    public function replicateRow(PresupuestoLinea $linea)
+    {
+        // clono la linea
+        $clonelinea = $linea->replicate();
+        // $clonelinea = $linea->replicate()->fill([
+        //     'presupuesto_id'=>$this->presupuesto_id,
+        // ]);
+        $clonelinea->save();
+        // clono las lineasdetalle
+        $detallelineas=PresupuestoLineaDetalle::where('presupuestolinea_id',$linea->id)->get();
+        foreach ($detallelineas as $detallelinea) {
+            $detallelinea->replicate()->fill([
+                'presupuestolinea_id'=>$clonelinea->id,
+            ])->save();
+        }
+        $this->dispatchBrowserEvent('notify', 'Linea del Presupuesto copiada!');
+        $this->emit('linearefresh');
     }
 
     public function delete($lineaId)

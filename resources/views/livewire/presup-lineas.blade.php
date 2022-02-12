@@ -40,6 +40,7 @@
                     <td>
                         <div class="flex items-center justify-center">
                             <x-icon.calc-a href="{{route('presupuestolinea.index', $linea) }}" class="ml-2 text-green-600" title="Editar Cálculo"/>
+                            <x-icon.copy-a wire:click="replicateRow({{ $linea }})" onclick="confirm('¿Estás seguro de querer copiar la linea?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
                             <x-icon.delete-a wire:click.prevent="delete({{ $linea->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar linea"/>
                         </div>
                     </td>

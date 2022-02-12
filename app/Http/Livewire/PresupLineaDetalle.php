@@ -182,6 +182,13 @@ class PresupLineaDetalle extends Component
         }
     }
 
+    public function replicateRow(PresupuestoLineaDetalle $lineadetalle)
+    {
+        $lineadetalle->clonarlinea();
+        $this->dispatchBrowserEvent('notify', 'Linea copiada!');
+        $this->emit('presuplineadetallerefresh');
+    }
+
     public function UpdatedAccionproductoId()
     {
         // $this->mermamin=0;

@@ -89,11 +89,12 @@
                         </td>
                         <td>
                             <div class="flex">
-                                @if( $showEdit)
                                 <div class="flex items-center justify-center">
+                                    @if( $showEdit)
                                     <x-icon.edit-a wire:click.prevent="edit({{ $presupaccion }})" class="pl-1"  title="Editar linea"/>
+                                    @endif
+                                    <x-icon.copy-a wire:click="replicateRow({{ $presupaccion }})" onclick="confirm('¿Estás seguro de querer copiar la linea?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
                                 </div>
-                                @endif
                                 <div class="flex items-center justify-center">
                                     <x-icon.delete-a wire:click.prevent="delete({{ $presupaccion->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar linea"/>
                                 </div>

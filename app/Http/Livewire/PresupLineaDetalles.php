@@ -166,6 +166,13 @@ class PresupLineaDetalles extends Component
         ]);
     }
 
+    public function replicateRow(PresupuestoLineaDetalle $lineadetalle)
+    {
+        $lineadetalle->clonarlinea();
+        $this->dispatchBrowserEvent('notify', 'Linea copiada!');
+        $this->emit('presuplineadetallerefresh');
+    }
+
     public function save($presupacciondetalle)
     {
         $presuplinea=$presupacciondetalle->presupuestolinea;

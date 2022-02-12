@@ -58,5 +58,10 @@ class PresupuestoLineaDetalle extends Model
         ][$this->unidadpreciocoste->nombrecorto=='e_min'] ?? ['gray',''];
     }
 
+    public function clonarlinea()
+    {
+        $clonelineadetalle = $this->replicate();
+        $clonelineadetalle->save();
+    }
 
 }
