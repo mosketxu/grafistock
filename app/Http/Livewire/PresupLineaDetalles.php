@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PresupuestoLineaDetalle,Producto,Accion, AccionTipo, Presupuesto, PresupuestoLinea, PresupuestoControlpartida};
+use App\Models\{PresupuestoLineaDetalle,Producto,Accion, AccionTipo, PresupuestoLinea, PresupuestoControlpartida};
 use Illuminate\Support\Facades\Validator;
 
 use Livewire\Component;

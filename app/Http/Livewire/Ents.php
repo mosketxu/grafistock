@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\EmpresaTipo;
 use App\Models\Entidad;
 use App\Models\EntidadTipo;
 use Illuminate\Support\Facades\Auth;
@@ -14,11 +15,13 @@ class Ents extends Component
 
     public $search='';
     public $entidadtipo_id='';
+    public $empresatipo_id='';
     public Entidad $entidad;
 
     public function render()
     {
         $enttipo=EntidadTipo::find($this->entidadtipo_id);
+        $empresatipos=EmpresaTipo::get();
         $entidades=Entidad::query()
         ->with('entidadtipo')
         ->with('empresatipo')
@@ -38,11 +41,17 @@ class Ents extends Component
         ->orderBy('entidad','asc')
         ->paginate(10);
 
-        return view('livewire.ents',compact('entidades','enttipo'));
+        return view('livewire.ents',compact('entidades','enttipo','empresatipos'));
     }
 
     public function updatingSearch(){
         $this->resetPage();
+    }
+
+    public function changeEmpresatipo(Entidad $entidad,$empresatipo_id)
+    {
+        $entidad->update(['empresatipo_id'=>$empresatipo_id]);
+        $this->dispatchBrowserEvent('notify', 'Categoria Empresa actualizada.');
     }
 
     public function delete($entidadId)

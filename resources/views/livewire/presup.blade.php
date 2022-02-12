@@ -37,7 +37,6 @@
                 </div>
             </div>
         </div>
-       {{-- <hr class="my-2"> --}}
 
         @livewire('presup-lineas',['presupuesto'=>$presupuesto],key($presupuesto->id))
 
