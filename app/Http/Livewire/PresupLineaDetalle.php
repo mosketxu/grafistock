@@ -211,6 +211,23 @@ class PresupLineaDetalle extends Component
                 $this->accionproducto=Accion::find($this->accionproducto_id);
                 $this->preciocoste_ud=$this->accionproducto->preciocoste;
                 $this->precioventa_ud=$this->accionproducto->precioventa;
+                if($this->acciontipo->nombrecorto=='IMP'){
+                    switch ($this->empresaTipo->nombrecorto) {
+                        case 'A':
+                            $this->precioventa_ud=$this->accionproducto->precioventa;
+                            break;
+                        case 'B':
+                            $this->precioventa_ud=$this->accionproducto->precioventa2;
+                            break;
+                        case 'C':
+                            $this->precioventa_ud=$this->accionproducto->precioventa3;
+                            break;
+                        case 'D':
+                            $this->precioventa_ud=$this->accionproducto->precioventa4;
+                            break;
+                    }
+                }
+                $this->precioventa_ud=$this->accionproducto->precioventa;
                 $this->preciominimo=$this->accionproducto->preciominimo;
                 $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
                 $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
@@ -254,7 +271,25 @@ class PresupLineaDetalle extends Component
     }
 
     public function UpdatedEmpresatipoId(){
+        // 'solo sirve para impresion de momento'
+
         $this->empresaTipo=EmpresaTipo::find($this->empresatipo_id);
+        $accion=Accion::find($this->accionproducto_id);
+        switch ($this->empresaTipo->nombrecorto) {
+            case 'A':
+                $this->precioventa_ud=$accion->precioventa;
+                break;
+            case 'B':
+                $this->precioventa_ud=$accion->precioventa2;
+                break;
+            case 'C':
+                $this->precioventa_ud=$accion->precioventa3;
+                break;
+            case 'D':
+                $this->precioventa_ud=$accion->precioventa4;
+                break;
+        }
+        $this->calculoPrecioVenta();
     }
 
     public function UpdatedUdpreciocosteId(){
