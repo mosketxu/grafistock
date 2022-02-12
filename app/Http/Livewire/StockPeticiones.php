@@ -3,28 +3,26 @@
 namespace App\Http\Livewire;
 
 use Livewire\WithPagination;
-use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Models\{StockPeticion, Solicitante};
 use Livewire\Component;
 
 class StockPeticiones extends Component
 {
 
-    use WithPagination, WithBulkActions;
+    use WithPagination;
 
     public $search='';
     public $filtropeticion='';
     public $filtrosolicitante='';
     public $filtroanyo='';
     public $filtromes='';
-    public $filtroestado='0';
+    public $filtroestado='4';
 
 
     public function render()
     {
         $solicitantes=Solicitante::orderBy('nombre')->get();
 
-        // dd($this->filtroestado<'4');
         $stockpeticiones=StockPeticion::orderByDesc('fechasolicitud')->orderBy('peticion')
             ->with('solicitante')
             ->search('peticion',$this->filtropeticion)

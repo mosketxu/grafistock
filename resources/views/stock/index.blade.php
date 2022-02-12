@@ -4,7 +4,7 @@
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 {{-- @livewire('stock-status',['tipo'=>'producto']) --}}
                 @livewire('menu')
-                Vista Stock de minimos por producto y por material
+                Vista Stock de minimos por referencia y por material
             </div>
         </div>
     </div>

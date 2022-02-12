@@ -1,5 +1,21 @@
 <div class="w-2/12 text-xs">
     <label class="px-1 text-gray-600">
+        Proveedor
+    </label>
+    <div class="flex">
+        <select wire:model="filtroclipro" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+            <option value=""></option>
+            @foreach ($proveedores as $proveedor)
+            <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+            @endforeach
+        </select>
+        @if($filtroclipro!='')
+            <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1" title="reset filter"/>
+        @endif
+    </div>
+</div>
+<div class="w-2/12 text-xs">
+    <label class="px-1 text-gray-600">
         Ref./Descrip.
     </label>
     <div class="flex">
@@ -22,22 +38,6 @@
         </select>
         @if($filtrotipo!='')
             <x-icon.filter-slash-a wire:click="$set('filtrotipo', '')" class="pb-1" title="reset filter"/>
-        @endif
-    </div>
-</div>
-<div class="w-2/12 text-xs">
-    <label class="px-1 text-gray-600">
-        Proveedor
-    </label>
-    <div class="flex">
-        <select wire:model="filtroclipro" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-            <option value=""></option>
-            @foreach ($proveedores as $proveedor)
-            <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
-            @endforeach
-        </select>
-        @if($filtroclipro!='')
-            <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1" title="reset filter"/>
         @endif
     </div>
 </div>

@@ -15,23 +15,19 @@ class StockBalanceExport implements FromCollection,WithHeadings
     protected $filtromaterial='';
     protected $filtroacabado='';
     protected $filtrofamilia='';
-    protected $filtroproducto='';
     protected $filtrodescripcion='';
-    protected $filtrosolicitante='';
     protected $filtroanyo='';
     protected $filtromes='';
     protected $filtrofecha='';
     protected $tipo='';
 
-    function __construct($search, $filtroclipro, $filtromaterial, $filtrofamilia, $filtroacabado, $filtroproducto, $filtrodescripcion, $filtrosolicitante, $filtroanyo, $filtromes, $filtrofecha, $tipo  ) {
+    function __construct($search, $filtroclipro, $filtromaterial, $filtrofamilia, $filtroacabado,  $filtrodescripcion, $filtroanyo, $filtromes, $filtrofecha, $tipo  ) {
         $this->search=$search;
         $this->filtroclipro=$filtroclipro;
         $this->filtromaterial=$filtromaterial;
         $this->filtrofamilia=$filtrofamilia;
         $this->filtroacabado=$filtroacabado;
-        $this->filtroproducto=$filtroproducto;
         $this->filtrodescripcion=$filtrodescripcion;
-        $this->filtrosolicitante=$filtrosolicitante;
         $this->filtroanyo=$filtroanyo;
         $this->filtromes=$filtromes;
         $this->filtrofecha=$filtrofecha;

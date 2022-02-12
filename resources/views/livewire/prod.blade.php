@@ -133,7 +133,7 @@
                             </x-select>
                         </div>
                         <div class="w-full form-item">
-                            <x-jet-label for="material_id">{{ __('Material') }} {{ $producto->material_id }}</x-jet-label>
+                            <x-jet-label for="material_id">{{ __('Material') }} </x-jet-label>
                             <x-select wire:model.lazy="producto.material_id" selectname="material_id" class="w-full" required>
                                 <option value="">-- Selecciona --</option>
                                 @foreach ($materiales as $material)

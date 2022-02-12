@@ -64,8 +64,6 @@
                         <div class="w-8/12 form-item">
                             <x-jet-label for="peticion">{{ __('Petición') }}</x-jet-label>
                             <textarea wire:model.defer="stockpeticion.peticion" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required></textarea>
-                            {{-- <textarea wire:model="stockpeticion.peticion" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required></
-                            <input wire:model="stockpeticion.peticion" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/> --}}
                         </div>
 
                     </div>

@@ -61,7 +61,10 @@ class StockPeticion extends Component
             'observaciones'=>$this->stockpeticion->observaciones,
             ]
         );
-        $this->dispatchBrowserEvent('notify', $mensaje);
+        $notification = array(
+            'message' => 'Peticion creada/actualizada satisfactoriamente!',
+            'alert-type' => 'success'
+        );
     }
 
     public function borrafecharealizado(){

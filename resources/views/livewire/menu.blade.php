@@ -85,7 +85,7 @@
                                         {{ __('Movimientos') }}
                                     </x-jet-dropdown-link>
                                     <x-jet-dropdown-link href="{{ route('stock.producto') }}">
-                                        {{ __('Por Producto') }}
+                                        {{ __('Por Referencia') }}
                                     </x-jet-dropdown-link>
                                 </div>
                             </x-slot>
@@ -265,7 +265,7 @@
                                 {{ __('Movimientos') }}
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('stock.producto') }}">
-                                {{ __('Por Producto') }}
+                                {{ __('Por Referencia') }}
                             </x-jet-dropdown-link>
                         </div>
                     </x-slot>
