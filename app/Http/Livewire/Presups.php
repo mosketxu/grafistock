@@ -186,10 +186,11 @@ class Presups extends Component
             foreach ($acciontipos as $acciontipo) {
                 $existe=PresupuestoControlpartida::where('acciontipo_id',$acciontipo->id)->where('presupuesto_id',$presupuesto->id)->count();
                 if ($existe==0) {
+                    $activo=in_array($acciontipo->nombrecorto,['COM','PFM','EXT']) ? '0' : 1;
                     PresupuestoControlpartida::create([
                         'presupuesto_id'=>$presupuesto->id,
                         'acciontipo_id'=>$acciontipo->id,
-                        'activo'=>'1'
+                        'activo'=>$activo
                     ]);
                 }
             }

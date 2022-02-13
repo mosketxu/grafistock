@@ -14,11 +14,14 @@
                             <div class="w-full px-2 mb-4">
                             </div>
                             <div class="flex">
-                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/2">
+                                <div class="w-full px-2 mb-4 md:w-full lg:w-3/12">
                                     @livewire('accion-tipos')
                                 </div>
-                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/2">
+                                <div class="w-full px-2 mb-4 md:w-full lg:w-6/12">
                                     @livewire('empresa-tipos')
+                                </div>
+                                <div class="w-full px-2 mb-4 md:w-1/3 lg:w-3/12">
+                                    @livewire('entidad-categorias')
                                 </div>
                             </div>
                         {{-- </div> --}}

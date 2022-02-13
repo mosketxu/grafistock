@@ -3,8 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\EmpresaTipo;
-use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
+use Illuminate\Support\Facades\Validator;
 use Livewire\WithPagination;
 
 
@@ -23,8 +23,8 @@ class EmpresaTipos extends Component
     protected function rules()
     {
         return [
-            'nombrecorto'=>'required|unique:producto_materiales,nombrecorto',
-            'nombre'=>'required|unique:producto_materiales,nombre',
+            'nombrecorto'=>'required|unique:empresa_tipos,nombrecorto',
+            'nombre'=>'required|unique:empresa_tipos,nombre',
             'factor'=>'required|numeric',
             'factormin'=>'required|numeric',
         ];

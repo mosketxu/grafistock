@@ -61,7 +61,6 @@ class Presup extends Component
 
         $mensaje="Presupuesto actualizado satisfactoriamente";
 
-        // $pres=Presupuesto::find($this->presupuesto->id);
         $presup=Presupuesto::findOrFail($this->presupuesto->id)
             ->update([
                 'precioventa'=>$this->precioventa,

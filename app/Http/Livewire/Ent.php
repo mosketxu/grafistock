@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Entidad, EntidadTipo, EmpresaTipo, MetodoPago,Pais,Provincia, User};
+use App\Models\{Entidad, EntidadTipo, EmpresaTipo, EntidadCategoria, MetodoPago,Pais,Provincia, User};
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +48,7 @@ class Ent extends Component
             'entidad.password'=>'nullable',
             'entidad.entidadtipo_id'=>'required',
             'entidad.empresatipo_id'=>'nullable',
+            'entidad.entidadcategoria_id'=>'nullable',
         ];
     }
 
@@ -72,11 +73,13 @@ class Ent extends Component
         $paises=Pais::all();
         $tiposentidad=EntidadTipo::orderBy('id')->get();
         $tiposempresa=EmpresaTipo::orderBy('nombrecorto')->get();
-        return view('livewire.ent',compact('metodopagos','provincias','paises','tiposentidad','tiposempresa','comerciales'));
+        $tiposcategoria=EntidadCategoria::orderBy('nombrecorto')->get();
+        return view('livewire.ent',compact('metodopagos','provincias','paises','tiposentidad','tiposempresa','tiposcategoria','comerciales'));
     }
 
     public function save()
     {
+        // dd($this->entidad->entidadcategoria_id);
         $this->validate();
         if($this->entidad->id){
             $i=$this->entidad->id;
@@ -144,6 +147,7 @@ class Ent extends Component
             'password'=>$this->entidad->password,
             'entidadtipo_id'=>$this->entidad->entidadtipo_id,
             'empresatipo_id'=>$this->entidad->empresatipo_id,
+            'entidadcategoria_id'=>$this->entidad->entidadcategoria_id,
             ]
         );
         if(!$this->entidad->id){

@@ -9,7 +9,7 @@ class Entidad extends Model
 {
     use HasFactory;
     protected $table = 'entidades';
-    protected $fillable=['entidad','entidadtipo_id','empresatipo_id','presupuesto','comercial_id','direccion','cp','localidad','provincia_id','pais_id',
+    protected $fillable=['entidad','entidadtipo_id','empresatipo_id','entidadcategoria_id','presupuesto','comercial_id','direccion','cp','localidad','provincia_id','pais_id',
                         'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
                         'banco1','iban1','banco2','iban2','banco3','iban3','factor',
                         'metodopago_id','diafactura','diavencimiento',
@@ -30,6 +30,11 @@ class Entidad extends Model
         return $this->belongsTo(EmpresaTipo::class,'empresatipo_id')->withDefault([
             'factormin' => '-',
         ]);
+    }
+
+    public function empresacategoria()
+    {
+        return $this->belongsTo(empresacategoria::class,'empresacategoria_id');
     }
 
     public function provincia()
