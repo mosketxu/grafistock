@@ -31,6 +31,47 @@
                             </div>
                         </div>
                     @endif
+                    @if($acciontipo->nombrecorto="EMB")
+                        <div class="bg-blue-100 rounded">
+                            <div class="px-2">Filtros de embalaje</div>
+                                <div class="flex w-full p-2 space-x-2 ">
+                                    <div class="w-2/12 text-xs">
+                                        <label class="px-1 text-gray-600">
+                                            Material
+                                        </label>
+                                        <div class="flex">
+                                            <select wire:model="filtromaterial" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                                <option value=""></option>
+                                                @foreach ($materiales as $mat)
+                                                <option value="{{ $mat->id }}">{{ $mat->nombre }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($filtromaterial!='')
+                                                <x-icon.filter-slash-a wire:click="$set('filtromaterial', '')" class="pb-1" title="reset filter"/>
+                                            @endif
+                                       </div>
+                                    </div>
+                                    <div class="w-2/12 text-xs">
+                                        <label class="px-1 text-gray-600">
+                                            Acabado
+                                        </label>
+                                        <div class="flex">
+                                            <select wire:model="filtroacabado" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                                <option value=""></option>
+                                                @foreach ($acabados as $acabado)
+                                                <option value="{{ $acabado->id }}">{{ $acabado->nombre }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($filtroacabado!='')
+                                                <x-icon.filter-slash-a wire:click="$set('filtroacabado', '')" class="pb-1" title="reset filter"/>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endif
 
                     {{-- seleccion accionproducto y material--}}
                     <div class="flex space-x-2">

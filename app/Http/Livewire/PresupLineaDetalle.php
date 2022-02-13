@@ -74,8 +74,9 @@ class PresupLineaDetalle extends Component
             $acciones=Accion::where('acciontipo_id',$this->acciontipoId)->orderBy('descripcion')->get();
             $empresatipos=EmpresaTipo::get();
         }else{
-            if($this->acciontipo->nombrecorto=='MAT'){
+            if($this->acciontipo->nombrecorto=='MAT' || $this->acciontipo->nombrecorto=='EMB' ){
                 $proveedores=Entidad::orderBy('entidad')->has('productos')->get();
+                if($this->acciontipo->nombrecorto=='EMB') $this->filtrofamilia='16';
                 $materiales= Producto::query()
                     ->join('producto_materiales','producto_materiales.id','=','productos.material_id')
                     ->select('producto_materiales.id', 'producto_materiales.nombre')
@@ -117,26 +118,27 @@ class PresupLineaDetalle extends Component
                     ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
                     ->orderBy('producto_tipos.nombre')
                     ->get();
+
                 $acciones=Producto::query()
-                    ->with('entidad','material','acabado','tipo')
-                    ->search('referencia',$this->search)
-                    ->orSearch('descripcion',$this->search)
-                    ->when($this->filtrofamilia!='', function ($query){
-                        $query->where('familia_id',$this->filtrofamilia);
-                        })
-                    ->when($this->filtromaterial!='', function ($query){
-                        $query->where('material_id',$this->filtromaterial);
-                        })
-                    ->when($this->filtroclipro!='', function ($query){
-                        $query->where('entidad_id',$this->filtroclipro);
-                        })
-                    ->when($this->filtroacabado!='', function ($query){
-                        $query->where('acabado_id',$this->filtroacabado);
-                        })
-                    ->when($this->filtrotipo!='', function ($query){
-                        $query->where('tipo_id',$this->filtrotipo);
-                        })
-                    ->orderBy('referencia','asc')
+                    ->with('entidad', 'material', 'acabado', 'tipo')
+                    ->search('referencia', $this->search)
+                    ->orSearch('descripcion', $this->search)
+                    ->when($this->filtrofamilia!='', function ($query) {
+                        $query->where('familia_id', $this->filtrofamilia);
+                    })
+                    ->when($this->filtromaterial!='', function ($query) {
+                        $query->where('material_id', $this->filtromaterial);
+                    })
+                    ->when($this->filtroclipro!='', function ($query) {
+                        $query->where('entidad_id', $this->filtroclipro);
+                    })
+                    ->when($this->filtroacabado!='', function ($query) {
+                        $query->where('acabado_id', $this->filtroacabado);
+                    })
+                    ->when($this->filtrotipo!='', function ($query) {
+                        $query->where('tipo_id', $this->filtrotipo);
+                    })
+                    ->orderBy('referencia', 'asc')
                     ->get();
             }
             else{
