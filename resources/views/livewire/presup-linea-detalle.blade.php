@@ -31,7 +31,7 @@
                             </div>
                         </div>
                     @endif
-                    @if($acciontipo->nombrecorto="EMB")
+                    @if($acciontipo->nombrecorto=="EMB")
                         <div class="bg-blue-100 rounded">
                             <div class="px-2">Filtros de embalaje</div>
                                 <div class="flex w-full p-2 space-x-2 ">
@@ -67,7 +67,6 @@
                                             @endif
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

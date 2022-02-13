@@ -84,4 +84,15 @@
         class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
         @error('precioventa') <span class="text-red-500">{{ $message }}</span>@enderror
     </div>
+    <div class="w-full form-item">
+        <x-jet-label for="ficheropdf">{{ __('Ficha producto') }}
+        </x-jet-label>
+        <div class="flex">
+            <input type="file" wire:model="ficheropdf">
+            {{-- @if($producto->fichaproducto)
+                <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
+            @endif --}}
+            @error('ficheropdf') <p class="text-red-500">{{ $message }}</p> @enderror
+        </div>
+    </div>
 </div>
