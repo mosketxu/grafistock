@@ -1,6 +1,16 @@
 <div class="flex space-x-2">
     @if($acciontipo->nombrecorto=='EXT')
     <div class="w-full mb-2">
+        <label for="filtrocategoria" class="px-1 text-sm text-gray-600">Cat.Proveedor:</label>
+        <x-select wire:model.lazy="filtrocategoria" selectname="filtrocategoria"
+            class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                <option value="">-- choose --</option>
+            @foreach ($entidadcategorias as $cat)
+                <option value="{{ $cat->id }}">{{ $cat->nombre }}</option>
+            @endforeach
+        </x-select>
+    </div>
+    <div class="w-full mb-2">
         <label for="proveedor_id" class="px-1 text-sm text-gray-600">Proveedor:</label>
         <x-select wire:model.lazy="proveedor_id" selectname="proveedor_id"
             class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">

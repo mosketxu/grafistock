@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Producto,Accion,AccionTipo, EmpresaTipo, Entidad, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle, ProductoFamilia, UnidadCoste};
+use App\Models\{Producto,Accion,AccionTipo, EmpresaTipo, Entidad, EntidadCategoria, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle, ProductoFamilia, UnidadCoste};
 use Illuminate\Support\Facades\Validator;
 
 use Livewire\Component;
@@ -10,7 +10,7 @@ use Livewire\Component;
 class PresupLineaDetalle extends Component
 {
     // Vbles filtros
-    public $search='';public $filtrofamilia='';public $filtrotipo='';public $filtromaterial='';public $filtroclipro='';public $filtroacabado='';public $filtrodescripcion='';
+    public $search='';public $filtrofamilia='';public $filtrotipo='';public $filtromaterial='';public $filtroclipro='';public $filtroacabado='';public $filtrodescripcion='';public $filtrocategoria='';
 
     // Vbles apoyo
     public $message;public $showEdit=true;public $acciontipoId;public $presuplinea;public $presupuestolinea_id;public $presupuestolinea;public $presupuestolineadetalleId='';
@@ -58,11 +58,15 @@ class PresupLineaDetalle extends Component
     {
         $proveedores='';$materiales='';$acabados='';$tipos='';
         $empresatipos='';
+        $entidadcategorias='';
         $familias=ProductoFamilia::where('id','<>','16')->orderBy('nombre')->get();
         if($this->acciontipo->nombrecorto=='EXT'){
-            $proveedores=Entidad::whereIn('entidadtipo_id', ['2', '3'])->where('presupuesto',true)->orderBy('entidad')->get();
+            $proveedores=Entidad::whereIn('entidadtipo_id', ['2', '3'])
+                ->where('presupuesto',true)
+                ->when($this->filtrocategoria!='', function ($query){$query->where('entidadcategoria_id',$this->filtrocategoria);})
+                ->orderBy('entidad')->get();
+            $entidadcategorias=EntidadCategoria::orderBy('nombre')->get();
         }
-
         $presupacciones=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presuplinea->id)->where('acciontipo_id',$this->acciontipoId)->orderBy('orden')->get();
         $this->tituloaccion=$this->acciontipo->nombre;
 
@@ -147,7 +151,8 @@ class PresupLineaDetalle extends Component
 
         $unidadesventa=UnidadCoste::orderBy('nombre')->get();
 
-        return view('livewire.presup-linea-detalle',compact('acciones','presupacciones','familias','proveedores','unidadesventa','tipos','acabados','familias','materiales','empresatipos'));
+        return view('livewire.presup-linea-detalle',compact('acciones','presupacciones','familias','proveedores',
+                'unidadesventa','tipos','acabados','familias','materiales','empresatipos','entidadcategorias'));
     }
 
     public function edit(PresupuestoLineaDetalle $presupuestoaccion)
