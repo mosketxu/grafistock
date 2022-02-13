@@ -84,15 +84,17 @@
         class="w-full py-2 text-xs text-right text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
         @error('precioventa') <span class="text-red-500">{{ $message }}</span>@enderror
     </div>
-    <div class="w-full form-item">
-        <x-jet-label for="fichero">{{ __('Cálculo Externo') }}
-        </x-jet-label>
-        <div class="flex">
-            <input type="file" wire:model="fichero">
-            {{-- @if($producto->fichaproducto)
-                <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
-            @endif --}}
-            @error('fichero') <p class="text-red-500">{{ $message }}</p> @enderror
+</div>
+<div class="flex flex-row justify-between w-full my-3 form-item">
+        <div class="flex flex-row space-x-3">
+            <x-jet-label for="fichero" class="uppercase">{{ __('Adjuntar fichero con cálculo externo') }}
+            </x-jet-label>
+            <input type="file" wire:model="ficheroexterno">
+            @error('ficheroexterno') <p class="text-red-500">{{ $message }}</p> @enderror
+        </div>
+        <div class="flex flex-row-reverse">
+            <a href="#" wire:click="presentaficheroexterno({{ $this->presupuestolinea_id }})"
+                class="text-blue-800 underline">{{ $ficheroupload }}</a>
         </div>
     </div>
 </div>

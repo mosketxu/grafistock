@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\{PresupuestoLineaDetalle,Producto,Accion, AccionTipo, PresupuestoLinea, PresupuestoControlpartida};
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+
 
 use Livewire\Component;
 
@@ -147,6 +149,15 @@ class PresupLineaDetalles extends Component
 
         $this->dispatchBrowserEvent('notify', 'Precio actualizado.');
         $this->save($presupacciondetalle);
+    }
+
+    public function presentaficheroexterno(PresupuestoLineaDetalle $linea){
+        $existe=Storage::disk('presupuestosexternos')->exists($linea->ruta.'/'.$linea->fichero);
+        if ($existe)
+            return Storage::disk('presupuestosexternos')->download($linea->ruta.'/'.$linea->fichero);
+        else{
+            $this->dispatchBrowserEvent('notifyred', 'Ha habido un problema con el fichero');
+        }
     }
 
     public function actualizaPartida($presuplineadetalle)

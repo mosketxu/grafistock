@@ -21,7 +21,7 @@ class PresupLineaDetalle extends Component
     public $message;public $showEdit=true;public $acciontipoId;public $presuplinea;public $presupuestolinea_id;public $presupuestolinea;public $presupuestolineadetalleId='';
     public $accionproducto;public $showAnchoAlto=false;public $showMinutos=false;public $controlpartidas;public $deshabilitadoPVenta='';public $deshabilitadoPCoste='disabled';
     public $colorfondoCoste='';public $colorfondoVenta='';public $descrip='';
-
+    public $ruta=''; public $nombre='';
     public AccionTipo $acciontipo;
     public $empresaTipo;
 
@@ -33,7 +33,7 @@ class PresupLineaDetalle extends Component
     public $ancho=1;public $alto=1;
     public $unidades=1;public $minutos=1;
     public $accionproducto_id;public $observaciones;
-    public $fichero;
+    public $ficheroexterno; public $ficheroupload;
 
     protected $rules = [
         'visible'=>'','orden'=>'nullable|numeric','proveedor_id'=>'nullable|numeric',
@@ -42,6 +42,7 @@ class PresupLineaDetalle extends Component
         'factor'=>'numeric','merma'=>'numeric',
         'unidades'=>'numeric','minutos'=>'numeric',
         'accionproducto_id'=>'required',
+        'ficheroexterno'=>'nullable',
     ];
 
     protected $listeners = [ 'presuplineadetallerefresh' => '$refresh'];
@@ -184,6 +185,9 @@ class PresupLineaDetalle extends Component
         $this->preciocoste=$presupuestoaccion->preciocoste;
         $this->precioventa=$presupuestoaccion->precioventa;
         $this->observaciones=$presupuestoaccion->observaciones;
+        $this->ficheroupload=$presupuestoaccion->fichero;
+        $this->nombre=$presupuestoaccion->fichero;
+        $this->ruta=$presupuestoaccion->ruta;
 
         $this->empresaTipo=EmpresaTipo::find($this->empresatipo_id);
 
@@ -368,9 +372,9 @@ class PresupLineaDetalle extends Component
         $this->calculoPrecioVenta();
     }
 
-    public function updatedfichero()
+    public function updatedficheroexterno()
     {
-        $this->validate(['fichero'=>'file|max:5000']);
+        $this->validate(['ficheroexterno'=>'file|max:10000']);
     }
 
     public function changeVisible(PresupuestoLineaDetalle $presupaccion,$visible)
@@ -471,18 +475,35 @@ class PresupLineaDetalle extends Component
         $this->dispatchBrowserEvent('notify', 'Merma y Precio Venta Actualizados.');
     }
 
-    public function presentafichero(PresupuestoLineaDetalle $linea){
-        $existe=Storage::disk('presupuestos')->exists($linea->fichero);
+    public function presentaficheroexterno(PresupuestoLineaDetalle $linea){
+        $existe=Storage::disk('presupuestosexternos')->exists($linea->ruta.'/'.$linea->fichero);
         if ($existe)
-            return Storage::disk('presupuestos')->download($linea->fichero);
+            return Storage::disk('presupuestosexternos')->download($linea->ruta.'/'.$linea->fichero);
+        else{
+            $this->dispatchBrowserEvent('notifyred', 'Ha habido un problema con el fichero');
+        }
     }
 
     public function save()
     {
+
         $this->validate();
         if($this->accionproducto_id){
             if(!$this->udpreciocoste_id) $this->udpreciocoste_id='2';
             $this->validate();
+            $filename="";
+            $extension="";
+            if ($this->ficheroexterno) {
+                $e=explode('.',$this->ficheroexterno->getClientOriginalName());
+                $extension=end($e);
+                $this->nombre=$this->presuplinea->presupuesto->presupuesto.'-'.$this->id.'.'.$extension;
+                $this->ruta=$this->presuplinea->presupuesto->presupuesto;
+                $filename=$this->ficheroexterno->storeAs('/'.$this->ruta,$this->nombre, 'presupuestosexternos');
+            }
+            if($this->acciontipo->nombrecorto=='COM' && !$this->nombre){ // si es tipo presupuesto complicado es obligatorio añadir un archivo
+                $this->dispatchBrowserEvent('notifyred', 'Es obligatorio subir el calculo del presupuesto');
+                return false;
+            }
 
             $pldetalle = PresupuestoLineaDetalle::updateOrCreate(['id'=>$this->presupuestolinea_id], [
                 'presupuestolinea_id'=>$this->presuplinea->id,
@@ -504,15 +525,11 @@ class PresupLineaDetalle extends Component
                 'preciocoste'=>$this->preciocoste,
                 'precioventa'=>$this->precioventa,
                 'observaciones'=>$this->observaciones,
+                'fichero'=>$this->nombre,
+                'ruta'=>$this->ruta,
             ]);
 
-            $filename="";
-            if ($this->fichero) {
-                $nombre=$this->presuplinea->presupuesto->presupuesto.'-'.$this->presuplinea->id.'.'.$this->fichero->extension();
-                $filename=$this->ficheropdf->storeAs('/', $nombre, 'fichas');
-                $pldetalle->fichero=$filename;
-                $pldetalle->save();
-            }
+
 
             $this->recalcular($pldetalle);
             $this->actualizaPartida();
