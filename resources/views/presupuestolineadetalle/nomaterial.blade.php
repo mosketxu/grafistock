@@ -85,14 +85,14 @@
         @error('precioventa') <span class="text-red-500">{{ $message }}</span>@enderror
     </div>
     <div class="w-full form-item">
-        <x-jet-label for="ficheropdf">{{ __('Ficha producto') }}
+        <x-jet-label for="fichero">{{ __('Cálculo Externo') }}
         </x-jet-label>
         <div class="flex">
-            <input type="file" wire:model="ficheropdf">
+            <input type="file" wire:model="fichero">
             {{-- @if($producto->fichaproducto)
                 <x-icon.pdf-a wire:click="presentaPDF({{ $producto }})" class="pt-2 ml-2" title="PDF"/>
             @endif --}}
-            @error('ficheropdf') <p class="text-red-500">{{ $message }}</p> @enderror
+            @error('fichero') <p class="text-red-500">{{ $message }}</p> @enderror
         </div>
     </div>
 </div>

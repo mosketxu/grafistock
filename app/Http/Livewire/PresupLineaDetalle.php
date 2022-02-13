@@ -4,11 +4,16 @@ namespace App\Http\Livewire;
 
 use App\Models\{Producto,Accion,AccionTipo, EmpresaTipo, Entidad, EntidadCategoria, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle, ProductoFamilia, UnidadCoste};
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Livewire\WithFileUploads;
+
 
 use Livewire\Component;
 
 class PresupLineaDetalle extends Component
 {
+    use WithFileUploads;
+
     // Vbles filtros
     public $search='';public $filtrofamilia='';public $filtrotipo='';public $filtromaterial='';public $filtroclipro='';public $filtroacabado='';public $filtrodescripcion='';public $filtrocategoria='';
 
@@ -28,6 +33,7 @@ class PresupLineaDetalle extends Component
     public $ancho=1;public $alto=1;
     public $unidades=1;public $minutos=1;
     public $accionproducto_id;public $observaciones;
+    public $fichero;
 
     protected $rules = [
         'visible'=>'','orden'=>'nullable|numeric','proveedor_id'=>'nullable|numeric',
@@ -362,6 +368,11 @@ class PresupLineaDetalle extends Component
         $this->calculoPrecioVenta();
     }
 
+    public function updatedfichero()
+    {
+        $this->validate(['fichero'=>'file|max:5000']);
+    }
+
     public function changeVisible(PresupuestoLineaDetalle $presupaccion,$visible)
     {
         $visible=$visible==false ? true : false;
@@ -460,6 +471,12 @@ class PresupLineaDetalle extends Component
         $this->dispatchBrowserEvent('notify', 'Merma y Precio Venta Actualizados.');
     }
 
+    public function presentafichero(PresupuestoLineaDetalle $linea){
+        $existe=Storage::disk('presupuestos')->exists($linea->fichero);
+        if ($existe)
+            return Storage::disk('presupuestos')->download($linea->fichero);
+    }
+
     public function save()
     {
         $this->validate();
@@ -488,6 +505,14 @@ class PresupLineaDetalle extends Component
                 'precioventa'=>$this->precioventa,
                 'observaciones'=>$this->observaciones,
             ]);
+
+            $filename="";
+            if ($this->fichero) {
+                $nombre=$this->presuplinea->presupuesto->presupuesto.'-'.$this->presuplinea->id.'.'.$this->fichero->extension();
+                $filename=$this->ficheropdf->storeAs('/', $nombre, 'fichas');
+                $pldetalle->fichero=$filename;
+                $pldetalle->save();
+            }
 
             $this->recalcular($pldetalle);
             $this->actualizaPartida();

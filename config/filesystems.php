@@ -42,6 +42,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'presupuestosexternos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/presupuestosexternos'),
+            'url' => env('APP_URL').'/presupuestosexternos',
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -76,6 +83,7 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('fichasproducto') => storage_path('app/fichasproducto'),
+        public_path('presupuestosexternos') => storage_path('app/presupuestosexternos'),
     ],
 
 ];
