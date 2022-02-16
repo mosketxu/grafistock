@@ -56,7 +56,7 @@ class Ent extends Component
     {
         $this->entidad=$entidad;
         $this->entidad->entidadtipo_id=$tipo;
-        if(!$this->entidad->empresatipo_id) $this->entidad->empresatipo_id='5';
+        if(!$this->entidad->empresatipo_id) $this->entidad->empresatipo_id='3';
         $this->tipo=EntidadTipo::find($tipo);
         if(Auth::user()->hasRole('Comercial')) $this->entidad->comercial_id=Auth::user()->id;
     }
