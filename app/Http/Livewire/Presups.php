@@ -190,7 +190,7 @@ class Presups extends Component
                     PresupuestoControlpartida::create([
                         'presupuesto_id'=>$presupuesto->id,
                         'acciontipo_id'=>$acciontipo->id,
-                        'activo'=>$activo
+                        'activo'=>$acciontipo->activo
                     ]);
                 }
             }
