@@ -140,8 +140,8 @@
                     <input type="checkbox" id="presupuesto" name="presupuesto" wire:model.defer="entidad.presupuesto">
                 </div>
                 <div class="form-item">
-                    <x-jet-label for="categoriza">{{ __('Ambito') }}</x-jet-label>
-                    <x-select wire:model.defer="entidad.entidadcategoria_id" selectname="entidadcategoria_id" class="w-full">
+                    <x-jet-label for="categoriza">{{ __('Categorización.') }}</x-jet-label>
+                    <x-select wire:model.lazy="entidad.entidadcategoria_id" selectname="entidadcategoria_id" class="w-full">
                         <option value="">-- choose --</option>
                         @foreach ($tiposcategoria as $tipo)
                             <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>

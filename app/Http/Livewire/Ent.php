@@ -77,6 +77,14 @@ class Ent extends Component
         return view('livewire.ent',compact('metodopagos','provincias','paises','tiposentidad','tiposempresa','tiposcategoria','comerciales'));
     }
 
+    public function UpdatedEntidadEntidadcategoriaId()
+    {
+        if($this->entidad->entidadcategoria_id==''){
+            $this->entidad->entidadcategoria_id=null;
+        }
+    }
+
+
     public function save()
     {
         // dd($this->entidad->entidadcategoria_id);

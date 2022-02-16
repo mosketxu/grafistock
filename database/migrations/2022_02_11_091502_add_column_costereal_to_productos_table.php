@@ -14,7 +14,7 @@ class AddColumnCosterealToProductosTable extends Migration
     public function up()
     {
         Schema::table('productos', function (Blueprint $table) {
-            $table->double('costereal', 15, 2)->default(0.00)->after('preciocoste');
+            $table->double('costereal', 15, 3)->default(0.00)->after('preciocoste');
         });
     }
 
