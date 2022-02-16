@@ -88,9 +88,10 @@ class ProductoTipos extends Component
 
         $this->dispatchBrowserEvent('notify', 'Tipo añadido con éxito');
 
-        $this->emit('refresh');
         $this->nombre='';
         $this->nombrecorto='';
+        $this->aux='';
+        $this->emit('refresh');
     }
 
     public function delete($valorId)
