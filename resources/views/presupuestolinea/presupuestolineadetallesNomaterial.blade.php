@@ -61,9 +61,9 @@
                         <td><input type="text" value="{{ $acciontipo->nombre=="Material" ? $presupaccion->producto->referencia ?? '-' : $presupaccion->accion->referencia ?? '-'  }}" readonly
                             class="w-full py-1 text-xs bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                         </td>
-                        <td><input type="number" step="any" value="{{ $presupaccion->preciocoste_ud }}"
-                            class="w-full py-1 text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                            disabled/>
+                        <td><input type="number" step="any" value="{{ $presupaccion->preciocoste_ud }}" wire:change="changePreciocompraUd({{ $presupaccion }},$event.target.value)"
+                            class="w-full py-1 text-xs text-right {{ $presupaccion->deshabilitadoColorpCoste }} border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                            {{ $presupaccion->deshabilitadoPcoste }}/>
                         </td>
                         <td><input type="number" step="any" value="{{ $presupaccion->precioventa_ud }}"
                             class="w-full py-1 text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"

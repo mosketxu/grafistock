@@ -110,6 +110,16 @@ class PresupLineaDetalles extends Component
         $this->calculoPrecioVenta($presupaccion);
     }
 
+    public function changePreciocompraUd(PresupuestoLineaDetalle $presupaccion,$preciocompra_ud)
+    {
+        if(!$preciocompra_ud)
+            $preciocompra_ud=0;
+        Validator::make(['preciocompra_ud'=>$preciocompra_ud],['preciocompra_ud'=>'numeric|required',])->validate();
+        $presupaccion->update(['preciocoste_ud'=>$preciocompra_ud,]);
+        $this->calculoPrecioVenta($presupaccion);
+        $this->dispatchBrowserEvent('notify', 'Precio compra unidad actualizado.');
+    }
+
     public function changePrecioventaUd(PresupuestoLineaDetalle $presupaccion,$precioventa_ud)
     {
         Validator::make(['precioventa_ud'=>$precioventa_ud],['precioventa_ud'=>'numeric|required',])->validate();

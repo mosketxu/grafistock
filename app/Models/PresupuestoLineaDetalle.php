@@ -47,6 +47,24 @@ class PresupuestoLineaDetalle extends Model
         return $this->belongsTo(Entidad::class,'entidad_id');
     }
 
+    public function getDeshabilitadoPcosteAttribute()
+    {
+        $acciontipo=$this->acciontipo->nombrecorto;
+        if($acciontipo=="PFM" ||$acciontipo=="EXT" ||$acciontipo=="COM" )
+            return '';
+        else
+            return 'disabled';
+    }
+
+    public function getDeshabilitadoColorpCosteAttribute()
+    {
+        $acciontipo=$this->acciontipo->nombrecorto;
+        if($acciontipo=="PFM" ||$acciontipo=="EXT" ||$acciontipo=="COM" )
+            return '';
+        else
+            return 'bg-gray-100';
+    }
+
     public function getAnchoaltoColorAttribute()
     {
         return [
