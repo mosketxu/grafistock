@@ -139,11 +139,12 @@
                 </div>
             </form>
             <div class="space-y-2 ">
-                @if($acciontipo->nombrecorto=='MAT')
+                {{-- @if($acciontipo->nombrecorto=='MAT')
                     @include('presupuestolinea.presupuestolineadetallesMaterial',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
                 @else
                     @include('presupuestolinea.presupuestolineadetallesNomaterial',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
-                @endif
+                @endif --}}
+                    @include('presupuestolinea.presupuestolineadetalles',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
             </div>
         </div>
     </div>

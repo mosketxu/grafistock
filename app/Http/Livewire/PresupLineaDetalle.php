@@ -377,112 +377,36 @@ class PresupLineaDetalle extends Component
         $this->validate(['ficheroexterno'=>'file|max:10000']);
     }
 
-    public function changeVisible(PresupuestoLineaDetalle $presupaccion,$visible)
+    public function changeValor(PresupuestoLineaDetalle $presupaccion,$campo,$calculo,$valor)
     {
-        $visible=$visible==false ? true : false;
-        Validator::make(['visible'=>$visible],['visible'=>'boolean'])->validate();
-        $presupaccion->update(['visible'=>$visible]);
-        $this->dispatchBrowserEvent('notify', 'Visible Actualizado.');
-    }
+        //Preparamos y validamos antes de actualizar
+        if($valor=="unidades") if(!$valor) $valor=1;
+        if($valor=="preciocompra_ud") if(!$valor) $valor=0;
+        if($valor=="precioventa_ud"){
+            if($valor<$this->preciominimo){
+                $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
+                $valor=$this->preciominimo;
+            }
+        }
+        if ($campo=="factor") {
+            $factormin=$presupaccion->empresaTipo->factormin ?? '1';
+            if ($valor<$factormin) {
+                $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
+                $valor=$factormin;
+            }
+        }
+        if($calculo=='concalculo') Validator::make([$campo=>$valor],[$campo=>'numeric|required'])->validate();
 
-    public function changeOrden(PresupuestoLineaDetalle $presupaccion,$orden)
-    {
-        Validator::make(['orden'=>$orden],['orden'=>'numeric'])->validate();
-        $presupaccion->update(['orden'=>$orden]);
-        $this->dispatchBrowserEvent('notify', 'Orden Actualizado.');
+        //Actualizamos
+        if($valor=="factor")
+            $presupaccion->update(['factor'=>$valor,'precioventa_ud'=>round($presupaccion->preciocoste_ud * $valor,2)]);
+        else{
+            $presupaccion->update([$campo=>$valor]);
+        }
+        // Recalculamos
+        if($calculo=='concalculo') $this->recalculoPrecioVenta($presupaccion);
+        if($calculo=='sincalculo') $this->dispatchBrowserEvent('notify', 'Actualizado.');
         $this->emit('linearefresh');
-    }
-
-    public function changeDescripcion(PresupuestoLineaDetalle $presupaccion,$descripcion)
-    {
-        Validator::make(['descripcion'=>$descripcion],['descripcion'=>'required'])->validate();
-        $presupaccion->update(['descripcion'=>$descripcion]);
-        $this->dispatchBrowserEvent('notify', 'Descripción Actualizada.');
-    }
-
-    public function changeObs(PresupuestoLineaDetalle $presupaccion,$observaciones)
-    {
-        $presupaccion->update(['observaciones'=>$observaciones]);
-        $this->dispatchBrowserEvent('notify', 'Observación Actualizada.');
-    }
-
-    public function changeAncho(PresupuestoLineaDetalle $presupaccion,$ancho)
-    {
-        Validator::make(['ancho'=>$ancho],['ancho'=>'numeric|required'])->validate();
-        $presupaccion->update(['ancho'=>$ancho]);
-        $this->recalculoPrecioVenta($presupaccion);
-        $this->dispatchBrowserEvent('notify', 'Ancho y Precio Venta actualizados.');
-    }
-
-    public function changeAlto(PresupuestoLineaDetalle $presupaccion,$alto)
-    {
-        Validator::make(['alto'=>$alto],['alto'=>'numeric|required'])->validate();
-        $presupaccion->update(['alto'=>$alto,'metros2'=>round($alto * $presupaccion->ancho ,2)]);
-        $this->recalculoPrecioVenta($presupaccion);
-        $this->dispatchBrowserEvent('notify', 'Alto y Precio Venta Actualizados.');
-    }
-
-    public function changeUnidades(PresupuestoLineaDetalle $presupaccion,$unidades)
-    {
-        if(!$unidades) $unidades=1;
-        Validator::make(['unidades'=>$unidades],['unidades'=>'numeric|required'])->validate();
-        $presupaccion->update(['unidades'=>$unidades,]);
-        $this->recalculoPrecioVenta($presupaccion);
-        $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
-    }
-
-    public function changeMinutos(PresupuestoLineaDetalle $presupaccion,$minutos)
-    {
-        Validator::make(['minutos'=>$minutos],['minutos'=>'numeric|required'])->validate();
-        $presupaccion->update(['minutos'=>$minutos,]);
-        $this->recalculoPrecioVenta($presupaccion);
-        $this->dispatchBrowserEvent('notify', 'Minutos y Precio Venta Actualizados.');
-    }
-
-    public function changeFactor(PresupuestoLineaDetalle $presupaccion,$factor)
-    {
-        Validator::make(['factor'=>$factor],['factor'=>'numeric|required',])->validate();
-        if($factor<$this->factormin){
-            $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
-            $factor=$this->factormin;
-        }
-        $presupaccion->update([
-            'factor'=>$factor,
-            'precioventa_ud'=>round($presupaccion->preciocoste_ud * $factor,2)
-        ]);
-
-        $this->recalculoPrecioVenta($presupaccion);
-        $this->dispatchBrowserEvent('notify', 'Unidades y Precio Venta Actualizados.');
-    }
-
-    public function changePreciocompraUd(PresupuestoLineaDetalle $presupaccion,$preciocompra_ud)
-    {
-        if(!$preciocompra_ud)
-            $preciocompra_ud=0;
-        Validator::make(['preciocompra_ud'=>$preciocompra_ud],['preciocompra_ud'=>'numeric|required',])->validate();
-        $presupaccion->update(['preciocoste_ud'=>$preciocompra_ud]);
-        $this->recalculoPrecioVenta($presupaccion);
-        $this->dispatchBrowserEvent('notify', 'Precio compra unidad actualizado.');
-    }
-
-    public function changePrecioventaUd(PresupuestoLineaDetalle $presupaccion,$precioventa_ud)
-    {
-        Validator::make(['precioventa_ud'=>$precioventa_ud],['precioventa_ud'=>'numeric|required',])->validate();
-        if($precioventa_ud<$this->preciominimo){
-            $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
-            $precioventa_ud=$this->preciominimo;
-        }
-        $presupaccion->update(['precioventa_ud'=>$precioventa_ud,]);
-        $this->recalculoPrecioVenta($presupaccion);
-        $this->dispatchBrowserEvent('notify', 'Precio venta unidad y Precio Venta Actualizados.');
-    }
-
-    public function changeMerma(PresupuestoLineaDetalle $presupaccion,$merma)
-    {
-        Validator::make(['merma'=>$merma],['merma'=>'numeric|required'])->validate();
-        $presupaccion->update(['merma'=>$merma,]);
-        $this->recalculoPrecioVenta($presupaccion);
-        $this->dispatchBrowserEvent('notify', 'Merma y Precio Venta Actualizados.');
     }
 
     public function presentaficheroexterno(PresupuestoLineaDetalle $linea){
