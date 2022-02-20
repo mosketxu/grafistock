@@ -80,6 +80,20 @@
                         </div>
                         <div class="flex">
                             <div class="w-full mb-2">
+                                <label for="refgrafitex" class="px-1 text-sm text-gray-600">Ref.Grafitex:</label>
+                                <input type="text" id="refgrafitex" wire:model.defer="refgrafitex" required
+                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                @error('refgrafitex') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="w-full mb-2">
+                                <label for="refcliente" class="px-1 text-sm text-gray-600">Ref.Cliente:</label>
+                                <input type="text" id="refcliente" wire:model.defer="refcliente" required
+                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                @error('refcliente') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-full mb-2">
                                 <label for="descripcion" class="px-1 text-sm text-gray-600">Descripción:</label>
                                 <input type="text" id="descripcion" wire:model.defer="descripcion" required
                                     class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">

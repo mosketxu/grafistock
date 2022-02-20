@@ -10,6 +10,8 @@ class Presup extends Component
 {
     public $presupuesto;
     public $estado;
+    public $refgrafitex;
+    public $refcliente;
     public $unidades;
     public $incremento;
     public $precioventa;
@@ -25,6 +27,8 @@ class Presup extends Component
             'precioventa'=>'nullable|numeric',
             'preciocoste'=>'nullable|numeric',
             'unidades'=>'nullable|numeric',
+            'refgrafitex'=>'nullable',
+            'refcliente'=>'nullable',
             'incremento'=>'required|numeric',
             'descripcion'=>'required',
             'observaciones'=>'nullable',
@@ -45,6 +49,8 @@ class Presup extends Component
         $this->precioventa=$presupuesto->precioventa;
         $this->preciocoste=$presupuesto->preciocoste;
         $this->unidades=$presupuesto->unidades;
+        $this->refgrafitex=$presupuesto->refgrafitex;
+        $this->refcliente=$presupuesto->refcliente;
         $this->incremento=$presupuesto->incremento;
         $this->observaciones=$presupuesto->observaciones;
     }
@@ -65,6 +71,8 @@ class Presup extends Component
             ->update([
                 'precioventa'=>$this->precioventa,
                 'unidades'=>$this->unidades,
+                'refgrafitex'=>$this->refgrafitex,
+                'refcliente'=>$this->refcliente,
                 'incremento'=>$this->incremento,
                 'estado'=>$this->estado,
                 'descripcion'=>$this->descripcion,

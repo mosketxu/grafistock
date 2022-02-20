@@ -22,6 +22,9 @@
                 </div>
             </div>
             <div class="w-6/12 text-right">
+                @if($entidad->id)
+                <x-button.button  onclick="location.href = '{{ route('entidadcontacto.show',$entidad->id) }}'" color="green"> {{ __('Contactos') }}</x-button.button>
+                @endif
                 <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$tipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $tipo->nombre }}</x-button.button>
             </div>
         </div>

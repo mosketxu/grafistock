@@ -57,6 +57,11 @@ class Entidad extends Model
         return $this->hasMany(Pedido::class);
     }
 
+    public function contactos()
+    {
+        return $this->hasMany(EntidadContacto::class);
+    }
+
     public function presupuestos()
     {
         return $this->hasMany(Presupuesto::class);

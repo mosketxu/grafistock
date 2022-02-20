@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AdministracionController, EntidadController, ProductoController,
+use App\Http\Controllers\{AdministracionController, EntidadController, EntidadContactoController,ProductoController,
         PedidoController,StockController,
         UserController, RoleController,
         StockPeticionController, PresupuestoController, PresupuestoLineaController,AccionController};
@@ -49,6 +49,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('entidad', EntidadController::class)->only(['index','create', 'edit']); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
     Route::resource('producto', ProductoController::class);
     Route::resource('pedido', PedidoController::class);
+    Route::get('entidadcontacto/{entidad}/nuevo', [EntidadContactoController::class,'nuevo'])->name('entidadcontacto.nuevo');
+    Route::resource('entidadcontacto', EntidadContactoController::class)->only(['show','edit','store']);
 
     //stock
     Route::get('stock/movimientos', [StockController::class,'movimientos'])->middleware('can:stock.index')->name('stock.movimientos');

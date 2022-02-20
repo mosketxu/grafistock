@@ -26,7 +26,6 @@
             <div class="flex-col space-y-4">
                 <x-table>
                     <x-slot name="head">
-                        {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
                         <x-table.heading class="pl-4 text-left" >{{ __('Entidad') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Tipo') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Nif') }} </x-table.heading>

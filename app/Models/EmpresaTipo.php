@@ -12,7 +12,7 @@ class EmpresaTipo extends Model
 
     public function entidad()
     {
-        return $this->hasMany(Entidad::class);
+        return $this->hasMany(Entidad::class,'entidadcontacto_id');
     }
 
     public function presupuestolineadetalle()

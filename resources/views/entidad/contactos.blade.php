@@ -2,7 +2,7 @@
     <div class="p-2">
         <div class="max-w-full mx-auto">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                @livewire('ent',['tipo'=>$tipo, 'entidad'=>$entidad],key($entidad->id))
+                @livewire('ent-contactos',['entidadId'=>$id])
             </div>
         </div>
     </div>

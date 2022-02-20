@@ -23,7 +23,7 @@ class Presups extends Component
     public $message;
     public $total;
 
-    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$precioventa,$preciocoste,$unidades,$incremento,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$refgrafitex,$refcliente,$precioventa,$preciocoste,$unidades,$incremento,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -126,6 +126,8 @@ class Presups extends Component
         $this->entidad_id='';
         $this->solicitante_id='';
         $this->fechapresupuesto='';
+        $this->refgrafitex='';
+        $this->refcliente='';
         $this->precioventa='0';
         $this->preciocoste='0';
         $this->unidades='0';
@@ -148,6 +150,8 @@ class Presups extends Component
             'solicitante_id' => 'required|numeric',
             'descripcion' => 'required',
             'fechapresupuesto' => 'required|date',
+            'refgrafitex' => 'nullable',
+            'refcliente' => 'nullable',
             'preciocoste' => 'nullable|numeric',
             'precioventa' => 'nullable|numeric',
             'incremento' => 'required|numeric',
@@ -168,6 +172,8 @@ class Presups extends Component
             'entidad_id'=>$this->entidad_id,
             'solicitante_id'=>$this->solicitante_id,
             'fechapresupuesto'=>$this->fechapresupuesto,
+            'refgrafitex'=>$this->refgrafitex,
+            'refcliente'=>$this->refcliente,
             'precioventa'=>$this->precioventa,
             'preciocoste'=>$this->preciocoste,
             'unidades'=>$this->unidades,
@@ -216,6 +222,8 @@ class Presups extends Component
         $this->entidad_id=$presupuesto->entidad_id;
         $this->solicitante_id=$presupuesto->solicitante_id;
         $this->fechapresupuesto=$presupuesto->fechapresupuesto;
+        $this->refgrafitex=$presupuesto->refgrafitex;
+        $this->refcliente=$presupuesto->refcliente;
         $this->preciocoste=$presupuesto->preciocoste;
         $this->precioventa=$presupuesto->precioventa;
         $this->unidades=$presupuesto->unidades;
