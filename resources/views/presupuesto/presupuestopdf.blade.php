@@ -46,41 +46,10 @@
                     <td style="padding-left:3px;" width="50%"><h1 style="color: rgb(182, 177, 177); font-size:30px">Presupuesto</h1></td>
                 </tr>
             </table>
-            {{-- datos cliente  --}}
-            {{-- <table width="100%" style="text-align:left;margin-left:40px" cellspacing="0">
-                <tr>
-                        <td width="49%"></td>
-                        <td width="49%">{{ $presupuesto->entidad->entidad  }}</td>
-                    </tr>
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">{{ $presupuesto->entidad->direccion  }}</td>
-                    </tr>
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">{{ $presupuesto->entidad->codpostal }} {{ $presupuesto->entidad->localidad }}</td>
-                    </tr>
-
-                    @if(strtolower($presupuesto->entidad->localidad) != strtolower($presupuesto->entidad->provincia->provincia ?? '-'))
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">{{ $presupuesto->entidad->provincia->provincia }}</td>
-                    </tr>
-                    @endif
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">Cif: {{ $presupuesto->entidad->nif  }}</td>
-                    </tr>
-        </table> --}}
 
             {{-- detalle del presupuesto --}}
-
-            {{-- <div style="margin-top:50px; ">
-                <div>FECHA: {{ \Carbon\Carbon::parse($presupuesto->fechapresupuesto)->format('d-m-y') }}</div>
-                <div>Presupuesto: {{ $presupuesto->presupuesto }}</div>
-            </div> --}}
             <table width="100%" style="margin-top:10px">
-                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220); font-size:8px;">
+                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220); font-size:9px;">
                     <td width=40% style="padding-left:3px;" >Comercial</td>
                     <td width=20% style="padding-left:3px;" >Nº presup.</td>
                     <td width=10% style="padding-righ:3px;" >Ref.GRA</td>
@@ -97,7 +66,7 @@
             </table>
 
             <table width="100%" style="margin-top:10px">
-                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220); font-size:8px;">
+                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220); font-size:9px;">
                     <td width=40% style="padding-left:3px;" >Cliente</td>
                     <td width=20% style="padding-left:3px;" >A la Att.de </td>
                     <td width=10% style="padding-righ:3px;" >Tel/@</td>
@@ -108,45 +77,64 @@
                         {{ $presupuesto->entidad->direccion }}
                         {{ $presupuesto->entidad->cp }}{{ $presupuesto->entidad->localidad }} ({{ $presupuesto->entidad->localidad }})
                     </td>
-                    <td width=30%  style="padding-left:3px;text-align:center" >{{ $presupuesto->presupuesto }}</td>
-                    <td width=30%  style="padding-left:3px;" >{{ $presupuesto->refgrafitex }} </td>
+                    <td width=30%  style="padding-left:3px;" >{{ $presupuesto->contacto->contacto }}</td>
+                    <td width=30%  style="padding-left:3px;" >{{ $presupuesto->contacto->telefono }} <br>{{ $presupuesto->contacto->movil }} <br>{{ $presupuesto->contacto->email }} </td>
                 </tr>
             </table>
             {{-- Descripción general --}}
             <table width="100%" style="margin-top:20px">
-                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
-                        <td style="padding-left:3px;" width="70%">Descrip. Presupuesto</td>
-                        <td style="padding-right:3px;text-align:right" width="15%">P.Venta</td>
-                    </tr>
-                    <tr >
-                        <td style="padding-left:3px;border-bottom: 1px solid rgb(223, 218, 218);" >{{ $presupuesto->descripcion }}</td>
-                        <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuesto->precioventa }} </td>
-                    </tr>
-        </table>
+                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220); font-size:9px;">
+                    <td style="padding-left:3px;" width="70%">Descripción</td>
+                    <td style="text-align:right;" width="10%">P.V.Unitario</td>
+                    <td style="text-align:right;" width="10%">Cantidad</td>
+                    <td style="text-align:right;" width="10%">Totales</td>
+                </tr>
+            </table>
 
             {{-- Lineas --}}
             @if ($presupuesto->presupuestolineasvisibles->count()>0)
-                <table width="100%" style="margin-top:20px">
-                    <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
-                            <td width="70%" style="padding-left:3px;" >Descrip. Partida</td>
-                            <td style="padding-right:3px;text-align:right" >Unidades</td>
-                            <td style="padding-right:3px;text-align:right" >P.Venta</td>
-                        </tr>
-                        @foreach ( $presupuesto->presupuestolineasvisibles as $presupuestolinea )
-                            @if($presupuestolinea->visible)
-                                <tr >
-                                    <td style="padding-left:3px; rgb(223, 218, 218);" >{{ $presupuestolinea->descripcion }}</td>
-                                    <td style="padding-right:3px;text-align:right; rgb(223, 218, 218);">{{ $presupuestolinea->unidades }} </td>
-                                    <td style="padding-right:3px;text-align:right; rgb(223, 218, 218);">{{ $presupuestolinea->precioventa }}  €</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" style="padding-left:3px;text-align:left;border-bottom: 1px solid rgb(223, 218, 218);">{{ $presupuestolinea->observaciones }} </td>
-                                </tr>
-                            @endif
-                        @endforeach
+                <table width="100%" style="">
+                    @foreach ( $presupuesto->presupuestolineasvisibles as $presupuestolinea )
+                    <tr style="border-bottom-style: solid; font-size:10px;">
+                        <td style="border-bottom-style: solid ;border-width:thin;border-color:rgb(163, 161, 161); padding-left:3px; rgb(223, 218, 218);" width="70%" >{{ $presupuestolinea->descripcion }}</td>
+                        <td style="border-bottom-style: solid ;border-width:thin;border-color: rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">{{ number_format($presupuestolinea->precioventa / $presupuestolinea->unidades ,2) }} €</td>
+                        <td style="border-bottom-style: solid ;border-width:thin;border-color:rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">{{ $presupuestolinea->unidades }} </td>
+                        <td style="border-bottom-style: solid ;border-width:thin;border-color: rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">{{ $presupuestolinea->precioventa }} €</td>
+                    </tr>
+                    @endforeach
             </table>
             @endif
+            {{-- Totales --}}
+            <table width="100%" style="">
+                <tr style="background-color: #eee7e7; color:rgb(10, 153, 220); font-size:9px;">
+                    <td style="padding-left:3px;" width="70%"></td>
+                    <td style="text-align:right;" width="10%">Base Imponible</td>
+                    <td style="text-align:right;" width="10%">% I.V.A</td>
+                    <td style="text-align:right;" width="10%">Total  IVA incl.</td>
+                </tr>
+                <tr style="background-color: #E5E8E8; font-size:10px;">
+                    <td style=" padding-left:3px; rgb(223, 218, 218);" width="70%" ></td>
+                    <td style=" text-align:right; rgb(223, 218, 218);" width="10%">{{ $presupuesto->presupuestolineasvisibles->sum('precioventa') }} €</td>
+                    <td style=" text-align:right; rgb(223, 218, 218);" width="10%">{{ number_format($presupuesto->presupuestolineasvisibles->sum('precioventa') * $presupuesto->iva,2) }} € </td>
+                    <td style=" text-align:right; rgb(223, 218, 218);" width="10%">{{ number_format($presupuesto->presupuestolineasvisibles->sum('precioventa')*(1+$presupuesto->iva),2)  }} €</td>
+                </tr>
+            </table>
+
+            {{-- Obs y firma --}}
+            <table width="100%" style="margin-top:20px">
+                <tr style="color:rgb(10, 153, 220) font-size:9px;">
+                    <td style="padding-left:3px;" width="60%">Observaciones</td>
+                    <td style="text-align:right;" width="10%"></td>
+                    <td style="text-align:right;" width="30%">Firma Vº.Bº.</td>
+                </tr>
+                <tr style=" font-size:10px;">
+                    <td style="border-top-style: solid ;border-width:thin;border-color:rgb(163, 161, 161); padding-left:3px; rgb(223, 218, 218);" width="70%" >{{$presupuesto->observaciones}}</td>
+                    <td style=" text-align:right; rgb(223, 218, 218);" width="10%"></td>
+                    <td style="border-top-style: solid ;border-width:thin;border-color:rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="30%"></td>
+                </tr>
+            </table>
         </main>
     </body>
+
 </html>
 

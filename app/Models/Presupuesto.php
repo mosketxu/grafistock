@@ -18,7 +18,7 @@ class Presupuesto extends Model
     protected $dates = ['deleted_at'];
 
 
-    protected $fillable=['presupuesto','descripcion','entidad_id','solicitante_id','fechapresupuesto','refgrafitex','refcliente','precioventa','preciocoste','unidades','incremento','iva','ruta','fichero','estado','observaciones'];
+    protected $fillable=['presupuesto','descripcion','entidad_id','entidadcontacto_id','solicitante_id','fechapresupuesto','refgrafitex','refcliente','precioventa','preciocoste','unidades','incremento','iva','ruta','fichero','estado','observaciones'];
 
     public function presupuestolineas()
     {
@@ -27,7 +27,7 @@ class Presupuesto extends Model
 
     public function contacto()
     {
-        return $this->belongsTo(EntidadContacto::class)->default('');
+        return $this->belongsTo(EntidadContacto::class,'entidadcontacto_id')->withDefault();
     }
 
     public function detalles()

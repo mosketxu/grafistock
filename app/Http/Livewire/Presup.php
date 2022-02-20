@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\EntidadContacto;
 use App\Models\Presupuesto;
 use App\Models\PresupuestoControlpartida;
 use Livewire\Component;
@@ -12,6 +13,7 @@ class Presup extends Component
     public $estado;
     public $refgrafitex;
     public $refcliente;
+    public $entidadcontacto_id;
     public $unidades;
     public $incremento;
     public $precioventa;
@@ -26,6 +28,7 @@ class Presup extends Component
         return [
             'precioventa'=>'nullable|numeric',
             'preciocoste'=>'nullable|numeric',
+            'entidadcontacto_id'=>'nullable',
             'unidades'=>'nullable|numeric',
             'refgrafitex'=>'nullable',
             'refcliente'=>'nullable',
@@ -46,6 +49,7 @@ class Presup extends Component
         $this->presupuesto=$presupuesto;
         $this->descripcion=$presupuesto->descripcion;
         $this->estado=$presupuesto->estado;
+        $this->entidadcontacto_id=$presupuesto->entidadcontacto_id;
         $this->precioventa=$presupuesto->precioventa;
         $this->preciocoste=$presupuesto->preciocoste;
         $this->unidades=$presupuesto->unidades;
@@ -57,8 +61,9 @@ class Presup extends Component
 
     public function render()
     {
+        $contactos=EntidadContacto::where('entidad_id',$this->presupuesto->entidad_id)->orderBy('contacto')->get();
         $controlpartidas=PresupuestoControlpartida::where('presupuesto_id',$this->presupuesto->id)->get();
-        return view('livewire.presup',compact(['controlpartidas']));
+        return view('livewire.presup',compact(['controlpartidas','contactos']));
     }
 
     public function save()
@@ -71,6 +76,7 @@ class Presup extends Component
             ->update([
                 'precioventa'=>$this->precioventa,
                 'unidades'=>$this->unidades,
+                'entidadcontacto_id'=>$this->entidadcontacto_id,
                 'refgrafitex'=>$this->refgrafitex,
                 'refcliente'=>$this->refcliente,
                 'incremento'=>$this->incremento,

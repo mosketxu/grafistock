@@ -33,7 +33,7 @@
                         <div class="flex space-x-2">
                             <div class="mb-2">
                                 <label for="entidad_id" class="px-1 text-sm text-gray-600">Cliente:</label>
-                                <select wire:model.defer="entidad_id"
+                                <select wire:model.lazy="entidad_id"
                                     class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                                     required autofocus>
                                     <option value="">-- choose --</option>
@@ -44,7 +44,9 @@
                                 @error('entidad_id') <span class="text-red-500">{{ $message }}</span>@enderror
                                 <a href="{{ route('entidad.nueva','4') }}" class="text-xs text-blue-600 underline">Nuevo Prospect</a>
                             </div>
-                            <div class="mb-2">
+                        </div>
+                        <div class="flex space-x-2">
+                            <div class="w-full mb-2">
                                 <label for="solicitante_id" class="px-1 text-sm text-gray-600">Solicitante:</label>
                                 @if(Auth::user()->hasRole('Admin'))
                                     <x-select wire:model.defer="solicitante_id" selectname="solicitante_id"
@@ -56,10 +58,24 @@
                                     </x-select>
                                 @else
                                     <input type="text" value="{{ Auth::user()->name }}"
-                                        class="py-2 text-sm text-gray-600 bg-white border-none rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                        class="w-full py-2 text-sm text-gray-600 bg-white border-none rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                                         disabled>
                                 @endif
                                 @error('solicitante_id') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="w-full mb-2">
+                                <label for="entidadcontacto_id" class="px-1 text-sm text-gray-600">Contacto:</label>
+                                <select wire:model.defer="entidadcontacto_id"
+                                    class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                                    required autofocus>
+                                    <option value="">-- choose --</option>
+                                    @if($contactos)
+                                        @foreach ($contactos as $contacto)
+                                            <option value="{{ $contacto->id }}">{{ $contacto->contacto }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                @error('entidadcontacto_id') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="flex space-x-2">

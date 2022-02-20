@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Presupuesto;
 use App\Models\PresupuestoControlpartida;
+use App\Models\PresupuestoLinea;
+
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 
@@ -76,8 +78,8 @@ class PresupuestoController extends Controller
     public function show(Presupuesto $presupuesto)
     {
         $presupuesto=Presupuesto::with('presupuestolineas','presupuestolineas.presupuestolineadetalles')->find($presupuesto->id);
-
-        return view('presupuesto.presupuestopdf', compact(['presupuesto']));
+ 
+        // return view('presupuesto.presupuestopdf', compact(['presupuesto']));
 
         $pdf = \PDF::loadView('presupuesto.presupuestopdf', compact(['presupuesto']));
 

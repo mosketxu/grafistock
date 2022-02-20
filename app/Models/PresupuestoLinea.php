@@ -27,6 +27,10 @@ class PresupuestoLinea extends Model
         return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('acciontipo_id')->orderBy('orden');
     }
 
+    // public function getTotalAttribute(){
+    //     return round((1+$this->iva)*$this->unidades*$this->precioventa,2);
+    // }
+
     public function recalculo()
     {
         $this->precioventa=$this->presupuestolineadetalles->sum('precioventa');

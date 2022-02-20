@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{AccionTipo, Presupuesto,Entidad, PresupuestoControl, PresupuestoControlpartida, PresupuestoLineaDetalle, User};
+use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControl, PresupuestoControlpartida, PresupuestoLineaDetalle, User};
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\DataTable\WithBulkActions;
@@ -22,8 +22,9 @@ class Presups extends Component
     public $entidad;
     public $message;
     public $total;
+    public $contactos='';
 
-    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$solicitante_id,$fechapresupuesto,$refgrafitex,$refcliente,$precioventa,$preciocoste,$unidades,$incremento,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$entidadcontacto_id,$solicitante_id,$fechapresupuesto,$refgrafitex,$refcliente,$precioventa,$preciocoste,$unidades,$incremento,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -39,6 +40,8 @@ class Presups extends Component
     {
         $this->filtroanyo=date('Y');
         $this->entidad=$entidad;
+        if($this->entidad)
+            $this->contactos=EntidadContacto::where('entidad_id',$entidad->id)->orderBy('contacto')->get();
     }
 
     public function render()
@@ -125,6 +128,7 @@ class Presups extends Component
         $this->descripcion='';
         $this->entidad_id='';
         $this->solicitante_id='';
+        $this->entidadcontacto_id='';
         $this->fechapresupuesto='';
         $this->refgrafitex='';
         $this->refcliente='';
@@ -148,6 +152,7 @@ class Presups extends Component
         $this->validate([
             'entidad_id' => 'required',
             'solicitante_id' => 'required|numeric',
+            'entidadcontacto_id' => 'nullable|numeric',
             'descripcion' => 'required',
             'fechapresupuesto' => 'required|date',
             'refgrafitex' => 'nullable',
@@ -166,10 +171,12 @@ class Presups extends Component
             $destino="nuevo";
         }
 
+        // dd($this->entidadcontacto_id);
         $presupuesto = Presupuesto::updateOrCreate(['id' => $this->presupuesto_id], [
             'presupuesto'=>$this->presupuesto,
             'descripcion'=>$this->descripcion,
             'entidad_id'=>$this->entidad_id,
+            'entidadcontacto_id'=>$this->entidadcontacto_id,
             'solicitante_id'=>$this->solicitante_id,
             'fechapresupuesto'=>$this->fechapresupuesto,
             'refgrafitex'=>$this->refgrafitex,
@@ -220,6 +227,7 @@ class Presups extends Component
         $this->presupuesto=$presupuesto->presupuesto;
         $this->descripcion=$presupuesto->descripcion;
         $this->entidad_id=$presupuesto->entidad_id;
+        $this->entidadcontacto_id=$presupuesto->entidadcontacto_id;
         $this->solicitante_id=$presupuesto->solicitante_id;
         $this->fechapresupuesto=$presupuesto->fechapresupuesto;
         $this->refgrafitex=$presupuesto->refgrafitex;
@@ -233,12 +241,14 @@ class Presups extends Component
         $this->fichero=$presupuesto->fichero;
         $this->estado=$presupuesto->estado;
         $this->observaciones=$presupuesto->observaciones;
+        $this->contactos=EntidadContacto::where('entidad_id',$this->entidad_id)->orderBy('contacto')->get();
         $this->openNewModal();
     }
 
     public function updatedEntidadId()
     {
         $e=Entidad::find($this->entidad_id);
+        $this->contactos=EntidadContacto::where('entidad_id',$e->id)->orderBy('contacto')->get();
     }
 
     public function numpresupuesto()
