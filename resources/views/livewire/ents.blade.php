@@ -3,7 +3,7 @@
 
     <div class="p-1 mx-2">
 
-        <h1 class="text-2xl font-semibold text-gray-900">{{ $enttipo->nombreplural }}
+        <h1 class="text-2xl font-semibold text-gray-900">{{ $entidadtipo->nombreplural }}
         <div class="py-1 space-y-4">
             @if (session()->has('message'))
                 <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
@@ -20,7 +20,7 @@
                 <div class="flex w-2/4 space-x-2">
                     <input type="text" wire:model="search" class="py-1 border border-blue-100 rounded-lg" placeholder="Búsqueda..." autofocus/>
                 </div>
-                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$enttipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $enttipo->nombre }}</x-button.button>
+                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$entidadtipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $entidadtipo->nombre }}</x-button.button>
             </div>
             {{-- tabla entidades --}}
             <div class="flex-col space-y-4">
@@ -29,7 +29,7 @@
                         <x-table.heading class="pl-4 text-left" >{{ __('Entidad') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Tipo') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Nif') }} </x-table.heading>
-                        @if(in_array($enttipo->nombrecorto,['Cli','CliPro','Prop']))
+                        @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro','Prop']))
                             <x-table.heading class="pl-4 text-left" >{{ __('Cat.Empresa') }}  </x-table.heading>
                         @endif
                         <x-table.heading class="pl-4 text-left" >{{ __('Comercial') }}</x-table.heading>
@@ -50,7 +50,7 @@
                                 <x-table.cell>
                                     <input type="text" value="{{ $entidad->nif }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                 </x-table.cell>
-                                @if(in_array($enttipo->nombrecorto,['Cli','CliPro','Prop']))
+                                @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro','Prop']))
                                     <x-table.cell>
                                         @if(Auth::user()->hasRole(['Admin', 'Gestion']))
                                             <select   wire:change="changeEmpresatipo({{ $entidad }},$event.target.value)"

@@ -25,7 +25,7 @@
                 @if($entidad->id)
                 <x-button.button  onclick="location.href = '{{ route('entidadcontacto.show',$entidad->id) }}'" color="green"> {{ __('Contactos') }}</x-button.button>
                 @endif
-                <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$tipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $tipo->nombre }}</x-button.button>
+                <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$entidadtipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $entidadtipo->nombre }}</x-button.button>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
             </div>
             <div class="flex flex-col pl-2 mx-2 space-y-4 md:space-y-0 md:flex-row md:space-x-4">
                 <div class="w-full form-item">
-                    <x-jet-label for="entidad">{{ $tipo->nombre }}</x-jet-label>
+                    <x-jet-label for="entidad">{{ $entidadtipo->nombre }}</x-jet-label>
                     <x-jet-input wire:model.defer="entidad.entidad" type="text" class="w-full " id="entidad" name="entidad" :value="old('entidad') "/>
                     <x-jet-input-error for="entidad" class="mt-2" />
                 </div>
@@ -146,8 +146,8 @@
                     <x-jet-label for="categoriza">{{ __('Categorización.') }}</x-jet-label>
                     <x-select wire:model.lazy="entidad.entidadcategoria_id" selectname="entidadcategoria_id" class="w-full">
                         <option value="">-- choose --</option>
-                        @foreach ($tiposcategoria as $tipo)
-                            <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                        @foreach ($tiposcategoria as $tipocat)
+                            <option value="{{ $tipocat->id }}">{{ $tipocat->nombre }}</option>
                         @endforeach
                     </x-select>
                 </div>
@@ -259,12 +259,7 @@
                     style="display: none;"
                     class="p-2 m-2 text-gray-500 rounded-lg bg-green-50"
                     >Saved!</span>
-                    {{-- @if($tipo=="Cliente")
-                        <x-jet-secondary-button  onclick="location.href = '{{route('entidad.cli')}}'">{{ __('Volver') }}</x-jet-secondary-button>
-                    @else
-                        <x-jet-secondary-button  onclick="location.href = '{{route('entidad.pro')}}'">{{ __('Volver') }}</x-jet-secondary-button>
-                    @endif --}}
-                        <x-jet-secondary-button  onclick="location.href = '{{route('entidad.tipo',$tipo )}}'">{{ __('Volver') }}</x-jet-secondary-button>
+                        <x-jet-secondary-button  onclick="location.href = '{{route('entidad.tipo',$entidadtipo )}}'">{{ __('Volver') }}</x-jet-secondary-button>
                 </div>
             </div>
         </form>

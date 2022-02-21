@@ -25,17 +25,6 @@ class EntidadController extends Controller
         return view('entidad.index',compact('entidadtipo_id'));
     }
 
-    // public function cli()
-    // {
-    //     $entidadtipo_id='1';
-    //     return view('entidad.index',compact('entidadtipo_id'));
-    // }
-    // public function pro()
-    // {
-    //     $entidadtipo_id='2';
-    //     return view('entidad.index',compact('entidadtipo_id'));
-    // }
-
     public function nueva($entidadtipo_id)
     {
         return view('entidad.create',compact('entidadtipo_id'));
@@ -43,8 +32,8 @@ class EntidadController extends Controller
 
     public function edit(Entidad $entidad)
     {
-        $tipo = $entidad->entidadtipo_id;
-        return view('entidad.edit',compact('entidad','tipo'));
+        $entidadtipoId = $entidad->entidadtipo_id;
+        return view('entidad.edit',compact('entidad','entidadtipoId'));
     }
 
 }

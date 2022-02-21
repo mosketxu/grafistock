@@ -20,7 +20,7 @@ class Ents extends Component
 
     public function render()
     {
-        $enttipo=EntidadTipo::find($this->entidadtipo_id);
+        $entidadtipo=EntidadTipo::find($this->entidadtipo_id);
         $empresatipos=EmpresaTipo::get();
         $entidades=Entidad::query()
         ->with('entidadtipo')
@@ -41,7 +41,7 @@ class Ents extends Component
         ->orderBy('entidad','asc')
         ->paginate(10);
 
-        return view('livewire.ents',compact('entidades','enttipo','empresatipos'));
+        return view('livewire.ents',compact('entidades','entidadtipo','empresatipos'));
     }
 
     public function updatingSearch(){

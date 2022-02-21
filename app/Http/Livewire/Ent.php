@@ -12,13 +12,16 @@ use Illuminate\Support\Facades\Auth;
 class Ent extends Component
 {
     public $entidad;
-    public $tipo;
+    public $entidadtipo;
 
     protected function rules()
     {
         return [
             'entidad.id'=>'nullable',
             'entidad.entidad'=>'required',
+            'entidad.entidadtipo_id'=>'required',
+            'entidad.empresatipo_id'=>'nullable',
+            'entidad.entidadcategoria_id'=>'nullable',
             'entidad.comercial_id'=>'nullable|numeric',
             'entidad.nif'=>'nullable|max:12',
             'entidad.presupuesto'=>'nullable',
@@ -46,18 +49,15 @@ class Ent extends Component
             'entidad.observaciones'=>'nullable',
             'entidad.usuario'=>'nullable',
             'entidad.password'=>'nullable',
-            'entidad.entidadtipo_id'=>'required',
-            'entidad.empresatipo_id'=>'nullable',
-            'entidad.entidadcategoria_id'=>'nullable',
         ];
     }
 
-    public function mount(Entidad $entidad,$tipo)
+    public function mount(Entidad $entidad,$entidadtipoId)
     {
         $this->entidad=$entidad;
-        $this->entidad->entidadtipo_id=$tipo;
+        $this->entidad->entidadtipo_id=$entidadtipoId;
         if(!$this->entidad->empresatipo_id) $this->entidad->empresatipo_id='3';
-        $this->tipo=EntidadTipo::find($tipo);
+        $this->entidadtipo=EntidadTipo::find($entidadtipoId);
         if(Auth::user()->hasRole('Comercial')) $this->entidad->comercial_id=Auth::user()->id;
     }
 
@@ -126,6 +126,9 @@ class Ent extends Component
             [
             'entidad'=>$this->entidad->entidad,
             'comercial_id'=>$this->entidad->comercial_id,
+            'entidadtipo_id'=>$this->entidad->entidadtipo_id,
+            'empresatipo_id'=>$this->entidad->empresatipo_id,
+            'entidadcategoria_id'=>$this->entidad->entidadcategoria_id,
             'presupuesto'=>$this->entidad->presupuesto,
             'nif'=>$this->entidad->nif,
             'direccion'=>$this->entidad->direccion,
@@ -153,9 +156,6 @@ class Ent extends Component
             'cuentactblecli'=>$this->entidad->cuentactblecli,
             'usuario'=>$this->entidad->usuario,
             'password'=>$this->entidad->password,
-            'entidadtipo_id'=>$this->entidad->entidadtipo_id,
-            'empresatipo_id'=>$this->entidad->empresatipo_id,
-            'entidadcategoria_id'=>$this->entidad->entidadcategoria_id,
             ]
         );
         if(!$this->entidad->id){
