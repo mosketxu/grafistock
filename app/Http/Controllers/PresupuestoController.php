@@ -51,7 +51,6 @@ class PresupuestoController extends Controller
 
     public function imprimir(Presupuesto $presupuesto)
     {
-        dd('sdf');
         $presupuesto=Presupuesto::with('presupuestolineasvisibles')->find($presupuesto->id);
         $controlpartidas=PresupuestoControlpartida::get();
         $controlpartidaspendientes=$controlpartidas->where('presupuesto_id',$presupuesto->id)
