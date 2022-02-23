@@ -51,6 +51,7 @@ class PresupuestoController extends Controller
 
     public function imprimir(Presupuesto $presupuesto)
     {
+        dd('sdf');
         $presupuesto=Presupuesto::with('presupuestolineasvisibles')->find($presupuesto->id);
         $controlpartidas=PresupuestoControlpartida::get();
         $controlpartidaspendientes=$controlpartidas->where('presupuesto_id',$presupuesto->id)
@@ -62,9 +63,11 @@ class PresupuestoController extends Controller
             ->where('contador','>','0')
             ->get();
 
-        return view('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']));
-        // $pdf = \PDF::loadView('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']))
-        //     ->setPaper('a4','landscape');
+       return view('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']));
+        // $pdf = \PDF::loadView('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']));
+        // $pdf->setPaper('a4','landscape');
+
+        // return $pdf->download('presupuesto.pdf'); //así lo descarga
 
         // return $pdf->stream('ficha.pdf');
     }
@@ -79,11 +82,16 @@ class PresupuestoController extends Controller
     {
         $presupuesto=Presupuesto::with('presupuestolineas','presupuestolineas.presupuestolineadetalles')->find($presupuesto->id);
 
-        return view('presupuesto.presupuestopdf', compact(['presupuesto']));
+        // return view('presupuesto.presupuestopdf', compact(['presupuesto']));
 
         $pdf = \PDF::loadView('presupuesto.presupuestopdf', compact(['presupuesto']));
+        // $pdf = \PDF::loadView('presupuesto.presupuestopdfpruebarapida', );
 
-        return $pdf->stream('invoice.pdf');
+        $pdf->setPaper('a4','portrait');
+
+        // return $pdf->download('presupuesto.pdf'); //así lo descarga
+
+        return $pdf->stream('invoice.pdf'); //asi lo muestra por pantalla
 
     }
 

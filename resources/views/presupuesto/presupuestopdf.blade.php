@@ -16,25 +16,8 @@
         <header>
             <table width="100%" style="margin-top:10px" cellspacing="0">
                 <tr>
-                    <td width="55%" style="padding:0px;margin:0px; text-align:left">
-                        <img src="{{asset('img/GRAFITEXlogoConNombre.png')}}" width="120px"><br>
-                        <span style="font-size: 8px">
-                            FERROCARRILS CATALANS, 103-107<br>
-                            08038 BARCELONA</span>
-                    </td>
-                    <td width="25%" style="padding:0px;margin-right:5px; text-align:right">
-                        <span style="font-size: 8px; font-weight: bold">
-                            Teléfono<br>
-                            93 200 73 22<br>
-                            grafitex@grafitex.net</span>
-                    </td>
-                    <td width="10%" style="padding:0px;margin-right:5px; text-align:center">
-                        <img src="{{asset('img/BuenasPracticasAmbientales_sinTexto.png')}}" width="50px">
-                    </td>
-                    <td width="10%" style="padding:0px;margin:0px;text-align:center">
-                        <img src="{{asset('img/GRAFITEXqr-code.png')}}" width="50px"><br>
-                        <span style="font-size: 8px; font-weight: bold;text-align:center">
-                            www.grafitex.net</span>
+                    <td>
+                        <img src="{{asset('img/encabezado presupuesto_baja.png')}}" width="720px"><br>
                     </td>
                 </tr>
             </table>
