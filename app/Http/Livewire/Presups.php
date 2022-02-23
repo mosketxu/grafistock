@@ -145,9 +145,12 @@ class Presups extends Component
 
     public function store(){
 
-        if($this->solicitante_id==''){
-            $this->solicitante_id=Auth()->user()->id;
-        }
+        if($this->solicitante_id=='')
+            $this->solicitante_id=Auh()->user()->id;
+
+        if($this->entidadcontacto_id=='')
+            $this->entidadcontacto_id= null;
+
 
         $this->validate([
             'entidad_id' => 'required',
@@ -170,9 +173,7 @@ class Presups extends Component
             $this->numpresupuesto();
             $destino="nuevo";
         }
-
-        // dd($this->entidadcontacto_id);
-        $presupuesto = Presupuesto::updateOrCreate(['id' => $this->presupuesto_id], [
+    $presupuesto = Presupuesto::updateOrCreate(['id' => $this->presupuesto_id], [
             'presupuesto'=>$this->presupuesto,
             'descripcion'=>$this->descripcion,
             'entidad_id'=>$this->entidad_id,
