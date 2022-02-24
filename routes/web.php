@@ -47,10 +47,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('entidad/{tipo}/tipo', [EntidadController::class,'tipo'])->middleware('can:entidad.index')->name('entidad.tipo'); //
     Route::get('entidad/{entidadtipo_id}/nueva', [EntidadController::class,'nueva'])->name('entidad.nueva');
     Route::resource('entidad', EntidadController::class)->only(['index','create', 'edit']); //cuando es resource para aplicar seguridad can hay que hacerlo en el controller
-    Route::resource('producto', ProductoController::class);
-    Route::resource('pedido', PedidoController::class);
+
+
+    //Entidades contacto
     Route::get('entidadcontacto/{entidad}/nuevo', [EntidadContactoController::class,'nuevo'])->name('entidadcontacto.nuevo');
     Route::resource('entidadcontacto', EntidadContactoController::class)->only(['show','edit','store']);
+    // Producto
+    Route::resource('producto', ProductoController::class);
+
+    // Pedidos de stock
+    Route::resource('pedido', PedidoController::class);
 
     //stock
     Route::get('stock/movimientos', [StockController::class,'movimientos'])->middleware('can:stock.index')->name('stock.movimientos');
