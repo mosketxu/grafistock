@@ -169,7 +169,7 @@ class PresupLineaDetalle extends Component
         $this->presupuestolinea_id=$presupuestoaccion->id;
         $this->acciontipo_id=$presupuestoaccion->acciontipo_id;
         $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
-        $this->entidad_id=$presupuestoaccion->entidad_id;
+        $this->proveedor_id=$presupuestoaccion->entidad_id;
         $this->empresatipo_id=$presupuestoaccion->empresatipo_id;
         $this->orden=$presupuestoaccion->orden;
         $this->descripcion=$presupuestoaccion->descripcion;

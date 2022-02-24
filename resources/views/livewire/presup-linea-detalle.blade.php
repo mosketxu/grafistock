@@ -49,7 +49,7 @@
                                             @if($filtromaterial!='')
                                                 <x-icon.filter-slash-a wire:click="$set('filtromaterial', '')" class="pb-1" title="reset filter"/>
                                             @endif
-                                       </div>
+                                        </div>
                                     </div>
                                     <div class="w-2/12 text-xs">
                                         <label class="px-1 text-gray-600">
