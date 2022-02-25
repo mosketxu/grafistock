@@ -53,7 +53,7 @@ class PresupLineas extends Component
     public function changeUnidades(PresupuestoLinea $linea,$unidades)
     {
         Validator::make(['unidades'=>$unidades],[
-            'unidades'=>'numeric|nullable',
+            'unidades'=>'numeric|required|gt:0',
         ])->validate();
         $linea->update(['unidades'=>$unidades]);
 

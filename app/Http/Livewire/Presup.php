@@ -29,7 +29,7 @@ class Presup extends Component
             'precioventa'=>'nullable|numeric',
             'preciocoste'=>'nullable|numeric',
             'entidadcontacto_id'=>'nullable',
-            'unidades'=>'nullable|numeric',
+            'unidades'=>'numeric|',
             'refgrafitex'=>'nullable',
             'refcliente'=>'nullable',
             'incremento'=>'required|numeric',
@@ -61,7 +61,7 @@ class Presup extends Component
 
     public function render()
     {
-        $contactos=EntidadContacto::where('entidad_id',$this->presupuesto->entidad_id)->orderBy('contacto')->get();
+$contactos=EntidadContacto::where('entidad_id',$this->presupuesto->entidad_id)->orderBy('contacto')->get();
         $controlpartidas=PresupuestoControlpartida::where('presupuesto_id',$this->presupuesto->id)->get();
         return view('livewire.presup',compact(['controlpartidas','contactos']));
     }

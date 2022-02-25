@@ -12,12 +12,12 @@ class PresupLineaCreate extends Component
 public $presupuesto;
 
 public $presupuesto_id;
-public $visible;
+public $visible=1;
 public $orden=0;
 public $descripcion;
 public $preciocoste='0';
 public $precioventa='0';
-public $unidades='0';
+public $unidades='1';
 public $fichero;
 public $observaciones;
 
@@ -28,10 +28,20 @@ protected $rules = [
     'descripcion'=>'required',
     'preciocoste'=>'numeric',
     'precioventa'=>'numeric',
-    'unidades'=>'numeric',
+    'unidades'=>'required|numeric|gt:0',
     'observaciones'=>'nullable',
 
 ];
+
+public function messages()
+{
+    return [
+        'descripcion.required' => 'La descripcion es necesaria',
+        'unidades.required' => 'Las unidades son necesarias',
+        'unidades.numeric' => 'Las unidades deben ser un valor numeérico',
+        'unidades.gt' => 'Las unidades deben ser superiores a 0',
+    ];
+}
 
     public function mount($presupuestoId)
     {
@@ -48,6 +58,7 @@ protected $rules = [
     public function save()
     {
         $this->validate();
+
 
         PresupuestoLinea::create([
             'presupuesto_id'=>$this->presupuesto_id,
