@@ -94,7 +94,7 @@
                                         <select   wire:change="changeComercial({{ $entidad }},$event.target.value)"
                                             class="w-40 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                         @foreach ($comerciales as $comercial)
-                                            <option value="{{ $comercial->id }}" {{ $comercial->id== $entidad->comercial_id? 'selected' : '' }}>{{ $comercial->name }}</option>
+                                            <option value="{{ $comercial->id }}" {{ $comercial->id== $entidad->comercial_id? 'selected' : '' }}>{{ $comercial->name }}-{{ $entidad->comercial_id }}</option>
                                         @endforeach
                                     </select>
                                 </div>
