@@ -89,13 +89,15 @@
                                 @endif
                                 <x-table.cell>
                                     @if(Auth::user()->hasRole(['Admin']))
-                                        <span class="text-sm">{{ $entidad->comercial_id }}</span>
+                                    <div class="flex">
+                                        <div class="w-5 text-xs text-gray-400 ">{{ $entidad->comercial_id }}</div>
                                         <select   wire:change="changeComercial({{ $entidad }},$event.target.value)"
                                             class="w-40 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                         @foreach ($comerciales as $comercial)
                                             <option value="{{ $comercial->id }}" {{ $comercial->id== $entidad->comercial_id? 'selected' : '' }}>{{ $comercial->name }}</option>
                                         @endforeach
                                     </select>
+                                </div>
                                     @else
                                         <input type="text" value="{{ $entidad->comercial->name ?? 'no def'}}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                     @endif
