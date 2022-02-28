@@ -38,7 +38,7 @@
                                         {{ __('Proveedores') }}
                                     </x-jet-dropdown-link>
                                     <x-jet-dropdown-link href="{{ route('entidad.tipo','0') }}" class="text-center">
-                                        {{ __('Contactos') }}
+                                        {{ __('Todos') }}
                                     </x-jet-dropdown-link>
                                     @endif
                                 </div>
@@ -198,7 +198,7 @@
                                 {{ __('Proveedores') }}
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('entidad.tipo','0') }}" class="text-right">
-                                {{ __('Contactos') }}
+                                {{ __('Todos') }}
                             </x-jet-dropdown-link>
                             @endif
                         </div>

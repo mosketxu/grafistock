@@ -18,7 +18,30 @@
             <x-jet-validation-errors></x-jet-validation-errors>
             <div class="flex justify-between">
                 <div class="flex w-2/4 space-x-2">
-                    <input type="text" wire:model="search" class="py-1 border border-blue-100 rounded-lg" placeholder="Búsqueda..." autofocus/>
+                    <div class="w-full text-xs">
+                        <input type="text" wire:model="search"
+                            class="w-full py-1 border border-blue-100 rounded-lg"
+                            {{-- class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"> --}}
+                            placeholder="Búsqueda por nombre o nif..." autofocus/>
+                    </div>
+                    <div class="w-full text-xs">
+                        @if(Auth::user()->hasRole('Admin'))
+                            <div class="flex">
+                                <label for="filtrocomercial" class="text-base items-center mx-2 mt-1">Comercial</label>
+                                <select wire:model="filtrocomercial"
+                                    {{-- class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"> --}}
+                                    class="w-full py-1 border border-blue-100 rounded-lg" >
+                                    <option value=""></option>
+                                    @foreach ($comerciales as $comercial)
+                                    <option value="{{ $comercial->id }}">{{ $comercial->name }}</option>
+                                    @endforeach
+                                </select>
+                                @if($filtrocomercial!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtrocomercial', '')" class="pb-1" title="reset filter"/>
+                                @endif
+                            </div>
+                        @endif
+                    </div>
                 </div>
                     <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$entidadtipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $entidadtipo->nombre }}</x-button.button>
             </div>
@@ -65,7 +88,16 @@
                                     </x-table.cell>
                                 @endif
                                 <x-table.cell>
-                                    <input type="text" value="{{ $entidad->comercial->name ?? 'no def'}}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    @if(Auth::user()->hasRole(['Admin']))
+                                        <select   wire:change="changeComercial({{ $entidad }},$event.target.value)"
+                                            class="w-40 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                        @foreach ($comerciales as $comercial)
+                                            <option value="{{ $comercial->id }}" {{ $comercial->id== $entidad->comercial_id? 'selected' : '' }}>{{ $comercial->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @else
+                                        <input type="text" value="{{ $entidad->comercial->name ?? 'no def'}}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    @endif
                                 </x-table.cell>
                                 <x-table.cell>
                                     <input type="text" value="{{ $entidad->localidad }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>

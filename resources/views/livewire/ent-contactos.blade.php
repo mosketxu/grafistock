@@ -75,7 +75,7 @@
                     {{-- <x-jet-button class="bg-blue-600">
                         {{ __('Guardar') }}
                     </x-jet-button> --}}
-                    <x-jet-secondary-button  onclick="location.href = '{{route('entidad.edit',$entidad )}}'">{{ __('Volver') }}</x-jet-secondary-button>
+                    <x-jet-secondary-button  onclick="location.href = '{{route('entidad.index' )}}'">{{ __('Volver') }}</x-jet-secondary-button>
                 </div>
             </div>
 
