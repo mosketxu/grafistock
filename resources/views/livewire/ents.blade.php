@@ -88,8 +88,8 @@
                                     </x-table.cell>
                                 @endif
                                 <x-table.cell>
-                                    {{ $entidad->comercial_id }}
                                     @if(Auth::user()->hasRole(['Admin']))
+                                        <span class="text-sm">{{ $entidad->comercial_id }}</span>
                                         <select   wire:change="changeComercial({{ $entidad }},$event.target.value)"
                                             class="w-40 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                         @foreach ($comerciales as $comercial)
