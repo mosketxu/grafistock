@@ -22,27 +22,14 @@ class Ents extends Component
         $entidadtipo=EntidadTipo::find($this->entidadtipo_id);
         $empresatipos=EmpresaTipo::get();
         $comerciales=User::role('Comercial')->orderBy('name')->get();
+
         $entidades=Entidad::query()
-        ->with('entidadtipo')
-        ->with('empresatipo')
-        ->with('comercial')
-        ->search('entidad',$this->search)
-        ->when($this->filtrocomercial!='', function ($query){$query->where('comercial_id',$this->filtrocomercial);})
-        ->when($this->entidadtipo_id=='1', function ($query){
-            $query->whereIn('entidadtipo_id',[1,3]);
-        })
-        ->when($this->entidadtipo_id=='2', function ($query){
-            $query->whereIn('entidadtipo_id',[2,3]);
-        })
-        ->when($this->entidadtipo_id=='4', function ($query){
-            $query->where('entidadtipo_id','4');
-        })
-        ->when(Auth::user()->hasRole('Comercial'),function ($query){
-            $query->where('comercial_id',Auth::user()->id);
-        })
-        ->orSearch('nif',$this->search)
-        ->orderBy('entidad','asc')
-        ->paginate(10);
+            ->with('entidadtipo')
+            ->with('empresatipo')
+            ->with('comercial')
+            ->filtrosEntidad($this->search,$this->filtrocomercial,$this->entidadtipo_id)
+            ->orderBy('entidad','asc')
+            ->paginate(10);
 
         return view('livewire.ents',compact('entidades','entidadtipo','empresatipos','comerciales'));
     }
@@ -51,16 +38,10 @@ class Ents extends Component
         $this->resetPage();
     }
 
-    public function changeEmpresatipo(Entidad $entidad,$empresatipo_id)
+    public function changeValor(Entidad $entidad,$campo,$valor)
     {
-        $entidad->update(['empresatipo_id'=>$empresatipo_id]);
-        $this->dispatchBrowserEvent('notify', 'Categoria Empresa actualizada.');
-    }
-
-    public function changeComercial(Entidad $entidad,$comercial_id)
-    {
-        $entidad->update(['comercial_id'=>$comercial_id]);
-        $this->dispatchBrowserEvent('notify', 'Comercial asignado.');
+        $entidad->update([$campo=>$valor]);
+        $this->dispatchBrowserEvent('notify', 'Actulizada con éxito.');
     }
 
     public function delete($entidadId)

@@ -162,7 +162,6 @@ class Ent extends Component
             $this->entidad->id=$ent->id;
         }
 
-
         $this->dispatchBrowserEvent('notify', $mensaje);
     }
 }

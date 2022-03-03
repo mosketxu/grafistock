@@ -27,7 +27,7 @@
                     <div class="w-full text-xs">
                         @if(Auth::user()->hasRole('Admin'))
                             <div class="flex">
-                                <label for="filtrocomercial" class="text-base items-center mx-2 mt-1">Comercial</label>
+                                <label for="filtrocomercial" class="items-center mx-2 mt-1 text-base">Comercial</label>
                                 <select wire:model="filtrocomercial"
                                     {{-- class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"> --}}
                                     class="w-full py-1 border border-blue-100 rounded-lg" >
@@ -76,7 +76,7 @@
                                 @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro','Prop']))
                                     <x-table.cell>
                                         @if(Auth::user()->hasRole(['Admin', 'Gestion']))
-                                            <select   wire:change="changeEmpresatipo({{ $entidad }},$event.target.value)"
+                                            <select   wire:change="changeValor({{ $entidad }},'empresatipo_id',$event.target.value)"
                                                 class="w-20 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                                 @foreach ($empresatipos as $tipo)
                                                     <option value="{{ $tipo->id }}" {{ $tipo->id== $entidad->empresatipo_id? 'selected' : '' }}>{{ $tipo->nombrecorto }}</option>
@@ -91,7 +91,7 @@
                                     @if(Auth::user()->hasRole(['Admin']))
                                     {{-- <div class="flex">
                                         <div class="w-5 text-xs text-gray-400 ">{{ $entidad->comercial_id }}</div> --}}
-                                        <select   wire:change="changeComercial({{ $entidad }},$event.target.value)"
+                                        <select   wire:change="changeValor({{ $entidad }},'comercial_id',$event.target.value)"
                                             class="w-40 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                         @foreach ($comerciales as $comercial)
                                             <option value="{{ $comercial->id }}" {{ $comercial->id== $entidad->comercial_id? 'selected' : '' }}>{{ $comercial->name }}</option>
