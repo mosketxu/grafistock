@@ -88,8 +88,8 @@ class Entidad extends Model
     public function scopeFiltrosEntidad(Builder $query, $search, $filtrocomercial, $entidadtipo_id) : Builder
     {
         return $query ->search('entidad',$search)
-        ->when($filtrocomercial!='', function ($query){
-            $query->where('comercial_id',$this->filtrocomercial);
+        ->when($filtrocomercial!='', function ($query) use($filtrocomercial){
+            $query->where('comercial_id',$filtrocomercial);
         })
         ->when($entidadtipo_id=='1', function ($query){
             $query->whereIn('entidadtipo_id',[1,3]);
