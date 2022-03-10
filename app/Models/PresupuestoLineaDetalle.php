@@ -50,7 +50,7 @@ class PresupuestoLineaDetalle extends Model
     public function getDeshabilitadoPcosteAttribute()
     {
         $acciontipo=$this->acciontipo->nombrecorto;
-        if($acciontipo=="PFM" ||$acciontipo=="EXT" ||$acciontipo=="COM" ||$acciontipo=="TRA" )
+        if($acciontipo=="PFM" ||$acciontipo=="EXT" ||$acciontipo=="COM"  )
             return '';
         else
             return 'disabled';
@@ -59,7 +59,7 @@ class PresupuestoLineaDetalle extends Model
     public function getDeshabilitadoColorpCosteAttribute()
     {
         $acciontipo=$this->acciontipo->nombrecorto;
-        if($acciontipo=="PFM" ||$acciontipo=="EXT" ||$acciontipo=="COM"  ||$acciontipo=="TRA" )
+        if($acciontipo=="PFM" ||$acciontipo=="EXT" ||$acciontipo=="COM" )
             return '';
         else
             return 'bg-gray-100';
