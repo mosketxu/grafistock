@@ -54,7 +54,7 @@ class PresupLineaDetalle extends Component
         $this->empresatipo_id=$this->empresaTipo->id;
         $this->controlpartidas=$this->presuplinea->presupuesto->presupuestocontrolpartidas;
         $this->acciontipo=AccionTipo::find($this->acciontipoId);
-        $condiciones=['IMP','ACA','MAN','TRA'];
+        $condiciones=['IMP','ACA','MAN'];
         if(in_array($this->acciontipo->nombrecorto, $condiciones)){
             $this->deshabilitadoPCoste='disabled';
             $this->colorfondoPCoste='bg-gray-100';
@@ -195,7 +195,7 @@ class PresupLineaDetalle extends Component
         $this->showAnchoAlto= $ud=='e_m2' ? true : false;
         $this->showMinutos= $ud=='e_min' ? true : false;
 
-        $condiciones=['IMP','ACA','MAN','TRA'];
+        $condiciones=['IMP','ACA','MAN'];
         $this->deshabilitadoPCoste='';
         $this->colorfondoPCoste='';
         $this->acciontipo=AccionTipo::find($this->acciontipo_id);
