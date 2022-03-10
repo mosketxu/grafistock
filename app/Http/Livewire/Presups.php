@@ -52,7 +52,9 @@ class Presups extends Component
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
                 $query->where('comercial_id',Auth::user()->id);
             })
-            ->whereIn('entidadtipo_id',['1','3'])->orderBy('entidad')->get();
+            ->whereIn('entidadtipo_id',['1','3','4'])->orderBy('entidad')->get();
+
+
         $solicitantes = User::orderBy('name')->get();
         $totalcoste=$presupuestos->sum('preciocoste');
         $totalventa=$presupuestos->sum('precioventa');
@@ -71,9 +73,17 @@ class Presups extends Component
         $this->resetPage();
     }
 
+
     public function create(){
         $this->resetInputFields();
         $this->openNewModal();
+    }
+
+    public function updatedEntidadId()
+    {
+        $this->entidadcontacto_id='';
+        $e=Entidad::find($this->entidad_id);
+        $this->contactos=EntidadContacto::where('entidad_id',$e->id)->orderBy('contacto')->get();
     }
 
     public function replicateRow(Presupuesto $presupuesto)
@@ -173,7 +183,7 @@ class Presups extends Component
             $this->numpresupuesto();
             $destino="nuevo";
         }
-    $presupuesto = Presupuesto::updateOrCreate(['id' => $this->presupuesto_id], [
+        $presupuesto = Presupuesto::updateOrCreate(['id' => $this->presupuesto_id], [
             'presupuesto'=>$this->presupuesto,
             'descripcion'=>$this->descripcion,
             'entidad_id'=>$this->entidad_id,
@@ -244,12 +254,6 @@ class Presups extends Component
         $this->observaciones=$presupuesto->observaciones;
         $this->contactos=EntidadContacto::where('entidad_id',$this->entidad_id)->orderBy('contacto')->get();
         $this->openNewModal();
-    }
-
-    public function updatedEntidadId()
-    {
-        $e=Entidad::find($this->entidad_id);
-        $this->contactos=EntidadContacto::where('entidad_id',$e->id)->orderBy('contacto')->get();
     }
 
     public function numpresupuesto()
