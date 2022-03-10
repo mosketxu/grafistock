@@ -79,10 +79,18 @@
                 <table width="100%" style="">
                     @foreach ( $presupuesto->presupuestolineasvisibles as $presupuestolinea )
                     <tr style="border-bottom-style: solid; font-size:10px;">
-                        <td style="border-bottom-style: solid ;border-width:thin;border-color:rgb(163, 161, 161); padding-left:3px; rgb(223, 218, 218);" width="70%" >{{ $presupuestolinea->descripcion }}</td>
-                        <td style="border-bottom-style: solid ;border-width:thin;border-color: rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">{{ number_format($presupuestolinea->precioventa / $presupuestolinea->unidades ,2) }} €</td>
-                        <td style="border-bottom-style: solid ;border-width:thin;border-color:rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">{{ $presupuestolinea->unidades }} </td>
-                        <td style="border-bottom-style: solid ;border-width:thin;border-color: rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">{{ $presupuestolinea->precioventa }} €</td>
+                        <td style="border-bottom-style: solid ;border-width:thin;border-color:rgb(163, 161, 161); padding-left:3px; rgb(223, 218, 218);" width="70%" >
+                            {{ $presupuestolinea->descripcion }}
+                        </td>
+                        <td style="border-bottom-style: solid ;border-width:thin;border-color: rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">
+                            {{ number_format($presupuestolinea->precioventa / $presupuestolinea->unidades ,2) }} €
+                        </td>
+                        <td style="border-bottom-style: solid ;border-width:thin;border-color:rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">
+                            {{ number_format($presupuestolinea->unidades,2) }}
+                        </td>
+                        <td style="border-bottom-style: solid ;border-width:thin;border-color: rgb(163, 161, 161); text-align:right; rgb(223, 218, 218);" width="10%">
+                            {{ number_format($presupuestolinea->precioventa,2) }} €
+                        </td>
                     </tr>
                     @endforeach
             </table>
@@ -97,7 +105,7 @@
                 </tr>
                 <tr style="background-color: #E5E8E8; font-size:10px;">
                     <td style=" padding-left:3px; rgb(223, 218, 218);" width="70%" ></td>
-                    <td style=" text-align:right; rgb(223, 218, 218);" width="10%">{{ $presupuesto->presupuestolineasvisibles->sum('precioventa') }} €</td>
+                    <td style=" text-align:right; rgb(223, 218, 218);" width="10%">{{ number_format($presupuesto->presupuestolineasvisibles->sum('precioventa'),2) }} €</td>
                     <td style=" text-align:right; rgb(223, 218, 218);" width="10%">{{ number_format($presupuesto->presupuestolineasvisibles->sum('precioventa') * $presupuesto->iva,2) }} € </td>
                     <td style=" text-align:right; rgb(223, 218, 218);" width="10%">{{ number_format($presupuesto->presupuestolineasvisibles->sum('precioventa')*(1+$presupuesto->iva),2)  }} €</td>
                 </tr>

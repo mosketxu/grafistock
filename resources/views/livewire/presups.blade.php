@@ -194,16 +194,16 @@
                                     class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md" readonly />
                             </td>
                             <td class="text-right">
-                                <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->unidades}}</span>
+                                <span class="pr-4 text-xs text-blue-500">{{ number_format($presupuesto->unidades,2)}}</span>
                             </td>
                             <td class="text-right">
                                 <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->preciocoste}}</span>
                             </td>
                             <td class="text-right">
-                                <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->incremento}} %</span>
+                                <span class="pr-4 text-xs text-blue-500">{{ number_format($presupuesto->incremento,2)}} %</span>
                             </td>
                             <td class="text-right">
-                                <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->precioventa}}</span>
+                                <span class="pr-4 text-xs text-blue-500">{{ number_format($presupuesto->precioventa,2)}}</span>
                             </td>
                             <td>
                                 <span
