@@ -284,7 +284,8 @@ class Presups extends Component
                 $query->where('presupuestos.estado',$this->filtroestado);
             })
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
-                $query->where('solicitante_id',Auth::user()->id);
+                    $query->when(!Auth::user()->hasRole('Admin'),function ($q){
+                            $q->where('solicitante_id',Auth::user()->id);});
             })
             ->searchYear('fechapresupuesto',$this->filtroanyo)
             ->searchMes('fechapresupuesto',$this->filtromes)
