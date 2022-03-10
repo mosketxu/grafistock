@@ -40,6 +40,25 @@
                             @endif
                        </div>
                     </div>
+                    @if(Auth::user()->hasRole('Admin'))
+                        <div class="text-xs">
+                            <label class="px-1 text-gray-600">
+                                Comercial
+                            </label>
+                            <div class="flex">
+                                <select wire:model="filtrosolicitante"
+                                    class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                    <option value="">-- selecciona --</option>
+                                    @foreach ($solicitantes as $solicitante )
+                                    <option value="{{ $solicitante->id }}">{{ $solicitante->name }}</option>
+                                    @endforeach
+                                </select>
+                                @if($filtrosolicitante!='')
+                                    <x-icon.filter-slash-a wire:click="$set('filtrosolicitante', '')" class="pb-1" title="reset filter" />
+                                @endif
+                            </div>
+                        </div>
+                    @endif
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
                             Año

@@ -18,6 +18,7 @@ class Presups extends Component
     public $filtroanyo='';
     public $filtromes='';
     public $filtroclipro='';
+    public $filtrosolicitante='';
     public $filtroestado='';
     public $entidad;
     public $message;
@@ -55,7 +56,8 @@ class Presups extends Component
             ->whereIn('entidadtipo_id',['1','3','4'])->orderBy('entidad')->get();
 
 
-        $solicitantes = User::orderBy('name')->get();
+        // $solicitantes = User::whereorderBy('name')->get();
+        $solicitantes=User::role('Comercial')->orderBy('name')->get();
         $totalcoste=$presupuestos->sum('preciocoste');
         $totalventa=$presupuestos->sum('precioventa');
 
@@ -274,6 +276,9 @@ class Presups extends Component
                 })
             ->when($this->filtroclipro!='', function ($query){
                 $query->where('entidad_id',$this->filtroclipro);
+                })
+            ->when($this->filtrosolicitante!='', function ($query){
+                $query->where('solicitante_id',$this->filtrosolicitante);
                 })
             ->when($this->filtroestado!='', function ($query){
                 $query->where('presupuestos.estado',$this->filtroestado);
