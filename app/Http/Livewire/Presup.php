@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\EntidadContacto;
 use App\Models\Presupuesto;
 use App\Models\PresupuestoControlpartida;
+use App\Models\PresupuestoLinea;
 use Livewire\Component;
 
 class Presup extends Component
@@ -86,11 +87,22 @@ class Presup extends Component
         ]);
 
         $presup=Presupuesto::find($this->presupuesto->id);
+        $presuplineas=PresupuestoLinea::where('presupuesto_id',$presup->id)->get();
+        // dd($presuplineas);
+        if($presuplineas->count()>0){
+            foreach($presuplineas as $presuplinea)
+            $presuplinea->recalculo(); // por si se ha modificado el %Incremento
+        }
+
         $presup->recalculo();
 
         $this->emit('presupuestorefresh');
 
+        $this->emit('presupuestolinearefresh');
+
         $this->dispatchBrowserEvent('notify', $mensaje);
+
+        return redirect()->route('presupuesto.edit',$presup);
     }
 
 }

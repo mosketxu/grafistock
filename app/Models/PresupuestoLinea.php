@@ -33,7 +33,8 @@ class PresupuestoLinea extends Model
 
     public function recalculo()
     {
-        $this->precioventa=$this->presupuestolineadetalles->sum('precioventa');
+        $incremento=$this->presupuesto->incremento;
+        $this->precioventa=$this->presupuestolineadetalles->sum('precioventa')*(1+ $incremento/100);;
         $this->preciocoste=$this->presupuestolineadetalles->sum('preciocoste');
         $this->save();
     }

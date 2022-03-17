@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControl, PresupuestoControlpartida, PresupuestoLineaDetalle, User};
+use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControl, PresupuestoControlpartida, PresupuestoLinea, PresupuestoLineaDetalle, User};
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\DataTable\WithBulkActions;
@@ -54,16 +54,12 @@ class Presups extends Component
                 $query->where('comercial_id',Auth::user()->id);
             })
             ->whereIn('entidadtipo_id',['1','3','4'])->orderBy('entidad')->get();
-
-
-        // $solicitantes = User::whereorderBy('name')->get();
         $solicitantes=User::role('Comercial')->orderBy('name')->get();
         $totalcoste=$presupuestos->sum('preciocoste');
         $totalventa=$presupuestos->sum('precioventa');
-
         return view('livewire.presups',compact('presupuestos','clientes','solicitantes','totalcoste','totalventa'));
-
     }
+
 
     public function updatingFiltroclipro(){
         $this->resetPage();
@@ -75,22 +71,19 @@ class Presups extends Component
         $this->resetPage();
     }
 
-
     public function create(){
         $this->resetInputFields();
         $this->openNewModal();
     }
 
-    public function updatedEntidadId()
-    {
+    public function updatedEntidadId(){
         $this->entidadcontacto_id='';
         $e=Entidad::find($this->entidad_id);
         $this->contactos=EntidadContacto::where('entidad_id',$e->id)->orderBy('contacto')->get();
     }
 
-    public function replicateRow(Presupuesto $presupuesto)
-    {
-        // imicializo las vbles nuevas
+    public function replicateRow(Presupuesto $presupuesto){
+        // inicializo las vbles nuevas
         $this->fechapresupuesto=now();
         $this->numpresupuesto();
         // clono la cabecera del presupuesto
@@ -156,13 +149,8 @@ class Presups extends Component
     }
 
     public function store(){
-
-        if($this->solicitante_id=='')
-            $this->solicitante_id= Auth()->user()->id;
-
-        if($this->entidadcontacto_id=='')
-            $this->entidadcontacto_id= null;
-
+        if($this->solicitante_id=='') $this->solicitante_id= Auth()->user()->id;
+        if($this->entidadcontacto_id=='') $this->entidadcontacto_id= null;
 
         $this->validate([
             'entidad_id' => 'required',
@@ -178,7 +166,6 @@ class Presups extends Component
             'estado' => 'required',
             'iva' => 'required',
         ]);
-
 
         $destino="editar";
         if(!$this->presupuesto){
@@ -204,11 +191,17 @@ class Presups extends Component
             'estado'=>$this->estado,
             'observaciones'=>$this->observaciones,
         ]);
+
+        $presuplineas=PresupuestoLinea::where('presupuesto_id',$this->presupuesto_id)->get();
+        if($presuplineas->count()>0){
+            foreach($presuplineas as $presuplinea)
+            $presuplinea->recalculo(); // por si se ha modificado el %Incremento
+        }
+
         $presupuesto->recalculo(); // por si se ha modificado el %Incremento
 
         if ($presupuesto->presupuestocontrolpartidas->count()<AccionTipo::count()) {
             $acciontipos=AccionTipo::get();
-
             foreach ($acciontipos as $acciontipo) {
                 $existe=PresupuestoControlpartida::where('acciontipo_id',$acciontipo->id)->where('presupuesto_id',$presupuesto->id)->count();
                 if ($existe==0) {
