@@ -28,28 +28,7 @@ class PresupuestoController extends Controller
         return view('presupuesto.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // return view('presupuesto.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function imprimir(Presupuesto $presupuesto)
+    public function html(Presupuesto $presupuesto)
     {
         $presupuesto=Presupuesto::with('presupuestolineasvisibles')->find($presupuesto->id);
         $controlpartidas=PresupuestoControlpartida::get();
@@ -63,35 +42,14 @@ class PresupuestoController extends Controller
             ->get();
 
        return view('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']));
-        // $pdf = \PDF::loadView('presupuesto.presupuestofichapdf', compact(['presupuesto','controlpartidasactivas','controlpartidaspendientes']));
-        // $pdf->setPaper('a4','landscape');
-
-        // return $pdf->download('presupuesto.pdf'); //así lo descarga
-
-        // return $pdf->stream('ficha.pdf');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Presupuesto  $presupuesto
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Presupuesto $presupuesto)
+    public function imprimir(Presupuesto $presupuesto,$totales)
     {
         $presupuesto=Presupuesto::with('presupuestolineas','presupuestolineas.presupuestolineadetalles')->find($presupuesto->id);
-
-        // return view('presupuesto.presupuestopdf', compact(['presupuesto']));
-
-        $pdf = \PDF::loadView('presupuesto.presupuestopdf', compact(['presupuesto']));
-        // $pdf = \PDF::loadView('presupuesto.presupuestopdfpruebarapida', );
-
+        $pdf = \PDF::loadView('presupuesto.presupuestopdf', compact(['presupuesto','totales']));
         $pdf->setPaper('a4','portrait');
-
-        // return $pdf->download('presupuesto.pdf'); //así lo descarga
-
         return $pdf->stream('invoice.pdf'); //asi lo muestra por pantalla
-
     }
 
     /**

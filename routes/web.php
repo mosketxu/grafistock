@@ -68,11 +68,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('stockpeticion', StockPeticionController::class);
 
     //presupuestos
-    Route::get('presupuesto/ficha/{presupuesto}]', [PresupuestoController::class,'imprimir'])->name('presupuesto.imprimir');
+    Route::get('presupuesto/ficha/{presupuesto}/{totales}', [PresupuestoController::class,'imprimir'])->name('presupuesto.imprimir');
+    Route::get('presupuesto/ficha/{presupuesto}', [PresupuestoController::class,'html'])->name('presupuesto.html');
     Route::resource('presupuesto', PresupuestoController::class);
 
     //presupuestolineadetalle
-    Route::get('presupuestolinea/{presupuestolinea}]', [PresupuestoLineaController::class,'index'])->name('presupuestolinea.index');
+    Route::get('presupuestolinea/{presupuestolinea}', [PresupuestoLineaController::class,'index'])->name('presupuestolinea.index');
     Route::get('presupuestolinea/{presupuestolinea}/{acciontipoId}', [PresupuestoLineaController::class,'create'])->name('presupuestolinea.create');
 
     //Acciones

@@ -25,6 +25,8 @@ class Presup extends Component
 
     protected $listeners = [ 'presupuestorefresh' => 'presupuestorefresh'];
 
+    public $showPDFModal=false;
+
     protected function rules(){
         return [
             'precioventa'=>'nullable|numeric',
@@ -65,6 +67,14 @@ class Presup extends Component
         $contactos=EntidadContacto::where('entidad_id',$this->presupuesto->entidad_id)->orderBy('contacto')->get();
         $controlpartidas=PresupuestoControlpartida::where('presupuesto_id',$this->presupuesto->id)->get();
         return view('livewire.presup',compact(['controlpartidas','contactos']));
+    }
+
+    public function openPDFModal(){
+        $this->showPDFModal = true;
+    }
+
+    public function imprimir(){
+        $this->openPDFModal();
     }
 
     public function save()

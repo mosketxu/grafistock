@@ -11,10 +11,8 @@
                 </div>
             </div>
             <div class="flex flex-row-reverse w-6/12 mr-4 text-right">
-                {{-- <div class="flex-row-reverse"> --}}
-                    <a href="{{ route('presupuesto.show',$presupuesto) }}" target="_blank" class="w-6 h-6 ml-2 text" title="Imprimir Presupuesto"><x-icon.printer></x-icon.printer></a>
-                    <a href="{{ route('presupuesto.imprimir',$presupuesto) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.pdfred ></x-icon.pdfred></a>
-                {{-- </div> --}}
+                <x-icon.pdf-a wire:click="imprimir()" class="text-green-600" title="PDF" />
+                <a href="{{ route('presupuesto.html',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.html ></x-icon.html></a>
             </div>
         </div>
 
@@ -48,4 +46,17 @@
         </div>
     </div>
 
+    <!-- PDF Transactions Modal -->
+    <x-modal.confirmationPDF wire:model.defer="showPDFModal">
+        <x-slot name="title">Generar Presupuesto en PDF</x-slot>
+
+        <x-slot name="content">
+            <div class="py-8 text-gray-700">Selecciona el tipo de Presupuesto a imprimir</div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-button  onclick="location.href = '{{route('presupuesto.imprimir', [$presupuesto,'con']) }}'">{{ __('Con totales') }}</x-jet-button>
+            <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.imprimir', [$presupuesto,'sin']) }}'">{{ __('Sin totales') }}</x-jet-secondary-button>
+        </x-slot>
+    </x-modal.confirmationPDF>
 </div>

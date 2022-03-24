@@ -219,8 +219,9 @@
                                         <x-icon.copy-a wire:click="replicateRow({{ $presupuesto }})" onclick="confirm('¿Estás seguro de querer copiar el presupuesto?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
                                         <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})" onclick="confirm('¿Estás seguro de querer eliminar el presupuesto?') || event.stopImmediatePropagation()" class="pl-1 " title="Borrar" />
                                     @endif
-                                    <a href="{{ route('presupuesto.show',$presupuesto) }}" target="_blank" class="w-6 h-6 ml-2 text" title="Imprimir Presupuesto"><x-icon.printer></x-icon.printer></a>
-                                    <a href="{{ route('presupuesto.imprimir',$presupuesto) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.pdfred ></x-icon.pdfred></a>
+                                    {{-- <a href="{{ route('presupuesto.imprimir',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 ml-2 text" title="Imprimir Presupuesto"><x-icon.pdfred></x-icon.pdfred></a> --}}
+                                    <x-icon.pdf-a wire:click="imprimir()" class="text-green-600" title="PDF" />
+                                    <a href="{{ route('presupuesto.html',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.html ></x-icon.html></a>
                                 </div>
                             </td>
                         </tr>
@@ -264,20 +265,17 @@
         </div>
     </div>
 
-    <!-- Delete Transactions Modal -->
-    <form wire:submit.prevent="deleteSelected">
-        <x-modal.confirmation wire:model.defer="showDeleteModal">
-            <x-slot name="title">Borrar Presupuesto</x-slot>
+    <!-- PDF Transactions Modal -->
+    <x-modal.confirmationPDF wire:model.defer="showPDFModal">
+        <x-slot name="title">Generar Presupuesto en PDF</x-slot>
 
-            <x-slot name="content">
-                <div class="py-8 text-gray-700">¿Esás seguro? Esta acción es irreversible.</div>
-            </x-slot>
+        <x-slot name="content">
+            <div class="py-8 text-gray-700">Selecciona el tipo de Presupuesto a imprimir</div>
+        </x-slot>
 
-            <x-slot name="footer">
-                <x-button.secondary wire:click="$set('showDeleteModal', false)">Cancel</x-button.secondary>
-
-                <x-button.primary type="submit">Delete</x-button.primary>
-            </x-slot>
-        </x-modal.confirmation>
-    </form>
+        <x-slot name="footer">
+            <x-jet-button  onclick="location.href = '{{route('presupuesto.imprimir', [$presupuesto,'con']) }}'">{{ __('Con totales') }}</x-jet-button>
+            <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.imprimir', [$presupuesto,'sin']) }}'">{{ __('Sin totales') }}</x-jet-secondary-button>
+        </x-slot>
+    </x-modal.confirmationPDF>
 </div>

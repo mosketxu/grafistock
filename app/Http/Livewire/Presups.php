@@ -3,9 +3,9 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControl, PresupuestoControlpartida, PresupuestoLinea, PresupuestoLineaDetalle, User};
+use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
+     PresupuestoLinea, PresupuestoLineaDetalle, User};
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\DB;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +29,7 @@ class Presups extends Component
 
     public $showDeleteModal=false;
     public $showNewModal = false;
+    public $showPDFModal=false;
 
     protected function rules(){
         return[
@@ -76,6 +77,10 @@ class Presups extends Component
         $this->openNewModal();
     }
 
+    public function imprimir(){
+        $this->openPDFModal();
+    }
+
     public function updatedEntidadId(){
         $this->entidadcontacto_id='';
         $e=Entidad::find($this->entidad_id);
@@ -121,6 +126,10 @@ class Presups extends Component
 
     public function openNewModal(){
         $this->showNewModal = true;
+    }
+
+    public function openPDFModal(){
+        $this->showPDFModal = true;
     }
 
     public function closeNewModal(){
@@ -310,6 +319,8 @@ class Presups extends Component
 
         $this->dispatchBrowserEvent('notify', $deleteCount . ' Presupuestos eliminados!');
     }
+
+
 
     public function delete($presupuestoId)
     {
