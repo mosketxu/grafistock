@@ -30,6 +30,7 @@ class Presups extends Component
     public $showDeleteModal=false;
     public $showNewModal = false;
     public $showPDFModal=false;
+    public $presupPDF='';
 
     protected function rules(){
         return[
@@ -77,8 +78,8 @@ class Presups extends Component
         $this->openNewModal();
     }
 
-    public function imprimir(){
-        $this->openPDFModal();
+    public function imprimir($presupuesto){
+        $this->openPDFModal($presupuesto);
     }
 
     public function updatedEntidadId(){
@@ -128,7 +129,10 @@ class Presups extends Component
         $this->showNewModal = true;
     }
 
-    public function openPDFModal(){
+    public function openPDFModal($presupuesto){
+        // dd($presupuesto['id']);
+        $this->presupPDF=Presupuesto::find($presupuesto['id']);
+        // dd($this->presupPDF);
         $this->showPDFModal = true;
     }
 

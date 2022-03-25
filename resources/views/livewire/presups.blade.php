@@ -220,7 +220,7 @@
                                         <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})" onclick="confirm('¿Estás seguro de querer eliminar el presupuesto?') || event.stopImmediatePropagation()" class="pl-1 " title="Borrar" />
                                     @endif
                                     {{-- <a href="{{ route('presupuesto.imprimir',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 ml-2 text" title="Imprimir Presupuesto"><x-icon.pdfred></x-icon.pdfred></a> --}}
-                                    <x-icon.pdf-a wire:click="imprimir()" class="text-green-600" title="PDF" />
+                                    <x-icon.pdf-a wire:click="imprimir({{ $presupuesto }})" class="text-green-600" title="PDF" />
                                     <a href="{{ route('presupuesto.html',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.html ></x-icon.html></a>
                                 </div>
                             </td>
@@ -274,8 +274,8 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-button  onclick="location.href = '{{route('presupuesto.imprimir', [$presupuesto,'con']) }}'">{{ __('Con totales') }}</x-jet-button>
-            <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.imprimir', [$presupuesto,'sin']) }}'">{{ __('Sin totales') }}</x-jet-secondary-button>
+            <x-jet-button  onclick="location.href = '{{route('presupuesto.imprimir', [$presupPDF,'con']) }}'">{{ __('Con totales') }}</x-jet-button>
+            <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.imprimir', [$presupPDF,'sin']) }}'">{{ __('Sin totales') }}</x-jet-secondary-button>
         </x-slot>
     </x-modal.confirmationPDF>
 </div>
