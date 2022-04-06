@@ -17,20 +17,22 @@
             @endif
             <x-jet-validation-errors></x-jet-validation-errors>
             <div class="flex justify-between">
-                <div class="flex w-2/4 space-x-2">
+                <div class="flex w-3/4 space-x-2">
                     <div class="w-full text-xs">
-                        <input type="text" wire:model="search"
-                            class="w-full py-1 border border-blue-100 rounded-lg"
-                            {{-- class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"> --}}
-                            placeholder="Búsqueda por nombre o nif..." autofocus/>
+                        <input type="text" wire:model="search" class="w-full py-1 border border-blue-100 rounded-lg" placeholder="Búsqueda por nombre o nif..." autofocus/>
+                    </div>
+                    <div class="w-full text-xs">
+                        <div class="flex">
+                            <label for="filtrocomercial" class="w-full">Fecha conversión a cliente</label>
+                            <input type="date" wire:model="Fini" class="w-full py-1 border border-blue-100 rounded-lg"/>
+                            <input type="date" wire:model="Ffin" class="w-full py-1 border border-blue-100 rounded-lg"/>
+                        </div>
                     </div>
                     <div class="w-full text-xs">
                         @if(Auth::user()->hasRole('Admin'))
                             <div class="flex">
                                 <label for="filtrocomercial" class="items-center mx-2 mt-1 text-base">Comercial</label>
-                                <select wire:model="filtrocomercial"
-                                    {{-- class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"> --}}
-                                    class="w-full py-1 border border-blue-100 rounded-lg" >
+                                <select wire:model="filtrocomercial" class="w-full py-1 border border-blue-100 rounded-lg" >
                                     <option value=""></option>
                                     @foreach ($comerciales as $comercial)
                                     <option value="{{ $comercial->id }}">{{ $comercial->name }}</option>
@@ -54,6 +56,7 @@
                         <x-table.heading class="pl-4 text-left" >{{ __('Nif') }} </x-table.heading>
                         @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro','Prop']))
                             <x-table.heading class="pl-4 text-left" >{{ __('Cat.Empresa') }}  </x-table.heading>
+                            <x-table.heading class="pl-4 text-left" >{{ __('F.Cliente') }}  </x-table.heading>
                         @endif
                         <x-table.heading class="pl-4 text-left" >{{ __('Comercial') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Localidad') }}</x-table.heading>
@@ -86,7 +89,10 @@
                                             <input type="text" value="{{ $entidad->empresatipo->nombrecorto }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
                                         @endif
                                     </x-table.cell>
-                                @endif
+                                    <x-table.cell>
+                                        <input type="text" value="{{ $entidad->fechacli }}" class="w-full text-sm font-thin text-gray-500 truncate border-0 rounded-md"  readonly/>
+                                    </x-table.cell>
+                                    @endif
                                 <x-table.cell>
                                     @if(Auth::user()->hasRole(['Admin']))
                                     {{-- <div class="flex">

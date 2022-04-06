@@ -86,7 +86,7 @@ class Entidad extends Model
         return $this->belongsTo(StockMovimiento::class);
     }
 
-    public function scopeFiltrosEntidad(Builder $query, $search, $filtrocomercial, $entidadtipo_id) : Builder
+    public function scopeFiltrosEntidad(Builder $query, $search, $filtrocomercial, $entidadtipo_id,$fini,$ffin) : Builder
     {
         return $query ->search('entidad',$search)
         ->when($filtrocomercial!='', function ($query) use($filtrocomercial){
@@ -104,12 +104,18 @@ class Entidad extends Model
         ->when(Auth::user()->hasRole('Comercial'),function ($query){
             $query->where('comercial_id',Auth::user()->id);
         })
+        ->when($fini && $ffin, function ($query) use($fini,$ffin){
+            $query->whereBetween('fechacliente', [$fini, $ffin]);
+        })
         ->orSearch('nif',$search);
     }
 
     public function getFechacliAttribute()
     {
-        return Carbon::parse($this->fechacliente)->format('d-m-Y');
+        if ($this->fechacliente) {
+            return Carbon::parse($this->fechacliente)->format('d-m-Y');
+        } else {
+            return '';
+        }
     }
-
 }

@@ -13,6 +13,8 @@ class Ents extends Component
 
     public $search='';
     public $filtrocomercial='';
+    public $Fini='';
+    public $Ffin='';
     public $entidadtipo_id='';
     public $empresatipo_id='';
     public Entidad $entidad;
@@ -27,7 +29,7 @@ class Ents extends Component
             ->with('entidadtipo')
             ->with('empresatipo')
             ->with('comercial')
-            ->filtrosEntidad($this->search,$this->filtrocomercial,$this->entidadtipo_id)
+            ->filtrosEntidad($this->search,$this->filtrocomercial,$this->entidadtipo_id,$this->Fini,$this->Ffin)
             ->orderBy('entidad','asc')
             ->paginate(10);
 
