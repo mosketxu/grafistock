@@ -13,7 +13,7 @@
                         @endif
                     </div>
                     <div class="ml-3">
-                        <x-select wire:model.defer="entidad.entidadtipo_id" class="text-xl" selectname="entidadtipo_id" required>
+                        <x-select wire:model.lazy="entidad.entidadtipo_id" class="text-xl" selectname="entidadtipo_id" required>
                             @foreach ($tiposentidad as $tipoentidad)
                             <option value="{{ $tipoentidad->id }}">{{ $tipoentidad->nombre }}</option>
                             @endforeach
@@ -25,7 +25,7 @@
                 @if($entidad->id)
                 <x-button.button  onclick="location.href = '{{ route('entidadcontacto.show',$entidad->id) }}'" color="green"> {{ __('Contactos') }}</x-button.button>
                 @endif
-                <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$entidadtipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $entidadtipo->nombre }}</x-button.button>
+                <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$entidadtipo->id) }}'" color="blue"><x-icon.plus/>Nuevo</x-button.button>
             </div>
         </div>
 
@@ -150,6 +150,12 @@
                             <option value="{{ $tipocat->id }}">{{ $tipocat->nombre }}</option>
                         @endforeach
                     </x-select>
+                </div>
+                <div class="form-item">
+                    <x-jet-label for="fechacliente" class="text-center">{{ __('Fecha conversión a cliente') }}</x-jet-label>
+                    <input type="date" id="fechacli" wire:model.defer="fechacli"
+                        class="py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                        @error('fechacli') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
             </div>
             <div class="px-2 mx-2 my-2 rounded-md bg-blue-50">

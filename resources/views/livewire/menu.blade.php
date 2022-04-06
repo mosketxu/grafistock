@@ -33,13 +33,13 @@
                                     <x-jet-dropdown-link href="{{ route('entidad.tipo','4') }}" class="text-center">
                                         {{ __('Prospección') }}
                                     </x-jet-dropdown-link>
-                                    @if(Auth::user()->hasRole('Comercial')==false)
-                                    <x-jet-dropdown-link href="{{ route('entidad.tipo','2') }}" class="text-center">
-                                        {{ __('Proveedores') }}
-                                    </x-jet-dropdown-link>
-                                    <x-jet-dropdown-link href="{{ route('entidad.tipo','0') }}" class="text-center">
-                                        {{ __('Todos') }}
-                                    </x-jet-dropdown-link>
+                                    @if(Auth::user()->hasRole('Gestion')==true || Auth::user()->hasRole('Admin')==true )
+                                        <x-jet-dropdown-link href="{{ route('entidad.tipo','2') }}" class="text-center">
+                                            {{ __('Proveedores') }}
+                                        </x-jet-dropdown-link>
+                                        <x-jet-dropdown-link href="{{ route('entidad.tipo','0') }}" class="text-center">
+                                            {{ __('Todos') }}
+                                        </x-jet-dropdown-link>
                                     @endif
                                 </div>
                             </x-slot>
@@ -92,29 +92,43 @@
                         </x-jet-dropdown>
                     </div>
                     @endcan
-                    {{-- Auth::user()->name --}}
-                    @can('administracion')
-                    <x-jet-nav-link href="{{ route('administracion.index') }}" :active="request()->routeIs('administracion.index')">
-                        {{ __('Administración') }}
-                    </x-jet-nav-link>
-                    @endcan
                 </div>
             </div>
+
             <div class="hidden space-x-2 sm:flex sm:items-center sm:ml-6">
-                @if(explode('.',Request::route()->getName())[0] ==('administracion'||'accion'))
-                    @can('user.index')
-                        <div class="hidden rounded-lg sm:-my-px sm:ml-3 sm:flex">
-                            <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                                {{ __('Usuarios') }}
-                            </x-jet-nav-link>
-                        </div>
-                    @endcan
-                    @can('accion.index')
-                        <x-jet-nav-link href="{{ route('accion.index') }}" :active="request()->routeIs('accion.index')">
-                            {{ __('Acciones') }}
-                        </x-jet-nav-link>
-                    @endcan
-                @endif
+                @can('administracion')
+                <div class="relative ml-3">
+                    <x-jet-dropdown align="right" width="60" >
+                        <x-slot name="trigger">
+                            <span class="inline-flex rounded-md">
+                                <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md bg-blu hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-blue-700">
+                                    Mantenimiento
+                                    <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </span>
+                        </x-slot>
+                        <x-slot name="content">
+                                @can('administracion')
+                                <x-jet-dropdown-link href="{{ route('administracion.index') }}" >
+                                    {{ __('Administración') }}
+                                </x-jet-dropdown-link>
+                                @endcan
+                                @can('user.index')
+                                <x-jet-dropdown-link href="{{ route('users.index') }}" >
+                                    {{ __('Usuarios') }}
+                                </x-jet-dropdown-link>
+                                @endcan
+                                @can('accion.index')
+                                <x-jet-dropdown-link href="{{ route('accion.index') }}" >
+                                    {{ __('Acciones') }}
+                                </x-jet-dropdown-link>
+                                @endcan
+                        </x-slot>
+                    </x-jet-dropdown>
+                </div>
+            @endcan
                 <!-- Settings Dropdown -->
                 <div class="relative ml-3">
                     <x-jet-dropdown align="right" width="48">

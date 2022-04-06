@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\{Entidad, EntidadTipo, EmpresaTipo, EntidadCategoria, MetodoPago,Pais,Provincia, User};
+// use Illuminate\Support\Carbon;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ class Ent extends Component
 {
     public $entidad;
     public $entidadtipo;
+    public $fechacli;
 
     protected function rules()
     {
@@ -55,6 +57,7 @@ class Ent extends Component
     public function mount(Entidad $entidad,$entidadtipoId)
     {
         $this->entidad=$entidad;
+        $this->fechacli=$this->entidad->fechacliente;
         $this->entidad->entidadtipo_id=$entidadtipoId;
         if(!$this->entidad->empresatipo_id) $this->entidad->empresatipo_id='3';
         $this->entidadtipo=EntidadTipo::find($entidadtipoId);
@@ -84,10 +87,18 @@ class Ent extends Component
         }
     }
 
+    public function UpdatedEntidadEntidadtipoId()
+    {
+        if ($this->entidad->entidadtipo_id=='1' || $this->entidad->entidadtipo_id=='3') {
+            if ($this->fechacli== null) {
+        $this->fechacli=now()->format('Y-m-d');
+            }
+}
+    }
+
 
     public function save()
     {
-        // dd($this->entidad->entidadcategoria_id);
         $this->validate();
         if($this->entidad->id){
             $i=$this->entidad->id;
@@ -114,12 +125,12 @@ class Ent extends Component
                 'entidad.nif'=>'nullable|max:12|unique:entidades,nif',
                 'entidad.cuentactblepro'=>'nullable|numeric|unique:entidades,cuentactblepro',
                 'entidad.cuentactblecli'=>'nullable|numeric|unique:entidades,cuentactblecli',
-
                 ]
             );
             $i=$this->entidad->id;
             $mensaje="Proveedor creado satisfactoriamente";
         }
+
         $ent=Entidad::updateOrCreate([
             'id'=>$i
             ],
@@ -130,6 +141,7 @@ class Ent extends Component
             'empresatipo_id'=>$this->entidad->empresatipo_id,
             'entidadcategoria_id'=>$this->entidad->entidadcategoria_id,
             'presupuesto'=>$this->entidad->presupuesto,
+            'fechacliente'=>$this->fechacli,
             'nif'=>$this->entidad->nif,
             'direccion'=>$this->entidad->direccion,
             'cp'=>$this->entidad->cp,

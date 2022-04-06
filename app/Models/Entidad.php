@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -12,7 +13,7 @@ class Entidad extends Model
 {
     use HasFactory;
     protected $table = 'entidades';
-    protected $fillable=['entidad','entidadtipo_id','empresatipo_id','entidadcategoria_id','presupuesto','comercial_id','direccion','cp','localidad','provincia_id','pais_id',
+    protected $fillable=['entidad','entidadtipo_id','empresatipo_id','entidadcategoria_id','presupuesto','fechacliente','comercial_id','direccion','cp','localidad','provincia_id','pais_id',
                         'nif','tfno','emailgral','emailadm','emailaux','web','idioma',
                         'banco1','iban1','banco2','iban2','banco3','iban3','factor',
                         'metodopago_id','diafactura','diavencimiento',
@@ -105,4 +106,10 @@ class Entidad extends Model
         })
         ->orSearch('nif',$search);
     }
+
+    public function getFechacliAttribute()
+    {
+        return Carbon::parse($this->fechacliente)->format('d-m-Y');
+    }
+
 }

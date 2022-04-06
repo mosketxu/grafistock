@@ -130,9 +130,7 @@ class Presups extends Component
     }
 
     public function openPDFModal($presupuesto){
-        // dd($presupuesto['id']);
         $this->presupPDF=Presupuesto::find($presupuesto['id']);
-        // dd($this->presupPDF);
         $this->showPDFModal = true;
     }
 
