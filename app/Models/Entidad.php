@@ -101,7 +101,7 @@ class Entidad extends Model
         ->when($entidadtipo_id=='4', function ($query){
             $query->where('entidadtipo_id','4');
         })
-        ->when(Auth::user()->hasRole('Comercial'),function ($query){
+        ->when(Auth::user()->hasRole('Comercial') ,function ($query){
             $query->where('comercial_id',Auth::user()->id);
         })
         ->when($fini && !$ffin, function ($query) use($fini){

@@ -23,7 +23,7 @@
                     </div>
                     <div class="w-full text-xs">
                         <div class="flex">
-                            <label for="filtrocomercial" class="w-full">Fecha conversión a cliente</label>
+                            <label for="filtrocomercial" class="w-full">Fecha Alta</label>
                             <input type="date" wire:model="Fini" class="w-full py-1 border border-blue-100 rounded-lg"/>
                             <input type="date" wire:model="Ffin" class="w-full py-1 border border-blue-100 rounded-lg"/>
                         </div>
@@ -56,7 +56,7 @@
                         <x-table.heading class="pl-4 text-left" >{{ __('Nif') }} </x-table.heading>
                         @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro','Prop']))
                             <x-table.heading class="pl-4 text-left" >{{ __('Cat.Empresa') }}  </x-table.heading>
-                            <x-table.heading class="pl-4 text-left" >{{ __('F.Cliente') }}  </x-table.heading>
+                            <x-table.heading class="pl-4 text-left" >{{ __('F.Alta') }}  </x-table.heading>
                         @endif
                         <x-table.heading class="pl-4 text-left" >{{ __('Comercial') }}</x-table.heading>
                         <x-table.heading class="pl-4 text-left" >{{ __('Localidad') }}</x-table.heading>

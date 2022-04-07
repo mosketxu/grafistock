@@ -89,11 +89,11 @@ class Ent extends Component
 
     public function UpdatedEntidadEntidadtipoId()
     {
-        if ($this->entidad->entidadtipo_id=='1' || $this->entidad->entidadtipo_id=='3') {
-            if ($this->fechacli== null) {
+        // if ($this->entidad->entidadtipo_id=='1' || $this->entidad->entidadtipo_id=='3') {
+        //     if ($this->fechacli== null) {
         $this->fechacli=now()->format('Y-m-d');
-            }
-}
+            // }
+        // }
     }
 
 
