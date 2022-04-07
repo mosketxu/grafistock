@@ -104,6 +104,12 @@ class Entidad extends Model
         ->when(Auth::user()->hasRole('Comercial'),function ($query){
             $query->where('comercial_id',Auth::user()->id);
         })
+        ->when($fini && !$ffin, function ($query) use($fini){
+            $query->where('fechacliente','>=', $fini);
+        })
+        ->when(!$fini && $ffin, function ($query) use($ffin){
+            $query->where('fechacliente','<=', $ffin);
+        })
         ->when($fini && $ffin, function ($query) use($fini,$ffin){
             $query->whereBetween('fechacliente', [$fini, $ffin]);
         })
