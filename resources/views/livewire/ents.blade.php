@@ -17,15 +17,15 @@
             @endif
             <x-jet-validation-errors></x-jet-validation-errors>
             <div class="flex justify-between">
-                <div class="flex w-3/4 space-x-2">
+                <div class="flex space-x-2">
                     <div class="w-full text-xs">
                         <input type="text" wire:model="search" class="w-full py-1 border border-blue-100 rounded-lg" placeholder="Búsqueda por nombre o nif..." autofocus/>
                     </div>
                     <div class="w-full text-xs">
-                        <div class="flex">
-                            <label for="filtrocomercial" class="w-full">Fecha Alta</label>
-                            <input type="date" wire:model="Fini" class="w-full py-1 border border-blue-100 rounded-lg"/>
-                            <input type="date" wire:model="Ffin" class="w-full py-1 border border-blue-100 rounded-lg"/>
+                        <div class="flex ">
+                            <label for="filtrocomercial" class="items-center text-base mt-1 mr-1">F.Alta</label>
+                            <input type="date" wire:model="Fini" class=" py-1 border border-blue-100 rounded-lg mr-1"/>
+                            <input type="date" wire:model="Ffin" class=" py-1 border border-blue-100 rounded-lg"/>
                         </div>
                     </div>
                     <div class="w-full text-xs">
