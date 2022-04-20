@@ -67,9 +67,9 @@
             {{-- Descripción general --}}
             <table width="100%" style="margin-top:20px">
                 <tr style="background-color: #eee7e7; color:rgb(10, 153, 220); font-size:9px;">
-                    <td style="padding-left:3px;" width="60%">Descripción</td>
+                    <td style="padding-left:3px;" width="55%">Descripción</td>
                     <td style="text-align:right;" width="15%">P.V.Unitario</td>
-                    <td style="text-align:right;" width="10%">Cantidad</td>
+                    <td style="text-align:right;" width="15%">Cantidad</td>
                     <td style="text-align:right;" width="15%">Totales</td>
                 </tr>
             {{-- </table> --}}

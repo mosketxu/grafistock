@@ -45,7 +45,7 @@
                         @endif
                     </div>
                 </div>
-                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$entidadtipo->id) }}'" color="blue"><x-icon.plus/>Nuevo {{ $entidadtipo->nombre }}</x-button.button>
+                    <x-button.button  onclick="location.href = '{{ route('entidad.nueva',$entidadtipo->id) }}'" color="blue"><x-icon.plus/>+ Nuevo</x-button.button>
             </div>
             {{-- tabla entidades --}}
             <div class="flex-col space-y-4">
