@@ -98,13 +98,12 @@ class Presup extends Component
 
         $presup=Presupuesto::find($this->presupuesto->id);
         $presuplineas=PresupuestoLinea::where('presupuesto_id',$presup->id)->get();
-        // dd($presuplineas);
         if($presuplineas->count()>0){
             foreach($presuplineas as $presuplinea)
             $presuplinea->recalculo(); // por si se ha modificado el %Incremento
         }
 
-        $presup->recalculo();
+        // $presup->recalculo();
 
         $this->emit('presupuestorefresh');
 
