@@ -15,14 +15,13 @@
 
     <div class="p-2">
         <div class="max-w-full mx-auto">
-            <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
+            {{-- <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 @if (Auth::user()->hasRole('Operario'))
                     @livewire('stock-movimientos')
                 @else
-                    {{-- @livewire('ents') --}}
                     @livewire('ents',['entidadtipo_id'=>$entidadtipo_id])
                 @endif
-            </div>
+            </div> --}}
         </div>
     </div>
 </x-app-layout>

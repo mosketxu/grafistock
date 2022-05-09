@@ -15,14 +15,11 @@ class PedidoExport implements FromCollection,WithHeadings
     public $pedidos;
     public $message;
 
-    function __construct($seleccion)
-    {
-
+    function __construct($seleccion){
         $this->pedidos=$seleccion;
     }
 
-    public function headings(): array
-    {
+    public function headings(): array{
         return [
             'Pedido','Proveedor','Solicitado Por', 'Fecha Pedido','Fecha Prevista','Fecha Recepción','Ubicación','Estado','Observaciones','Total Pedido'
         ];
@@ -31,11 +28,8 @@ class PedidoExport implements FromCollection,WithHeadings
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
-    {
-        // dd($this->pedidos);
+    public function collection(){
         return $this->pedidos;
     }
-
 
 }

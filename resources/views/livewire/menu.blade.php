@@ -92,6 +92,32 @@
                         </x-jet-dropdown>
                     </div>
                     @endcan
+                    @can('dashboard.index')
+                    <div class="relative mt-3 ">
+                        <x-jet-dropdown align="right" width="60" >
+                            <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md bg-blu hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-blue-700">
+                                        Dashboard
+                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </x-slot>
+                            <x-slot name="content">
+                                <div class="w-44">
+                                    @can('dashboard.presupuestos')
+                                    <x-jet-dropdown-link href="{{ route('dashboard.presupuestos') }}">
+                                        {{ __('Presupuestos ') }}
+                                    </x-jet-dropdown-link>
+                                    @endcan
+                                </div>
+                            </x-slot>
+                        </x-jet-dropdown>
+                    </div>
+
+                    @endcan
                 </div>
             </div>
 
@@ -281,6 +307,31 @@
                             <x-jet-dropdown-link href="{{ route('stock.producto') }}">
                                 {{ __('Por Referencia') }}
                             </x-jet-dropdown-link>
+                        </div>
+                    </x-slot>
+                </x-jet-dropdown>
+            </div>
+            @endcan
+            @can('dashboard.index')
+            <div class="relative mt-3 ml-3">
+                <x-jet-dropdown align="right" width="60" >
+                    <x-slot name="trigger">
+                        <span class="inline-flex rounded-md">
+                            <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md bg-blu hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-blue-700">
+                                Dashboard
+                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </span>
+                    </x-slot>
+                    <x-slot name="content">
+                        <div class="w-44">
+                            @can('dashboard.presupuestos')
+                            <x-jet-dropdown-link href="{{ route('dashboard.presupuestos') }}">
+                                {{ __('Presupuestos') }}
+                            </x-jet-dropdown-link>
+                            @endcan
                         </div>
                     </x-slot>
                 </x-jet-dropdown>

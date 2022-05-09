@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AdministracionController, EntidadController, EntidadContactoController,ProductoController,
+use App\Http\Controllers\{DashboardController, AdministracionController, EntidadController, EntidadContactoController,ProductoController,
         PedidoController,StockController,
         UserController, RoleController,
         StockPeticionController, PresupuestoController, PresupuestoLineaController,AccionController};
@@ -30,11 +30,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             return redirect()->route('stock.movimientos');
         } elseif (Auth::user()->hasRole('Comercial')) {
             return redirect()->route('presupuesto.index');
+        } elseif (Auth::user()->hasRole('Gestion')) {
+            return redirect()->route('dashboard.presupuesto');
         } else {
             return redirect()->route('producto.index');
         }
     })->name('dashboard');
 
+
+    //Dashboards
+    Route::get('dashboard/presupuestos', [DashboardController::class,'presupuestos'])->name('dashboard.presupuestos');
 
     //roles
     Route::resource('roles', RoleController::class)->names('roles');
