@@ -13,7 +13,7 @@
                         <option value="1">Aceptado</option>
                         <option value="2">Rechazado</option>
                     </select>
-                    @if($filtroestado!='')
+                    @if($filtroestado=='1')
                         <x-icon.filter-slash-a wire:click="$set('filtroestado', '')" class="pb-1" title="reset filter" />
                     @endif
                 </div>
@@ -33,7 +33,7 @@
                     @if($filtroentidad!='')
                         <x-icon.filter-slash-a wire:click="$set('filtroentidad', '')" class="pb-1" title="reset filter" />
                     @endif
-               </div>
+                </div>
             </div>
             <div class="text-xs">
                 <label class="px-1 text-gray-600">
@@ -65,15 +65,15 @@
                 <div class="">
                     <div class="flex">
                         <p class="w-2/12">De: </p>
-                        <input type="month" wire:model="filtroanyomesIni"
+                        <input type="date" wire:model.lazy="filtroFi"
                         class="w-10/12 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-                        placeholder="Fecha Inicial" />
+                        />
                     </div>
                     <div class="flex">
                         <p class="w-2/12">A: </p>
-                        <input type="month" wire:model="filtroanyomesFin"
+                        <input type="date" wire:model.lazy="filtroFf"
                         class="w-10/12 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-                        placeholder="Fecha Final" />
+                        />
                     </div>
                 </div>
             </div>
@@ -93,13 +93,13 @@
                         <p class="w-2/12">De: </p>
                         <input type="number" wire:model="filtroventasIni"
                         class="w-10/12 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-                        placeholder="Fecha Inicial" />
+                        placeholder="Cifra Inicial" />
                     </div>
                     <div class="flex">
                         <p class="w-2/12">A: </p>
                         <input type="number" wire:model="filtroventasFin"
                         class="w-10/12 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
-                        placeholder="Fecha Final" />
+                        placeholder="Cifra Final" />
                 </div>
                 </div>
             </div>

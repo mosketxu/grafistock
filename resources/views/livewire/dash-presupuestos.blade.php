@@ -19,6 +19,18 @@
                 </div>
             </div>
         </div>
+        @if ($alerta)
+            {{-- <div class="flex w-full space-x-3"> --}}
+                <div id="alert" class="relative px-6 py-2 mb-2 text-white bg-red-200 border-red-500 rounded border-1">
+                    <div class="mt-3 text-sm text-red-600 list-disc list-inside">
+                        {{ $alerta }}
+                    </div>
+                    <button class="absolute top-0 right-0 mt-2 mr-6 text-2xl font-semibold leading-none bg-transparent outline-none focus:outline-none" onclick="document.getElementById('alert').remove();">
+                        <span>×</span>
+                    </button>
+                </div>
+            {{-- </div> --}}
+            @endif
 
         {{-- tabla presupuestos --}}
         <div class="min-w-full mt-2 overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
@@ -27,6 +39,7 @@
                     <tr class="">
                         <th class="pl-4 font-medium text-left">{{ __('Cliente') }} </th>
                         <th class="pl-4 font-medium text-left">{{ __('Comercial') }} </th>
+                        <th class="pr-4 font-medium text-right"><div class="flex">{{ __('Mes/Año') }} &nbsp;<x-input.checkbox wire:model="mesanyo"/></div></th>
                         <th class="pr-4 font-medium text-right">{{ __('Nº Presups') }}</th>
                         <th class="pr-4 font-medium text-right">{{ __('Margen Bruto') }}</th>
                         <th class="pr-4 font-medium text-right">{{ __('Cifra Ventas') }}</th>
@@ -43,6 +56,12 @@
                             <td>
                                 <input type="text" value="{{ $presupuesto->comercial }}"
                                     class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md" readonly />
+                            </td>
+                            <td>
+                                @if($mesanyo=='1')
+                                <input type="text" value="{{ $presupuesto->month_year }}"
+                                    class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md" readonly />
+                                @endif
                             </td>
                             <td class="text-right">
                                 <span class="pr-4 text-xs text-blue-500">{{ $presupuesto->numpresups}}</span>
