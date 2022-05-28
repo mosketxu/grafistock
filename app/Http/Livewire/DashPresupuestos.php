@@ -19,6 +19,8 @@ class DashPresupuestos extends Component
     public $filtrosolicitante='';
     public $filtroestado='';
     public $mesanyo='';
+    public $ccliente='1';
+    public $ccomercial='1';
     public $qmes='';
     public $alerta='';
 
@@ -27,10 +29,24 @@ class DashPresupuestos extends Component
     public function render()
     {
         // $presupuestos=$this->estadistica();
-        $presupuestos=Presupuesto::presupuestos($this->mesanyo,$this->filtroentidad,$this->filtrosolicitante,$this->filtroestado,$this->filtroFi,$this->filtroFf,$this->filtroventasIni,$this->filtroventasFin);
+        $presupuestos=Presupuesto::presupuestos(
+            $this->mesanyo,$this->filtroentidad,$this->filtrosolicitante,
+            $this->filtroestado,$this->filtroFi,$this->filtroFf,
+            $this->filtroventasIni,$this->filtroventasFin,
+            $this->ccliente,$this->ccomercial);
         $clientes = Entidad::whereIn('entidadtipo_id',['1','3'])->select('id','entidad')->orderBy('entidad')->get();
         $solicitantes=User::role('Comercial')->orderBy('name')->get();
         return view('livewire.dash-presupuestos',compact('presupuestos','solicitantes','clientes'));
+    }
+
+    public function updatedCcliente()
+    {
+        if($this->ccliente!='1') $this->filtroentidad='';
+    }
+
+    public function updatedCcomercial()
+    {
+        if($this->ccomercial!='1') $this->filtrosolicitante='';
     }
 
     public function UpdatedFiltroFi()

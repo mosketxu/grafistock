@@ -51,6 +51,8 @@ class Presups extends Component
     {
         if($this->selectAll) $this->selectPageRows();
         $presupuestos = $this->rows;
+
+
         $clientes = Entidad::query()
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
                 $query->where('comercial_id',Auth::user()->id);
@@ -288,8 +290,10 @@ class Presups extends Component
                 $query->where('presupuestos.estado',$this->filtroestado);
             })
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
-                    $query->when(!Auth::user()->hasRole('Admin'),function ($q){
-                            $q->where('solicitante_id',Auth::user()->id);});
+                $query->when(!Auth::user()->hasRole('Admin'),function ($q){
+                // $q->where('solicitante_id',Auth::user()->id);});
+                $q->whereRelation('entidad','comercial_id',Auth::user()->id)->get();
+                ;});
             })
             ->searchYear('fechapresupuesto',$this->filtroanyo)
             ->searchMes('fechapresupuesto',$this->filtromes)

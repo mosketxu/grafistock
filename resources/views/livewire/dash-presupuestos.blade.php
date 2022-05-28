@@ -37,8 +37,8 @@
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="text-xs leading-4 tracking-wider text-gray-500 bg-blue-50 ">
                     <tr class="">
-                        <th class="pl-4 font-medium text-left">{{ __('Cliente') }} </th>
-                        <th class="pl-4 font-medium text-left">{{ __('Comercial') }} </th>
+                        <th class="pl-4 font-medium text-left"><div class="flex">{{ __('Cliente') }}  &nbsp;<x-input.checkbox wire:model="ccliente"/></div> </th>
+                        <th class="pl-4 font-medium text-left"><div class="flex">{{ __('Comercial') }}  &nbsp;<x-input.checkbox wire:model="ccomercial"/></div> </th>
                         <th class="pr-4 font-medium text-right"><div class="flex">{{ __('Mes/Año') }} &nbsp;<x-input.checkbox wire:model="mesanyo"/></div></th>
                         <th class="pr-4 font-medium text-right">{{ __('Nº Presups') }}</th>
                         <th class="pr-4 font-medium text-right">{{ __('Margen Bruto') }}</th>
@@ -50,12 +50,16 @@
                     @forelse ($presupuestos as $presupuesto)
                         <tr wire:loading.class.delay="opacity-50" >
                             <td>
+                                @if($ccliente=='1')
                                 <input type="text" value="{{ $presupuesto->entidad }}"
                                     class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md" readonly />
+                                @endif
                             </td>
                             <td>
+                                @if($ccomercial=='1')
                                 <input type="text" value="{{ $presupuesto->comercial }}"
                                     class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md" readonly />
+                                @endif
                             </td>
                             <td>
                                 @if($mesanyo=='1')

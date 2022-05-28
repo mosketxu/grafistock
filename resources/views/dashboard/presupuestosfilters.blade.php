@@ -18,6 +18,7 @@
                     @endif
                 </div>
             </div>
+            @if($ccliente=='1')
             <div class="text-xs">
                 <label class="px-1 text-gray-600">
                     Cliente
@@ -35,6 +36,8 @@
                     @endif
                 </div>
             </div>
+            @endif
+            @if($ccomercial=='1')
             <div class="text-xs">
                 <label class="px-1 text-gray-600">
                     Comercial
@@ -52,6 +55,7 @@
                     @endif
                 </div>
             </div>
+            @endif
             <div class="text-xs">
                 <div class="flex">
                     <div class="w-2/12">

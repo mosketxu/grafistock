@@ -14,9 +14,7 @@ class Presupuesto extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    // protected $casts = [
-    //     'fechapresupuesto' => 'date:Y-m-d',
-    // ];
+    // protected $casts = ['fechapresupuesto' => 'date:Y-m-d',];
     protected $dates = ['deleted_at'];
 
 
@@ -84,8 +82,13 @@ class Presupuesto extends Model
         return $pdf->download($presupuesto->fichero);
     }
 
-    public function presupuestos($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin)
+    public function presupuestos($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,$ccliente,$ccomercial)
     {
+
+        $com= $ccomercial=='1'? 'entidad': '';
+        $ent = $ccliente=='1' ? 'comercial' : '';
+        $g="'".'entidad'."','".'presupuestos.estado'."','".'comercial'."'";
+        $g="->groupBy('entidad','presupuestos.estado','comercial')->get()";
         if($mes!='1')
         return Presupuesto::query()
         ->join('entidades','entidades.id','presupuestos.entidad_id')
@@ -96,8 +99,9 @@ class Presupuesto extends Model
         ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')
         ->selectRaw('sum(presupuestos.precioventa) as ventas')
         ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
-        ->groupBy('entidad','presupuestos.estado','comercial')
-        ->get();
+        // ->groupBy($g)
+        .$g;
+        // ->get();
     else
         return Presupuesto::query()
         ->join('entidades','entidades.id','presupuestos.entidad_id')
@@ -109,7 +113,8 @@ class Presupuesto extends Model
         ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')
         ->selectRaw('sum(presupuestos.precioventa) as ventas')
         ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
-        ->groupBy('entidad','presupuestos.estado','comercial',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
+        ->groupBy($com , $ent,'presupuestos.estado',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
+        // ->groupBy('entidad','presupuestos.estado','comercial',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
         ->get();
     }
 
