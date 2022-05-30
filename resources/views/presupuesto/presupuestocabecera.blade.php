@@ -7,7 +7,7 @@
             <div class="flex flex-col justify-between ml-3 space-x-3 text-xs font-medium md:flex-row">
                 <div class="w-full form-item sm:w-3/12">
                     <label class="block text-gray-700">{{ __('Cliente') }}</label>
-                    <input type="text" value="{{ $presupuesto->entidad->entidad }}"
+                    <input type="text" value="{{ $presupuesto->ent->entidad }}"
                         class="w-full text-xs tracking-tighter text-left border-gray-300 rounded-md shadow-sm bg-gray-50 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                         disabled/>
                 </div>

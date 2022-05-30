@@ -50,9 +50,9 @@
                 </tr>
                 <tr style="background-color: #fdf9f9; ">
                     <td style="padding-left:3px;" ><span style="font-size: medium">{{ $presupuesto->solicitante->name }}</span></td>
-                    <td style="padding-left:3px;" ><span style="font-size: medium">{{ $presupuesto->entidad->entidad }}</span></td>
+                    <td style="padding-left:3px;" ><span style="font-size: medium">{{ $presupuesto->ent->entidad }}</span></td>
                     <td style="padding-righ:3px;text-align:right" ><span style="font-size: medium">{{ \Carbon\Carbon::parse($presupuesto->fechapresupuesto)->format('d-m-y') }}</span></td>
-                    <td style="padding-left:3px;" ><span style="font-size: medium">{{ $presupuesto->entidad->emailgral }} </span></td>
+                    <td style="padding-left:3px;" ><span style="font-size: medium">{{ $presupuesto->ent->emailgral }} </span></td>
                 </tr>
             </table>
 
@@ -148,7 +148,7 @@
                                         <td colspan="3">{{ $detalle->descripcion }}</td>
                                         <td style="text-align:right;">{{ $detalle->preciocoste_ud }}</td>
                                         <td style="text-align:right;">{{ $detalle->precioventa_ud }}</td>
-                                        <td style="text-align:right;">{{ $detalle->factor }}/{{ $presupuesto->entidad->empresatipo->factormin }}</td>
+                                        <td style="text-align:right;">{{ $detalle->factor }}/{{ $presupuesto->ent->empresatipo->factormin }}</td>
                                         <td style="text-align:right;">{{ $detalle->unidades }}</td>
                                         <td style="text-align:right;">{{ $detalle->precioventa }} </td>
                                         <td style="text-align:right;">{{ $detalle->ancho }}x {{ $detalle->alto }}</td>

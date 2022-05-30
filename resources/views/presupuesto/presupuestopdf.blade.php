@@ -56,9 +56,9 @@
                 </tr>
                 <tr style="background-color: #fdf9f9; font-size:10px;">
                     <td width=30%  style="padding-left:3px;" >
-                        {{ $presupuesto->entidad->entidad }}<br>
-                        {{ $presupuesto->entidad->direccion }}
-                        {{ $presupuesto->entidad->cp }}{{ $presupuesto->entidad->localidad }} ({{ $presupuesto->entidad->localidad }})
+                        {{ $presupuesto->ent->entidad }}<br>
+                        {{ $presupuesto->ent->direccion }}
+                        {{ $presupuesto->ent->cp }}{{ $presupuesto->ent->localidad }} ({{ $presupuesto->ent->localidad }})
                     </td>
                     <td width=30%  style="padding-left:3px;" >{{ $presupuesto->contacto->contacto }}</td>
                     <td width=30%  style="padding-left:3px;" >{{ $presupuesto->contacto->telefono }} <br>{{ $presupuesto->contacto->movil }} <br>{{ $presupuesto->contacto->email }} </td>
