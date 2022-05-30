@@ -213,7 +213,7 @@
                             </td>
                             <td class="">
                                 <div class="flex items-center justify-center">
-                                    @if(Auth::user()->id==$presupuesto->entidad->comercial_id || Auth::user()->hasRole('Admin'))
+                                    @if(Auth::user()->id==$presupuesto->solicitante_id || Auth::user()->hasRole('Admin'))
                                         <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600" title="Editar Presupuesto" />
                                         <x-icon.calc-a href="{{route('presupuesto.edit', $presupuesto) }}" class="text-green-600" title="Composición Presupuesto" />
                                         <x-icon.copy-a wire:click="replicateRow({{ $presupuesto }})" onclick="confirm('¿Estás seguro de querer copiar el presupuesto?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
