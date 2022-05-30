@@ -22,7 +22,8 @@ class Presupuesto extends Model
 
     public function presupuestolineas(){return $this->hasMany(PresupuestoLinea::class)->orderBy('orden');}
     public function contacto(){return $this->belongsTo(EntidadContacto::class,'entidadcontacto_id')->withDefault();}
-    public function entidad(){return $this->belongsTo(Entidad::class);}
+    // public function entidad(){return $this->belongsTo(Entidad::class);}
+    public function ent(){return $this->belongsTo(Entidad::class,'entidad_id','id');}
     public function solicitante(){return $this->belongsTo(User::class,'solicitante_id','id')->withDefault('');}
     public function presupuestocontrolpartidas(){return $this->hasMany(PresupuestoControlpartida::class,'presupuesto_id');}
 
@@ -68,7 +69,7 @@ class Presupuesto extends Model
 
     public function scopeImprimirPresupuesto()
     {
-        $presupuesto=Presupuesto::with('entidad')
+        $presupuesto=Presupuesto::with('ent')
         ->with('presupuestodetalles')
         ->find($this->id);
 

@@ -292,7 +292,7 @@ class Presups extends Component
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
                 $query->when(!Auth::user()->hasRole('Admin'),function ($q){
                 // $q->where('solicitante_id',Auth::user()->id);});
-                $q->whereRelation('entidad','comercial_id',Auth::user()->id)->get();
+                $q->whereRelation('ent','comercial_id',Auth::user()->id)->get();
                 ;});
             })
             ->searchYear('fechapresupuesto',$this->filtroanyo)
