@@ -6,7 +6,7 @@
                     <p class="text-xl font-semibold text-gray-900">Presupuesto: <span class="font-light"> {{ $presuplinea->presupuesto->presupuesto ?? '-'}} </span></p>
                 </div>
                 <div class="">
-                    <p class="text-xl font-semibold text-gray-900">Cliente: <span class="font-light">{{ $presuplinea->presupuesto->entidad->entidad ?? '-' }} </span></p>
+                    <p class="text-xl font-semibold text-gray-900">Cliente: <span class="font-light">{{ $presuplinea->presupuesto->ent->entidad ?? '-' }} </span></p>
                 </div>
                 <div class="">
                     <p class="text-sm font-semibold text-gray-900">Descripción: <span class="font-light">{{ $presuplinea->presupuesto->descripcion ?? '-'}} </span></p>

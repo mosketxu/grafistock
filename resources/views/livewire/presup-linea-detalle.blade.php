@@ -10,7 +10,7 @@
                     <p class="font-semibold text-gray-900 ">Presupuesto: <span class="font-light"> {{ $presuplinea->presupuesto->presupuesto ?? '-'}} </span></p>
                 </div>
                 <div class="align-baseline">
-                    <p class="font-semibold text-gray-900 ">Cliente: <span class="font-light">{{ $presuplinea->presupuesto->entidad->entidad ?? '-' }} </span></p>
+                    <p class="font-semibold text-gray-900 ">Cliente: <span class="font-light">{{ $presuplinea->presupuesto->ent->entidad ?? '-' }} </span></p>
                 </div>
             </div>
         </div>

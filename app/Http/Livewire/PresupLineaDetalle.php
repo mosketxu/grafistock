@@ -50,7 +50,7 @@ class PresupLineaDetalle extends Component
     public function mount(PresupuestoLinea $presupuestolinea)
     {
         $this->presuplinea=$presupuestolinea;
-        $this->empresaTipo=$presupuestolinea->presupuesto->entidad->empresatipo;
+        $this->empresaTipo=$presupuestolinea->presupuesto->ent->empresatipo;
         $this->empresatipo_id=$this->empresaTipo->id;
         $this->controlpartidas=$this->presuplinea->presupuesto->presupuestocontrolpartidas;
         $this->acciontipo=AccionTipo::find($this->acciontipoId);
