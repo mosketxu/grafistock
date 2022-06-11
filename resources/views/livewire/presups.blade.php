@@ -1,8 +1,9 @@
 <div class="">
     @livewire('menu',['entidad'=>$entidad],key($entidad->id))
     <div class="p-1 mx-2">
-        <h1 class="text-2xl font-semibold text-gray-900">Presupuestos
-        </h1>
+        <h1 class="text-2xl font-semibold text-gray-900">Presupuestos</h1>
+        {{-- <p>            search:{{$search}}-filtroanyo:{{$filtroanyo}}-filtromes:{{$filtromes}}- filtroclipro:{{$filtroclipro}}- filtrosolicitante:{{$filtrosolicitante}}- filtropalabra:{{$filtropalabra}}-filtroestado:{{$filtroestado}}
+        </p> --}}
         <div class="py-1 space-y-4">
             @include('error')
         </div>
@@ -237,7 +238,7 @@
                                                 $filtroclipro ? $filtroclipro : '@_',
                                                 $filtrosolicitante ? $filtrosolicitante : '@_',
                                                 $filtropalabra ? $filtropalabra : '@_',
-                                                $filtroestado ? $filtroestado : '@_']) }}"
+                                                $filtroestado ? $filtroestado : '0']) }}"
                                             class="text-green-600" title="Composición Presupuesto" />
                                         <x-icon.copy-a wire:click="replicateRow({{ $presupuesto }})" onclick="confirm('¿Estás seguro de querer copiar el presupuesto?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
                                         <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})" onclick="confirm('¿Estás seguro de querer eliminar el presupuesto?') || event.stopImmediatePropagation()" class="pl-1 " title="Borrar" />

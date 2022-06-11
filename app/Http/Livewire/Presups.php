@@ -43,7 +43,7 @@ class Presups extends Component
     public function mount(Entidad $entidad,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado)
     {
         // $this->filtroanyo=date('Y');
-$this->search=$search;
+        $this->search=$search;
         $this->filtroanyo=$filtroanyo ? $filtroanyo : date('Y') ;
         $this->filtromes=$filtromes;
         $this->filtroclipro=$filtroclipro;
