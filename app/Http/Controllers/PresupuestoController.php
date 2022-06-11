@@ -15,7 +15,7 @@ class PresupuestoController extends Controller
     public function __construct()
     {
         $this->middleware('can:presupuesto.index');
-        $this->middleware('can:presupuesto.edit')->only('edit','update');
+        $this->middleware('can:presupuesto.edit')->only('edit','update','composicion');
     }
 
     /**
@@ -25,7 +25,28 @@ class PresupuestoController extends Controller
      */
     public function index()
     {
-        return view('presupuesto.index');
+    $search='';
+        $filtroanyo=date('Y');
+        $filtromes='';
+        $filtroclipro='';
+        $filtrosolicitante='';
+        $filtropalabra='';
+        $filtroestado='';
+
+        return view('presupuesto.index',compact(['search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado']));
+    }
+
+    public function indexvble($search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado)
+    {
+        $search=str_replace('@_','',$search);
+        $filtroanyo=str_replace('@_','',$filtroanyo);
+        $filtromes=str_replace('@_','',$filtromes);
+        $filtroclipro=str_replace('@_','',$filtroclipro);
+        $filtrosolicitante=str_replace('@_','',$filtrosolicitante);
+        $filtropalabra=str_replace('@_','',$filtropalabra);
+        $filtroestado=str_replace('@_','',$filtroestado);
+
+        return view('presupuesto.index',compact(['search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado']));
     }
 
     public function html(Presupuesto $presupuesto)
@@ -52,14 +73,26 @@ class PresupuestoController extends Controller
         return $pdf->stream('invoice.pdf'); //asi lo muestra por pantalla
     }
 
+    public function composicion(Presupuesto $presupuesto,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado){
+        // $search= str_replace('@_','',$search);
+        // $filtroanyo= str_replace('@_','',$filtroanyo);
+        // $filtromes= str_replace('@_','',$filtromes);
+        // $filtroclipro= str_replace('@_','',$filtroclipro);
+        // $filtrosolicitante= str_replace('@_','',$filtrosolicitante);
+        // $filtropalabra= str_replace('@_','',$filtropalabra);
+        // $filtroestado= str_replace('@_','',$filtroestado);
+        return view('presupuesto.edit',compact(['presupuesto','search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado']));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Presupuesto  $presupuesto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Presupuesto $presupuesto)
+    public function edit(Presupuesto $presupuesto,$s)
     {
+        dd($s);
         return view('presupuesto.edit',compact('presupuesto'));
     }
 

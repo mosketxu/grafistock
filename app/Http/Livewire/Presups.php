@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
-     PresupuestoLinea, PresupuestoLineaDetalle, User};
+     PresupuestoLinea, PresupuestoLineaDetalle, User,Filtros};
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use Carbon\Carbon;
@@ -19,6 +19,7 @@ class Presups extends Component
     public $filtromes='';
     public $filtroclipro='';
     public $filtrosolicitante='';
+    public $filtropalabra='';
     public $filtroestado='';
     public $entidad;
     public $message;
@@ -39,9 +40,17 @@ class Presups extends Component
         ];
     }
 
-    public function mount(Entidad $entidad)
+    public function mount(Entidad $entidad,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado)
     {
-        $this->filtroanyo=date('Y');
+        // $this->filtroanyo=date('Y');
+$this->search=$search;
+        $this->filtroanyo=$filtroanyo ? $filtroanyo : date('Y') ;
+        $this->filtromes=$filtromes;
+        $this->filtroclipro=$filtroclipro;
+        $this->filtrosolicitante=$filtrosolicitante;
+        $this->filtropalabra=$filtropalabra;
+        $this->filtroestado=$filtroestado;
+
         $this->entidad=$entidad;
         if($this->entidad)
             $this->contactos=EntidadContacto::where('entidad_id',$entidad->id)->orderBy('contacto')->get();
@@ -51,8 +60,6 @@ class Presups extends Component
     {
         if($this->selectAll) $this->selectPageRows();
         $presupuestos = $this->rows;
-
-
         $clientes = Entidad::query()
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
                 $query->where('comercial_id',Auth::user()->id);
@@ -297,6 +304,7 @@ class Presups extends Component
             })
             ->searchYear('fechapresupuesto',$this->filtroanyo)
             ->searchMes('fechapresupuesto',$this->filtromes)
+            ->search('presupuestos.descripcion',$this->filtropalabra)
             ->search('entidades.entidad',$this->search)
             ->orSearch('presupuestos.presupuesto',$this->search)
             ->orderBy('presupuestos.fechapresupuesto','desc')

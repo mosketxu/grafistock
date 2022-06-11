@@ -1,6 +1,5 @@
 <div class="">
     @livewire('menu')
-
     <div class="p-1 mx-2 ">
         <div class="flex flex-row">
             <div class="w-6/12 space-x-2">
@@ -42,6 +41,8 @@
         <div class="flex mt-2 ml-2 space-x-4">
             <div class="space-x-3">
                 <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.index')}}'">{{ __('Volver') }}</x-jet-secondary-button>
+
+                <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.indexvbles', [$search , $filtroanyo , $filtromes , $filtroclipro , $filtrosolicitante , $filtropalabra , $filtroestado ]) }} '">{{ __('Volver') }}</x-jet-secondary-button>
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@
                             Presupuesto
                         </label>
                         <div class="flex">
-                            <input type="text" wire:model="search"
+                            <input type="text" wire:model.lazy="search"
                             class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                             placeholder="Búsqueda" autofocus />
                             @if($search!='')
@@ -39,6 +39,19 @@
                                 <x-icon.filter-slash-a wire:click="$set('filtroclipro', '')" class="pb-1" title="reset filter" />
                             @endif
                        </div>
+                    </div>
+                    <div class="text-xs">
+                        <label class="px-1 text-gray-600">
+                            Palabra clave
+                        </label>
+                        <div class="flex">
+                            <input type="text" wire:model.lazy="filtropalabra"
+                            class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
+                            placeholder="palabra clave" autofocus />
+                            @if($filtropalabra!='')
+                                <x-icon.filter-slash-a wire:click="$set('filtropalabra', '')" class="pb-1" title="reset filter" />
+                            @endif
+                        </div>
                     </div>
                     @if(Auth::user()->hasRole('Admin'))
                         <div class="text-xs">
@@ -215,7 +228,17 @@
                                 <div class="flex items-center justify-center">
                                     @if(Auth::user()->id==$presupuesto->ent->comercial_id || Auth::user()->hasRole('Admin'))
                                         <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600" title="Editar Presupuesto" />
-                                        <x-icon.calc-a href="{{route('presupuesto.edit', $presupuesto) }}" class="text-green-600" title="Composición Presupuesto" />
+                                        <x-icon.calc-a
+                                            href="{{route('presupuesto.composicion', [
+                                                $presupuesto,
+                                                $search ? $search : '@_' ,
+                                                $filtroanyo ? $filtroanyo : '@_',
+                                                $filtromes ? $filtromes : '@_',
+                                                $filtroclipro ? $filtroclipro : '@_',
+                                                $filtrosolicitante ? $filtrosolicitante : '@_',
+                                                $filtropalabra ? $filtropalabra : '@_',
+                                                $filtroestado ? $filtroestado : '@_']) }}"
+                                            class="text-green-600" title="Composición Presupuesto" />
                                         <x-icon.copy-a wire:click="replicateRow({{ $presupuesto }})" onclick="confirm('¿Estás seguro de querer copiar el presupuesto?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
                                         <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})" onclick="confirm('¿Estás seguro de querer eliminar el presupuesto?') || event.stopImmediatePropagation()" class="pl-1 " title="Borrar" />
                                     @endif

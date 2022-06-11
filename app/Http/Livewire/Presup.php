@@ -23,6 +23,14 @@ class Presup extends Component
     public $observaciones;
     public $mesagge;
 
+    public $search;
+    public $filtroanyo;
+    public $filtromes;
+    public $filtroclipro;
+    public $filtrosolicitante;
+    public $filtropalabra;
+    public $filtroestado;
+
     protected $listeners = [ 'presupuestorefresh' => 'presupuestorefresh'];
 
     public $showPDFModal=false;
@@ -47,7 +55,7 @@ class Presup extends Component
         $this->preciocoste=$this->presupuesto->preciocoste;
     }
 
-    public function mount(Presupuesto $presupuesto)
+    public function mount(Presupuesto $presupuesto,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado)
     {
         $this->presupuesto=$presupuesto;
         $this->descripcion=$presupuesto->descripcion;
@@ -60,6 +68,13 @@ class Presup extends Component
         $this->refcliente=$presupuesto->refcliente;
         $this->incremento=$presupuesto->incremento;
         $this->observaciones=$presupuesto->observaciones;
+        $this->$search=$search;
+        $this->$filtroanyo=$filtroanyo;
+        $this->$filtromes=$filtromes;
+        $this->$filtroclipro=$filtroclipro;
+        $this->$filtrosolicitante=$filtrosolicitante;
+        $this->$filtropalabra=$filtropalabra;
+        $this->$filtroestado=$filtroestado;
     }
 
     public function render()
