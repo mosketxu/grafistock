@@ -90,9 +90,8 @@ class PresupuestoController extends Controller
      * @param  \App\Models\Presupuesto  $presupuesto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Presupuesto $presupuesto,$s)
+    public function edit(Presupuesto $presupuesto)
     {
-        dd($s);
         return view('presupuesto.edit',compact('presupuesto'));
     }
 
