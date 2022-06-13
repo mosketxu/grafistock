@@ -229,16 +229,9 @@
                                 <div class="flex items-center justify-center">
                                     @if(Auth::user()->id==$presupuesto->ent->comercial_id || Auth::user()->hasRole('Admin'))
                                         <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600" title="Editar Presupuesto" />
-                                        <x-icon.calc-a
-                                            href="{{route('presupuesto.composicion', [
-                                                $presupuesto,
-                                                $search ? $search : '@_' ,
-                                                $filtroanyo ? $filtroanyo : '@_',
-                                                $filtromes ? $filtromes : '@_',
-                                                $filtroclipro ? $filtroclipro : '@_',
-                                                $filtrosolicitante ? $filtrosolicitante : '@_',
-                                                $filtropalabra ? $filtropalabra : '@_',
-                                                $filtroestado ? $filtroestado : '0']) }}"
+                                        <x-icon.calc-a href="{{route('presupuesto.composicion', [$presupuesto,
+                                                $search ? $search : '@_' ,$filtroanyo ? $filtroanyo : '@_', $filtromes ? $filtromes : '@_', $filtroclipro ? $filtroclipro : '@_',
+                                                $filtrosolicitante ? $filtrosolicitante : '@_', $filtropalabra ? $filtropalabra : '@_', $filtroestado ? $filtroestado : '0']) }}"
                                             class="text-green-600" title="Composición Presupuesto" />
                                         <x-icon.copy-a wire:click="replicateRow({{ $presupuesto }})" onclick="confirm('¿Estás seguro de querer copiar el presupuesto?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
                                         <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})" onclick="confirm('¿Estás seguro de querer eliminar el presupuesto?') || event.stopImmediatePropagation()" class="pl-1 " title="Borrar" />

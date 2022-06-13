@@ -9,9 +9,12 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-row-reverse w-6/12 mr-4 text-right">
-                <x-icon.pdf-a wire:click="imprimir()" class="text-green-600" title="PDF" />
-                <a href="{{ route('presupuesto.html',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.html ></x-icon.html></a>
+            <div class="flex flex-row justify-end w-6/12 mr-4 text-right space-x-2">
+                {{-- <x-icon.pdf-a wire:click="imprimir()" class="text-green-600" title="PDF" />
+                <a href="{{ route('presupuesto.html',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.html ></x-icon.html></a> --}}
+                <x-jet-button  onclick="location.href = '{{route('presupuesto.html', [$presupuesto,'con']) }}'">{{ __('Ficha') }}</x-jet-button>
+                <x-jet-secondary-button class="bg-green-400 "  onclick="location.href = '{{route('presupuesto.imprimir', [$presupuesto,'con']) }}'">{{ __('Pdf Con totales') }}</x-jet-secondary-button>
+                <x-jet-secondary-button  class="bg-yellow-400" onclick="location.href = '{{route('presupuesto.imprimir', [$presupuesto,'sin']) }}'">{{ __('Pdf Sin totales') }}</x-jet-secondary-button>
             </div>
         </div>
 
