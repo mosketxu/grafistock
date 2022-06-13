@@ -25,7 +25,7 @@ class PresupuestoController extends Controller
      */
     public function index()
     {
-    $search='';
+        $search='';
         $filtroanyo=date('Y');
         $filtromes='';
         $filtroclipro='';
@@ -92,7 +92,16 @@ class PresupuestoController extends Controller
      */
     public function edit(Presupuesto $presupuesto)
     {
-        return view('presupuesto.edit',compact('presupuesto'));
+        $search='';
+        $filtroanyo='';
+        $filtromes='';
+        $filtroclipro='';
+        $filtrosolicitante='';
+        $filtropalabra='';
+        $filtroestado='';
+
+        // return view('presupuesto.edit',compact('presupuesto'));
+        return view('presupuesto.edit',compact('presupuesto','search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado'));
     }
 
     /**
