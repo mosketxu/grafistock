@@ -9,7 +9,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-row justify-end w-6/12 mr-4 text-right space-x-2">
+            <div class="flex flex-row justify-end w-6/12 mr-4 space-x-2 text-right">
                 {{-- <x-icon.pdf-a wire:click="imprimir()" class="text-green-600" title="PDF" />
                 <a href="{{ route('presupuesto.html',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.html ></x-icon.html></a> --}}
                 <x-jet-button  onclick="location.href = '{{route('presupuesto.html', [$presupuesto,'con']) }}'">{{ __('Ficha') }}</x-jet-button>

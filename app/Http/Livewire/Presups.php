@@ -45,6 +45,7 @@ class Presups extends Component
     public function mount(Entidad $entidad,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado)
     {
         // $this->filtroanyo=date('Y');
+
         $this->search=$search;
         $this->filtroanyo=$filtroanyo ? $filtroanyo : date('Y') ;
         $this->filtromes=$filtromes;
@@ -311,11 +312,15 @@ class Presups extends Component
                 $q->whereRelation('ent','comercial_id',Auth::user()->id)->get();
                 ;});
             })
+            // ->when($this->search!='', function ($query){
+            //     $query->where('entidades.entidad','like','%'.$this->search.'%')->orWhere('presupuestos.presupuesto','like','%'.$this->search.'%');
+            // })
             ->searchYear('fechapresupuesto',$this->filtroanyo)
             ->searchMes('fechapresupuesto',$this->filtromes)
             ->search('presupuestos.descripcion',$this->filtropalabra)
-            ->search('entidades.entidad',$this->search)
-            ->orSearch('presupuestos.presupuesto',$this->search)
+            // ->search('entidades.entidad',$this->search)
+            // ->orSearch('presupuestos.presupuesto',$this->search)
+            ->search('presupuestos.presupuesto',$this->search)
             ->orderBy('presupuestos.fechapresupuesto','desc')
             ->orderBy('presupuestos.id','desc');
             // ->paginate(5); solo contemplo la query, no el resultado. Luego pongo el resultado: get, paginate o lo que quiera
