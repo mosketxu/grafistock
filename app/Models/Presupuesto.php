@@ -85,38 +85,39 @@ class Presupuesto extends Model
 
     public function presupuestos($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,$ccliente,$ccomercial)
     {
-
         $com= $ccomercial=='1'? 'entidad': '';
         $ent = $ccliente=='1' ? 'comercial' : '';
         $g="'".'entidad'."','".'presupuestos.estado'."','".'comercial'."'";
         $g="->groupBy('entidad','presupuestos.estado','comercial')->get()";
-        if($mes!='1')
-        return Presupuesto::query()
-        ->join('entidades','entidades.id','presupuestos.entidad_id')
-        ->join('users','users.id','presupuestos.solicitante_id')
-        ->select('entidades.entidad as entidad','users.name as comercial','presupuestos.estado as estado',
+        if($mes!='1'){
+            return Presupuesto::query()
+            ->join('entidades','entidades.id','presupuestos.entidad_id')
+            ->join('users','users.id','presupuestos.solicitante_id')
+            ->select('entidades.entidad as entidad','users.name as comercial','presupuestos.estado as estado',
             DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
-        ->selectRaw('count(presupuestos.id) as numpresups')
-        ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')
-        ->selectRaw('sum(presupuestos.precioventa) as ventas')
-        ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
-        // ->groupBy($g)
-        .$g;
-        // ->get();
-    else
-        return Presupuesto::query()
-        ->join('entidades','entidades.id','presupuestos.entidad_id')
-        ->join('users','users.id','presupuestos.solicitante_id')
-        ->select('entidades.entidad as entidad','users.name as comercial','presupuestos.estado as estado',
-            DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'),
-            DB::raw("(DATE_FORMAT(fechapresupuesto, '%m-%Y')) as month_year"))
-        ->selectRaw('count(presupuestos.id) as numpresups')
-        ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')
-        ->selectRaw('sum(presupuestos.precioventa) as ventas')
-        ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
-        ->groupBy($com , $ent,'presupuestos.estado',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
-        // ->groupBy('entidad','presupuestos.estado','comercial',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
-        ->get();
+            ->selectRaw('count(presupuestos.id) as numpresups')
+            ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')
+            ->selectRaw('sum(presupuestos.precioventa) as ventas')
+            ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
+            // .$g
+            // ->groupBy($g)
+            ->get();
+            }
+        else
+            return Presupuesto::query()
+            ->join('entidades','entidades.id','presupuestos.entidad_id')
+            ->join('users','users.id','presupuestos.solicitante_id')
+            ->select('entidades.entidad as entidad','users.name as comercial','presupuestos.estado as estado',
+                DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'),
+                DB::raw("(DATE_FORMAT(fechapresupuesto, '%m-%Y')) as month_year"))
+            ->selectRaw('count(presupuestos.id) as numpresups')
+            ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')
+            ->selectRaw('sum(presupuestos.precioventa) as ventas')
+            ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
+            ->groupBy($com , $ent,'presupuestos.estado',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
+            // ->groupBy('entidad','presupuestos.estado','comercial',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
+            ->get();
+        dd('3');
     }
 
     public function presupuestosXLS($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin)

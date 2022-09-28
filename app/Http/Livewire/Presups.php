@@ -26,7 +26,9 @@ class Presups extends Component
     public $total;
     public $contactos='';
 
-    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$entidadcontacto_id,$solicitante_id,$fechapresupuesto,$refgrafitex,$refcliente,$precioventa,$preciocoste,$unidades,$incremento,$iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$entidadcontacto_id,$solicitante_id;
+    public $fechapresupuesto,$refgrafitex,$refcliente,$precioventa,$preciocoste,$unidades,$incremento;
+    public $iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -84,6 +86,7 @@ class Presups extends Component
 
     public function create(){
         $this->resetInputFields();
+        $this->fechapresupuesto=now()->format('Y-m-d');
         $this->openNewModal();
     }
 
@@ -95,6 +98,12 @@ class Presups extends Component
         $this->entidadcontacto_id='';
         $e=Entidad::find($this->entidad_id);
         $this->contactos=EntidadContacto::where('entidad_id',$e->id)->orderBy('contacto')->get();
+    }
+
+    public function changeValor(Presupuesto $presupuesto,$campo,$valor)
+    {
+        $presupuesto->update([$campo=>$valor]);
+        $this->dispatchBrowserEvent('notify', 'Actulizado con éxito.');
     }
 
     public function replicateRow(Presupuesto $presupuesto){
@@ -318,7 +327,7 @@ class Presups extends Component
 
 
     public function exportSelected(){
-        //toCsv es una macro a n AppServiceProvider
+    //toCsv es una macro a n AppServiceProvider
         return response()->streamDownload(function(){
             echo $this->selectedRowsQuery->toCsv();
         },'presupuestos.csv');

@@ -2,22 +2,30 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PedidoDetalle, Presupuesto, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle};
+use App\Models\{Presupuesto, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle};
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
+use Livewire\WithPagination;
+use App\Http\Livewire\DataTable\WithBulkActions;
 
 class PresupLineas extends Component
 {
 
+    use WithPagination, WithBulkActions;
+
     public $presupuesto;
+    public $selected=[];
+    public $showDeleteModal=false;
+
 
     protected $listeners = [ 'linearefresh' => '$refresh'];
 
     public function render()
     {
-        $lineas=PedidoDetalle::where('presupuesto_id',$this->presupuesto->id)->orderBy('orden');
+        // $lineas=PresupuestoLinea::where('presupuesto_id',$this->presupuesto->id)->orderBy('orden')->get();
+        $lineas= $this->rows;
         return view('livewire.presup-lineas',compact(['lineas']));
-    }
+}
 
     public function changeVisible(PresupuestoLinea $linea,$visible)
     {
@@ -137,4 +145,22 @@ class PresupLineas extends Component
             return redirect()->route('presupuesto.edit',$presupuesto);
         }
     }
+
+    public function deleteSelected(){
+        $deleteCount = $this->selectedRowsQuery->count();
+        $this->selectedRowsQuery->delete();
+        $this->showDeleteModal = false;
+
+        $this->dispatchBrowserEvent('notify', $deleteCount . ' Líneas eliminados!');
+    }
+
+    public function getRowsQueryProperty(){
+
+        return PresupuestoLinea::where('presupuesto_id',$this->presupuesto->id)->orderBy('orden');
+    }
+
+    public function getRowsProperty(){
+        return $this->rowsQuery->paginate(10);
+    }
+
 }

@@ -220,11 +220,19 @@
                                 <span class="pr-4 text-xs text-blue-500">{{ number_format($presupuesto->precioventa,2)}}</span>
                             </td>
                             <td>
+                                <select wire:change="changeValor({{ $presupuesto }},'estado',$event.target.value)"
+                                    class="py-2 text-xs text-gray-600 placeholder-gray-300 bg-{{ $presupuesto->status_color[0] }}-100 border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                    <option value="0" {{ $presupuesto->estado== '0'? 'selected' : '' }}>En curso</option>
+                                    <option value="1" {{ $presupuesto->estado== '1'? 'selected' : '' }}>Aceptado</option>
+                                    <option value="2" {{ $presupuesto->estado== '2'? 'selected' : '' }}>Rechazado</option>
+                                </select>
+                            </td>
+                            {{-- <td>
                                 <span
                                     class="inline-flex items-center text-center px-2.5 py-0.5 rounded-full text-xs leading-4 bg-{{ $presupuesto->status_color[0] }}-100 text-green-800">
                                     {{ $presupuesto->status_color[1] }}
                                 </span>
-                            </td>
+                            </td> --}}
                             <td class="">
                                 <div class="flex items-center justify-center">
                                     @if(Auth::user()->id==$presupuesto->ent->comercial_id || Auth::user()->hasRole('Admin'))

@@ -3,13 +3,13 @@
 
     <div class="p-1 mx-2 ">
         <div class="flex flex-row">
-            <div class="w-9/12 space-x-2 flex flex-row">
+            <div class="flex flex-row w-9/12 space-x-2">
                 <div class="">
                     <h1 class="mx-2 text-2xl font-semibold text-gray-900"> {{ $pedido->pedido ? 'Pedido: ' : 'Nuevo Pedido' }} <input  wire:model.lazy="pedido.pedido" type="text" class="text-2xl font-semibold text-gray-900 border-transparent "/></h1>
                 </div>
                 <div class="flex flex-row mt-1">
                     <div class="">
-                        <label class="block  mt-1 pr-2 font-medium text-gray-700">
+                        <label class="block pr-2 mt-1 font-medium text-gray-700">
                             {{ __('Estado ') }}
                         </label>
                     </div>
@@ -172,22 +172,22 @@
             </div>
         </div>
     </div>
-        <!-- Delete Transactions Modal -->
-        <form wire:submit.prevent="cambiarproveedor">
-            <x-modal.confirmation wire:model.defer="showDeleteModal">
-                <x-slot name="title">Borrar Pedido</x-slot>
+    <!-- Delete Transactions Modal -->
+    <form wire:submit.prevent="cambiarproveedor">
+        <x-modal.confirmation wire:model.defer="showDeleteModal">
+            <x-slot name="title">Borrar Pedido</x-slot>
 
-                <x-slot name="content">
-                    <div class="py-8 text-gray-700">¿Esás seguro? <br>Al cambiar el proveedor se eliminarán las líneas de detalle. <br>Esta acción es irreversible.</div>
-                </x-slot>
+            <x-slot name="content">
+                <div class="py-8 text-gray-700">¿Esás seguro? <br>Al cambiar el proveedor se eliminarán las líneas de detalle. <br>Esta acción es irreversible.</div>
+            </x-slot>
 
-                <x-slot name="footer">
-                    <x-button.secondary wire:click="recuperoproveedor">Cancelar</x-button.secondary>
+            <x-slot name="footer">
+                <x-button.secondary wire:click="recuperoproveedor">Cancelar</x-button.secondary>
 
-                    <x-button.primary type="submit">Modificar</x-button.primary>
-                </x-slot>
-            </x-modal.confirmation>
-        </form>
+                <x-button.primary type="submit">Modificar</x-button.primary>
+            </x-slot>
+        </x-modal.confirmation>
+    </form>
     <script>
         setTimeout(function() {
             getElementById('#mimensaje').fadeOut('fast');

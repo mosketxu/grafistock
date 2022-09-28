@@ -9,7 +9,7 @@
                                 'filtrosolicitante'=>$filtrosolicitante,
                                 'filtropalabra'=>$filtropalabra,
                                 'filtroestado'=>$filtroestado
-                ]))
+                ])
             </div>
         </div>
     </div>

@@ -84,6 +84,7 @@ class Presup extends Component
         return view('livewire.presup',compact(['controlpartidas','contactos']));
     }
 
+
     public function openPDFModal(){
         $this->showPDFModal = true;
     }
