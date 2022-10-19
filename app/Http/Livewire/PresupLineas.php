@@ -66,7 +66,7 @@ class PresupLineas extends Component
         $linea->update(['unidades'=>$unidades]);
 
         $p=Presupuesto::find($this->presupuesto->id)->recalculo();
-        $this->emit('presupuestorefresh');
+        // $this->emit('presupuestorefresh');
         // $this->emit('linearefresh');
         $this->dispatchBrowserEvent('notify', 'Unidades Actualizadas.');
     }
