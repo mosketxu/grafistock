@@ -16,7 +16,7 @@ class CreatePresupuestosTable extends Migration
         Schema::create('presupuestos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('solicitante_id')->nullable()->constrained('solicitantes')->cascadeOnUpdate()->nullOnDelete();
-            $table->string('presupuesto')->index()->nullable();
+            $table->string('presupuesto')->index()->nullable()->unique();
             $table->string('descripcion')->nullable();
             $table->foreignId('entidad_id')->constrained('entidades');
             $table->date('fechapresupuesto');

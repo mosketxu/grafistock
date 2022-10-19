@@ -37,11 +37,11 @@ class PermissionSeeder extends Seeder
         // Permission::create(['name'=>'entidad.delete','description'=>'Permite Borrar una entidad'])->syncRoles($admin,$gestion);
 
         // // Entidades contactos
-        Permission::create(['name'=>'entidadcontacto.index','description'=>'Lista todos los contactos de las entidades del sistema'])->syncRoles($admin,$gestion,$comercial);
-        Permission::create(['name'=>'entidadcontacto.create','description'=>'Permite Crear un contacto'])->syncRoles($admin,$gestion,$comercial);
-        Permission::create(['name'=>'entidadcontacto.edit','description'=>'Permite Editar un contacto'])->syncRoles($admin,$gestion,$comercial);
-        Permission::create(['name'=>'entidadcontacto.update','description'=>'Permite Actualizar un contacto'])->syncRoles($admin,$gestion,$comercial);
-        Permission::create(['name'=>'entidadcontacto.delete','description'=>'Permite Borrar un contacto'])->syncRoles($admin,$gestion,$comercial);
+        // Permission::create(['name'=>'entidadcontacto.index','description'=>'Lista todos los contactos de las entidades del sistema'])->syncRoles($admin,$gestion,$comercial);
+        // Permission::create(['name'=>'entidadcontacto.create','description'=>'Permite Crear un contacto'])->syncRoles($admin,$gestion,$comercial);
+        // Permission::create(['name'=>'entidadcontacto.edit','description'=>'Permite Editar un contacto'])->syncRoles($admin,$gestion,$comercial);
+        // Permission::create(['name'=>'entidadcontacto.update','description'=>'Permite Actualizar un contacto'])->syncRoles($admin,$gestion,$comercial);
+        // Permission::create(['name'=>'entidadcontacto.delete','description'=>'Permite Borrar un contacto'])->syncRoles($admin,$gestion,$comercial);
 
         // // Pedidos
         // Permission::create(['name'=>'pedido.index','description'=>'Lista todos los pedidos del sistema'])->syncRoles($admin,$gestion);
