@@ -28,7 +28,7 @@ class Presups extends Component
 
     public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$entidadcontacto_id,$solicitante_id;
     public $fechapresupuesto,$refgrafitex,$refcliente,$precioventa,$preciocoste,$unidades,$incremento;
-    public $iva='0.21',$ruta,$fichero,$estado='0',$observaciones;
+    public $iva='0.21',$ruta,$fichero,$estado='',$observaciones;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -44,7 +44,6 @@ class Presups extends Component
 
     public function mount(Entidad $entidad,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado)
     {
-        // $this->filtroanyo=date('Y');
 
         $this->search=$search;
         $this->filtroanyo=$filtroanyo ? $filtroanyo : date('Y') ;
@@ -59,9 +58,9 @@ class Presups extends Component
             $this->contactos=EntidadContacto::where('entidad_id',$entidad->id)->orderBy('contacto')->get();
     }
 
-    public function render()
-    {
+    public function render(){
         if($this->selectAll) $this->selectPageRows();
+
         $presupuestos = $this->rows;
         $clientes = Entidad::query()
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
@@ -75,15 +74,13 @@ class Presups extends Component
     }
 
 
-    public function updatingFiltroclipro(){
-        $this->resetPage();
-    }
-    public function updatingFiltroanyo(){
-        $this->resetPage();
-    }
-    public function updatingFiltromes(){
-        $this->resetPage();
-    }
+    public function updatingSearch(){$this->resetPage();}
+    public function updatingFiltroanyo(){$this->resetPage();}
+    public function updatingFiltromes(){$this->resetPage();}
+    public function updatingFiltroclipro(){$this->resetPage();}
+    public function updatingFiltrosolicitante(){$this->resetPage();}
+    public function updatingFiltropalabra(){$this->resetPage();}
+    public function updatingFiltroestado(){$this->resetPage();}
 
     public function create(){
         $this->resetInputFields();
@@ -101,10 +98,9 @@ class Presups extends Component
         $this->contactos=EntidadContacto::where('entidad_id',$e->id)->orderBy('contacto')->get();
     }
 
-    public function changeValor(Presupuesto $presupuesto,$campo,$valor)
-    {
+    public function changeValor(Presupuesto $presupuesto,$campo,$valor){
         $presupuesto->update([$campo=>$valor]);
-        $this->dispatchBrowserEvent('notify', 'Actulizado con éxito.');
+        $this->dispatchBrowserEvent('notify', 'Actualizado con éxito.');
     }
 
     public function replicateRow(Presupuesto $presupuesto){
@@ -143,7 +139,6 @@ class Presups extends Component
         $this->dispatchBrowserEvent('notify', 'Presupuestos copiado!');
     }
 
-
     public function openNewModal(){
         $this->showNewModal = true;
     }
@@ -174,7 +169,7 @@ class Presups extends Component
         $this->iva='0.21';
         $this->ruta='';
         $this->fichero='';
-        $this->estado='0';
+        $this->estado='';
         $this->observaciones='';
     }
 
@@ -281,14 +276,12 @@ class Presups extends Component
         $this->openNewModal();
     }
 
-    public function numpresupuesto()
-    {
+    public function numpresupuesto(){
         $anyo= Carbon::parse($this->fechapresupuesto)->year;
         $anyo2= Carbon::parse($this->fechapresupuesto)->format('y');
         $p=Presupuesto::withTrashed()->whereYear('fechapresupuesto', $anyo)->max('presupuesto') ;
         $this->presupuesto= $p ? $p + 1 : ($anyo2 * 100000 +1) ;
     }
-
 
     public function getRowsQueryProperty(){
         return Presupuesto::query()
@@ -308,22 +301,17 @@ class Presups extends Component
             })
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
                 $query->when(!Auth::user()->hasRole('Admin'),function ($q){
-                // $q->where('solicitante_id',Auth::user()->id);});
                 $q->whereRelation('ent','comercial_id',Auth::user()->id)->get();
                 ;});
             })
-            // ->when($this->search!='', function ($query){
-            //     $query->where('entidades.entidad','like','%'.$this->search.'%')->orWhere('presupuestos.presupuesto','like','%'.$this->search.'%');
-            // })
             ->searchYear('fechapresupuesto',$this->filtroanyo)
             ->searchMes('fechapresupuesto',$this->filtromes)
             ->search('presupuestos.descripcion',$this->filtropalabra)
-            // ->search('entidades.entidad',$this->search)
-            // ->orSearch('presupuestos.presupuesto',$this->search)
             ->search('presupuestos.presupuesto',$this->search)
             ->orderBy('presupuestos.fechapresupuesto','desc')
             ->orderBy('presupuestos.id','desc');
             // ->paginate(5); solo contemplo la query, no el resultado. Luego pongo el resultado: get, paginate o lo que quiera
+
     }
 
     public function getRowsProperty(){

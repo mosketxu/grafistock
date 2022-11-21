@@ -83,7 +83,7 @@ class Presupuesto extends Model
         return $pdf->download($presupuesto->fichero);
     }
 
-    public function presupuestos($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,$ccliente,$ccomercial)
+    public static function presupuestos($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,$ccliente,$ccomercial)
     {
         $com= $ccomercial=='1'? 'entidad': '';
         $ent = $ccliente=='1' ? 'comercial' : '';

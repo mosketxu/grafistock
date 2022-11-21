@@ -34,6 +34,7 @@ class DashPresupuestos extends Component
             $this->filtroestado,$this->filtroFi,$this->filtroFf,
             $this->filtroventasIni,$this->filtroventasFin,
             $this->ccliente,$this->ccomercial);
+
         $clientes = Entidad::whereIn('entidadtipo_id',['1','3'])->select('id','entidad')->orderBy('entidad')->get();
         $solicitantes=User::role('Comercial')->orderBy('name')->get();
         return view('livewire.dash-presupuestos',compact('presupuestos','solicitantes','clientes'));
