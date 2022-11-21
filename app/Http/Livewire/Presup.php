@@ -55,8 +55,7 @@ class Presup extends Component
         $this->preciocoste=$this->presupuesto->preciocoste;
     }
 
-    public function mount(Presupuesto $presupuesto,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado)
-    {
+    public function mount(Presupuesto $presupuesto,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado){
         $this->presupuesto=$presupuesto;
         $this->descripcion=$presupuesto->descripcion;
         $this->estado=$presupuesto->estado;
