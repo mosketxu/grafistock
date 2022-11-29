@@ -176,6 +176,8 @@ class Presups extends Component
     public function store(){
         if($this->solicitante_id=='') $this->solicitante_id= Auth()->user()->id;
         if($this->entidadcontacto_id=='') $this->entidadcontacto_id= null;
+        if($this->estado=='') $this->estado= '0';
+
 
         $this->validate([
             'entidad_id' => 'required',
