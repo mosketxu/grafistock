@@ -16,7 +16,7 @@
             class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                 <option value="">-- choose --</option>
             @foreach ($proveedores as $proveedor)
-                <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }}</option>
+                <option value="{{ $proveedor->id }}">{{ $proveedor->entidad }} ({{ $proveedor->provincia->provincia }} {{ $proveedor->localidad  }})</option>
             @endforeach
         </x-select>
         @error('proveedor_id') <span class="text-red-500">{{ $message }}</span>@enderror
