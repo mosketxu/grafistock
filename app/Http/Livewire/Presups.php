@@ -46,7 +46,8 @@ class Presups extends Component
     {
 
         $this->search=$search;
-        $this->filtroanyo=$filtroanyo ? $filtroanyo : date('Y') ;
+        // $this->filtroanyo=$filtroanyo ? $filtroanyo : date('Y') ;
+        $this->filtroanyo='' ;
         $this->filtromes=$filtromes;
         $this->filtroclipro=$filtroclipro;
         $this->filtrosolicitante=$filtrosolicitante;
@@ -338,10 +339,7 @@ class Presups extends Component
         $this->dispatchBrowserEvent('notify', $deleteCount . ' Presupuestos eliminados!');
     }
 
-
-
-    public function delete($presupuestoId)
-    {
+    public function delete($presupuestoId){
         $presupuesto = Presupuesto::find($presupuestoId);
         if ($presupuesto) {
             // $pl=PresupuestoLinea::where('prespuesto_id',$presupuesto->id);

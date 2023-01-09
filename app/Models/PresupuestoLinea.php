@@ -12,27 +12,15 @@ class PresupuestoLinea extends Model
 
     protected $fillable=['presupuesto_id','visible','orden','descripcion','preciocoste','precioventa','factor','unidades','ruta','fichero','observaciones'];
 
-    public function presupuesto()
-    {
-        return $this->belongsTo(Presupuesto::class);
-    }
-
-    public function presupuestolineadetalles()
-    {
-        return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('orden');
-    }
-
-    public function presupuestolineadetallesportipo()
-    {
-        return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('acciontipo_id')->orderBy('orden');
-    }
+    public function presupuesto(){return $this->belongsTo(Presupuesto::class);}
+    public function presupuestolineadetalles(){return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('orden');}
+    public function presupuestolineadetallesportipo(){return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('acciontipo_id')->orderBy('orden');}
 
     // public function getTotalAttribute(){
     //     return round((1+$this->iva)*$this->unidades*$this->precioventa,2);
     // }
 
-    public function recalculo()
-    {
+    public function recalculo(){
         $incremento=$this->presupuesto->incremento;
         $this->precioventa=$this->presupuestolineadetalles->sum('precioventa')*(1+ $incremento/100);;
         $this->preciocoste=$this->presupuestolineadetalles->sum('preciocoste');

@@ -68,9 +68,7 @@ class DashPresupuestos extends Component
         }
     }
 
-
-    public function exportEstadisticaPresupuestosXLS()
-    {
+    public function exportEstadisticaPresupuestosXLS(){
         $sel=Presupuesto::presupuestosXLS($this->mesanyo,$this->filtroentidad,$this->filtrosolicitante,$this->filtroestado,$this->filtroFi,$this->filtroFf,$this->filtroventasIni,$this->filtroventasFin);
         $filas=$sel->count();
 
