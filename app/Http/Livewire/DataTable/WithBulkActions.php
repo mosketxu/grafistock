@@ -40,4 +40,10 @@ trait WithBulkActions
         return (clone $this->xlsQuery)
             ->unless($this->selectAll, fn($query) => $query->whereKey($this->selected));
     }
+
+    public function getSelectedXlsdetalleQueryProperty()
+    {
+        return (clone $this->xlsdetalleQuery)
+            ->unless($this->selectAll, fn($query) => $query->whereKey($this->selected));
+    }
 }

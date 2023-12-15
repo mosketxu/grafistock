@@ -84,7 +84,10 @@
                                 <x-icon.csv class="text-green-400"></x-icon.csv><span>Export </span>
                             </x-dropdown.item> --}}
                             <x-dropdown.item type="button" wire:click="exportPedidosSelectedXLS" class="flex items-center space-x-2">
-                                <x-icon.csv class="text-green-400"></x-icon.csv><span>Export </span>
+                                <x-icon.xls class="text-green-400"></x-icon.xls><span>Export</span>
+                            </x-dropdown.item>
+                            <x-dropdown.item type="button" wire:click="exportPedidosDetalladosSelectedXLS" class="flex items-center space-x-2">
+                                <x-icon.csv class="text-red-800"></x-icon.csv><span>Export detalles</span>
                             </x-dropdown.item>
                             {{-- <x-dropdown.item type="button" onclick="confirm('¿Estas seguro?') || event.stopImmediatePropagation()" wire:click="deleteSelected" class="flex items-center space-x-2"> --}}
                             <x-dropdown.item type="button" wire:click="$toggle('showDeleteModal')" class="flex items-center space-x-2">
@@ -113,7 +116,7 @@
                             <th class="pl-4 font-medium text-left">{{ __('F.Recep.Prev.') }}</th>
                             <th class="pl-4 font-medium text-left">{{ __('F.Recep.') }}</th>
                             <th class="pr-4 font-medium text-right">{{ __('Total (€)') }}</th>
-                            <th class="font-medium text-center pr-3">{{ __('Estado') }}</th>
+                            <th class="pr-3 font-medium text-center">{{ __('Estado') }}</th>
                             <th colspan="2"></th>
                         </tr>
                     </thead>
