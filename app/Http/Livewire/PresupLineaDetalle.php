@@ -317,22 +317,26 @@ class PresupLineaDetalle extends Component
     public function UpdatedUnidades(){
         if (!$this->unidades) $this->unidades=0;
         $this->validate(['unidades'=>'numeric',]);
-        $this->calculoPrecioVenta();}
+        $this->calculoPrecioVenta();
+    }
 
     public function UpdatedMinutos(){
         if(!$this->unidades) $this->unidades=0;
         $this->validate(['minutos'=>'numeric',]);
-        $this->calculoPrecioVenta();}
+        $this->calculoPrecioVenta();
+    }
 
     public function UpdatedAncho(){
         if(!$this->ancho) $this->ancho=1;
         $this->validate(['ancho'=>'numeric',]);
-        $this->calculoPrecioVenta();}
+        $this->calculoPrecioVenta();
+    }
 
     public function UpdatedAlto(){
         if(!$this->alto) $this->alto=1;
         $this->validate(['alto'=>'numeric',]);
-        $this->calculoPrecioVenta();}
+        $this->calculoPrecioVenta();
+    }
 
     // con el factor tenemos en cuenta el minimo
     public function UpdatedFactor(){
@@ -372,13 +376,11 @@ class PresupLineaDetalle extends Component
         $this->calculoPrecioVenta();
     }
 
-    public function updatedficheroexterno()
-    {
+    public function updatedficheroexterno(){
         $this->validate(['ficheroexterno'=>'file|max:10000']);
     }
 
-    public function changeValor(PresupuestoLineaDetalle $presupaccion,$campo,$calculo,$valor)
-    {
+    public function changeValor(PresupuestoLineaDetalle $presupaccion,$campo,$calculo,$valor){
         //Preparamos y validamos antes de actualizar
         if($valor=="unidades") if(!$valor) $valor=1;
         if($valor=="preciocompra_ud") if(!$valor) $valor=0;
@@ -418,8 +420,7 @@ class PresupLineaDetalle extends Component
         }
     }
 
-    public function save()
-    {
+    public function save(){
 
         $this->validate();
         if($this->accionproducto_id){
