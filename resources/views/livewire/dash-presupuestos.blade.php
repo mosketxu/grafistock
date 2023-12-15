@@ -52,7 +52,7 @@
                             <td>
                                 @if($ccliente=='1')
                                 <input type="text" value="{{ $presupuesto->entidad }}"
-                                    class="w-full text-xs font-thin text-gray-500 truncate border-0 rounded-md" readonly />
+                                    class="w-full text-xs font-thin truncate border-0 rounded-md" readonly />
                                 @endif
                             </td>
                             <td>
