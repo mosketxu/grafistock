@@ -31,7 +31,7 @@ class ExportPresupuestos implements FromCollection,WithCustomStartCell,WithHeadi
     public function styles(Worksheet $sheet)
     {
         //columnas con formulas
-        if($this->mes!='1'){
+        if($this->mes!=true){
             $t1='D';$t2='E';$t3='F';$t4='G';
         }else{
             $t1='E';$t2='F';$t3='G';$t4='H';
@@ -66,7 +66,7 @@ class ExportPresupuestos implements FromCollection,WithCustomStartCell,WithHeadi
 
 
     public function headings(): array{
-        if($this->mes=='1'){
+        if($this->mes==true){
             return [
                 ['Estadísticas de presupuestos',now()],
                 [' ',' '],

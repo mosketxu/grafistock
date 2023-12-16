@@ -86,9 +86,7 @@ class Pedido extends Component
         }
     }
 
-    public function save()
-    {
-        // dd($this->pedido->fecharecepcionprevista);
+    public function save(){
         if($this->pedido->fecharecepcion=='0000-00-00' || $this->pedido->fecharecepcion=='')
             $this->pedido->fecharecepcion=null;
         if($this->pedido->fecharecepcionprevista=='0000-00-00'  || $this->pedido->fecharecepcionprevista=='')

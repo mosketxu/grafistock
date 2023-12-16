@@ -161,7 +161,6 @@ class Prod extends Component
         );
         if($this->ficheropdf){
             $prod->fichaproducto=$filename;
-            // dd($prod->fichaproducto);
             $prod->save();
         }
 

@@ -86,8 +86,8 @@ class Presupuesto extends Model
     public static function presupuestos($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,$ccliente,$ccomercial){
         $com= $ccomercial=='1'? 'entidad': '';
         $ent = $ccliente=='1' ? 'comercial' : '';
-        $g="'".'entidad'."','".'presupuestos.estado'."','".'comercial'."'";
-        $g="->groupBy('entidad','presupuestos.estado','comercial')->get()";
+        // $g="'".'entidad'."','".'presupuestos.estado'."','".'comercial'."'";
+        // $g="->groupBy('entidad','presupuestos.estado','comercial')->get()";
         if($mes!='1'){
             return Presupuesto::query()
             ->join('entidades','entidades.id','presupuestos.entidad_id')
@@ -100,6 +100,7 @@ class Presupuesto extends Model
             ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
             // .$g
             // ->groupBy($g)
+            ->groupBy('entidad','presupuestos.estado','comercial')
             ->get();
             }
         else
@@ -119,13 +120,15 @@ class Presupuesto extends Model
         dd('3');
     }
 
-    public function presupuestosXLS($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin){
-        if($mes!='1')
+    public static function presupuestosXLS($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin){
+
+        if($mes!=true)
+            // dd('no hay mes');
             return Presupuesto::query()
             ->join('entidades','entidades.id','presupuestos.entidad_id')
             ->join('users','users.id','presupuestos.solicitante_id')
             ->select('entidades.entidad as entidad','users.name as comercial',
-                'presupuestos.fechapresupuesto',
+                // 'presupuestos.fechapresupuesto',
                 DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
             ->selectRaw('count(presupuestos.id) as numpresups')
             ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')

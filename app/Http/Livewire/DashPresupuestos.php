@@ -30,28 +30,27 @@ class DashPresupuestos extends Component
     {
         // $presupuestos=$this->estadistica();
         $presupuestos=Presupuesto::presupuestos(
-            $this->mesanyo,$this->filtroentidad,$this->filtrosolicitante,
-            $this->filtroestado,$this->filtroFi,$this->filtroFf,
-            $this->filtroventasIni,$this->filtroventasFin,
-            $this->ccliente,$this->ccomercial);
+            $this->mesanyo,
+            $this->filtroentidad,
+            $this->filtrosolicitante,
+            $this->filtroestado,
+            $this->filtroFi,
+            $this->filtroFf,
+            $this->filtroventasIni,
+            $this->filtroventasFin,
+            $this->ccliente,
+            $this->ccomercial);
 
         $clientes = Entidad::whereIn('entidadtipo_id',['1','3'])->select('id','entidad')->orderBy('entidad')->get();
         $solicitantes=User::role('Comercial')->orderBy('name')->get();
         return view('livewire.dash-presupuestos',compact('presupuestos','solicitantes','clientes'));
     }
 
-    public function updatedCcliente()
-    {
-        if($this->ccliente!='1') $this->filtroentidad='';
-    }
+    public function updatedCcliente(){if($this->ccliente!='1') $this->filtroentidad='';}
 
-    public function updatedCcomercial()
-    {
-        if($this->ccomercial!='1') $this->filtrosolicitante='';
-    }
+    public function updatedCcomercial(){if($this->ccomercial!='1') $this->filtrosolicitante='';}
 
-    public function UpdatedFiltroFi()
-    {
+    public function UpdatedFiltroFi(){
         $this->alerta='';
         if($this->filtroFf && $this->filtroFi>$this->filtroFf){
             $this->alerta='La fecha inicial no puede ser superior a la fecha final.';
@@ -59,8 +58,7 @@ class DashPresupuestos extends Component
         }
     }
 
-    public function UpdatedFiltroFf()
-    {
+    public function UpdatedFiltroFf(){
         $this->alerta='';
         if($this->filtroFi && $this->filtroFf<$this->filtroFi){
             $this->alerta='La fecha final no puede ser inferior a la fecha inicial.';
@@ -69,11 +67,7 @@ class DashPresupuestos extends Component
     }
 
     public function exportEstadisticaPresupuestosXLS(){
-        $p=new Presupuesto();
-
-        // $sel=Presupuesto::presupuestosXLS($this->mesanyo,$this->filtroentidad,$this->filtrosolicitante,$this->filtroestado,$this->filtroFi,$this->filtroFf,$this->filtroventasIni,$this->filtroventasFin);
-        $sel=$p->presupuestosXLS($this->mesanyo,$this->filtroentidad,$this->filtrosolicitante,$this->filtroestado,$this->filtroFi,$this->filtroFf,$this->filtroventasIni,$this->filtroventasFin);
-        dd($sel);
+        $sel=Presupuesto::presupuestosXLS($this->mesanyo,$this->filtroentidad,$this->filtrosolicitante,$this->filtroestado,$this->filtroFi,$this->filtroFf,$this->filtroventasIni,$this->filtroventasFin);
         $filas=$sel->count();
 
         $ent=$this->filtroentidad ? Entidad::find($this->filtroentidad)->entidad:'';
