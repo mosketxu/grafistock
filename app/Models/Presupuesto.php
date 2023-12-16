@@ -125,6 +125,7 @@ class Presupuesto extends Model
             ->join('entidades','entidades.id','presupuestos.entidad_id')
             ->join('users','users.id','presupuestos.solicitante_id')
             ->select('entidades.entidad as entidad','users.name as comercial',
+                'presupuestos.fechapresupuesto',
                 DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
             ->selectRaw('count(presupuestos.id) as numpresups')
             ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')

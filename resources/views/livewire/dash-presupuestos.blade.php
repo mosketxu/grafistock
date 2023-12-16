@@ -14,7 +14,7 @@
                 </div>
                 <div class="flex flex-row-reverse w-2/12">
                     <div class="items-center text-xs">
-                        <x-button.button  wire:click="exportEstadisticaPresupuestosXLS" color="green"><x-icon.xls/></x-button.button>
+                        <x-button.button  wire:click="exportEstadisticaPresupuestosXLS" color="green" >Export XLS</x-button.button>
                     </div>
                 </div>
             </div>
@@ -118,10 +118,14 @@
                             {{-- {{ $presupuestos->sum('numpresups') }} --}}
                         </td>
                         <td class="w-24 pt-2 pr-4 text-sm text-right text-gray-600">
+                            @if($presupuestos->sum('numpresups')>0)
                             {{number_format(round($presupuestos->sum('margenbruto')/$presupuestos->sum('numpresups'),2),2) }}
+                            @endif
                         </td>
                         <td class="w-24 pt-2 pr-4 text-sm text-right text-gray-600">
+                            @if($presupuestos->sum('numpresups')>0)
                             {{number_format(round($presupuestos->sum('ventas')/$presupuestos->sum('numpresups'),2),2) }}
+                            @endif
                         </td>
                         <td></td>
                     </tr>
