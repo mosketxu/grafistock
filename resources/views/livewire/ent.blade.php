@@ -142,6 +142,12 @@
                     <x-jet-label for="presupuesto">{{ __('Disp en Presupuestos') }}</x-jet-label>
                     <input type="checkbox" id="presupuesto" name="presupuesto" wire:model.defer="entidad.presupuesto">
                 </div>
+                @if(Auth::user()->hasRole(['Admin', 'Gestion']))
+                <div class="form-item">
+                    <x-jet-label for="incrementoanual">{{ __('I.A.') }}</x-jet-label>
+                    <input type="checkbox" id="incrementoanual" name="incrementoanual" wire:model.defer="entidad.incrementoanual">
+                </div>
+                @endif
                 <div class="form-item">
                     <x-jet-label for="categoriza">{{ __('Categorización.') }}</x-jet-label>
                     <x-select wire:model.lazy="entidad.entidadcategoria_id" selectname="entidadcategoria_id" class="w-full">
