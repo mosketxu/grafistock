@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
+use App\Models\{AccionTipo, Configuracion, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
      PresupuestoLinea, PresupuestoLineaDetalle, User,Filtros};
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
@@ -57,7 +57,9 @@ class Presups extends Component
         $this->entidad=$entidad;
         if($this->entidad)
             $this->contactos=EntidadContacto::where('entidad_id',$entidad->id)->orderBy('contacto')->get();
-    }
+        $incrementoanual=Configuracion::where('nombre','incrementoanual')->first();
+
+        }
 
     public function render(){
         if($this->selectAll) $this->selectPageRows();
