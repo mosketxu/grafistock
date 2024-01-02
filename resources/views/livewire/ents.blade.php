@@ -90,7 +90,7 @@
                 @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro']) && Auth::user()->hasRole(['Admin','Gestor']))
                 <div class="items-center hidden xl:w-1/12 xl:flex">
                     <input type="checkbox" {{ $entidad->incrementoanual==true ? 'checked' : '' }}
-                    wire:change="changeIA({{ $entidad }},$event.target.value)"
+                        wire:change="changeIA({{ $entidad }},$event.target.value)"
                     class="" />
                 </div>
                 @endif
