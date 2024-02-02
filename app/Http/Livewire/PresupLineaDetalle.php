@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Producto,Accion,AccionTipo, EmpresaTipo, Entidad, EntidadCategoria, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle, ProductoFamilia, UnidadCoste};
+use App\Models\{Producto,Accion,AccionTipo, Configuracion, EmpresaTipo, Entidad, EntidadCategoria, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle, ProductoFamilia, UnidadCoste};
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
@@ -24,16 +24,20 @@ class PresupLineaDetalle extends Component
     public $ruta=''; public $nombre='';
     public AccionTipo $acciontipo;
     public $empresaTipo;
+    public $tituloaccion;
 
     // vbles modelo
     public $visible=true;public $orden=1;public $pldetalleId='';public $descripcion;public $proveedor_id;public $empresatipo_id;
     public $preciocoste_ud=0;public $preciocoste=0;public $udpreciocoste_id;
-    public $precioventa_ud=0;public $preciominimo=0;public $unidadventa='';
+    public $precioventa_ud=0;public $precioventa=0;public $preciominimo=0;public $unidadventa='';
     public $factor=1;public $factormin=1;public $merma=0;
     public $ancho=1;public $alto=1;
     public $unidades=1;public $minutos=1;
     public $accionproducto_id;public $observaciones;
     public $ficheroexterno; public $ficheroupload;
+
+    //vbles config
+    public $incrementoanual='0';
 
     protected $rules = [
         'visible'=>'','orden'=>'nullable|numeric','proveedor_id'=>'nullable|numeric',
@@ -47,8 +51,7 @@ class PresupLineaDetalle extends Component
 
     protected $listeners = [ 'presuplineadetallerefresh' => '$refresh'];
 
-    public function mount(PresupuestoLinea $presupuestolinea)
-    {
+    public function mount(PresupuestoLinea $presupuestolinea){
         $this->presuplinea=$presupuestolinea;
         $this->empresaTipo=$presupuestolinea->presupuesto->ent->empresatipo;
         $this->empresatipo_id=$this->empresaTipo->id;
@@ -57,12 +60,12 @@ class PresupLineaDetalle extends Component
         $condiciones=['IMP','ACA','MAN'];
         if(in_array($this->acciontipo->nombrecorto, $condiciones)){
             $this->deshabilitadoPCoste='disabled';
-            $this->colorfondoPCoste='bg-gray-100';
+            $this->colorfondoCoste='bg-gray-100';
         }
+        $this->incrementoanual=Configuracion::where('nombrecorto','AI')->first();
     }
 
-    public function render()
-    {
+    public function render(){
         $proveedores='';$materiales='';$acabados='';$tipos='';
         $empresatipos='';
         $entidadcategorias='';
@@ -164,10 +167,9 @@ class PresupLineaDetalle extends Component
                 'unidadesventa','tipos','acabados','familias','materiales','empresatipos','entidadcategorias'));
     }
 
-    public function edit(PresupuestoLineaDetalle $presupuestoaccion)
-    {
+    public function edit(PresupuestoLineaDetalle $presupuestoaccion){
         $this->presupuestolinea_id=$presupuestoaccion->id;
-        $this->acciontipo_id=$presupuestoaccion->acciontipo_id;
+        $this->acciontipoId=$presupuestoaccion->acciontipo_id;
         $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
         $this->proveedor_id=$presupuestoaccion->entidad_id;
         $this->empresatipo_id=$presupuestoaccion->empresatipo_id;
@@ -197,23 +199,21 @@ class PresupLineaDetalle extends Component
 
         $condiciones=['IMP','ACA','MAN'];
         $this->deshabilitadoPCoste='';
-        $this->colorfondoPCoste='';
+        $this->colorfondoCoste='';
         $this->acciontipo=AccionTipo::find($this->acciontipo_id);
         if(in_array($this->acciontipo->nombrecorto, $condiciones)){
             $this->deshabilitadoPCoste='disabled';
-            $this->colorfondoPCoste='bg-gray-100';
+            $this->colorfondoCoste='bg-gray-100';
         }
     }
 
-    public function replicateRow(PresupuestoLineaDetalle $lineadetalle)
-    {
+    public function replicateRow(PresupuestoLineaDetalle $lineadetalle){
         $lineadetalle->clonarlinea();
         $this->dispatchBrowserEvent('notify', 'Linea copiada!');
         $this->emit('presuplineadetallerefresh');
     }
 
-    public function UpdatedAccionproductoId()
-    {
+    public function UpdatedAccionproductoId(){
         $this->merma=0;
         $this->factor=1;
         $this->factormin=1;
@@ -265,7 +265,7 @@ class PresupLineaDetalle extends Component
                     $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
                     $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
                     $this->deshabilitadoPCoste='disabled';
-                    $this->colorfondoPCoste='bg-gray-100';
+                    $this->colorfondoCoste='bg-gray-100';
                 }else{
                     $this->preciocoste_ud='0';
                     $this->merma='0';
@@ -421,7 +421,6 @@ class PresupLineaDetalle extends Component
     }
 
     public function save(){
-
         $this->validate();
         if($this->accionproducto_id){
             if(!$this->udpreciocoste_id) $this->udpreciocoste_id='2';
@@ -473,15 +472,13 @@ class PresupLineaDetalle extends Component
         }
     }
 
-    public function recalcular($presupaccion)
-    {
+    public function recalcular($presupaccion){
         $pl=$presupaccion->presupuestolinea->recalculo();
         $p=$presupaccion->presupuestolinea->presupuesto->recalculo();
         return redirect()->route('presupuestolinea.create',[$presupaccion->presupuestolinea,$presupaccion->acciontipo_id]);
     }
 
-    public function calculoPrecioVenta()
-    {
+    public function calculoPrecioVenta(){
         // si no es material la merma es 0 así que el cálculo es el mismo.
         $this->preciocoste=$this->ancho * $this->alto * $this->unidades * $this->minutos * $this->preciocoste_ud  ;
         $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * ($this->precioventa_ud  + $this->preciocoste_ud*$this->merma);
@@ -495,8 +492,7 @@ class PresupLineaDetalle extends Component
         $this->precioventa=round($this->precioventa,2);
     }
 
-    public function recalculoPrecioVenta($presupacciondetalle)
-    {
+    public function recalculoPrecioVenta($presupacciondetalle){
         // si no es material la merma es 0 así que el cálculo es el mismo.
         $presupacciondetalle->preciocoste= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * $presupacciondetalle->preciocoste_ud  ;
         $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
@@ -515,8 +511,7 @@ class PresupLineaDetalle extends Component
         $this->actualizaPartida();
     }
 
-    public function actualizaPartida()
-    {
+    public function actualizaPartida(){
         $contador=PresupuestoLinea::query()
             ->join('presupuesto_linea_detalles','presupuesto_lineas.id','=','presupuesto_linea_detalles.presupuestolinea_id')
             ->select('presupuesto_lineas.presupuesto_id','presupuesto_linea_detalles.acciontipo_id')
@@ -532,8 +527,7 @@ class PresupLineaDetalle extends Component
         ]);
     }
 
-    public function delete($lineaId)
-    {
+    public function delete($lineaId){
         $lineaBorrar = PresupuestoLineaDetalle::find($lineaId);
 
         if ($lineaBorrar) {

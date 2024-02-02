@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 
 class Presupuesto extends Model
 {
@@ -18,7 +18,7 @@ class Presupuesto extends Model
     protected $dates = ['deleted_at'];
 
 
-    protected $fillable=['presupuesto','descripcion','entidad_id','entidadcontacto_id','solicitante_id','fechapresupuesto','refgrafitex','refcliente','precioventa','preciocoste','unidades','incremento','iva','ruta','fichero','estado','observaciones'];
+    protected $fillable=['presupuesto','descripcion','entidad_id','incrementoanualpresupuesto','entidadcontacto_id','solicitante_id','fechapresupuesto','refgrafitex','refcliente','precioventa','preciocoste','unidades','incremento','iva','ruta','fichero','estado','observaciones'];
 
     public function presupuestolineas(){return $this->hasMany(PresupuestoLinea::class)->orderBy('orden');}
     public function contacto(){return $this->belongsTo(EntidadContacto::class,'entidadcontacto_id')->withDefault();}
@@ -39,21 +39,17 @@ class Presupuesto extends Model
         );
     }
 
-
-    public function recalculo()
-    {
+    public function recalculo(){
         $this->precioventa=$this->presupuestolineas->sum('precioventa');
         $this->preciocoste=$this->presupuestolineas->sum('preciocoste');
         $this->save();
     }
 
-    public function getFechapresuAttribute()
-    {
+    public function getFechapresuAttribute(){
         return Carbon::parse($this->fechapresupuesto)->format('d-m-Y');
     }
 
-    public function getStatusColorAttribute()
-    {
+    public function getStatusColorAttribute(){
         return [
             '0'=>['gray','En curso'],
             '1'=>['green','Aceptado'],
@@ -61,23 +57,16 @@ class Presupuesto extends Model
         ][$this->estado] ?? ['gray',''];
     }
 
-
-    public function getRutaficheroAttribute()
-    {
+    public function getRutaficheroAttribute(){
         return $this->ruta.'/'.$this->fichero;
     }
 
-    public function scopeImprimirPresupuesto()
-    {
+    public function scopeImprimirPresupuesto(){
         $presupuesto=Presupuesto::with('ent')
-        ->with('presupuestodetalles')
-        ->find($this->id);
-
+            ->with('presupuestodetalles')
+            ->find($this->id);
         $base=$presupuesto->presupuestodetalles->sum('base');
-
-
         $pdf = \PDF::loadView('presupuesto.presupuestopdf', compact(['presupuesto','base']));
-
         Storage::put('public/'.$presupuesto->ruta.'/'.$presupuesto->fichero, $pdf->output());
 
         return $pdf->download($presupuesto->fichero);
@@ -121,7 +110,6 @@ class Presupuesto extends Model
     }
 
     public static function presupuestosXLS($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin){
-
         if($mes!=true)
             // dd('no hay mes');
             return Presupuesto::query()

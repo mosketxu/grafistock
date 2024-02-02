@@ -10,6 +10,7 @@
                             @livewire('usuarios')
                             @livewire('roles')
                             @livewire('permisos')
+                            @livewire('configuraciones')
                         </div>
                     </div>
                 </div>

@@ -12,9 +12,9 @@ class Configuraciones extends Component
 
     use WithPagination;
     public $search='';
-    public $titulo='Tipos';
-    public $campo1='Sigla';
-    public $campo2='Nombre';
+    public $titulo='Configuración';
+    public $campo1='Nombre';
+    public $campo2='Alias';
     public $campo3='Valor';
     public $nombre='';
     public $nombrecorto='';
@@ -25,8 +25,8 @@ class Configuraciones extends Component
     protected function rules()
     {
         return [
-            'nombrecorto'=>'required|unique:producto_tipos,nombrecorto',
-            'nombre'=>'required|unique:producto_tipos,nombre',
+            'nombrecorto'=>'required|unique:configuracion,nombrecorto',
+            'nombre'=>'required|unique:configuracion,nombre',
             'aux'=>'numeric',
         ];
     }
@@ -44,7 +44,7 @@ class Configuraciones extends Component
     {
 
         Validator::make(['nombrecorto'=>$nombrecorto],[
-            'nombrecorto'=>'required|unique:producto_tipos,nombrecorto',
+            'nombrecorto'=>'required|unique:configuracion,nombrecorto',
         ])->validate();
 
         $p=Configuracion::find($valor->id);
@@ -72,7 +72,7 @@ class Configuraciones extends Component
         ])->validate();
 
         $p=Configuracion::find($valor->id);
-        $p->merma=$aux;
+        $p->valor=$aux;
         $p->save();
         $this->dispatchBrowserEvent('notify', 'Valor Actualizado.');
     }

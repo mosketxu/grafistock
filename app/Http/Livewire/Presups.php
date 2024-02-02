@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
+use App\Models\{AccionTipo, Configuracion, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
      PresupuestoLinea, PresupuestoLineaDetalle, User,Filtros};
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
@@ -29,6 +29,7 @@ class Presups extends Component
     public $presupuesto_id='',$presupuesto,$descripcion,$entidad_id,$entidadcontacto_id,$solicitante_id;
     public $fechapresupuesto,$refgrafitex,$refcliente,$precioventa,$preciocoste,$unidades,$incremento;
     public $iva='0.21',$ruta,$fichero,$estado='',$observaciones;
+    public $incrementoanualpresupuesto=0;
 
     public $showDeleteModal=false;
     public $showNewModal = false;
@@ -55,8 +56,12 @@ class Presups extends Component
         $this->filtroestado=$filtroestado;
 
         $this->entidad=$entidad;
-        if($this->entidad)
+        if($this->entidad){
             $this->contactos=EntidadContacto::where('entidad_id',$entidad->id)->orderBy('contacto')->get();
+            if($this->entidad->incrementoanual==true)
+                $this->incrementoanualpresupuesto=Configuracion::where('nombrecorto','IA')->first()->valor;
+        }
+
     }
 
     public function render(){
@@ -97,6 +102,8 @@ class Presups extends Component
         $this->entidadcontacto_id='';
         $e=Entidad::find($this->entidad_id);
         $this->contactos=EntidadContacto::where('entidad_id',$e->id)->orderBy('contacto')->get();
+        if($e->incrementoanual==true)
+            $this->incrementoanualpresupuesto=Configuracion::where('nombrecorto','IA')->first()->valor;
     }
 
     public function changeValor(Presupuesto $presupuesto,$campo,$valor){
@@ -112,6 +119,7 @@ class Presups extends Component
         $clone = $presupuesto->replicate()->fill([
             'fechapresupuesto'=>$this->fechapresupuesto,
             'presupuesto'=>$this->presupuesto,
+            'incrementoanualpresupuesto'=>$this->incrementoanualpresupuesto,
         ]);
         $clone->save();
         // clono las acciones
@@ -204,6 +212,7 @@ class Presups extends Component
             'presupuesto'=>$this->presupuesto,
             'descripcion'=>$this->descripcion,
             'entidad_id'=>$this->entidad_id,
+            'incrementoanualpresupuesto'=>$this->incrementoanualpresupuesto,
             'entidadcontacto_id'=>$this->entidadcontacto_id,
             'solicitante_id'=>$this->solicitante_id,
             'fechapresupuesto'=>$this->fechapresupuesto,
@@ -261,6 +270,7 @@ class Presups extends Component
         $this->presupuesto=$presupuesto->presupuesto;
         $this->descripcion=$presupuesto->descripcion;
         $this->entidad_id=$presupuesto->entidad_id;
+        $this->incrementoanualpresupuesto=$presupuesto->incrementoanualpresupuesto;
         $this->entidadcontacto_id=$presupuesto->entidadcontacto_id;
         $this->solicitante_id=$presupuesto->solicitante_id;
         $this->fechapresupuesto=$presupuesto->fechapresupuesto;
@@ -320,7 +330,6 @@ class Presups extends Component
     public function getRowsProperty(){
         return $this->rowsQuery->paginate(10);
     }
-
 
     public function exportSelected(){
     //toCsv es una macro a n AppServiceProvider

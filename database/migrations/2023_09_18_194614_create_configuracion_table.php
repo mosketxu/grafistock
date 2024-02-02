@@ -19,6 +19,7 @@ class CreateConfiguracionTable extends Migration
             $table->string('nombrecorto')->unique();
             $table->double('valor', 15, 2)->default(1);
             $table->timestamps();
+
         });
     }
 
