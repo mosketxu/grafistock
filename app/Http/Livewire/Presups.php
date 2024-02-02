@@ -58,11 +58,17 @@ class Presups extends Component
         $this->entidad=$entidad;
         if($this->entidad){
             $this->contactos=EntidadContacto::where('entidad_id',$entidad->id)->orderBy('contacto')->get();
+
             if($this->entidad->incrementoanual==true)
                 $this->incrementoanualpresupuesto=Configuracion::where('nombrecorto','IA')->first()->valor;
         }
 
     }
+
+        $incrementoanual=Configuracion::where('nombre','incrementoanual')->first();
+
+        }
+
 
     public function render(){
         if($this->selectAll) $this->selectPageRows();

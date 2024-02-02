@@ -36,14 +36,18 @@ class Ents extends Component
         return view('livewire.ents',compact('entidades','entidadtipo','empresatipos','comerciales'));
     }
 
-    public function updatingSearch(){
-        $this->resetPage();
+    // public function updatingSearch(){$this->resetPage();}
+
+    public function changeValor(Entidad $entidad,$campo,$valor){
+        $entidad->update([$campo=>$valor]);
+        // $this->dispatchBrowserEvent('notify', 'Actualizada con éxito.');
     }
 
-    public function changeValor(Entidad $entidad,$campo,$valor)
-    {
-        $entidad->update([$campo=>$valor]);
-        $this->dispatchBrowserEvent('notify', 'Actulizada con éxito.');
+    public function changeIA(Entidad $entidad){
+        $ia=$entidad->incrementoanual=='1' ? '0' : '1';
+        $entidad->update(['incrementoanual'=>$ia]);
+        $this->dispatchBrowserEvent('notify', 'Actualizada con éxito.');
+        // dd('0sdf');
     }
 
     public function delete($entidadId)

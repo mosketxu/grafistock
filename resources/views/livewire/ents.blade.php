@@ -56,7 +56,7 @@
                     <div class="hidden xl:w-1/12 xl:flex" >{{ __('Cat.Empresa') }}  </div>
                     <div class="hidden xl:w-1/12 xl:flex" >{{ __('F.Alta') }}  </div>
                 @endif
-                @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro']))
+                @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro']) && Auth::user()->hasRole(['Admin','Gestor']))
                     <div class="hidden xl:w-1/12 xl:flex" >{{ __('I.A.') }}</div>
                 @endif
                 <div class="w-2/12 xl:w-1/12 xl:flex" >{{ __('Comercial') }}</div>
@@ -87,9 +87,11 @@
                     <input type="text" value="{{ $entidad->fechacli }}" class="w-full py-1 text-sm font-thin text-gray-500 truncate bg-transparent border-0 rounded-md"  readonly/>
                 </div>
                 @endif
-                @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro']))
+                @if(in_array($entidadtipo->nombrecorto,['Cli','CliPro']) && Auth::user()->hasRole(['Admin','Gestor']))
                 <div class="items-center hidden xl:w-1/12 xl:flex">
-                    <input type="checkbox" {{ $entidad->incrementoanual==true ? 'checked' : '' }} class=""  readonly/>
+                    <input type="checkbox" {{ $entidad->incrementoanual==true ? 'checked' : '' }}
+                        wire:change="changeIA({{ $entidad }},$event.target.value)"
+                    class="" />
                 </div>
                 @endif
                 <div class="w-2/12 py-0.5 xl:w-1/12 xl:flex">

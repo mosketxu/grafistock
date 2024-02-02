@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Configuracion;
 use App\Models\EntidadContacto;
 use App\Models\Presupuesto;
 use App\Models\PresupuestoControlpartida;
