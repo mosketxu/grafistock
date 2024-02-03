@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PresupuestoControlpartida;
 use Illuminate\Http\Request;
 
-class PresupuestoControlpartidaController extends Controller
+class PresupuestoControlPartidasController extends Controller
 {
     /**
      * Display a listing of the resource.

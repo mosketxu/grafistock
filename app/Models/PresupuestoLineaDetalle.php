@@ -9,7 +9,7 @@ class PresupuestoLineaDetalle extends Model
 {
     use HasFactory;
 
-    protected $fillable= ['presupuestolinea_id','acciontipo_id','accionproducto_id','entidad_id','empresatipo_id','visible','orden','descripcion',
+    protected $fillable= ['presupuestolinea_id','acciontipo_id','accionproducto_id','entidad_id','incrementoanual','empresatipo_id','visible','orden','descripcion',
     'preciocoste_ud','preciocoste','precioventa_ud','precioventa','udpreciocoste_id','factor','merma','aux','unidades','minutos','ancho','alto','ruta','fichero','observaciones'];
 
     public function presupuestolinea(){return $this->belongsTo(PresupuestoLinea::class);}

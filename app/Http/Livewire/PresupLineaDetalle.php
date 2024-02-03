@@ -16,7 +16,6 @@ class PresupLineaDetalle extends Component
 
     // Vbles filtros
     public $search='';public $filtrofamilia='';public $filtrotipo='';public $filtromaterial='';public $filtroclipro='';public $filtroacabado='';public $filtrodescripcion='';public $filtrocategoria='';
-    public $incrementoanual=0;
     // Vbles apoyo
     public $message;public $showEdit=true;public $acciontipoId;public $presuplinea;public $presupuestolinea_id;public $presupuestolinea;public $presupuestolineadetalleId='';
     public $tituloaccion; public $accionproducto;public $showAnchoAlto=false;public $showMinutos=false;public $controlpartidas;public $deshabilitadoPVenta='';public $deshabilitadoPCoste='disabled';
@@ -24,7 +23,6 @@ class PresupLineaDetalle extends Component
     public $ruta=''; public $nombre='';
     public AccionTipo $acciontipo;
     public $empresaTipo;
-    public $tituloaccion;
 
     // vbles modelo
     public $visible=true;public $orden=1;public $pldetalleId='';public $descripcion;public $proveedor_id;public $empresatipo_id;
@@ -52,10 +50,8 @@ class PresupLineaDetalle extends Component
     protected $listeners = [ 'presuplineadetallerefresh' => '$refresh'];
 
     public function mount(PresupuestoLinea $presupuestolinea){
-
-
         if($presupuestolinea->presupuesto->ent->incrementoanual=='1')
-            $this->incrementoanual=Configuracion::where('nombre','incrementoanual')->first()->valor;
+            $this->incrementoanual=Configuracion::where('nombrecorto','IA')->first()->valor;
 
         $this->presuplinea=$presupuestolinea;
         $this->empresaTipo=$presupuestolinea->presupuesto->ent->empresatipo;
@@ -65,9 +61,8 @@ class PresupLineaDetalle extends Component
         $condiciones=['IMP','ACA','MAN'];
         if(in_array($this->acciontipo->nombrecorto, $condiciones)){
             $this->deshabilitadoPCoste='disabled';
-            $this->colorfondoCoste='bg-gray-100';
+            $this->colorfondoPCoste='bg-gray-100';
         }
-        $this->incrementoanual=Configuracion::where('nombrecorto','AI')->first();
     }
 
     public function render(){
@@ -204,11 +199,11 @@ class PresupLineaDetalle extends Component
 
         $condiciones=['IMP','ACA','MAN'];
         $this->deshabilitadoPCoste='';
-        $this->colorfondoCoste='';
-        $this->acciontipo=AccionTipo::find($this->acciontipo_id);
+        $this->colorfondoPCoste='';
+        $this->acciontipo=AccionTipo::find($this->acciontipoId);
         if(in_array($this->acciontipo->nombrecorto, $condiciones)){
             $this->deshabilitadoPCoste='disabled';
-            $this->colorfondoCoste='bg-gray-100';
+            $this->colorfondoPCoste='bg-gray-100';
         }
     }
 
@@ -270,7 +265,7 @@ class PresupLineaDetalle extends Component
                     $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
                     $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
                     $this->deshabilitadoPCoste='disabled';
-                    $this->colorfondoCoste='bg-gray-100';
+                    $this->colorfondoPCoste='bg-gray-100';
                 }else{
                     $this->preciocoste_ud='0';
                     $this->merma='0';
@@ -449,6 +444,7 @@ class PresupLineaDetalle extends Component
                 'accionproducto_id'=>$this->accionproducto_id,
                 'empresatipo_id'=>$this->empresatipo_id,
                 'entidad_id'=>$this->proveedor_id,
+                'incrementoanual'=>$this->incrementoanual,
                 'orden'=>$this->orden,
                 'descripcion'=>$this->descripcion,
                 'preciocoste_ud'=>$this->preciocoste_ud,
