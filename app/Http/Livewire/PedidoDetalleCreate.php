@@ -51,6 +51,14 @@ class PedidoDetalleCreate extends Component
         ->orderBy('referencia')
         ->get();
 
+        $productosgenericos=Producto::query()
+        ->where('entidad_id','79')
+        ->get();
+        $this->productos=$this->productos->merge($productosgenericos);
+
+
+
+
         $mat=Producto::select('material_id')->where('entidad_id',$this->entidadId)
             ->groupBy('material_id')
             ->get()->toArray();

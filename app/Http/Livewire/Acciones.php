@@ -186,8 +186,7 @@ class Acciones extends Component
         $this->observaciones='';
     }
 
-    public function store()
-    {
+    public function store(){
         if (Auth::user()->can('accion.edit')==true) {
             $this->validate();
             $this->validate(['referencia'=>'required|max:4|unique:acciones,referencia']);

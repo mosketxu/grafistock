@@ -17,8 +17,8 @@ class PedidoDetailed extends Component
 
     protected $listeners = [ 'showNuevoDetalle'=>'showNuevoDetalle', 'detallerefresh' => '$refresh'];
 
-    public function render()
-    {
+    public function render(){
+
         $pedido=$this->pedido;
         $this->showcrear=$this->pedido->id ? true : false;
         $this->base=$pedido->pedidodetalles->sum('base');
