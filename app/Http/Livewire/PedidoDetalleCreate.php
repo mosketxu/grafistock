@@ -52,7 +52,7 @@ class PedidoDetalleCreate extends Component
         ->get();
 
         $productosgenericos=Producto::query()
-        ->where('entidad_id','79')
+        ->where('entidad_id','1')
         ->get();
         $this->productos=$this->productos->merge($productosgenericos);
 
