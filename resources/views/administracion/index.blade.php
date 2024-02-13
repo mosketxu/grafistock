@@ -43,7 +43,7 @@
                                     @livewire('metodo-pagos')
                                 </div>
                                 <div class="w-full px-2 mb-4 md:w-1/3 lg:w-1/4">
-                                    @livewire('configuraciones')
+                                    {{-- @livewire('configuraciones') --}}
                                 </div>
 
                             </div>
