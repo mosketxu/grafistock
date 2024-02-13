@@ -32,6 +32,7 @@
                 <x-table>
                     <x-slot name="head">
                         {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
+                        <x-table.heading class="pl-1 text-left">{{ __('F.') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Referencia') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Descripcion') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Proveedor') }}</x-table.heading>
@@ -53,7 +54,15 @@
                     <x-slot name="body">
                         @forelse ($productos as $producto)
                             <x-table.row wire:loading.class.delay="opacity-50">
-
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
+                                    <div class="items-center cursor-pointer" wire:click="favorito({{ $producto }})">
+                                        @if ($producto->favorito)
+                                            <x-icon.star-solid class="text-yellow-500"></x-icon.star-solid>
+                                        @else
+                                            <x-icon.star class="text-gray-500 "></x-icon.star>
+                                        @endif
+                                    </div>
+                                </td>
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}</td>
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->descripcion }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad ?? '-'}}</td >

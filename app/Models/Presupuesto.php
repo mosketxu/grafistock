@@ -39,6 +39,17 @@ class Presupuesto extends Model
         );
     }
 
+    public function pminimo(){
+        return $this->hasManyThrough(
+            PresupuestoLineaDetalle::class,
+            PresupuestoLinea::class,
+            'presupuesto_id', // Foreign key on the PresupuestoLinea table...
+            'presupuestolinea_id', // Foreign key on the PresupuestoLineaDetalle table...
+            'id', // Local key on the Presupuestos table...
+            'id' // Local key on the presupuestolinea table...
+        )->where('accionproducto_id','327');
+    }
+
     public function recalculo(){
         $this->precioventa=$this->presupuestolineas->sum('precioventa');
         $this->preciocoste=$this->presupuestolineas->sum('preciocoste');

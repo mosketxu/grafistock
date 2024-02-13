@@ -24,6 +24,7 @@ class Prod extends Component
             'producto.referencia'=>'required',
             'producto.descripcion'=>'nullable',
             'producto.tipo_id'=>'required',
+            'producto.favorito'=>'required',
             'producto.material_id'=>'required',
             'producto.grosor_mm'=>'nullable',
             'producto.ancho'=>'required',
@@ -85,9 +86,12 @@ class Prod extends Component
         }
     }
 
-    public function updatedficheropdf()
-    {
+    public function updatedficheropdf(){
         $this->validate(['ficheropdf'=>'file|max:5000']);
+    }
+
+    public function favorito(){
+        $this->producto->favorito=$this->producto->favorito=='1' ? '0' : '1';
     }
 
     public function presentaPDF(Producto $producto){
@@ -96,8 +100,7 @@ class Prod extends Component
             return Storage::disk('fichasproducto')->download($producto->fichaproducto);
     }
 
-    public function save()
-    {
+    public function save(){
         if($this->producto->id){
             $i=$this->producto->id;
             $this->validate([
@@ -105,29 +108,29 @@ class Prod extends Component
                     'required',
                     Rule::unique('productos','referencia')->ignore($this->producto->id)
                     ],
-
                 ],
             );
             $mensaje=$this->producto->referencia . " actualizado satisfactoriamente";
         }else{
             $this->validate([
                 'producto.referencia'=>'required|unique:productos,referencia',
-
                 ]
             );
             $i=$this->producto->id;
             $message=$this->producto->referencia . " creado satisfactoriamente";
         }
-
-        // $filename=$this->ficheropdf->store('/','fichasproducto');
-        // $filename=$this->ficheropdf->storeAs('/','pp.pdf','fichasproducto');
         $filename="";
         if ($this->ficheropdf) {
             $nombre=$this->producto->referencia.'.'.$this->ficheropdf->extension();
             $filename=$this->ficheropdf->storeAs('/', $nombre, 'fichasproducto');
         }
 
-        // dd($this->producto);
+        if (!$this->producto->favorito)
+            $this->producto->favorito=0;
+        if (!$this->producto->costereal)
+            $this->producto->costereal=0;
+        if (!$this->producto->preciocoste)
+            $this->producto->preciocoste=0;
 
         $prod=Producto::updateOrCreate([
             'id'=>$i
@@ -136,6 +139,7 @@ class Prod extends Component
             'referencia'=>$this->producto->referencia,
             'descripcion'=>$this->producto->descripcion,
             'tipo_id'=>$this->producto->tipo_id,
+            'favorito'=>$this->producto->favorito,
             'material_id'=>$this->producto->material_id,
             'grosor_mm'=>$this->producto->grosor_mm,
             'ancho'=>$this->producto->ancho,

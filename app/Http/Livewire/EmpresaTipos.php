@@ -17,6 +17,7 @@ class EmpresaTipos extends Component
     public $nombrecorto='';
     public $factor='';
     public $factormin='';
+    public $pedidominimo='';
 
     protected $listeners = [ 'refresh' => '$refresh'];
 
@@ -27,6 +28,7 @@ class EmpresaTipos extends Component
             'nombre'=>'required|unique:empresa_tipos,nombre',
             'factor'=>'required|numeric',
             'factormin'=>'required|numeric',
+            'pedidominimo'=>'required|numeric',
         ];
     }
 
@@ -43,8 +45,7 @@ class EmpresaTipos extends Component
         $this->resetPage();
     }
 
-    public function changeCorto(EmpresaTipo $valor,$nombrecorto)
-    {
+    public function changeCorto(EmpresaTipo $valor,$nombrecorto){
         Validator::make(['nombrecorto'=>$nombrecorto],[
             'nombrecorto'=>'required|unique:empresa_tipos,nombrecorto',
         ])->validate();
@@ -56,8 +57,7 @@ class EmpresaTipos extends Component
         $this->dispatchBrowserEvent('notify', 'Empresa Tipo Actualizada.');
     }
 
-    public function changeNombre(EmpresaTipo $valor,$nombre)
-    {
+    public function changeNombre(EmpresaTipo $valor,$nombre){
         Validator::make(['nombre'=>$nombre],[
             'nombre'=>'required|unique:empresa_tipos,nombre',
         ])->validate();
@@ -69,8 +69,7 @@ class EmpresaTipos extends Component
         $this->dispatchBrowserEvent('notify', 'Empresa Tipo Actualizada.');
     }
 
-    public function changeFactor(EmpresaTipo $valor,$factor)
-    {
+    public function changeFactor(EmpresaTipo $valor,$factor){
         Validator::make(['factor'=>$factor],[
             'factor'=>'required|numeric',
         ])->validate();
@@ -82,14 +81,25 @@ class EmpresaTipos extends Component
         $this->dispatchBrowserEvent('notify', 'Empresa Tipo Actualizada.');
     }
 
-    public function changeFactormin(EmpresaTipo $valor,$factormin)
-    {
+    public function changeFactormin(EmpresaTipo $valor,$factormin){
         Validator::make(['factormin'=>$factormin],[
             'factormin'=>'required|numeric',
         ])->validate();
 
         $p=EmpresaTipo::find($valor->id);
         $p->factormin=$factormin;
+        $p->save();
+
+        $this->dispatchBrowserEvent('notify', 'Empresa Tipo Actualizada.');
+    }
+
+    public function changePedidominimo(EmpresaTipo $valor,$pedidominimo){
+        Validator::make(['pedidominimo'=>$pedidominimo],[
+            'pedidominimopedidominimorequired|numeric',
+        ])->validate();
+
+        $p=EmpresaTipo::find($valor->id);
+        $p->pedidominimo=$pedidominimo;
         $p->save();
 
         $this->dispatchBrowserEvent('notify', 'Empresa Tipo Actualizada.');
@@ -103,6 +113,7 @@ class EmpresaTipos extends Component
             'nombrecorto'=>$this->nombrecorto,
             'factor'=>$this->factor,
             'factormin'=>$this->factormin,
+            'pedidominimo'=>$this->pedidominimo,
         ]);
 
         $this->dispatchBrowserEvent('notify', 'Empresa Tipo añadido con éxito');
@@ -112,6 +123,7 @@ class EmpresaTipos extends Component
         $this->nombrecorto='';
         $this->factor='';
         $this->factormin='';
+        $this->pedidominimo='';
     }
 
     public function delete($valorId)

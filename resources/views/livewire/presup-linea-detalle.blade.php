@@ -20,6 +20,7 @@
         </div> --}}
         <div class="mx-2 border rounded">
             @include('presupuestolinea.presupuestolineacabecera')
+            {{-- Filtros --}}
             <form>
                 <div class="mx-2 mt-2">
                     @if($acciontipo->id==1)
@@ -72,7 +73,6 @@
                         </div>
                     @endif
 
-                    {{-- seleccion accionproducto y material--}}
                     <div class="flex space-x-2">
                         <input wire:model="presupuestolinea_id" type="hidden"/>
                         <div class="w-1/12 mb-2">
@@ -99,7 +99,12 @@
                                 class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
                                 <option value="">-- choose --</option>
                                 @foreach ($acciones as $accion)
-                                    <option value="{{ $accion->id }}">{{ $accion->descripcion }}</option>
+                                    <option value="{{ $accion->id }}">
+                                        @if ($accion->favorito)
+                                        ★
+                                        @endif
+                                        {{ $accion->descripcion }}
+                                    </option>
                                 @endforeach
                             </x-select>
                             @error('accionproducto_id') <span class="text-red-500">{{ $message }}</span>@enderror
@@ -139,12 +144,7 @@
                 </div>
             </form>
             <div class="space-y-2 ">
-                {{-- @if($acciontipo->nombrecorto=='MAT')
-                    @include('presupuestolinea.presupuestolineadetallesMaterial',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
-                @else
-                    @include('presupuestolinea.presupuestolineadetallesNomaterial',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
-                @endif --}}
-                    @include('presupuestolinea.presupuestolineadetalles',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
+                @include('presupuestolinea.presupuestolineadetalles',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@ class AddColumnsToEntidadesTable extends Migration
     public function up()
     {
         Schema::table('entidades', function (Blueprint $table) {
-            $table->foreignId('empresatipo_id')->nullable()->constrained('empresa_tipos')->after('entidadtipo_id');
+            $table->foreignId('empresatipo_id')->nullable()->constrained('empresa_tipos')->default('4')->after('entidadtipo_id');
 
         });
     }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class EmpresaTipo extends Model
 {
     use HasFactory;
-    protected $fillable=['nombre','nombrecorto','factor','factormin'];
+    protected $fillable=['nombre','nombrecorto','factor','factormin','pedidominimo'];
 
     public function entidad()
     {

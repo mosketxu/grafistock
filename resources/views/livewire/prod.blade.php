@@ -2,13 +2,24 @@
     @livewire('menu',['producto'=>$producto],key($producto->id))
 
     <div class="p-1 mx-2">
-        <div class="flex flex-row space-x-3" >
-            @if($producto->id)
+        <div class="flex flex-row space-x-8" >
+            <div class="">
+                @if($producto->id)
                 <h1 class="text-2xl font-semibold text-gray-900">Producto: {{ $producto->referencia }}</h1>
-            @else
+                @else
                 <h1 class="text-2xl font-semibold text-gray-900">Nuevo Producto</h1>
-            @endif
-            <x-button.button  onclick="location.href = '{{ route('producto.create') }}'" color="blue" >{{ __('Nuevo') }}</x-button.button>
+                @endif
+            </div>
+            <div class="items-center cursor-pointer" wire:click="favorito">
+                @if ($producto->favorito)
+                    <x-icon.star-solid class="text-yellow-500"></x-icon.star-solid>
+                @else
+                    <x-icon.star class="text-gray-500 "></x-icon.star>
+                @endif
+            </div>
+            <div class="">
+                <x-button.button  onclick="location.href = '{{ route('producto.create') }}'" color="blue" >{{ __('Nuevo') }}</x-button.button>
+            </div>
         </div>
     </div>
 

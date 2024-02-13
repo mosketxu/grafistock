@@ -14,7 +14,7 @@ class AddColumnIncrementoanualToEntidadesTable extends Migration
     public function up()
     {
         Schema::table('entidades', function (Blueprint $table) {
-            $table->boolean('incrementoanual')->default(0)->after('empresatipo_id');
+            $table->boolean('incrementoanual')->default(1)->after('empresatipo_id');
         });
     }
 

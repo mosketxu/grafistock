@@ -27,9 +27,10 @@
                     <thead>
                         <tr>
                             <th class="w-2/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Sigla </th>
-                            <th class="w-4/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Nombre</th>
+                            <th class="w-2/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Nombre</th>
                             <th class="w-2/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Factor </th>
                             <th class="w-2/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >F.Min. </th>
+                            <th class="w-2/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >Pedido.Min. </th>
                             <th class="w-2/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" ></th>
                         </tr>
                     </thead>
@@ -46,7 +47,7 @@
                                     wire:change="changeCorto({{ $valor }},$event.target.value)"
                                     class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/>
                                 </td>
-                                <td class="w-5/12 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
+                                <td class="w-2/12 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
                                     <input type="text" value="{{ $valor->nombre }}"
                                     wire:change="changeNombre({{ $valor }},$event.target.value)"
                                     class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/>
@@ -59,6 +60,11 @@
                                 <td class="w-2/12 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
                                     <input type="text" value="{{ $valor->factormin }}"
                                     wire:change="changeFactormin({{ $valor }},$event.target.value)"
+                                    class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/>
+                                </td>
+                                <td class="w-2/12 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
+                                    <input type="text" value="{{ $valor->pedidominimo }}"
+                                    wire:change="changePedidominimo({{ $valor }},$event.target.value)"
                                     class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"/>
                                 </td>
                                 <td  class="w-1/12 px-4">
@@ -80,7 +86,7 @@
                                     <input type="text" wire:model.defer="nombrecorto"
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                 </td>
-                                <td class="w-5/12 p-2 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
+                                <td class="w-2/12 p-2 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
                                     <input type="text" wire:model.defer="nombre"
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                 </td>
@@ -90,6 +96,10 @@
                                 </td>
                                 <td class="w-2/12 p-2 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
                                     <input type="number" step="any" wire:model.defer="factormin"
+                                    class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
+                                </td>
+                                <td class="w-2/12 p-2 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
+                                    <input type="number" step="any" wire:model.defer="pedidominimo"
                                     class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                                 </td>
                                 <td  class="p-2 ">

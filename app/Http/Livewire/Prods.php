@@ -26,8 +26,7 @@ class Prods extends Component
     public Producto $producto;
 
 
-    public function render()
-    {
+    public function render(){
         $this->producto= new Producto;
         $proveedores=Entidad::orderBy('entidad')->has('productos')->get();
 
@@ -100,32 +99,24 @@ class Prods extends Component
             return view('livewire.prods',compact('productos','materiales','familias','acabados','proveedores','tipos'));
     }
 
-    public function updatingSearch(){
-        $this->resetPage();
-    }
-    public function updatingFiltroclipro(){
-        $this->resetPage();
-    }
-    public function updatingFiltrofamilia(){
-        $this->resetPage();
-    }
-    public function updatingFiltrotipo(){
-        $this->resetPage();
-    }
-    public function updatingFiltromaterial(){
-        $this->resetPage();
-    }
-    public function updatingFiltroacabado(){
-        $this->resetPage();
-    }
-    public function updatingFiltrogrupoprod(){
-        $this->resetPage();
-    }
+    public function updatingSearch(){$this->resetPage();}
+    public function updatingFiltroclipro(){$this->resetPage();}
+    public function updatingFiltrofamilia(){$this->resetPage();}
+    public function updatingFiltrotipo(){$this->resetPage();}
+    public function updatingFiltromaterial(){$this->resetPage();}
+    public function updatingFiltroacabado(){$this->resetPage();}
+    public function updatingFiltrogrupoprod(){$this->resetPage();}
 
     public function presentaPDF(Producto $producto){
         $existe=Storage::disk('fichasproducto')->exists($producto->fichaproducto);
         if ($existe)
             return Storage::disk('fichasproducto')->download($producto->fichaproducto);
+    }
+
+    public function favorito($producto){
+        $p=Producto::find($producto['id']);
+        $p->favorito=$p->favorito=='1' ? '0' : '1';
+        $p->save();
     }
 
     public function delete($productoId)

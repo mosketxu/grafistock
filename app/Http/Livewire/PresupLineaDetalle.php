@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\{Producto,Accion,AccionTipo, Configuracion, EmpresaTipo, Entidad, EntidadCategoria, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle, ProductoFamilia, UnidadCoste};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
@@ -28,12 +29,13 @@ class PresupLineaDetalle extends Component
     public $visible=true;public $orden=1;public $pldetalleId='';public $descripcion;public $proveedor_id;public $empresatipo_id;
     public $preciocoste_ud=0;public $preciocoste=0;public $udpreciocoste_id;
     public $precioventa_ud=0;public $precioventa=0;public $preciominimo=0;public $unidadventa='';
-    public $factor=1;public $factormin=1;public $merma=0;
+    public $factor;public $factormin;public $merma=0;
     public $ancho=1;public $alto=1;
     public $unidades=1;public $minutos=1;
     public $accionproducto_id;public $observaciones;
     public $ficheroexterno; public $ficheroupload;
 
+    public $deshabilitado='disabled';
     //vbles config
     public $incrementoanual='0';
 
@@ -56,6 +58,8 @@ class PresupLineaDetalle extends Component
         $this->presuplinea=$presupuestolinea;
         $this->empresaTipo=$presupuestolinea->presupuesto->ent->empresatipo;
         $this->empresatipo_id=$this->empresaTipo->id;
+        $this->factormin=$this->empresaTipo->factormin ?? '1';
+        $this->factor=$this->factormin;
         $this->controlpartidas=$this->presuplinea->presupuesto->presupuestocontrolpartidas;
         $this->acciontipo=AccionTipo::find($this->acciontipoId);
         $condiciones=['IMP','ACA','MAN'];
@@ -168,42 +172,47 @@ class PresupLineaDetalle extends Component
     }
 
     public function edit(PresupuestoLineaDetalle $presupuestoaccion){
-        $this->presupuestolinea_id=$presupuestoaccion->id;
-        $this->acciontipoId=$presupuestoaccion->acciontipo_id;
-        $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
-        $this->proveedor_id=$presupuestoaccion->entidad_id;
-        $this->empresatipo_id=$presupuestoaccion->empresatipo_id;
-        $this->orden=$presupuestoaccion->orden;
-        $this->descripcion=$presupuestoaccion->descripcion;
-        $this->preciocoste_ud=  round($presupuestoaccion->preciocoste_ud,2);
-        $this->precioventa_ud=round($presupuestoaccion->precioventa_ud,2);
-        $this->udpreciocoste_id=round($presupuestoaccion->udpreciocoste_id,2);
-        $this->factor=round($presupuestoaccion->factor,2);
-        $this->merma=round($presupuestoaccion->merma,2);
-        $this->unidades=$presupuestoaccion->unidades;
-        $this->minutos=$presupuestoaccion->minutos;
-        $this->alto=$presupuestoaccion->alto;
-        $this->ancho=$presupuestoaccion->ancho;
-        $this->preciocoste=round($presupuestoaccion->preciocoste,2);
-        $this->precioventa=round($presupuestoaccion->precioventa,2);
-        $this->observaciones=$presupuestoaccion->observaciones;
-        $this->ficheroupload=$presupuestoaccion->fichero;
-        $this->nombre=$presupuestoaccion->fichero;
-        $this->ruta=$presupuestoaccion->ruta;
+        if(!Auth::user()->hasRole('Admin') && $presupuestoaccion->producto->descripcion=="Pedido Minimo"){
+            $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
+        }
+        else{
+            $this->presupuestolinea_id=$presupuestoaccion->id;
+            $this->acciontipoId=$presupuestoaccion->acciontipo_id;
+            $this->accionproducto_id=$presupuestoaccion->accionproducto_id;
+            $this->proveedor_id=$presupuestoaccion->entidad_id;
+            $this->empresatipo_id=$presupuestoaccion->empresatipo_id;
+            $this->orden=$presupuestoaccion->orden;
+            $this->descripcion=$presupuestoaccion->descripcion;
+            $this->preciocoste_ud=  round($presupuestoaccion->preciocoste_ud,2);
+            $this->precioventa_ud=round($presupuestoaccion->precioventa_ud,2);
+            $this->udpreciocoste_id=round($presupuestoaccion->udpreciocoste_id,2);
+            $this->factor=round($presupuestoaccion->factor,2);
+            $this->merma=round($presupuestoaccion->merma,2);
+            $this->unidades=$presupuestoaccion->unidades;
+            $this->minutos=$presupuestoaccion->minutos;
+            $this->alto=$presupuestoaccion->alto;
+            $this->ancho=$presupuestoaccion->ancho;
+            $this->preciocoste=round($presupuestoaccion->preciocoste,2);
+            $this->precioventa=round($presupuestoaccion->precioventa,2);
+            $this->observaciones=$presupuestoaccion->observaciones;
+            $this->ficheroupload=$presupuestoaccion->fichero;
+            $this->nombre=$presupuestoaccion->fichero;
+            $this->ruta=$presupuestoaccion->ruta;
 
-        $this->empresaTipo=EmpresaTipo::find($this->empresatipo_id);
+            $this->empresaTipo=EmpresaTipo::find($this->empresatipo_id);
 
-        $ud=$presupuestoaccion->unidadpreciocoste->nombrecorto ?? '';
-        $this->showAnchoAlto= $ud=='e_m2' ? true : false;
-        $this->showMinutos= $ud=='e_min' ? true : false;
+            $ud=$presupuestoaccion->unidadpreciocoste->nombrecorto ?? '';
+            $this->showAnchoAlto= $ud=='e_m2' ? true : false;
+            $this->showMinutos= $ud=='e_min' ? true : false;
 
-        $condiciones=['IMP','ACA','MAN'];
-        $this->deshabilitadoPCoste='';
-        $this->colorfondoPCoste='';
-        $this->acciontipo=AccionTipo::find($this->acciontipoId);
-        if(in_array($this->acciontipo->nombrecorto, $condiciones)){
-            $this->deshabilitadoPCoste='disabled';
-            $this->colorfondoPCoste='bg-gray-100';
+            $condiciones=['IMP','ACA','MAN'];
+            $this->deshabilitadoPCoste='';
+            $this->colorfondoPCoste='';
+            $this->acciontipo=AccionTipo::find($this->acciontipoId);
+            if(in_array($this->acciontipo->nombrecorto, $condiciones)){
+                $this->deshabilitadoPCoste='disabled';
+                $this->colorfondoPCoste='bg-gray-100';
+            }
         }
     }
 
@@ -337,11 +346,12 @@ class PresupLineaDetalle extends Component
         $this->calculoPrecioVenta();
     }
 
+    // controlo el cambio con changeValor
     // con el factor tenemos en cuenta el minimo
     public function UpdatedFactor(){
-        if(!$this->factor) $this->factor=1;
         $this->validate(['factor'=>'numeric',]);
-        if($this->factor<$this->factormin){
+        if ($this->factor<$this->factormin) {
+            $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $this->factor=$this->factormin;
         }
         $this->precioventa_ud=round($this->preciocoste_ud * $this->factor*(1+$this->incrementoanual),2);
@@ -390,20 +400,15 @@ class PresupLineaDetalle extends Component
             }
         }
         if ($campo=="factor") {
-            $factormin=$presupaccion->empresaTipo->factormin ?? '1';
-            if ($valor<$factormin) {
+            if ($valor<$this->factormin) {
                 $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
-                $valor=$factormin;
+                $this->factor=$this->factormin;
             }
-        }
-        if($calculo=='concalculo') Validator::make([$campo=>$valor],[$campo=>'numeric|required'])->validate();
-
-        //Actualizamos
-        if($valor=="factor")
+            if($calculo=='concalculo') Validator::make([$campo=>$valor],[$campo=>'numeric|required'])->validate();
+            $this->precioventa_ud=round($this->preciocoste_ud * $this->factor*(1+$this->incrementoanual),2);
             $presupaccion->update(['factor'=>$valor,'precioventa_ud'=>round($presupaccion->preciocoste_ud * $valor,2)]);
-        else{
-            $presupaccion->update([$campo=>$valor]);
         }
+        $presupaccion->update([$campo=>$valor]);
         // Recalculamos
         if($calculo=='concalculo') $this->recalculoPrecioVenta($presupaccion);
         if($calculo=='sincalculo') $this->dispatchBrowserEvent('notify', 'Actualizado.');
@@ -479,29 +484,15 @@ class PresupLineaDetalle extends Component
     }
 
     public function calculoPrecioVenta(){
-        // si no es material la merma es 0 así que el cálculo es el mismo.
         $this->preciocoste=$this->ancho * $this->alto * $this->unidades * $this->minutos * $this->preciocoste_ud  ;
         $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * ($this->precioventa_ud*(1+$this->incrementoanual)  + $this->preciocoste_ud*$this->merma);
-
-        // if($this->acciontipoId!='1'){ // No es material
-        //     $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * $this->precioventa_ud;
-        // }else{ // Es material
-        //     $this->precioventa=$this->ancho * $this->alto * $this->unidades * $this->minutos * ($this->precioventa_ud  + $this->preciocoste_ud*$this->merma);
-        // }
         $this->preciocoste=round($this->preciocoste,2);
         $this->precioventa=round($this->precioventa,2);
     }
 
     public function recalculoPrecioVenta($presupacciondetalle){
-        // si no es material la merma es 0 así que el cálculo es el mismo.
         $presupacciondetalle->preciocoste= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * $presupacciondetalle->preciocoste_ud  ;
         $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud*(1+$this->incrementoanual)  + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
-
-        // if($presupacciondetalle->acciontipo_id!='1'){
-        //     $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * $presupacciondetalle->precioventa_ud ;
-        // }else{
-        //     $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud *$presupacciondetalle->merma);
-        // }
         $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();

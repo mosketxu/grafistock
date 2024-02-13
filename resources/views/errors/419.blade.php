@@ -1,4 +1,4 @@
-@extends('errors::illustrated-layout')
+{{-- @extends('errors::illustrated-layout')
 
 @section('title', __('Page Expired'))
 @section('code', '419')
@@ -7,4 +7,9 @@
 @section('image')
 <div style="background-image: url('/img/grafitexLogo.png');" class="absolute bg-no-repeat bg-cover pin md:bg-left lg:bg-center">
 </div>
-@endsection
+@endsection --}}
+@extends('errors::minimal')
+
+@section('title', __('Page Expired'))
+@section('code', '419')
+@section('message', __('Page Expired'))
