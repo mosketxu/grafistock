@@ -194,8 +194,6 @@ class Presups extends Component
             'iva' => 'required',
         ]);
 
-        // $incrementoanualpresupuesto=Entidad::find($this->entidad_id)->incrementoanual == '0' ? '0' : Configuracion::where('nombrecorto','IA')->first()->valor;
-
         $destino="editar";
         if(!$this->presupuesto){
             $this->numpresupuesto();
@@ -205,7 +203,6 @@ class Presups extends Component
             'presupuesto'=>$this->presupuesto,
             'descripcion'=>$this->descripcion,
             'entidad_id'=>$this->entidad_id,
-            // 'incrementoanualpresupuesto'=>$incrementoanualpresupuesto,
             'entidadcontacto_id'=>$this->entidadcontacto_id,
             'solicitante_id'=>$this->solicitante_id,
             'fechapresupuesto'=>$this->fechapresupuesto,

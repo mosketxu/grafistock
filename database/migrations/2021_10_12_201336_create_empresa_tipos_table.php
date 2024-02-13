@@ -19,6 +19,7 @@ class CreateEmpresaTiposTable extends Migration
             $table->string('nombrecorto',3);
             $table->double('factor', 15, 2);
             $table->double('factormin', 15, 2);
+            $table->double('pedidominimo',15,2)->default(0);
             $table->timestamps();
         });
     }

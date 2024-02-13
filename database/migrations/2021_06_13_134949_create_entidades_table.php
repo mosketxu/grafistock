@@ -16,7 +16,11 @@ class CreateEntidadesTable extends Migration
         Schema::create('entidades', function (Blueprint $table) {
             $table->id();
             $table->string('entidad')->unique();
-            $table->integer('clipro_id')->default(0);
+            $table->integer('entidadtipo_id')->default(0);
+
+            $table->date('fechacliente')->nullable()->after('presupuesto');
+            $table->double('incrementoanual',15,2)->default(0)->after('entidad_id');
+
             $table->string('cuentactblepro')->nullable();
             $table->string('cuentactblecli')->nullable();
             $table->string('entidad5',4)->unique()->nullable();

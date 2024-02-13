@@ -14,7 +14,7 @@ class AddColumnEmpresatipoToPresupuestoLineaDetallesTable extends Migration
     public function up()
     {
         Schema::table('presupuesto_linea_detalles', function (Blueprint $table) {
-            $table->foreignId('empresatipo_id')->nullable()->constrained('empresa_tipos')->after('entidad_id');
+            $table->foreignId('empresatipo_id')->nullable()->default('4')->constrained('empresa_tipos')->after('entidad_id');
         });
     }
 

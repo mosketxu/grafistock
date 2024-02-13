@@ -30,7 +30,7 @@
                             <th class="w-2/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __($campo1) }}</th>
                             <th class="w-5/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __($campo2) }} </th>
                             <th class="w-3/12 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __($campo3) }} </th>
-                            <th class="px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500  bg-blue-50" ></th>
+                            <th class="px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" ></th>
                         </tr>
                     </thead>
                 </table>
@@ -95,6 +95,7 @@
                                     @error('nombre') <span class="text-red-500">{{ $message }}</span>@enderror
                                 </td>
                                 <td class="w-24 p-2 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap " >
+                                    asdfs
                                     @if ($titulo=='Tipos Acción')
                                         <select wire:model.defer="aux" selectname="aux" required
                                             class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />

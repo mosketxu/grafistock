@@ -84,7 +84,7 @@ class Configuraciones extends Component
         Configuracion::create([
             'nombre'=>$this->nombre,
             'nombrecorto'=>$this->nombrecorto,
-            'aux'=>$this->aux,
+            'valor'=>$this->aux,
         ]);
 
         $this->dispatchBrowserEvent('notify', 'Añadido con éxito');
