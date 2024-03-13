@@ -77,8 +77,7 @@ class Presup extends Component
         $this->$filtroestado=$filtroestado;
     }
 
-    public function render()
-    {
+    public function render(){
         $contactos=EntidadContacto::where('entidad_id',$this->presupuesto->entidad_id)->orderBy('contacto')->get();
         $controlpartidas=PresupuestoControlpartida::where('presupuesto_id',$this->presupuesto->id)->get();
         return view('livewire.presup',compact(['controlpartidas','contactos']));

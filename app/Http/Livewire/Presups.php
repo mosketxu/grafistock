@@ -178,7 +178,6 @@ class Presups extends Component
         if($this->entidadcontacto_id=='') $this->entidadcontacto_id= null;
         if($this->estado=='') $this->estado= '0';
 
-
         $this->validate([
             'entidad_id' => 'required',
             'solicitante_id' => 'required|numeric',

@@ -100,6 +100,7 @@ class PresupuestoController extends Controller
         $filtropalabra='';
         $filtroestado='';
 
+
         // return view('presupuesto.edit',compact('presupuesto'));
         return view('presupuesto.edit',compact('presupuesto','search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado'));
     }

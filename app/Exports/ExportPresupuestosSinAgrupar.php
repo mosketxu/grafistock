@@ -11,13 +11,15 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class ExportPresupuestos implements FromCollection,WithCustomStartCell,WithHeadings,WithStrictNullComparison,ShouldAutoSize,WithStyles
+class ExportPresupuestosSinAgrupar implements FromCollection,WithCustomStartCell,WithHeadings,WithStrictNullComparison,ShouldAutoSize,WithStyles
 {
     public $desplazamiento=10;
     public $mes;
     public $estado;
     public $entidad;
     public $comercial;
+    public $presupuesto;
+    public $fechapresupuesto;
     public $fi;
     public $ff;
     public $vi;
@@ -41,11 +43,12 @@ class ExportPresupuestos implements FromCollection,WithCustomStartCell,WithHeadi
     public function styles(Worksheet $sheet)
     {
         //columnas con formulas
-        if($this->mes!=true){
-            $t1='D';$t2='E';$t3='F';$t4='G';
-        }else{
+        // if($this->mes!=true){
+        //     $t1='D';$t2='E';$t3='F';$t4='G';
+        // }else{
+            // $t1='E';$t2='F';$t3='G';$t4='H';
             $t1='E';$t2='F';$t3='G';$t4='H';
-        }
+        // }
         //titulo
         $sheet->getStyle('B2')->getFont()->setSize(16);
         $sheet->getStyle('B2')->getFont()->setBold(true);
@@ -76,19 +79,19 @@ class ExportPresupuestos implements FromCollection,WithCustomStartCell,WithHeadi
 
 
     public function headings(): array{
-        if($this->mes==true){
-            return [
-                ['Estadísticas de presupuestos',now()],
-                [' ',' '],
-                ['Filtro Estado',$this->estado,],
-                ['Filtro Comercial',$this->comercial->name ?? '',],
-                ['Filtro Entidad',$this->entidad],
-                ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
-                ['Filtro Ventas:','De',$this->vi,'A:',$this->vf],
-                [' ',' '],
-                ['Cliente','Comercial','Estado','Mes','Nº Presups', 'Margen Bruto','Cifra Ventas']
-            ];
-        }else{
+        // if($this->mes==true){
+        //     return [
+        //         ['Estadísticas de presupuestos',now()],
+        //         [' ',' '],
+        //         ['Filtro Estado',$this->estado,],
+        //         ['Filtro Comercial',$this->comercial->name ?? '',],
+        //         ['Filtro Entidad',$this->entidad],
+        //         ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
+        //         ['Filtro Ventas:','De',$this->vi,'A:',$this->vf],
+        //         [' ',' '],
+        //         ['Cliente','Comercial','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','Estado']
+        //     ];
+        // }else{
             return [
                 ['Estadísticas de presupuestos',now()],
                 [' ',' '],
@@ -98,16 +101,14 @@ class ExportPresupuestos implements FromCollection,WithCustomStartCell,WithHeadi
                 ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
                 ['Filtro Ventas:','De',$this->vi,'A:',$this->vf],
                 [' ',' '],
-                ['Cliente','Comercial','Estado','Nº Presups', 'Margen Bruto','Cifra Ventas']
+                ['Cliente','Comercial','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','Estado']
             ];
-        }
+        // }
     }
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
-    {
-
+    public function collection(){
         return $this->presupuestos;
     }
 

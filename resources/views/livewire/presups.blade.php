@@ -236,10 +236,13 @@
                                                 $filtrosolicitante ? $filtrosolicitante : '@_', $filtropalabra ? $filtropalabra : '@_', $filtroestado ? $filtroestado : '@_']) }}"
                                             class="text-green-600" title="Composición Presupuesto" />
                                         <x-icon.copy-a wire:click="replicateRow({{ $presupuesto }})" onclick="confirm('¿Estás seguro de querer copiar el presupuesto?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
+                                    @endif
+                                        <x-icon.pdf-a wire:click="imprimir({{ $presupuesto }})" class="text-green-600" title="PDF" />
+                                        <a href="{{ route('presupuesto.html',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.html ></x-icon.html></a>
+                                    @if(Auth::user()->id==$presupuesto->ent->comercial_id || Auth::user()->hasRole('Admin'))
                                         <x-icon.delete-a wire:click.prevent="delete({{ $presupuesto->id }})" onclick="confirm('¿Estás seguro de querer eliminar el presupuesto?') || event.stopImmediatePropagation()" class="pl-1 " title="Borrar" />
                                     @endif
-                                    <x-icon.pdf-a wire:click="imprimir({{ $presupuesto }})" class="text-green-600" title="PDF" />
-                                    <a href="{{ route('presupuesto.html',[$presupuesto,'con']) }}" target="_blank" class="w-6 h-6 text" title="Imprimir Ficha Presupuesto"><x-icon.html ></x-icon.html></a>
+
                                 </div>
                             </td>
                         </tr>

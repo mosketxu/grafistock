@@ -14,7 +14,10 @@
                 </div>
                 <div class="flex flex-row-reverse w-2/12">
                     <div class="items-center text-xs">
-                        <x-button.button  wire:click="exportEstadisticaPresupuestosXLS" color="green" >Export XLS</x-button.button>
+                        <x-button.button  wire:click="exportEstadisticaPresupuestosXLS" color="green" title="Exportacion agrupada">Export Agrupada</x-button.button>
+                    </div>
+                    <div class="items-center text-xs">
+                        <x-button.button  wire:click="exportEstadisticaPresupuestosSinAgruparXLS" color="blue" title="Exportacion sin agrupar">Export Sin Agrupar</x-button.button>
                     </div>
                 </div>
             </div>

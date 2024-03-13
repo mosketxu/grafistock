@@ -47,7 +47,7 @@ class Presupuesto extends Model
             'presupuestolinea_id', // Foreign key on the PresupuestoLineaDetalle table...
             'id', // Local key on the Presupuestos table...
             'id' // Local key on the presupuestolinea table...
-        )->where('accionproducto_id','327');
+        )->where('accionproducto_id','1056');
     }
 
     public function recalculo(){
@@ -148,7 +148,33 @@ class Presupuesto extends Model
             ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
             ->groupBy('entidad','presupuestos.estado','comercial',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
             ->get();
-        }
+    }
+
+    public static function presupuestossinagruparXLS($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin){
+        if($mes!=true)
+            return Presupuesto::query()
+            ->join('entidades','entidades.id','presupuestos.entidad_id')
+            ->join('users','users.id','presupuestos.solicitante_id')
+            ->select('entidades.entidad as entidad','users.name as comercial',
+                'presupuestos.presupuesto','presupuestos.fechapresupuesto','presupuestos.preciocoste','presupuestos.precioventa',
+                DB::raw('presupuestos.preciocoste- presupuestos.precioventa as maegen'),
+                DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
+            ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
+            ->get();
+        // }
+    //     else
+    //        { dd('hay mes');
+    //         return Presupuesto::query()
+    //         ->join('entidades','entidades.id','presupuestos.entidad_id')
+    //         ->join('users','users.id','presupuestos.solicitante_id')
+    //         ->select('entidades.entidad as entidad','users.name as comercial',
+    //             'presupuestos.presupuesto','presupuestos.fechapresupuesto','presupuestos.preciocoste','presupuestos.precioventa',
+    //             DB::raw('presupuestos.preciocoste- presupuestos.precioventa as margen'),
+    //             DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
+    // ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
+    //         ->get();}
+    }
+
 
     public function scopeFiltrosPresupuestos(Builder $query, $entidad, $comercial, $estado,$fini,$ffin,$vini,$vfin) : Builder{
         return $query->when($entidad!='', function ($query) use($entidad){
