@@ -33,7 +33,7 @@
                     <x-slot name="head">
                         {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
                         <x-table.heading class="pl-1 text-left">{{ __('F.') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Referencia') }}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Referencia') }} <br> {{ __('F.Act.') }} </x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Descripcion') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Proveedor') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Familia') }}</x-table.heading>
@@ -63,7 +63,7 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}</td>
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}<br>{{ $producto->updated_at }}</td>
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->descripcion }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad ?? '-'}}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->familia->nombre  ?? '-' }}</td >
