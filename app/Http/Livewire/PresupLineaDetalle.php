@@ -53,8 +53,7 @@ class PresupLineaDetalle extends Component
 
     public function mount(PresupuestoLinea $presupuestolinea){
         if($presupuestolinea->presupuesto->ent->incrementoanual=='1')
-            $this->incrementoanual=Configuracion::where('nombrecorto','IA')->first()->valor;
-
+        $this->incrementoanual=Configuracion::where('nombrecorto','IA')->first()->valor * $presupuestolinea->presupuesto->ent->incrementoanual;
         $this->presuplinea=$presupuestolinea;
         $this->empresaTipo=$presupuestolinea->presupuesto->ent->empresatipo;
         $this->empresatipo_id=$this->empresaTipo->id;
@@ -236,24 +235,23 @@ class PresupLineaDetalle extends Component
             if($this->acciontipo->nombrecorto!='MAT' && $this->acciontipo->nombrecorto!='EMB'){
                 $this->accionproducto=Accion::find($this->accionproducto_id);
                 $this->preciocoste_ud=$this->accionproducto->preciocoste;
-                $this->precioventa_ud=$this->accionproducto->precioventa*(1+$this->incrementoanual);
+                $this->precioventa_ud=$this->accionproducto->precioventa;
                 if($this->acciontipo->nombrecorto=='IMP'){
                     switch ($this->empresaTipo->nombrecorto) {
                         case 'A':
-                            $this->precioventa_ud=$this->accionproducto->precioventa*(1+$this->incrementoanual);
+                            $this->precioventa_ud=$this->accionproducto->precioventa;
                             break;
                         case 'B':
-                            $this->precioventa_ud=$this->accionproducto->precioventa2*(1+$this->incrementoanual);
+                            $this->precioventa_ud=$this->accionproducto->precioventa2;
                             break;
                         case 'C':
-                            $this->precioventa_ud=$this->accionproducto->precioventa3*(1+$this->incrementoanual);
+                            $this->precioventa_ud=$this->accionproducto->precioventa3;
                             break;
                         case 'D':
-                            $this->precioventa_ud=$this->accionproducto->precioventa4*(1+$this->incrementoanual);
+                            $this->precioventa_ud=$this->accionproducto->precioventa4;
                             break;
                     }
                 }
-                // $this->precioventa_ud=$this->accionproducto->precioventa*(1+$this->incrementoanual);
                 $this->preciominimo=$this->accionproducto->preciominimo;
                 $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
                 $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
@@ -270,7 +268,7 @@ class PresupLineaDetalle extends Component
                     $this->merma=$this->accionproducto->tipo->merma;
                     $this->factor=$this->empresaTipo->factor ?? '1';
                     $this->factormin=$this->empresaTipo->factormin ?? '1';
-                    $this->precioventa_ud=round($this->preciocoste_ud * $this->factor*(1+$this->incrementoanual), 2);
+                    $this->precioventa_ud=round($this->preciocoste_ud * $this->factor, 2);
                     $this->udpreciocoste_id=$this->accionproducto->udpreciocoste_id;
                     $this->unidadventa=$this->accionproducto->unidadpreciocoste->nombrecorto ?? '';
                     $this->deshabilitadoPCoste='disabled';
@@ -302,16 +300,16 @@ class PresupLineaDetalle extends Component
         $accion=Accion::find($this->accionproducto_id);
         switch ($this->empresaTipo->nombrecorto) {
             case 'A':
-                $this->precioventa_ud=$accion->precioventa*(1+$this->incrementoanual);
+                $this->precioventa_ud=$accion->precioventa;
                 break;
             case 'B':
-                $this->precioventa_ud=$accion->precioventa2*(1+$this->incrementoanual);
+                $this->precioventa_ud=$accion->precioventa2;
                 break;
             case 'C':
-                $this->precioventa_ud=$accion->precioventa3*(1+$this->incrementoanual);
+                $this->precioventa_ud=$accion->precioventa3;
                 break;
             case 'D':
-                $this->precioventa_ud=$accion->precioventa4*(1+$this->incrementoanual);
+                $this->precioventa_ud=$accion->precioventa4;
                 break;
         }
         $this->calculoPrecioVenta();
@@ -354,7 +352,7 @@ class PresupLineaDetalle extends Component
             $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
             $this->factor=$this->factormin;
         }
-        $this->precioventa_ud=round($this->preciocoste_ud * $this->factor*(1+$this->incrementoanual),2);
+        $this->precioventa_ud=round($this->preciocoste_ud * $this->factor,2);
         $this->calculoPrecioVenta();
     }
 
@@ -377,9 +375,9 @@ class PresupLineaDetalle extends Component
     public function UpdatedPrecioventaUd(){
         if(!$this->precioventa_ud) $this->precioventa_ud=0;
         if($this->preciominimo=='0') $this->preciominimo=$this->preciocoste_ud;
-        if($this->precioventa_ud<$this->preciominimo*(1+$this->incrementoanual)){
+        if($this->precioventa_ud<$this->preciominimo){
             $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
-            $this->precioventa_ud=$this->preciominimo*(1+$this->incrementoanual);
+            $this->precioventa_ud=$this->preciominimo;
         }
         $this->validate(['precioventa_ud'=>'numeric']);
         $this->calculoPrecioVenta();
@@ -394,9 +392,9 @@ class PresupLineaDetalle extends Component
         if($valor=="unidades") if(!$valor) $valor=1;
         if($valor=="preciocompra_ud") if(!$valor) $valor=0;
         if($valor=="precioventa_ud"){
-            if($valor<$this->preciominimo*(1+$this->incrementoanual)){
+            if($valor<$this->preciominimo){
                 $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
-                $valor=$this->preciominimo*(1+$this->incrementoanual);
+                $valor=$this->preciominimo;
             }
         }
         if ($campo=="factor") {
@@ -405,7 +403,7 @@ class PresupLineaDetalle extends Component
                 $this->factor=$this->factormin;
             }
             if($calculo=='concalculo') Validator::make([$campo=>$valor],[$campo=>'numeric|required'])->validate();
-            $this->precioventa_ud=round($this->preciocoste_ud * $this->factor*(1+$this->incrementoanual),2);
+            $this->precioventa_ud=round($this->preciocoste_ud * $this->factor,2);
             $presupaccion->update(['factor'=>$valor,'precioventa_ud'=>round($presupaccion->preciocoste_ud * $valor,2)]);
         }
         $presupaccion->update([$campo=>$valor]);

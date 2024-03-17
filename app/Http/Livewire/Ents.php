@@ -19,8 +19,7 @@ class Ents extends Component
     public $empresatipo_id='';
     public Entidad $entidad;
 
-    public function render()
-    {
+    public function render(){
         $entidadtipo=EntidadTipo::find($this->entidadtipo_id);
         $empresatipos=EmpresaTipo::get();
         $comerciales=User::role('Comercial')->orderBy('name')->get();
@@ -30,7 +29,8 @@ class Ents extends Component
             ->with('empresatipo')
             ->with('comercial')
             ->search('entidad',$this->search)
-            ->filtrosEntidad($this->search,$this->filtrocomercial,$this->entidadtipo_id,$this->Fini,$this->Ffin)
+            // ->filtrosEntidad($this->search,$this->filtrocomercial,$this->entidadtipo_id,$this->Fini,$this->Ffin)
+            ->filtrosEntidad($this->filtrocomercial,$this->entidadtipo_id,$this->Fini,$this->Ffin)
             ->orderBy('entidad','asc')
             ->paginate(10);
 

@@ -38,7 +38,8 @@ class Entidad extends Model
         ]);
     }
 
-    public function scopeFiltrosEntidad(Builder $query, $search, $filtrocomercial, $entidadtipo_id,$fini,$ffin) : Builder
+    // public function scopeFiltrosEntidad(Builder $query, $search, $filtrocomercial, $entidadtipo_id,$fini,$ffin) : Builder
+    public function scopeFiltrosEntidad(Builder $query, $filtrocomercial, $entidadtipo_id,$fini,$ffin) : Builder
     {
         return $query
         ->when($filtrocomercial!='', function ($query) use($filtrocomercial){
@@ -64,8 +65,8 @@ class Entidad extends Model
         })
         ->when($fini && $ffin, function ($query) use($fini,$ffin){
             $query->whereBetween('fechacliente', [$fini, $ffin]);
-        })
-        ->orSearch('nif',$search);
+        });
+        // ->orSearch('nif',$search);
     }
 
     public function getFechacliAttribute()
