@@ -19,9 +19,6 @@ class PresupuestoLinea extends Model
         return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->where('accionproducto_id','1056');
     }
 
-    // public function getTotalAttribute(){
-    //     return round((1+$this->iva)*$this->unidades*$this->precioventa,2);
-    // }
 
     public function recalculo(){
         $incremento=$this->presupuesto->incremento;

@@ -1,5 +1,5 @@
 <div class="">
-    @livewire('menu',['entidad'=>$entidad],key($entidad->id))
+    {{-- @livewire('menu',['entidad'=>$entidad],key($entidad->id)) --}}
     <div class="p-1 mx-2">
         <h1 class="text-2xl font-semibold text-gray-900">Presupuestos</h1>
         {{-- <p>            search:{{$search}}-filtroanyo:{{$filtroanyo}}-filtromes:{{$filtromes}}- filtroclipro:{{$filtroclipro}}- filtrosolicitante:{{$filtrosolicitante}}- filtropalabra:{{$filtropalabra}}-filtroestado:{{$filtroestado}}
@@ -157,6 +157,7 @@
                         <th class="pr-4 font-medium text-right">{{ __('% Inc') }}</th>
                         <th class="pr-4 font-medium text-right">{{ __('€ Venta') }}</th>
                         <th class="pr-4 font-medium text-center">{{ __('Estado') }}</th>
+                        <th class="pr-4 font-medium text-center">{{ __('Pmin') }}</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>
@@ -226,6 +227,11 @@
                                     <option value="1" {{ $presupuesto->estado== '1'? 'selected' : '' }}>Aceptado</option>
                                     <option value="2" {{ $presupuesto->estado== '2'? 'selected' : '' }}>Rechazado</option>
                                 </select>
+                            </td>
+                            <td>
+                                @if($presupuesto->pminimo->count()>0)
+                                    <x-icon.validate-a/>
+                                @endif
                             </td>
                             <td class="">
                                 <div class="flex items-center justify-center">

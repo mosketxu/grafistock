@@ -25,8 +25,7 @@ class PresupLineas extends Component
         return view('livewire.presup-lineas',compact(['lineas']));
 }
 
-    public function changeVisible(PresupuestoLinea $linea,$visible)
-    {
+    public function changeVisible(PresupuestoLinea $linea,$visible){
         Validator::make(['visible'=>$visible],[
             'visible'=>'boolean',
         ])->validate();
@@ -36,8 +35,7 @@ class PresupLineas extends Component
         $this->dispatchBrowserEvent('notify', 'Visible Actualizado.');
     }
 
-    public function changeOrden(PresupuestoLinea $linea,$orden)
-    {
+    public function changeOrden(PresupuestoLinea $linea,$orden){
         Validator::make(['orden'=>$orden],[
             'orden'=>'numeric',
         ])->validate();
@@ -46,8 +44,7 @@ class PresupLineas extends Component
         $this->emit('linearefresh');
     }
 
-    public function changeDescripcion(PresupuestoLinea $linea,$descripcion)
-    {
+    public function changeDescripcion(PresupuestoLinea $linea,$descripcion){
         Validator::make(['descripcion'=>$descripcion],[
             'descripcion'=>'required',
         ])->validate();
@@ -55,9 +52,7 @@ class PresupLineas extends Component
         $this->dispatchBrowserEvent('notify', 'Descripción Actualizada.');
     }
 
-
-    public function changeUnidades(PresupuestoLinea $linea,$unidades)
-    {
+    public function changeUnidades(PresupuestoLinea $linea,$unidades){
         Validator::make(['unidades'=>$unidades],[
             'unidades'=>'numeric|required|gt:0',
         ])->validate();
@@ -67,8 +62,7 @@ class PresupLineas extends Component
         $this->dispatchBrowserEvent('notify', 'Unidades Actualizadas.');
     }
 
-    public function changeVenta(PresupuestoLinea $linea,$precioventa)
-    {
+    public function changeVenta(PresupuestoLinea $linea,$precioventa){
         Validator::make(['precioventa'=>$precioventa],[
             'precioventa'=>'numeric|nullable',
         ])->validate();
@@ -79,8 +73,7 @@ class PresupLineas extends Component
         $this->dispatchBrowserEvent('notify', 'Precio Venta Actualizado.');
     }
 
-    public function changeObs(PresupuestoLinea $linea,$observaciones)
-    {
+    public function changeObs(PresupuestoLinea $linea,$observaciones){
         Validator::make(['observaciones'=>$observaciones],[
             'observaciones'=>'nullable',
         ])->validate();
@@ -126,7 +119,6 @@ class PresupLineas extends Component
     }
 
     function pedidominimo(PresupuestoLinea $presupuestolinea) {
-        // dd($presupuestolinea);
         if($this->presupuesto->pminimo->count()==0){
             $producto=Producto::where('descripcion','Pedido Minimo')->first();
             $empresa=Entidad::find($this->presupuesto->entidad_id);
