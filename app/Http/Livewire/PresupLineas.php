@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{Presupuesto, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle};
+use App\Models\{Entidad, Presupuesto, PresupuestoControlpartida, PresupuestoLinea,PresupuestoLineaDetalle, Producto};
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 use Livewire\WithPagination;
@@ -20,9 +20,7 @@ class PresupLineas extends Component
 
     protected $listeners = [ 'linearefresh' => '$refresh'];
 
-    public function render()
-    {
-        // $lineas=PresupuestoLinea::where('presupuesto_id',$this->presupuesto->id)->orderBy('orden')->get();
+    public function render(){
         $lineas= $this->rows;
         return view('livewire.presup-lineas',compact(['lineas']));
 }
@@ -66,8 +64,6 @@ class PresupLineas extends Component
         $linea->update(['unidades'=>$unidades]);
 
         $p=Presupuesto::find($this->presupuesto->id)->recalculo();
-        // $this->emit('presupuestorefresh');
-        // $this->emit('linearefresh');
         $this->dispatchBrowserEvent('notify', 'Unidades Actualizadas.');
     }
 
@@ -78,7 +74,6 @@ class PresupLineas extends Component
         ])->validate();
         $linea->update(['precioventa'=>$precioventa]);
         $p=Presupuesto::find($this->presupuesto->id)->recalculo();
-        // $this->recalculo();
         $this->emit('presupuestorefresh');
         $this->emit('linearefresh');
         $this->dispatchBrowserEvent('notify', 'Precio Venta Actualizado.');
@@ -93,8 +88,7 @@ class PresupLineas extends Component
         $this->dispatchBrowserEvent('notify', 'Observaciones Actualizado.');
     }
 
-    public function actualizaPartida($presuplinea)
-    {
+    public function actualizaPartida($presuplinea){
         $partidas=PresupuestoControlpartida::where('presupuesto_id',$presuplinea->presupuesto->id)->get();
         foreach ($partidas as $partida) {
             $contador=PresupuestoLinea::query()
@@ -113,8 +107,7 @@ class PresupLineas extends Component
         }
     }
 
-    public function replicateRow(PresupuestoLinea $linea)
-    {
+    public function replicateRow(PresupuestoLinea $linea){
         // clono la linea
         $clonelinea = $linea->replicate();
         // $clonelinea = $linea->replicate()->fill([
@@ -132,8 +125,57 @@ class PresupLineas extends Component
         $this->emit('linearefresh');
     }
 
-    public function delete($lineaId)
-    {
+    function pedidominimo(PresupuestoLinea $presupuestolinea) {
+        // dd($presupuestolinea);
+        if($this->presupuesto->pminimo->count()==0){
+            $producto=Producto::where('descripcion','Pedido Minimo')->first();
+            $empresa=Entidad::find($this->presupuesto->entidad_id);
+            $pldetalle = PresupuestoLineaDetalle::create([
+                'presupuestolinea_id'=>$presupuestolinea->id,
+                'acciontipo_id'=>'1',
+                'accionproducto_id'=>$producto->id,
+                'empresatipo_id'=>$empresa->empresatipo_id,
+                'entidad_id'=>$this->presupuesto->entidad_id,
+                'incrementoanual'=>$empresa->incrementoanual,
+                'orden'=>'1',
+                'descripcion'=>$producto->descripcion,
+                'preciocoste_ud'=>$empresa->empresatipo->pedidominimo,
+                'precioventa_ud'=>$empresa->empresatipo->pedidominimo,
+                'udpreciocoste_id'=>'6',
+                'factor'=>'1',
+                'merma'=>'0',
+                'unidades'=>'1',
+                'minutos'=>'1',
+                'alto'=>'1',
+                'ancho'=>'1',
+                'preciocoste'=>$empresa->empresatipo->pedidominimo,
+                'precioventa'=>$empresa->empresatipo->pedidominimo,
+                'observaciones'=>'',
+                'fichero'=>'',
+                'ruta'=>'',
+            ]);
+            $pl=$presupuestolinea->recalculo();
+            $p=$this->presupuesto->recalculo();
+
+            $this->emit('presupuestorefresh');
+            $this->emit('linearefresh');
+
+            $this->dispatchBrowserEvent('notify', 'Pedido minimo añadido!');
+
+        }
+    }
+
+
+    public function getRowsQueryProperty(){
+
+        return PresupuestoLinea::where('presupuesto_id',$this->presupuesto->id)->orderBy('orden');
+    }
+
+    public function getRowsProperty(){
+        return $this->rowsQuery->get();
+    }
+
+    public function delete($lineaId){
         $lineaBorrar = PresupuestoLinea::find($lineaId);
         $presupuesto=Presupuesto::find($lineaBorrar->presupuesto_id);
         if ($lineaBorrar) {
@@ -152,15 +194,6 @@ class PresupLineas extends Component
         $this->showDeleteModal = false;
 
         $this->dispatchBrowserEvent('notify', $deleteCount . ' Líneas eliminados!');
-    }
-
-    public function getRowsQueryProperty(){
-
-        return PresupuestoLinea::where('presupuesto_id',$this->presupuesto->id)->orderBy('orden');
-    }
-
-    public function getRowsProperty(){
-        return $this->rowsQuery->get();
     }
 
 }

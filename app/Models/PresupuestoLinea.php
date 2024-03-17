@@ -15,6 +15,9 @@ class PresupuestoLinea extends Model
     public function presupuesto(){return $this->belongsTo(Presupuesto::class);}
     public function presupuestolineadetalles(){return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('orden');}
     public function presupuestolineadetallesportipo(){return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->orderBy('acciontipo_id')->orderBy('orden');}
+    public function pminimo(){
+        return $this->hasMany(PresupuestoLineaDetalle::class,'presupuestolinea_id')->where('accionproducto_id','1056');
+    }
 
     // public function getTotalAttribute(){
     //     return round((1+$this->iva)*$this->unidades*$this->precioventa,2);

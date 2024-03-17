@@ -58,6 +58,12 @@
                         class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/></td>
                     <td>
                         <div class="flex items-center justify-center">
+                            @if($presupuesto->pminimo->count()==0)
+                                <x-icon.p-a wire:click="pedidominimo({{ $linea }} )" class="ml-2 text-gray-600 cursor-pointer" title="Pedido Mínimo"/>
+                            @endif
+                            @if($linea->pminimo->count()>0)
+                                <x-icon.p-a class="ml-2 text-green-600" title="Pedido Mínimo"/>
+                            @endif
                             <x-icon.calc-a href="{{route('presupuestolinea.index', $linea) }}" class="ml-2 text-green-600" title="Editar Cálculo"/>
                             <x-icon.copy-a wire:click="replicateRow({{ $linea }})" onclick="confirm('¿Estás seguro de querer copiar la linea?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
                             <x-icon.delete-a wire:click.prevent="delete({{ $linea->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar linea"/>
