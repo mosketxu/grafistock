@@ -47,13 +47,15 @@ class ExportPresupuestosSinAgrupar implements FromCollection,WithCustomStartCell
         //     $t1='D';$t2='E';$t3='F';$t4='G';
         // }else{
             // $t1='E';$t2='F';$t3='G';$t4='H';
-            $t1='E';$t2='F';$t3='G';$t4='H';
+            $t1='E';$t2='F';$t3='G';$t4='H';$t5='I';
         // }
         //titulo
         $sheet->getStyle('B2')->getFont()->setSize(16);
         $sheet->getStyle('B2')->getFont()->setBold(true);
         //columnas con datos economicos:punto millar y 2 decimales
         $sheet->getStyle($t3.':'.$t4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+        //columnas con datos economicos:porcentaje
+        $sheet->getStyle($t5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_PERCENTAGE_00);
         //Filtros
         $sheet->getStyle('B4:B8')->getFont()->setItalic(true);
         $sheet->getStyle('B4:F8')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
@@ -79,31 +81,17 @@ class ExportPresupuestosSinAgrupar implements FromCollection,WithCustomStartCell
 
 
     public function headings(): array{
-        // if($this->mes==true){
-        //     return [
-        //         ['Estadísticas de presupuestos',now()],
-        //         [' ',' '],
-        //         ['Filtro Estado',$this->estado,],
-        //         ['Filtro Comercial',$this->comercial->name ?? '',],
-        //         ['Filtro Entidad',$this->entidad],
-        //         ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
-        //         ['Filtro Ventas:','De',$this->vi,'A:',$this->vf],
-        //         [' ',' '],
-        //         ['Cliente','Comercial','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','Estado']
-        //     ];
-        // }else{
-            return [
-                ['Estadísticas de presupuestos',now()],
-                [' ',' '],
-                ['Filtro Estado',$this->estado],
-                ['Filtro Comercial',$this->comercial->name?? '',],
-                ['Filtro Entidad',$this->entidad],
-                ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
-                ['Filtro Ventas:','De',$this->vi,'A:',$this->vf],
-                [' ',' '],
-                ['Cliente','Comercial','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','Estado']
-            ];
-        // }
+        return [
+            ['Estadísticas de presupuestos',now()],
+            [' ',' '],
+            ['Filtro Estado',$this->estado],
+            ['Filtro Comercial',$this->comercial->name?? '',],
+            ['Filtro Entidad',$this->entidad],
+            ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
+            ['Filtro Ventas:','De',$this->vi,'A:',$this->vf],
+            [' ',' '],
+            ['Cliente','Comercial','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','% Margen','Estado']
+        ];
     }
     /**
     * @return \Illuminate\Support\Collection

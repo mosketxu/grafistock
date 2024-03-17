@@ -151,28 +151,16 @@ class Presupuesto extends Model
     }
 
     public static function presupuestossinagruparXLS($mes,$filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin){
-        if($mes!=true)
-            return Presupuesto::query()
-            ->join('entidades','entidades.id','presupuestos.entidad_id')
-            ->join('users','users.id','presupuestos.solicitante_id')
-            ->select('entidades.entidad as entidad','users.name as comercial',
-                'presupuestos.presupuesto','presupuestos.fechapresupuesto','presupuestos.preciocoste','presupuestos.precioventa',
-                DB::raw('presupuestos.preciocoste- presupuestos.precioventa as maegen'),
-                DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
-            ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
-            ->get();
-        // }
-    //     else
-    //        { dd('hay mes');
-    //         return Presupuesto::query()
-    //         ->join('entidades','entidades.id','presupuestos.entidad_id')
-    //         ->join('users','users.id','presupuestos.solicitante_id')
-    //         ->select('entidades.entidad as entidad','users.name as comercial',
-    //             'presupuestos.presupuesto','presupuestos.fechapresupuesto','presupuestos.preciocoste','presupuestos.precioventa',
-    //             DB::raw('presupuestos.preciocoste- presupuestos.precioventa as margen'),
-    //             DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
-    // ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
-    //         ->get();}
+        return Presupuesto::query()
+        ->join('entidades','entidades.id','presupuestos.entidad_id')
+        ->join('users','users.id','presupuestos.solicitante_id')
+        ->select('entidades.entidad as entidad','users.name as comercial',
+            'presupuestos.presupuesto','presupuestos.fechapresupuesto','presupuestos.preciocoste','presupuestos.precioventa',
+            DB::raw('presupuestos.precioventa- presupuestos.preciocoste as margen'),
+            DB::raw('presupuestos.preciocoste / presupuestos.precioventa as porcentajemargen'),
+            DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
+        ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
+        ->get();
     }
 
 
