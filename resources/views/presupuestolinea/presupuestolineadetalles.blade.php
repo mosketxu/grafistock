@@ -67,9 +67,20 @@
                             class="w-full py-1 text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
                         </td>
                         <td>
-                            <input type="text" value="{{ $acciontipo->nombre=="Material" ? $presupaccion->producto->descripcion ?? '-' : $presupaccion->accion->descripcion ?? '-'  }}"
-                            class="w-full py-1 text-xs bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                            readonly/>
+                            @if($acciontipo->nombre=="Material")
+                                <div class="flex">
+                                    @if ($presupaccion->producto->favorito=='1')
+                                        <x-icon.star-solid class="text-yellow-500"></x-icon.star-solid>
+                                    @endif
+                                        <input type="text" value="{{ $presupaccion->producto->descripcion ?? ''   }}"
+                                        class="w-full py-1 text-xs bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                        readonly/>
+                                </div>
+                            @else
+                                <input type="text" value="{{ $presupaccion->accion->descripcion ?? '-'  }}"
+                                class="w-full py-1 text-xs bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                readonly/>
+                            @endif
                         </td>
                         <td>
                             <input type="text" value="{{ $acciontipo->nombre=="Material" ? $presupaccion->producto->referencia ?? '-' : $presupaccion->accion->referencia ?? '-'  }}"

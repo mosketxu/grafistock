@@ -1,5 +1,5 @@
 <div class="">
-    {{-- @livewire('menu',['entidad'=>$entidad],key($entidad->id)) --}}
+    @livewire('menu',['entidad'=>$entidad],key($entidad->id))
     <div class="p-1 mx-2">
         <h1 class="text-2xl font-semibold text-gray-900">Presupuestos</h1>
         {{-- <p>            search:{{$search}}-filtroanyo:{{$filtroanyo}}-filtromes:{{$filtromes}}- filtroclipro:{{$filtroclipro}}- filtrosolicitante:{{$filtrosolicitante}}- filtropalabra:{{$filtropalabra}}-filtroestado:{{$filtroestado}}
