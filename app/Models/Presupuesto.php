@@ -157,7 +157,7 @@ class Presupuesto extends Model
         ->select('entidades.entidad as entidad','users.name as comercial',
             'presupuestos.presupuesto','presupuestos.fechapresupuesto','presupuestos.preciocoste','presupuestos.precioventa',
             DB::raw('presupuestos.precioventa- presupuestos.preciocoste as margen'),
-            DB::raw('presupuestos.preciocoste / presupuestos.precioventa as porcentajemargen'),
+            DB::raw('(presupuestos.precioventa- presupuestos.preciocoste) / presupuestos.precioventa as porcentajemargen'),
             DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
         ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,)
         ->get();

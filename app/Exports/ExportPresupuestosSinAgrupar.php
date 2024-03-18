@@ -90,7 +90,7 @@ class ExportPresupuestosSinAgrupar implements FromCollection,WithCustomStartCell
             ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
             ['Filtro Ventas:','De',$this->vi,'A:',$this->vf],
             [' ',' '],
-            ['Cliente','Comercial','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','% Margen','Estado']
+            ['Cliente','Comercial','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','Margen Bruto','Estado']
         ];
     }
     /**
