@@ -24,6 +24,7 @@ class PedidoDetailed extends Component
         $this->base=$pedido->pedidodetalles->sum('base');
         $this->totaliva=$pedido->pedidodetalles->sum('totaliva');
         $this->total=$pedido->pedidodetalles->sum('total');
+
         $unidadescoste=UnidadCoste::orderBy('nombre')->get();
 
         $detalles = PedidoDetalle::where('pedido_id', $this->pedido->id)

@@ -47,7 +47,7 @@
                     <td><input type="text" value="{{ $detalle->unidadcompra->nombre ?? '-' }}" class="w-full text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/></td>
                     <td>
                         @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
-                            <input type="text" value="{{ number_format(round($detalle->cantidad*$detalle->coste, 2),2,',','.') }}" class="w-full text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/>
+                            <input type="text" value="{{ number_format(round($detalle->cantidad*$detalle->coste, 4),4,',','.') }}" class="w-full text-xs text-right bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/>
                         @else
                             <input type="text" value="-" class="w-full text-xs bg-gray-100 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" readonly/>
                         @endif
@@ -81,7 +81,7 @@
                 <td class="pr-2"></td>
                 <td class="pr-2"></td>
                 <td class="pl-2 text-right">Total</td>
-                <td class="pr-3 text-right">{{ number_format($total,2,',','.') }}</td>
+                <td class="pr-3 text-right">{{ number_format($total,4,',','.') }}</td>
                 <td colspan="2" class="w-1/12"></td>
             </tr>
         </tfoot>

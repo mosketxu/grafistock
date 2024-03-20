@@ -84,7 +84,7 @@
                     <x-table.cell>
                         <div class="flex-1 py-1 pr-3 text-sm font-bold text-right text-gray-900 rounded-lg bg-gray-50">
                             @if(is_numeric($cantidad) && is_numeric($coste))
-                                {{ number_format(round($cantidad*$coste, 2),2) }}
+                                {{ number_format(round($cantidad*$coste, 4),4) }}
                             @endif
                         </div>
                     </x-table.cell>

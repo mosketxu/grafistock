@@ -36,7 +36,7 @@ class PedidoDetalle extends Model
         return round($this->cantidad*$this->coste*$this->iva,2);
     }
 
-    public function getTotalAttribute(){
+    public function getTotaAttribute(){
         return round((1+$this->iva)*$this->cantidad*$this->coste,2);
     }
 

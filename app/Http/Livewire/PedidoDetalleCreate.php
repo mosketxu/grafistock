@@ -31,7 +31,6 @@ class PedidoDetalleCreate extends Component
         'cantidad'=>'numeric|required',
         'coste'=>'numeric|required',
         'udcompraId'=>'required',
-        'deshabilitado'=>'nullable',
     ];
 
 
@@ -95,8 +94,7 @@ class PedidoDetalleCreate extends Component
         $this->descripcion='';
     }
 
-    public function save()
-    {
+    public function save(){
         $this->validate();
 
         $p=PedidoDetalle::create([

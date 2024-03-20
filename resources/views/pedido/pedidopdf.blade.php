@@ -39,41 +39,7 @@
             <div class="">
                 <h1 style="color: gray">Orden de compra</h1>
             </div>
-            {{-- datos cliente  --}}
-            {{-- <table width="100%" style="text-align:left;margin-left:40px" cellspacing="0">
-                <tbody>
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">{{ $pedido->entidad->entidad  }}</td>
-                    </tr>
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">{{ $pedido->entidad->direccion  }}</td>
-                    </tr>
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">{{ $pedido->entidad->codpostal }} {{ $pedido->entidad->localidad }}</td>
-                    </tr>
-                    @if(strtolower($pedido->entidad->localidad) != strtolower($pedido->entidad->provincia->provincia))
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">{{ $pedido->entidad->codpostal }} {{ $pedido->entidad->provincia->provincia }}</td>
-                    </tr>
-                    @endif
-                    <tr>
-                        <td width="49%"></td>
-                        <td width="49%">Cif: {{ $pedido->entidad->nif  }}</td>
-                    </tr>
 
-                </tbody>
-            </table> --}}
-
-            {{-- detalle del pedido --}}
-
-            {{-- <div style="margin-top:50px; ">
-                <div>FECHA: {{ $pedido->fechapedido->format('d-m-Y') }}</div>
-                <div>FACTURA: {{ $pedido->pedido }}</div>
-            </div> --}}
             <table width="100%" style="margin-top:50px">
                 <tr style="background-color: #eee7e7; color:rgb(10, 153, 220)">
                     <td style="padding-left:3px;" width="33%">Comercial</td>
@@ -119,7 +85,7 @@
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218);">{{ $detalle->cantidad }} </td>
                             <td style="padding-right:3px;text-align:right;border-bottom: 1px solid rgb(223, 218, 218)">
                                 @if(is_numeric($detalle->cantidad) && is_numeric($detalle->coste))
-                                    {{ number_format(round($detalle->cantidad*$detalle->coste, 2),2,',','.') }} €
+                                    {{ number_format(round($detalle->cantidad*$detalle->coste, 4),4,',','.') }} €
                                 @endif
                             </td>
                         </tr>
@@ -139,9 +105,9 @@
                     <tr style="background-color: #fdf9f9; ">
                         {{-- <td style="padding-left:3px;" ></td> --}}
                         <td style="padding-left:3px;" ></td>
-                        <td style="padding-right:3px;text-align:right" >{{ number_format($base,2,',','.') }} €</td>
+                        <td style="padding-right:3px;text-align:right" >{{ number_format($base,3,',','.') }} €</td>
                         <td style="padding-right:3px;text-align:right" >{{ number_format($base * 0.21,2,',','.') }} €</td>
-                        <td style="padding-right:3px;text-align:right" >{{ number_format($base * 1.21,2,',','.') }} €</td></tr>
+                        <td style="padding-right:3px;text-align:right" >{{ number_format($base * 1.21,4,',','.') }} €</td></tr>
                     </tr>
                 </tfoot>
             </table>
