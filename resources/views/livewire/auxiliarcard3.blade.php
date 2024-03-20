@@ -95,7 +95,6 @@
                                     @error('nombre') <span class="text-red-500">{{ $message }}</span>@enderror
                                 </td>
                                 <td class="w-24 p-2 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap " >
-                                    asdfs
                                     @if ($titulo=='Tipos Acción')
                                         <select wire:model.defer="aux" selectname="aux" required
                                             class="w-full text-xs text-right border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />

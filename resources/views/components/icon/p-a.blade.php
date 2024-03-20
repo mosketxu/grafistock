@@ -1,4 +1,4 @@
-<a {{ $attributes->merge(['type' => 'button', 'class' => 'w-5 mr-2 text-orange-500 transform hover:text-orange-700 hover:scale-125']) }}  title="Cálculo">
+<a {{ $attributes->merge(['type' => 'button', 'class' => 'w-4 mr-2 text-orange-500 transform hover:text-orange-700 hover:scale-125']) }}  title="Cálculo">
     <svg xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 320 512">
         <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->

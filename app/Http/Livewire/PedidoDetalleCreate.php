@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\{PedidoDetalle, Producto, ProductoMaterial, UnidadCoste,Pedido};
+use App\Models\{Entidad, PedidoDetalle, Producto, ProductoMaterial, UnidadCoste,Pedido};
 use Livewire\Component;
 use phpDocumentor\Reflection\Types\Nullable;
 
@@ -31,6 +31,7 @@ class PedidoDetalleCreate extends Component
         'cantidad'=>'numeric|required',
         'coste'=>'numeric|required',
         'udcompraId'=>'required',
+        'deshabilitado'=>'nullable',
     ];
 
 
@@ -51,15 +52,19 @@ class PedidoDetalleCreate extends Component
         ->orderBy('referencia')
         ->get();
 
+        $matgenerico=ProductoMaterial::where('nombrecorto','GEN')->get()->pluck('id');
+        $provgenerico=Entidad::where('entidad','Genérico')->first();
+
+
         $productosgenericos=Producto::query()
-        ->where('entidad_id','1')
+        ->whereIn('material_id',$matgenerico)
+        ->where('entidad_id',$provgenerico->id)
         ->get();
+
         $this->productos=$this->productos->merge($productosgenericos);
 
-
-
-
-        $mat=Producto::select('material_id')->where('entidad_id',$this->entidadId)
+        $mat=Producto::select('material_id')
+            ->where('entidad_id',$this->entidadId)
             ->groupBy('material_id')
             ->get()->toArray();
         $materiales=ProductoMaterial::whereIn('id',$mat)->orderBy('nombre')->get();

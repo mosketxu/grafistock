@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class DashPresupuestos extends Component
 {
+    public $filtroPmin='';
     public $filtroFi='';
     public $filtroFf='';
     public $filtroventasIni='';

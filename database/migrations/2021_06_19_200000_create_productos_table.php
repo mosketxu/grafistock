@@ -19,7 +19,6 @@ class CreateProductosTable extends Migration
             $table->string('referencia')->unique()->index();
             $table->string('descripcion')->nullable();
             $table->integer('tipo_id')->index();
-            $table->integer('favorito')->default(0);
             $table->foreignId('material_id')->nullable()->constrained('producto_materiales');
             $table->double('grosor_mm', 15, 2)->default(0.00)->nullable();
             $table->integer('ancho')->default(0)->nullable();
