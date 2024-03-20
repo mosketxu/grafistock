@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\{ProductoMaterial,ProductoAcabado, ProductoGrupoproduccion,Entidad,Producto, ProductoCaja, ProductoFamilia, ProductoTipo, UnidadCoste, Ubicacion, Unidad};
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
@@ -15,16 +16,17 @@ class Prod extends Component
 
     public $producto;
     public $ficheropdf;
+    public $deshabilitado="";
 
-    protected function rules()
-    {
+    protected function rules(){
         return [
             'producto.id'=>'nullable',
             'producto.entidad_id'=>'required',
             'producto.referencia'=>'required',
             'producto.descripcion'=>'nullable',
             'producto.tipo_id'=>'required',
-            'producto.favorito'=>'required',
+            'producto.favorito'=>'nullable',
+            'producto.activo'=>'required',
             'producto.material_id'=>'required',
             'producto.grosor_mm'=>'nullable',
             'producto.ancho'=>'required',
@@ -48,13 +50,12 @@ class Prod extends Component
         ];
     }
 
-    public function mount(Producto $producto)
-    {
+    public function mount(Producto $producto){
         $this->producto=$producto;
+        $this->deshabilitado=Auth::user()->hasRole(['Admin','Gestor']) ? '' : 'disabled';
     }
 
-    public function render()
-    {
+    public function render(){
         $materiales=ProductoMaterial::orderBy('nombre')->get();
         $tipos=ProductoTipo::orderBy('nombre')->get();
         $acabados=ProductoAcabado::orderBy('nombre')->get();
@@ -94,6 +95,10 @@ class Prod extends Component
         $this->producto->favorito=$this->producto->favorito=='1' ? '0' : '1';
     }
 
+    public function activo(){
+        $this->producto->activo=$this->producto->activo=='1' ? '0' : '1';
+    }
+
     public function presentaPDF(Producto $producto){
         $existe=Storage::disk('fichasproducto')->exists($producto->fichaproducto);
         if ($existe)
@@ -127,6 +132,8 @@ class Prod extends Component
 
         if (!$this->producto->favorito)
             $this->producto->favorito=0;
+        if (!$this->producto->activo)
+            $this->producto->activo=0;
         if (!$this->producto->costereal)
             $this->producto->costereal=0;
         if (!$this->producto->preciocoste)
@@ -140,6 +147,7 @@ class Prod extends Component
             'descripcion'=>$this->producto->descripcion,
             'tipo_id'=>$this->producto->tipo_id,
             'favorito'=>$this->producto->favorito,
+            'activo'=>$this->producto->activo,
             'material_id'=>$this->producto->material_id,
             'grosor_mm'=>$this->producto->grosor_mm,
             'ancho'=>$this->producto->ancho,

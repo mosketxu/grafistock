@@ -89,3 +89,18 @@
         @endif
     </div>
 </div>
+<div class="w-1/12 text-xs">
+    <label class="px-1 text-gray-600">
+        Activo
+    </label>
+    <div class="flex">
+        <select wire:model="filtroactivo" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+            <option value=""></option>
+            <option value="0"> Descatalogado </option>
+            <option value="1"> Activo </option>
+        </select>
+        @if($filtroactivo!='')
+            <x-icon.filter-slash-a wire:click="$set('filtroactivo', '')" class="pb-1" title="reset filter"/>
+        @endif
+    </div>
+</div>

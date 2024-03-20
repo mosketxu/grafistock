@@ -21,11 +21,9 @@
                     <input type="text" wire:model="search" class="w-full py-1 border border-blue-100 rounded-lg" placeholder="Búsqueda por nombre o nif..." autofocus/>
                 </div>
                 <div class="items-center w-full pb-2 text-xs xl:w-4/12 xl:flex">
-                    {{-- <div class="items-center flex-none xl:flex "> --}}
-                        <label class="items-center mr-1 text-base">F.Alta</label>
-                        <input type="date" wire:model="Fini" class="py-1 mr-1 border border-blue-100 rounded-lg "/>
-                        <input type="date" wire:model="Ffin" class="py-1 border border-blue-100 rounded-lg "/>
-                    {{-- </div> --}}
+                    <label class="items-center mr-1 text-base">F.Alta</label>
+                    <input type="date" wire:model="Fini" class="py-1 mr-1 border border-blue-100 rounded-lg "/>
+                    <input type="date" wire:model="Ffin" class="py-1 border border-blue-100 rounded-lg "/>
                 </div>
                 <div class="w-full pb-2 text-xs xl:w-2/12">
                     @if(Auth::user()->hasRole('Admin'))

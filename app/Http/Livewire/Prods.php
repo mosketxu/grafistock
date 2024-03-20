@@ -4,8 +4,13 @@ namespace App\Http\Livewire;
 
 use App\Models\Entidad;
 use App\Models\Producto;
+use App\Models\ProductoAcabado;
+use App\Models\ProductoMaterial;
+use App\Models\ProductoTipo;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithPagination;
+
+use Illuminate\Support\Facades\Auth;
 
 
 use Livewire\Component;
@@ -22,6 +27,7 @@ class Prods extends Component
     public $filtroclipro='';
     public $filtroacabado='';
     public $filtrogrupoprod='';
+    public $filtroactivo='';
 
     public Producto $producto;
 
@@ -93,10 +99,13 @@ class Prods extends Component
             ->when($this->filtrotipo!='', function ($query){
                 $query->where('tipo_id',$this->filtrotipo);
                 })
+            ->when($this->filtroactivo!='', function ($query){
+                $query->where('activo',$this->filtroactivo);
+                })
             ->orderBy('referencia','asc')
             ->paginate(15);
 
-            return view('livewire.prods',compact('productos','materiales','familias','acabados','proveedores','tipos'));
+        return view('livewire.prods',compact('productos','familias','materiales','acabados','proveedores','tipos'));
     }
 
     public function updatingSearch(){$this->resetPage();}
@@ -106,6 +115,28 @@ class Prods extends Component
     public function updatingFiltromaterial(){$this->resetPage();}
     public function updatingFiltroacabado(){$this->resetPage();}
     public function updatingFiltrogrupoprod(){$this->resetPage();}
+
+    public function changeValor(Producto $producto,$campo,$valor){
+
+
+        $material = $campo=='material_id' ? ProductoMaterial::find($valor)->nombrecorto : $producto->material->nombrecorto ?? '';
+        $tipo = $campo=='tipo_id' ? ProductoTipo::find($valor)->nombrecorto : $producto->tipo->nombrecorto ?? '';
+        $acabado = $campo=='acabado_id' ? ProductoAcabado::find($valor)->nombrecorto : $producto->acabado->nombrecorto ?? '';
+        $p=Entidad::find($producto->entidad_id)->id;
+        $referencia=$tipo.'-'.$material.'-'.str_pad($producto->grosor_mm, 4, '0', STR_PAD_LEFT).'-'.str_pad($producto->ancho, 4, '0', STR_PAD_LEFT).'-'.str_pad($producto->alto, 4, '0', STR_PAD_LEFT).'-'.$acabado.'-'.$p;
+
+        $existeref=0;
+        $existeref=Producto::where('referencia',$referencia)->count();
+
+        if(!$existeref>0){
+            $producto->update([$campo=>$valor,'referencia'=>$referencia]);
+            $this->dispatchBrowserEvent('notify', 'Actualizada con éxito.');
+        }
+        else{
+            $this->producto->$campo=$producto->campo;
+            $this->dispatchBrowserEvent('notifyred', 'Esta referencia ya existe. No se modificarán los datos');
+        }
+    }
 
     public function presentaPDF(Producto $producto){
         $existe=Storage::disk('fichasproducto')->exists($producto->fichaproducto);
@@ -119,8 +150,13 @@ class Prods extends Component
         $p->save();
     }
 
-    public function delete($productoId)
-    {
+    public function activo($producto){
+        $p=Producto::find($producto['id']);
+        $p->activo=$p->activo=='1' ? '0' : '1';
+        $p->save();
+    }
+
+    public function delete($productoId){
         $producto = Producto::find($productoId);
         if ($producto) {
             $producto->delete();

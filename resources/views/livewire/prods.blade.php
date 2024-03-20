@@ -32,8 +32,8 @@
                 <x-table>
                     <x-slot name="head">
                         {{-- <x-table.heading class="p-0 m-0 text-right w-min">{{ __('#') }}</x-table.heading> --}}
-                        <x-table.heading class="pl-1 text-left">{{ __('F.') }}</x-table.heading>
-                        <x-table.heading class="pl-1 text-left">{{ __('Referencia') }} <br> {{ __('F.Act.') }} </x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Fav.') }} <br> {{__('Act.')}}</x-table.heading>
+                        <x-table.heading class="pl-1 text-left">{{ __('Referencia') }} <br> {{ __('F.Actualización.') }} </x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Descripcion') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Proveedor') }}</x-table.heading>
                         <x-table.heading class="pl-1 text-left">{{ __('Familia') }}</x-table.heading>
@@ -62,17 +62,69 @@
                                             <x-icon.star class="text-gray-500 "></x-icon.star>
                                         @endif
                                     </div>
+                                    <div class="items-center cursor-pointer" wire:click="activo({{ $producto }})">
+                                        @if ($producto->activo)
+                                            <x-icon.validate-a class="text-green-500"></x-icon.validate-a>
+                                        @else
+                                            <x-icon.cross-a class="text-gray-500 "></x-icon.cross-a>
+                                        @endif
+                                    </div>
                                 </td>
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->referencia }}<br>{{ $producto->updated_at }}</td>
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->descripcion }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->entidad->entidad ?? '-'}}</td >
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->familia->nombre  ?? '-' }}</td >
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->tipo->nombrecorto ?? '-' }}</td >
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">{{ $producto->material->nombre ?? '-' }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
+                                    @if(!Auth::user()->hasRole('Admin'))
+                                        {{ $producto->familia->nombre  ?? '-' }}
+                                    @else
+                                        <select   wire:change="changeValor({{ $producto }},'familia_id',$event.target.value)"
+                                            class="w-full py-0.5 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                            @foreach ($familias as $familia)
+                                            <option value="{{ $familia->id }}" {{ $familia->id== $producto->familia_id? 'selected' : '' }}>{{ $familia->nombre }}</option>
+                                            @endforeach
+                                        </select>
+                                    @endif
+                                </td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
+                                    @if(!Auth::user()->hasRole('Admin'))
+                                        {{ $producto->tipo->nombrecorto ?? '-' }}
+                                    @else
+                                        <select   wire:change="changeValor({{ $producto }},'tipo_id',$event.target.value)"
+                                            class="w-full py-0.5 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                            @foreach ($tipos as $tipo)
+                                            <option value="{{ $tipo->id }}" {{ $tipo->id== $producto->tipo_id? 'selected' : '' }}>{{ $tipo->nombre }}</option>
+                                            @endforeach
+                                        </select>
+                                    @endif
+
+                                </td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap">
+                                    @if(!Auth::user()->hasRole('Admin'))
+                                        {{ $producto->material->nombre ?? '-' }}
+                                    @else
+                                        <select   wire:change="changeValor({{ $producto }},'material_id',$event.target.value)"
+                                            class="w-full py-0.5 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                            @foreach ($materiales as $material)
+                                            <option value="{{ $material->id }}" {{ $material->id== $producto->material_id? 'selected' : '' }}>{{ $material->nombre }}</option>
+                                            @endforeach
+                                        </select>
+                                    @endif
+                                </td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->grosor_mm }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->ancho}} {{ $producto->unidadancho->nombrecorto ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->alto }} {{ $producto->unidadalto->nombrecorto ?? '-' }}</td >
-                                <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->acabado->nombre ?? '-' }}</td >
+                                <td class="px-1 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">
+                                    @if(!Auth::user()->hasRole('Admin'))
+                                        {{ $producto->acabado->nombre ?? '-' }}
+                                    @else
+                                        <select   wire:change="changeValor({{ $producto }},'acabado_id',$event.target.value)"
+                                            class="w-full py-0.5 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                            @foreach ($acabados as $acabado)
+                                            <option value="{{ $acabado->id }}" {{ $acabado->id== $producto->acabado_id? 'selected' : '' }}>{{ $acabado->nombre }}</option>
+                                            @endforeach
+                                        </select>
+                                    @endif
+                                </td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->preciocoste }} {{ $producto->unidadpreciocoste->nombre ?? '-' }}</td >
                                 <td class="pr-2 text-xs leading-5 tracking-tighter text-right text-gray-600 whitespace-no-wrap">{{ $producto->costereal }} {{ $producto->unidadpreciocoste->nombre ?? '-' }}</td >
                                 <td class="px-1 text-xs leading-5 tracking-tighter text-center text-gray-600 whitespace-no-wrap">{{ $producto->unidadsolicitud->nombrecorto ?? '-' }}</td >

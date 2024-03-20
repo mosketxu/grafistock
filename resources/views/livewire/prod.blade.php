@@ -65,9 +65,14 @@
                             <x-jet-label for="referencia">{{ __('Referencia') }}</x-jet-label>
                             <input wire:model="producto.referencia" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                         </div>
-                        <div class="w-10/12 form-item">
+                        <div class="w-9/12 form-item">
                             <x-jet-label for="descripcion">{{ __('Descripción') }}</x-jet-label>
                             <input wire:model.defer="producto.descripcion" type="text" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" autofocus/>
+                        </div>
+                        <div class="w-1/12 form-item">
+                            <x-jet-label for="activo">{{ __('Activo') }}</x-jet-label>
+                                <input type="checkbox" wire:model.lazy="producto.activo" {{$deshabilitado}}/>
+                            </div>
                         </div>
                     </div>
                 </div>
