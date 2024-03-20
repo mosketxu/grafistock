@@ -19,7 +19,7 @@ class CreatePedidoDetallesTable extends Migration
             $table->foreignId('producto_id')->constrained('productos');
             $table->integer('orden')->default('0')->nullable();
             $table->integer('cantidad')->default('0');
-            $table->double('coste', 15, 2)->default(0.00);
+            $table->double('coste', 15, 4)->default(0.00);
             $table->string('udcompra_id')->default('0');
             $table->double('iva', 15, 2)->default(0.00);
 

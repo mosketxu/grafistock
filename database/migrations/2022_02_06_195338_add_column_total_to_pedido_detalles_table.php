@@ -14,7 +14,7 @@ class AddColumnTotalToPedidoDetallesTable extends Migration
     public function up()
     {
         Schema::table('pedido_detalles', function (Blueprint $table) {
-            $table->double('total', 15, 2)->default(0.00)->after('iva');
+            $table->double('total', 15, 4)->default(0.00)->after('iva');
         });
     }
 
