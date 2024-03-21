@@ -86,14 +86,16 @@ class PresupLineaDetalle extends Component
         if($this->acciontipo->nombrecorto!='MAT' && $this->acciontipo->nombrecorto!='EMB'){
             $acciones=Accion::where('acciontipo_id',$this->acciontipoId)->orderBy('descripcion')->get();
             $empresatipos=EmpresaTipo::get();
-        }else{
+        }
+        else{
             if($this->acciontipo->nombrecorto=='MAT' || $this->acciontipo->nombrecorto=='EMB' ){
                 $proveedores=Entidad::orderBy('entidad')->has('productos')->get();
                 if($this->acciontipo->nombrecorto=='EMB') $this->filtrofamilia='16';
                 $materiales= Producto::query()
                     ->join('producto_materiales','producto_materiales.id','=','productos.material_id')
-                    ->select('producto_materiales.id', 'producto_materiales.nombre')
+                    ->select('producto_materiales.id', 'producto_materiales.nombre','productos.activo')
                     ->groupBy('material_id')
+                    ->where('productos.activo','1')
                     ->when($this->filtroclipro!='', function ($query){$query->where('entidad_id',$this->filtroclipro);})
                     ->when($this->filtrofamilia!='', function ($query){$query->where('familia_id',$this->filtrofamilia);})
                     ->when($this->filtroacabado!='', function ($query){$query->where('acabado_id',$this->filtroacabado);})
@@ -134,6 +136,7 @@ class PresupLineaDetalle extends Component
 
                 $acciones=Producto::query()
                     ->with('entidad', 'material', 'acabado', 'tipo')
+                    ->where('activo','1')
                     ->search('referencia', $this->search)
                     ->orSearch('descripcion', $this->search)
                     ->when($this->filtrofamilia!='', function ($query) {
@@ -158,6 +161,7 @@ class PresupLineaDetalle extends Component
                 $acciones=Producto::query()
                     ->search('referencia',$this->filtrodescripcion)
                     ->orSearch('descripcion',$this->filtrodescripcion)
+                    ->where('activo','1')
                     ->where('familia_id','16')
                     ->orderBy('referencia','asc')
                     ->get();

@@ -88,7 +88,7 @@
                             </div>
                             <div class="w-full mb-2">
                                 <label for="incremento" class="px-1 text-sm text-gray-600">Incremento (%):</label>
-                                <input type="number" step="any" id="invremento" wire:model.defer="incremento"
+                                <input type="number" step="any" id="incremento" wire:model.defer="incremento"
                                     class="w-full py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                                     required>
                                 @error('incremento') <span class="text-red-500">{{ $message }}</span>@enderror

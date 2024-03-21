@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Entidad;
 use App\Models\Producto;
 use App\Models\ProductoAcabado;
+use App\Models\ProductoFamilia;
 use App\Models\ProductoMaterial;
 use App\Models\ProductoTipo;
 use Illuminate\Support\Facades\Storage;
@@ -80,6 +81,11 @@ class Prods extends Component
                 ->orderBy('producto_tipos.nombre')
                 ->get();
 
+        $tipostodos=ProductoTipo::orderBy('nombre')->get();
+        $familiastodas=ProductoFamilia::orderBy('nombre')->get();
+        $materialestodos=ProductoMaterial::orderBy('nombre')->get();
+        $acabadostodos=ProductoAcabado::orderBy('nombre')->get();
+
         $productos=Producto::query()
             ->with('entidad','material','acabado','tipo')
             ->search('referencia',$this->search)
@@ -105,7 +111,7 @@ class Prods extends Component
             ->orderBy('referencia','asc')
             ->paginate(15);
 
-        return view('livewire.prods',compact('productos','familias','materiales','acabados','proveedores','tipos'));
+        return view('livewire.prods',compact('productos','familias','materiales','acabados','proveedores','tipos','familiastodas','tipostodos','materialestodos','acabadostodos'));
     }
 
     public function updatingSearch(){$this->resetPage();}

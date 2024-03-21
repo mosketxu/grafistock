@@ -89,6 +89,8 @@
         @endif
     </div>
 </div>
+
+@if(Auth::user()->hasRole(['Admin','Gestión']))
 <div class="w-1/12 text-xs">
     <label class="px-1 text-gray-600">
         Activo
@@ -99,8 +101,6 @@
             <option value="0"> Descatalogado </option>
             <option value="1"> Activo </option>
         </select>
-        @if($filtroactivo!='')
-            <x-icon.filter-slash-a wire:click="$set('filtroactivo', '')" class="pb-1" title="reset filter"/>
-        @endif
     </div>
 </div>
+@endif

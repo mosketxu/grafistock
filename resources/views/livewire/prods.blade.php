@@ -79,7 +79,7 @@
                                     @else
                                         <select   wire:change="changeValor({{ $producto }},'familia_id',$event.target.value)"
                                             class="w-full py-0.5 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                            @foreach ($familias as $familia)
+                                            @foreach ($familiastodas as $familia)
                                             <option value="{{ $familia->id }}" {{ $familia->id== $producto->familia_id? 'selected' : '' }}>{{ $familia->nombre }}</option>
                                             @endforeach
                                         </select>
@@ -91,7 +91,7 @@
                                     @else
                                         <select   wire:change="changeValor({{ $producto }},'tipo_id',$event.target.value)"
                                             class="w-full py-0.5 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                            @foreach ($tipos as $tipo)
+                                            @foreach ($tipostodos as $tipo)
                                             <option value="{{ $tipo->id }}" {{ $tipo->id== $producto->tipo_id? 'selected' : '' }}>{{ $tipo->nombre }}</option>
                                             @endforeach
                                         </select>
@@ -104,7 +104,7 @@
                                     @else
                                         <select   wire:change="changeValor({{ $producto }},'material_id',$event.target.value)"
                                             class="w-full py-0.5 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                            @foreach ($materiales as $material)
+                                            @foreach ($materialestodos as $material)
                                             <option value="{{ $material->id }}" {{ $material->id== $producto->material_id? 'selected' : '' }}>{{ $material->nombre }}</option>
                                             @endforeach
                                         </select>
@@ -119,7 +119,7 @@
                                     @else
                                         <select   wire:change="changeValor({{ $producto }},'acabado_id',$event.target.value)"
                                             class="w-full py-0.5 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
-                                            @foreach ($acabados as $acabado)
+                                            @foreach ($acabadostodos as $acabado)
                                             <option value="{{ $acabado->id }}" {{ $acabado->id== $producto->acabado_id? 'selected' : '' }}>{{ $acabado->nombre }}</option>
                                             @endforeach
                                         </select>

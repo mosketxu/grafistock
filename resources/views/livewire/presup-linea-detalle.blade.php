@@ -15,9 +15,6 @@
             </div>
         </div>
 
-        {{-- <div class="py-1 space-y-4">
-            @include('errormessages')
-        </div> --}}
         <div class="mx-2 border rounded">
             @include('presupuestolinea.presupuestolineacabecera')
             {{-- Filtros --}}

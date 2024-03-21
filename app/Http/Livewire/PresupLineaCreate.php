@@ -35,32 +35,27 @@ protected $rules = [
 
 ];
 
-public function messages()
-{
-    return [
-        'descripcion.required' => 'La descripcion es necesaria',
-        'unidades.required' => 'Las unidades son necesarias',
-        'unidades.numeric' => 'Las unidades deben ser un valor numeérico',
-        'unidades.gt' => 'Las unidades deben ser superiores a 0',
-    ];
-}
+    public function messages(){
+        return [
+            'descripcion.required' => 'La descripcion es necesaria',
+            'unidades.required' => 'Las unidades son necesarias',
+            'unidades.numeric' => 'Las unidades deben ser un valor numeérico',
+            'unidades.gt' => 'Las unidades deben ser superiores a 0',
+        ];
+    }
 
-    public function mount($presupuestoId)
-    {
+    public function mount($presupuestoId){
         $this->presupuesto=Presupuesto::find($presupuestoId);
         $this->presupuesto_id=$presupuestoId;
 
     }
 
-    public function render()
-    {
+    public function render(){
             return view('livewire.presup-linea-create');
     }
 
-    public function save()
-    {
+    public function save(){
         $this->validate();
-
 
         $presupuestolinea=PresupuestoLinea::create([
             'presupuesto_id'=>$this->presupuesto_id,
@@ -79,8 +74,6 @@ public function messages()
         return redirect()->route('presupuesto.edit',$presupuesto);
 
     }
-
-
 }
 
 

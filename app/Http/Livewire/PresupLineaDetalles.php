@@ -29,7 +29,7 @@ class PresupLineaDetalles extends Component
         $presuptransportes=$presuplineadetalles->where('acciontipo_id','6');
         $presupexternos=$presuplineadetalles->where('acciontipo_id','7');
 
-        $productos=Producto::orderBy('descripcion')->get();
+        $productos=Producto::where('activo','1')->orderBy('descripcion')->get();
 
         $acciones=Accion::orderBy('acciontipo_id')->orderBy('descripcion')->get();
         $acciontipos=AccionTipo::orderBy('id')->get();
