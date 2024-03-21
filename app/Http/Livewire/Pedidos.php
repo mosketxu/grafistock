@@ -34,14 +34,12 @@ class Pedidos extends Component
         ];
     }
 
-    public function mount(Entidad $entidad)
-    {
+    public function mount(Entidad $entidad){
         $this->filtroanyo=date('Y');
         $this->entidad=$entidad;
     }
 
-    public function render()
-    {
+    public function render(){
         if($this->selectAll) $this->selectPageRows();
         $pedidos = $this->rows;
         $proveedores = Entidad::has('pedidos')->orderBy('entidad')->get();
@@ -60,15 +58,9 @@ class Pedidos extends Component
             return view('livewire.pedidos',compact('pedidos','proveedores','totales'));
     }
 
-    public function updatingFiltroclipro(){
-        $this->resetPage();
-    }
-    public function updatingFiltroanyo(){
-        $this->resetPage();
-    }
-    public function updatingFiltromes(){
-        $this->resetPage();
-    }
+    public function updatingFiltroclipro(){$this->resetPage();}
+    public function updatingFiltroanyo(){$this->resetPage();}
+    public function updatingFiltromes(){$this->resetPage();}
 
     public function getRowsQueryProperty(){
         return Pedido::query()

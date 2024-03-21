@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Exports\ExportPresups;
 use Livewire\Component;
-use App\Models\{AccionTipo, Configuracion, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
-     PresupuestoLinea, PresupuestoLineaDetalle, User,Filtros};
+use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
+     PresupuestoLinea, PresupuestoLineaDetalle, User};
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Presups extends Component
 {
@@ -19,6 +21,7 @@ class Presups extends Component
     public $filtromes='';
     public $filtroclipro='';
     public $filtrosolicitante='';
+    public $filtropedidominimo='';
     public $filtropalabra='';
     public $filtroestado='';
     public $entidad;
@@ -42,15 +45,16 @@ class Presups extends Component
         ];
     }
 
-    public function mount(Entidad $entidad,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado){
+    public function mount(Entidad $entidad,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado,$filtropedidominimo){
         $this->search=$search;
-        // $this->filtroanyo=$filtroanyo ? $filtroanyo : date('Y') ;
         $this->filtroanyo='' ;
         $this->filtromes=$filtromes;
         $this->filtroclipro=$filtroclipro;
         $this->filtrosolicitante=$filtrosolicitante;
+        $this->filtropedidominimo=$filtropedidominimo;
         $this->filtropalabra=$filtropalabra;
         $this->filtroestado=$filtroestado;
+        $this->filtropedidominimo=$filtroestado;
 
         $this->entidad=$entidad;
         if($this->entidad){
@@ -59,9 +63,11 @@ class Presups extends Component
     }
 
     public function render(){
+
         if($this->selectAll) $this->selectPageRows();
 
         $presupuestos = $this->rows;
+
         $clientes = Entidad::query()
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
                 $query->where('comercial_id',Auth::user()->id);
@@ -72,7 +78,6 @@ class Presups extends Component
         $totalventa=$presupuestos->sum('precioventa');
         return view('livewire.presups',compact('presupuestos','clientes','solicitantes','totalcoste','totalventa'));
     }
-
 
     public function updatingSearch(){$this->resetPage();}
     public function updatingFiltroanyo(){$this->resetPage();}
@@ -119,7 +124,6 @@ class Presups extends Component
             $partida->replicate()->fill([
                 'presupuesto_id'=>$clone->id,
             ])->save();
-            // $clonepartida->save();
         }
         // clono las lineas del presupuesto
         foreach($presupuesto->presupuestolineas as $presupuestolinea)
@@ -302,8 +306,67 @@ class Presups extends Component
             })
             ->when(Auth::user()->hasRole('Comercial'),function ($query){
                 $query->when(!Auth::user()->hasRole('Admin'),function ($q){
-                $q->whereRelation('ent','comercial_id',Auth::user()->id)->get();
+                    $q->whereRelation('ent','comercial_id',Auth::user()->id)->get();
                 ;});
+            })
+            ->when($this->filtropedidominimo!='', function ($query){
+                $pl = PresupuestoLinea::whereHas('presupuestolineadetalles', function($q){
+                    $q->where('accionproducto_id', '1056');
+                })->pluck('presupuesto_id');
+                if($this->filtropedidominimo=='1')
+                    $query->whereIn('presupuestos.id',$pl);
+                else
+                    $query->whereNotIn('presupuestos.id',$pl);
+            })
+            ->searchYear('fechapresupuesto',$this->filtroanyo)
+            ->searchMes('fechapresupuesto',$this->filtromes)
+            ->search('presupuestos.descripcion',$this->filtropalabra)
+            ->search('presupuestos.presupuesto',$this->search)
+            ->orderBy('presupuestos.fechapresupuesto','desc')
+            ->orderBy('presupuestos.id','desc');
+            // ->paginate(5); solo contemplo la query, no el resultado. Luego pongo el resultado: get, paginate o lo que quiera
+
+    }
+
+    public function getXlsQueryProperty(){
+        return Presupuesto::query()
+            ->join('entidades','presupuestos.entidad_id','=','entidades.id')
+            ->join('users','presupuestos.solicitante_id','=','users.id')
+            ->select(
+                'presupuestos.id',
+                'presupuestos.presupuesto',
+                'presupuestos.fechapresupuesto',
+                'entidades.entidad',
+                'users.name',
+                'presupuestos.descripcion',
+                'presupuestos.preciocoste',
+                'presupuestos.precioventa'
+                )
+            ->when($this->entidad->id!='', function ($query){
+                $query->where('entidad_id',$this->entidad->id);
+                })
+            ->when($this->filtroclipro!='', function ($query){
+                $query->where('entidad_id',$this->filtroclipro);
+                })
+            ->when($this->filtrosolicitante!='', function ($query){
+                $query->where('solicitante_id',$this->filtrosolicitante);
+                })
+            ->when($this->filtroestado!='', function ($query){
+                $query->where('presupuestos.estado',$this->filtroestado);
+            })
+            ->when(Auth::user()->hasRole('Comercial'),function ($query){
+                $query->when(!Auth::user()->hasRole('Admin'),function ($q){
+                    $q->whereRelation('ent','comercial_id',Auth::user()->id)->get();
+                ;});
+            })
+            ->when($this->filtropedidominimo!='', function ($query){
+                $pl = PresupuestoLinea::whereHas('presupuestolineadetalles', function($q){
+                    $q->where('accionproducto_id', '1056');
+                })->pluck('presupuesto_id');
+                if($this->filtropedidominimo=='1')
+                    $query->whereIn('presupuestos.id',$pl);
+                else
+                    $query->whereNotIn('presupuestos.id',$pl);
             })
             ->searchYear('fechapresupuesto',$this->filtroanyo)
             ->searchMes('fechapresupuesto',$this->filtromes)
@@ -320,13 +383,47 @@ class Presups extends Component
     }
 
     public function exportSelected(){
-    //toCsv es una macro a n AppServiceProvider
+        //toCsv es una macro a n AppServiceProvider
         return response()->streamDownload(function(){
             echo $this->selectedRowsQuery->toCsv();
         },'presupuestos.csv');
 
         $this->dispatchBrowserEvent('notify', 'CSV Presupuestos descargado!');
     }
+
+    public function exportPresupuestosSelectedXLS(){
+        $seleccion=$this->selectedXlsQuery->get();
+        $filas=$seleccion->count();
+
+        $ent=$this->filtroentidad ? Entidad::find($this->filtroentidad)->entidad:'';
+        $sol=$this->filtrosolicitante ? User::find($this->filtrosolicitante):'';
+        $est='';
+        if($this->filtroestado!=''){
+            switch ($this->filtroestado) {
+                case 0:
+                    $est="En Curso";
+                    break;
+                case 1:
+                    $est="Aprobado";
+                    break;
+                case 2:
+                    $est="Rechazado";
+                    break;
+            }
+        }
+        return Excel::download(new ExportPresups(
+            $seleccion,
+            $est,
+            $ent,
+            $sol,
+            $this->filtroFi,
+            $this->filtroFf,
+            $filas,
+            $this->filtropedidominimo
+        ), 'Presupuestos.xlsx');
+    }
+
+
 
     public function deleteSelected(){
         $deleteCount = $this->selectedRowsQuery->count();

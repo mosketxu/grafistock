@@ -28,8 +28,7 @@ class DashPresupuestos extends Component
 
 
 
-    public function render()
-    {
+    public function render(){
         // $presupuestos=$this->estadistica();
         $presupuestos=Presupuesto::presupuestos(
             $this->mesanyo,

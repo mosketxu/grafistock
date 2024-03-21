@@ -91,7 +91,6 @@
                         </label>
                     </div>
                 </div>
-               </label>
                 <div class="">
                     <div class="flex">
                         <p class="w-2/12">De: </p>
@@ -104,7 +103,6 @@
                         <input type="number" wire:model="filtroventasFin"
                         class="w-10/12 py-2 text-xs text-gray-600 placeholder-gray-300 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none"
                         placeholder="Cifra Final" />
-                </div>
                 </div>
             </div>
         </div>

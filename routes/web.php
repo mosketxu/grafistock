@@ -73,8 +73,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('stockpeticion', StockPeticionController::class);
 
     //presupuestos
-    Route::get('presupuesto/indexvble/{search}/{filtroanyo}/{filtromes}/{filtroclipro}/{filtrosolicitante}/{filtropalabra}/{filtroestado}', [PresupuestoController::class,'indexvble'])->name('presupuesto.indexvbles');
-    Route::get('presupuesto/composicion/{presupuesto}/{search}/{filtroanyo}/{filtromes}/{filtroclipro}/{filtrosolicitante}/{filtropalabra}/{filtroestado}', [PresupuestoController::class,'composicion'])->name('presupuesto.composicion');
+    Route::get('presupuesto/indexvble/{search}/{filtroanyo}/{filtromes}/{filtroclipro}/{filtrosolicitante}/{filtropalabra}/{filtroestado}/{filtropedidominimo}', [PresupuestoController::class,'indexvble'])->name('presupuesto.indexvbles');
+    Route::get('presupuesto/composicion/{presupuesto}/{search}/{filtroanyo}/{filtromes}/{filtroclipro}/{filtrosolicitante}/{filtropalabra}/{filtroestado}/{filtropedidominimo}', [PresupuestoController::class,'composicion'])->name('presupuesto.composicion');
     Route::get('presupuesto/ficha/{presupuesto}/{totales}', [PresupuestoController::class,'imprimir'])->name('presupuesto.imprimir');
     Route::get('presupuesto/ficha/{presupuesto}', [PresupuestoController::class,'html'])->name('presupuesto.html');
     Route::resource('presupuesto', PresupuestoController::class);

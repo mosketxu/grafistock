@@ -2,8 +2,6 @@
     @livewire('menu',['entidad'=>$entidad],key($entidad->id))
     <div class="p-1 mx-2">
         <h1 class="text-2xl font-semibold text-gray-900">Presupuestos</h1>
-        {{-- <p>            search:{{$search}}-filtroanyo:{{$filtroanyo}}-filtromes:{{$filtromes}}- filtroclipro:{{$filtroclipro}}- filtrosolicitante:{{$filtrosolicitante}}- filtropalabra:{{$filtropalabra}}-filtroestado:{{$filtroestado}}
-        </p> --}}
         <div class="py-1 space-y-4">
             @include('error')
         </div>
@@ -72,6 +70,22 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="text-xs">
+                            <label class="px-1 text-gray-600">
+                                P.Min
+                            </label>
+                            <div class="flex">
+                                <select wire:model="filtropedidominimo"
+                                    class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                    <option value="">-- selecciona --</option>
+                                    <option value="0">No</option>
+                                    <option value="1">Sí</option>
+                                </select>
+                                @if($filtropedidominimo!='')
+                                    <x-icon.filter-slash-a wire:click="$set('filtropedidominimo', '')" class="pb-1" title="reset filter" />
+                                @endif
+                            </div>
+                        </div>
                     @endif
                     <div class="text-xs">
                         <label class="px-1 text-gray-600">
@@ -121,7 +135,10 @@
                 <div class="inline-flex mt-3 space-x-2">
                     <x-dropdown label="Actions">
                         <x-dropdown.item type="button" wire:click="exportSelected" class="flex items-center space-x-2">
-                            <x-icon.csv class="text-green-400"></x-icon.csv><span>Export </span>
+                            <x-icon.csv class="text-green-400"></x-icon.csv><span>CSV </span>
+                        </x-dropdown.item>
+                        <x-dropdown.item type="button" wire:click="exportPresupuestosSelectedXLS" class="flex items-center space-x-2">
+                            <x-icon.xls class="text-red-400"></x-icon.xls><span>Export </span>
                         </x-dropdown.item>
                         <x-dropdown.item type="button" wire:click="$toggle('showDeleteModal')"
                             class="flex items-center space-x-2">
@@ -239,7 +256,7 @@
                                         <x-icon.edit-a wire:click="edit({{ $presupuesto->id }})" class="text-green-600" title="Editar Presupuesto" />
                                         <x-icon.calc-a href="{{route('presupuesto.composicion', [$presupuesto,
                                                 $search ? $search : '@_' ,$filtroanyo ? $filtroanyo : '@_', $filtromes ? $filtromes : '@_', $filtroclipro ? $filtroclipro : '@_',
-                                                $filtrosolicitante ? $filtrosolicitante : '@_', $filtropalabra ? $filtropalabra : '@_', $filtroestado ? $filtroestado : '@_']) }}"
+                                                $filtrosolicitante ? $filtrosolicitante : '@_', $filtropalabra ? $filtropalabra : '@_', $filtroestado ? $filtroestado : '@_',$filtropedidominimo ? $filtropedidominimo : '@_']) }}"
                                             class="text-green-600" title="Composición Presupuesto" />
                                         <x-icon.copy-a wire:click="replicateRow({{ $presupuesto }})" onclick="confirm('¿Estás seguro de querer copiar el presupuesto?') || event.stopImmediatePropagation()" class="text-purple-500" title="Copiar Presupuesto" />
                                     @endif

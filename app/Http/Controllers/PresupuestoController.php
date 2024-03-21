@@ -30,19 +30,21 @@ class PresupuestoController extends Controller
         $filtromes='';
         $filtroclipro='';
         $filtrosolicitante='';
+        $filtropedidominimo='';
         $filtropalabra='';
         $filtroestado='';
 
-        return view('presupuesto.index',compact(['search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado']));
+        return view('presupuesto.index',compact(['search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado','filtropedidominimo']));
     }
 
-    public function indexvble($search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado)
+    public function indexvble($search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado,$filtropedidominimo)
     {
         $search=str_replace('@_','',$search);
         $filtroanyo=str_replace('@_','',$filtroanyo);
         $filtromes=str_replace('@_','',$filtromes);
         $filtroclipro=str_replace('@_','',$filtroclipro);
         $filtrosolicitante=str_replace('@_','',$filtrosolicitante);
+        $filtropedidominimo=str_replace('@_','',$filtropedidominimo);
         $filtropalabra=str_replace('@_','',$filtropalabra);
         $filtroestado=str_replace('@_','',$filtroestado);
 
@@ -73,15 +75,16 @@ class PresupuestoController extends Controller
         return $pdf->stream('invoice.pdf'); //asi lo muestra por pantalla
     }
 
-    public function composicion(Presupuesto $presupuesto,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado){
+    public function composicion(Presupuesto $presupuesto,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado,$filtropedidominimo){
         // $search= str_replace('@_','',$search);
         // $filtroanyo= str_replace('@_','',$filtroanyo);
         // $filtromes= str_replace('@_','',$filtromes);
         // $filtroclipro= str_replace('@_','',$filtroclipro);
         // $filtrosolicitante= str_replace('@_','',$filtrosolicitante);
+        // $filtropedidominimo= str_replace('@_','',$filtropedidominimo);
         // $filtropalabra= str_replace('@_','',$filtropalabra);
         // $filtroestado= str_replace('@_','',$filtroestado);
-        return view('presupuesto.edit',compact(['presupuesto','search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado']));
+        return view('presupuesto.edit',compact(['presupuesto','search','filtroanyo','filtromes','filtroclipro','filtrosolicitante','filtropalabra','filtroestado','filtropedidominimo']));
     }
 
     /**
@@ -97,6 +100,7 @@ class PresupuestoController extends Controller
         $filtromes='';
         $filtroclipro='';
         $filtrosolicitante='';
+        $filtropedidominimo='';
         $filtropalabra='';
         $filtroestado='';
 
