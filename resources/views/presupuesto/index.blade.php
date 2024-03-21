@@ -9,7 +9,6 @@
                                 'filtrosolicitante'=>$filtrosolicitante,
                                 'filtropalabra'=>$filtropalabra,
                                 'filtroestado'=>$filtroestado,
-                                'filtropedidominimo'=>$filtropedidominimo
                 ])
             </div>
         </div>

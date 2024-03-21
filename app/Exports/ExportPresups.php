@@ -11,8 +11,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-// class ExportPresups implements FromCollection,WithCustomStartCell,WithHeadings,WithStrictNullComparison,ShouldAutoSize,WithStyles
-class ExportPresups implements FromCollection,WithHeadings
+class ExportPresups implements FromCollection,WithCustomStartCell,WithHeadings,WithStrictNullComparison,ShouldAutoSize,WithStyles
 {
     public $desplazamiento=10;
     public $estado;
@@ -39,13 +38,7 @@ class ExportPresups implements FromCollection,WithHeadings
     }
 
     public function styles(Worksheet $sheet){
-        //columnas con formulas
-        // if($this->mes!=true){
-        //     $t1='D';$t2='E';$t3='F';$t4='G';
-        // }else{
-            // $t1='E';$t2='F';$t3='G';$t4='H';
-            $t1='E';$t2='F';$t3='G';$t4='H';$t5='I';
-        // }
+        $t1='F';$t2='G';$t3='H';$t4='I';$t5='J';
         //titulo
         $sheet->getStyle('B2')->getFont()->setSize(16);
         $sheet->getStyle('B2')->getFont()->setBold(true);
@@ -86,9 +79,8 @@ class ExportPresups implements FromCollection,WithHeadings
             ['Filtro Comercial',$this->comercial->name?? '',],
             ['Filtro Entidad',$this->entidad],
             ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
-            ['Filtro Ventas:','De',$this->vi,'A:',$this->vf],
             [' ',' '],
-            ['Cliente','Comercial','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','Margen Bruto','Estado']
+            ['Cliente','Comercial','Id','Presupuesto','Fecha Presupuesto','Precio Coste','Precio Venta','Margen','Margen Bruto','Estado']
         ];
     }
     /**

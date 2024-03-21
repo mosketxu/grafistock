@@ -5,11 +5,12 @@ namespace App\Http\Livewire;
 use App\Exports\ExportPresups;
 use Livewire\Component;
 use App\Models\{AccionTipo, Presupuesto,Entidad, EntidadContacto, PresupuestoControlpartida,
-     PresupuestoLinea, PresupuestoLineaDetalle, User};
+     PresupuestoLinea, PresupuestoLineaDetalle, Producto, User};
 use Livewire\WithPagination;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Presups extends Component
@@ -24,6 +25,9 @@ class Presups extends Component
     public $filtropedidominimo='';
     public $filtropalabra='';
     public $filtroestado='';
+    public $filtroentidad='';
+    public $filtroFi='';
+    public $filtroFf='';
     public $entidad;
     public $message;
     public $total;
@@ -45,13 +49,12 @@ class Presups extends Component
         ];
     }
 
-    public function mount(Entidad $entidad,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado,$filtropedidominimo){
+    public function mount(Entidad $entidad,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado){
         $this->search=$search;
         $this->filtroanyo='' ;
         $this->filtromes=$filtromes;
         $this->filtroclipro=$filtroclipro;
         $this->filtrosolicitante=$filtrosolicitante;
-        $this->filtropedidominimo=$filtropedidominimo;
         $this->filtropalabra=$filtropalabra;
         $this->filtroestado=$filtroestado;
         $this->filtropedidominimo=$filtroestado;
@@ -311,7 +314,8 @@ class Presups extends Component
             })
             ->when($this->filtropedidominimo!='', function ($query){
                 $pl = PresupuestoLinea::whereHas('presupuestolineadetalles', function($q){
-                    $q->where('accionproducto_id', '1056');
+                    $productopedidominimo=Producto::where('descripcion','Pedido Mínimo')->first()->id;
+                    $q->where('accionproducto_id', $productopedidominimo);
                 })->pluck('presupuesto_id');
                 if($this->filtropedidominimo=='1')
                     $query->whereIn('presupuestos.id',$pl);
@@ -332,16 +336,12 @@ class Presups extends Component
         return Presupuesto::query()
             ->join('entidades','presupuestos.entidad_id','=','entidades.id')
             ->join('users','presupuestos.solicitante_id','=','users.id')
-            ->select(
-                'presupuestos.id',
-                'presupuestos.presupuesto',
-                'presupuestos.fechapresupuesto',
-                'entidades.entidad',
-                'users.name',
-                'presupuestos.descripcion',
-                'presupuestos.preciocoste',
-                'presupuestos.precioventa'
-                )
+            ->select('entidades.entidad as entidad','users.name as comercial',
+                'presupuestos.id','presupuestos.presupuesto','presupuestos.fechapresupuesto','presupuestos.preciocoste','presupuestos.precioventa',
+                DB::raw('presupuestos.precioventa- presupuestos.preciocoste as margen'),
+                DB::raw('(presupuestos.precioventa- presupuestos.preciocoste) / presupuestos.precioventa as porcentajemargen'),
+                DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
+
             ->when($this->entidad->id!='', function ($query){
                 $query->where('entidad_id',$this->entidad->id);
                 })
@@ -361,7 +361,8 @@ class Presups extends Component
             })
             ->when($this->filtropedidominimo!='', function ($query){
                 $pl = PresupuestoLinea::whereHas('presupuestolineadetalles', function($q){
-                    $q->where('accionproducto_id', '1056');
+                    $productopedidominimo=Producto::where('descripcion','Pedido Mínimo')->first()->id;
+                    $q->where('accionproducto_id', $productopedidominimo);
                 })->pluck('presupuesto_id');
                 if($this->filtropedidominimo=='1')
                     $query->whereIn('presupuestos.id',$pl);
@@ -398,6 +399,7 @@ class Presups extends Component
         $ent=$this->filtroentidad ? Entidad::find($this->filtroentidad)->entidad:'';
         $sol=$this->filtrosolicitante ? User::find($this->filtrosolicitante):'';
         $est='';
+        $pmin='Todos';
         if($this->filtroestado!=''){
             switch ($this->filtroestado) {
                 case 0:
@@ -411,6 +413,16 @@ class Presups extends Component
                     break;
             }
         }
+        if($this->filtropedidominimo!=''){
+            switch ($this->filtropedidominimo) {
+                case 0:
+                    $pmin="Sin Pedido Mínimo";
+                    break;
+                case 1:
+                    $pmin="Con Pedido Mínimo";
+                    break;
+            }
+        }
         return Excel::download(new ExportPresups(
             $seleccion,
             $est,
@@ -419,7 +431,7 @@ class Presups extends Component
             $this->filtroFi,
             $this->filtroFf,
             $filas,
-            $this->filtropedidominimo
+            $pmin
         ), 'Presupuestos.xlsx');
     }
 

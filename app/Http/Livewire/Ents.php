@@ -48,7 +48,6 @@ class Ents extends Component
         $ia=$entidad->incrementoanual=='1' ? '0' : '1';
         $entidad->update(['incrementoanual'=>$ia]);
         $this->dispatchBrowserEvent('notify', 'Actualizada con éxito.');
-        // dd('0sdf');
     }
 
     public function delete($entidadId)

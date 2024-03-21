@@ -39,7 +39,6 @@ class AccionTipos extends Component
             ->orSearch('nombre',$this->search)
             ->orderBy('nombrecorto')->get();
 
-        // dd($valores);
         return view('livewire.auxiliarcard3',compact('valores'));
     }
 

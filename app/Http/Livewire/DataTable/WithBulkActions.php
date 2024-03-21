@@ -35,9 +35,7 @@ trait WithBulkActions
             ->unless($this->selectAll, fn($query) => $query->whereKey($this->selected));
     }
 
-    public function getSelectedXlsQueryProperty()
-    {
-        // dd($this->xlsQuery);
+    public function getSelectedXlsQueryProperty(){
         return (clone $this->xlsQuery)
             ->unless($this->selectAll, fn($query) => $query->whereKey($this->selected));
     }

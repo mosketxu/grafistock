@@ -40,11 +40,10 @@
 
         @livewire('presup-lineas',['presupuesto'=>$presupuesto],key($presupuesto->id))
 
-
         <div class="flex mt-2 ml-2 space-x-4">
             <div class="space-x-3">
                 @if($search!='')
-                    <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.indexvbles', [$search , $filtroanyo , $filtromes , $filtroclipro , $filtrosolicitante , $filtropalabra , $filtroestado,$filtropedidominimo ]) }} '">{{ __('Volver') }}</x-jet-secondary-button>
+                    <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.indexvbles', [$search , $filtroanyo , $filtromes , $filtroclipro , $filtrosolicitante , $filtropalabra , $filtroestado ]) }} '">{{ __('Volver') }}</x-jet-secondary-button>
                 @else
                     <x-jet-secondary-button  onclick="location.href = '{{route('presupuesto.index')}}'">{{ __('Volver') }}</x-jet-secondary-button>
                 @endif

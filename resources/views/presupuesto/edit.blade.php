@@ -9,8 +9,7 @@
                                     'filtroclipro'=>$filtroclipro,
                                     'filtrosolicitante'=>$filtrosolicitante,
                                     'filtropalabra'=>$filtropalabra,
-                                    'filtroestado'=>$filtroestado,
-                                    'filtropedidominimo'=>$filtropedidominimo
+                                    'filtroestado'=>$filtroestado
                 ],key($presupuesto->id))
             </div>
         </div>

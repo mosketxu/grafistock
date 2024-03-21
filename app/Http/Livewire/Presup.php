@@ -29,7 +29,6 @@ class Presup extends Component
     public $filtromes;
     public $filtroclipro;
     public $filtrosolicitante;
-    public $filtropedidominimo;
     public $filtropalabra;
     public $filtroestado;
 
@@ -57,7 +56,7 @@ class Presup extends Component
         $this->preciocoste=$this->presupuesto->preciocoste;
     }
 
-    public function mount(Presupuesto $presupuesto,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado,$filtropedidominimo){
+    public function mount(Presupuesto $presupuesto,$search,$filtroanyo,$filtromes,$filtroclipro,$filtrosolicitante,$filtropalabra,$filtroestado){
         $this->presupuesto=$presupuesto;
         $this->descripcion=$presupuesto->descripcion;
         $this->estado=$presupuesto->estado;
@@ -74,7 +73,6 @@ class Presup extends Component
         $this->$filtromes=$filtromes;
         $this->$filtroclipro=$filtroclipro;
         $this->$filtrosolicitante=$filtrosolicitante;
-        $this->$filtropedidominimo=$filtropedidominimo;
         $this->$filtropalabra=$filtropalabra;
         $this->$filtroestado=$filtroestado;
     }
