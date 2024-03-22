@@ -112,7 +112,7 @@ class Presupuesto extends Model
             ->selectRaw('count(presupuestos.id) as numpresups')
             ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')
             ->selectRaw('sum(presupuestos.precioventa) as ventas')
-            ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,$filtropedidominimo)
+            ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin)
             ->groupBy('entidad','presupuestos.estado','comercial')
             ->get();
         else
@@ -125,7 +125,7 @@ class Presupuesto extends Model
             ->selectRaw('count(presupuestos.id) as numpresups')
             ->selectRaw('sum(presupuestos.precioventa - presupuestos.preciocoste ) as margenbruto')
             ->selectRaw('sum(presupuestos.precioventa) as ventas')
-            ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,$filtropedidominimo)
+            ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin)
             ->groupBy('entidad','presupuestos.estado','comercial',DB::raw("DATE_FORMAT(fechapresupuesto, '%m-%Y')"))
             ->get();
     }
@@ -140,7 +140,7 @@ class Presupuesto extends Model
             DB::raw('presupuestos.precioventa- presupuestos.preciocoste as margen'),
             DB::raw('(presupuestos.precioventa- presupuestos.preciocoste) / presupuestos.precioventa as porcentajemargen'),
             DB::raw('(CASE WHEN presupuestos.estado = ' . 1 . ' THEN "Aceptado" WHEN presupuestos.estado='. 0 .' then "En Curso" ELSE "Rechazado" END) AS status'))
-        ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin,$filtropedidominimo)
+        ->filtrosPresupuestos($filtroentidad,$filtrosolicitante,$filtroestado,$filtroFi,$filtroFf,$filtroventasIni,$filtroventasFin)
         ->get();
     }
 

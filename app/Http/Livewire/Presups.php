@@ -57,7 +57,6 @@ class Presups extends Component
         $this->filtrosolicitante=$filtrosolicitante;
         $this->filtropalabra=$filtropalabra;
         $this->filtroestado=$filtroestado;
-        $this->filtropedidominimo=$filtroestado;
 
         $this->entidad=$entidad;
         if($this->entidad){
