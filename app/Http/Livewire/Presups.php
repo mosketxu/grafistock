@@ -292,6 +292,7 @@ class Presups extends Component
 
     public function getRowsQueryProperty(){
         return Presupuesto::query()
+            ->with('pminimo','solicitante','ent')
             ->join('entidades','presupuestos.entidad_id','=','entidades.id')
             ->select('presupuestos.*', 'entidades.entidad', 'entidades.nif','entidades.emailadm')
             ->when($this->entidad->id!='', function ($query){

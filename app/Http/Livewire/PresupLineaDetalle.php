@@ -80,7 +80,10 @@ class PresupLineaDetalle extends Component
                 ->orderBy('entidad')->get();
             $entidadcategorias=EntidadCategoria::orderBy('nombre')->get();
         }
-        $presupacciones=PresupuestoLineaDetalle::where('presupuestolinea_id',$this->presuplinea->id)->where('acciontipo_id',$this->acciontipoId)->orderBy('orden')->get();
+        $presupacciones=PresupuestoLineaDetalle::with('acciontipo','accion','unidadpreciocoste')
+            ->where('presupuestolinea_id',$this->presuplinea->id)
+            ->where('acciontipo_id',$this->acciontipoId)
+            ->orderBy('orden')->get();
         $this->tituloaccion=$this->acciontipo->nombre;
 
         if($this->acciontipo->nombrecorto!='MAT' && $this->acciontipo->nombrecorto!='EMB'){

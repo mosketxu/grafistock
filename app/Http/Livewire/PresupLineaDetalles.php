@@ -42,9 +42,9 @@ class PresupLineaDetalles extends Component
             $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
         else{
             //Preparamos y validamos antes de actualizar
-            if($valor=="unidades") if(!$valor) $valor=1;
-            if($valor=="preciocompra_ud") if(!$valor) $valor=0;
-            if($valor=="precioventa_ud"){
+            if($campo=="unidades") if(!$valor) $valor=1;
+            if($campo=="preciocompra_ud") if(!$valor) $valor=0;
+            if($campo=="precioventa_ud"){
                 if($valor<$this->preciominimo){
                     $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
                     $valor=$this->preciominimo;
@@ -59,8 +59,9 @@ class PresupLineaDetalles extends Component
             }
             if($calculo=='concalculo') Validator::make([$campo=>$valor],[$campo=>'numeric|required'])->validate();
             //Actualizamos
-            if($valor=="factor")
+            if($campo=="factor"){
                 $presupaccion->update(['factor'=>$valor,'precioventa_ud'=>round($presupaccion->preciocoste_ud * $valor,2)]);
+            }
             else{
                 $presupaccion->update([$campo=>$valor]);
             }
