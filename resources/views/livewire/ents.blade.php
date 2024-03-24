@@ -64,7 +64,8 @@
                 <div class="w-1/12"></div>
             </div>
             @forelse ($entidades as $entidad)
-            <div class="flex hover:bg-gray-100" wire:loading.class.delay="opacity-50" >
+            {{-- <div class="flex hover:bg-gray-100" wire:loading.class.delay="opacity-50" > --}}
+            <div class="flex hover:bg-gray-100"  >
                 <div class="w-5/12 xl:w-2/12"><input type="text" value="{{ $entidad->entidad }}" class="w-full py-1 text-sm font-thin text-gray-500 truncate bg-transparent border-0 rounded-md"  readonly/></div>
                 <div class="w-2/12 xl:w-2/12"><input type="text" value="{{ $entidad->entidadtipo->nombre ?? '-'}}" class="w-full py-1 text-sm font-thin text-gray-500 truncate bg-transparent border-0 rounded-md"  readonly/></div>
                 <div class="w-2/12"><input type="text" value="{{ $entidad->nif }}" class="w-full py-1 text-sm font-thin text-gray-500 truncate bg-transparent border-0 rounded-md"  readonly/></div>
