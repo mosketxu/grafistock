@@ -157,10 +157,8 @@ class PresupLineas extends Component
         }
     }
 
-
     public function getRowsQueryProperty(){
-
-        return PresupuestoLinea::where('presupuesto_id',$this->presupuesto->id)->orderBy('orden');
+        return PresupuestoLinea::with('pminimo')->where('presupuesto_id',$this->presupuesto->id)->orderBy('orden');
     }
 
     public function getRowsProperty(){

@@ -90,7 +90,7 @@
     </div>
 </div>
 
-@if(Auth::user()->hasRole(['Admin','Gestión']))
+{{-- @if(Auth::user()->hasRole(['Admin','Gestión']))
 <div class="w-1/12 text-xs">
     <label class="px-1 text-gray-600">
         Activo
@@ -103,4 +103,4 @@
         </select>
     </div>
 </div>
-@endif
+@endif --}}

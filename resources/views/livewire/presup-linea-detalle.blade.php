@@ -141,7 +141,7 @@
                 </div>
             </form>
             <div class="space-y-2 ">
-                @include('presupuestolinea.presupuestolineadetalles',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
+                @include('presupuestolinea.presupuestolineadetalles_include',['presupacciones' => $presupacciones,'acciontipoId'=>$acciontipo->id,'accion'=>$acciontipo->nombre])
             </div>
         </div>
     </div>

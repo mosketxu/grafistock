@@ -87,7 +87,7 @@ class Prods extends Component
         $acabadostodos=ProductoAcabado::orderBy('nombre')->get();
 
         $productos=Producto::query()
-            ->with('entidad','material','acabado','tipo')
+            ->with('entidad','material','acabado','tipo','unidadancho','unidadalto','unidadsolicitud','unidadpreciocoste','unidadpreciocompra')
             ->search('referencia',$this->search)
             ->orSearch('descripcion',$this->search)
             ->when($this->filtrofamilia!='', function ($query){
@@ -123,8 +123,6 @@ class Prods extends Component
     public function updatingFiltrogrupoprod(){$this->resetPage();}
 
     public function changeValor(Producto $producto,$campo,$valor){
-
-
         $material = $campo=='material_id' ? ProductoMaterial::find($valor)->nombrecorto : $producto->material->nombrecorto ?? '';
         $tipo = $campo=='tipo_id' ? ProductoTipo::find($valor)->nombrecorto : $producto->tipo->nombrecorto ?? '';
         $acabado = $campo=='acabado_id' ? ProductoAcabado::find($valor)->nombrecorto : $producto->acabado->nombrecorto ?? '';

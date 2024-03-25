@@ -44,7 +44,7 @@ class PresupLineaDetalles extends Component
             //Preparamos y validamos antes de actualizar
             if($valor=="unidades") if(!$valor) $valor=1;
             if($valor=="preciocompra_ud") if(!$valor) $valor=0;
-            dd($valor);
+
             if($valor=="precioventa_ud"){
                 if($valor<$this->preciominimo){
                     $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
@@ -60,8 +60,9 @@ class PresupLineaDetalles extends Component
             }
             if($calculo=='concalculo') Validator::make([$campo=>$valor],[$campo=>'numeric|required'])->validate();
             //Actualizamos
-            if($valor=="factor")
+            if($campo=="factor"){
                 $presupaccion->update(['factor'=>$valor,'precioventa_ud'=>round($presupaccion->preciocoste_ud * $valor,2)]);
+            }
             else{
                 $presupaccion->update([$campo=>$valor]);
             }

@@ -138,6 +138,8 @@ class Prod extends Component
             $this->producto->costereal=0;
         if (!$this->producto->preciocoste)
             $this->producto->preciocoste=0;
+        if (!$this->producto->activo)
+            $this->producto->activo=1;
 
         $prod=Producto::updateOrCreate([
             'id'=>$i

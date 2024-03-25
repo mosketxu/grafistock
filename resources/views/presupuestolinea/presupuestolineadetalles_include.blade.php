@@ -30,7 +30,7 @@
                         @if ($presupaccion->acciontipo->nombrecorto=="IMP")
                         <td class="w-12 pl-3">{{ __('Cat.Emp') }}</td>
                         @endif
-                        <td class="pl-3 ">{{ __('Descr.Prespuesto') }} </td>
+                        <td class="pl-3 ">{{ __('Descr.Presupuesto') }} </td>
                         <td class="pl-3 ">{{ $presupaccion->acciontipo->nombrecorto=="MAT" ? 'Producto' : 'Acción' }} </td>
                         <td class="pl-3 ">{{ __('Ref.') }} </td>
                         <td class="w-24 pr-3 text-right ">{{ __('€ Compra/Ud') }}</td>
@@ -151,7 +151,7 @@
                                 <div class="flex items-center justify-center">
                                     <x-icon.delete-a wire:click.prevent="delete({{ $presupaccion->id }})" onclick="confirm('¿Estás seguro?') || event.stopImmediatePropagation()" class="pl-1"  title="Eliminar linea"/>
                                 </div>
-                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

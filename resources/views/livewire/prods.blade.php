@@ -25,6 +25,20 @@
                     <div class="pt-3">
                         <x-button.button  onclick="location.href = '{{ route('producto.create') }}'" color="blue"><x-icon.plus/>{{ __('Nuevo') }}</x-button.button>
                     </div>
+                    @if(Auth::user()->hasRole(['Admin','Gestión']))
+                    <div class="mx-2 text-xs">
+                        <label class="px-1 text-gray-600">
+                            Activo
+                        </label>
+                        <div class="flex">
+                            <select wire:model="filtroactivo" class="w-full py-2 text-xs text-gray-600 bg-white border-blue-300 rounded-md shadow-sm appearance-none hover:border-gray-400 focus:outline-none">
+                                <option value=""></option>
+                                <option value="0"> Descatalogado </option>
+                                <option value="1"> Activo </option>
+                            </select>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
             {{-- tabla entidades --}}

@@ -10,7 +10,7 @@
             <div class="space-y-2 ">
                 @foreach($acciontipos as $actipo)
                     @if (in_array($actipo->id,$controlpartidas))
-                        @include('presupuestolinea.presupuestolineadetalles',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
+                        @include('presupuestolinea.presupuestolineadetalles_include',['presupacciones' => $presuplineadetalles->where('acciontipo_id',$actipo->id),'acciontipo'=>$actipo])
                     @endif
                 @endforeach
             </div>
