@@ -38,7 +38,7 @@ class PresupLineaDetalles extends Component
     }
 
     public function changeValor(PresupuestoLineaDetalle $presupaccion,$campo,$calculo,$valor){
-        if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia="Pedido Mínomo")
+        if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia="Pedido Mínimo")
             $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
         else{
             //Preparamos y validamos antes de actualizar
