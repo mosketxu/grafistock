@@ -120,7 +120,7 @@ class PresupLineas extends Component
 
     function pedidominimo(PresupuestoLinea $presupuestolinea) {
         if($this->presupuesto->pminimo->count()==0){
-            $producto=Producto::where('descripcion','Pedido Minimo')->first();
+            $producto=Producto::where('descripcion','Pedido Mínimo')->first();
             $empresa=Entidad::find($this->presupuesto->entidad_id);
             $pldetalle = PresupuestoLineaDetalle::create([
                 'presupuestolinea_id'=>$presupuestolinea->id,
@@ -152,7 +152,7 @@ class PresupLineas extends Component
             $this->emit('presupuestorefresh');
             $this->emit('linearefresh');
 
-            $this->dispatchBrowserEvent('notify', 'Pedido minimo añadido!');
+            $this->dispatchBrowserEvent('notify', 'Pedido mínimo añadido!');
 
         }
     }

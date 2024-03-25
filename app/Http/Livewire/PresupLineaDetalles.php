@@ -44,6 +44,7 @@ class PresupLineaDetalles extends Component
             //Preparamos y validamos antes de actualizar
             if($valor=="unidades") if(!$valor) $valor=1;
             if($valor=="preciocompra_ud") if(!$valor) $valor=0;
+            dd($valor);
             if($valor=="precioventa_ud"){
                 if($valor<$this->preciominimo){
                     $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
@@ -125,7 +126,7 @@ class PresupLineaDetalles extends Component
 
     public function delete($lineaId){
         $lineaBorrar = PresupuestoLineaDetalle::find($lineaId);
-        if(!Auth::user()->hasRole('Admin') && $lineaBorrar->producto->descripcion=="Pedido Minimo"){
+        if(!Auth::user()->hasRole('Admin') && $lineaBorrar->producto->descripcion=="Pedido Mínimo"){
             $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
 }
         else{

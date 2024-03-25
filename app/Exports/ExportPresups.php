@@ -75,7 +75,7 @@ class ExportPresups implements FromCollection,WithCustomStartCell,WithHeadings,W
             ['Estadísticas de presupuestos',now()],
             [' ',' '],
             ['Filtro Estado',$this->estado],
-            ['Filtro Pedido Minimo',$this->pedidominimo],
+            ['Filtro Pedido Mínimo',$this->pedidominimo],
             ['Filtro Comercial',$this->comercial->name?? '',],
             ['Filtro Entidad',$this->entidad],
             ['Filtro Periodo:','De',$this->fi,'A:',$this->ff],
