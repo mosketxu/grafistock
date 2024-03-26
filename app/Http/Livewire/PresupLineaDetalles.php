@@ -44,44 +44,34 @@ class PresupLineaDetalles extends Component
         else
             $preciominimo=Producto::find($presupaccion->accionproducto_id)->preciocoste;
 
-        // if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia=="Pedido Mínimo")
-        // if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia=="Pedido Mínimo")
-        //     $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
-        // else{
-            //Preparamos y validamos antes de actualizar
-            if($campo=="unidades") if(!$valor) $valor=1;
-            if($campo=="preciocompra_ud") if(!$valor) $valor=0;
+        if($campo=="unidades") if(!$valor) $valor=1;
+        if($campo=="preciocompra_ud") if(!$valor) $valor=0;
 
-            if($campo=="precioventa_ud"){
-                if($valor<$preciominimo){
-                    $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
-                    $valor=$preciominimo;
-                }
+        if($campo=="precioventa_ud"){
+            if($valor<$preciominimo){
+                $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
+                $valor=$preciominimo;
             }
+        }
 
-            if ($campo=="factor") {
-                $factormin=$presupaccion->empresaTipo->factormin ?? '1';
-                if ($valor<$factormin) {
-                    $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
-                    $valor=$factormin;
-                }
+        if ($campo=="factor") {
+            $factormin=$presupaccion->empresaTipo->factormin ?? '1';
+            if ($valor<$factormin) {
+                $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
+                $valor=$factormin;
             }
-            if($calculo=='concalculo') Validator::make([$campo=>$valor],[$campo=>'numeric|required'])->validate();
-            //Actualizamos
-            if($campo=="factor"){
-                $presupaccion->update(['factor'=>$valor,'precioventa_ud'=>round($presupaccion->preciocoste_ud * $valor,2)]);
-            }
-            else{
-                // dd($campo.'-'.$valor);
-                $presupaccion->update([$campo=>$valor]);
-            }
+        }
+        if($calculo=='concalculo') Validator::make([$campo=>$valor],[$campo=>'numeric|required'])->validate();
 
-            // dd($presupaccion);
-            // Recalculamos
-            if($calculo=='concalculo') $this->calculoPrecioVenta($presupaccion);
-            if($calculo=='sincalculo') $this->dispatchBrowserEvent('notify', 'Actualizado.');
-            $this->emit('linearefresh');
-        // }
+        if($campo=="factor")
+            $presupaccion->update(['factor'=>$valor,'precioventa_ud'=>round($presupaccion->preciocoste_ud * $valor,2)]);
+        else
+            $presupaccion->update([$campo=>$valor]);
+
+        // Recalculamos
+        if($calculo=='concalculo') $this->calculoPrecioVenta($presupaccion);
+        if($calculo=='sincalculo') $this->dispatchBrowserEvent('notify', 'Actualizado.');
+        $this->emit('linearefresh');
     }
 
     public function calculoPrecioVenta($presupacciondetalle){
