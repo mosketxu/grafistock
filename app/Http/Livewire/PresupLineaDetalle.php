@@ -53,7 +53,7 @@ class PresupLineaDetalle extends Component
 
     public function mount(PresupuestoLinea $presupuestolinea){
         if($presupuestolinea->presupuesto->ent->incrementoanual=='1')
-        $this->incrementoanual=Configuracion::where('nombrecorto','IA')->first()->valor * $presupuestolinea->presupuesto->ent->incrementoanual;
+            $this->incrementoanual=Configuracion::where('nombrecorto','IA')->first()->valor * $presupuestolinea->presupuesto->ent->incrementoanual;
         $this->presuplinea=$presupuestolinea;
         $this->empresaTipo=$presupuestolinea->presupuesto->ent->empresatipo;
         $this->empresatipo_id=$this->empresaTipo->id;

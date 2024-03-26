@@ -88,7 +88,7 @@
                             readonly/>
                         </td>
                         <td>
-                            <input type="number" step="any" value="{{ $presupaccion->preciocoste_ud }}" wire:change="changeValor({{ $presupaccion }},'preciocompra_ud','concalculo',$event.target.value)"
+                            <input type="number" step="any" value="{{ $presupaccion->preciocoste_ud }}" wire:change="changeValor({{ $presupaccion }},'preciocoste_ud','concalculo',$event.target.value)"
                             class="w-full py-1 text-xs text-right {{ $presupaccion->deshabilitadoColorpCoste }} border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             {{ $presupaccion->deshabilitadoPcoste }}/>
                         </td>

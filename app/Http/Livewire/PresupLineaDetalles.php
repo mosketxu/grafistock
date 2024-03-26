@@ -38,19 +38,26 @@ class PresupLineaDetalles extends Component
     }
 
     public function changeValor(PresupuestoLineaDetalle $presupaccion,$campo,$calculo,$valor){
+        $preciominimo=0;
+        if($presupaccion->acciontipo->nombrecorto!='MAT' && $presupaccion->acciontipo->nombrecorto!='EMB')
+            $preciominimo=Accion::find($presupaccion->accionproducto_id)->preciominimo;
+        else
+            $preciominimo=Producto::find($presupaccion->accionproducto_id)->preciocoste;
+
         if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia="Pedido Mínimo")
             $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
         else{
             //Preparamos y validamos antes de actualizar
-            if($valor=="unidades") if(!$valor) $valor=1;
-            if($valor=="preciocompra_ud") if(!$valor) $valor=0;
+            if($campo=="unidades") if(!$valor) $valor=1;
+            if($campo=="preciocompra_ud") if(!$valor) $valor=0;
 
-            if($valor=="precioventa_ud"){
-                if($valor<$this->preciominimo){
+            if($campo=="precioventa_ud"){
+                if($valor<$preciominimo){
                     $this->dispatchBrowserEvent("notify", "El precio de venta es inferior al mínimo. Se asignará el mínimo.");
-                    $valor=$this->preciominimo;
+                    $valor=$preciominimo;
                 }
             }
+
             if ($campo=="factor") {
                 $factormin=$presupaccion->empresaTipo->factormin ?? '1';
                 if ($valor<$factormin) {
@@ -64,8 +71,11 @@ class PresupLineaDetalles extends Component
                 $presupaccion->update(['factor'=>$valor,'precioventa_ud'=>round($presupaccion->preciocoste_ud * $valor,2)]);
             }
             else{
+                // dd($campo.'-'.$valor);
                 $presupaccion->update([$campo=>$valor]);
             }
+
+            // dd($presupaccion);
             // Recalculamos
             if($calculo=='concalculo') $this->calculoPrecioVenta($presupaccion);
             if($calculo=='sincalculo') $this->dispatchBrowserEvent('notify', 'Actualizado.');
@@ -77,6 +87,7 @@ class PresupLineaDetalles extends Component
         $presupacciondetalle->preciocoste=$presupacciondetalle->preciocoste_ud * $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos ;
         $presupacciondetalle->precioventa= $presupacciondetalle->ancho * $presupacciondetalle->alto * $presupacciondetalle->unidades * $presupacciondetalle->minutos * ($presupacciondetalle->precioventa_ud  + $presupacciondetalle->preciocoste_ud * $presupacciondetalle->merma);
 
+        $presupacciondetalle->preciocoste_ud=round($presupacciondetalle->preciocoste_ud,2);
         $presupacciondetalle->preciocoste=round($presupacciondetalle->preciocoste,2);
         $presupacciondetalle->precioventa=round($presupacciondetalle->precioventa,2);
         $presupacciondetalle->save();

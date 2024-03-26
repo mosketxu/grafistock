@@ -8,7 +8,7 @@ use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
-
+use function PHPUnit\Framework\isNull;
 
 class Ent extends Component
 {
@@ -100,6 +100,9 @@ class Ent extends Component
 
     public function save()
     {
+        if(isNull($this->entidad->incrementoanual))
+            $this->entidad->incrementoanual='1';
+
         $this->validate();
         if($this->entidad->id){
             $i=$this->entidad->id;
