@@ -44,7 +44,7 @@ class PresupLineaDetalles extends Component
         else
             $preciominimo=Producto::find($presupaccion->accionproducto_id)->preciocoste;
 
-        if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia="Pedido Mínimo")
+        if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia=="Pedido Mínimo")
             $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
         else{
             //Preparamos y validamos antes de actualizar
