@@ -52,6 +52,7 @@ class Prod extends Component
 
     public function mount(Producto $producto){
         $this->producto=$producto;
+        if(is_null($this->producto->activo)) $this->producto->activo=1;
         $this->deshabilitado=Auth::user()->hasRole(['Admin','Gestor']) ? '' : 'disabled';
     }
 
@@ -117,7 +118,7 @@ class Prod extends Component
             );
             $mensaje=$this->producto->referencia . " actualizado satisfactoriamente";
         }else{
-            $this->validate([
+    $this->validate([
                 'producto.referencia'=>'required|unique:productos,referencia',
                 ]
             );
