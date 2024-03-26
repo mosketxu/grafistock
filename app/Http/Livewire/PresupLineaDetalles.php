@@ -45,9 +45,9 @@ class PresupLineaDetalles extends Component
             $preciominimo=Producto::find($presupaccion->accionproducto_id)->preciocoste;
 
         // if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia=="Pedido Mínimo")
-        if(!Auth::user()->hasRole('Admin'))
-            $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
-        else{
+        // if(!Auth::user()->hasRole('Admin') && $presupaccion->producto->referencia=="Pedido Mínimo")
+        //     $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
+        // else{
             //Preparamos y validamos antes de actualizar
             if($campo=="unidades") if(!$valor) $valor=1;
             if($campo=="preciocompra_ud") if(!$valor) $valor=0;
@@ -81,7 +81,7 @@ class PresupLineaDetalles extends Component
             if($calculo=='concalculo') $this->calculoPrecioVenta($presupaccion);
             if($calculo=='sincalculo') $this->dispatchBrowserEvent('notify', 'Actualizado.');
             $this->emit('linearefresh');
-        }
+        // }
     }
 
     public function calculoPrecioVenta($presupacciondetalle){
