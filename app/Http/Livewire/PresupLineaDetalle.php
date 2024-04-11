@@ -355,10 +355,10 @@ class PresupLineaDetalle extends Component
     // con el factor tenemos en cuenta el minimo
     public function UpdatedFactor(){
         $this->validate(['factor'=>'numeric',]);
-        // if ($this->factor<$this->factormin) {
-        //     $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
-        //     $this->factor=$this->factormin;
-        // }
+        if ($this->factor<$this->factormin) {
+            $this->dispatchBrowserEvent("notify", "El factor es inferior al mínimo. Se asignará el mínimo.");
+            $this->factor=$this->factormin;
+        }
         $this->precioventa_ud=round($this->preciocoste_ud * $this->factor,2);
         $this->calculoPrecioVenta();
     }
