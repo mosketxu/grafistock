@@ -58,7 +58,7 @@ class PresupLineaDetalle extends Component
         $this->empresaTipo=$presupuestolinea->presupuesto->ent->empresatipo;
         $this->empresatipo_id=$this->empresaTipo->id;
         $this->factormin=$this->empresaTipo->factormin ?? '1';
-        dd($this->empresaTipo.'-'.$this->factormin);
+        // dd($this->empresaTipo.'-'.$this->factormin);
 
         $this->factor=$this->factormin;
         $this->controlpartidas=$this->presuplinea->presupuesto->presupuestocontrolpartidas;
