@@ -28,8 +28,7 @@ class EntContacto extends Component
         ];
     }
 
-    public function mount(Entidad $entidad, EntidadContacto $contacto)
-    {
+    public function mount(Entidad $entidad, EntidadContacto $contacto){
         $this->entidad=$entidad;
         $this->entidadId=$this->entidad->id;
         if($contacto){
@@ -42,13 +41,12 @@ class EntContacto extends Component
             $this->email=$contacto->email;
         }
     }
-    public function render()
-    {
+
+    public function render(){
         return view('livewire.ent-contacto');
     }
 
-    public function save()
-    {
+    public function save(){
         $this->validate();
         $i='';
         if($this->contacto->id)
