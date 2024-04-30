@@ -119,8 +119,10 @@ class PresupLineas extends Component
     }
 
     function pedidominimo(PresupuestoLinea $presupuestolinea) {
+
         if($this->presupuesto->pminimo->count()==0){
             $producto=Producto::where('descripcion','Pedido Mínimo')->first();
+            // dd($this->presupuesto->entidad_id);
             $empresa=Entidad::find($this->presupuesto->entidad_id);
             $pldetalle = PresupuestoLineaDetalle::create([
                 'presupuestolinea_id'=>$presupuestolinea->id,
@@ -131,7 +133,8 @@ class PresupLineas extends Component
                 'incrementoanual'=>$empresa->incrementoanual,
                 'orden'=>'1',
                 'descripcion'=>$producto->descripcion,
-                'preciocoste_ud'=>$empresa->empresatipo->pedidominimo,
+                // 'preciocoste_ud'=>$empresa->empresatipo->pedidominimo,
+                'preciocoste_ud'=>"0.00",
                 'precioventa_ud'=>$empresa->empresatipo->pedidominimo,
                 'udpreciocoste_id'=>'6',
                 'factor'=>'1',
@@ -140,7 +143,8 @@ class PresupLineas extends Component
                 'minutos'=>'1',
                 'alto'=>'1',
                 'ancho'=>'1',
-                'preciocoste'=>$empresa->empresatipo->pedidominimo,
+                // 'preciocoste'=>$empresa->empresatipo->pedidominimo,
+                'preciocoste'=>"0,00",
                 'precioventa'=>$empresa->empresatipo->pedidominimo,
                 'observaciones'=>'',
                 'fichero'=>'',
