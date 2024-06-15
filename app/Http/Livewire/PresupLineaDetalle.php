@@ -180,7 +180,10 @@ class PresupLineaDetalle extends Component
     }
 
     public function edit(PresupuestoLineaDetalle $presupuestoaccion){
-        if(!Auth::user()->hasRole('Admin') && $presupuestoaccion->producto->descripcion=="Pedido Mínimo"){
+
+        // miro que no sea Admin, Que no sea accion tipo Material (que es donde esta el P.Min) y que no sea P.Min
+
+        if(!Auth::user()->hasRole('Admin') && $presupuestoaccion->acciontipo_id=='1' && $presupuestoaccion->producto->descripcion=="Pedido Mínimo"){
             $this->dispatchBrowserEvent("notify", "Este valor solo lo puede modificar Dirección Comercial.");
         }
         else{
