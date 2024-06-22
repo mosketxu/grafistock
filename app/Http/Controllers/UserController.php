@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Entidad;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -94,7 +95,9 @@ class UserController extends Controller
         // $users = User::permission('administracion')->get();
         // $users = User::permission('stock.index')->get();
         $roles= Role::get();
-        return view('users.edit',compact('user','roles'));
+        $entidades=Entidad::whereIn('entidadtipo_id',['1','3'])->get();
+        // dd($entidades);
+        return view('users.edit',compact('user','roles','entidades'));
     }
 
     /**
@@ -106,9 +109,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+
+        // dd($request);
         $data = request()->validate([
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+            'entidad_id'=>'nullable',
             'password' => '',
         ]);
 

@@ -64,8 +64,17 @@
                                                 <input  type="email" name="email" value="{{old('email',$user->email)}}" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required/>
                                             </div>
                                             <div class="w-full form-item lg:w-3/12">
-                                                <label class="block text-sm font-medium text-gray-700">{{ __('password') }}</label>
+                                                <label class="block text-sm font-medium text-gray-700">{{ __('Password') }}</label>
                                                 <input  type="password" name="password" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"/>
+                                            </div>
+                                            <div class="w-full form-item lg:w-3/12">
+                                                <label class="block text-sm font-medium text-gray-700">{{ __('Cliente') }}</label>
+                                                <select name="entidad_id" class="w-full text-xs border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                                                        <option value="" >-- Selecciona el cliente del usuario --</option>
+                                                    @foreach ($entidades as $entidad)
+                                                        <option value="{{ $entidad->id }}" {{ $entidad->id== $user->entidad_id? 'selected' : '' }}>{{ $entidad->entidad }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

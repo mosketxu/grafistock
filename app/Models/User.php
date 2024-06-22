@@ -29,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'entidad_id',
     ];
 
     /**
@@ -61,9 +62,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function empresas()
-    {
-        return $this->hasMany(Entidad::class,'comercial_id')->default('No Asignado');
-    }
+    public function empresas(){return $this->hasMany(Entidad::class,'comercial_id')->default('No Asignado');}
+    public function cliente(){return $this->hasOne(Entidad::class,'id','entidad_id')->withDefault(['entidad'=>'Grafitex']);}
 
 }

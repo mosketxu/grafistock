@@ -40,6 +40,7 @@
                         <tr>
                             <th class="w-2/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __('Nombre') }}</th>
                             <th class="w-4/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __('email') }} </th>
+                            <th class="w-4/6 px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" >{{ __('Empresa') }} </th>
                             <th class="px-1 py-3 pl-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 bg-blue-50" ></th>
                         </tr>
                     </thead>
@@ -57,6 +58,10 @@
                             </td>
                             <td class="w-2/6 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
                                 <input type="email" value="{{ $user->email }}"
+                                class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"  readonly/>
+                            </td>
+                            <td class="w-2/6 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
+                                <input type="entidad_id" value="{{ $user->cliente->entidad }}"
                                 class="w-full text-xs font-thin text-gray-500 border-0 rounded-md"  readonly/>
                             </td>
                             <td class="w-2/6 px-1 text-xs leading-5 tracking-tighter text-gray-600 whitespace-no-wrap" >
